@@ -1,0 +1,38 @@
+\documentclass{report}
+
+\title{Solutions Manual for Enderton \emph{Elements of Set Theory}}
+\author{Robin Adams}
+
+\begin{document}
+    \maketitle
+    \tableofcontents
+
+    \chapter{Chapter 1 --- Introduction}
+
+    \section{Baby Set Theory}
+
+    \subsection{Exercise 1}
+    \begin{itemize}
+        \item $\{ \emptyset \} \in \{ \emptyset, \{ \emptyset \} \}$ --- true
+        \item $\{ \emptyset \} \subseteq \{ \emptyset, \{ \emptyset \} \}$ --- true
+        \item $\{ \emptyset \} \in \{ \emptyset, \{ \{ \emptyset \} \} \}$ --- false
+        \item $\{ \emptyset \} \subseteq \{ \emptyset, \{ \{ \emptyset \} \} \}$ --- true
+        \item $\{ \{ \emptyset \} \} \in \{ \emptyset, \{ \emptyset \} \}$ --- false
+        \item $\{ \{ \emptyset \} \} \subseteq \{ \emptyset, \{ \emptyset \} \}$ --- true
+        \item $\{ \{ \emptyset \} \} \in \{ \emptyset, \{ \{ \emptyset \} \} \}$ --- true
+        \item $\{ \{ \emptyset \} \} \subseteq \{ \emptyset, \{ \{ \emptyset \} \} \}$ --- false
+        \item $\{ \{ \emptyset \} \} \in \{ \emptyset, \{ \emptyset, \{ \emptyset \} \} \}$ --- false
+        \item $\{ \{ \emptyset \} \} \subseteq \{ \emptyset, \{ \emptyset, \{ \emptyset \} \} \}$ --- false
+    \end{itemize}
+
+    \subsection{Exercise 2}
+    We have $\emptyset \neq \{ \emptyset \}$ because $\{ \emptyset \}$ has an element (namely $\emptyset$)
+    while $\emptyset$ has no elements.
+
+    We have $\emptyset \neq \{ \{ \emptyset \} \}$ because $\{ \{ \emptyset \} \}$ has an element (namely
+    $\{ \emptyset \}$) while $\emptyset$ has no elements.
+
+    We have $\{ \emptyset \} \neq \{ \{ \emptyset \} \}$ because $\emptyset \in \{ \emptyset \}$ but
+    $\emptyset \notin \{ \{ \emptyset \} \}$. This last fact is true because $\emptyset \neq \{ \emptyset \}$
+    as we proved in the first paragraph.
+\end{document}
