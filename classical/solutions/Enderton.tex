@@ -35,4 +35,19 @@
     We have $\{ \emptyset \} \neq \{ \{ \emptyset \} \}$ because $\emptyset \in \{ \emptyset \}$ but
     $\emptyset \notin \{ \{ \emptyset \} \}$. This last fact is true because $\emptyset \neq \{ \emptyset \}$
     as we proved in the first paragraph.
+
+    \subsection{Exercise 3}
+    Assume $B \subseteq C$. Let $A \in \mathcal{P} B$; we must show that $A \in \mathcal{P} C$.
+
+    We have $A \subseteq B$ (since $A \in \mathcal{P} B$) and $B \subseteq C$. From this it follows that
+    $A \subseteq C$ (every element of $A$ is an element of $B$; every element of $B$ is an element of $C$;
+    therefore every element of $A$ is an element of $C$). Hence $A \in \mathcal{P} C$ as required.
+
+    \subsection{Exercise 4}
+    Since $x \in B$, we have $\{x\} \subseteq B$ and so $\{ x \} \in \mathcal{P} B$.
+
+    Since $x \in B$ and $y \in B$, we have $\{ x,y \} \subseteq B$ and so $\{x,y\} \in \mathcal{P} B$.
+
+    From these two facts, it follows that $\{ \{x\},\{x,y\}\} \subseteq \mathcal{P} B$ and so
+    $\{ \{x\},\{x,y\}\} \in \mathcal{P} \mathcal{P} B$.
 \end{document}
