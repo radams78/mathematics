@@ -1,0 +1,185 @@
+\documentclass{article}
+
+\title{C0 Classes}
+\author{Robin Adams}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\let\proof\relax
+\let\endproof\relax
+\let\qed\relax
+\usepackage{pf2}
+\usepackage[all]{xy}
+
+\newtheorem{axiom}{Axiom}
+\newtheorem{axs}[axiom]{Axiom Schema}
+\newtheorem{lm}[axiom]{Lemma}
+\newtheorem{proposition}[axiom]{Proposition}
+\newtheorem{props}[axiom]{Proposition Schema}
+\newtheorem{thm}[axiom]{Theorem}
+\newtheorem{cor}{Corollary}[axiom]
+\theoremstyle{definition}
+\newtheorem{definition}[axiom]{Definition}
+
+\begin{document}
+    \maketitle
+
+    We speak informally of \emph{classes}. A class is determined by a unary predicate. We write 
+    $\{ x : P(x) \}$ or $\{ x \mid P(x) \}$ for the class determined by the predicate $P(x)$.
+
+    We define what it means for an object $a$ to be an element of the class $\mathbf{A}$, $a \in \mathbf{A}$,
+    by: $a \in \{ x : P(x) \}$ means $P(a)$.
+
+    \begin{definition}[Equality of Classes]
+        Two classes $\mathbf{A}$ and $\mathbf{B}$ are \emph{equal}, $\mathbf{A} = \mathbf{B}$,
+        iff they have exactly the same members.
+    \end{definition}
+
+    \begin{proposition}
+        For any class $\mathbf{A}$ we have $\mathbf{A} = \mathbf{A}$.
+    \end{proposition}
+
+    \begin{proof}
+        Since $\mathbf{A}$ and $\mathbf{A}$ have exactly the same members.
+    \end{proof}
+
+    \begin{proposition}
+        For any classes $\mathbf{A}$ and $\mathbf{B}$, if $\mathbf{A} = \mathbf{B}$ then $\mathbf{B} =
+        \mathbf{A}$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ If $\mathbf{A}$ and $\mathbf{B}$ have exactly the same members, then $\mathbf{B}$
+        and $\mathbf{A}$ have exactly the same members.
+    \end{proof}
+
+    \begin{proposition}
+        For any classes $\mathbf{A}$, $\mathbf{B}$ and $\mathbf{C}$, if $\mathbf{A} = \mathbf{B}$
+        and $\mathbf{B} = \mathbf{C}$ then $\mathbf{A} = \mathbf{C}$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ If $\mathbf{A}$ and $\mathbf{B}$ have exactly the same members,
+        and $\mathbf{B}$ and $\mathbf{C}$ have exactly the same members,
+        then $\mathbf{A}$ and $\mathbf{C}$ have exactly the same members. \qed
+    \end{proof}
+
+    \begin{definition}[Subclass]
+        A class $\mathbf{A}$ is a \emph{subclass} of a class $\mathbf{B}$,
+        $\mathbf{A} \subseteq \mathbf{B}$, iff every member of $\mathbf{A}$
+        is a member of $\mathbf{B}$.
+    \end{definition}
+
+    \begin{proposition}
+        For any class $\mathbf{A}$ we have $\mathbf{A} \subseteq \mathbf{A}$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Every member of $\mathbf{A}$ is a member of $\mathbf{A}$. \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any classes $\mathbf{A}$, $\mathbf{B}$ and $\mathbf{C}$, if $\mathbf{A} \subseteq \mathbf{B}$
+        and $\mathbf{B} \subseteq \mathbf{C}$ then $\mathbf{A} \subseteq \mathbf{C}$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ If every member of $\mathbf{A}$ is a member of $\mathbf{B}$,
+        and every member of $\mathbf{B}$ is a member of $\mathbf{C}$,
+        then every member of $\mathbf{A}$ is a member of $\mathbf{C}$. \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any classes $\mathbf{A}$ and $\mathbf{B}$, if $\mathbf{A} \subseteq \mathbf{B}$
+        and $\mathbf{B} \subseteq \mathbf{A}$ then $\mathbf{A} = \mathbf{B}$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ If every member of $\mathbf{A}$ is a member of $\mathbf{B}$,
+        and every member of $\mathbf{B}$ is a member of $\mathbf{A}$,
+        then $\mathbf{A}$ and $\mathbf{B}$ have exactly the same members. \qed
+    \end{proof}
+
+    \begin{definition}[Empty Class]
+        The \emph{empty class}, $\emptyset$, is $\{ x : \bot \}$.
+    \end{definition}
+
+    \begin{proposition}
+        For any class $\mathbf{A}$, we have $\emptyset \subseteq \mathbf{A}$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Vacuously, every member of $\emptyset$ is a member of $\mathbf{A}$.
+    \end{proof}
+
+    \begin{definition}[Universal Class]
+        The \emph{universal class} $\mathbf{V}$ is the class $\{ x : \top \}$.
+    \end{definition}
+
+    \begin{proposition}
+        For any class $\mathbf{A}$, we have $\mathbf{A} \subseteq \mathbf{V}$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Every member of $\mathbf{A}$ is a member of $\mathbf{V}$. \qed
+    \end{proof}
+
+    \begin{definition}
+        For any objects $a_1$, \ldots, $a_n$, we write $\{ a_1, \ldots, a_n \}$ for the class
+        $\{ x : x = a_1 \vee \cdots \vee x = a_n \}$.
+    \end{definition}
+
+    \begin{definition}[Union]
+        The \emph{union} of classes $\mathbf{A}$ and $\mathbf{B}$, 
+        $\mathbf{A} \cup \mathbf{B}$, is the set whose elements are exactly the things
+        that are members of $\mathbf{A}$ or members of $\mathbf{B}$.
+    \end{definition}
+
+    \begin{proposition}
+        For any classes $\mathbf{A}$, $\mathbf{B}$ and $\mathbf{C}$, we have:
+        \begin{enumerate}
+            \item $\mathbf{A} \subseteq \mathbf{A} \cup \mathbf{B}$
+            \item $\mathbf{B} \subseteq \mathbf{A} \cup \mathbf{B}$
+            \item If $\mathbf{A} \subseteq \mathbf{C}$ and $\mathbf{B} \subseteq \mathbf{C}$
+            then $\mathbf{A} \cup \mathbf{B} \subseteq \mathbf{C}$
+        \end{enumerate}
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Immediate from definitions. \qed
+    \end{proof}
+
+    \begin{definition}[Intersection]
+        The \emph{intersection} of classes $\mathbf{A}$ and $\mathbf{B}$, 
+        $\mathbf{A} \cap \mathbf{B}$, is the set whose elements are exactly the
+        things that are members of both $\mathbf{A}$ and $\mathbf{B}$.
+    \end{definition}
+
+    \begin{proposition}
+        For any classes $\mathbf{A}$, $\mathbf{B}$ and $\mathbf{C}$, we have:
+        \begin{enumerate}
+            \item $\mathbf{A} \cap \mathbf{B} \subseteq \mathbf{A}$
+            \item $\mathbf{A} \cap \mathbf{B} \subseteq \mathbf{B}$
+            \item If $\mathbf{C} \subseteq \mathbf{A}$ and $\mathbf{C} \subseteq \mathbf{B}$
+            then $\mathbf{C} \subseteq \mathbf{A} \cap \mathbf{B}$
+        \end{enumerate}
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Immediate from definitions. \qed
+    \end{proof}
+
+    \begin{definition}[Disjoint]
+        Two classes $\mathbf{A}$ and $\mathbf{B}$ are \emph{disjoint} iff they have no common members.
+    \end{definition}
+
+    \begin{proposition}
+        Two classes $\mathbf{A}$ and $\mathbf{B}$ are \emph{disjoint} iff $\mathbf{A} \cap \mathbf{B}
+        = \emptyset$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Immediate from definitions. \qed
+    \end{proof}
+\end{document}

@@ -3,6 +3,9 @@
 \title{Solutions Manual for Enderton \emph{Elements of Set Theory}}
 \author{Robin Adams}
 
+\usepackage{amsmath}
+\usepackage{amssymb}
+
 \begin{document}
     \maketitle
     \tableofcontents
@@ -50,4 +53,85 @@
 
     From these two facts, it follows that $\{ \{x\},\{x,y\}\} \subseteq \mathcal{P} B$ and so
     $\{ \{x\},\{x,y\}\} \in \mathcal{P} \mathcal{P} B$.
+
+    \section{Sets --- An Informal View}
+
+    \subsection{Exercise 5}
+    We have
+    \begin{align*}
+        V_0 & = A \\
+        V_1 & = V_0 \cup \mathcal{P} V_0 \\
+        & = A \cup \mathcal{P} A \\
+        V_2 & = V_1 \cup \mathcal{P} V_1 \\
+        & = \{ \emptyset, \{ \emptyset \} \} \\
+        V_3 & = \mathcal{P} V_2 \\
+        & = \{ \emptyset, \{ \emptyset \}, \{ \{ \emptyset \} \},
+        \{ \emptyset, \{ \emptyset \} \} \}
+    \end{align*}
+
+    We have $\emptyset \subseteq V_0$ and so $\emptyset \in V_1$. Therefore $\{ \emptyset \} \subseteq V_1$
+    and so $\{ \emptyset \} \in V_2$. Hence
+    $\{ \{ \emptyset \} \} \subseteq V_2$.
+
+    We also have $\{ \{ \emptyset \} \} \nsubseteq V_0$ because $\{ \emptyset \}$ is not an atom,
+    and $\{ \{ \emptyset \} \} \nsubseteq V_1$ since $\{ \emptyset \} \notin V_1$ because $\emptyset$ is not an atom.
+
+    Thus the rank of $\{ \{ \emptyset \} \}$ is 2.
+
+    Likewise we have $\emptyset$ and $\{ \emptyset \}$ are both subsets of $V_1$, hence
+    \[ \emptyset \in V_2, \qquad \{ \emptyset \} \in V_2 \]
+    Thus $\emptyset, \{ \emptyset \}, \{ \emptyset, \{ \emptyset \} \}$ are all subsets of $V_2$,
+    hence elements of $V_3$. Therefore,
+    \[ \{ \emptyset, \{ \emptyset \}, \{ \emptyset, \{ \emptyset \} \} \} \subseteq V_3 \]
+
+    Now, $\{ \emptyset, \{ \emptyset \}, \{ \emptyset, \{ \emptyset \} \} \}$ is not a subset of $V_0$
+    (because $\emptyset$ is not an atom.) It is not a subset of $V_1$ ($\{ \emptyset \} \notin V_1$
+    because $\emptyset$ is not an atom.) It is not a subset of $V_2$ (we have
+    $\{ \emptyset, \{ \emptyset \} \} \notin V_2$ since $\{ \emptyset \} \notin V_1$).
+
+    Therefore the rank of
+    $\{ \emptyset, \{ \emptyset \}, \{ \emptyset, \{ \emptyset \} \} \}$ is 3.
+    
+    \subsection{Exercise 6}
+
+    \begin{align*}
+        V_1 & = V_0 \cup \mathcal{P} V_0 \\
+        & = A \cup \mathcal{P} V_0 & (\text{since } V_0 = A) \\
+        V_2 & = V_1 \cup \mathcal{P} V_1 \\
+        & = A \cup \mathcal{P} V_0 \cup \mathcal{P} V_1 \\
+        & = A \cup \mathcal{P} V_1 & (\text{since } \mathcal{P} V_0 \subseteq \mathcal{P} V_1 \text{ by Exercise 3}) \\
+        V_3 & = V_2 \cup \mathcal{P} V_2 \\
+        & = A \cup \mathcal{P} V_1 \cup \mathcal{P} V_2 \\
+        & = A \cup \mathcal{P} V_2 & (\text{since } \mathcal{P} V_1 \subseteq \mathcal{P} V_2 \text{ by Exercise 3}) \\
+        V_4 & = V_3 \cup \mathcal{P} V_3 \\
+        & = A \cup \mathcal{P} V_2 \cup \mathcal{P} V_3 \\
+        & = A \cup \mathcal{P} V_3 & (\text{since } \mathcal{P} V_2 \subseteq \mathcal{P} V_3 \text{ by Exercise 3}) \\        
+    \end{align*}
+
+    \subsection{Exercise 7}
+    In Exercise 5 we calculated $V_3 = \{ \emptyset, \{ \emptyset \}, \{ \{ \emptyset \} \},
+    \{ \emptyset, \{ \emptyset \} \} \}$
+
+    Hence
+    \begin{align*}
+    V_4 = & \mathcal{P} V_3 \\
+    = \{ & \emptyset, \\
+    & \{ \emptyset \}, \\
+    & \{ \{ \emptyset \} \}, \\
+    & \{ \{ \{ \emptyset \} \} \}, \\
+    & \{ \{ \emptyset, \{ \emptyset \} \} \}, \\
+    & \{ \emptyset, \{ \emptyset \} \}, \\
+    & \{ \emptyset, \{ \{ \emptyset \} \} \}, \\
+    & \{ \emptyset, \{ \emptyset, \{ \emptyset \} \} \}, \\
+    & \{ \{ \emptyset \}, \{ \{ \emptyset \} \} \}, \\
+    & \{ \{ \emptyset \}, \{ \emptyset, \{ \emptyset \} \} \}, \\
+    & \{ \{ \{ \emptyset \} \}, \{ \emptyset, \{ \emptyset \} \} \}, \\
+    & \{ \emptyset, \{ \emptyset \}, \{ \{ \emptyset \} \} \}, \\
+    & \{ \emptyset, \{ \emptyset \}, \{ \emptyset, \{ \emptyset \} \} \}, \\
+    & \{ \emptyset, \{ \{ \emptyset \} \}, \{ \emptyset, \{ \emptyset \} \} \}, \\
+    & \{ \{ \emptyset \}, \{ \{ \emptyset \} \}, \{ \emptyset, \{ \emptyset \} \} \}, \\
+    & \{ \emptyset, \{ \emptyset \}, \{ \{ \emptyset \} \},
+    \{ \emptyset, \{ \emptyset \} \} \} \\
+    \}
+    \end{align*}
 \end{document}

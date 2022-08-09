@@ -1,0 +1,59 @@
+\documentclass{article}
+
+\title{C1 Set Theory}
+\author{Robin Adams}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\let\proof\relax
+\let\endproof\relax
+\let\qed\relax
+\usepackage{pf2}
+\usepackage[all]{xy}
+
+\newtheorem{axiom}{Axiom}
+\newtheorem{axs}[axiom]{Axiom Schema}
+\newtheorem{lm}[axiom]{Lemma}
+\newtheorem{proposition}[axiom]{Proposition}
+\newtheorem{props}[axiom]{Proposition Schema}
+\newtheorem{thm}[axiom]{Theorem}
+\newtheorem{cor}{Corollary}[axiom]
+\theoremstyle{definition}
+\newtheorem{definition}[axiom]{Definition}
+
+\begin{document}
+    \maketitle
+
+    \section{Primitive Notions}
+
+    Let there be \emph{sets}.
+
+    Let there be a binary relation called \emph{membership}, $\in$. When $x \in y$ holds, we say $x$ is a
+    \emph{member} or \emph{element} of $y$. We write $x \notin y$ iff $x$ is not a member of $y$.
+
+    \section{The Axioms}
+
+    \begin{axiom}[Extensionality]
+        If two sets have exactly the same members, then they are equal.
+    \end{axiom}
+
+    As a consequence of this axiom, we may identify a set $A$ with the class $\{ x : x \in A \}$. The use of
+    the symbols $\in$ and $=$ is consistent.
+
+    \begin{definition}
+    We say that a class $\mathbf{A}$ \emph{is a set} iff there exists a set $A$ such that $A = \mathbf{A}$.
+    That is, the class $\{ x : P(x) \}$ is a set iff
+    \[ \exists A. \forall x (x \in A \leftrightarrow P(x)) \enspace . \]
+    Otherwise, $\mathbf{A}$ is a \emph{proper class}.
+    \end{definition}
+
+    \begin{definition}[Subset]
+        If $A$ is a set and $\mathbf{B}$ is a class, we say $A$ is a \emph{subset} of $\mathbf{B}$
+        iff $A \subseteq \mathbf{B}$.
+    \end{definition}
+
+    \begin{definition}[Power Set]
+        For any set $A$, the \emph{power set} of $A$, $\mathcal{P} A$, is the class of all subsets of $A$.
+    \end{definition}
+\end{document}
