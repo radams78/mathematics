@@ -17,7 +17,7 @@
 \newtheorem{lm}[axiom]{Lemma}
 \newtheorem{proposition}[axiom]{Proposition}
 \newtheorem{props}[axiom]{Proposition Schema}
-\newtheorem{thm}[axiom]{Theorem}
+\newtheorem{theorem}[axiom]{Theorem}
 \newtheorem{cor}{Corollary}[axiom]
 \theoremstyle{definition}
 \newtheorem{definition}[axiom]{Definition}
@@ -53,7 +53,98 @@
         iff $A \subseteq \mathbf{B}$.
     \end{definition}
 
+    \begin{axiom}[Empty Set]
+        The empty class is a set, called the \emph{empty set}.
+    \end{axiom}
+
+    \begin{axiom}[Pairing]
+        For any objects $a$ and $b$, the class $\{a,b\}$ is a set, called a \emph{pair set}.
+    \end{axiom}
+
+    \begin{definition}[Union]
+        For any class of sets $\mathbf{A}$, the \emph{union} $\bigcup \mathbf{A}$ is the class
+        $\{ x : \exists A \in \mathbf{A}. x \in A \}$.
+    \end{definition}
+
+    \begin{axiom}[Union]
+        For any set $A$, the union $\bigcup A$ is a set.
+    \end{axiom}
+
+    \begin{proposition}
+        For any sets $A$ and $B$, the class $A \cup B$ is a set.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ It is $\bigcup \{ A, B \}$. \qed
+    \end{proof}
+
+    \begin{props}
+        For any objects $a_1$, \ldots, $a_n$, the class $\{ a_1, \ldots, a_n \}$ is a set.
+    \end{props}
+
+    \begin{proof}
+        \pf\ By repeated application of the Pairing and Union axioms. \qed
+    \end{proof}
+
     \begin{definition}[Power Set]
         For any set $A$, the \emph{power set} of $A$, $\mathcal{P} A$, is the class of all subsets of $A$.
     \end{definition}
+
+    \begin{axiom}[Power Set]
+        For any set $A$, the class $\mathcal{P} A$ is a set.
+    \end{axiom}
+
+    \begin{axiom}[Subset, Aussonderung]
+        For any class $\mathbf{A}$ and set $B$, if $\mathbf{A} \subseteq B$ then $\mathbf{A}$ is a set.
+    \end{axiom}
+
+    \begin{proposition}
+        For any set $A$ and class $\mathbf{B}$, the intersection $A \cap \mathbf{B}$ is a set.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ By the Subset Axiom since it is a subclass of $A$. \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any set $A$ and class $\mathbf{B}$, the relative complement $A - \mathbf{B}$ is a set.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ By the Subset Axiom since it is a subclass of $A$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        The universal class $\mathbf{V}$ is a proper class.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\assume{$\mathbf{V}$ is a set.}}
+        \step{2}{\pflet{$R = \{ x : x \notin x \}$}}
+        \step{3}{$R$ is a set.}
+        \begin{proof}
+            \pf\ By the Subset Axiom.
+        \end{proof}
+        \step{4}{$R \in R$ if and only if $R \notin R$}
+        \qedstep
+        \begin{proof}
+            \pf\ This is a contradiction.
+        \end{proof}
+        \qed
+    \end{proof}
+    
+    \begin{definition}[Intersection]
+        For any class of sets $\mathbf{A}$, the \emph{intersection} $\bigcup \mathbf{A}$ is the class
+        $\{ x : \forall A \in \mathbf{A}. x \in A \}$.
+    \end{definition}
+
+    \begin{proposition}
+        For any nonempty class of sets $\mathbf{A}$, the class $\bigcap \mathbf{A}$ is a set.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Pick $A \in \mathbf{A}$. Then $\bigcap \mathbf{A} \subseteq A$. \qed
+    \end{proof}
+    
 \end{document}

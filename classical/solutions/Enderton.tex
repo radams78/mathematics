@@ -14,7 +14,7 @@
 
     \section{Baby Set Theory}
 
-    \subsection{Exercise 1}
+    \paragraph{Exercise 1}
     \begin{itemize}
         \item $\{ \emptyset \} \in \{ \emptyset, \{ \emptyset \} \}$ --- true
         \item $\{ \emptyset \} \subseteq \{ \emptyset, \{ \emptyset \} \}$ --- true
@@ -28,7 +28,7 @@
         \item $\{ \{ \emptyset \} \} \subseteq \{ \emptyset, \{ \emptyset, \{ \emptyset \} \} \}$ --- false
     \end{itemize}
 
-    \subsection{Exercise 2}
+    \paragraph{Exercise 2}
     We have $\emptyset \neq \{ \emptyset \}$ because $\{ \emptyset \}$ has an element (namely $\emptyset$)
     while $\emptyset$ has no elements.
 
@@ -39,14 +39,14 @@
     $\emptyset \notin \{ \{ \emptyset \} \}$. This last fact is true because $\emptyset \neq \{ \emptyset \}$
     as we proved in the first paragraph.
 
-    \subsection{Exercise 3}
+    \paragraph{Exercise 3}
     Assume $B \subseteq C$. Let $A \in \mathcal{P} B$; we must show that $A \in \mathcal{P} C$.
 
     We have $A \subseteq B$ (since $A \in \mathcal{P} B$) and $B \subseteq C$. From this it follows that
     $A \subseteq C$ (every element of $A$ is an element of $B$; every element of $B$ is an element of $C$;
     therefore every element of $A$ is an element of $C$). Hence $A \in \mathcal{P} C$ as required.
 
-    \subsection{Exercise 4}
+    \paragraph{Exercise 4}
     Since $x \in B$, we have $\{x\} \subseteq B$ and so $\{ x \} \in \mathcal{P} B$.
 
     Since $x \in B$ and $y \in B$, we have $\{ x,y \} \subseteq B$ and so $\{x,y\} \in \mathcal{P} B$.
@@ -56,7 +56,7 @@
 
     \section{Sets --- An Informal View}
 
-    \subsection{Exercise 5}
+    \paragraph{Exercise 5}
     We have
     \begin{align*}
         V_0 & = A \\
@@ -92,7 +92,7 @@
     Therefore the rank of
     $\{ \emptyset, \{ \emptyset \}, \{ \emptyset, \{ \emptyset \} \} \}$ is 3.
     
-    \subsection{Exercise 6}
+    \paragraph{Exercise 6}
 
     \begin{align*}
         V_1 & = V_0 \cup \mathcal{P} V_0 \\
@@ -108,7 +108,7 @@
         & = A \cup \mathcal{P} V_3 & (\text{since } \mathcal{P} V_2 \subseteq \mathcal{P} V_3 \text{ by Exercise 3}) \\        
     \end{align*}
 
-    \subsection{Exercise 7}
+    \paragraph{Exercise 7}
     In Exercise 5 we calculated $V_3 = \{ \emptyset, \{ \emptyset \}, \{ \{ \emptyset \} \},
     \{ \emptyset, \{ \emptyset \} \} \}$
 
@@ -134,4 +134,105 @@
     \{ \emptyset, \{ \emptyset \} \} \} \\
     \}
     \end{align*}
+
+    \chapter{Chapter 2 --- Axioms and Operations}
+
+    \section{Arbitrary Unions and Intersections}
+
+    \paragraph{Exercise 1}
+    $A \cap B \cap C$ is the set of all integers that are divisible by 4, 9 and 10,
+    which is the same as the set of all integers that are divisible by 180.
+
+    \paragraph{Exercise 2}
+    Take $A = \emptyset$ and $B = \{ \emptyset \}$. Then $\bigcup A = \bigcup B = \emptyset$
+    but $A \neq B$. (There are many other possible answers.)
+
+    \paragraph{Exercise 3}
+    Let $b \in A$. We must show that $b \subseteq \bigcup A$.
+
+    Let $x$ be any element of $b$. We must show that $x \in \bigcup A$. We know that $x \in b$ and $b \in A$,
+    and so $x \in \bigcup A$ by the definition of $\bigcup A$.
+
+    \paragraph{Exercise 4}
+    Suppose $A \subseteq B$. Let $x \in \bigcup A$. We must show that $x \in \bigcup B$.
+
+    Pick an element $a \in A$ such that $x \in a$. Then $a \in B$ because $A \subseteq B$. Since we know
+    $x \in a$ and $a \in B$, we know that $x \in \bigcup B$.
+
+    \paragraph{Exercise 5}
+    Assume that every member of $\mathcal{A}$ is a subset of $B$. Let $x \in \bigcup \mathcal{A}$.
+    We must show that $x \in B$.
+
+    Pick $A \in \mathcal{A}$ such that $x \in A$. By our assumption, we have $A \subseteq B$. Since $x \in A$
+    and $A \subseteq B$, we have $x \in B$ as required.
+
+    \paragraph{Exercise 6}
+    \subparagraph{(a)}We will show that $\bigcup \mathcal{P} A \subseteq A$ and $A \subseteq \bigcup \mathcal{P} A$.
+
+    To show $\bigcup \mathcal{P} A \subseteq A$: This follows from Exercise 5, since every member of $\mathcal{P} A$
+    is a subset of $A$.
+
+    To show $A \subseteq \bigcup \mathcal{P} A$: Let $a \in A$. Then we have $a \in \{a\}$ and 
+    $\{a\} \in \mathcal{P} A$ so $a \in \bigcup \mathcal{P} A$.
+
+    \subparagraph{(b)}
+    To show $A \subseteq \mathcal{P} \bigcup A$: This holds because every element of $A$ is a subset of
+    $\bigcup A$, as we proved is Exercise 3.
+
+    Equality holds if and only if $A = \mathcal{P} X$ for some set $X$.
+
+    Proof: If $A = \mathcal{P} \bigcup A$ then of course $A = \mathcal{P} X$ for some $X$.
+
+    Conversely, if $A = \mathcal{P} X$, then we have
+    \begin{align*}
+        \mathcal{P} \bigcup A & = \mathcal{P} \bigcup \mathcal{P} X \\
+        & = \mathcal{P} X & (\text{by part (a)}) \\
+        & = A
+    \end{align*}
+
+    \paragraph{Exercise 7}
+
+    \subparagraph{(a)}
+    For any set $X$,
+    \begin{align*}
+        & X \in \mathcal{P} A \cap \mathcal{P} B \\
+        \Leftrightarrow & X \subseteq A \text{ and } X \subseteq B \\
+        \Leftrightarrow & \text{Every member of $X$ is a member of $A$ and a member of $B$}  \\
+        \Leftrightarrow & X \subseteq A \cap B \\
+        \Leftrightarrow & X \in \mathcal{P} (A \cap B)
+    \end{align*}
+
+    \subparagraph{(b)}
+    Let $X \in \mathcal{P} A \cup \mathcal{P} B$. Then either $X \in \mathcal{P} A$ or $X \in \mathcal{P} B$
+    (or both). If $X \in \mathcal{P} A$, then we have $X \subseteq A$ and so $X \subseteq A \cup B$ (because
+    $A \subseteq A \cup B$). Similarly if $X \in \mathcal{P} B$ then we have $X \subseteq A \cup B$. So in
+    either case $X \subseteq A \cup B$, hence $X \in \mathcal{P} (A \cup B)$.
+
+    Equality holds if and only if either $A \subseteq B$ or $B \subseteq A$.
+
+    Proof: Suppose $A \subseteq B$. Then $\mathcal{P} A \subseteq \mathcal{P} B$ (Chapter 1 Exercise 3)
+    and so $\mathcal{P} A \cup \mathcal{P} B = \mathcal{P} B$. Also $A \cup B = B$ so $\mathcal{P} (A \cup B)
+    = \mathcal{P} B$. Thus $\mathcal{P} A \cup \mathcal{P} B$ and $\mathcal{P} (A \cup B)$ are equal.
+
+    Similarly if $B \subseteq A$ then $\mathcal{P} A \cup \mathcal{P} B = \mathcal{P} (A \cup B)$.
+
+    Conversely, suppose $\mathcal{P} A \cup \mathcal{P} B = \mathcal{P} (A \cup B)$. We have $A \cup B
+    \in \mathcal{P} (A \cup B)$, so $A \cup B \in \mathcal{P} A \cup \mathcal{P} B$. If $A \cup B \in \mathcal{P}
+    A$, then we have $B \subseteq A \cup B \subseteq A$. And if $A \cup B \in \mathcal{P} B$, then we have
+    $A \subseteq A \cup B \subseteq B$.
+
+    \paragraph{Exercise 8}
+    If $A$ is a set such that every singleton belongs to $A$, then every set belongs to $\bigcup A$,
+    contradicting Theorem 2A.
+
+    \paragraph{Exercise 9}
+    Let $a = \{ \emptyset \}$ and $B = \{ \{ \emptyset \} \}$. Then $a \in B$ but $\mathcal{P} a$
+    is not a subset of $B$ because $\emptyset \in \mathcal{P} a$ and $\emptyset \notin B$.
+
+    \paragraph{Exercise 10}
+    We must show that $\mathcal{P} a \subseteq \mathcal{P} \bigcup B$. So let $X \in \mathcal{P} a$.
+    Then $X \subseteq a$; we must show that $X \subseteq \bigcup B$.
+
+    Let $x \in X$; we must show  that $x \in \bigcup B$. We have $x \in a$ (because $x \in X$ and $X \subseteq a$)
+    and $a \in B$, hence $x \in \bigcup B$ as required.
 \end{document}

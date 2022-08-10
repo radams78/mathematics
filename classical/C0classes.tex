@@ -31,6 +31,10 @@
     We define what it means for an object $a$ to be an element of the class $\mathbf{A}$, $a \in \mathbf{A}$,
     by: $a \in \{ x : P(x) \}$ means $P(a)$.
 
+    We write $\{ x \in \mathbf{A} : P(x) \}$ for $\{ x : x \in \mathbf{A} \wedge P(x) \}$,
+    and $\{ t[x_1, \ldots, x_n] : P[x_1, \ldots, x_n] \}$ for $\{ y : \exists x_1 \cdots \exists x_n
+    (y = t[x_1, \ldots, x_n] \wedge P[x_1, \ldots, x_n]) \}$.
+
     \begin{definition}[Equality of Classes]
         Two classes $\mathbf{A}$ and $\mathbf{B}$ are \emph{equal}, $\mathbf{A} = \mathbf{B}$,
         iff they have exactly the same members.
@@ -128,6 +132,10 @@
     \begin{definition}
         For any objects $a_1$, \ldots, $a_n$, we write $\{ a_1, \ldots, a_n \}$ for the class
         $\{ x : x = a_1 \vee \cdots \vee x = a_n \}$.
+
+        A class of the form $\{a\}$ is called a \emph{singleton}.
+
+        A class of the form $\{a,b\}$ is called a \emph{pair class}.
     \end{definition}
 
     \begin{definition}[Union]
@@ -182,4 +190,10 @@
     \begin{proof}
         \pf\ Immediate from definitions. \qed
     \end{proof}
+
+    \begin{definition}[Relative Complement]
+        Given classes $\mathbf{A}$ and $\mathbf{B}$, the \emph{relative complement}
+        $\mathbf{A} - \mathbf{B}$ is $\{ x \in \mathbf{A} : x \notin \mathbf{B} \}$.
+    \end{definition}
+    
 \end{document}
