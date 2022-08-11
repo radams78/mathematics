@@ -5,6 +5,7 @@
 
 \usepackage{amsmath}
 \usepackage{amssymb}
+\usepackage{pf2}
 
 \begin{document}
     \maketitle
@@ -235,4 +236,233 @@
 
     Let $x \in X$; we must show  that $x \in \bigcup B$. We have $x \in a$ (because $x \in X$ and $X \subseteq a$)
     and $a \in B$, hence $x \in \bigcup B$ as required.
+
+    \section{Algebra of Sets}
+
+    \paragraph{Exercise 11}
+
+    For any $x$ we have
+    \begin{align*}
+        x \in (A \cap B) \cup (A - B) & \Leftrightarrow (x \in A \& x \in B) \text{ or } (x \in A \&
+        x \notin B) \\
+        & \Leftrightarrow x \in A \& (x \in B \text{ or } x \notin B) \\
+        & \Leftrightarrow x \in A
+    \end{align*}
+    Hence $A = (A \cap B) \cup (A - B)$.
+
+    For any $x$ we have
+    \begin{align*}
+        x \in A \cup (B - A) & \Leftrightarrow x \in A \text{ or } (x \in B \& x \notin A) \\
+        & \Leftrightarrow x \in A \text{ or } x \in B \\
+        & \Leftrightarrow x \in A \cup B
+    \end{align*}
+    Hence $A \cup (B - A) = A \cup B$.
+
+    \paragraph{Exercise 12}
+    For any $x$,
+    \begin{align*}
+        x \in C - (A \cap B) & \Leftrightarrow x \in C \& \neg (x \in A \& x \in B) \\
+        & \Leftrightarrow x \in C \& (x \notin A \text{ or } x \notin B) \\
+        & \Leftrightarrow (x \in C \& x \notin A) \text{ or } (x \in C \& x \notin B) \\
+        & \Leftrightarrow x \in (C - A) \cup (C - B)
+    \end{align*}
+
+    \paragraph{Exercise 13}
+    Suppose $A \subseteq B$. Let $x \in C - B$; we must show $x \in C - A$. We have $x \in C$ and $x \notin B$. Therefore $x \notin A$,
+    since every member of $A$ is a member of $B$. And so we have $x \in C - A$ as required.
+
+    \paragraph{Exercise 14}
+    Let $A = \{ \emptyset \}$, $B = \emptyset$ and $C = \{ \emptyset \}$. Then $A - (B - C) = A - \emptyset
+    = \{ \emptyset \}$ while $(A - B) - C = \{ \emptyset \} - C = \emptyset$.
+
+    \paragraph{Exercise 15}
+    \subparagraph{(a)}
+    For any $x$ we have the following eight possibilities:
+
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $x \in A$ & $x \in B$ & $x \in C$ & $x \notin A \cap (B + C)$ & $x \notin (A \cap B) + (A \cap C) $ \\
+        $x \in A$ & $x \in B$ & $x \notin C$ & $x \in A \cap (B + C)$ & $x \in (A \cap B) + (A \cap C) $ \\
+        $x \in A$ & $x \notin B$ & $x \in C$ & $x \in A \cap (B + C)$ & $x \in (A \cap B) + (A \cap C) $ \\
+        $x \in A$ & $x \notin B$ & $x \notin C$ & $x \notin A \cap (B + C)$ & $x \notin (A \cap B) + (A \cap C) $ \\
+        $x \notin A$ & $x \in B$ & $x \in C$ & $x \notin A \cap (B + C)$ & $x \notin (A \cap B) + (A \cap C) $ \\
+        $x \notin A$ & $x \in B$ & $x \notin C$ & $x \notin A \cap (B + C)$ & $x \notin (A \cap B) + (A \cap C) $ \\
+        $x \notin A$ & $x \notin B$ & $x \in C$ & $x \notin A \cap (B + C)$ & $x \notin (A \cap B) + (A \cap C) $ \\
+        $x \notin A$ & $x \notin B$ & $x \notin C$ & $x \notin A \cap (B + C)$ & $x \notin (A \cap B) + (A \cap C) $ \\
+        \hline
+    \end{tabular}
+
+    In every case, we have $x \in A \cap (B + C) \Leftrightarrow x \in (A \cap B) + (A \cap C)$.
+
+    \subparagraph{(b)}
+    For any $x$ we have the following eight possibilities:
+
+    \begin{tabular}{|c|c|c|c|c|}
+        \hline
+        $x \in A$ & $x \in B$ & $x \in C$ & $x \in A + (B + C)$ & $x \in (A + B) + C $ \\
+        $x \in A$ & $x \in B$ & $x \notin C$ & $x \notin A + (B + C)$ & $x \notin (A + B) + C $ \\
+        $x \in A$ & $x \notin B$ & $x \in C$ & $x \notin A + (B + C)$ & $x \notin (A + B) + C $ \\
+        $x \in A$ & $x \notin B$ & $x \notin C$ & $x \in A + (B + C)$ & $x \in (A + B) + C $ \\
+        $x \notin A$ & $x \in B$ & $x \in C$ & $x \notin A + (B + C)$ & $x \notin (A + B) + C $ \\
+        $x \notin A$ & $x \in B$ & $x \notin C$ & $x \in A + (B + C)$ & $x \in (A + B) + C $ \\
+        $x \notin A$ & $x \notin B$ & $x \in C$ & $x \in A + (B + C)$ & $x \in (A + B) + C $ \\
+        $x \notin A$ & $x \notin B$ & $x \notin C$ & $x \notin A + (B + C)$ & $x \notin (A + B) + C $ \\
+        \hline
+    \end{tabular}
+
+    In every case, we have $x \in A + (B + C) \Leftrightarrow x \in (A + B) + C$.
+
+    \paragraph{Exercise 16}
+
+    \begin{align*}
+        [(A \cup B \cup C) \cap (A \cup B)] - [(A \cup (B - C)) \cap A]
+        & = (A \cup B) - A \\
+        & = B - A
+    \end{align*}
+
+    \paragraph{Exercise 17}
+    \subparagraph{(a) $\Leftrightarrow$ (b)}
+    \begin{align*}
+        A \subseteq B & \Leftrightarrow \text{Every element of $A$ is an element of $B$} \\
+        & \Leftrightarrow \text{There is no element of $A$ that is not an element of $B$} \\
+        & \Leftrightarrow A - B = \emptyset
+    \end{align*}
+
+    \subparagraph{(a) $\Rightarrow$ (c)}
+    Suppose $A \subseteq B$. We have $B \subseteq A \cup B$ from the definition of $A \cup B$;
+    we must prove that $A \cup B \subseteq B$. So let $x \in A \cup B$. Then $x \in A$ or $x \in B$.
+    But in either case $x \in B$, since $x \in A \Rightarrow x \in B$. Thus we have $x \in B$ as required.
+
+    \subparagraph{(c) $\Rightarrow$ (a)}
+    We always have $A \subseteq A \cup B$. So if $A \cup B = B$ then we have $A \subseteq B$.
+
+    \subparagraph{(a) $\Rightarrow$ (d)}
+    Suppose $A \subseteq B$. We have $A \cap B \subseteq A$ from the definition of $A \cap B$;
+    we must prove that $A \subseteq A \cap B$. So let $x \in A$. Then $x \in B$ since $A \subseteq B$,
+    hence $x \in A \cap B$ as required.
+
+    \subparagraph{(d) $\Rightarrow$ (a)}
+    We always have $A \cap B \subseteq B$. So if $A \cap B = A$ then $A \subseteq B$.
+
+    \paragraph{Exercise 18}
+    We can make the following 16 sets:
+    \begin{itemize}
+        \item $\emptyset$ ($= A - A$)
+        \item $A - B$
+        \item $A \cap B$
+        \item $B - A$
+        \item $S - (A \cup B)$
+        \item $A$
+        \item $A + B$
+        \item $S - B$
+        \item $B$
+        \item $S - (A + B)$
+        \item $S - A$
+        \item $A \cup B$
+        \item $S - (B - A)$
+        \item $S - (A \cap B)$
+        \item $S - (A - B)$
+    \end{itemize}
+
+    \paragraph{Exercise 19}
+    They are never equal, because for all $A$, $B$, we have $\emptyset \in \mathcal{P}(A - B)$ but
+    $\emptyset \notin \mathcal{P} A - \mathcal{P} B$ since $\emptyset \in \mathcal{P} B$.
+
+    \paragraph{Exercise 20}
+    Assume $A \cup B = A \cup C$ and $A \cap B = A \cap C$.
+
+    We first show $B \subseteq C$. Let $x \in B$; we show $x \in C$. We have $x \in A \cup B = A \cup C$, so either $x \in A$
+    or $x \in C$. If $x \in C$, we are done. If $x \in A$, then we have $x \in A \cap B = A \cap C$,
+    and so $x \in C$ in this case too.
+
+    We can show $C \subseteq B$ similarly. Hence $B = C$.
+
+    \paragraph{Exercise 21}
+    For any $x$, we have
+    \begin{align*}
+        x \in \bigcup (A \cup B) & \Leftrightarrow \text{there exists $C$ such that $C \in A \cup B$
+        and $x \in C$} \\
+        & \Leftrightarrow \text{there exists $C \in A$ such that $x \in C$, or there exists $C \in B$
+        such that $x \in C$} \\
+        & \Leftrightarrow x\in \bigcup A \cup \bigcup B
+    \end{align*}
+
+    \paragraph{Exercise 22}
+    For any $x$, we have
+    \begin{align*}
+        x \in \bigcap (A \cup B) & \Leftrightarrow \text{for all $C$, if $C \in A$ or $C \in B$
+        then $x \in C$} \\
+        & \Leftrightarrow \text{for all $C \in A$ we have $x \in C$, and for all $C \in B$
+        we have $x \in C$} \\
+        & \Leftrightarrow x\in \bigcap A \cap \bigcap B
+    \end{align*}
+
+    \paragraph{Exercise 23}
+    \begin{proof}
+        \pf
+        \step{1}{$A \subseteq \bigcap \{ A \cup X \mid X \in \mathcal{B} \}$}
+        \begin{proof}
+            \step{a}{\pflet{$x \in A$}}
+            \step{b}{\pflet{$X \in \mathcal{B}$}}
+            \step{c}{$x \in A \cup X$}
+        \end{proof}
+        \step{2}{$\bigcap \mathcal{B} \subseteq \bigcap \{ A \cup X \mid X \in \mathcal{B} \}$}
+        \begin{proof}
+            \step{a}{\pflet{$x \in \bigcap \mathcal{B}$}}
+            \step{b}{\pflet{$X \in \mathcal{B}$}}
+            \step{c}{$x \in X$}
+            \step{d}{$x \in A \cup X$}
+        \end{proof}
+        \step{3}{$\bigcap \{ A \cup X \mid X \in \mathcal{B} \} \subseteq A \cup \bigcap \mathcal{B}$}
+        \begin{proof}
+            \step{a}{\pflet{$x \in \bigcap \{ A \cup X \mid X \in \mathcal{B} \}$}}
+            \step{b}{\assume{$x \notin A$} \prove{$x \in \bigcap \mathcal{B}$}}
+            \step{c}{\pflet{$X \in \mathcal{B}$}}
+            \step{d}{$x \in A \cup X$}
+            \step{e}{$x \in X$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 24}
+    \subparagraph{(a)}
+    \begin{align*}
+        Y \in \mathcal{P} \bigcap \mathcal{A}
+        & \Leftrightarrow Y \subseteq \bigcap \mathcal{A} \\
+        & \Leftrightarrow \forall y \in Y. \forall X \in \mathcal{A}. y \in X \\
+        & \Leftrightarrow \forall X \in \mathcal{A}. \forall y \in Y. y \in X \\
+        & \Leftrightarrow \forall X \in \mathcal{A}. Y \in \mathcal{P} X \\
+        & \Leftrightarrow Y \in \bigcap \{ \mathcal{P} X \mid X \in \mathcal{A} \}
+    \end{align*}
+
+    \subparagraph{(b)}
+    $\bigcup \{ \mathcal{P} X \mid X \in \mathcal{A} \} \subseteq \mathcal{P} \bigcup \mathcal{A}$
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$Y \in \bigcup \{ \mathcal{P} X \mid X \in \mathcal{A} \}$}}
+        \step{2}{\pick\ $X \in \mathcal{A}$ such that $Y \in \mathcal{P} X$}
+        \step{3}{$Y \subseteq X$}
+        \step{4}{$Y \subseteq \bigcup \mathcal{A}$}
+        \step{5}{$Y \in \mathcal{P} \bigcup \mathcal{A}$}
+    \end{proof}
+
+    Equality holds if and only if $\bigcup \mathcal{A} \in \mathcal{A}$.
+    \begin{proof}
+        \step{1}{If $\bigcup \{ \mathcal{P} X \mid X \in \mathcal{A} \} = \mathcal{P} \bigcup \mathcal{A}$
+        then $\bigcup \mathcal{A} \in \mathcal{A}$}
+        \begin{proof}
+            \step{a}{\assume{$\bigcup \{ \mathcal{P} X \mid X \in \mathcal{A} \} = \mathcal{P} \bigcup \mathcal{A}$}}
+            \step{b}{$\bigcup \mathcal{A} \in \bigcup \{ \mathcal{P} X \mid X \in \mathcal{A} \}$}
+            \step{c}{\pick\ $X \in \mathcal{A}$ such that $\bigcup \mathcal{A} \in \mathcal{P} X$}
+            \step{d}{$X = \bigcup \mathcal{A}$}
+        \end{proof}
+        \step{2}{If $\bigcup \mathcal{A} \in \mathcal{A}$ then
+        $\bigcup \{ \mathcal{P} X \mid X \in \mathcal{A} \} = \mathcal{P} \bigcup \mathcal{A}$}
+        \begin{proof}
+            \pf\ If $\bigcup \mathcal{A} \in \mathcal{A}$ then $\mathcal{P} \bigcup \mathcal{A}
+            \in \{ \mathcal{P} X \mid X \in \mathcal{A} \}$.
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}

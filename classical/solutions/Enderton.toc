@@ -24,3 +24,27 @@
 \contentsline {paragraph}{Exercise 8}{6}%
 \contentsline {paragraph}{Exercise 9}{6}%
 \contentsline {paragraph}{Exercise 10}{7}%
+\contentsline {section}{\numberline {2.2}Algebra of Sets}{7}%
+\contentsline {paragraph}{Exercise 11}{7}%
+\contentsline {paragraph}{Exercise 12}{7}%
+\contentsline {paragraph}{Exercise 13}{7}%
+\contentsline {paragraph}{Exercise 14}{7}%
+\contentsline {paragraph}{Exercise 15}{7}%
+\contentsline {subparagraph}{(a)}{7}%
+\contentsline {subparagraph}{(b)}{8}%
+\contentsline {paragraph}{Exercise 16}{8}%
+\contentsline {paragraph}{Exercise 17}{8}%
+\contentsline {subparagraph}{(a) $\Leftrightarrow $ (b)}{8}%
+\contentsline {subparagraph}{(a) $\Rightarrow $ (c)}{8}%
+\contentsline {subparagraph}{(c) $\Rightarrow $ (a)}{8}%
+\contentsline {subparagraph}{(a) $\Rightarrow $ (d)}{8}%
+\contentsline {subparagraph}{(d) $\Rightarrow $ (a)}{9}%
+\contentsline {paragraph}{Exercise 18}{9}%
+\contentsline {paragraph}{Exercise 19}{9}%
+\contentsline {paragraph}{Exercise 20}{9}%
+\contentsline {paragraph}{Exercise 21}{9}%
+\contentsline {paragraph}{Exercise 22}{10}%
+\contentsline {paragraph}{Exercise 23}{10}%
+\contentsline {paragraph}{Exercise 24}{10}%
+\contentsline {subparagraph}{(a)}{10}%
+\contentsline {subparagraph}{(b)}{10}%

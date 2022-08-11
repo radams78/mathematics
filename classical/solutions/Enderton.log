@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.7.14)  10 AUG 2022 15:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.7.14)  11 AUG 2022 16:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -86,32 +86,53 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+)) (/usr/share/texmf/tex/latex/pf2/pf2.sty
+\pfindent=\skip52
+\c@@vectorctr=\count188
+\@veclen=\skip53
+\pfbox=\box47
+\c@pfhidelevel=\count189
+\pfshortNumberLevel=\count190
+\c@pf@sidenumberdepth=\count191
+\pf@sidenumberoutdent=\skip54
+\pfLevelCount=\count192
+\pfStepCount=\count193
+\pf@outdent=\skip55
+\@temppflen=\skip56
+\@proveindent=\skip57
+\c@pf@conjCounter=\count194
+\c@pfenum=\count195
+\c@pfenumdepth=\count196
+\pfenumindent=\skip58
+\c@pfenumi=\count197
+\c@pfenumii=\count198
+\c@pfenumiii=\count199
+) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
-\l__kernel_color_stack_int=\count188
-\l__pdf_internal_box=\box47
+\l__kernel_color_stack_int=\count266
+\l__pdf_internal_box=\box48
 ) (/home/robin/fun/maths/classical/solutions/Enderton.aux)
 \openout1 = `Enderton.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
-LaTeX Font Info:    ... okay on input line 9.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 10.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 10.
+LaTeX Font Info:    ... okay on input line 10.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 11.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 10.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 11.
  (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
@@ -127,7 +148,7 @@ Chapter 1.
 [2
 
 ]
-Overfull \hbox (5.6935pt too wide) in paragraph at lines 54--56
+Overfull \hbox (5.6935pt too wide) in paragraph at lines 55--57
 []\OT1/cmr/m/n/10 From these two facts, it fol-lows that $\OMS/cmsy/m/n/10 ff\OML/cmm/m/it/10 x\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x; y\OMS/cmsy/m/n/10 gg ^^R P\OML/cmm/m/it/10 B$ \OT1/cmr/m/n/10 and so $\OMS/cmsy/m/n/10 ff\OML/cmm/m/it/10 x\OMS/cmsy/m/n/10 g\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x; y\OMS/cmsy/m/n/10 gg 2
  []
 
@@ -135,20 +156,30 @@ Overfull \hbox (5.6935pt too wide) in paragraph at lines 54--56
 Chapter 2.
 [5
 
-] [6] [7] (/home/robin/fun/maths/classical/solutions/Enderton.aux) ) 
+] [6] [7] [8]
+Overfull \hbox (61.29672pt too wide) detected at line 388
+[]
+ []
+
+
+Overfull \hbox (7.60222pt too wide) detected at line 398
+[]
+ []
+
+[9] [10] [11] (/home/robin/fun/maths/classical/solutions/Enderton.aux) ) 
 Here is how much of TeX's memory you used:
- 1562 strings out of 481239
- 19833 string characters out of 5920377
- 256893 words of memory out of 5000000
- 16857 multiletter control sequences out of 15000+600000
- 541788 words of font info for 60 fonts, out of 8000000 for 9000
+ 1804 strings out of 481239
+ 22377 string characters out of 5920377
+ 271723 words of memory out of 5000000
+ 17094 multiletter control sequences out of 15000+600000
+ 542089 words of font info for 61 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 30i,13n,31p,266b,189s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on /home/robin/fun/maths/classical/solutions/Enderton.pdf (8 pages, 131299 bytes).
+ 30i,14n,31p,266b,277s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on /home/robin/fun/maths/classical/solutions/Enderton.pdf (12 pages, 152323 bytes).
 PDF statistics:
- 80 PDF objects out of 1000 (max. 8388607)
- 57 compressed objects within 1 object stream
+ 96 PDF objects out of 1000 (max. 8388607)
+ 68 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

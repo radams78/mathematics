@@ -158,6 +158,42 @@
         \pf\ Immediate from definitions. \qed
     \end{proof}
 
+    \begin{proposition}
+        For any classes $\mathbf{A}$ and $\mathbf{B}$ we have $\mathbf{A} \cup \mathbf{B}
+        = \mathbf{B} \cup \mathbf{A}$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ They are each the class of objects that belong to either $\mathbf{A}$ or $\mathbf{B}$. \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any classes $\mathbf{A}$, $\mathbf{B}$ and $\mathbf{C}$ we have
+        $\mathbf{A} \cup (\mathbf{B} \cup \mathbf{C}) = (\mathbf{A} \cup \mathbf{B}) \cup \mathbf{C}$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ They are each the class of objects that belong to at least one of $\mathbf{A}$,
+        $\mathbf{B}$ or $\mathbf{C}$. \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any class $\mathbf{A}$ we have $\mathbf{A} \cup \emptyset = \mathbf{A}$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Immediate from definitions. \qed
+    \end{proof}
+
+    \begin{proposition}
+        If $\mathbf{A} \subseteq \mathbf{B}$ then $\mathbf{A} \cup \mathbf{C} \subseteq \mathbf{B}
+        \cup \mathbf{C}$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
     \begin{definition}[Intersection]
         The \emph{intersection} of classes $\mathbf{A}$ and $\mathbf{B}$, 
         $\mathbf{A} \cap \mathbf{B}$, is the set whose elements are exactly the
@@ -178,6 +214,68 @@
         \pf\ Immediate from definitions. \qed
     \end{proof}
 
+    \begin{proposition}
+        For any classes $\mathbf{A}$ and $\mathbf{B}$ we have $\mathbf{A} \cap \mathbf{B}
+        = \mathbf{B} \cap \mathbf{A}$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ They are each the class of objects that belong to both $\mathbf{A}$ and $\mathbf{B}$. \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any classes $\mathbf{A}$, $\mathbf{B}$ and $\mathbf{C}$ we have
+        $\mathbf{A} \cap (\mathbf{B} \cap \mathbf{C}) = (\mathbf{A} \cap \mathbf{B}) \cap \mathbf{C}$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ They are each the class of objects that belong to all of $\mathbf{A}$,
+        $\mathbf{B}$ and $\mathbf{C}$. \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any classes $\mathbf{A}$, $\mathbf{B}$ and $\mathbf{C}$, we have
+        $\mathbf{A} \cup (\mathbf{B} \cap \mathbf{C}) = (\mathbf{A} \cup \mathbf{B}) \cap
+        (\mathbf{A} \cup \mathbf{C})$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \begin{align*}
+            x \in \mathbf{A} \cup (\mathbf{B} \cap \mathbf{C})
+            & \Leftrightarrow x \in \mathbf{A} \vee (x \in \mathbf{B} \wedge x \in \mathbf{C}) \\
+            & \Leftrightarrow (x \in \mathbf{A} \vee x \in \mathbf{B}) \wedge (x \in \mathbf{A} \vee x \in \mathbf{C}) \\
+            & \Leftrightarrow x \in (\mathbf{A} \cup \mathbf{B}) \cap (\mathbf{A} \cup \mathbf{B})
+        \end{align*}
+    \end{proof}
+
+    \begin{proposition}
+        For any classes $\mathbf{A}$, $\mathbf{B}$ and $\mathbf{C}$, we have
+        $\mathbf{A} \cap (\mathbf{B} \cup \mathbf{C}) = (\mathbf{A} \cap \mathbf{B}) \cup
+        (\mathbf{A} \cap \mathbf{C})$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Dual. \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any class $\mathbf{A}$ we have $\mathbf{A} \cap \emptyset = \emptyset$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Immediate from definitions. \qed
+    \end{proof}
+
+    \begin{proposition}
+        If $\mathbf{A} \subseteq \mathbf{B}$ then $\mathbf{A} \cap \mathbf{C} \subseteq \mathbf{B}
+        \cap \mathbf{C}$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
     \begin{definition}[Disjoint]
         Two classes $\mathbf{A}$ and $\mathbf{B}$ are \emph{disjoint} iff they have no common members.
     \end{definition}
@@ -196,4 +294,42 @@
         $\mathbf{A} - \mathbf{B}$ is $\{ x \in \mathbf{A} : x \notin \mathbf{B} \}$.
     \end{definition}
     
+    \begin{proposition}[De Morgan's Law]
+        For any classes $\mathbf{A}$, $\mathbf{B}$ and $\mathbf{C}$, we have
+        $\mathbf{C} - (\mathbf{A} \cup \mathbf{B}) = (\mathbf{C} - \mathbf{A}) \cap
+        (\mathbf{C} - \mathbf{B})$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ They are each the set of objects that belong to $\mathbf{C}$ and not to $\mathbf{A}$
+        nor $\mathbf{B}$. \qed
+    \end{proof}
+
+    \begin{proposition}[De Morgan's Law]
+        For any classes $\mathbf{A}$, $\mathbf{B}$ and $\mathbf{C}$, we have
+        $\mathbf{C} - (\mathbf{A} \cap \mathbf{B}) = (\mathbf{C} - \mathbf{A}) \cup
+        (\mathbf{C} - \mathbf{B})$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Dual. \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any classes $\mathbf{A}$ and $\mathbf{C}$ we have $\mathbf{A} \cap (\mathbf{C} - \mathbf{A})
+        = \emptyset$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Immediate from definitions. \qed
+    \end{proof}
+
+    \begin{proposition}
+        If $\mathbf{A} \subseteq \mathbf{B}$ then $\mathbf{C} - \mathbf{B} \subseteq \mathbf{C} - \mathbf{A}$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
 \end{document}

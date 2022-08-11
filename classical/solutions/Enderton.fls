@@ -23,6 +23,8 @@ INPUT /usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+INPUT /usr/share/texmf/tex/latex/pf2/pf2.sty
+INPUT /usr/share/texmf/tex/latex/pf2/pf2.sty
 INPUT /usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 INPUT /usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
 INPUT /home/robin/fun/maths/classical/solutions/Enderton.aux
@@ -75,10 +77,12 @@ INPUT /usr/share/texmf/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/cm/cmr12.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/share/texmf/fonts/tfm/jknappen/ec/tcrm1000.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/cm/cmcsc10.tfm
 INPUT /home/robin/fun/maths/classical/solutions/Enderton.aux
 INPUT /usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr10.pfb

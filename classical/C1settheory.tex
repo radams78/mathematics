@@ -64,7 +64,18 @@
     \begin{definition}[Union]
         For any class of sets $\mathbf{A}$, the \emph{union} $\bigcup \mathbf{A}$ is the class
         $\{ x : \exists A \in \mathbf{A}. x \in A \}$.
+
+        We write $\bigcup_{P[x_1, \ldots, x_n]} t[x_1, \ldots, x_n]$ for $\bigcup \{ t[x_1, \ldots, x_n]
+        : P[x_1, \ldots, x_n] \}$.
     \end{definition}
+
+    \begin{proposition}
+        If $\mathbf{A} \subseteq \mathbf{B}$ then $\bigcup \mathbf{A} \subseteq \bigcup \mathbf{B}$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
 
     \begin{axiom}[Union]
         For any set $A$, the union $\bigcup A$ is a set.
@@ -135,8 +146,11 @@
     \end{proof}
     
     \begin{definition}[Intersection]
-        For any class of sets $\mathbf{A}$, the \emph{intersection} $\bigcup \mathbf{A}$ is the class
+        For any class of sets $\mathbf{A}$, the \emph{intersection} $\bigcap \mathbf{A}$ is the class
         $\{ x : \forall A \in \mathbf{A}. x \in A \}$.
+
+        We write $\bigcap_{P[x_1, \ldots, x_n]} t[x_1, \ldots, x_n]$ for $\bigcap \{ t[x_1, \ldots, x_n]
+        : P[x_1, \ldots, x_n] \}$.
     \end{definition}
 
     \begin{proposition}
@@ -147,4 +161,47 @@
         \pf\ Pick $A \in \mathbf{A}$. Then $\bigcap \mathbf{A} \subseteq A$. \qed
     \end{proof}
     
-\end{document}
+    \begin{proposition}
+        If $\mathbf{A} \subseteq \mathbf{B}$ then $\bigcap \mathbf{B} \subseteq \bigcap \mathbf{A}$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any set $A$ and class of sets $\mathbf{B}$, we have
+        \[ A \cup \bigcap \mathbf{B} = \bigcap \{ A \cup X \mid X \in \mathbf{B} \} \]
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any set $A$ and class of sets $\mathbf{B}$, we have
+        \[ A \cap \bigcup \mathbf{B} = \bigcup \{ A \cap X \mid X \in \mathbf{B} \} \]
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any set $C$ and class of sets $\mathbf{A}$, we have
+        \[ C - \bigcup \mathbf{A} = \bigcap \{ C - X \mid X \in \mathbf{A} \} \enspace . \]
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any set $C$ and class of sets $\mathbf{A}$, we have
+        \[ C - \bigcap \mathbf{A} = \bigcup \{ C - X \mid X \in \mathbf{A} \} \enspace . \]
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+    \end{document}
