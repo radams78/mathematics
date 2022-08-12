@@ -94,3 +94,9 @@
 \contentsline {paragraph}{Exercise 5}{17}%
 \contentsline {subparagraph}{(a)}{17}%
 \contentsline {subparagraph}{(b)}{17}%
+\contentsline {section}{\numberline {3.2}Relations}{17}%
+\contentsline {paragraph}{Exercise 6}{17}%
+\contentsline {paragraph}{Exercise 7}{17}%
+\contentsline {paragraph}{Exercise 8}{17}%
+\contentsline {subparagraph}{(a)}{17}%
+\contentsline {subparagraph}{(b)}{18}%

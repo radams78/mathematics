@@ -7,6 +7,10 @@
 \usepackage{amssymb}
 \usepackage{pf2}
 
+\newcommand{\dom}{\ensuremath{\operatorname{dom}}}
+\newcommand{\ran}{\ensuremath{\operatorname{ran}}}
+\newcommand{\fld}{\ensuremath{\operatorname{fld}}}
+
 \begin{document}
     \maketitle
     \tableofcontents
@@ -725,4 +729,59 @@
         \Leftrightarrow & \exists x \in A. \exists y \in B. z = (x,y) \\
         \Leftrightarrow & z \in A \times B
     \end{align*}
+
+    \section{Relations}
+
+    \paragraph{Exercise 6}
+    If $A \subseteq \dom A \times \ran A$ then $A$ is a set of ordered pairs, i.e. a relation.
+
+    Conversely, suppose $A$ is a relation. Let $z \in A$. Then $z$ is an ordered pair; let $z = (x,y)$.
+    We have $x \in \dom A$ and $y \in \ran A$ and so $z \in \dom A \times \ran A$ as required.
+
+    \paragraph{Exercise 7}
+    We have $\fld R \subseteq \bigcup \bigcup R$ by Lemma 3D.
+
+    Conversely, let $x \in \bigcup \bigcup R$. Pick $a$ and $b$ such that $x \in a$, $a \in b$ and $b \in R$.
+    Then $b$ is an ordered pair; let $b = (y,z)$. We have $a = \{y\}$ or $\{y,z\}$, hence $x = y$ or
+    $x = z$. In either case, $x \in \fld R$.
+
+    \paragraph{Exercise 8}
+    \subparagraph{(a)}
+    \begin{align*}
+        & x \in \dom \bigcup \mathcal{A} \\
+        \Leftrightarrow & \exists y. \exists R \in \mathcal{A}. (x,y) \in R \\
+        \Leftrightarrow & \exists R \in \mathcal{A}. \exists y. (x,y) \in R \\
+        \Leftrightarrow & x \in \bigcup \{ \dom R : R \in \mathcal{A} \}
+    \end{align*}
+
+    \subparagraph{(b)}
+    \begin{align*}
+        & y \in \ran \bigcup \mathcal{A} \\
+        \Leftrightarrow & \exists x. \exists R \in \mathcal{A}. (x,y) \in R \\
+        \Leftrightarrow & \exists R \in \mathcal{A}. \exists x. (x,y) \in R \\
+        \Leftrightarrow & y \in \bigcup \{ \ran R : R \in \mathcal{A} \}
+    \end{align*}
+
+    \paragraph{Exercise 9}
+    Assume $\mathcal{A}$ is nonempty.
+    We have $\dom \bigcap \mathcal{A} \subseteq \bigcap \{ \dom R : R \in \mathcal{A} \}$.
+
+    \begin{proof}
+        \pf
+            \begin{align*}
+                & x \in \dom \bigcap \mathcal{A} \\
+                \Leftrightarrow & \exists y. \forall R \in \mathcal{A}. (x,y) \in R \\
+                \Rightarrow & \forall R \in \mathcal{A}. \exists y. (x,y) \in R \\
+                \Leftrightarrow & x \in \bigcap \{ \dom R : R \in \mathcal{A} \}
+            \end{align*}                    
+    \end{proof}
+
+    Equality holds iff the middle '$\Rightarrow$' can be reversed, i.e. iff for all $x$,
+    if $\forall R \in \mathcal{A}. \exists y. (x,y) \in R$ then $\exists y. \forall R \in \mathcal{A}. (x,y) \in R$.
+    I haven't found a simpler condition than this. The condition does not always hold, for example
+    if $\mathcal{A} = \{ \{ (1,2) \}, \{ (1,3) \} \}$ then $\dom \bigcap \mathcal{A} = \emptyset$
+    while $\bigcap \{ \dom R : R \in \mathcal{A} \} = \{1\}$.
+
+    Similarly, $\ran \bigcap \mathcal{A} \subseteq \bigcap \{ \ran R : R \in \mathcal{A} \}$, and
+    equality holds iff, for any $y$, if $\forall R \in \mathcal{A}. \exists x. (x,y) \in R$ then $\exists x. \forall R \in \mathcal{A}. (x,y) \in R$.
 \end{document}
