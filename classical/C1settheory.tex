@@ -14,13 +14,17 @@
 
 \newtheorem{axiom}{Axiom}
 \newtheorem{axs}[axiom]{Axiom Schema}
-\newtheorem{lm}[axiom]{Lemma}
+\newtheorem{lemma}[axiom]{Lemma}
 \newtheorem{proposition}[axiom]{Proposition}
 \newtheorem{props}[axiom]{Proposition Schema}
 \newtheorem{theorem}[axiom]{Theorem}
-\newtheorem{cor}{Corollary}[axiom]
+\newtheorem{corollary}{Corollary}[axiom]
 \theoremstyle{definition}
 \newtheorem{definition}[axiom]{Definition}
+
+\newcommand{\dom}{\ensuremath{\operatorname{dom}}}
+\newcommand{\ran}{\ensuremath{\operatorname{ran}}}
+\newcommand{\fld}{\ensuremath{\operatorname{fld}}}
 
 \begin{document}
     \maketitle
@@ -267,6 +271,42 @@
 
     \begin{proof}
         \pf\ By the Subset Axiom applied to $\mathcal{PP}(A \cup B)$. \qed
+    \end{proof}
+
+    \begin{lemma}
+        If $(x,y) \in \mathbf{A}$ then $x, y \in \bigcup \bigcup \mathbf{A}$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \section{Relations}
+
+    \begin{definition}[Relation]
+        A \emph{relation} is a class of ordered pairs. It is \emph{small} iff it is a set.
+
+        When $\mathbf{R}$ is a relation, we write $x \mathbf{R} y$ for $(x,y) \in \mathbf{R}$.
+    \end{definition}
+
+    \begin{definition}[Domain]
+        The \emph{domain} of a class $\mathbf{R}$ is $\dom \mathbf{R} = \{ x : \exists y. (x,y) \in \mathbf{R} \}$.
+    \end{definition}
+
+    \begin{definition}[Range]
+        The \emph{range} of a class $\mathbf{R}$ is $\ran \mathbf{R} = \{ y : \exists x. (x,y) \in \mathbf{R} \}$.
+    \end{definition}
+
+    \begin{definition}[Field]
+        The \emph{field} of a class $\mathbf{R}$ is $\fld \mathbf{R} = \dom \mathbf{R} \cup \ran \mathbf{R}$.
+    \end{definition}
+
+    \begin{proposition}
+        If $R$ is a set then $\dom R$, $\ran R$ and $\fld R$ are sets.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Apply the Subset Axiom to $\bigcup \bigcup R$. \qed
     \end{proof}
     
 \end{document}
