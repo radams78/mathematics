@@ -465,4 +465,213 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \paragraph{Exercise 25}
+    We have $A \cup \bigcup \mathcal{B} = \bigcup \{ A \cup X \mid X \in \mathcal{B} \}$ if and only if
+    $A = \emptyset$ or $\mathcal{B} \neq \emptyset$
+
+    \begin{proof}
+        \step{1}{If $A \cup \bigcup \mathcal{B}  = \bigcup \{ A \cup X \mid X \in \mathcal{B} \}$
+        then $A = \emptyset$ or $\mathcal{B} \neq \emptyset$}
+        \begin{proof}
+            \pf\ If $A \cup \bigcup \mathcal{B}  = \bigcup \{ A \cup X \mid X \in \mathcal{B} \}$
+            and $\mathcal{B} = \emptyset$ then
+            \begin{align*}
+                A \cup \bigcup \emptyset & = \bigcup \emptyset \\
+                \therefore A & = \emptyset
+            \end{align*}
+        \end{proof}
+        \step{2}{If $A = \emptyset$ then $A \cup \bigcup \mathcal{B}  = \bigcup \{ A \cup X \mid X \in \mathcal{B} \}$}
+        \begin{proof}
+            \pf\ Both sides are equal to $\bigcup \mathcal{B}$
+        \end{proof}
+        \step{3}{If $\mathcal{B} \neq \emptyset$ then $A \cup \bigcup \mathcal{B}  = \bigcup \{ A \cup X \mid X \in \mathcal{B} \}$}
+        \begin{proof}
+            \step{a}{\assume{$\mathcal{B} \neq \emptyset$}}
+            \step{b}{$A \cup \bigcup \mathcal{B} \subseteq \bigcup \{ A \cup X \mid X \in \mathcal{B} \}$}
+            \begin{proof}
+                \step{i}{\pflet{$x \in A \cup \bigcup \mathcal{B}$}
+                \prove{$x \in \bigcup \{ A \cup X \mid X \in \mathcal{B} \}$}}
+                \step{ii}{\case{$x \in A$}}
+                \begin{proof}
+                    \step{one}{\pick\ $X \in \mathcal{B}$}
+                    \begin{proof}
+                        \pf\ By \stepref{a}
+                    \end{proof}
+                    \step{two}{$x \in A \cup X$}
+                \end{proof}
+                \step{iii}{\case{$x \in \bigcup \mathcal{B}$}}
+                \begin{proof}
+                    \step{one}{\pick\ $X \in \mathcal{B}$ such that $x \in X$}
+                    \step{two}{$x \in A \cup X$}
+                \end{proof}
+            \end{proof}
+            \step{c}{$\bigcup \{ A \cup X \mid X \in \mathcal{B} \} \subseteq A \cup \bigcup \mathcal{B}$}
+            \begin{proof}
+                \step{i}{\pflet{$x \in \bigcup \{ A \cup X \mid X \in \mathcal{B} \}$}}
+                \step{ii}{\pick\ $X \in \mathcal{B}$ such that $x \in A \cup X$}
+                \step{iii}{$X \subseteq \bigcup \mathcal{B}$}
+                \step{iv}{$A \cup X \subseteq A \cup \bigcup \mathcal{B}$}
+                \step{v}{$x \in A \cup \bigcup \mathcal{B}$}
+            \end{proof}
+        \end{proof}
+    \end{proof}
+
+    \section{Review Exercises}
+
+    \paragraph{Exercise 26}
+    Sets $A$, $B$, $D$ and $F$ are all equal to each other. Sets $C$, $E$ and $G$ are equal to each other.
+    None of the first list is equal to any of the second list.
+
+    \paragraph{Exercise 27}
+    Take $A = \{ \{ 0 \}, \{ 1 \} \}$ and $B = \{ \{ 1 \} \}$.
+    Then $A \cap B = \{ \{ 1 \} \}$
+    and
+    \begin{align*}
+        \bigcap A \cap \bigcap B & = \emptyset \cap \{1\} \\
+        & = \emptyset \\
+        \bigcap (A \cap B) & = \bigcap \{ \{ 1 \} \} \\
+        & = \{ 1 \}
+    \end{align*}
+
+    \paragraph{Exercise 28}
+    \begin{align*}
+        \bigcup \{ \{ 3,4 \}, \{ \{3\}, \{4\} \}, \{3, \{4\} \}, \{ \{3\}, 4\} \}
+        & = \{ 3, 4, \{3\}, \{4\} \}
+    \end{align*}
+
+    \paragraph{Exercise 29}
+    \subparagraph{(a)}
+    $\emptyset$
+    \subparagraph{(b)}
+    We have 
+    \begin{align*}
+        \{ \emptyset \} & \subseteq \mathcal{P} \{ \emptyset \} \\
+        \therefore \mathcal{P} \{\emptyset\} & \subseteq \mathcal{PP} \{ \emptyset \} \\
+        \{ \emptyset \} & \subseteq \mathcal{PP} \{ \emptyset \} \\
+        \therefore \mathcal{P} \{\emptyset\} & \subseteq \mathcal{PPP} \{ \emptyset \} \\
+        \therefore \bigcap \{ \mathcal{PPP} \{ \emptyset \}, \mathcal{PP} \{ \emptyset \}, \mathcal{P} \{ \emptyset \} \}
+        & = \mathcal{PPP} \{ \emptyset \} \cap \mathcal{PP} \{ \emptyset \} \cap \mathcal{P} \{ \emptyset \} \\
+        & = \mathcal{P} \{ \emptyset \} \\
+        & = \{ \emptyset, \{ \emptyset \} \}
+    \end{align*}
+
+    \paragraph{Exercise 30}
+    \subparagraph{(a)}
+    $\{ \emptyset, \{ \{ \emptyset \} \}, \{ \{ \{ \emptyset \} \} \}, \{ \{ \emptyset \}, \{ \{ \emptyset \} \} \} \}$
+    \subparagraph{(b)}
+    $\{ \emptyset, \{ \emptyset \} \}$
+    \subparagraph{(c)}
+    $\{ \emptyset, \{ \emptyset \}, \{ \{ \emptyset \} \}, \{ \emptyset, \{ \emptyset \} \} \}$
+    \subparagraph{(d)}
+    $\{ \{ \emptyset \}, \{ \{ \emptyset \} \} \}$
+
+    \paragraph{Exercise 31}
+    \subparagraph{(a)}
+    $\{ 1, 2, 3, \emptyset \}$
+    \subparagraph{(b)}
+    $\emptyset$
+    \subparagraph{(c)}
+    $\emptyset$
+    \subparagraph{(d)}
+    $\emptyset$
+
+    \paragraph{Exercise 32}
+    \subparagraph{(a)}
+    $a \cup b$
+    \subparagraph{(b)}
+    $a$
+    \subparagraph{(c)}
+    \begin{align*}
+        \bigcap \bigcup S \cup (\bigcup \bigcup S - \bigcup \bigcap S)
+        & = (a \cap b) \cup ((a \cup b) - a) \\
+        & = (a \cap b) \cup (b - a) \\
+        & = b
+    \end{align*}
+
+    \paragraph{Exercise 33}
+    When $a \neq b$:
+    \begin{align*}
+        \bigcup (\bigcup S - \bigcap S) & = \bigcup (\{ a,b \} - \{a\}) \\
+        & = \bigcup \{b\} \\
+        & = b
+    \end{align*}
+    When $a = b$:
+    \begin{align*}
+        \bigcup (\bigcup S - \bigcap S) & = \bigcup (\{ a,b \} - \{a\}) \\
+        & = \bigcup \emptyset \\
+        & = \emptyset
+    \end{align*}
+
+    \paragraph{Exercise 34}
+    For any set $S$, we have
+    \begin{align*}
+        \emptyset & \subseteq \mathcal{P} S \\
+        \therefore \emptyset & \in \mathcal{PP} S \\
+        \emptyset & \subseteq S \\
+        \therefore \emptyset & \in \mathcal{P} S \\
+        \therefore \{ \emptyset \} & \subseteq \mathcal{P} S \\
+        \therefore \{ \emptyset \} & \in \mathcal{PP} S \\
+        \therefore \{ \emptyset, \{ \emptyset \} \} & \subseteq \mathcal{PP} S \\
+        \therefore \{ \emptyset, \{ \emptyset \} \} & \in \mathcal{PPP} S
+    \end{align*}
+
+    \paragraph{Exercise 35}
+    Assume $\mathcal{P}A = \mathcal{P} B$. Then we have
+    \begin{align*}
+        A & \in \mathcal{P} A \\
+        \therefore A & \in \mathcal{P} B \\
+        \therefore A & \subseteq B \\
+        B & \in \mathcal{P} B \\
+        \therefore B & \in \mathcal{P} A \\
+        \therefore B & \subseteq A \\
+        \therefore A & = B
+    \end{align*}
+
+    \paragraph{Exercise 36}
+    \subparagraph{(a)}
+    \begin{align*}
+        x \in A - (A \cap B) & \Leftrightarrow x \in A \ \& \neg (x \in A \ \& \ x \in B) \\
+        & \Leftrightarrow x \in A\ \& \ x \notin B \\
+        & \Leftrightarrow x \in A - B
+    \end{align*}
+    
+    \subparagraph{(b)}
+    \begin{align*}
+        x \in A - (A - B) & \Leftrightarrow x \in A \ \& \neg (x \in A \ \&\ x \notin B) \\
+        & \Leftrightarrow x \in A \ \& \ x \in B \\
+        & \Leftrightarrow x \in A \cap B
+    \end{align*}
+
+    \paragraph{Exercise 37}
+    \subparagraph{(a)}
+    \begin{align*}
+        x \in (A \cup B) - C & \Leftrightarrow (x \in A \text{ or } x \in B) \ \&\ x \notin C \\
+        & \Leftrightarrow (x \in A \ \&\ x \notin C) \text{ or } (x \in B \ \&\ x \notin C) \\
+        & \Leftrightarrow x \in (A - C) \cup (B - C)
+    \end{align*}
+
+    \subparagraph{(b)}
+    \begin{align*}
+        x \in A - (B - C) & \Leftrightarrow x \in A \ \& \neg (x \in B \ \&\ x \notin C) \\
+        & \Leftrightarrow x \in A \ \& (x \notin B \text{ or } x \in C) \\
+        & \Leftrightarrow (x \in A \ \&\ x \notin B) \text{ or } (x \in A \ \&\ x \in C) \\
+        & \Leftrightarrow x \in (A - B) \cup (A \cap C)
+    \end{align*}
+
+    \subparagraph{(c)}
+    \begin{align*}
+        x \in (A - B) - C & \Leftrightarrow x \in A \ \&\ x \notin B \ \&\ x \notin C \\
+        & \Leftrightarrow x \in A \ \& \neg (x \in B \vee x \in C) \\
+        & \Leftrightarrow x \in A - (B \cup C)
+    \end{align*}
+    
+    \paragraph{Exercise 38}
+    \subparagraph{(a)}
+    If every element of $A$ is an element of $C$, and every element of $B$ is an element of $C$,
+    then everything that is an element of either $A$ or $B$ is an element of $C$.
+
+    \subparagraph{(b)}
+    If every element of $C$ is an element of $A$, and every element of $C$ is an element of $B$,
+    then every element of $C$ is an element of both $A$ and $B$.
 \end{document}
