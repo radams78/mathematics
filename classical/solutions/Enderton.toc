@@ -100,3 +100,6 @@
 \contentsline {paragraph}{Exercise 8}{17}%
 \contentsline {subparagraph}{(a)}{17}%
 \contentsline {subparagraph}{(b)}{18}%
+\contentsline {paragraph}{Exercise 9}{18}%
+\contentsline {section}{\numberline {3.3}$n$-ary Relations}{18}%
+\contentsline {paragraph}{Exercise 10}{18}%
