@@ -204,4 +204,69 @@
     \begin{proof}
         \pf\ Easy. \qed
     \end{proof}
-    \end{document}
+
+    \section{Ordered Pairs}
+
+    \begin{definition}[Ordered Pair]
+        For any objects $a$ and $b$, the \emph{ordered pair} $(a,b)$ is $\{ \{ a \}, \{a, b \} \}$.
+        We call $a$ its \emph{first coordinate} and $b$ its \emph{second coordinate}.
+    \end{definition}
+
+    \begin{theorem}
+        For any objects $(a,b)$, we have $(a,b) = (c,d)$ if and only if $a = c$ and $b = d$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{If $(a,b) = (c,d)$ then $a = c$ and $b = d$}
+        \begin{proof}
+            \step{a}{\assume{$(a,b) = (c,d)$}}
+            \step{b}{$a = c$}
+            \begin{proof}
+                \pf\ Since $\{a\} = \bigcap (a,b) = \bigcap (c,d) = \{c\}$.
+            \end{proof}
+            \step{c}{$\{a,b\} = \{c,d\}$}
+            \begin{proof}
+                \pf\ $\{a,b\} = \bigcup (a,b) = \bigcup (c,d) = \{c,d\}$.
+            \end{proof}
+            \step{cc}{$b = c$ or $b = d$}
+            \step{d}{\case{$b = c$}}
+            \begin{proof}
+                \step{i}{$a = b$}
+                \step{ii}{$\{c,d\} = \{a\}$}
+                \step{iii}{$b = d$}
+            \end{proof}
+            \step{e}{\case{$b = d$}}
+            \begin{proof}
+                \pf\ We have $a = c$ and $b = d$ as required.
+            \end{proof}
+        \end{proof}
+        \step{2}{If $a = c$ and $b = d$ then $(a,b) = (c,d)$}
+        \begin{proof}
+            \pf\ Trivial.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Cartesian Product]
+        The \emph{Cartesian product} of classes $\mathbf{A}$ and $\mathbf{B}$ is the class
+        \[ \mathbf{A} \times \mathbf{B} = \{ (x,y) : x \in \mathbf{A}, y \in \mathbf{B} \} \enspace . \]
+    \end{definition}
+
+    \begin{lemma}
+        For any objects $x$ and $y$ and set $C$, if $x \in C$ and $y \in C$ then $(x,y) \in \mathcal{PP} C$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{corollary}
+        For any sets $A$ and $B$, the Cartesian product $A \times B$ is a set.
+    \end{corollary}
+
+    \begin{proof}
+        \pf\ By the Subset Axiom applied to $\mathcal{PP}(A \cup B)$. \qed
+    \end{proof}
+    
+\end{document}
