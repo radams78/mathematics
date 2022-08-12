@@ -674,4 +674,55 @@
     \subparagraph{(b)}
     If every element of $C$ is an element of $A$, and every element of $C$ is an element of $B$,
     then every element of $C$ is an element of both $A$ and $B$.
+
+    \chapter{Chapter 3 --- Relations and Functions}
+
+    \section{Ordered Pairs}
+
+    \paragraph{Exercise 1}
+    We have $\langle 0, 1, 0 \rangle^* = \langle 0, 1, 1 \rangle^* = \{ \{ 0 \}, \{ 0,1 \} \}$.
+
+    \paragraph{Exercise 2}
+    \subparagraph{(a)}
+    \begin{align*}
+        & z \in A \times (B \cup C) \\
+        \Leftrightarrow & \exists x,y (z = (x,y) \ \&\ x \in A \ \&\ (y \in B \text{ or } y \in C)) \\
+        \Leftrightarrow & \exists x,y (z = (x,y)\ \&\ x \in A\ \&\ y \in B) \text{ or }
+        (z = (x,y)\ \&\ x \in A\ \&\ y \in C) \\
+        \Leftrightarrow & z \in (A \times B) \cup (A \times C)
+    \end{align*}
+    \subparagraph{(b)}
+    \begin{proof}
+        \step{1}{\assume{$A \times B = A \times C$ and $A \neq \emptyset$}}
+        \step{2}{\pick\ $a \in A$}
+        \step{3}{For all $x$, $x \in B \Leftrightarrow x \in C$}
+        \begin{proof}
+            \pf\ $x \in B$ iff $(a,x) \in A \times B$ iff $(a,x) \in A \times C$ iff $x \in C$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 3}
+    \begin{align*}
+        & z \in A \times \bigcup \mathcal{B} \\
+        \Leftrightarrow & \exists x,y (z = (x,y)\ \&\ x \in A\ \&\ \exists X \in \mathcal{B}. y \in X) \\
+        \Leftrightarrow & \exists X \in \mathcal{B}. \exists x,y (z = (x,y)\ \&\ x \in A\ \&\ y \in X) \\
+        \Leftrightarrow & z \in \bigcup \{ A \times X : X \in \mathcal{B} \}
+    \end{align*}
+
+    \paragraph{Exercise 4}
+    If every ordered pair belongs to $A$ then every set belongs to $\bigcup \bigcup A$ contradicting
+    Theorem 2A.
+
+    \paragraph{Exercise 5}
+    \subparagraph{(a)}
+    Apply a Subset Axiom to $\mathcal{P}(A \times B)$: we have 
+    $C = \{ z \in \mathcal{P}(A \times B) \mid \exists x \in A. z = \{x\} \times B \}$.
+    \subparagraph{(b)}
+    \begin{align*}
+        & z \in \bigcup C \\
+        \Leftrightarrow & \exists x \in A. z \in \{x\} \times B \\
+        \Leftrightarrow & \exists x \in A. \exists y \in B. z = (x,y) \\
+        \Leftrightarrow & z \in A \times B
+    \end{align*}
 \end{document}
