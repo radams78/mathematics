@@ -126,9 +126,12 @@ INPUT /usr/share/texmf/fonts/tfm/public/cm/cmsy10.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/cm/cmex10.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/amsfonts/symbols/msam10.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/cm/cmti7.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/cm/cmti7.tfm
 INPUT /home/robin/fun/maths/classical/C1settheory.aux
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx12.pfb
+INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx7.pfb
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmcsc10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmex10.pfb
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb
@@ -141,4 +144,6 @@ INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr17.pfb
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr5.pfb
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr7.pfb
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy10.pfb
+INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy7.pfb
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmti10.pfb
+INPUT /usr/share/texmf/fonts/type1/public/amsfonts/symbols/msam10.pfb

@@ -791,4 +791,436 @@
     This follows from the equations at the top of page 42. An ordered $4$-tuple $\langle a,b,c,d \rangle$
     is also an ordered 1-tuple (because every set is), and the ordered pair $\langle \langle a,b,c \rangle, d
     \rangle$, and the ordered triple $\langle \langle a,b \rangle, c, d \rangle$.
+
+    \section{Functions}
+
+    \paragraph{Exercise 11}
+    We prove $F \subseteq G$. Let $z \in F$. Since $F$ is a relation, then $z$ is an ordered pair;
+    let $z = \langle x, y \rangle$. We have $x \in \dom F$ and $y = F(x)$. Therefore $x \in \dom G$
+    and $y = G(x)$ (because $\dom F = \dom G$ and $F(x) = G(x)$). Hence $\langle x,y \rangle \in G$,
+    i.e. $z \in G$.
+
+    We have proved $F \subseteq G$. We can prove $G \subseteq F$ similarly. Thus $F = G$.
+
+    \paragraph{Exercise 12}
+    \begin{proof}
+        \pf
+        \step{1}{If $f \subseteq g$ then $\dom f \subseteq \dom g$ and $\forall x \in \dom f. f(x) = g(x)$}
+        \begin{proof}
+            \step{a}{\assume{$f \subseteq g$}}
+            \step{b}{\pflet{$x \in \dom f$}}
+            \step{c}{$(x, f(x)) \in f$}
+            \step{d}{$(x, f(x)) \in g$}
+            \step{e}{$x \in \dom g$ and $g(x) = f(x)$}
+        \end{proof}
+        \step{3}{If $\dom f = \dom g$ and $\forall x \in \dom f. f(x) = g(x)$ then $f \subseteq g$}
+        \begin{proof}
+            \step{a}{\assume{$\dom f = \dom g$ and $\forall x \in \dom f. f(x) = g(x)$}}
+            \step{b}{\pflet{$z \in f$}}
+            \step{c}{\pflet{$z = (x,y)$}}
+            \step{d}{$x \in \dom f$ and $y = f(x)$}
+            \step{e}{$x \in \dom g$ and $y = g(x)$}
+            \step{f}{$z = (x,y) \in g$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 13}
+    \begin{proof}
+        \pf
+        \step{1}{\assume{$f$ and $g$ are functions}}
+        \step{2}{\assume{$f \subseteq g$}}
+        \step{3}{\assume{$\dom g \subseteq \dom f$}}
+        \step{4}{$\dom f = \dom g$}
+        \begin{proof}
+            \pf\ We have $\dom f \subseteq \dom g$ from \stepref{2} and $\dom g \subseteq \dom f$
+            from \stepref{3}
+        \end{proof}
+        \step{5}{For $x \in \dom f$ we have $f(x) = g(x)$}
+        \begin{proof}
+            \pf\ From \stepref{2} and Exercise 12
+        \end{proof}
+        \qedstep
+        \begin{proof}
+            \pf\ From Exercise 11.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 14}
+    \subparagraph{(a)}
+    If $(x,y)$ and $(x,z)$ are members of $f \cap g$ then they are both members of $f$,
+    hence $y = z$.
+
+    \subparagraph{(b)}
+    \begin{proof}
+        \pf
+        \step{1}{If $f \cup g$ is a function then, for all $x \in \dom f \cap \dom g$, we have $f(x) = g(x)$.}
+        \begin{proof}
+            \step{a}{\assume{$f \cup g$ is a function.}}
+            \step{b}{\pflet{$x \in \dom f \cap \dom g$}}
+            \step{c}{$(x,f(x))$ and $(x,g(x))$ are both elements of $f \cup g$}
+            \step{d}{$f(x) = g(x)$}
+        \end{proof}
+        \step{2}{If, for all $x \in \dom f \cap \dom g$, we have $f(x) = g(x)$, then $f \cup g$ is a function.}
+        \begin{proof}
+            \step{a}{\assume{For all $x \in \dom f \cap \dom g$, we have $f(x) = g(x)$}}
+            \step{b}{$f \cup g$ is a relation.}
+            \begin{proof}
+                \pf\ Since every element of either $f$ or $g$ is an ordered pair.
+            \end{proof}
+            \step{c}{Whenever $(x,y)$ and $(x,z)$ are elements of $f \cup g$ we have $y = z$}
+            \begin{proof}
+                \step{i}{\pflet{$(x,y),(x,z) \in f \cup g$}}
+                \step{ii}{\case{$(x,y),(x,z) \in f$}}
+                \begin{proof}
+                    \pf\ Then $y = z$ since $f$ is a function.
+                \end{proof}
+                \step{iii}{\case{$(x,y) \in f$,$(x,z) \in g$}}
+                \begin{proof}
+                    \pf\ Then $y = z$ by \stepref{a}
+                \end{proof}
+                \step{iv}{\case{$(x,y) \in g$,$(x,z) \in f$}}
+                \begin{proof}
+                    \pf\ Then $y = z$ by \stepref{a}
+                \end{proof}
+                \step{v}{\case{$(x,y),(x,z) \in g$}}
+                \begin{proof}
+                    \pf\ Then $y = z$ since $g$ is a function.
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 15}
+    \begin{proof}
+        \pf
+        \step{1}{$\bigcup \mathcal{A}$ is a relation.}
+        \begin{proof}
+            \pf\ Since every member of $\mathcal{A}$ is a relation.
+        \end{proof}
+        \step{2}{Whenever $(x,y)$ and $(x,z)$ are elements of $\bigcup \mathcal{A}$ then $y = z$}
+        \begin{proof}
+            \step{a}{\pflet{$(x,y),(x,z) \in \bigcup \mathcal{A}$}}
+            \step{b}{\pick\ $f, g \in \mathcal{A}$ such that $(x,y) \in f$ and $(x,z) \in g$}
+            \step{c}{\assume{w.l.o.g. $f \subseteq g$}}
+            \step{d}{$(x,y),(x,z) \in g$}
+            \step{e}{$y = z$}
+            \begin{proof}
+                \pf\ Since $g$ is a function.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 16}
+    If every function belongs to $A$ then every set belongs to $\dom \bigcup A$ contradiction Theorem 2A.
+
+    \paragraph{Exercise 17}
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$R$ and $S$ be single-rooted.}}
+        \step{2}{\pflet{$(x,z),(y,z) \in R \circ S$}}
+        \step{3}{\pick\ $t$ and $t'$ such that $(x,t) \in S$, $(t,z) \in R$, $(y,t') \in S$ and $(t',z) \in R$}
+        \step{4}{$t = t'$}
+        \begin{proof}
+            \pf\ Since $R$ is single-rooted.
+        \end{proof}
+        \step{5}{$x = y$}
+        \begin{proof}
+            \pf\ Since $S$ is single-rooted.
+        \end{proof}
+    \end{proof}
+
+    Thus if $F$ and $G$ are one-to-one functions then $F \circ G$ is single-rooted and a function by Theorem
+    3H, hence a one-to-one function.
+    
+    \paragraph{Exercise 18}
+    \begin{align*}
+        R \circ R & = \{ \langle 0,2 \rangle, \langle 0,3 \rangle, \langle 1,3 \rangle \} \\
+        R \restriction \{ 1 \} & = \{ \langle 1,2 \rangle, \langle 1,3 \rangle \} \\
+        R^{-1} \restriction \{ 1 \} & = \{ \langle 1, 0 \rangle \} \\
+        R [\![ \{ 1 \} ]\!] & = \{ 2, 3 \} \\
+        R^{-1} [\![ \{1\} ]\!] & = \{ 0 \}
+    \end{align*}
+
+    \paragraph{Exercise 19}
+    \begin{align*}
+        A(\emptyset) & = \{ \emptyset, \{ \emptyset \} \} \\
+        A [\![ \emptyset ]\!] & = \emptyset \\
+        A [\![ \{ \emptyset \} ]\!] & = \{ \{ \emptyset, \{ \emptyset \} \} \} \\
+        A [\![ \{ \emptyset, \{ \emptyset \} \} ]\!] & = \{ \{ \emptyset, \{ \emptyset \} \}, \emptyset \} \\
+        A^{-1} & = \{ \langle \{ \emptyset, \{ \emptyset \} \}, \emptyset \rangle,
+        \langle \emptyset, \{ \emptyset \} \rangle \} \\
+        A \circ A & = \{ \langle \{ \emptyset \}, \{ \emptyset, \{ \emptyset \} \} \rangle \} \\
+        A \restriction \emptyset & = \emptyset \\
+        A \restriction \{ \emptyset \} & = \{ \langle \emptyset, \{ \emptyset, \{ \emptyset \} \} \rangle \} \\
+        A \restriction \{ \emptyset, \{ \emptyset \} \} & = \{ \langle \emptyset, \{ \emptyset, \{ \emptyset \} \} \rangle,
+        \langle \{ \emptyset \}, \emptyset \rangle \} \\
+        & = A \\
+        \bigcup \bigcup A & = \{ \emptyset , \{ \emptyset, \{ \emptyset \} \},
+        \{ \emptyset \} \} 
+    \end{align*}
+
+    \paragraph{Exercise 20}
+    \begin{align*}
+        z \in F \restriction A & \Leftrightarrow z \in F \ \&\ \exists x,y. (z = \langle x,y \rangle \ \&\ x \in A) \\
+        & \Leftrightarrow z \in F \ \&\ \exists x,y (z = \langle x,y \rangle \ \&\ x \in A \ \&\ y \in \ran F) \\
+        & \Leftrightarrow z \in F \cap (A \times \ran F)
+    \end{align*}
+
+    \paragraph{Exercise 21}
+    Both are equal to $\{ \langle x,w \rangle \mid \exists y,z. xTy\ \&\ ySz\ \&\ zRw \}$.
+
+    \paragraph{Exercise 22}
+    \subparagraph{(a)}
+    \begin{proof}
+        \pf
+        \step{1}{\assume{$A \subseteq B$}}
+        \step{2}{\pflet{$y \in F [\![ A ]\!]$}}
+        \step{3}{\pick\ $x \in A$ such that $xFy$}
+        \step{4}{$x \in B$ and $xFy$}
+        \qed
+    \end{proof}
+    \subparagraph{(b)}
+    Both are equal to $\{ z : \exists x,y. x \in A\ \&\ xGy\ \&\ yFz \}$
+    \subparagraph{(c)}
+    Both are equal to $\{ \langle x,y \rangle : (x \in A \text{ or } x \in B) \ \&\ xQy \}$
+
+    \paragraph{Exercise 23}
+    \begin{align*}
+        B \circ I_A & = \{ \langle x,z \rangle : \exists y(xI_Ay \ \&\ yBz) \} \\
+        & = \{ \langle x,z \rangle : \exists y(x \in A \ \&\ x = y \ \&\ yBz) \} \\
+        & = \{ \langle x,z \rangle : x \in A \ \&\ xBz \} \\
+        & = B \restriction A \\
+        I_A[\![C]\!] & = \{ y : \exists x \in C. xI_Ay \} \\
+        & = \{ y : \exists x \in C (x \in A \ \&\ x = y) \} \\
+        & = \{ y : y \in C \ \&\ y \in A \} \\
+        & = A \cap C
+    \end{align*}
+
+    \paragraph{Exercise 24}
+    \begin{align*}
+        F^{-1}[\![A]\!] & = \{ x : \exists y \in A. yF^{-1}x \} \\
+        & = \{ x : \exists y \in A. x F y \} \\
+        & = \{ x \in \dom F : F(x) \in A \}
+    \end{align*}
+
+    \paragraph{Exercise 25}
+    \subparagraph{(a)}
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$G$ be a one-to-one function.}}
+        \step{2}{$G^{-1}$ is a function.}
+        \begin{proof}
+            \pf\ Theorem 3F.
+        \end{proof}
+        \step{3}{$G \circ G^{-1}$ is a function.}
+        \begin{proof}
+            \pf\ Theorem 3H.
+        \end{proof}
+        \step{4}{$\dom (G \circ G^{-1}) = \ran G$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                \dom (G \circ G^{-1}) & = \{ x \in \dom G^{-1} : G^{-1}(x) \in \dom G \} & (\text{Theorem 3H}) \\
+                & = \{ x \in \ran G : G^{-1}(x) \in \dom G \} & (\text{Theorem 3E}) \\
+                & = \ran G
+            \end{align*}
+        \end{proof}
+        \step{5}{$\forall x \in \ran G. (G \circ G^{-1})(x) = x$}
+        \begin{proof}
+            \pf\ Theorem 3G.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \subparagraph{(b)}
+    Let $G$ be a function. Then
+    \begin{align*}
+        G \circ G^{-1} & = \{ \langle x,z \rangle : \exists y(xG^{-1}y \ \&\ yGz) \} \\
+        & = \{ \langle x,z \rangle : \exists y(yGx\ \&\ yGz) \} \\
+        & = \{ \langle x,x \rangle : \exists y. yGx \} & (\text{$G$ is a function}) \\
+        & = I_{\ran G}
+    \end{align*}
+
+    \paragraph{Exercise 26}
+    \subparagraph{(a)}
+    \begin{align*}
+        F [\![ \bigcup \mathcal{A} ] \! ]
+        & = \{ y : \exists x. \exists A \in \mathcal{A} (x \in A \ \&\ xFy) \} \\
+        & = \{ y : \exists A \in \mathcal{A}. \exists x (x \in A \ \&\ xFy) \} \\
+        & = \bigcup \{ F [\![ A ]\!] : A \in \mathcal{A} \}
+    \end{align*}
+
+    \subparagraph{(b)}
+    \begin{align*}
+        F [\![ \bigcup \mathcal{A} ] \! ]
+        & = \{ y : \exists x. \forall A \in \mathcal{A} (x \in A \ \&\ xFy) \} \\
+        & \subseteq \{ y : \forall A \in \mathcal{A}. \exists x (x \in A \ \&\ xFy) \} \\
+        & = \bigcap \{ F [\![ A ]\!] : A \in \mathcal{A} \}
+    \end{align*}
+
+    \paragraph{Exercise 27}
+    \begin{align*}
+        \dom (F \circ G) & = \{ x : \exists y. x(F \circ G) y \} \\
+        & = \{ x : \exists y \exists z(xGz \ \&\ zFy) \} \\
+        & = \{ x : \exists z(zG^{-1}x\ \&\ z \in \dom F) \} \\
+        & = G^{-1}[\![ \dom F ]\!]
+    \end{align*}
+
+    \paragraph{Exercise 28}
+    \begin{proof}
+        \pf
+        \step{1}{$G : \mathcal{P} A \rightarrow \mathcal{P} B$}
+        \begin{proof}
+            \pf\ Since $f[\![X]\!] \subseteq \ran f \subseteq B$
+        \end{proof}
+        \step{2}{For all $X, Y \in \mathcal{P} A$, if $G(X) = G(Y)$ then $X = Y$}
+        \begin{proof}
+            \step{a}{\pflet{$X, Y \in \mathcal{P} A$}}
+            \step{b}{\assume{$f[\![X]\!] = f[\![Y]\!]$}}
+            \step{c}{$X \subseteq Y$}
+            \begin{proof}
+                \step{i}{\pflet{$x \in X$}}
+                \step{ii}{$f(x) \in f[\![X]\!]$}
+                \step{iii}{$f(x) \in f[\![Y]\!]$}
+                \step{iv}{\pick\ $y \in Y$ such that $f(x) = f(y)$}
+                \step{v}{$x = y$}
+                \begin{proof}
+                    \pf\ Because $f$ is one-to-one.
+                \end{proof}
+                \step{vi}{$x \in Y$}
+                \begin{proof}
+                    \pf\ Similar.
+                \end{proof}
+            \end{proof}
+            \step{d}{$Y \subseteq X$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Example 29}
+
+    \begin{proof}
+        \pf
+        \step{1}{\assume{$f$ maps $A$ onto $B$}}
+        \step{2}{\pflet{$b, b' \in B$}}
+        \step{3}{\assume{$G(b) = G(b')$}}
+        \step{4}{\pick\ $x \in A$ such that $f(x) = b$}
+        \begin{proof}
+            \pf\ By \stepref{1}.
+        \end{proof}
+        \step{5}{$x \in G(b)$}
+        \step{6}{$x \in G(b')$}
+        \step{7}{$f(x) = b'$}
+        \step{8}{$b = b'$}
+        \qed
+    \end{proof}
+
+    The converse does not hold. Let $A = \{0\}$ and $B = \{0,1\}$. Let $f$ be the function that maps 0 to 0.
+    Then
+    \begin{align*}
+        G(0) & = \{ 0 \} \\
+        G(1) & = \emptyset
+    \end{align*}
+    Thus $G$ is one-to-one but $f$ does not map $A$ onto $B$.
+
+    \paragraph{Exercise 30}
+    \subparagraph{(a)}
+    \begin{proof}
+        \pf
+        \step{1}{$F(B) = B$}
+        \begin{proof}
+            \step{a}{$F(B) \subseteq B$}
+            \begin{proof}
+                \step{ii}{\pflet{$X \in \mathcal{P} A$ be such that $F(X) \subseteq X$} \prove{$F(B) \subseteq X$}}
+                \step{iii}{$B \subseteq X$}
+                \step{iv}{$F(B) \subseteq F(X)$}
+                \step{v}{$F(B) \subseteq X$}
+                \begin{proof}
+                    \pf\ From \stepref{ii} and \stepref{iv}.
+                \end{proof}
+            \end{proof}
+            \step{b}{$B \subseteq F(B)$}
+            \begin{proof}
+                \pf\ From \stepref{a} and the definition of $B$, since $B$ is one of the sets $X$ such that
+                $F(X) \subseteq X$
+            \end{proof}
+        \end{proof}
+        \step{2}{$F(C) = C$}
+        \begin{proof}
+            \step{a}{$C \subseteq F(C)$}
+            \begin{proof}
+                \step{i}{\pflet{$X \in \mathcal{P} A$ with $X \subseteq F(X)$} \prove{$X \subseteq F(C)$}}
+                \step{ii}{$X \subseteq C$}
+                \step{iii}{$F(X) \subseteq F(C)$}
+                \step{iv}{$X \subseteq F(C)$}
+                \begin{proof}
+                    \pf\ From \stepref{i} and \stepref{iii}
+                \end{proof}
+            \end{proof}
+            \step{b}{$F(C) \subseteq C$}
+            \begin{proof}
+                \pf\ From \stepref{a} and the definition of $C$.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \subparagraph{(b)}
+    If $F(X) = X$ then we have $B \subseteq X$ (because $F(X) \subseteq X$) and $X \subseteq C$
+    (because $X \subseteq F(X)$).
+
+    \section{Infinite Cartesian Products}
+
+    \paragraph{Exercise 31}
+    \begin{proof}
+        \pf
+        \step{1}{If the Axiom of Choice is true then, for any set $I$ and any function $H$ with domain
+        $I$, if $H(i) \neq \emptyset$ for all $i \in I$, then $\prod_{i \in I} H(i) \neq \emptyset$.}
+        \begin{proof}
+            \step{a}{\assume{The Axiom of Choice.}}
+            \step{b}{\pflet{$I$ be a set.}}
+            \step{c}{\pflet{$H$ be a function with domain $I$.}}
+            \step{d}{\assume{$H(i) \neq \emptyset$ for all $i \in I$.}}
+            \step{e}{\pflet{$R = \{ (i,x) : i \in I, x \in H(i) \}$}}
+            \step{f}{\pick\ a function $F \subseteq R$ with $\dom F = \dom R$ \prove{$F \in \prod_{i \in I} H(i)$}}
+            \begin{proof}
+                \pf\ By the Axiom of Choice.
+            \end{proof}
+            \step{g}{$\dom H = I$}
+            \begin{proof}
+                \pf\ We have $\dom R = I$ since for all $i \in I$ there exists $x$ such that $x \in H(i)$.
+            \end{proof}
+            \step{h}{$\forall i \in I. F(i) \in H(i)$}
+            \begin{proof}
+                \pf\ Since $iRF(i)$.
+            \end{proof}
+        \end{proof}
+        \step{2}{If, for any set $I$ and any function $H$ with domain
+        $I$, if $H(i) \neq \emptyset$ for all $i \in I$, then $\prod_{i \in I} H(i) \neq \emptyset$,
+        then the Axiom of Choice is true.}
+        \begin{proof}
+            \step{a}{\assume{For any set $I$ and any function $H$ with domain
+            $I$, if $H(i) \neq \emptyset$ for all $i \in I$, then $\prod_{i \in I} H(i) \neq \emptyset$}}
+            \step{b}{\pflet{$R$ be a relation}}
+            \step{c}{\pflet{$I = \dom R$}}
+            \step{d}{Define the function $H$ with domain $I$ by: for $i \in I$, $H(i) = \{ y : iRy \}$}
+            \step{e}{$H(i) \neq \emptyset$ for all $i \in I$}
+            \step{f}{\pick\ $F \in \prod_{i \in I} H(i)$}
+            \begin{proof}
+                \pf\ By \stepref{a}
+            \end{proof}
+            \step{g}{$F$ is a function}
+            \step{h}{$F \subseteq R$}
+            \begin{proof}
+                \pf\ For all $i \in I$ we have $F(i) \in H(i)$ and so $iRF(i)$.
+            \end{proof}
+            \step{i}{$\dom F = \dom R$}
+        \end{proof}
+        \qed
+    \end{proof}
+
 \end{document}

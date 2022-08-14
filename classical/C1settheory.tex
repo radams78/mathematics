@@ -23,8 +23,9 @@
 \newtheorem{definition}[axiom]{Definition}
 
 \newcommand{\dom}{\ensuremath{\operatorname{dom}}}
-\newcommand{\ran}{\ensuremath{\operatorname{ran}}}
 \newcommand{\fld}{\ensuremath{\operatorname{fld}}}
+\newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
+\newcommand{\ran}{\ensuremath{\operatorname{ran}}}
 
 \begin{document}
     \maketitle
@@ -309,6 +310,100 @@
         \pf\ Apply the Subset Axiom to $\bigcup \bigcup R$. \qed
     \end{proof}
     
+    \begin{definition}[Single-Rooted]
+        A class $\mathbf{R}$ is \emph{single-rooted} iff, for all $y \in \ran \mathbf{R}$,
+        there is only one $x$ such that $x \mathbf{R} y$.
+    \end{definition}
+
+    \begin{definition}[Inverse]
+        The \emph{inverse} of a class $\mathbf{F}$ is the class $\mathbf{F}^{-1} = \{ (y,x)
+        \mid (x,y) \in \mathbf{F} \}$.
+    \end{definition}
+
+    \begin{theorem}
+        For any class $\mathbf{F}$, we have $\dom \mathbf{F}^{-1} = \ran \mathbf{F}$
+        and $\ran \mathbf{F}^{-1} = \dom \mathbf{F}$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For a relation $\mathbf{F}$, $(\mathbf{F}^{-1})^{-1} = \mathbf{F}$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}[Composition]
+        The \emph{composition} of classes $\mathbf{F}$ and $\mathbf{G}$ is the class
+        $\mathbf{G} \circ \mathbf{F} = \{ (x,z) \mid \exists y. (x,y) \in \mathbf{F} \wedge (y,z) \in \mathbf{G} \}$.
+    \end{definition}
+
+    \begin{theorem}
+        For any classes $\mathbf{F}$ and $\mathbf{G}$, $\inv{(\mathbf{F} \circ \mathbf{G})} =
+        \inv{\mathbf{G}} \circ \inv{\mathbf{F}}$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}[Restriction]
+        The \emph{restriction} of the class $\mathbf{F}$ to the class $\mathbf{A}$ is the class
+        $\mathbf{F} \restriction \mathbf{A} = \{ (x,y) : x \in A \wedge (x,y) \in \mathbf{F} \}$.
+    \end{definition}
+
+    \begin{definition}[Image]
+        The \emph{image} of the class $\mathbf{A}$ under the class $\mathbf{F}$ is the class
+        $\mathbf{F}(\mathbf{A}) = \{ y : \exists x \in \mathbf{A}. (x,y) \in \mathbf{F} \}$.
+    \end{definition}
+    
+    \begin{theorem}
+        \[ \mathbf{F}(\mathbf{A} \cup \mathbf{B}) = \mathbf{F}(\mathbf{A}) \cup \mathbf{F}(\mathbf{B}) \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \mathbf{F}(\bigcup \mathbf{A}) = \bigcup \{ \mathbf{F}(X) : X \in \mathbf{A} \} \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+    
+    \begin{theorem}
+        \[ \mathbf{F}(\mathbf{A} \cap \mathbf{B}) \subseteq \mathbf{F}(\mathbf{A}) \cap \mathbf{F}(\mathbf{B}) \]
+        Equality holds if $\mathbf{F}$ is single-rooted.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \mathbf{F}(\bigcap \mathbf{A}) \subseteq \bigcap \{ \mathbf{F}(X) : X \in \mathbf{A} \} \]
+        Equality holds if $\mathbf{F}$ is single-rooted.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \mathbf{F}(\mathbf{A}) - \mathbf{F}(\mathbf{B}) \subseteq \mathbf{F}(\mathbf{A} - \mathbf{B}) \]
+        Equality holds if $\mathbf{F}$ is single-rooted.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
     \section{$n$-ary Relations}
 
     \begin{definition}
@@ -324,4 +419,221 @@
         Given a class $\mathbf{A}$, an \emph{$n$-ary relation} on $\mathbf{A}$ is a class of ordered
         $n$-tuples, all of whose components are in $\mathbf{A}$.
     \end{definition}
+
+    \section{Functions}
+
+    \begin{definition}[Function]
+        A \emph{function} is a relation $\mathbf{F}$ such that, for all $x \in \dom \mathbf{F}$,
+        there is only one $y$ such that $x \mathbf{F} y$. We call this unique $y$ the \emph{value}
+        of $\mathbf{F}$ at $x$ and denote it by $\mathbf{F}(x)$.
+
+        We say $\mathbf{F}$ is a function \emph{from} $\mathbf{A}$ \emph{into} $\mathbf{B}$,
+        or $\mathbf{F}$ \emph{maps} $\mathbf{A}$ into $\mathbf{B}$, and write $\mathbf{F} : \mathbf{A}
+        \rightarrow \mathbf{B}$, iff $\mathbf{F}$ is a function, $\dom \mathbf{F} = \mathbf{A}$,
+        and $\ran \mathbf{F} \subseteq \mathbf{B}$.
+
+        If, in addition, $\ran \mathbf{F} = \mathbf{B}$, we say $\mathbf{F}$ is a function from $\mathbf{A}$
+        \emph{onto} $\mathbf{B}$.
+    \end{definition}
+
+    \begin{theorem}
+        For a class $\mathbf{F}$, $\inv{\mathbf{F}}$ is a function if and only if $\mathbf{F}$ is single-rooted.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        A relation $\mathbf{F}$ is a function if and only if $\inv{\mathbf{F}}$ is single-rooted.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any function $\mathbf{G}$ and classes $\mathbf{A}$ and $\mathbf{B}$,
+        \begin{align*}
+            \inv{\mathbf{G}}(\bigcup \mathbf{A}) & = \bigcup \{ \inv{\mathbf{G}}(X) : X \in \mathbf{A} \} \\
+            \inv{\mathbf{G}}(\bigcap \mathbf{A}) & = \bigcap \{ \inv{\mathbf{G}}(X) : X \in \mathbf{A} \} &
+            (\text{if } \mathbf{A} \neq \emptyset) \\
+            \inv{\mathbf{G}}(\mathbf{A} - \mathbf{B}) & = \inv{\mathbf{G}}(\mathbf{A}) - \inv{\mathbf{G}}(\mathbf{B})
+        \end{align*}
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Assume that $\mathbf{F}$ and $\mathbf{G}$ are functions. Then $\mathbf{F} \circ \mathbf{G}$
+        is a function, its domain is $\{ x \in \dom \mathbf{G} : \mathbf{G}(x) \in \dom \mathbf{F} \}$,
+        and for $x$ in its domain,
+        \[ (\mathbf{F} \circ \mathbf{G})(x) = \mathbf{F}(\mathbf{G}(x)) \enspace . \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}[One-to-one]
+        A function $\mathbf{F}$ is \emph{one-to-one} or an \emph{injection} iff it is single-rooted.
+    \end{definition}
+
+    \begin{theorem}
+        Let $\mathbf{F}$ be a one-to-one function. For $x \in \dom \mathbf{F}$, $\inv{\mathbf{F}}(\mathbf{F}(x)) = x$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Let $\mathbf{F}$ be a one-to-one function. For $y \in \ran \mathbf{F}$, $\mathbf{F}(\inv{\mathbf{F}}(y)) = y$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}[Identity Function]
+        For any class $\mathbf{A}$, the \emph{identity} function on $\mathbf{A}$ is $\mathrm{id}_\mathbf{A} =
+        \{ (x,x) \mid x \in \mathbf{A} \}$.
+    \end{definition}
+
+    \begin{theorem}
+        Let $F : A \rightarrow B$. Assume $A \neq \emptyset$. Then $F$ has a left inverse (i.e. there exists
+        $G : B \rightarrow A$ such that $G \circ F = \mathrm{id}_A$) if and only if $F$ is one-to-one.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{If $F$ is one-to-one then $F$ has a left inverse.}
+        \begin{proof}
+            \step{a}{\assume{$F$ is one-to-one.}}
+            \step{b}{$\inv{F} : \ran F \rightarrow A$}
+            \step{c}{\pick\ $a \in A$}
+            \step{d}{Define $G : B \rightarrow A$ by:
+            \[ G(x) = \begin{cases}
+                \inv{F}(x) & \text{if } x \in \ran F \\
+                a & \text{if } x \in B - \ran F
+            \end{cases} \]}
+            \step{f}{$\forall x \in A. G(F(x)) = x$}
+        \end{proof}
+        \step{2}{If $F$ has a left inverse then $F$ is one-to-one.}
+        \begin{proof}
+            \step{a}{\assume{$F$ has a left inverse $G$.}}
+            \step{b}{\pflet{$x, y \in A$ with $F(x) = F(y)$}}
+            \step{c}{$x = y$}
+            \begin{proof}
+                \pf\ $x = G(F(x)) = G(F(y)) = y$.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \section{The Axiom of Choice}
+
+    \begin{axiom}[Choice]
+        For any relation $R$ there exists a function $H \subseteq R$ with $\dom H = \dom R$.
+    \end{axiom}
+
+    \begin{theorem}
+        Let $F : A \rightarrow B$. Then $F$ has a right inverse if and only if $F$ maps $A$ onto $B$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{If $F$ has a right inverse then $F$ maps $A$ onto $B$.}
+        \begin{proof}
+            \pf\ If $H : B \rightarrow A$ is a right inverse, then for any $y$ in $B$, we have
+            $y = F(H(y))$.
+        \end{proof}
+        \step{2}{If $F$ maps $A$ onto $B$ then $F$ has a right inverse.}
+        \begin{proof}
+            \step{a}{\assume{$F$ maps $A$ onto $B$.}}
+            \step{b}{\pick\ a function $H$ with $H \subseteq \inv{F}$ and $\dom H = \dom \inv{F}$}
+            \begin{proof}
+                \pf\ By the Axiom of Choice.
+            \end{proof}
+            \step{c}{$\dom H = B$}
+            \begin{proof}
+                \pf\ $\dom H = \dom \inv{F} = \ran F = B$ by \stepref{a}.
+            \end{proof}
+            \step{d}{For all $y \in B$ we have $F(H(y)) = y$}
+            \begin{proof}
+                \step{i}{\pflet{$y \in B$}}
+                \step{ii}{$(y,H(y)) \in \inv{F}$}
+                \step{iii}{$F(H(y)) = y$}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \section{Sets of Functions}
+
+    \begin{definition}
+        Let $A$ be a set and $\mathbf{B}$ be a class. Then $\mathbf{B}^A$ is the class of all functions
+        $A \rightarrow \mathbf{B}$.
+    \end{definition}
+
+    \section{Dependent Products}
+
+    \begin{definition}
+        Let $I$ be a set and $H_i$ a set for all $i \in I$. Define
+        \[ \prod_{i \in I} H_i = \{ f : \text{$f$ is a function}, \dom f = I, \forall i \in I. f(i) \in H_i \} \enspace . \]
+    \end{definition}
+
+    \begin{theorem}
+        The Axiom of Choice is equivalent to the statement: For any set $I$ and any function $H$ with domain
+        $I$, if $H(i) \neq \emptyset$ for all $i \in I$, then $\prod_{i \in I} H(i) \neq \emptyset$
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{If the Axiom of Choice is true then, for any set $I$ and any function $H$ with domain
+        $I$, if $H(i) \neq \emptyset$ for all $i \in I$, then $\prod_{i \in I} H(i) \neq \emptyset$.}
+        \begin{proof}
+            \step{a}{\assume{The Axiom of Choice.}}
+            \step{b}{\pflet{$I$ be a set.}}
+            \step{c}{\pflet{$H$ be a function with domain $I$.}}
+            \step{d}{\assume{$H(i) \neq \emptyset$ for all $i \in I$.}}
+            \step{e}{\pflet{$R = \{ (i,x) : i \in I, x \in H(i) \}$}}
+            \step{f}{\pick\ a function $F \subseteq R$ with $\dom F = \dom R$ \prove{$F \in \prod_{i \in I} H(i)$}}
+            \begin{proof}
+                \pf\ By the Axiom of Choice.
+            \end{proof}
+            \step{g}{$\dom H = I$}
+            \begin{proof}
+                \pf\ We have $\dom R = I$ since for all $i \in I$ there exists $x$ such that $x \in H(i)$.
+            \end{proof}
+            \step{h}{$\forall i \in I. F(i) \in H(i)$}
+            \begin{proof}
+                \pf\ Since $iRF(i)$.
+            \end{proof}
+        \end{proof}
+        \step{2}{If, for any set $I$ and any function $H$ with domain
+        $I$, if $H(i) \neq \emptyset$ for all $i \in I$, then $\prod_{i \in I} H(i) \neq \emptyset$,
+        then the Axiom of Choice is true.}
+        \begin{proof}
+            \step{a}{\assume{For any set $I$ and any function $H$ with domain
+            $I$, if $H(i) \neq \emptyset$ for all $i \in I$, then $\prod_{i \in I} H(i) \neq \emptyset$}}
+            \step{b}{\pflet{$R$ be a relation}}
+            \step{c}{\pflet{$I = \dom R$}}
+            \step{d}{Define the function $H$ with domain $I$ by: for $i \in I$, $H(i) = \{ y : iRy \}$}
+            \step{e}{$H(i) \neq \emptyset$ for all $i \in I$}
+            \step{f}{\pick\ $F \in \prod_{i \in I} H(i)$}
+            \begin{proof}
+                \pf\ By \stepref{a}
+            \end{proof}
+            \step{g}{$F$ is a function}
+            \step{h}{$F \subseteq R$}
+            \begin{proof}
+                \pf\ For all $i \in I$ we have $F(i) \in H(i)$ and so $iRF(i)$.
+            \end{proof}
+            \step{i}{$\dom F = \dom R$}
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}
