@@ -1534,4 +1534,28 @@
     If $F$ is compatible with $R$ then there exists a unique $\hat{F} : (A / R) \times (A / R) \rightarrow A / R$ such that
     \[ \hat{F}(\langle [x]_R, [y]_R \rangle) = [F(\langle x,y \rangle)]_R \text{ for all } x,y \in A \enspace . \]
     If $F$ is not compatible with $R$ then no such $\hat{F}$ exists.
+
+    \section{Ordering Relations}
+
+    \paragraph{Exercise 43}
+    \begin{proof}
+        \pf
+        \step{1}{$\inv{R}$ is transitive.}
+        \begin{proof}
+            \step{a}{\assume{$x \inv{R} y$ and $y \inv{R} z$}}
+            \step{b}{$zRy$ and $yRx$}
+            \step{c}{$zRx$}
+            \begin{proof}
+                \pf\ Since $R$ is transitive.
+            \end{proof}
+            \step{d}{$x\inv{R}z$}
+        \end{proof}
+        \step{2}{$\inv{R}$ satisfies trichotomy on $A$.}
+        \begin{proof}
+            \step{a}{\pflet{$x, y \in A$}}
+            \step{b}{Exactly one of $xRy$, $x=y$, $yRx$ holds.}
+            \step{c}{Exactly one of $y\inv{R}x$, $x=y$, $x\inv{R}y$ holds.}
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}

@@ -1,0 +1,54 @@
+\documentclass{article}
+
+\title{C2 Order Theory}
+\author{Robin Adams}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\let\proof\relax
+\let\endproof\relax
+\let\qed\relax
+\usepackage{pf2}
+\usepackage[all]{xy}
+
+\newtheorem{axiom}{Axiom}
+\newtheorem{axs}[axiom]{Axiom Schema}
+\newtheorem{lemma}[axiom]{Lemma}
+\newtheorem{proposition}[axiom]{Proposition}
+\newtheorem{props}[axiom]{Proposition Schema}
+\newtheorem{theorem}[axiom]{Theorem}
+\newtheorem{corollary}{Corollary}[axiom]
+\theoremstyle{definition}
+\newtheorem{definition}[axiom]{Definition}
+
+\begin{document}
+    \maketitle
+
+    \section{Linear Orders}
+
+    \begin{definition}[Linear Ordering]
+        Let $\mathbf{A}$ be a class. A \emph{linear ordering} or \emph{total ordering} on $\mathbf{A}$
+        is a relation $\mathbf{R}$ on $\mathbf{A}$ such that:
+        \begin{itemize}
+            \item $\mathbf{R}$ is transitive.
+            \item $\mathbf{R}$ satisfies \emph{trichotomy} on $\mathbf{A}$; i.e. for any $x, y \in \mathbf{A}$,
+            exactly one of
+            \[ x\mathbf{R}y, x=y, y\mathbf{R}x \]
+            holds.
+        \end{itemize}
+    \end{definition}
+
+    \begin{theorem}
+        Let $\mathbf{R}$ be a linear ordering on $\mathbf{A}$.
+        \begin{enumerate}
+            \item There is no $x$ such that $x \mathbf{R} x$.
+            \item For distinct $x$ and $y$ in $\mathbf{A}$, either $x\mathbf{R}y$ or $y\mathbf{R}x$.
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Immediate from trichotomy. \qed
+    \end{proof}
+    
+\end{document}

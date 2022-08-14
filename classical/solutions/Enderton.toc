@@ -155,3 +155,5 @@
 \contentsline {subparagraph}{(a)}{29}%
 \contentsline {subparagraph}{(b)}{30}%
 \contentsline {paragraph}{Exercise 42}{30}%
+\contentsline {section}{\numberline {3.7}Ordering Relations}{30}%
+\contentsline {paragraph}{Exercise 43}{30}%
