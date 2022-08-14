@@ -404,6 +404,20 @@
         \pf\ Easy. \qed
     \end{proof}
 
+    \begin{definition}[Reflexive]
+        A binary relation $\mathbf{R}$ on $\mathbf{A}$ is \emph{reflexive} on $\mathbf{A}$ if and only if
+        $\forall x \in \mathbf{A}. x\mathbf{R}x$.
+    \end{definition}
+
+    \begin{definition}[Symmetric]
+        A binary relation $\mathbf{R}$ is \emph{symmetric} iff, whenever $x\mathbf{R}y$, then $y\mathbf{R}x$.
+    \end{definition}
+
+    \begin{definition}[Transitive]
+        A binary relation $\mathbf{R}$ is \emph{transitive} iff, whenever $x\mathbf{R}y$ and $y\mathbf{R}z$,
+        then $x\mathbf{R}z$.
+    \end{definition}
+
     \section{$n$-ary Relations}
 
     \begin{definition}
@@ -636,4 +650,38 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \section{Equivalence Relations}
+
+    \begin{definition}[Equivalence Relation]
+        An \emph{equivalence relation} on $\mathbf{A}$ is a binary relation on $\mathbf{A}$
+        that is reflexive on $\mathbf{A}$, symmetric and transitive.
+    \end{definition}
+
+    \begin{theorem}
+        If $\mathbf{R}$ is a symmetric and transitive relation then $\mathbf{R}$ is an equivalence relation
+        on $\fld \mathbf{R}$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$x \in \fld \mathbf{R}$}}
+        \step{2}{\pick\ $y$ such that either $x\mathbf{R}y$ or $y\mathbf{R}x$}
+        \step{3}{$x\mathbf{R}y$ and $y\mathbf{R}x$}
+        \begin{proof}
+            \pf\ Since $\mathbf{R}$ is symmetric.
+        \end{proof}
+        \step{4}{$x\mathbf{R}x$}
+        \begin{proof}
+            \pf\ Since $\mathbf{R}$ is transitive.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Equivalence Class]
+        If $\mathbf{R}$ is an equivalence relation and $x \in \fld \mathbf{R}$, the \emph{equivalence class}
+        of $x$ modulo $\mathbf{R}$ is
+        \[ [x]_{\mathbf{R}} = \{ t : x \mathbf{R} t \} \enspace . \]
+    \end{definition}
+    
 \end{document}
