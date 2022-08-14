@@ -683,5 +683,113 @@
         of $x$ modulo $\mathbf{R}$ is
         \[ [x]_{\mathbf{R}} = \{ t : x \mathbf{R} t \} \enspace . \]
     \end{definition}
+
+    \begin{lemma}
+        Assume that $\mathbf{R}$ is an equivalence relation on $\mathbf{A}$ and that $x$ and $y$ belong to
+        $\mathbf{A}$. Then
+        \[ [x]_{\mathbf{R}} = [y]_{\mathbf{R}} \text{ iff } x \mathbf{R} y \enspace . \]
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{If $[x]_{\mathbf{R}} = [y]_{\mathbf{R}}$ then $x\mathbf{R}y$}
+        \begin{proof}
+            \step{a}{\assume{$[x]_{\mathbf{R}} = [y]_{\mathbf{R}}$}}
+            \step{b}{$y \in [y]_{\mathbf{R}}$}
+            \begin{proof}
+                \pf\ Since $\mathbf{R}$ is reflexive on $\mathbf{A}$.
+            \end{proof}
+            \step{c}{$y \in [x]_{\mathbf{R}}$}
+            \step{d}{$x\mathbf{R}y$}
+        \end{proof}
+        \step{2}{If $x\mathbf{R}y$ then $[x]_{\mathbf{R}} = [y]_{\mathbf{R}}$}
+        \begin{proof}
+            \step{a}{\assume{$x \mathbf{R} y$}}
+            \step{b}{$[y]_{\mathbf{R}} \subseteq [x]_{\mathbf{R}}$}
+            \begin{proof}
+                \step{i}{\pflet{$z \in [y]_{\mathbf{R}}$}}
+                \step{ii}{$y\mathbf{R}z$}
+                \step{iii}{$x\mathbf{R}z$}
+                \begin{proof}
+                    \pf\ Since $\mathbf{R}$ is transitive.
+                \end{proof}
+                \step{iv}{$z \in [x]_{\mathbf{R}}$}
+            \end{proof}
+            \step{c}{$y\mathbf{R}x$}
+            \begin{proof}
+                \pf\ Since $\mathbf{R}$ is symmetric.
+            \end{proof}
+            \step{d}{$[x]_{\mathbf{R}} \subseteq [y]_{\mathbf{R}}$}
+            \begin{proof}
+                \pf\ Similar.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Partition]
+        A \emph{partition} of a set $A$ is a set $P \subseteq \mathcal{P} A$ such that:
+        \begin{itemize}
+            \item Every member of $P$ is nonempty.
+            \item Any two distinct members of $P$ are disjoint.
+            \item $A = \bigcup P$
+        \end{itemize}
+    \end{definition}
+
+    \begin{theorem}
+        Let $R$ be an equivalence relation on the set $A$. Then the set of all equivalence classes is a
+        partition of $A$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{Every equivalence class is nonempty.}
+        \begin{proof}
+            \pf\ For any $x \in A$ we have $x \in [x]_R$.
+        \end{proof}
+        \step{2}{Any two distinct equivalence classes are disjoint.}
+        \begin{proof}
+            \step{a}{\pflet{$x, y \in A$}}
+            \step{b}{\assume{$z \in [x]_R \cap [y]_R$} \prove{$[x]_R = [y]_R$}}
+            \step{c}{$xRy$}
+            \begin{proof}
+                \step{i}{$xRz$}
+                \step{ii}{$yRz$}
+                \step{iii}{$zRy$}
+                \begin{proof}
+                    \pf\ By \stepref{ii} and symmetry.
+                \end{proof}
+                \step{iv}{$xRy$}
+                \begin{proof}
+                    \pf\ By \stepref{i}, \stepref{iii} and transitivity.
+                \end{proof}
+            \end{proof}
+            \step{d}{$[x]_R = [y]_R$}
+            \begin{proof}
+                \pf\ By Lemma 3N.
+            \end{proof}
+        \end{proof}
+        \step{3}{$A$ is the union of all the equivalence classes.}
+        \begin{proof}
+            \pf\ For any $x \in A$ we have $x \in [x]_R$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Quotient Set]
+        If $R$ is an equivalence relation on the set $A$, then the \emph{quotient set} $A / R$
+        is the set of all equivalence classes, and the \emph{natural map} or \emph{canonical map}
+        $\phi : A \rightarrow A/R$ is defined by $\phi(x) = [x]_R$.
+    \end{definition}
+
+    \begin{theorem}
+        Assume that $R$ is an equivalence relation on $A$ and that $F : A \rightarrow B$.
+        Assume that $F$ is \emph{compatible} with $R$; that is, whenever $xRy$, then $F(x) = F(y)$.
+        Then there exists a unique $\overline{F} : A / R \rightarrow B$ such that $F = \overline{F} \circ \phi$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ The unique such $\overline{F}$ is $\{ ([x],F(x)) : x \in A \}$. \qed
+    \end{proof}
     
 \end{document}

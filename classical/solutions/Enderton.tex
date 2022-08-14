@@ -10,6 +10,7 @@
 \newcommand{\dom}{\ensuremath{\operatorname{dom}}}
 \newcommand{\ran}{\ensuremath{\operatorname{ran}}}
 \newcommand{\fld}{\ensuremath{\operatorname{fld}}}
+\newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
 
 \begin{document}
     \maketitle
@@ -1223,4 +1224,314 @@
         \qed
     \end{proof}
 
+    \section{Equivalence Relations}
+
+    \paragraph{Exercise 32}
+    \subparagraph{(a)}
+    \begin{align*}
+        & \text{$R$ is symmetric} \\
+        \Leftrightarrow & \forall x,y(xRy \Rightarrow yRx) \\
+        \Leftrightarrow & \forall x,y(\langle y,x \rangle \in R^{-1} \Rightarrow \langle y,x \rangle \in R) \\
+        \Leftrightarrow & R^{-1} \subseteq R
+    \end{align*}
+
+    \subparagraph{(b)}
+    \begin{align*}
+        & \text{$R$ is transitive} \\
+        \Leftrightarrow & \forall x,y,z(xRy \ \&\ yRz \Rightarrow xRz) \\
+        \Leftrightarrow & \forall x,z(\exists y(xRy\ \&\ yRz) \Rightarrow xRz) \\
+        \Leftrightarrow & \forall x,z(\langle x,z \rangle \in R \circ R \Rightarrow \langle x,z \rangle \in R) \\
+        \Leftrightarrow & R \circ R \subseteq R
+    \end{align*}
+
+    \paragraph{Exercise 33}
+    \begin{proof}
+        \pf
+        \step{1}{If $R$ is a symmetric and transitive relation then $R = \inv{R} \circ R$.}
+        \begin{proof}
+            \step{a}{\assume{$R$ is a symmetric and transitive relation.}}
+            \step{b}{$R \subseteq \inv{R} \circ R$}
+            \begin{proof}
+                \step{i}{\pflet{$xRy$}}
+                \step{ii}{$yRy$}
+                \begin{proof}
+                    \pf\ By Theorem 3M.
+                \end{proof}
+                \step{ii}{$xRy$ and $yR^{-1}y$}
+                \step{iii}{$x(R^{-1}\circ R)y$}
+            \end{proof}
+            \step{c}{$\inv{R} \circ R \subseteq R$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    \inv{R} \circ R & \subseteq R \circ R & (\text{Exercise 32(a)}) \\
+                    & \subseteq R & (\text{Exercise 32(b)})
+                \end{align*}
+            \end{proof}
+        \end{proof}
+        \step{2}{If $R = \inv{R} \circ R$ then $R$ is a symmetric and transitive relation.}
+        \begin{proof}
+            \step{a}{\assume{$R = \inv{R} \circ R$}}
+            \step{b}{$R$ is a relation.}
+            \step{c}{$R$ is symmetric.}
+            \begin{proof}
+                \step{i}{\pflet{$xRy$}}
+                \step{ii}{\pick\ $z$ such that $xRz$ and $z\inv{R}y$}
+                \step{iii}{$yRz$ and $z\inv{R}x$}
+                \step{iv}{$y(\inv{R} \circ R)x$}
+                \step{v}{$yRx$}
+            \end{proof}
+            \step{d}{$R$ is transitive.}
+            \begin{proof}
+                \step{i}{\pflet{$xRy$ and $yRz$}}
+                \step{ii}{$zRy$}
+                \begin{proof}
+                    \pf\ By \stepref{c}
+                \end{proof}
+                \step{iii}{$xRy$ and $y\inv{R}z$}
+                \step{iv}{$x(\inv{R} \circ R)z$}
+                \step{v}{$xRz$}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 34}
+    \subparagraph{(a)}
+    $\bigcap \mathcal{A}$ is a transitive relation.
+    \begin{proof}
+        \pf
+        \step{a}{$\bigcap \mathcal{A}$ is a relation.}
+        \begin{proof}
+            \pf\ Every member of a member of $\mathcal{A}$ is an ordered pair.
+        \end{proof}
+        \step{b}{$\bigcap \mathcal{A}$ is transitive.}
+        \begin{proof}
+            \step{i}{\pflet{$\langle x,y \rangle$ and $\langle y,z \rangle$ be in $\bigcap \mathcal{A}$}
+            \prove{$\langle x,z \rangle \in \bigcap \mathcal{A}$}}
+            \step{ii}{\pflet{$R \in \mathcal{A}$}}
+            \step{iii}{$xRy$ and $yRz$}
+            \step{iv}{$xRz$}
+            \begin{proof}
+                \pf\ Since $R$ is transitive.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \subparagraph{(b)}
+    Not necessarily. If $\mathcal{A} = \{ \{ \langle 0, 1 \rangle \}, \{ \langle 1,2 \rangle \} \}$
+    then each member of $\mathcal{A}$ is transitive but $\bigcup \mathcal{A} = \{ \langle 0,1 \rangle,
+    \langle 1,2 \rangle \}$ is not.
+
+    \paragraph{Example 35}
+    \begin{align*}
+        R[\![\{x\}]\!] & = \{ y : \exists z(z \in \{x\} \ \&\ zRy) \} \\
+        & = \{y : \exists z(z = x\ \&\ zRy) \} \\
+        & = \{y : xRy \} \\
+        & = [x]_R
+    \end{align*}
+
+    \paragraph{Example 36}
+
+    \begin{proof}
+        \pf
+        \step{1}{$Q$ is a relation on $A$.}
+        \begin{proof}
+            \pf\ By definition.
+        \end{proof}
+        \step{2}{$Q$ is reflexive on $A$.}
+        \begin{proof}
+            \step{a}{\pflet{$x \in A$}}
+            \step{b}{$f(x)Rf(x)$}
+            \begin{proof}
+                \pf\ Since $R$ is reflexive on $B$.
+            \end{proof}
+            \step{c}{$xQx$}
+        \end{proof}
+        \step{3}{$Q$ is symmetric.}
+        \begin{proof}
+            \step{a}{\assume{$xQy$}}
+            \step{b}{$f(x)Rf(y)$}
+            \step{c}{$f(y)Rf(x)$}
+            \begin{proof}
+                \pf\ $R$ is symmetric.
+            \end{proof}
+            \step{d}{$yQx$}
+        \end{proof}
+        \step{4}{$Q$ is transitive.}
+        \begin{proof}
+            \step{a}{\assume{$xQy$ and $yQz$}}
+            \step{b}{$f(x)Rf(y)$ and $f(y)Rf(z)$}
+            \step{c}{$f(x)Rf(z)$}
+            \begin{proof}
+                \pf\ $R$ is transitive.
+            \end{proof}
+            \step{d}{$xQz$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 37}
+
+    \begin{proof}
+        \pf
+        \step{1}{$R_\Pi$ is a relation on $A$.}
+        \begin{proof}
+            \pf\ If $B \in \Pi$, $x \in B$ and $y \in B$ then $x,y \in A$.
+        \end{proof}
+        \step{2}{$R_\Pi$ is reflexive on $A$.}
+        \begin{proof}
+            \step{a}{\pflet{$x \in A$}}
+            \step{b}{\pick\ $B \in \Pi$ such that $x \in B$}
+            \begin{proof}
+                \pf\ Because $\Pi$ is exhaustive.
+            \end{proof}
+            \step{c}{$x \in B$ and $x \in B$}
+            \step{d}{$xR_\Pi x$}
+        \end{proof}
+        \step{3}{$R_\Pi$ is symmetric.}
+        \begin{proof}
+            \step{a}{\assume{$xR_\Pi y$}}
+            \step{b}{\pick\ $B \in \Pi$ such that $x \in B$ and $y \in B$}
+            \step{c}{$y \in B$ and $x \in B$}
+            \step{d}{$yR_\Pi x$}
+        \end{proof}
+        \step{4}{$R_\Pi$ is transitive.}
+        \begin{proof}
+            \step{a}{\assume{$xR_\Pi y$ and $yR_\Pi z$}}
+            \step{b}{\pick\ $B \in \Pi$ such that $x \in B$ and $y \in B$}
+            \step{c}{\pick\ $C \in \Pi$ such that $y \in C$ and $z \in C$}
+            \step{d}{$B = C$}
+            \begin{proof}
+                \pf\ Since $y \in B$ and $y \in C$
+            \end{proof}
+            \step{e}{$x \in B$ and $z \in B$}
+            \step{f}{$xR_\Pi z$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 38}
+
+    \begin{proof}
+        \pf
+        \step{0}{If $B \in \Pi$ and $x \in B$ then $B = [x]_{R_\Pi}$}
+        \begin{proof}
+            \step{a}{\pflet{$B \in \Pi$}}
+            \step{b}{\pflet{$x \in B$}}
+            \step{c}{$[x]_{R_\Pi} \subseteq B$}
+            \begin{proof}
+                \step{i}{\pflet{$y \in [x]_{R_\Pi}$}}
+                \step{ii}{$xR_\Pi y$}
+                \step{iii}{\pick\ $C \in \Pi$ such that $x \in C$ and $y \in C$}
+                \step{iv}{$B = C$}
+                \begin{proof}
+                    \pf\ Since $x \in B$ and $x \in C$.
+                \end{proof}
+                \step{v}{$y \in B$}
+            \end{proof}
+            \step{d}{$B \subseteq [x]_{R_\Pi}$}
+            \begin{proof}
+                \pf\ For all $y \in B$, we have $x \in B$ and $y \in B$ hence $x R_\Pi y$.
+            \end{proof}
+        \end{proof}
+        \step{1}{$A/R_\Pi \subseteq \Pi$}
+        \begin{proof}
+            \step{a}{\pflet{$x \in A$} \prove{$[x]_{R_\Pi} \in \Pi$}}
+            \step{b}{\pick\ $B \in \Pi$ such that $x \in B$}
+            \step{c}{$[x]_{R_\Pi} = B$}
+            \begin{proof}
+                \pf\ By \stepref{0}
+            \end{proof}
+            \step{d}{$[x]_{R_\Pi} \in \Pi$}
+        \end{proof}
+        \step{2}{$\Pi \subseteq A/R_\Pi$}
+        \begin{proof}
+            \step{a}{\pflet{$B \in \Pi$}}
+            \step{b}{\pick\ $x \in B$}
+            \begin{proof}
+                \pf\ Since every member of $\Pi$ is nonempty.
+            \end{proof}
+            \step{c}{$B = [x]_{R_\Pi}$}
+            \begin{proof}
+                \pf\ By \stepref{0}.
+            \end{proof}
+            \step{d}{$B \in A/R_\Pi$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 39}
+
+    \begin{proof}
+        \pf
+        \step{1}{$R_\Pi \subseteq R$}
+        \begin{proof}
+            \step{a}{\pflet{$xR_\Pi y$}}
+            \step{b}{\pick\ $B \in \Pi$ such that $x \in B$ and $y \in B$}
+            \step{c}{\pick\ $z \in A$ such that $B = [z]_R$}
+            \step{d}{$z R x$}
+            \step{e}{$z R y$}
+            \step{f}{$x R y$}
+            \begin{proof}
+                \pf\ Since $R$ is symmetric and transitive.
+            \end{proof}
+        \end{proof}
+        \step{2}{$R \subseteq R_\Pi$}
+        \begin{proof}
+            \step{a}{\pflet{$xRy$}}
+            \step{b}{$x \in [x]_R$}
+            \step{c}{$y \in [x]_R$}
+            \step{d}{$x R_\Pi y$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 40}
+    We have $[2]_R = [3]_R$ but $[6]_R \neq [9]_R$ so there is no such function $f$.
+
+    \paragraph{Exercise 41}
+    \subparagraph{(a)}
+    \begin{proof}
+        \pf
+        \step{1}{$Q$ is reflexive on $\mathbb{R} \times \mathbb{R}$.}
+        \begin{proof}
+            \pf\ For any $x, y \in \mathbb{R}$, we have $x + y = x + y$,
+            hence $\langle x,y \rangle Q \langle x,y \rangle$
+        \end{proof}
+        \step{2}{$Q$ is symmetric.}
+        \begin{proof}
+            \step{a}{\assume{$\langle u,v \rangle Q \langle x,y \rangle$}}
+            \step{b}{$u + y = x + v$}
+            \step{c}{$x + v = u + y$}
+            \step{d}{$\langle x,y \rangle Q \langle u,v \rangle$}
+        \end{proof}
+        \step{3}{$Q$ is transitive.}
+        \begin{proof}
+            \step{a}{\assume{$\langle a,b \rangle Q \langle u,v \rangle$ and
+            $\langle u,v \rangle Q \langle x,y \rangle$}}
+            \step{b}{$a+v=u+b$}
+            \step{c}{$u+y=x+v$}
+            \step{d}{$a+y+x+b$}
+            \begin{proof}
+                \pf\ Adding \stepref{b} and \stepref{c} gives $a + u + v + y = b + u + v + x$.
+            \end{proof}
+            \step{e}{$\langle a,b \rangle Q \langle x,y \rangle$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \subparagraph{(b)}
+    We prove that, if $\langle u,v \rangle Q \langle x,y \rangle$ then $\langle u+2v,v+2u \rangle
+    Q \langle x+2y,y+2x \rangle$. It follows from Theorem 3Q that the function $G$ exists.
+
+    If $u+y=v+x$ then $u + 2v + y + 2x = v + 2u + x + 2y$ by adding $u + v + y + x$ to both sides.
+
+    \paragraph{Exercise 42}
+    Assume that $R$ is an equivalence relation on $A$ and that $F : A \times A \rightarrow A$.
+    Let us say that $F$ is \emph{compatible} with $R$ iff, whenever $xRx'$ and $yRy'$, then $F(\langle x,y \rangle) R F(\langle x',y' \rangle)$.
+    If $F$ is compatible with $R$ then there exists a unique $\hat{F} : (A / R) \times (A / R) \rightarrow A / R$ such that
+    \[ \hat{F}(\langle [x]_R, [y]_R \rangle) = [F(\langle x,y \rangle)]_R \text{ for all } x,y \in A \enspace . \]
+    If $F$ is not compatible with $R$ then no such $\hat{F}$ exists.
 \end{document}
