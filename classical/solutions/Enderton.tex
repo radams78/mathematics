@@ -1558,4 +1558,36 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \paragraph{Exercise 44}
+    \begin{proof}
+        \pf
+        \step{1}{$f$ is one-to-one.}
+        \begin{proof}
+            \step{a}{\pflet{$x,y \in A$ with $f(x) = f(y)$}}
+            \step{b}{$f(x) < f(y)$ and $f(y) < f(x)$ do not hold.}
+            \begin{proof}
+                \pf\ By trichotomy.
+            \end{proof}
+            \step{c}{$x < y$ and $y < x$ do not hold.}
+            \step{d}{$x = y$}
+            \begin{proof}
+                \pf\ By trichotomy.
+            \end{proof}
+        \end{proof}
+        \step{2}{Whenever $f(x) < f(y)$ then $x < y$}
+        \begin{proof}
+            \step{a}{\pflet{$x,y \in A$ with $f(x) < f(y)$}}
+            \step{b}{$f(x) = f(y)$ and $f(y) < f(x)$ do not hold.}
+            \begin{proof}
+                \pf\ By trichotomy.
+            \end{proof}
+            \step{c}{$x = y$ and $y < x$ do not hold.}
+            \step{d}{$x < y$}
+            \begin{proof}
+                \pf\ By trichotomy.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}
