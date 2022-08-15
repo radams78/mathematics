@@ -186,3 +186,9 @@
 \contentsline {paragraph}{Exercise 56}{34}%
 \contentsline {subparagraph}{(a)}{34}%
 \contentsline {subparagraph}{(b)}{34}%
+\contentsline {paragraph}{Exercise 57}{34}%
+\contentsline {subparagraph}{(a)}{34}%
+\contentsline {subparagraph}{(b)}{34}%
+\contentsline {paragraph}{Exercise 58}{34}%
+\contentsline {paragraph}{Exercise 59}{35}%
+\contentsline {paragraph}{Exercise 60}{35}%
