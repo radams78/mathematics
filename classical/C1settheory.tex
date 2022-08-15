@@ -829,14 +829,26 @@
         $\forall a \in \mathbf{A}. a^+ \in \mathbf{A}$.
     \end{definition}
 
+    \begin{axiom}[Infinity]
+        There exists an inductive set.
+    \end{axiom}
+
     \begin{definition}[Natural Number]
-        A \emph{natural number} is a set that belongs to every inductive class.
+        A \emph{natural number} is a set that belongs to every inductive set.
 
         We write $\omega$ for the class of all natural numbers.
     \end{definition}
 
     \begin{theorem}
-        The class $\omega$ is inductive, and is a subclass of every inductive class.
+        The class $\omega$ is a set.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Pick an inductive set $I$ (by the Axiom of Infinity), then apply a Subset Axiom to $I$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        The set $\omega$ is inductive, and is a subset of every inductive set.
     \end{theorem}
 
     \begin{proof}
@@ -847,16 +859,34 @@
         Any inductive subclass of $\omega$ is equal to $\omega$.
     \end{corollary}
 
-    \begin{axiom}[Infinity]
-        There exists an inductive set.
-    \end{axiom}
-
     \begin{theorem}
-        The class $\omega$ is a set.
+        Every natural number except 0 is the successor of some natural number.
     \end{theorem}
 
     \begin{proof}
-        \pf\ Pick an inductive set $I$ (by the Axiom of Infinity), then apply a Subset Axiom to $I$. \qed
+        \pf\ Easy proof by induction. \qed
     \end{proof}
 
+    \begin{definition}[Peano System]
+        A \emph{Peano system} is a triple $\langle N, S, e \rangle$ consisting of a set $N$,
+        a function $S : N \rightarrow N$ and an element $e \in N$ such that:
+        \begin{enumerate}
+            \item $e \notin \ran S$
+            \item $S$ is one-to-one
+            \item Any subset $A \subseteq N$ that contains $e$ and is closed under $S$ equals $N$.
+        \end{enumerate}
+    \end{definition}
+
+    \begin{theorem}
+        $\langle \omega, \sigma, 0 \rangle$ is a Peano system, where $\sigma = \{ \langle n, n^+ \rangle :
+        n \in \omega \}$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{$0 \notin \ran \sigma$}
+        \step{2}{$\sigma$ is one-to-one.}
+        \step{3}{Any subset $A \subseteq \omega$ that contains 0 and is closed under $\sigma$ equals $\omega$.}
+        \qed
+    \end{proof}
 \end{document}
