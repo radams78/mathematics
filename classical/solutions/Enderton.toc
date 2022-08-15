@@ -195,3 +195,13 @@
 \contentsline {chapter}{\numberline {4}Chapter 4 --- Natural Numbers}{36}%
 \contentsline {section}{\numberline {4.1}Inductive Sets}{36}%
 \contentsline {paragraph}{Exercise 1}{36}%
+\contentsline {section}{\numberline {4.2}Peano's Postulates}{36}%
+\contentsline {paragraph}{Exercise 2}{36}%
+\contentsline {paragraph}{Exercise 3}{36}%
+\contentsline {subparagraph}{(a)}{36}%
+\contentsline {subparagraph}{(b)}{36}%
+\contentsline {paragraph}{Exercise 4}{36}%
+\contentsline {paragraph}{Exercise 5}{36}%
+\contentsline {subparagraph}{(a)}{37}%
+\contentsline {subparagraph}{(b)}{37}%
+\contentsline {paragraph}{Exercise 6}{37}%

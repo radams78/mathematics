@@ -1830,4 +1830,56 @@
     \[ 3 = 2 \cup \{ 2 \} = 1 \cup \{ 1, 2 \} \]
     and so $1 \in 3$. But $1 \notin 1$ (since $1 = \{ \emptyset \}$ and we know $\{ \emptyset \} \neq
     \emptyset$ hence $\{ \emptyset \} \notin \{ \emptyset \}$). Therefore $1 \neq 3$.
+
+    \section{Peano's Postulates}
+
+    \paragraph{Exercise 2}
+    If $a$ is a transitive set then
+    \begin{align*}
+        \bigcup (a^+) & = a & (\text{Theorem 4E}) \\
+        & \subseteq a^+
+    \end{align*}
+
+    \paragraph{Exercise 3}
+    \subparagraph{(a)}
+    Suppose $a$ is a transitive set. Then $a \subseteq \mathcal{P} a$. Hence we have
+    $\bigcup \mathcal{P} a = a \subseteq \mathcal{P} a$ and so $\mathcal{P} a$.
+    
+    \subparagraph{(b)}
+    Suppose $\mathcal{P} a$ is a transitive set. Then $a = \bigcup \mathcal{P} a \subseteq \mathcal{P} a$
+    hence $a$ is transitive.
+
+    \paragraph{Exercise 4}
+    If $a$ is a transitive set then $\bigcup a \subseteq a$ so $\bigcup \bigcup a \subseteq \bigcup a$.
+    Hence $\bigcup a$ is transitive.
+
+    \paragraph{Exercise 5}
+    \subparagraph{(a)}
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$b \in \bigcup \mathcal{A}$}}
+        \step{2}{\pick\ $A \in \mathcal{A}$ such that $b \in A$}
+        \step{3}{$b \subseteq A$}
+        \begin{proof}
+            \pf\ Since $A$ is transitive.
+        \end{proof}
+        \step{4}{$b \subseteq \bigcup \mathcal{A}$}
+        \qed
+    \end{proof}
+
+    \subparagraph{(b)}
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$b \in \bigcap \mathcal{A}$}}
+        \step{2}{For all $A \in \mathcal{A}$ we have $b \subseteq A$}
+        \begin{proof}
+            \pf\ Since $b \in A$ and $A$ is transitive.
+        \end{proof}
+        \step{3}{$b \subseteq \bigcap \mathcal{A}$}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 6}
+    We have $\bigcup (a^+) = \bigcup a \cup a$ (see the proof of Theorem 4E). So if $\bigcup (a^+) = a$
+    we have $\bigcup a \cup a = a$ and so $\bigcup a \subseteq a$.
 \end{document}
