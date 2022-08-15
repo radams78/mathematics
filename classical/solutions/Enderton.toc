@@ -158,3 +158,31 @@
 \contentsline {section}{\numberline {3.7}Ordering Relations}{30}%
 \contentsline {paragraph}{Exercise 43}{30}%
 \contentsline {paragraph}{Exercise 44}{30}%
+\contentsline {paragraph}{Exercise 45}{31}%
+\contentsline {section}{\numberline {3.8}Review Exercises}{31}%
+\contentsline {paragraph}{Exercise 46}{31}%
+\contentsline {subparagraph}{(a)}{31}%
+\contentsline {subparagraph}{(b)}{31}%
+\contentsline {paragraph}{Exercise 47}{31}%
+\contentsline {subparagraph}{(a)}{32}%
+\contentsline {subparagraph}{(b)}{32}%
+\contentsline {paragraph}{Exercise 48}{32}%
+\contentsline {subparagraph}{(a)}{32}%
+\contentsline {subparagraph}{(b)}{32}%
+\contentsline {paragraph}{Exercise 49}{32}%
+\contentsline {paragraph}{Exercise 50}{32}%
+\contentsline {subparagraph}{(a)}{32}%
+\contentsline {subparagraph}{(b)}{33}%
+\contentsline {paragraph}{Exercise 51}{33}%
+\contentsline {paragraph}{Exercise 52}{33}%
+\contentsline {paragraph}{Exercise 53}{33}%
+\contentsline {paragraph}{Exercise 54}{33}%
+\contentsline {subparagraph}{(a)}{33}%
+\contentsline {subparagraph}{(b)}{33}%
+\contentsline {subparagraph}{(c)}{34}%
+\contentsline {paragraph}{Exercise 55}{34}%
+\contentsline {subparagraph}{(a)}{34}%
+\contentsline {subparagraph}{(b)}{34}%
+\contentsline {paragraph}{Exercise 56}{34}%
+\contentsline {subparagraph}{(a)}{34}%
+\contentsline {subparagraph}{(b)}{34}%

@@ -1590,4 +1590,197 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \paragraph{Exercise 45}
+    \begin{proof}
+        \pf
+        \step{1}{$<_L$ is transitive.}
+        \begin{proof}
+            \step{a}{\pflet{$\langle a_1,b_1 \rangle <_L \langle a_2,b_2 \rangle$ and 
+            $\langle a_2, b_2 \rangle <_L \langle a_3, b_3 \rangle$}
+            \prove{$\langle a_1, b_1 \rangle < \langle a_3, b_3 \rangle$}}
+            \step{b}{\case{$a_1 <_A a_2$ and $a_2 <_A a_3$}}
+            \begin{proof}
+                \pf\ Then $a_1 <_A <_3$
+            \end{proof}
+            \step{c}{\case{$a_1 <_A a_2$, $a_2 = a_3$, $b_2 <_B b_3$}}
+            \begin{proof}
+                \pf\ Then $a_1 <_A <_3$
+            \end{proof}
+            \step{d}{\case{$a_1 = a_2$, $b_1 <_B b_2$ and $a_2 <_A a_3$}}
+            \begin{proof}
+                \pf\ Then $a_1 <_A <_3$
+            \end{proof}
+            \step{e}{\case{$a_1 = a_2$, $b_1 <_B b_2$, $a_2 = a_3$, $b_2 <_B b_3$}}
+            \begin{proof}
+                \pf\ Then $a_1 = a_3$ and $b_1 <_B b_3$
+            \end{proof}
+        \end{proof}
+        \step{2}{$<_L$ satisfies trichotomy on $A \times B$.}
+        \begin{proof}
+            \step{a}{\pflet{$\langle a_1, b_1 \rangle$ and $\langle a_2, b_2 \rangle$ be elements of $A \times B$}}
+            \step{b}{Exactly one of $a_1 <_A a_2$, $a_1 = a_2$, $a_2 <_A a_1$ holds.}
+            \step{c}{Exactly one of $b_1 <_B b_2$, $b_1 = b_2$, $b_2 <_B b_1$ holds.}
+            \step{d}{Exactly one of $a_1 <_A a_2$, ($a_1 = a_2$ and $b_1 <_B b_2$), ($a_1 = a_2$ and $b_1 = b_2$),
+            ($a_1 = a_2$ and $b_2 <_L b_1$), $a_2 <_A a_1$ holds.}
+            \step{e}{Exactly one of $\langle a_1, b_1 \rangle <_L \langle a_2, b_2 \rangle$,
+            $\langle a_1, b_1 \rangle = \langle a_2, b_2 \rangle$,
+            $\langle a_2, b_2 \rangle <_L \langle a_1, b_1 \rangle$ holds.}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \section{Review Exercises}
+
+    \paragraph{Exercise 46}
+    \subparagraph{(a)}
+    \begin{align*}
+        \bigcap \bigcap \langle x,y \rangle & = \bigcap \{ x \} \\
+        & = x
+    \end{align*}
+
+    \subparagraph{(b)}
+    \begin{align*}
+        \bigcap \bigcap \bigcap \{ \langle x,y \rangle \}^{-1}
+        & = \bigcap \bigcap \bigcap \{ \langle y,x \rangle \} \\
+        & = \bigcap \bigcap \langle y,x \rangle \\
+        & = y & (\text{by part (a)})
+    \end{align*}
+
+    \paragraph{Exercise 47}
+    \subparagraph{(a)}
+    There are eight:
+    \begin{align*}
+        \{ \langle 0, 3 \rangle, \langle 1, 3 \rangle, \langle 2, 3 \rangle \}, \\
+        \{ \langle 0, 3 \rangle, \langle 1, 3 \rangle, \langle 2, 4 \rangle \}, \\
+        \{ \langle 0, 3 \rangle, \langle 1, 4 \rangle, \langle 2, 3 \rangle \}, \\
+        \{ \langle 0, 3 \rangle, \langle 1, 4 \rangle, \langle 2, 4 \rangle \}, \\
+        \{ \langle 0, 4 \rangle, \langle 1, 3 \rangle, \langle 2, 3 \rangle \}, \\
+        \{ \langle 0, 4 \rangle, \langle 1, 3 \rangle, \langle 2, 4 \rangle \}, \\
+        \{ \langle 0, 4 \rangle, \langle 1, 4 \rangle, \langle 2, 3 \rangle \}, \\
+        \{ \langle 0, 4 \rangle, \langle 1, 4 \rangle, \langle 2, 4 \rangle \}
+    \end{align*}
+
+    \subparagraph{(b)}
+    There are six:
+    \begin{align*}
+        \{ \langle 0,3 \rangle, \langle 1, 4 \rangle, \langle 2, 5 \rangle \}, \\
+        \{ \langle 0,3 \rangle, \langle 1, 5 \rangle, \langle 2, 4 \rangle \}, \\
+        \{ \langle 0,4 \rangle, \langle 1, 3 \rangle, \langle 2, 5 \rangle \}, \\
+        \{ \langle 0,4 \rangle, \langle 1, 5 \rangle, \langle 2, 3 \rangle \}, \\
+        \{ \langle 0,5 \rangle, \langle 1, 3 \rangle, \langle 2, 4 \rangle \}, \\
+        \{ \langle 0,5 \rangle, \langle 1, 4 \rangle, \langle 2, 3 \rangle \}
+    \end{align*}
+
+    \paragraph{Exercise 48}
+    \subparagraph{(a)}
+    The only ordered pair in $\mathcal{P} T$ is $\langle \emptyset, \emptyset \rangle = \{ \{ \emptyset \} \}$.
+
+    \subparagraph{(b)}
+    \begin{align*}
+        (\mathcal{P} T)^{-1} \circ (\mathcal{P} T \restriction \{ \emptyset \})
+        & = \{ \langle \emptyset, \emptyset \rangle \} \circ \{ \langle \emptyset, \emptyset \rangle \} \\
+        & = \{ \langle \emptyset, \emptyset \rangle \}
+    \end{align*}
+
+    \paragraph{Exercise 49}
+    There are six:
+    \begin{align*}
+        \{ \langle 0,0 \rangle, \langle 1,1 \rangle, \langle 2,2 \rangle \}, \\
+        \{ \langle 0,0 \rangle, \langle 0,1 \rangle, \langle 1,0 \rangle, \langle 1,1 \rangle, \langle 2,2 \rangle \}, \\
+        \{ \langle 0,0 \rangle, \langle 0,2 \rangle, \langle 1,1 \rangle, \langle 2,0 \rangle, \langle 2,2 \rangle \}, \\
+        \{ \langle 0,0 \rangle, \langle 1,1 \rangle, \langle 1,2 \rangle, \langle 2,1 \rangle, \langle 2,2 \rangle \}, \\
+        \{ \langle 0,0 \rangle, \langle 0,1 \rangle, \langle 0,2 \rangle,
+        \langle 1,0 \rangle, \langle 1,1 \rangle, \langle 1,2 \rangle,
+        \langle 2,0 \rangle, \langle 2,1 \rangle, \langle 2,2 \rangle \}
+    \end{align*}
+
+    \paragraph{Exercise 50}
+    \subparagraph{(a)}
+    $\{ \langle 0,1 \rangle, \langle 0,2 \rangle, \langle 0,3 \rangle, \langle 1,3 \rangle,
+    \langle 2,1 \rangle, \langle 2,3 \rangle \}$
+    \subparagraph{(b)}
+    $\{ \langle 0,1 \rangle, \langle 0,2 \rangle, \langle 0,3 \rangle,
+    \langle 2,1 \rangle, \langle 3,1 \rangle, \langle 3,2 \rangle \}$
+
+    \paragraph{Exercise 51}
+    There are three:
+    \begin{align*}
+        \{ \langle 1,0 \rangle, \langle 1,2 \rangle, \langle 2,0 \rangle \}, \\
+        \{ \langle 1,0 \rangle, \langle 2,0 \rangle, \langle 2,1 \rangle \}, \\
+        \{ \langle 0,1 \rangle, \langle 2,0 \rangle, \langle 2,1 \rangle \}
+    \end{align*}
+
+    \paragraph{Exercise 52}
+    We can conclude this if we know that $A$ and $B$ are nonempty, or that $C$ and $D$ are nonempty.
+
+    Suppose $A$ and $B$ are nonempty. Then $A \times B = C \times D \neq \emptyset$ so $C$ and $D$ are nonempty.
+    We now prove $A \subseteq C$.
+
+    Let $a \in A$. Pick some $b \in B$. Then $\langle a,b \rangle \in A \times B = C \times D$ and so $a \in C$.
+
+    We can similarly prove $C \subseteq A$, $B \subseteq D$ and $D \subseteq B$.
+
+    \paragraph{Exercise 53}
+    \begin{align*}
+        x(R \cup S)^{-1} y & \Leftrightarrow y (R \cup S) x \\
+        & \Leftrightarrow yRx \text{ or } ySx \\
+        & \Leftrightarrow xR^{-1}y \text{ or } xS^{-1}y \\
+        & \Leftrightarrow x(R^{-1} \cup S^{-1}) y \\
+        x(R \cap S)^{-1} y & \Leftrightarrow y (R \cap S) x \\
+        & \Leftrightarrow yRx \text{ and } ySx \\
+        & \Leftrightarrow xR^{-1}y \text{ and } xS^{-1}y \\
+        & \Leftrightarrow x(R^{-1} \cap S^{-1}) y \\
+        x(R - S)^{-1} y & \Leftrightarrow y (R - S) x \\
+        & \Leftrightarrow yRx \text{ and } \neg ySx \\
+        & \Leftrightarrow xR^{-1}y \text{ and } \neg xS^{-1}y \\
+        & \Leftrightarrow x(R^{-1} - S^{-1}) y
+    \end{align*}
+
+    \paragraph{Exercise 54}
+    \subparagraph{(a)}
+    \begin{align*}
+        \langle x,y \rangle \in A \times (B \cap C) & \Leftrightarrow x \in A \ \&\ y \in B \ \&\ y \in C \\
+        & \Leftarrow \langle x,y \rangle \in (A \times B) \cap (A \times C)
+    \end{align*}
+
+    \subparagraph{(b)}
+    \begin{align*}
+        \langle x,y \rangle \in A \times (B \cup C) & \Leftrightarrow x \in A \ \& (y \in B \text{ or } y \in C) \\
+        & \Leftrightarrow (x \in A \ \&\ y \in B) \text{ or } (x \in A \ \&\ y \in C) \\
+        & \Leftrightarrow \langle x,y \rangle \in (A \times B) \cup (A \times C)
+    \end{align*}
+
+    \subparagraph{(c)}
+    \begin{align*}
+        \langle x,y \rangle \in A \times (B - C) & \Leftrightarrow x \in A \ \&\ y \in B \ \&\ y \notin C \\
+        & \Leftrightarrow \langle x,y \rangle \in (A \times B) - (A \times C)
+    \end{align*}
+
+    \paragraph{Exercise 55}
+    \subparagraph{(a)}
+    No. Take $A = \{0\}$, $B = \{1\}$, $C = \{2\}$. Then $(A \times A) \cup (B \times C) = \{ \langle 0,0
+    \rangle, \langle 1,2 \rangle \}$ while $(A \cup B) \times (A \cup C) = \{
+        \langle 0,0 \rangle, \langle 0,2 \rangle, \langle 1,0 \rangle, \langle 1,2 \rangle \}$.
+
+    \subparagraph{(b)}
+    Yes.
+    \begin{align*}
+        \langle x,y \rangle \in (A \times A) \cap (B \times C)
+        & \Leftrightarrow x \in A\ \&\ y \in A\ \&\ x \in B\ \&\ y \in C \\
+        & \Leftrightarrow \langle x,y \rangle \in (A \cap B) \times (A \cap C)
+    \end{align*}
+
+    \paragraph{Exercise 56}
+    \subparagraph{(a)}
+    Yes.
+    \begin{align*}
+        x \in \dom (R \cup S) & \Leftrightarrow \exists y (xRy \text{ or } xSy) \\
+        & \Leftrightarrow \exists y.xRy \text{ or } \exists y.xSy \\
+        & \Leftrightarrow x \in \dom R \cup \dom S
+    \end{align*}
+
+    \subparagraph{(b)}
+    No. Take $R = \{ \langle 0,0 \rangle \}$ and $S = \{ \langle 0,1 \rangle \}$. Then $\dom (R \cap S)
+    = \dom \emptyset = \emptyset$ while $\dom R \cap \dom S = \{ 0 \} \cap \{ 0 \} = \{ 0 \}$.
 \end{document}
