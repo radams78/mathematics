@@ -877,16 +877,89 @@
         \end{enumerate}
     \end{definition}
 
+    \begin{definition}[Transitive Set]
+        A set $A$ is a \emph{transitive set} iff every member of a member of $A$ is a member of $A$.
+    \end{definition}
+
     \begin{theorem}
-        $\langle \omega, \sigma, 0 \rangle$ is a Peano system, where $\sigma = \{ \langle n, n^+ \rangle :
-        n \in \omega \}$.
+        \label{theorem:union_transitive_successor}
+        For any transitive set $a$, $\bigcup (a^+) = a$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \begin{align*}
+            \bigcup (a^+) & = \bigcup (a \cup \{ a \}) \\
+            & = \bigcup a \cup \bigcup \{a\} \\
+            & = \bigcup a \cup a \\
+            & = a
+        \end{align*}
+        since $\bigcup a \subseteq a$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \label{theorem:natural_number_transitive}
+        Every natural number is a transitive set.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{0 is a transitive set.}
+        \begin{proof}
+            \pf\ Vacuous.
+        \end{proof}
+        \step{2}{For any natural number $n$, if $n$ is a transitive set then $n^+$ is a transitive set.}
+        \begin{proof}
+            \step{a}{\pflet{$n$ be a natural number that is a transitive set.}}
+            \step{b}{$\bigcup (n^+) \subseteq n^+$}
+            \begin{proof}
+                \pf\ Theorem \ref{theorem:union_transitive_successor}.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        $\langle \omega, \sigma, 0 \rangle$ is a Peano system, where $0 = \emptyset$ and 
+        $\sigma = \{ \langle n, n^+ \rangle : n \in \omega \}$.
     \end{theorem}
 
     \begin{proof}
         \pf
         \step{1}{$0 \notin \ran \sigma$}
+        \begin{proof}
+            \pf\ For any $n \in \omega$ we have $0 \neq n^+$ since $n \in n^+$
+            and $n \notin 0$.
+        \end{proof}
         \step{2}{$\sigma$ is one-to-one.}
+        \begin{proof}
+            \pf\ If $m^+ = n^+$ then $m = \bigcup (m^+) = \bigcup (n^+) = n$ using Theorems
+            \ref{theorem:union_transitive_successor} and \ref{theorem:natural_number_transitive}.
+        \end{proof}
         \step{3}{Any subset $A \subseteq \omega$ that contains 0 and is closed under $\sigma$ equals $\omega$.}
         \qed
     \end{proof}
+
+    \begin{theorem}
+        The set $\omega$ is a transitive set.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{For every natural number $n$ we have $\forall m \in n$. $m$ is a natural number.}
+        \begin{proof}
+            \step{a}{$\forall m \in 0$. $m$ is a natural number.}
+            \begin{proof}
+                \pf\ Vacuous.
+            \end{proof}
+            \step{b}{If $n$ is a natural number and $\forall m \in n$. $m$ is a natural number, then
+            $\forall m \in n^+$. $m$ is a natural number.}
+            \begin{proof}
+                \pf\ Since if $m \in n^+$ we have either $m \in n$ or $m = n$, and $m$ is a natural number
+                in either case.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+    
 \end{document}
