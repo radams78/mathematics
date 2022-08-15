@@ -791,5 +791,49 @@
     \begin{proof}
         \pf\ The unique such $\overline{F}$ is $\{ ([x],F(x)) : x \in A \}$. \qed
     \end{proof}
-    
+
+    \section{Linear Orders}
+
+    \begin{definition}[Linear Ordering]
+        Let $\mathbf{A}$ be a class. A \emph{linear ordering} or \emph{total ordering} on $\mathbf{A}$
+        is a relation $\mathbf{R}$ on $\mathbf{A}$ such that:
+        \begin{itemize}
+            \item $\mathbf{R}$ is transitive.
+            \item $\mathbf{R}$ satisfies \emph{trichotomy} on $\mathbf{A}$; i.e. for any $x, y \in \mathbf{A}$,
+            exactly one of
+            \[ x\mathbf{R}y, x=y, y\mathbf{R}x \]
+            holds.
+        \end{itemize}
+    \end{definition}
+
+    \begin{theorem}
+        Let $\mathbf{R}$ be a linear ordering on $\mathbf{A}$.
+        \begin{enumerate}
+            \item There is no $x$ such that $x \mathbf{R} x$.
+            \item For distinct $x$ and $y$ in $\mathbf{A}$, either $x\mathbf{R}y$ or $y\mathbf{R}x$.
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Immediate from trichotomy. \qed
+    \end{proof}
+
+    \section{Natural Numbers}
+
+    \begin{definition}[Successor]
+        The \emph{successor} of a set $a$ is the set $a^+ = a \cup \{ a \}$.
+    \end{definition}
+
+    \begin{definition}[Inductive]
+        A class $\mathbf{A}$ is \emph{inductive} iff $\emptyset \in \mathbf{A}$ and
+        $\forall a \in \mathbf{A}. a^+ \in \mathbf{A}$.
+    \end{definition}
+
+    \begin{axiom}[Infinity]
+        There exists an inductive set.
+    \end{axiom}
+
+    \begin{definition}[Natural Number]
+        A \emph{natural number} is a set that belongs to every inductive set.
+    \end{definition}
 \end{document}
