@@ -961,5 +961,164 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \begin{theorem}[Recursion Theorem on $\omega$]
+        Let $A$ be a set, $a \in A$ and $F : A \rightarrow A$. Then there exists a unique function
+        $h : \omega \rightarrow A$ such that
+        \[ h(0) = a \enspace , \]
+        and for every $n$ in $\omega$,
+        \[ h(n^+) = F(h(n)) \enspace . \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{Let us call a function $v$ \emph{acceptable} iff $\dom v \subseteq \omega$,
+        $\ran v \subseteq A$ and:
+        \begin{enumerate}
+            \item If $0 \in \dom v$ then $v(0) = a$
+            \item For all $n \in \omega$, if $n^+ \in \dom v$ then $n \in \dom v$ and $v(n^+) = F(v(n))$.
+        \end{enumerate}}
+        \step{2}{\pflet{$\mathcal{K}$ be the set of acceptable functions.}}
+        \step{3}{\pflet{$h = \bigcup \mathcal{K}$}}
+        \step{4}{$h$ is a function.}
+        \begin{proof}
+            \step{a}{\pflet{$S = \{ n \in \omega : \text{for at most one } y, (n,y) \in h \}$}}
+            \step{b}{$S$ is inductive.}
+            \begin{proof}
+                \step{i}{$0 \in S$}
+                \begin{proof}
+                    \step{one}{\pflet{$\langle 0, y_1 \rangle, \langle 0, y_2 \rangle \in h$}}
+                    \step{two}{\pick\ acceptable $v_1$ and $v_2$ such that $v_1(0) = y_1$ and $v_2(0) = y_2$}
+                    \step{three}{$y_1 = a$}
+                    \step{four}{$y_2 = a$}
+                    \step{five}{$y_1 = y_2$}
+                \end{proof}
+                \step{ii}{$\forall k \in S. k^+ \in S$}
+                \begin{proof}
+                    \step{one}{\pflet{$k \in S$}}
+                    \step{two}{\pflet{$(k^+,y_1),(k^+,y_2) \in h$}}
+                    \step{three}{\pick\ acceptable $v_1$, $v_2$ such that $v_1(k^+)=y_1$ and $v_2(k^+)=y_2$}
+                    \step{four}{$y_1 = F(v_1(k))$}
+                    \step{five}{$f_2 = F(v_2(k))$}
+                    \step{six}{$v_1(k) = v_2(k)$}
+                    \begin{proof}
+                        \step{A}{$(k,v_1(k)), (k,v_2(k)) \in h$}
+                        \qedstep
+                        \begin{proof}
+                            \pf\ By \stepref{one}
+                        \end{proof}
+                    \end{proof}
+                    \step{seven}{$y_1 = y_2$}
+                \end{proof}
+            \end{proof}
+            \step{c}{$S = \omega$}
+        \end{proof}
+        \step{5}{$h$ is acceptable.}
+        \begin{proof}
+            \step{a}{If $0 \in \dom h$ then $h(0)= a$}
+            \begin{proof}
+                \step{i}{\assume{$0 \in \dom h$}}
+                \step{ii}{\pick\ $v$ acceptable with $v(0) = h(0)$}
+                \step{iii}{$v(0) = a$}
+                \step{iv}{$h(0) = a$}
+            \end{proof}
+            \step{b}{For all $n \in \omega$, if $n^+ \in \dom h$ then $n \in \dom h$ and $h(n^+) = F(h(n))$}
+            \begin{proof}
+                \step{i}{\pflet{$n \in \omega$ with $n^+ \in \dom h$}}
+                \step{ii}{\pick\ $v$ acceptable with $v(n^+) = h(n^+)$}
+                \step{iii}{$n \in \dom v$}
+                \step{iv}{$v(n) = h(n)$}
+                \step{v}{$h(n^+) = F(h(n))$}
+                \begin{proof}
+                    \pf
+                    \begin{align*}
+                        h(n^+) & = v(n^+) \\
+                        & = F(v(n)) \\
+                        & = F(h(n))
+                    \end{align*}
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \step{6}{$\dom h = \omega$}
+        \begin{proof}
+            \step{a}{$0 \in \dom h$}
+            \begin{proof}
+                \pf\ Since $\{ (0,a) \}$ is an acceptable function.
+            \end{proof}
+            \step{b}{$\forall n \in \dom h. n^+ \in \dom h$}
+            \begin{proof}
+                \step{i}{\pflet{$n \in \dom h$}}
+                \step{ii}{\pick\ an acceptable $v$ such that $n \in \dom v$}
+                \step{iii}{\assume{w.l.o.g. $n^+ \notin \dom v$}}
+                \step{iv}{$v \cup \{ (n^+, F(v(n))) \}$ is acceptable.}
+            \end{proof}
+        \end{proof}
+        \step{7}{For any acceptable function $h' : \omega \rightarrow A$ we have $h' = h$}
+        \begin{proof}
+            \step{a}{\pflet{$h' : \omega \rightarrow A$ be acceptable.}}
+            \step{b}{$h'(0) = h(0)$}
+            \begin{proof}
+                \pf\ $h'(0) = h(0) = a$
+            \end{proof}
+            \step{c}{$\forall n \in \omega. h'(n) = h(n) \Rightarrow h'(n^+) = h(n^+)$}
+            \begin{proof}
+                \pf\ We have $h'(n^+) = F(h'(n)) = F(h(n)) = h(n^+)$.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        Let $(N,S,e)$ be a Peano system. Then $(\omega, \sigma, 0)$ is isomorphic to $(N,S,e)$, i.e. there is
+        a function $h$ mapping $\omega$ one-to-one onto $N$ in a way that preserves the successor operation
+        \[ h(\sigma(n)) = S(h(n)) \]
+        and the zero element
+        \[ h(0) = e \enspace . \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{There exists a function $h$ that satisfies those two conditions.}
+        \begin{proof}
+            \pf\ By the Recursion Theorem.
+        \end{proof}
+        \step{2}{For all $m,n \in \omega$, if $m \neq n$ then $h(m) \neq h(n)$}
+        \begin{proof}
+            \step{a}{For all $n \in \omega$, if $n \neq 0$ then $h(n) \neq h(0)$}
+            \begin{proof}
+                \step{i}{\pflet{$n \in \omega$}}
+                \step{ii}{\assume{$n \neq 0$}}
+                \step{iii}{\pick\ $p$ such that $n = p^+$}
+                \step{iv}{$h(n) \neq h(0)$}
+                \begin{proof}
+                    \pf\ $h(n) = S(h(p)) \neq e = h(0)$.
+                \end{proof}
+            \end{proof}
+            \step{b}{For all $m \in \omega$, if $\forall n(m \neq n \Rightarrow h(m) \neq h(n))$
+            then $\forall n(m^+ \neq n \Rightarrow h(m^+) \neq h(n))$}
+            \begin{proof}
+                \step{i}{\pflet{$m \in \omega$}}
+                \step{ii}{\assume{$\forall n(m \neq n \Rightarrow h(m) \neq h(n))$}}
+                \step{iii}{\pflet{$n \in \omega$}}
+                \step{iv}{\assume{$m^+ \neq n$} \prove{$h(m^+) \neq h(n)$}}
+                \step{v}{\case{$n = 0$}}
+                \begin{proof}
+                    \pf\ $h(m^+) = S(h(m)) \neq e = h(n)$
+                \end{proof}
+                \step{vi}{\case{$n = p^+$}}
+                \begin{proof}
+                    \step{one}{$m \neq p$}
+                    \step{two}{$h(m) \neq h(p)$}
+                    \step{three}{$S(h(m)) \neq S(h(p))$}
+                    \step{four}{$h(m^+) \neq h(p^+)$}
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \step{3}{For all $x \in N$, there exists $n \in \omega$ such that $h(n) = x$}
+        \begin{proof}
+            \pf\ An easy induction on $x$.
+        \end{proof}
+        \qed
+    \end{proof}
     
 \end{document}

@@ -205,3 +205,5 @@
 \contentsline {subparagraph}{(a)}{37}%
 \contentsline {subparagraph}{(b)}{37}%
 \contentsline {paragraph}{Exercise 6}{37}%
+\contentsline {section}{\numberline {4.3}Recursion on $\omega $}{37}%
+\contentsline {paragraph}{Exercise 7}{37}%

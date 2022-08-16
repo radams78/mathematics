@@ -1882,4 +1882,16 @@
     \paragraph{Exercise 6}
     We have $\bigcup (a^+) = \bigcup a \cup a$ (see the proof of Theorem 4E). So if $\bigcup (a^+) = a$
     we have $\bigcup a \cup a = a$ and so $\bigcup a \subseteq a$.
+
+    \section{Recursion on $\omega$}
+
+    \paragraph{Exercise 7}
+    We have $h_1(0) = h_2(0) = a$ so $0 \in S$.
+
+    Now let $n \in S$; we prove $n^+ \in S$. We have $h_1(n) = h_2(n)$ and therefore
+    \begin{align*}
+        h_1(n^+) & = F(h_1(n)) \\
+        & = F(h_2(n)) \\
+        & = h_2(n^+)
+    \end{align*}
 \end{document}
