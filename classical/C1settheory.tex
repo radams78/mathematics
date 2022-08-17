@@ -1151,6 +1151,50 @@
         \end{align*}
     \end{proof}
 
+    \begin{theorem}[Commutative Law for Addition]
+        \[ \forall m,n \in \omega. m + n = n + m \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{$\forall n \in \omega. 0 + n = n + 0$}
+        \begin{proof}
+            \step{a}{$0 + 0 = 0 + 0$}
+            \step{b}{For all $n \in \omega$, if $0 + n = n + 0$ then $0 + n^+ = n^+ + 0$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    0 + n^+ & = (0 + n)^+ \\
+                    & = n^+ & (\text{induction hypothesis}) \\
+                    & = n^+ + 0
+                \end{align*}
+            \end{proof}
+        \end{proof}
+        \step{2}{For all $m \in \omega$, if $\forall n. m + n = n + m$ then $\forall n. m^+ + n = n + m^+$}
+        \begin{proof}
+            \step{a}{\pflet{$m \in \omega$}}
+            \step{b}{\assume{$\forall n. m + n = n + m$}}
+            \step{c}{$m^+ + 0 = 0 + m^+$}
+            \begin{proof}
+                \pf\ From \stepref{1}
+            \end{proof}
+            \step{d}{For all $n \in \omega$, if $m^+ + n = n + m^+$ then $m^+ + n^+ = n^+ + m^+$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    m^+ + n^+ & = (m^+ + n)^+ \\
+                    & = (n + m^+)^+ \\
+                    & = (n + m)^{++} \\
+                    & = (m + n)^{++} & (\text{\stepref{b}})\\
+                    & = (m + n^+)^+ \\
+                    & = (n^+ + m)^+ & (\text{\stepref{b}})\\
+                    & = n^+ + m^+
+                \end{align*}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
     \begin{definition}[Multiplication]
         \emph{Multiplication} $\cdot$ is the binary operation on $\omega$ such that, for all $m, n \in \omega$,
         \begin{align*}
@@ -1159,4 +1203,105 @@
         \end{align*}
     \end{definition}
 
+    \begin{theorem}[Distributive Law]
+        \[ \forall m,n,p \in \omega. m(n+p) = mn + mp \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{$\forall m,n \in \omega. m(n+0) = mn+m0$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                m(n+0) & = mn \\
+                & = mn+0 \\
+                & = mn+m0
+            \end{align*}
+        \end{proof}
+        \step{2}{For all $p \in \omega$, if $m(n+p) = mn+mp$ then $m(n+p^+) = mn + mp^+$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                m(n+p^+) & = m(n+p)^+ \\
+                & = m(n+p) + m \\
+                & = (mn + mp) + m \\
+                & = mn + (mp + m) & (\text{Associative Law for Addition}) \\
+                & = mn + mp^+
+            \end{align*}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}[Associative Law for Multiplication]
+        \[ \forall m,n,p \in \omega. m(np) = (mn)p \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{$\forall m,n \in \omega. m(n0) = (mn)0$}
+        \begin{proof}
+            \pf\ Both are equal to 0.
+        \end{proof}
+        \step{2}{For all $m,n,p \in \omega$, if $m(np) = (mn)p$ then $m(np^+) = (mn)p^+$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                m(np^+) & = m(np + n) \\
+                & = m(np) + mn & (\text{Distributive Law}) \\
+                & = (mn)p + mn \\
+                & = (mn)p^+
+            \end{align*}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}[Commutative Law for Multiplication]
+        \[ \forall m,n \in \omega. mn=nm \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{$\forall n \in \omega. 0n = n0$}
+        \begin{proof}
+            \step{a}{$0 \cdot 0 = 0 \cdot 0$}
+            \step{b}{For all $n \in \omega$, if $0n = n0$ then $0n^+ = n^+ 0$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    0n^+ & = 0n + 0 \\
+                    & = 0n \\
+                    & = n0 \\
+                    & = 0 \\
+                    & = n^+ 0
+                \end{align*}
+            \end{proof}
+        \end{proof}
+        \step{2}{For all $m \in \omega$, if $\forall n \in \omega.mn=nm$ then $\forall n \in \omega.
+        m^+n = nm^+$}
+        \begin{proof}
+            \step{a}{\pflet{$m \in \omega$}}
+            \step{b}{\assume{$\forall n \in \omega. mn=nm$}}
+            \step{c}{$m^+ 0 = 0 m^+$}
+            \begin{proof}
+                \pf\ By \stepref{1}.
+            \end{proof}
+            \step{d}{For all $n \in \omega$, if $m^+ n = n m^+$ then $m^+ n^+ = n^+ m^+$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    m^+ n^+ & = m^+ n + m^+ \\
+                    & = (m^+ n + m)^+ \\
+                    & = (nm^+ + m)^+ \\
+                    & = (nm + n + m)^+ \\
+                    & = (mn + n + m)^+ & (\text{\stepref{b}}) \\
+                    & = (mn + m + n)^+ & (\text{Associative and Commutative Laws for Addition}) \\
+                    & = (mn^+ + n)^+ \\
+                    & = (n^+ m + n)^+ & (\text{\stepref{b}}) \\
+                    & = n^+ m + n^+ \\
+                    & = n^+ m^+
+                \end{align*}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}

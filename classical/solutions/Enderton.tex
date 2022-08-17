@@ -1997,4 +1997,74 @@
         h(n^+) & = h(n) \cup f[\![h(n) \times h(n)]\!] & (n \in \omega)
     \end{align*}
     Define $C_* = \bigcup \ran h$. Then $C^* = C_*$.
+
+    \section{Arithmetic}
+
+    \paragraph{Exercise 13}
+    We prove the contrapositive. Assume $m \neq 0$ and $n \neq 0$. Then by Theorem 4C
+    there are natural numbers $p$, $q$ such that $m = p^+$ and $n = q^+$. Hence
+    $mn = p^+ q^+ = (p^+ q + p)^+ \neq 0$.
+
+    \paragraph{Exercise 14}
+    We prove the following facts for any natural number $n$:
+
+    \begin{enumerate}
+        \item $n$ is even if and only if $n^+$ is odd.
+        \begin{proof}
+            \pf\ If $n$ is even, say $n = 2p$, then $n^+ = 2p+1$ is odd.
+
+            If $n^+$ is odd, say $n^+ = 2p+1$, then $n = 2p$ is even.
+        \end{proof}
+        \item $n$ is odd if and only if $n^+$ is even.
+        \begin{proof}
+            \pf\ If $n$ is odd, say $n = 2p+1$, then $n^+ = 2(p+1)$ is even.
+
+            If $n^+$ is even, say $n^+ = 2p$, then we cannot have $p = 0$ (since $n^+ \neq 0$).
+            So $p = q + 1$ for some $q$. But then $n^+ = 2q+2$ so $n = 2q+1$ and $n$ is odd.
+        \end{proof}
+    \end{enumerate}
+
+    Now, 0 is even and 0 is not odd. By the two facts above, if $n$ is either even or odd but not both,
+    then $n^+$ is either odd or even but not both. The result follows by induction.
+
+    \paragraph{Exercise 15}
+    We have
+    \begin{align*}
+        m + (n + 0) & = m + n & \text{by (A1)} \\
+        & = (m + n) + 0 & \text{by (A1)}
+    \end{align*}
+    If $m + (n + p) = (m + n) + p$ then 
+    \begin{align*}
+        m + (n + p^+) & = m + (n + p)^+ & \text{by (A2)} \\
+        & = (m + (n + p))^+ & \text{by (A2)} \\
+        & = ((m + n) + p)^+ & \text{by induction hypothesis} \\
+        & = (m + n) + p^+ & \text{by (A2)}
+    \end{align*}
+
+    \paragraph{Exercise 16}
+    We first prove that $0 \cdot n = 0$ for all $n$. We have $0 \cdot 0 = 0$ by (M1), and if
+    $0 \cdot n = 0$ then
+    \begin{align*}
+        0 \cdot n^+ & = 0 \cdot n + 0 & \text{by (M2)} \\
+        & = 0 \cdot n & \text{by (A1)} \\
+        & = 0 & \text{by induction hypothesis}
+    \end{align*}
+
+    Now we prove that $m^+ \cdot n = m \cdot n + n$ for all $m, n$. We have
+    \begin{align*}
+        m^+ \cdot 0 & = 0 & \text{by (M1)} \\
+        m \cdot 0 + 0 & = m \cdot 0 & \text{by (A1)} \\
+        & = 0 & \text{by (M1)}
+    \end{align*}
+    Thus, $m^+ \cdot 0 = m \cdot 0 + 0$.
+
+    If $m^+ \cdot n = m \cdot n + n$ then
+    \begin{align*}
+        m^+ \cdot n^+ & = m^+ \cdot n + m^+ & \text{by (M2)} \\
+        & = (m^+ \cdot n + m)^+ & \text{by (A2)} \\
+        & = ((m \cdot n + n) + m)^+ & \text{by induction hypothesis} \\
+        & = ((m \cdot n + m) + n)^+ & \text{by associativity and commutativity of addition} \\
+        & = (m \cdot n^+ + n)^+ & \text{by (M2)} \\
+        & = m \cdot n^+ + n^+ & \text{by (A2)}
+    \end{align*}
 \end{document}

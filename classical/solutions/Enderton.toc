@@ -212,3 +212,8 @@
 \contentsline {paragraph}{Exercise 10}{38}%
 \contentsline {paragraph}{Exercise 11}{38}%
 \contentsline {paragraph}{Exercise 12}{38}%
+\contentsline {section}{\numberline {4.4}Arithmetic}{39}%
+\contentsline {paragraph}{Exercise 13}{39}%
+\contentsline {paragraph}{Exercise 14}{39}%
+\contentsline {paragraph}{Exercise 15}{39}%
+\contentsline {paragraph}{Exercise 16}{39}%
