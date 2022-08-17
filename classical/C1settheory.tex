@@ -1134,4 +1134,29 @@
             m + n^+ & = (m + n)^+
         \end{align*}
     \end{definition}
+
+    \begin{theorem}[Associative Law for Addition]
+        \[ \forall m,n,p \in \omega. m + (n + p) = (m + n) + p \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \[ m + (n + 0) = m + n = (m + n) + 0 \]
+        If $m + (n + p) = (m + n) + p$ then
+        \begin{align*}
+            m + (n + p^+) & = m + (n + p)^+ \\
+            & = (m + (n + p))^+ \\
+            & = ((m + n) + p)^+ \\
+            & = (m + n) + p^+ & \qed
+        \end{align*}
+    \end{proof}
+
+    \begin{definition}[Multiplication]
+        \emph{Multiplication} $\cdot$ is the binary operation on $\omega$ such that, for all $m, n \in \omega$,
+        \begin{align*}
+            m0 & = 0 \\
+            m \cdot n^+ & = mn + m
+        \end{align*}
+    \end{definition}
+
 \end{document}
