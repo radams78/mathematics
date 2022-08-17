@@ -1894,4 +1894,107 @@
         & = F(h_2(n)) \\
         & = h_2(n^+)
     \end{align*}
+
+    \paragraph{Exercise 8}
+    \begin{proof}
+        \pf
+        \step{1}{$\forall m,n \in \omega. h(n) = h(m) \Rightarrow n = m$}
+        \begin{proof}
+            \step{a}{$\forall n \in \omega. h(n) = h(0) \Rightarrow n = 0$}
+            \begin{proof}
+                \step{i}{\pflet{$n \in \omega$}}
+                \step{ii}{\assume{$h(n) = h(0)$}}
+                \step{iii}{$h(n) = c$}
+                \step{iv}{$\forall p \in \omega. n \neq p^+$}
+                \begin{proof}
+                    \pf\ Otherwise $f(h(p)) = c$ contradicting the fact that $c \in A - \ran f$.
+                \end{proof}
+                \step{v}{$n = 0$}
+                \begin{proof}
+                    \pf\ Theorem 4C.
+                \end{proof}
+            \end{proof}
+            \step{b}{For all $m \in \omega$, if $\forall n \in \omega. h(n) = h(m) \Rightarrow n = m$,
+                then $\forall n \in \omega. h(n) = h(m^+) \Rightarrow n = m^+$}
+            \begin{proof}
+                \step{i}{\pflet{$m \in \omega$}}
+                \step{ii}{\assume{$\forall n \in \omega. h(n) = h(m) \Rightarrow n = m$}}
+                \step{iii}{\pflet{$n \in \omega$}}
+                \step{iv}{\assume{$h(n) = h(m^+)$}}
+                \step{x}{$h(n) = f(h(m))$}
+                \step{v}{$n \neq 0$}
+                \begin{proof}
+                    \pf\ Otherwise $c = f(h(m))$ contradicting the fact that $c \in A - \ran f$.
+                \end{proof}
+                \step{vi}{\pick\ $p$ such that $n = p^+$}
+                \step{vii}{$f(h(p)) = f(h(m))$}
+                \step{viii}{$h(p) = h(m)$}
+                \begin{proof}
+                    \pf\ $f$ is one-to-one.
+                \end{proof}
+                \step{ix}{$p = m$}
+                \begin{proof}
+                    \pf\ By \stepref{ii}.
+                \end{proof}
+                \step{x}{$n = p^+ = m^+$}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 9}
+    \begin{proof}
+        \pf
+        \step{1}{$C^* \subseteq C_*$}
+        \begin{proof}
+            \step{a}{$f[\![ C_* ]\!] \subseteq C_*$}
+            \begin{proof}
+                \step{i}{\pflet{$x \in C_*$} \prove{$f(x) \in C_*$}}
+                \step{ii}{\pick\ $n$ such that $x \in h(n)$}
+                \step{iii}{$f(x) \in h(n^+)$}
+                \step{iv}{$f(x) \in C_*$}
+            \end{proof}
+        \end{proof}
+        \step{2}{$C_* \subseteq C^*$}
+        \begin{proof}
+            \step{a}{$\forall n \in \omega. h(n) \subseteq C^*$}
+            \begin{proof}
+                \step{i}{$h(0) \subseteq C^*$}
+                \begin{proof}
+                    \pf\ If $A \subseteq X \subseteq B$ and $f[\![X]\!] \subseteq X$ then $A \subseteq X$.
+                \end{proof}
+                \step{ii}{$\forall n \in \omega (h(n) \subseteq C^* \Rightarrow h(n^+) \subseteq C^*)$}
+                \begin{proof}
+                    \step{one}{\pflet{$n \in \omega$}}
+                    \step{two}{\assume{$h(n) \subseteq C^*$}}
+                    \step{three}{$f[\![h(n)]\!] \subseteq C^*$}
+                    \begin{proof}
+                        \step{A}{\pflet{$X$ be such that $A \subseteq X \subseteq B$ and $f[\![X]\!] \subseteq
+                        X$} \prove{$f[\![h(n)]\!] \subseteq X$}}
+                        \step{B}{$h(n) \subseteq X$}
+                        \step{C}{$f[\![h(n)]\!] \subseteq f[\![X]\!]$}
+                        \step{D}{$f[\![h(n)]\!] \subseteq X$}
+                    \end{proof}
+                    \step{four}{$h(n^+) \subseteq C^*$}
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 10}
+    $C^* = C_* = (0,1]$
+
+    \paragraph{Exercise 11}
+    $\{ n \in \mathbb{Z} \mid n \leq 0 \}$
+
+    \paragraph{Exercise 12}
+    Let $f : B \times B \rightarrow B$ and $A \subseteq B$. Let
+    \[ C^* = \bigcap \{ X \mid A \subseteq X \subseteq B\ \&\ f[\![X \times X]\!] \subseteq X \} \enspace . \]
+    Define the function $h : \omega \rightarrow \mathcal{P} B$ by
+    \begin{align*}
+        h(0) & = A \\
+        h(n^+) & = h(n) \cup f[\![h(n) \times h(n)]\!] & (n \in \omega)
+    \end{align*}
+    Define $C_* = \bigcup \ran h$. Then $C^* = C_*$.
 \end{document}
