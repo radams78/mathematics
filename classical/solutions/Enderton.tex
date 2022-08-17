@@ -2067,4 +2067,22 @@
         & = (m \cdot n^+ + n)^+ & \text{by (M2)} \\
         & = m \cdot n^+ + n^+ & \text{by (A2)}
     \end{align*}
+
+    \paragraph{Exercise 17}
+    The proof is by induction on $p$. We have
+    \begin{align*}
+        m^{n + 0} & = m^n & \text{by (A1)} \\
+        & = 0 + m^n & \text{by Theorem 4K(2)} \\
+        & = m^n \cdot 0 + m^n & \text{by (M1)} \\
+        & = m^n \cdot 1 & \text{by (M2)} \\
+        & = m^n \cdot m^0 & \text{by (E1)}
+    \end{align*}
+    If $m^{n+p} = m^n \cdot m^p$ then
+    \begin{align*}
+        m^{n+p^+} & = m^{(n+p)^+} & \text{by (A2)} \\
+        & = m^{n+p} m & \text{by (E2) }\\
+        & = (m^n m^p) m & \text{by induction hypothesis} \\
+        & = m^n (m^p m) & \text{by Theorem 4K (4)} \\
+        & = m^n m^{p^+} & \text{by (E2)}
+    \end{align*}
 \end{document}
