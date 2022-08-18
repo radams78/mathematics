@@ -224,3 +224,5 @@
 \contentsline {paragraph}{Exercise 20}{41}%
 \contentsline {paragraph}{Exercise 21}{41}%
 \contentsline {paragraph}{Exercise 22}{41}%
+\contentsline {paragraph}{Exercise 23}{41}%
+\contentsline {paragraph}{Exercise 24}{41}%

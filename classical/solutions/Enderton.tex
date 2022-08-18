@@ -2124,4 +2124,19 @@
     \paragraph{Exercise 22}
     We have $0 \in p^+$ (by trichotomy since $p^+ \notin 0$ because 0 is empty, and $p^+ \neq 0$ by Peano's
     First Postulate.) Hence $n = n + 0 \in n + p^+$ by Theorem 4N.
+
+    \paragraph{Exercise 23}
+    The proof is by induction on $n$. The statement is vacuously true for $n = 0$.
+
+    Suppose the statement is true for $n$. Let $m \in n^+$. Then $m \underline{\in} n$.
+
+    If $m = n$, then we have $m + 0^+ = n^+$.
+
+    If $m \in n$, pick $p$ such that $m + p^+ = n$ by the induction hypothesis. Then $m + p^{++} = n^+$.
+
+    \paragraph{Exercise 24}
+    Suppose $m \in p$. Then we cannot have $n \in q$ or $n = q$, as either of these would imply
+    $m + n \in p + q$. Hence $q \in n$ by trichotomy.
+
+    We prove $q \in n \Rightarrow m \in p$ similarly.
 \end{document}
