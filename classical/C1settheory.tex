@@ -822,6 +822,30 @@
         \pf\ Immediate from trichotomy. \qed
     \end{proof}
 
+    \begin{definition}[Strictly Monotone Functions]
+        Let $A$ and $B$ be linearly ordered sets. A function $f : A \rightarrow B$ is \emph{strictly
+        monotone} iff, for all $x, y \in A$, if $x < y$ then $f(x) < f(y)$.
+    \end{definition}
+
+    \begin{theorem}
+        Let $A$ and $B$ be linearly ordered sets and $f : A \rightarrow B$ be strictly monotone.
+        For all $x, y \in A$, if $f(x) < f(y)$ then $x < y$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ We have $f(x) \neq f(y)$ and $f(y) \not < f(x)$ by trichotomy, hence $x \neq y$ and $y \not < x$
+        since $f$ is strictly monotone, hence $x < y$ by trichotomy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Every strictly monotone function is injective.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ If $f(x) = f(y)$, then we have $f(x) \not < f(y)$ and $f(y) \not < f(x)$ by trichotomy,
+        hence $x \not < y$ and $y \not < x$ since $f$ is strictly monotone, hence $x = y$ by
+        trichotomy. \qed
+    \end{proof}
     \section{Natural Numbers}
 
     \begin{definition}[Successor]
@@ -1421,4 +1445,78 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \begin{corollary}
+        The relation $\in$ is a linear ordering on $\omega$.    
+    \end{corollary}
+
+    \begin{corollary}
+        For any natural numbers $m$ and $n$,
+        \[ m \in n \Leftrightarrow m \subset n \enspace . \]
+    \end{corollary}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$m, n \in \omega$}}
+        \step{2}{If $m \in n$ then $m \subset n$.}
+        \begin{proof}
+            \step{a}{\assume{$m \in n$}}
+            \step{b}{$m \subseteq n$}
+            \begin{proof}
+                \pf\ Theorem \ref{theorem:natural_number_transitive}.
+            \end{proof}
+            \step{c}{$m \neq n$}
+            \begin{proof}
+                \pf\ Lemma \ref{lemma:natural_number_irreflexive}.
+            \end{proof}
+        \end{proof}
+        \step{3}{If $m \subset n$ then $m \in n$.}
+        \begin{proof}
+            \pf\ We have $m \neq n$ and $n \notin m$ by \stepref{2}, hence $m \in n$ by trichotomy.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        \label{theorem:addition_strictly_monotone}
+        For any natural number $p$, the function that maps $n$ to $n + p$ is strictly monotone.
+        For any natural numbers $m$, $n$ and $p$, we have $m \in n$ if and only if $m + p \in n + p$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ We prove that $m \in n \Rightarrow m + p \in n + p$. This is an easy induction on $p$ using
+        Lemma \ref{lemma:natural_number_order_successor}. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any non-zero natural number $p$, the function that maps $n$ to $np$ is strictly monotone.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy induction on $p$ using Theorem \ref{theorem:addition_strictly_monotone}. \qed
+    \end{proof}
+
+    \begin{theorem}[Strong Induction]
+        Let $A$ be a subset of $\omega$ and suppose that, for all $n \in \omega$, we have
+        \[ (\forall m < n. m \in A) \Rightarrow n \in A \enspace . \]
+        Then $A = \omega$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Prove $\forall n \in \omega. \forall m < n. m \in A$ by induction on $n$. \qed
+    \end{proof}
+    
+    \begin{theorem}[Well-Ordering of $\omega$]
+        Every nonempty subset of $\omega$ has a least element.
+    \end{theorem}
+    
+    \begin{proof}
+        \pf\ If $A$ is a subset of $\omega$ with no least element, we prove $\forall n \in \omega. n \notin A$
+        by strong induction on $n$. \qed
+    \end{proof}
+
+    \begin{corollary}
+        There is no function $f : \omega \rightarrow \omega$ such that $f(n+1) < f(n)$ for every $n$.
+    \end{corollary}
+
 \end{document}

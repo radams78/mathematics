@@ -2085,4 +2085,43 @@
         & = m^n (m^p m) & \text{by Theorem 4K (4)} \\
         & = m^n m^{p^+} & \text{by (E2)}
     \end{align*}
+
+    \section{Ordering on $\omega$}
+
+    \paragraph{Exercise 18}
+    \begin{align*}
+        \in_\omega^{-1} [\![ \{ 7,8 \} ]\!]
+        & = \{ x \in \omega \mid x \in 7 \text{ or } x \in 8 \} \\
+        & = \{ 0, 1, 2, 3, 4, 5, 6, 7 \}
+    \end{align*}
+
+    \paragraph{Exercise 19}
+    The proof is by induction on $m$.
+
+    For $m = 0$, take $q = r = 0$. Then $m = d \cdot 0 + 0$ and $0 \in d$.
+
+    Suppose $m = dq + r$ and $r < d$. Then $r + 1 \leq d$. If $r + 1 < d$, then we have $m + 1 = dq + (r + 1)$ as required.
+    If $r + 1 = d$, then we have $m + 1 = dq + d = d(q+1) + 0$.
+
+    \paragraph{Exercise 20}
+    We first prove $A$ is closed downwards; that is, if $n \in A$ and $m \in n$ then $m \in A$. This holds
+    because if $n \in A$ and $m \in n$ then $m \in \bigcup A$ and $\bigcup A = A$.
+
+    Now, we prove $\forall n \in \omega. n \in A$ by induction on $n$.
+
+    To prove $0 \in A$: we are given that $A$ is nonempty. Pick some $a \in A$. Then $0 \underline{in} a$
+    so $0 \in A$ since $A$ is closed downwards.
+
+    Now let $n \in A$; we prove $n^+ \in A$. We have $n \in \bigcup A$; pick some $k \in A$ such that $n \in k$.
+    Then $n^+ \underline{\in} k$ so $n^+ \in A$ since $A$ is closed downwards.
+
+    This completes the induction. We have $\forall n \in \omega. n \in A$, i.e. $A = \omega$.
+
+    \paragraph{Exercise 21}
+    Suppose $n$ is a natural number, $k \in n$ and $n \subseteq k$. Then $k \in k$, contradicting
+    Lemma 4L(b).
+
+    \paragraph{Exercise 22}
+    We have $0 \in p^+$ (by trichotomy since $p^+ \notin 0$ because 0 is empty, and $p^+ \neq 0$ by Peano's
+    First Postulate.) Hence $n = n + 0 \in n + p^+$ by Theorem 4N.
 \end{document}
