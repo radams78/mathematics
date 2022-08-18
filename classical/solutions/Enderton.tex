@@ -2161,5 +2161,12 @@
     is greatest in $\ran f$; otherwise $f(k)$ is greatest.
 
     \paragraph{Exercise 27}
-    
+    We prove $f_1(n) = f_2(n)$ for all $n \in \omega$ by strong induction on $n$.
+
+    Assume that $(\forall m \in n) f_1(m) = f_2(m)$. Then $f_1 \restriction n = f_2 \restriction n$. So
+    \begin{align*}
+        f_1(n) & = G(f_1 \restriction n) \\
+        & = G(f_2 \restriction n) \\
+        & = f_2(n)
+    \end{align*}
 \end{document}
