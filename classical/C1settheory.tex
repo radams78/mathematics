@@ -1304,4 +1304,121 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \section{Ordering on the Natural Numbers}
+
+    \begin{lemma}
+        \label{lemma:natural_number_order_successor}
+        For any natural numbers $m$ and $n$, $m \in n$ if and only if $m^+ \in n^+$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{$\forall m,n \in \omega (m \in n \Rightarrow m^+ \in n^+)$}
+        \begin{proof}
+            \step{a}{$\forall m \in \omega (m \in 0 \Rightarrow m^+ \in 0^+)$}
+            \begin{proof}
+                \pf\ Vacuous.
+            \end{proof}
+            \step{b}{For all $n \in \omega$, if $\forall m \in n. m^+ \in n^+$ then
+            $\forall m \in n^+. m^+ \in n^{++}$}
+            \begin{proof}
+                \step{i}{\pflet{$n \in \omega$}}
+                \step{ii}{\assume{$\forall m \in n. m^+ \in n^+$}}
+                \step{iii}{\pflet{$m \in n^+$}}
+                \step{iv}{\case{$m \in n$}}
+                \begin{proof}
+                    \step{one}{$m^+ \in n^+$}
+                    \begin{proof}
+                        \pf\ By \stepref{ii}
+                    \end{proof}
+                    \step{two}{$m^+ \in n^{++}$}
+                \end{proof}
+                \step{v}{\case{$m = n$}}
+                \begin{proof}
+                    \pf\ $m^+ = n^+ \in n^{++}$
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \step{2}{$\forall m,n \in \omega (m^+ \in n^+ \Rightarrow m \in n)$}
+        \begin{proof}
+            \step{a}{\pflet{$m, n \in \omega$}}
+            \step{b}{\assume{$m^+ \in n^+$}}
+            \step{c}{$m \in m^+$}
+            \step{d}{$m^+ \in n$ or $m^+ = n$}
+            \step{e}{$m \in n$}
+            \begin{proof}
+                \pf\ If $m^+ \in n$ this follows because $n$ is transitive (Theorem \ref{theorem:natural_number_transitive}).
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{lemma}
+        \label{lemma:natural_number_irreflexive}
+        For any natural number $n$ we have $n \notin n$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{$0 \notin 0$}
+        \step{2}{For all $n \in \omega$, if $n \notin n$ then $n^+ \notin n^+$}
+        \begin{proof}
+            \step{a}{\pflet{$n \in \omega$}}
+            \step{c}{\assume{$n^+ \in n^+$} \prove{$n \in n$}}
+            \step{d}{$n^+ \in n$ or $n^+ = n$}
+            \step{e}{$n \in n^+$}
+            \step{f}{$n \in n$}
+            \begin{proof}
+                \pf\ If $n^+ \in n$ this follows because $n$ is transitive (Theorem \ref{theorem:natural_number_transitive}).
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}[Trichotomy Law for $\omega$]
+        For any natural numbers $m$ and $n$, exactly one of
+        \[ m \in n, m = n, n \in m \]
+        holds.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{For any $m, n \in \omega$, at most one of $m \in n$, $m = n$, $n \in m$ holds.}
+        \begin{proof}
+            \pf\ If $m \in n$ and $m = n$ then $m \in m$ contradicting Lemma \ref{lemma:natural_number_irreflexive}.
+
+            If $m \in n$ and $n \in m$ then $m \in m$ by Theorem \ref{theorem:natural_number_transitive},
+            contradicting Lemma \ref{lemma:natural_number_irreflexive}.
+        \end{proof}
+        \step{2}{For any $m, n \in \omega$, at least one of $m \in n$, $m = n$, $n \in m$ holds.}
+        \begin{proof}
+            \step{a}{For all $n \in \omega$, either $0 \in n$ or $0 = n$}
+            \begin{proof}
+                \step{i}{$0 = 0$}
+                \step{ii}{For all $n \in \omega$, if $0 \in n$ or $0 = n$ then $0 \in n^+$}
+            \end{proof}
+            \step{b}{For all $m \in \omega$, if $\forall n \in \omega (m \in n \vee m = n \vee n \in m)$
+            then $\forall n \in \omega (m^+ \in n \vee m^+ = n \vee n \in m^+)$}
+            \begin{proof}
+                \step{i}{\pflet{$m \in \omega$}}
+                \step{ii}{\assume{$\forall n \in \omega (m\in n \vee m = n \vee n \in m)$}}
+                \step{iii}{\pflet{$n \in \omega$}}
+                \step{iv}{\case{$m \in n$}}
+                \begin{proof}
+                    \pf\ Then $m \in n^+$
+                \end{proof}
+                \step{v}{\case{$m = n$}}
+                \begin{proof}
+                    \pf\ Then $m \in n^+$
+                \end{proof}
+                \step{vi}{\case{$n \in m$}}
+                \begin{proof}
+                    \pf\ Then $n^+ \in m^+$ by Lemma \ref{lemma:natural_number_order_successor}
+                    so $n^+ \in m$ or $n^+ = m$.
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}
