@@ -1519,6 +1519,62 @@
         There is no function $f : \omega \rightarrow \omega$ such that $f(n+1) < f(n)$ for every $n$.
     \end{corollary}
 
+    \begin{lemma}
+        \label{lemma:subtraction}
+        For any natural numbers $m$ and $n$, we have $m \in n$ if and only if there exists a natural number
+        $p$ such that $n = m + p^+$.
+    \end{lemma}
+    
+    \begin{proof}
+        \pf
+        \step{1}{For all $m$, $p$, we have $m \in m + p^+$}
+        \begin{proof}
+            \pf\ $m = m + 0 \in m + p^+$
+        \end{proof}
+        \step{2}{For all $m$, $n$, if $m \in n$ then there exists $p$ such that $n = m + p^+$}
+        \begin{proof}
+            \step{a}{For all $m$, if $m \in 0$ then there exists $p$ such that $0 = m + p^+$}
+            \begin{proof}
+                \pf\ Vacuous.
+            \end{proof}
+            \step{b}{For all $n \in \omega$, if $\forall m \in n. \exists p \in \omega. n = m + p^+$
+            then $\forall m \in n^+. \exists p \in \omega. n^+ = m + p^+$}
+            \begin{proof}
+                \step{i}{\pflet{$n \in \omega$}}
+                \step{ii}{\assume{$\forall m \in n. \exists p \in \omega. n = m + p^+$}}
+                \step{iii}{\pflet{$m \in n^+$}}
+                \step{iv}{\case{$m \in n$}}
+                \begin{proof}
+                    \step{one}{\pick\ $p$ such that $n = m + p^+$}
+                    \step{two}{$n^+ = m + p^{++}$}
+                \end{proof}
+                \step{v}{\case{$m = n$}}
+                \begin{proof}
+                    \pf\ $n^+ = m + 0^+$
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{lemma}
+        \label{lemma:pre_integer_ordering}
+        For natural numbers $m$, $n$, $p$ and $q$, if $m \in n$ and $p \in q$
+        then $mp + nq \in mq + np$.
+    \end{lemma}
+
+    \begin{proof}
+        \step{a}{\pick\ natural numbers $a$ and $b$ such that $n = m + a^+$ and $q = p + b^+$}
+        \begin{proof}
+            \pf\ Lemma \ref{lemma:subtraction}.
+        \end{proof}
+        \step{b}{$mp + nq = mq + np + (a^+ + b)^+$}
+        \step{c}{$mp + nq \in mq + np$}
+        \begin{proof}
+            \pf\ Lemma \ref{lemma:subtraction}.
+        \end{proof}
+    \end{proof}
+
     \section{The Integers}
 
     \begin{theorem}
@@ -1553,4 +1609,247 @@
     \begin{definition}
         The set $\mathbb{Z}$ of \emph{integers} is the quotient set $(\omega \times \omega) / \sim$.
     \end{definition}
+
+    \begin{lemma}
+        If $(m,n) \sim (m',n')$ and $(p,q) \sim (p',q')$ then $(m+p,n+q) \sim (m'+p',n'+q')$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Assume $m + n' = m' + n$ and $p + q' = p' + q$. Then $m + p + n' + q' = m' + p' + n + q$. \qed
+    \end{proof}
+
+    \begin{definition}[Addition]
+        Addition $+$ on $\mathbb{Z}$ is the binary operation such that
+        \[ [(m,n)] + [(p,q)] = [(m+p,n+q)] \]
+    \end{definition}
+
+    \begin{theorem}
+        Addition on $\mathbb{Z}$ is commutative.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ From the definition. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Addition on $\mathbb{Z}$ is associtative.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}[Zero]
+        The zero in the integers is $0 = [(0,0)]$.
+    \end{definition}
+
+    \begin{theorem}
+        For any integer $a$ we have $a + 0 = 0$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any integer $a$, there exists an integer $b$ such that $a + b = 0$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ If $a = [(m,n)]$ take $b = [(n,m)]$. \qed
+    \end{proof}
+
+    \begin{lemma}
+        If $(m,n) \sim (m',n')$ and $(p,q) \sim (p',q')$ then $(mp+nq,mq+np) \sim (m'p'+n'q',
+        m'q'+n' p')$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{\assume{$m+n'=m'+n$ and $p+q'=p'+q$}}
+        \step{2}{$mp+n'p=m'p+np$}
+        \step{3}{$m'q+nq=mq+n'q$}
+        \step{4}{$mp+mq'=mp'+mq$}
+        \step{5}{$n'p'+n'q=n'p+n'q'$}
+        \step{6}{$mp+n'p+m'q+nq+mp+mq'+n'p'+n'q=m'p+np+mq+n'q+mp'+mq+n'p+n'q'$}
+        \step{7}{$mp+nq+m'q'+n'p'=mq+np+m'p'+n'q'$}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Multiplication]
+        \emph{Multiplication} $\cdot$ is the binary operation on $\mathbb{Z}$ such that
+        \[ [(m,n)][(p,q)] = [(mp+nq,mq+np)] \]
+    \end{definition}
+
+    \begin{theorem}
+        Multiplication is commutative.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Multiplication is associative.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Multiplication is distributive over addition.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}
+        The integer one is $1 = [(1,0)]$.
+    \end{definition}
+
+    \begin{theorem}
+        For any integer $a$ we have $a1= a$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        $0 \neq 1$
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{lemma}
+        If $(m,n) \sim (m',n')$ and $(p,q) \sim (p',q')$ then $m + q \in p + n$ iff
+        $m' + q' \in p' + n'$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \begin{align*}
+            m + q \in p + n & \Leftrightarrow m + q + n' + q' \in p + n + n' + q' \\
+            & \Leftrightarrow m' + n + q + q' \in p' + n + n' + q \\
+            & \Leftrightarrow m' + q' \in p' + n' & \qed
+        \end{align*}
+    \end{proof}
+
+    \begin{definition}[Ordering]
+        The ordering $<$ on $\mathbb{Z}$ is defined by: $[(m,n)] < [(p,q)]$ iff $m + q \in n + p$.
+    \end{definition}
+
+    \begin{theorem}
+        The relation $<$ is a linear ordering on $\mathbb{Z}$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{$<$ is transitive.}
+        \begin{proof}
+            \step{a}{\assume{$[(m,n)] < [(p,q)]$ and $[(p,q)] < [(r,s)]$}}
+            \step{b}{$m+q \in n+p$ and $p+s \in q+r$}
+            \step{c}{$m+q+s \in n+p+s$}
+            \step{d}{$n+p+s \in n+q+r$}
+            \step{e}{$m+q+s \in n+q+r$}
+            \step{f}{$m+s \in n+r$}
+        \end{proof}
+        \step{2}{$<$ satisfies trichotomy.}
+        \begin{proof}
+            \pf\ From trichotomy on $\omega$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any integers $a$, $b$ and $c$, we have $a < b$ iff $a + c < b + c$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ An easy consequence of the corresponding property in $\omega$.
+    \end{proof}
+
+    \begin{corollary}
+        If $a + c = b + c$ then $a = b$.
+    \end{corollary}
+
+    \begin{theorem}
+        If $0 < c$, then the function that maps an integer $a$ to $ac$ is strictly monotone.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$a$, $b$ and $c$ be integers.}}
+        \step{2}{\assume{$0 < c$ and $a < b$}}
+        \step{3}{\pflet{$a = [(m,n)]$}}
+        \step{4}{\pflet{$b = [(p,q)]$}}
+        \step{5}{\pflet{$c = [(r,s)]$}}
+        \step{6}{$s \in r$}
+        \step{7}{$m + q \in p + n$}
+        \step{10}{$(m+q)r + (p+n)s \in (m+q)s + (p+n)r$}
+        \begin{proof}
+            \pf\ Lemma \ref{lemma:pre_integer_ordering}.
+        \end{proof}
+        \step{11}{$ac < bc$}
+        \qed
+    \end{proof}
+
+    %TODO Extract lemmas to ring theory
+    \begin{lemma}
+        For integers $a$ and $b$,
+        $a(-b) = -(ab)$
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ This follows from the fact that $ab + a(-b) = a(b + (-b)) = a0 = 0$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For integers $a$, $b$ and $c$, if $a < b$ and $c < 0$ then $ac > bc$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ We have $0 < -c$ so $a(-c) < b(-c)$ hence $-(ac) < -(bc)$ so $bc < ac$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any integers $a$ and $b$, if $ab = 0$ then $a = 0$ or $b = 0$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ We prove if $a \neq 0$ and $b \neq 0$ then $ab \neq 0$.
+        
+        If $a > 0$ and $b > 0$ then $ab > 0$. Similarly for the other four cases. \qed
+    \end{proof}
+
+    \begin{theorem}
+        If $ac = bc$ and $c \neq 0$ then $a = b$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ We have $(a-b)c = 0$ so $a-b = 0$ hence $a = b$. \qed
+    \end{proof}
+
+    \begin{definition}[Positive]
+        An integer $a$ is \emph{positive} iff $0 < a$.
+    \end{definition}
+
+    \begin{theorem}
+        Define $E : \omega \rightarrow \mathbb{Z}$ by $E(n) = [(n,0)]$. Then $E$ maps $\omega$ one-to-one
+        into $\mathbb{Z}$, and:
+        \begin{enumerate}
+            \item $E(m+n) = E(m) + E(n)$
+            \item $E(mn) = E(m) E(n)$
+            \item $m \in n$ if and only if $E(m) < E(n)$.
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Routine calculations. \qed
+    \end{proof}
+    
 \end{document}

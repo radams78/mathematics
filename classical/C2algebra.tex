@@ -1,0 +1,104 @@
+\documentclass{article}
+
+\title{C2 Algebra}
+\author{Robin Adams}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\let\proof\relax
+\let\endproof\relax
+\let\qed\relax
+\usepackage{pf2}
+\usepackage[all]{xy}
+
+\newtheorem{axiom}{Axiom}
+\newtheorem{axs}[axiom]{Axiom Schema}
+\newtheorem{lemma}[axiom]{Lemma}
+\newtheorem{proposition}[axiom]{Proposition}
+\newtheorem{props}[axiom]{Proposition Schema}
+\newtheorem{theorem}[axiom]{Theorem}
+\newtheorem{corollary}{Corollary}[axiom]
+\theoremstyle{definition}
+\newtheorem{definition}[axiom]{Definition}
+
+\begin{document}
+    \maketitle
+
+    \section{Groups}
+
+    \begin{definition}[Group]
+        A \emph{group} is a triple $(G, \cdot, e)$ where $G$ is a set, $\cdot$ is a binary operation on $G$,
+        and $e \in G$, such that:
+        \begin{enumerate}
+            \item $\cdot$ is associative.
+            \item $\forall x \in G. xe = ex = x$
+            \item $\forall x \in G. \exists y \in G. xy = yx = e$
+        \end{enumerate}
+    \end{definition}
+
+    \begin{lemma}
+        The integers $\mathbb{Z}$ form a group under $+$ and $0$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{lemma}
+        In any group, inverses are unique.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Suppose $y$ and $z$ are inverses to $x$. Then
+        \[ y = ey = zxy = ze = z \]
+        \qed
+    \end{proof}
+
+    \begin{definition}
+        We write $x^{-1}$ for the inverse of $x$.
+    \end{definition}
+
+    \section{Abelian Groups}
+
+    \begin{definition}[Abelian Group]
+        A group $(G, +, 0)$ is \emph{Abelian} iff $+$ is commutative.
+
+        When using additive notation (i.e. the symbols $+$ and $0$) for a group,
+        we write $-y$ for the inverse of $y$, and $x-y$ for $x+(-y)$.
+    \end{definition}
+
+    \begin{lemma}
+        The integers $\mathbb{Z}$ are Abelian.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \section{Ring Theory}
+
+    \begin{definition}[Commutative Ring]
+        A \emph{commutative ring} is a quintuple $(R, +, \cdot, 0, 1)$ consisting of a set $R$,
+        binary operations $+$ and $\cdot$ on $R$, and elements $0,1 \in R$ such that:
+        \begin{enumerate}
+            \item $(R, +, 0)$ is an Abelian group.
+            \item The operation $\cdot$ is commutative, associative, and distributive over $+$.
+            \item $\forall x \in R. x1 = x$
+            \item $0 \neq 1$
+        \end{enumerate}
+    \end{definition}
+
+    \begin{definition}[Integral Domain]
+        An \emph{integral domain} is a ring such that, whenever $xy = 0$, then $x = 0$ or $y = 0$.
+    \end{definition}
+
+    \begin{lemma}
+        The integers form an integral domain.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+    
+\end{document}
