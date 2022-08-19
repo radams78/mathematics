@@ -229,3 +229,28 @@
 \contentsline {paragraph}{Exercise 25}{41}%
 \contentsline {paragraph}{Exercise 26}{41}%
 \contentsline {paragraph}{Exercise 27}{42}%
+\contentsline {paragraph}{Exercise 28}{42}%
+\contentsline {section}{\numberline {4.6}Review Exercises}{42}%
+\contentsline {paragraph}{Exercise 29}{42}%
+\contentsline {paragraph}{Exercise 30}{42}%
+\contentsline {paragraph}{Exercise 31}{42}%
+\contentsline {paragraph}{Exercise 32}{42}%
+\contentsline {subparagraph}{(a)}{42}%
+\contentsline {subparagraph}{(b)}{42}%
+\contentsline {paragraph}{Exercise 33}{42}%
+\contentsline {subparagraph}{(a)}{42}%
+\contentsline {subparagraph}{(b)}{42}%
+\contentsline {subparagraph}{(c)}{42}%
+\contentsline {paragraph}{Exercise 34}{42}%
+\contentsline {subparagraph}{(a)}{42}%
+\contentsline {subparagraph}{(b)}{43}%
+\contentsline {paragraph}{Exercise 35}{43}%
+\contentsline {subparagraph}{(a)}{43}%
+\contentsline {subparagraph}{(b)}{43}%
+\contentsline {paragraph}{Exercise 36}{43}%
+\contentsline {paragraph}{Exercise 37}{43}%
+\contentsline {subparagraph}{(a)}{43}%
+\contentsline {subparagraph}{(b)}{44}%
+\contentsline {paragraph}{Exercise 38}{44}%
+\contentsline {paragraph}{Exercise 39}{44}%
+\contentsline {paragraph}{Exercise 40}{44}%

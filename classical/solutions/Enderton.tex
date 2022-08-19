@@ -2169,4 +2169,130 @@
         & = G(f_2 \restriction n) \\
         & = f_2(n)
     \end{align*}
+
+    \paragraph{Exercise 28}
+    Suppose $\omega$ is not transitive. Then there exists a natural number $n$ such that $n \nsubseteq \omega$.
+    Let $n$ be the least such number. There exists $x \in n$ such that $x \notin \omega$. Now, $n \neq 0$
+    (because it is nonempty) so $n = p^+$ for some natural number $p$. We have $x \in p^+$ so $x \in p$
+    or $x = p$. We cannot have $x = p$ (because $x$ is not a natural number) so we have $x \in p$.
+    But this contradicts the minimality of $n$.
+
+    \section{Review Exercises}
+
+    \paragraph{Exercise 29}
+    $4 = \{ \emptyset, \{ \emptyset \}, \{ \emptyset, \{ \emptyset \} \},
+        \{ \emptyset, \{ \emptyset \}, \{ \emptyset, \{ \emptyset \} \} \} \}$
+
+    \paragraph{Exercise 30}
+    $\bigcup 4 = 0 \cup 1 \cup 2 \cup 3 = 3$ since $0$, $1$ and $2$ are all subsets of 3.
+
+    $\bigcap 4 = 0 \cap 1 \cap 2 \cap 3 = 0 (= \emptyset)$.
+
+    \paragraph{Exercise 31}
+    Similarly to Exercise 30 we have $\bigcup \bigcup 7 = \bigcup 6 = 5$.
+
+    \paragraph{Exercise 32}
+    \subparagraph{(a)}
+    $A^+ = A \cup \{ A \} = \{ 1, A \} = \{ 1, \{ 1 \} \}$
+
+    So $\bigcup A^+ = 1 \cup \{ 1 \} = \{ 0, 1 \} = 2$
+
+    \subparagraph{(b)}
+    $\bigcup (\{2\}^+) = \bigcup \{ 2, \{ 2 \} \} = \{ 0, 1, 2 \} = 3$
+
+    \paragraph{Exercise 33}
+    \subparagraph{(a)}
+    Yes - if $x \in y \in \{ 0, 1, \{ 1 \} \}$ then $x$ is either 0 or 1, and in either case
+    $x \in \{ 0, 1, \{ 1 \} \}$
+
+    \subparagraph{(b)}
+    No - $0 \in 1 \in \{ 1 \}$ but $0 \notin \{ 1 \}$
+
+    \subparagraph{(c)}
+    No - $0 \in \{ 0 \} \in \langle 0,1 \rangle$ but $0 \notin \langle 0,1 \rangle$.
+
+    \paragraph{Exercise 34}
+    \subparagraph{(a)}
+    Let $a = \{ \emptyset \}$ and $b = \emptyset$
+
+    \subparagraph{(b)}
+    Let $c = \{ \{ \emptyset \} \}$, $d = \{ \emptyset \}$ and $e = \emptyset$
+
+    \paragraph{Exercise 35}
+    \subparagraph{(a)}
+    Let $T_1 = \{ \{1\}, \{1,0\}, 0, 1 \}$
+
+    \subparagraph{(b)}
+    Let $T_2 = \{ \langle 1, 0 \rangle, \{1\}, \{1,0\}, 0, 1 \}$.
+
+    \paragraph{Exercise 36}
+    \begin{align*}
+        h(4) & = 2h(3) \\
+        & = 4h(2) \\
+        & = 8h(1) \\
+        & = 16h(0) \\
+        & = 48
+    \end{align*}
+
+    \paragraph{Exercise 37}
+    \subparagraph{(a)}
+    Let $f : m \rightarrow A$ and $g : n \rightarrow B$ be bijections. Define $h : m + n \rightarrow A \cup B$
+    by
+    \begin{align*}
+        h(p) & = f(p) & \text{if } p \in m \\
+        h(m + q) & = g(q) & \text{if } q \in n
+    \end{align*}
+    To show that this is well-defined, we must prove two things:
+    \begin{enumerate}
+        \item For all $p \in m + n$, then either $p \in m$ or there
+    exists $q \in n$ such that $p = m + n$.
+        \item We never have $p \in m$ and $p = m + q$ for some $q \in n$.
+    \end{enumerate}
+
+    We prove 1 by induction on $n$. For all $p \in m + 0$ we have $p \in m$, so the result holds for $n = 0$.
+
+    Now, suppose the result holds for $n$. Let $p \in m + n^+ = (m+n)^+$ so $p \underline{in} m + n$.
+    If $p \in m + n$, we simply apply the induction hypothesis. If $p = m + n$ then $p = m + q$ where
+    $q = n \in n^+$.
+
+    To prove 2, if $p = m + q$ then $m = m + 0 \underline{in} m + q = p$ by Theorem 4N, hence $p \notin m$
+    by trichotomy.
+
+    It remains to show that $h$ is a bijection.
+
+    To prove $h$ is injective, we consider three cases. If $h(p) = h(p')$ where $p, p' \in m$,
+    then $f(p) = f(p')$ so $p = p'$. If $h(m+q) = h(m+q')$ where $q,q' \in n$, then $g(q) = g(q')$
+    so $q = q'$. And we cannot have $h(p) = h(m+q)$ for $p \in m$ and $q \in n$ since $h(p) \in A$,
+    $h(m+q) \in B$, and $A \cap B = \emptyset$.
+
+    To prove $h$ is surjective, let $x \in A \cup B$. If $x \in A$, there is some $p \in m$ with $f(p) = x$,
+    so $h(p) = x$. If $x \in B$, there is some $q \in n$ with $g(q) = x$, so $h(m+q) = x$.
+
+    \subparagraph{(b)}
+    Let $f : m \rightarrow A$ and $g : n \rightarrow B$ be bijections.
+
+    We first show that, for any $p \in mn$, there exist unique $i \in m$ and $j \in n$ such that
+    $p = mj+i$. 
+    
+    By Exercise 19, there exist $j$ and $i \in m$ such that $p = mj+i$. We have $j \in n$
+    since otherwise $p = mj+i \underline{\ni} mj \underline{\ni} mn$.
+
+    For uniqueness, suppose $mj + i = mj' + i'$ where $i, i' \in m$ and $j, j' \in n$.
+    Then we have
+    \[ mj \underline{\in} mj + i = mj' + i' \in mj' + m = m(j')^+ \]
+    so $j \in (j')^+$ and $j \underline{\in} j'$. Similarly $j' \underline{\in} j$, and so $j = j'$. Therefore
+    $i = i'$ by the cancellation law for addition.
+
+    Now define $h : mn \rightarrow A \times B$ by
+    \[ h(mj+i) = \langle f(i), g(j) \rangle \]
+    where $i \in m$ and $j \in n$. It is easy to check that $h$ is bijective.
+
+    \paragraph{Exercise 38}
+    $h(n) = 3n+1$
+
+    \paragraph{Exercise 39}
+    $h(n) = n^2$
+
+    \paragraph{Exercise 40}
+    $h(n^+) = h(n) + 5$
 \end{document}

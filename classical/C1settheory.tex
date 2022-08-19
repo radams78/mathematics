@@ -1519,4 +1519,38 @@
         There is no function $f : \omega \rightarrow \omega$ such that $f(n+1) < f(n)$ for every $n$.
     \end{corollary}
 
+    \section{The Integers}
+
+    \begin{theorem}
+        The relation $\sim$ is an equivalence relation on $\omega \times \omega$, where $(m,n) \sim (p,q)$ iff
+        $m + q = n + p$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{The relation $\sim$ is reflexive on $\omega^2$}
+        \begin{proof}
+            \pf\ For any $m$, $n$, we have $m + n = m + n$ and so $(m,n) \sim (m,n)$.
+        \end{proof}
+        \step{2}{The relation $\sim$ is symmetric.}
+        \begin{proof}
+            \pf\ If $m + q = n + p$ then $p + n = q + m$.
+        \end{proof}
+        \step{3}{The relation $\sim$ is transitive.}
+        \begin{proof}
+            \step{a}{\assume{$(m,n) \sim (p,q) \sim (r,s)$}}
+            \step{b}{$m + q = n + p$}
+            \step{c}{$p + s = q + r$}
+            \step{d}{$m + p + q + s = n + p + q + r$}
+            \step{d}{$m + s = n + r$}
+            \begin{proof}
+                \pf\ By cancellation of addition in $\omega$.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}
+        The set $\mathbb{Z}$ of \emph{integers} is the quotient set $(\omega \times \omega) / \sim$.
+    \end{definition}
 \end{document}
