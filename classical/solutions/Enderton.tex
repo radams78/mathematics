@@ -2323,4 +2323,49 @@
         & = (a +_Z b) +_Z c
     \end{align*}
 
+    \paragraph{Exercise 5}
+    \[ [\langle m,n \rangle] - [\langle p,q \rangle] = [\langle m,n \rangle] + [\langle q,p \rangle]
+    = [\langle m+q, n+p \rangle] \]
+
+    \paragraph{Exercise 6}
+    Let $a = [\langle m,n \rangle]$. Then
+    \begin{align*}
+        a \cdot_Z 0_Z & = [\langle m,n \rangle] \cdot_Z [\langle 0,0 \rangle] \\
+        & = [\langle m 0 + n 0, m 0 + n 0 \rangle] \\
+        & = [\langle 0,0 \rangle] \\
+        & = 0_Z
+    \end{align*}
+
+    \paragraph{Exercise 7}
+    We have $a \cdot_Z b +_Z a \cdot_Z (-b) = a \cdot_Z (b +_Z (-b)) = a \cdot_Z 0_Z = 0_Z$,
+    hence $a \cdot_Z (-b) = -(a \cdot_Z b)$ by the uniqueness of inverses.
+
+    We prove $(-a) \cdot_Z b = -(a \cdot_Z b)$ similarly.
+
+    \paragraph{Exercise 8}
+    \subparagraph{(a)}
+    This says $[\langle m + n, 0 \rangle] = [\langle m,0 \rangle] +_Z [\langle n,0 \rangle]$,
+    which is true from the definition of $+_Z$.
+
+    \subparagraph{(b)}
+    We have
+    \begin{align*}
+        E(m) \cdot_Z E(n) & = [\langle m, 0 \rangle] \cdot_Z [\langle n,0 \rangle] \\
+        & = [\langle mn + 0 \cdot 0, m0 + n0 \rangle] \\
+        & = E(mn)
+    \end{align*}
+
+    \subparagraph{(c)}
+    \begin{align*}
+        E(m) <_Z E(n) & \Leftrightarrow [\langle m,0 \rangle] <_Z [\langle n,0 \rangle] \\
+        & \Leftrightarrow m + 0 \in n + 0 \\
+        & \Leftrightarrow m \in n
+    \end{align*}
+
+    \paragraph{Exercise 9}
+    \begin{align*}
+        E(m) - E(n) & = [\langle m,0 \rangle] - [\langle n, 0 \rangle] \\
+        & = [\langle m, n \rangle]
+    \end{align*}
+    by Exercise 5.
 \end{document}

@@ -260,3 +260,11 @@
 \contentsline {paragraph}{Exercise 2}{45}%
 \contentsline {paragraph}{Exercise 3}{45}%
 \contentsline {paragraph}{Exercise 4}{45}%
+\contentsline {paragraph}{Exercise 5}{45}%
+\contentsline {paragraph}{Exercise 6}{46}%
+\contentsline {paragraph}{Exercise 7}{46}%
+\contentsline {paragraph}{Exercise 8}{46}%
+\contentsline {subparagraph}{(a)}{46}%
+\contentsline {subparagraph}{(b)}{46}%
+\contentsline {subparagraph}{(c)}{46}%
+\contentsline {paragraph}{Exercise 9}{46}%
