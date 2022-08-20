@@ -1817,6 +1817,7 @@
     \end{proof}
 
     \begin{theorem}
+        \label{theorem:integers_no_zero_divisors}
         For any integers $a$ and $b$, if $ab = 0$ then $a = 0$ or $b = 0$.
     \end{theorem}
 
@@ -1827,6 +1828,7 @@
     \end{proof}
 
     \begin{theorem}
+        \label{theorem:integers_cancel}
         If $ac = bc$ and $c \neq 0$ then $a = b$.
     \end{theorem}
 
@@ -1851,5 +1853,151 @@
     \begin{proof}
         \pf\ Routine calculations. \qed
     \end{proof}
-    
+
+    \section{Rational Numbers}
+
+    \begin{theorem}
+        The relation $\sim$ on $\mathbb{Z} \times (\mathbb{Z} - \{ 0 \})$ defined by
+        \[ (a,b) \sim (c,d) \Leftrightarrow ad = bc \]
+        is an equivalence relation.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{The relation $\sim$ is reflexive.}
+        \begin{proof}
+            \pf\ For any $(a,b) \in \mathbb{Z} \times (\mathbb{Z} - \{ 0 \})$,
+            we have $ab = ab$.
+        \end{proof}
+        \step{2}{The relation $\sim$ is symmetric.}
+        \begin{proof}
+            \pf\ If $ad = bc$ then $cb = da$.
+        \end{proof}
+        \step{3}{The relation $\sim$ is transitive.}
+        \begin{proof}
+            \step{a}{\pflet{$(a,b),(c,d),(e,f) \in \mathbb{Z} \times (\mathbb{Z} - \{ 0 \})$}}
+            \step{b}{\assume{$(a,b) \sim (c,d) \sim (e,f)$}}
+            \step{c}{$ad = bc$ and $cf = de$}
+            \step{d}{$adf = bcf$ and $bcf = bde$}
+            \step{e}{$adf = bde$}
+            \step{f}{$af = be$}
+            \begin{proof}
+                \pf\ Theorem \ref{theorem:integers_cancel}.
+            \end{proof}
+            \step{g}{$(a,b) \sim (e,f)$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Rational Numbers]
+        The set of \emph{rational numbers} $\mathbb{Q}$ is $\mathbb{Z} \times (\mathbb{Z} - \{ 0 \}) / \sim$.
+    \end{definition}
+
+    \begin{lemma}
+        If $(a,b) \sim (a',b')$ and $(c,d) \sim (c',d')$ then $(ad+bc,bd) \sim (a'd'+b'c',b'd')$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{$bd \neq 0$ and $b'd' \neq 0$}
+        \begin{proof}
+            \pf\ Theorem \ref{theorem:integers_no_zero_divisors}.
+        \end{proof}
+        \step{2}{$(ad+bc)b'd' = (a'd'+b'c')bd$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                (ad+bc)b'd' & = ab'dd' + bb'cd' \\
+                & = a'bdd' + bb'c'd \\
+                & = (a'd'+b'c')bd
+            \end{align*}
+        \end{proof}
+        \qed
+    \end{proof} 
+
+    \begin{definition}[Addition]
+        \emph{Addition} $+$ is the binary operation on $\mathbb{Q}$ defined by:
+        $[\langle a,b \rangle] + [\langle c,d \rangle] = [\langle ad+bc,bd \rangle]$.
+    \end{definition}
+
+    \begin{theorem}
+        Addition is commutative.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy.
+    \end{proof}
+
+    \begin{theorem}
+        Addition is associative.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy.
+    \end{proof}
+
+    \begin{definition}
+        The rational number \emph{zero} is $0 = [\langle 0,1 \rangle]$.    
+    \end{definition}
+
+    \begin{theorem}
+        For any rational $q$, $q + 0 = q$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy.
+    \end{proof}
+
+    \begin{theorem}
+        For any rational $q$, there exists a rational $r$ such that $q + r = 0$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ If $q = [(a,b)]$, take $r = [(-a,b)]$.
+    \end{proof}
+
+    \begin{lemma}
+        If $(a,b) \sim (a',b')$ and $(c,d) \sim (c',d')$ then $(ac,bd) \sim (a'c',b'd')$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}[Multiplication]
+        \emph{Multiplication} $\cdot$ is the operation on $\mathbb{Q}$ defined by
+        $[(a,b)][(c,d)] = [(ac,bd)]$.
+    \end{definition}
+
+    \begin{theorem}
+        Multiplication is commutative, associative and distributive over addition.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}
+        The rational number \emph{one} is $1 = [(1,1)]$.
+    \end{definition}
+
+    \begin{theorem}
+        For any rational $q$ we have $q1 = q$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any nonzero rational $q$, there exists a nonzero rational $r$ such that $qr = 1$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ If $q = [(a,b)]$ then take $r = [(b,a)]$. We have $a \neq 0$ because $q \neq 0$. \qed
+    \end{proof}
+
+    \begin{corollary}
+        For any rationals $q$ and $r$, if $qr = 0$ then $q = 0$ or $r = 0$.
+    \end{corollary}
 \end{document}
