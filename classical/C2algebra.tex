@@ -83,7 +83,15 @@
     \begin{proof}
         \pf\ Easy.
     \end{proof}
-    
+
+    \begin{lemma}
+        The non-zero rationals form an Abelian group under multiplication.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
     \section{Ring Theory}
 
     \begin{definition}[Commutative Ring]
@@ -109,4 +117,32 @@
         \pf\ Easy. \qed
     \end{proof}
 
+    \section{Field Theory}
+
+    \begin{definition}[Field]
+        A \emph{field} is an integral domain such that every non-zero element has a multiplicative inverse.
+    \end{definition}
+
+    \begin{definition}[Field of Fractions]
+        Let $R$ be an integral domain. The \emph{field of fractions} of $R$ is $(R \times (R - \{ 0 \})) / \sim$,
+        where $(a,b) \sim (c,d)$ iff $ad = bc$, under the following operations:
+        \begin{align*}
+            [(a,b)] + [(c,d)] & = [(ad+bc,bd)] \\
+            [(a,b)][(c,d)] & = [(ac,bd)] \\
+            0 & = [(0,1)] \\
+            1 & = [(1,1)]
+        \end{align*}
+
+        It is routine to check that $\sim$ is an equivalence relation and the operations are well-defined
+        and form a field. The additive inverse of $[(a,b)]$ is $[(-a,b)]$, and the multiplicative inverse
+        of $[(a,b)]$ is $[(b,a)]$.
+    \end{definition}
+
+    \begin{definition}[Rational Numbers]
+        The field of \emph{rational numbers} $\mathbb{Q}$ is the field of fractions of the integers.
+    \end{definition}
+
+    %TODO: The reals form a field.
+
+    %TODO: The complex numbers form a field.
 \end{document}

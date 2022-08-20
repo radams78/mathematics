@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1660959963 "/home/robin/fun/maths/classical/C1settheory.tex" "/home/robin/fun/maths/classical/C1settheory.pdf" "C1settheory" 1660959964
+["pdflatex"] 1660960461 "/home/robin/fun/maths/classical/C1settheory.tex" "/home/robin/fun/maths/classical/C1settheory.pdf" "C1settheory" 1660960462
   "/etc/texmf/web2c/texmf.cnf" 1626265647 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/robin/fun/maths/classical/C1settheory.aux" 1660959964 2117 0a072f21c26039254e1703e17761b1cc ""
-  "/home/robin/fun/maths/classical/C1settheory.tex" 1660959961 68921 491598b6cd43ca0c505a028eb9d54741 ""
+  "/home/robin/fun/maths/classical/C1settheory.aux" 1660960462 2013 ded7c2ffc332798e3976b79e5b8b8c65 ""
+  "/home/robin/fun/maths/classical/C1settheory.tex" 1660960458 64786 12709f1e83f289f7616383d0e0d83aa7 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/tex/generic/iftex/ifpdf.sty" 1572645307 480 5778104efadad304ced77548ca2184b1 ""
   "/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty" 1573336935 6902 30fdaf7dc5636b8e3afa306210c45cae ""
@@ -103,11 +103,11 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1626264333 4131335 97f357c35ef03853631f523ecab90976 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1626264381 8269926 c6f0aa12f3019b9156b681964aec4572 ""
-  "C1settheory.aux" 1660959964 2117 0a072f21c26039254e1703e17761b1cc "pdflatex"
-  "C1settheory.tex" 1660959961 68921 491598b6cd43ca0c505a028eb9d54741 ""
+  "C1settheory.aux" 1660960462 2013 ded7c2ffc332798e3976b79e5b8b8c65 "pdflatex"
+  "C1settheory.tex" 1660960458 64786 12709f1e83f289f7616383d0e0d83aa7 ""
   (generated)
-  "C1settheory.pdf"
-  "/home/robin/fun/maths/classical/C1settheory.pdf"
-  "/home/robin/fun/maths/classical/C1settheory.log"
-  "C1settheory.log"
   "C1settheory.aux"
+  "/home/robin/fun/maths/classical/C1settheory.pdf"
+  "C1settheory.log"
+  "C1settheory.pdf"
+  "/home/robin/fun/maths/classical/C1settheory.log"

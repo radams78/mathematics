@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.7.14)  19 AUG 2022 19:54
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.7.14)  20 AUG 2022 03:54
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -228,8 +228,8 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 Package xypdf Info: Line width: 0.39998pt on input line 25.
 
-Overfull \hbox (13.899pt too wide) in paragraph at lines 82--84
-\OT1/cmr/bx/n/10 Definition 7 \OT1/cmr/m/n/10 (Com-mu-ta-tive Ring)\OT1/cmr/bx/n/10 . \OT1/cmr/m/n/10 A \OT1/cmr/m/it/10 com-mu-ta-tive ring \OT1/cmr/m/n/10 is a quin-tu-ple $(\OML/cmm/m/it/10 R; \OT1/cmr/m/n/10 +\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 ^^A\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1)$
+Overfull \hbox (13.899pt too wide) in paragraph at lines 98--100
+\OT1/cmr/bx/n/10 Definition 9 \OT1/cmr/m/n/10 (Com-mu-ta-tive Ring)\OT1/cmr/bx/n/10 . \OT1/cmr/m/n/10 A \OT1/cmr/m/it/10 com-mu-ta-tive ring \OT1/cmr/m/n/10 is a quin-tu-ple $(\OML/cmm/m/it/10 R; \OT1/cmr/m/n/10 +\OML/cmm/m/it/10 ; \OMS/cmsy/m/n/10 ^^A\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 0\OML/cmm/m/it/10 ; \OT1/cmr/m/n/10 1)$
  []
 
 [1
@@ -242,9 +242,9 @@ Here is how much of TeX's memory you used:
  19786 multiletter control sequences out of 15000+600000
  541990 words of font info for 65 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 30i,6n,31p,3252b,247s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 30i,8n,31p,3252b,209s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/symbols/msbm10.pfb>
-Output written on /home/robin/fun/maths/classical/C2algebra.pdf (2 pages, 118589 bytes).
+Output written on /home/robin/fun/maths/classical/C2algebra.pdf (2 pages, 125099 bytes).
 PDF statistics:
  59 PDF objects out of 1000 (max. 8388607)
  42 compressed objects within 1 object stream
