@@ -456,5 +456,92 @@
         \end{proof}
         \qed
     \end{proof}
-    
+
+    \begin{theorem}
+        The reals form an Abelian group under addition.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any real $z$, the function that maps $x$ to $x + z$ is strictly monotone.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\assume{$x < y$}}
+        \step{2}{$x + z \subseteq y + z$}
+        \begin{proof}
+            \pf\ From the definition.
+        \end{proof}
+        \step{3}{$x + z \neq y + z$}
+        \begin{proof}
+            \pf\ By cancellation.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Absolute Value]
+        The \emph{absolute value} of a real number $x$ is
+        \[ |x| = \begin{cases}
+            x & \text{if } x \geq 0 \\
+            -x & \text{if } x \leq 0
+        \end{cases} \]
+    \end{definition}
+
+    \begin{definition}[Multiplication]
+        Given real numbers $x$, $y$, define the real $xy$ by:
+        \begin{itemize}
+            \item If $x \geq 0$ and $y \geq 0$ then
+            \[ xy = 0 \cup \{ rs : 0 \leq r \in x, 0 \leq s \in y \} \]
+            \item If $x \geq 0$ and $y < 0$ then $xy = -(x(-y))$
+            \item If $x < 0$ and $y \geq 0$ then $xy = -((-x)y)$
+            \item If $x < 0$ and $y < 0$ then $xy = (-x)(-y)$
+        \end{itemize}
+
+        We prove this is a Dedekind cut.
+    \end{definition}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$x \geq 0$ and $y \geq 0$}}
+        \step{2}{$xy \neq \emptyset$}
+        \begin{proof}
+            \pf\ Since $-1 \in xy$
+        \end{proof}
+        \step{3}{$xy \neq \mathbb{Q}$}
+        \begin{proof}
+            \step{a}{\pick\ $r \in \mathbb{Q} - x$ and $s \in \mathbb{Q} - y$}
+            \step{b}{For all $r'$ with $0 \leq r' \in x$ and $s'$ with $0 \leq s' \in y$
+            we have $r' < r$ and $s' < s$ so $r's' < rs$}
+            \step{c}{$rs \notin xy$}
+        \end{proof}
+        \step{4}{$xy$ is closed downwards.}
+        \begin{proof}
+            \step{a}{\pflet{$q \in xy$ and $r < q$}}
+            \step{b}{\assume{$0 \leq r$}}
+            \step{c}{\pick\ rationals $a$, $b$ with $0 \leq a \in x$ and $0 \leq b \in y$
+            such that $q = ab$}
+            \step{d}{$a \neq 0$ or $b \neq 0$}
+            \begin{proof}
+                \pf\ Since $q \neq 0$ because $0 \leq r < q$.
+            \end{proof}
+            \step{e}{\assume{w.l.o.g. $a \neq 0$}}
+            \step{f}{$r/a < b$}
+            \step{g}{$r/a \in y$}
+            \step{h}{$r = a(r/a) \in xy$}
+        \end{proof}
+        \step{5}{$xy$ has no greatest element.}
+        \begin{proof}
+            \step{a}{\pflet{$q \in xy$} \prove{There exists $r \in xy$ such that $q < r$}}
+            \step{b}{\assume{w.l.o.g. $0 \leq q$}}
+            \step{c}{\pick\ rationals $a$ and $b$ with $0 \leq a \in x$ and $0 \leq b \in y$
+            such that $q = ab$}
+            \step{d}{\pick\ rationals $a'$ and $b'$ with $a < a' \in x$ and $b < b' \in y$}
+            \step{e}{$q < a'b' \in xy$}
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}
