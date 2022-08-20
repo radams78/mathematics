@@ -338,4 +338,42 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \begin{definition}
+        For any real $x$, define
+        \[ - x = \{ r \in \mathbb{Q} : \exists s > r. -s \notin x \} \enspace . \]
+        We prove this is a Dedekind cut.
+    \end{definition}
+
+    \begin{proof}
+        \pf
+        \step{1}{$-x \neq \emptyset$}
+        \begin{proof}
+            \pf\ Pick $s$ such that $s \notin x$. Then $-s-1 \in -x$.
+        \end{proof}
+        \step{2}{$-x \neq \mathbb{Q}$}
+        \begin{proof}
+            \step{a}{\pick\ $r \in x$ \prove{$-r \notin -x$}}
+            \step{b}{\assume{for a contradiction $-r \in -x$}}
+            \step{c}{\pick\ $s > -r$ such that $-s \notin x$}
+            \step{d}{$-s < r$}
+            \step{e}{$-s \in x$}
+            \qedstep
+            \begin{proof}
+                \pf\ This is a contradiction.
+            \end{proof}
+        \end{proof}
+        \step{3}{$-x$ is closed downwards.}
+        \begin{proof}
+            \pf\ Easy.
+        \end{proof}
+        \step{4}{$-x$ has no largest element.}
+        \begin{proof}
+            \step{a}{\pflet{$r \in -x$}}
+            \step{b}{\pick\ $s > r$ such that $-s \notin x$}
+            \step{c}{\pick\ $q$ such that $r < q < s$}
+            \step{d}{$r < q$ and $q \in -x$}
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}
