@@ -212,7 +212,7 @@
     \begin{proof}
         \pf\ Easy. \qed
     \end{proof}
-    
+
     \section{Ordered Fields}
 
     \begin{definition}[Ordered Field]
@@ -224,4 +224,86 @@
         \end{align*}
     \end{definition}
 
+    \section{The Real Numbers}
+
+    \begin{definition}[Dedekind Cut]
+        A \emph{real number} or \emph{Dedekind cut} is a subset $x$ of $\mathbb{Q}$ such that:
+        \begin{enumerate}
+            \item $\emptyset \neq x \neq \mathbb{Q}$
+            \item $x$ is \emph{closed downwards}, i.e. for all $q \in x$, if $r \in \mathbb{Q}$
+            and $r < q$ then $r \in x$.
+            \item $x$ has no largest member.
+        \end{enumerate}
+        Let $\mathbb{R}$ be the set of all real numbers.
+    \end{definition}
+
+    \begin{definition}
+        Given real numbers $x$ and $y$, we write $x < y$ iff $x \subset y$.
+    \end{definition}
+
+    \begin{theorem}
+        The relation $<$ is a linear ordering on $\mathbb{R}$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ The only hard part is proving that, for any reals $x$ and $y$, either $x \subseteq y$ or
+        $y \subseteq x$.
+
+        Suppose $x \nsubseteq y$. Pick $q \in x$ such that $q \notin y$. Let $r \in y$. Then $q \nless r$
+        (since $y$ is closed downwards) therefore $r < q$. Hence $r \in x$ (because $x$ is closed downwards).
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        Any nonempty set $A$ of reals bounded above has a least upper bound.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ We prove that $\bigcup A$ is a Dedekind cut. It is then the least upper bound of $A$.
+
+        The set $\bigcup A$ is nonempty because $A$ is nonempty. Pick an upper bound $r$ for $A$, and a
+        rational $q \notin r$; then $q \notin \bigcup A$, so $\bigcup A \neq \mathbb{Q}$.
+
+        $\bigcup A$ is closed downwards because every member of $A$ is closed downwards.
+
+        $\bigcup A$ has no largest member because every member of $A$ has no largest member. \qed
+    \end{proof}
+
+    \begin{definition}[Addition]
+        \emph{Addition} $+$ on $\mathbb{R}$ is defined by:
+        \[ x + y = \{ q + r \mid q \in x, r \in y \} \enspace .\]
+        We prove this is a Dedekind cut.
+    \end{definition}
+
+    \begin{proof}
+        \pf
+        \step{1}{$x + y \neq \emptyset$}
+        \begin{proof}
+            \pf\ Pick $q \in x$ and $r \in y$. Then $q + r \in x + y$.
+        \end{proof}
+        \step{2}{$x + y \neq \mathbb{Q}$}
+        \begin{proof}
+            \step{a}{\pick{$q \in \mathbb{Q} - x$ and $r \in \mathbb{Q} - y$}}
+            \step{b}{For all $q' \in x$ we have $q' < q$}
+            \step{c}{For all $r' \in y$ we have $r' < r$}
+            \step{d}{For all $q' \in x$ and $r' \in y$ we have $q' + r' < q + r$}
+            \step{e}{$q + r \notin x + y$}
+        \end{proof}
+        \step{3}{$x + y$ is closed downwards.}
+        \begin{proof}
+            \step{a}{\pflet{$q \in x$ and $r \in y$}}
+            \step{b}{\pflet{$s < q + r$}}
+            \step{c}{$s-q < r$}
+            \step{d}{$s-q \in y$}
+            \step{e}{$s = q + (s-q) \in x + y$}
+        \end{proof}
+        \step{4}{$x + y$ has no largest member.}
+        \begin{proof}
+            \step{a}{\pflet{$q \in x$ and $r \in y$}}
+            \step{b}{\pick\ $q' \in x$ with $q < q'$}
+            \step{c}{\pick\ $r' \in y$ with $r < r'$}
+            \step{d}{$q' + r' \in x + y$ and $q + r < q' + r'$}
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}
