@@ -314,4 +314,28 @@
     \begin{proof}
         \pf\ Easy. \qed
     \end{proof}
+
+    \begin{definition}[Zero]
+        The real number zero is $0 = \{ q \in \mathbb{Q} : q < 0 \}$.
+
+        It is easy to check this is a Dedekind cut.
+    \end{definition}
+
+    \begin{theorem}
+        For every real $x$ we have $x + 0 = x$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{a}{$x + 0 \subseteq x$}
+        \begin{proof}
+            \pf\ Let $q \in x$ and $r \in 0$. Then $q + r < q$ so $q + r \in x$.
+        \end{proof}
+        \step{b}{$x \subseteq x + 0$}
+        \begin{proof}
+            \pf\ Let $q \in x$. Pick $r \in x$ such that $q < r$. Then $q - r \in 0$ and $q = r + (q-r) \in
+            x + 0$.
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}
