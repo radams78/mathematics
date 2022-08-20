@@ -2295,4 +2295,32 @@
 
     \paragraph{Exercise 40}
     $h(n^+) = h(n) + 5$
+
+    \chapter{Chapter 5 --- Construction of the Real Numbers}
+
+    \section{Integers}
+    
+    \paragraph{Exercise 1}
+    No, because $[\langle 0,0 \rangle] = [\langle 1,1 \rangle]$ but $[\langle 0,0 \rangle] \neq [\langle
+        2,1 \rangle]$.
+
+    \paragraph{Exercise 2}
+    Yes, because if $[\langle m,n \rangle] = [\langle p,q \rangle]$ then $[\langle m,m \rangle] =
+    [\langle p,p \rangle]$ because $m + p = m + p$.
+
+    \paragraph{Exercise 3}
+    Yes, because if $[\langle m,n \rangle] = [\langle p,q \rangle]$ then $[\langle n,m \rangle] =
+    [\langle q,p \rangle]$ because $n + p = m + q$.
+
+    \paragraph{Exercise 4}
+    Let $a = [\langle m,n \rangle]$, $b = [\langle p,q \rangle]$ and $c = [\langle r,s \rangle]$.
+    Then
+    \begin{align*}
+        a +_Z (b +_Z c) & = [\langle m,n \rangle] +_Z [\langle p + r, q + s \rangle] \\
+        & = [\langle m + (p + r), n + (q + s) \rangle] \\
+        & = [\langle (m + p) + r, (n + q) + s \rangle] \\
+        & = [\langle m + p, n + q \rangle] +_Z [\langle r,s \rangle] \\
+        & = (a +_Z b) +_Z c
+    \end{align*}
+
 \end{document}

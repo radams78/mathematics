@@ -254,3 +254,9 @@
 \contentsline {paragraph}{Exercise 38}{44}%
 \contentsline {paragraph}{Exercise 39}{44}%
 \contentsline {paragraph}{Exercise 40}{44}%
+\contentsline {chapter}{\numberline {5}Chapter 5 --- Construction of the Real Numbers}{45}%
+\contentsline {section}{\numberline {5.1}Integers}{45}%
+\contentsline {paragraph}{Exercise 1}{45}%
+\contentsline {paragraph}{Exercise 2}{45}%
+\contentsline {paragraph}{Exercise 3}{45}%
+\contentsline {paragraph}{Exercise 4}{45}%
