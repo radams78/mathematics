@@ -268,3 +268,9 @@
 \contentsline {subparagraph}{(b)}{46}%
 \contentsline {subparagraph}{(c)}{46}%
 \contentsline {paragraph}{Exercise 9}{46}%
+\contentsline {section}{\numberline {5.2}Rational Numbers}{46}%
+\contentsline {paragraph}{Exercise 10}{46}%
+\contentsline {paragraph}{Exercise 11}{47}%
+\contentsline {paragraph}{Exercise 12}{47}%
+\contentsline {paragraph}{Exercise 13}{47}%
+\contentsline {paragraph}{Exercise 14}{47}%

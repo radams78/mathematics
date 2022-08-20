@@ -145,4 +145,83 @@
     %TODO: The reals form a field.
 
     %TODO: The complex numbers form a field.
+
+    \section{Rational Numbers}
+
+    \begin{lemma}
+        If $(a,b) \sim (a',b')$ and $(c,d) \sim (c',d')$ and $b$, $b'$, $d$, $d'$
+        are all positive then $ad<bc$ iff $a'd'<b'c'$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Easy.
+    \end{proof}
+
+    \begin{definition}
+        The ordering on the rationals is defined by: if $b$ and $d$ are positive then
+        $[(a,b)] < [(c,d)]$ iff $ad < bc$.
+    \end{definition}
+
+    \begin{theorem}
+        The relation $<$ is a linear ordering on $\mathbb{Q}$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}[Positive]
+        A rational $q$ is \emph{positive} iff $0 < q$.
+    \end{definition}
+
+    \begin{definition}[Absolute Value]
+        The \emph{absolute value} of a rational $q$ is the rational $|q|$ defined by
+        \[ |q| = \begin{cases}
+            q & \text{if } q \geq 0 \\
+            -q & \text{if } q \leq 0
+        \end{cases} \]
+    \end{definition}
+
+    \begin{theorem}
+        For any rational $s$, the function that maps $q$ to $q + s$ is strictly monotone.
+    \end{theorem}
+    
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any positive rational $s$, the function that maps $q$ to $qs$ is strictly monotone.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Define $E : \mathbb{Z} \rightarrow \mathbb{Q}$ by $E(a) = [(a,1)]$. Then $E$ is one-to-one and:
+        \begin{enumerate}
+            \item $E(a+b) = E(a) + E(b)$
+            \item $E(ab) = E(a)E(b)$
+            \item $E(0) = 0$
+            \item $E(1) = 1$
+            \item $a < b$ iff $E(a) < E(b)$
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+    
+    \section{Ordered Fields}
+
+    \begin{definition}[Ordered Field]
+        An \emph{ordered field} is a sextuple $(D, +, \cdot, \cdot, 0, 1, <)$ such that $(D, +, \cdot, 0, 1)$
+        is a field, $<$ is a linear ordering on $D$, and:
+        \begin{align*}
+            & \forall x,y,z. x < y \Leftrightarrow x + z < y + z \\
+            & \forall x,y,z. 0 < z \Rightarrow (x < y \Leftrightarrow xz < yz)
+        \end{align*}
+    \end{definition}
+
 \end{document}

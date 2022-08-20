@@ -2368,4 +2368,46 @@
         & = [\langle m, n \rangle]
     \end{align*}
     by Exercise 5.
+
+    \section{Rational Numbers}
+
+    \paragraph{Exercise 10}
+    Let $r = [\langle a,b \rangle]$. Then
+    \begin{align*}
+        r \cdot_Q 0_Q & = [\langle a,b \rangle] \cdot_Q [\langle 0,1 \rangle] \\
+        & = [\langle a \cdot_Z 0, b \cdot_Z 1 \rangle] \\
+        & = [\langle 0, b \rangle] \\
+        & = [\langle 0,1 \rangle]
+    \end{align*}
+    since $\langle 0, b \rangle \sim \langle 0,1 \rangle$ because $0 \cdot_Z 1 = 0 \cdot_Z b = 0$.
+
+    \paragraph{Exercise 11}
+    Let $r = [\langle a,b \rangle]$ and $s = [\langle c,d \rangle]$. Suppose $r \cdot_Q s = 0_Q$.
+    Then
+    \[ [\langle ac,bd \rangle] = [\langle 0, 1 \rangle] \]
+    that is, $ac = 0$. Hence $a = 0$ or $c = 0$, which means $r = 0_Q$ or $s = 0_Q$.
+
+    \paragraph{Exercise 12}
+    This follows from Theorem 5QJ(a) with $s = 0_Q$ and $t = -r$.
+
+    \paragraph{Exercise 13}
+    Let $a,b,c \in \mathbb{Z}$. If $a +_Z c = b +_Z c$ then
+    \begin{align*}
+        a +_Z c +_Z (-c) & = b +_Z c +_Z (-c) \\
+        \therefore a +_Z 0 & = b +_Z 0 & (\text{Theorem 5ZD(b)}) \\
+        \therefore a & = b & (\text{Theorem 5ZD(a)})
+    \end{align*}
+    
+    \paragraph{Exercise 14}
+    Suppose $p <_Q s$. Let $r = (p +_Q s) / 2$. Then
+    \begin{align*}
+        p & <_Q s \\
+        \therefore 2p & <_Q p +_Q s \\
+        \therefore p & <_Q (p +_Q s) / 2 \\
+        & = r \\
+        p & <_Q s \\
+        \therefore p +_Q s & <_Q 2s \\
+        \therefore (p +_Q s)/2 & <_Q s \\
+        \therefore r & <_Q s
+    \end{align*}
 \end{document}
