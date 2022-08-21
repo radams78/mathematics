@@ -2619,4 +2619,102 @@
     Now we prove it maps $A$ onto $C$. Let $c \in C$. Pick $b \in B$ such that $g(b) = c$
     (since $g$ is surjective). Pick
     $a \in A$ such that $f(a) = b$ (since $f$ is injective). Then $(g \circ f)(a) = c$.
+
+    \section{Finite Sets}
+
+    \paragraph{Exercise 6}
+    Suppose every set of cardinality $\kappa$ belongs to $A$. We will prove that every set belongs to
+    $\bigcup A$.
+
+    Let $x$ be any set. Pick a set $y$ of cardinality $\kappa$. If $x \in y$ then $x \in y \in A$
+    so $x \in \bigcup A$.
+    
+    Assume $x \notin y$. Pick an element $z \in y$ (we know
+    $y$ is nonempty because $\kappa \neq 0$). Then $y - \{ z \} \cup \{ x \}$ has cardinality $\kappa$,
+    and so $x \in (y - \{z\} \cup \{x\}) \in A$ hence $x \in \bigcup A$.
+
+    Thus, every set is in $\bigcup A$, which we know is impossible by Theorem 2A.
+
+    \paragraph{Exercise 7}
+    If $f$ is one-to-one then $f$ is a bijection between $A$ and $\ran f$. So we must have $\ran f = A$, otherwise $f$ would be a bijection between $A$
+    and a proper subset of $A$, contradicting the Pigeonhole Principle.
+
+    Conversely, suppose $\ran f = A$. Pick a right inverse $h : A \rightarrow A$ for $f$ (by Theorem 3J(b).
+    Note: Theorem 3J(b) can in fact be proved for the case $B$ is finite without using the Axiom of Choice.).
+    Now, $h$ is one-to-one by Theorem 3J(a). So $\ran h = A$ by the first paragraph.
+
+    We prove $f$ is one-to-one. Let $x,y \in A$ and assume $f(x) = f(y)$. Pick $a, b \in A$ such that
+    $h(a) = x$ and $h(b) = y$. Then
+    \begin{align*}
+        f(h(a)) & = f(h(b)) \\
+        \therefore a & = b \\
+        \therefore x & = y
+    \end{align*}
+
+    \paragraph{Exercise 8}
+    \begin{proof}
+        \pf
+        \step{1}{For any sets $A$ and $x$, if $A$ is finite then $A \cup \{x\}$ is finite.}
+        \begin{proof}
+            \step{a}{\case{$x \in A$}}
+            \begin{proof}
+                \pf\ In this case $A \cup \{x\} = A$.
+            \end{proof}
+            \step{b}{\case{$x \notin A$}}
+            \begin{proof}
+                \pf\ Then $|A \cup \{x\}| = |A|^+$.
+            \end{proof}
+        \end{proof}
+        \step{1.5}{\pflet{$A$ be a finite set.}}
+        \step{2}{For any set $B$, if $B \approx 0$ then $A \cup B$ is finite.}
+        \begin{proof}
+            \pf\ Because $B = \emptyset$ so $A \cup B = A$.
+        \end{proof}
+        \step{3}{Let $n$ be a natural number. Assume that, for any set $B$, if $B \approx n$
+        then $A \cup B$ is finite. Then for any set $B$, if $B \approx n^+$ then $A \cup B$ is finite.}
+        \begin{proof}
+            \step{a}{\pflet{$n \in \omega$}}
+            \step{b}{\assume{For any set $B$, if $B \approx n$ then $A \cup B$ is finite.}}
+            \step{c}{\pflet{$B$ be a set.}}
+            \step{d}{\assume{$B \approx n^+$}}
+            \step{e}{\pick\ a bijection $f : n^+ \rightarrow B$}
+            \step{f}{$B - \{f(n)\} \approx n$}
+            \step{g}{$A \cup (B - \{f(n)\})$ is finite.}
+            \step{h}{$A \cup B$ is finite.}
+            \begin{proof}
+                \pf\ By \stepref{1} since $A \cup B = (A \cup (B - \{ f(n) \})) \cup \{ f(n) \}$.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 9}
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$A$ be a finite set.}}
+        \step{2}{For any set $B$, if $B \approx 0$ then $A \times B$ is finite.}
+        \begin{proof}
+            \pf\ In this case $A \times B = \emptyset$.
+        \end{proof}
+        \step{3}{Let $n$ be a natural number. Suppose that, for any set $B$, if $B \approx n$
+        then $A \times B$ is finite. Then for any set $B$, if $B \approx n^+$ then $A \times B$ is finite.}
+        \begin{proof}
+            \step{a}{\pflet{$n$ be a natural number.}}
+            \step{b}{\assume{For any set $B$, if $B \approx n$ then $A \times B$ is finite.}}
+            \step{c}{\pflet{$B$ be a set.}}
+            \step{d}{\assume{$B \approx n^+$}}
+            \step{e}{\pick\ a bijection $f : n^+ \approx B$}
+            \step{f}{$A \times (B - \{ f(n) \})$ is finite.}
+            \begin{proof}
+                \pf\ By the induction hypothesis \stepref{b}.
+            \end{proof}
+            \step{g}{$A \times B$ is finite.}
+            \begin{proof}
+                \pf\ By Exercise 8 since $A \times B = (A \times (B - \{ f(n) \})) \cup (A \times \{ f(n) \})$
+                and $A \times \{ f(n) \}$ is finite because it is equinumerous with $A$.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+    
 \end{document}
