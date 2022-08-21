@@ -2755,4 +2755,15 @@
         K \cup (L \cup M) & = (K \cup L) \cup M \\
         K \times (L \cup M) & = (K \times L) \cup (K \times M)
     \end{align*}
+
+    \paragraph{Exercise 13}
+    Now that we have shown the union of two finite sets is finite, this follows by an easy induction on
+    $|B|$.
+    
+    \paragraph{Exercise 14}
+    For any set $A$, let $Perm(A)$ be the set of all permutations of $A$.
+
+    Assume $K \approx L$: we must show $Perm(K) \approx Perm(L)$. Pick a bijection $f : K \rightarrow L$.
+    Define $\Phi : Perm(K) \rightarrow Perm(L)$ by: $\Phi(g) = f \circ g \circ \inv{f}$. It is easy to
+    show $\Phi(g)$ is a permutation of $L$ whenever $g$ is a permutation of $K$, and $\Phi$ is a bijection.
 \end{document}
