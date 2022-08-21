@@ -298,3 +298,6 @@
 \contentsline {paragraph}{Exercise 7}{53}%
 \contentsline {paragraph}{Exercise 8}{53}%
 \contentsline {paragraph}{Exercise 9}{54}%
+\contentsline {section}{\numberline {6.3}Cardinal Arithmetic}{54}%
+\contentsline {paragraph}{Exercise 10}{54}%
+\contentsline {paragraph}{Exercise 11}{55}%

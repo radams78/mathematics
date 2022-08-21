@@ -2717,4 +2717,34 @@
         \qed
     \end{proof}
     
+    \section{Cardinal Arithmetic}
+
+    \paragraph{Exercise 10}
+    We must show that $^{(L \cup M)}K \approx ^L K \times ^M K$ where $L \cap M = \emptyset$.
+
+    Define $\Phi : ^{(L \cup M)}K \rightarrow ^L K \times ^M K$ by: $\Phi(f) = \langle f \restriction L,
+    f \restriction M \rangle$.
+
+    To show $\Phi$ is one-to-one: suppose $\Phi(f) = \Phi(g)$. Then $f \restriction L = g \restriction L$
+    and $f \restriction M = g \restriction M$. Hence $f(x) = g(x)$ for all $x \in L$ and $f(x) = g(x)$
+    for all $x \in M$, so $f(x) = g(x)$ for all $x$, i.e. $f = g$.
+
+    To show $\Phi$ is surjective: given a function $g : L \rightarrow K$ and $h : M \rightarrow K$,
+    we have $g \cup h : L \cup M \rightarrow K$ and $\Phi(g \cup h) = \langle g, h \rangle$.
+
+    \paragraph{Exercise 11}
+    We must show that $^M(K \times L) \approx ^M K \times ^M L$.
+
+    Define $\Phi : ^M(K \times L) \rightarrow ^M K \times ^M L$ by: $\Phi(f) = \langle \pi_1 \circ f,
+    \pi_2 \circ f \rangle$, where $\pi_1 : K \times L \rightarrow K$ is the function defined by
+    \[ \pi_1(\langle x,y \rangle) = x \]
+    and $\pi_2 : K \times L \rightarrow L$ is the function defined by
+    \[ \pi_2(\langle x,y \rangle) = y \enspace . \]
+
+    To show $\Phi$ is one-to-one: suppose $\Phi(f) = \Phi(g)$. For any $x \in M$, we have $\pi_1(f(x)) = \pi_1(g(x))$
+    and $\pi_2(f(x)) = \pi_2(g(x))$, so $f(x) = g(x)$ by Theorem 3A.
+
+    To show $\Phi$ is surjective: given $g : M \rightarrow K$ and $h : M \rightarrow L$,
+    define $f : M \rightarrow K \times L$ by $f(x) = \langle g(x), h(x) \rangle$ for $x \in M$.
+    Then $\Phi(f) = \langle g, h \rangle$.
 \end{document}
