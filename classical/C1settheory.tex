@@ -1854,4 +1854,33 @@
         \pf\ Routine calculations. \qed
     \end{proof}
 
+    \section{Equinumerosity}
+
+    \begin{definition}[Equinumerous]
+        Two sets $A$ and $B$ are \emph{equinumerous}, $A \approx B$, iff there exists a bijection between
+        them.
+    \end{definition}
+
+    \begin{theorem}
+        Equinumerosity is an equivalence relation on the class of sets.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}[Cantor 1873]
+        No set is equinumerous with its power set.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$g : A \rightarrow \mathcal{P} A$} \prove{$g$ is not surjective.}}
+        \step{2}{\pflet{$B = \{x \in A : x \notin g(x) \}$}}
+        \step{3}{$\forall x \in A. g(x) \neq B$}
+        \begin{proof}
+            \pf\ Because $x \in B$ iff $x \notin g(x)$.
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}

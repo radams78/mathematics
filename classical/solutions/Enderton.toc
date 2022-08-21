@@ -283,3 +283,13 @@
 \contentsline {paragraph}{Exercise 20}{48}%
 \contentsline {paragraph}{Exercise 21}{48}%
 \contentsline {paragraph}{Exercise 22}{49}%
+\contentsline {chapter}{\numberline {6}Chapter 6 --- Cardinal Numbers and the Axiom of Choice}{50}%
+\contentsline {section}{\numberline {6.1}Equinumerosity}{50}%
+\contentsline {paragraph}{Exercise 1}{50}%
+\contentsline {paragraph}{Exercise 2}{51}%
+\contentsline {paragraph}{Exercise 3}{51}%
+\contentsline {paragraph}{Exercise 4}{51}%
+\contentsline {paragraph}{Exercise 5}{51}%
+\contentsline {subparagraph}{(a)}{51}%
+\contentsline {subparagraph}{(b)}{51}%
+\contentsline {subparagraph}{(c)}{52}%

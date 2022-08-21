@@ -2508,4 +2508,115 @@
 
     \paragraph{Exercise 22}
     $|x|$ is either $x$ or $-x$, and they are both real numbers.
+
+    \chapter{Chapter 6 --- Cardinal Numbers and the Axiom of Choice}
+
+    \section{Equinumerosity}
+
+    \paragraph{Exercise 1}
+    \begin{proof}
+        \pf
+        \step{1}{$f$ is injective.}
+        \begin{proof}
+            \step{a}{\assume{$f(m,n) = f(m',n')$}}
+            \step{b}{$2^m(2n+1) = 2^{m'}(2n'+1)$}
+            \step{c}{$m = m'$}
+            \begin{proof}
+                \step{i}{\assume{w.l.o.g. $m \leq m'$}}
+                \step{ii}{$2n+1 = 2^{m'-m}(2n'+1)$}
+                \begin{proof}
+                    \pf\ From \stepref{b} dividing by $2^m$.
+                \end{proof}
+                \step{iii}{$m'-m = 0$}
+                \begin{proof}
+                    \pf\ Since $2^{m'-m}(2n'+1)$ is odd.
+                \end{proof}
+            \end{proof}
+            \step{d}{$2n+1 = 2n'+1$}
+            \step{e}{$n = n'$}
+        \end{proof}
+        \step{2}{$f$ is surjective.}
+        \begin{proof}
+            \step{a}{\pflet{$n \in \omega$}
+            \assume{$\forall m < n. m \in \ran f$}
+            \prove{$n \in \ran f$}}
+            \step{b}{\case{$n$ is even}}
+            \begin{proof}
+                \step{i}{\pflet{$k$ be such that $n = 2k$}}
+                \step{ii}{$n = f(0,k)$}
+            \end{proof}
+            \step{c}{\case{$n$ is odd}}
+            \begin{proof}
+                \step{i}{\pflet{$k$ be such that $n = 2k+1$}}
+                \step{ii}{\pflet{$k = f(i,j)$}}
+                \step{iii}{$n = f(i+1,j)$}
+                \begin{proof}
+                    \pf
+                    \begin{align*}
+                        n & = 2k+1 \\
+                        & = 2(2^i(2j+1)-1) +1 \\
+                        & = 2^{i+1}(2j+1)-2+1 \\
+                        & = 2^{i+1}(2j+1) - 1
+                    \end{align*}
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 2}
+    Let us call $(0)$ the $0$th diagonal, $(1,2)$ the 1st diagonal, $(3,4,5)$ the 2nd diagonal, etc.
+    Then the $k$th is the set of all positions with coordinates $(m,n)$ such that $m + n = k$.
+
+    Therefore, the number $J(m,n)$ at position $(m,n)$ is the $m+1$st number in the $(m+n)$th diagonal. So the number
+    of numbers that come before $J(m,n)$ is
+    \[ (1 + 2 + \cdots + (m+n)) + m \]
+    Therefore, since the natural numbers start at 0,
+    \[ J(m,n) = (1 + 2 + \cdots + (m+n)) + m \]
+    We know $1 + 2 + \cdots + k = k(k+1)/2$. Therefore,
+    \begin{align*}
+        J(m,n) & = 1/2(m+n)(m+n+1) + m \\
+        & = 1/2(m^2 + 2mn + m + n + n^2) + m \\
+        & = 1/2(m^2 + 2mn + 3m + n + n^2) \\
+        & = 1/2((m+n)^2 + 3m + n)
+    \end{align*}
+
+    \paragraph{Exercise 3}
+    Define $f : (0,1) \rightarrow \mathbb{R}$ by: $f(x) = 1/x - 2$ if $0 < x \leq 1/2$; $f(x) = 2 - 1/(1-x)$
+    if $1/2 < x < 1$.
+
+    \paragraph{Exercise 4}
+    Define $f : [0,1] \rightarrow (0,1)$ by 
+    \begin{align*}
+        f(1/2 - 1/2^n) & = 1/2 - 1/2^{n-1} & (\text{for $n$ a positive integer}) \\
+        f(1/2 + 1/2^n) & = 1/2 + 1/2^{n-1} & (\text{for $n$ a positive integer}) \\
+        f(x) & = x & (\text{for all other $x$})
+    \end{align*}
+
+    \paragraph{Exercise 5}
+    \subparagraph{(a)}
+    For any set $A$, the identity function $I_A$ is a bijection between $A$ and $A$. It is injective
+    because, if $I_A(x) = I_A(y)$ then $x = y$ immediately. It is surjective because for any $y \in I_A$
+    we have $y = I_A(y)$.
+    
+    \subparagraph{(b)}
+    We prove that, if $f$ is a bijection between $A$ and $B$, then $\inv{f}$ is a bijection between
+    $B$ and $A$. It is an injective function by Theorem 3F, and maps $B$ onto $A$ by Theorem 3E.
+
+    \subparagraph{(c)}
+    Let $f$ be a bijection between $A$ and $B$, and $g$ a bijection between $A$ and $C$. We prove $g \circ f$
+    is a bijection between $A$ and $C$.
+
+    It is a function from $A$ to $C$ by Theorem 3H.
+
+    We prove it is injective. Let $x,y \in A$ and assume $(g \circ f)(x) = (g \circ f)(y)$. Then
+    \begin{align*}
+        g(f(x)) & = g(f(y)) \\
+        \therefore f(x) & = f(y) & (\text{$g$ is injective}) \\
+        \therefore x & = y & (\text{$f$ is injective})
+    \end{align*}
+
+    Now we prove it maps $A$ onto $C$. Let $c \in C$. Pick $b \in B$ such that $g(b) = c$
+    (since $g$ is surjective). Pick
+    $a \in A$ such that $f(a) = b$ (since $f$ is injective). Then $(g \circ f)(a) = c$.
 \end{document}

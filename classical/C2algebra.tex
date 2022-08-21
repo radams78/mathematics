@@ -707,4 +707,17 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \begin{theorem}[Cantor 1873]
+        The set $\omega$ is not equinumerous with $\mathbb{R}$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$f : \omega \rightarrow \mathbb{R}$} \prove{$f$ is not surjective.}}
+        \step{2}{\pflet{$z$ be the real number between 0 and 1 whose $n+1$st decimal place is 7
+        unless the $n+1$st decimal place of $f(n)$ is 7, in which case it is 6}}
+        \step{3}{$\forall n \in \omega. f(n) \neq z$}
+        \qed
+    \end{proof}
 \end{document}
