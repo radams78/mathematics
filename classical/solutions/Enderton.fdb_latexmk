@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1660980047 "/home/robin/fun/maths/classical/solutions/Enderton.tex" "/home/robin/fun/maths/classical/solutions/Enderton.pdf" "Enderton" 1660980048
+["pdflatex"] 1661063344 "/home/robin/fun/maths/classical/solutions/Enderton.tex" "/home/robin/fun/maths/classical/solutions/Enderton.pdf" "Enderton" 1661063345
   "/etc/texmf/web2c/texmf.cnf" 1626265647 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/robin/fun/maths/classical/solutions/Enderton.aux" 1660980048 24028 c336f73cb6ab8fed8ff6d621c454ebd7 ""
-  "/home/robin/fun/maths/classical/solutions/Enderton.tex" 1660980045 97973 d2982699d6da1ee248b9d4ebb8f93e21 ""
+  "/home/robin/fun/maths/classical/solutions/Enderton.aux" 1661063345 24809 ea7c9930e96601755d4cd591e8a84b4c ""
+  "/home/robin/fun/maths/classical/solutions/Enderton.tex" 1661063336 101583 00bff576632b5646c7ce114cf8cad03b ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty" 1359763108 5949 3f3fd50a8cc94c3d4cbf4fc66cd3df1c ""
   "/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty" 1359763108 13829 94730e64147574077f8ecfea9bb69af4 ""
@@ -67,13 +67,13 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1626264333 4131335 97f357c35ef03853631f523ecab90976 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1626264381 8269926 c6f0aa12f3019b9156b681964aec4572 ""
-  "Enderton.aux" 1660980048 24028 c336f73cb6ab8fed8ff6d621c454ebd7 "pdflatex"
-  "Enderton.tex" 1660980045 97973 d2982699d6da1ee248b9d4ebb8f93e21 ""
-  "Enderton.toc" 1660980048 12324 afa17f0368e13b765a7f9d02207aeccb "pdflatex"
+  "Enderton.aux" 1661063345 24809 ea7c9930e96601755d4cd591e8a84b4c "pdflatex"
+  "Enderton.tex" 1661063336 101583 00bff576632b5646c7ce114cf8cad03b ""
+  "Enderton.toc" 1661063345 12736 916fa753127cec8488042be8ba08e68f "pdflatex"
   (generated)
-  "/home/robin/fun/maths/classical/solutions/Enderton.pdf"
-  "Enderton.log"
   "Enderton.pdf"
+  "Enderton.log"
+  "Enderton.toc"
   "/home/robin/fun/maths/classical/solutions/Enderton.log"
   "Enderton.aux"
-  "Enderton.toc"
+  "/home/robin/fun/maths/classical/solutions/Enderton.pdf"

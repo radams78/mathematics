@@ -2410,4 +2410,102 @@
         \therefore (p +_Q s)/2 & <_Q s \\
         \therefore r & <_Q s
     \end{align*}
+
+    \section{Real Numbers}
+
+    \paragraph{Exercise 15}
+    \begin{proof}
+        \pf
+        \step{1}{$\bigcup A$ is closed downwards.}
+        \begin{proof}
+            \step{a}{\pflet{$q \in \bigcup A$ and $p < q$}}
+            \step{b}{\pick\ $x \in A$ such that $q \in x$}
+            \step{c}{$p \in x$}
+            \begin{proof}
+                \pf\ Since $x$ is closed downwards.
+            \end{proof}
+            \step{d}{$p \in \bigcup A$}
+        \end{proof}
+        \step{2}{$\bigcup A$ has no largest element.}
+        \begin{proof}
+            \step{a}{\pflet{$q \in \bigcup A$}}
+            \step{b}{\pick\ $x \in A$ such that $q \in x$}
+            \step{c}{\pick\ $r \in x$ such that $q < r$}
+            \begin{proof}
+                \pf\ Since $x$ has no largest element.
+            \end{proof}
+            \step{d}{$r \in \bigcup A$}
+        \end{proof}
+        \qed
+    \end{proof}
+    
+    \paragraph{Exercise 16}
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$q \in x +_R y$}}
+        \step{2}{\pick\ rationals $a \in x$ and $b \in y$ such that $q = a + b$}
+        \step{3}{\pick\ $a' \in x$ and $b' \in y$ such that $a < a'$ and $b < b'$}
+        \begin{proof}
+            \pf\ Since $x$ and $y$ each have no largest element.
+        \end{proof}
+        \step{4}{$q < a' + b' \in x +_R y$}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 17}
+    If $b < 0$ we can take $k = 0$. If $b \geq 0$ then there is a natural number $n$ such that $b = E(n)$;
+    take $k = n^+$. Then $b < ak$ since $1 \leq a$ and $b < k$.
+
+    \paragraph{Exercise 18}
+    Let $p = [\langle a,b \rangle]$ and $r = [\langle c,d \rangle]$ where $a$, $b$ and $d$ are positive.
+    By Exercise 17, there exists a natural number $k$ such that $bc < ad E(k)$. Therefore $r < p \cdot E(E(k))$.
+
+    \paragraph{Exercise 19}
+    Pick a rational $a \in x$ (which we can do since $x \neq \emptyset$). We first prove that there exists
+    a natural number $k$ such that $a + kp \notin x$.
+
+    Pick a rational $b \notin x$ (which we can do since $x \neq \mathbb{Q}$). We have $a < b$ (since $x$ is
+    closed downwards). By Exercise 18, there exists a natural number $k$ such that
+    \begin{align*}
+        b - a & < kp \\
+        \therefore a + kp & > b \\
+        \therefore a + kp & \notin x
+    \end{align*}
+
+    Now, let $k$ be the least natural number such that $a + kp \notin x$ (by the Well-Ordering Principle).
+    We have $k \neq 0$ (since $a \in x$);
+    let $k = n^+$. Then we have
+    \[ a + np \in x \qquad a + np + p \notin x \]
+    Take $q = a + np$.
+
+    \paragraph{Exercise 20}
+    We must prove $0 \subseteq x \cup -x$. Let $q \in 0$ and assume $q \notin x$. Then $q < 0$ and $-0 = 0
+    \notin x$, so $q \in -x$.
+
+    \paragraph{Exercise 21}
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$x,y$ be real numbers with $x < y$}}
+        \step{2}{\pick\ $r \in y$ such that $r \notin x$}
+        \step{3}{\pick\ $s \in y$ such that $r < s$ \prove{$x < E(s) < y$}}
+        \step{4}{$x \subseteq E(s)$}
+        \begin{proof}
+            \pf\ If $p \in x$ then $p < r < s$
+        \end{proof}
+        \step{5}{$x \neq E(s)$}
+        \begin{proof}
+            \pf\ Since $r \in E(s)$ and $r \notin x$
+        \end{proof}
+        \step{6}{$E(s) \subseteq y$}
+        \begin{proof}
+            \pf\ Since $y$ is closed downwards.
+        \end{proof}
+        \step{7}{$E(s) \neq y$}
+        \begin{proof}
+            \pf\ Since $s \in y$ but $s \notin E(s)$.
+        \end{proof}
+    \end{proof}
+
+    \paragraph{Exercise 22}
+    $|x|$ is either $x$ or $-x$, and they are both real numbers.
 \end{document}

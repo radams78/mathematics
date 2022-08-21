@@ -558,15 +558,7 @@
     \end{theorem}
 
     \begin{proof}
-        \pf\ TODO \qed
-    \end{proof}
-
-    \begin{theorem}
-        For any positive real $z$, the function that maps $x$ to $xz$ is strictly monotone.
-    \end{theorem}
-
-    \begin{proof}
-        \pf\ TODO \qed
+        \pf\ See E. Mendelson. \emph{Number Systems and the Foundations of Analysis}. Appendix F. \qed
     \end{proof}
 
     \begin{definition}
@@ -588,7 +580,36 @@
     \end{theorem}
 
     \begin{proof}
-        \pf\ TODO \qed
+        \pf
+        \step{1}{\pflet{$x \in \mathbb{R}$} \prove{$x1=x$}}
+        \step{2}{\case{$0 \leq x$}}
+        \begin{proof}
+            \step{a}{$x1 \subseteq x$}
+            \begin{proof}
+                \step{i}{\pflet{$q \in x1$} \prove{$q \in x$}}
+                \step{ii}{\case{$q < 0$}}
+                \begin{proof}
+                    \pf\ Then $q \in x$ because $0 \leq x$.
+                \end{proof}
+                \step{iii}{\case{There exist nonnegative rationals $r \in x$, $s \in 1$ such that $q = rs$}}
+                \begin{proof}
+                    \pf\ Then $q < r \in x$ so $q \in x$.
+                \end{proof}
+            \end{proof}
+            \step{b}{$x \subseteq x1$}
+            \begin{proof}
+                \step{i}{\pflet{$q \in x$}}
+                \step{o}{\assume{w.l.o.g. $0 \leq q$}}
+                \step{ii}{\pick\ $r \in x$ with $q < r$}
+                \step{iii}{$0 \leq q/r < 1$}
+                \step{iv}{$q = r (q/r) \in x1$}
+            \end{proof}
+        \end{proof}
+        \step{3}{\case{$x < 0$}}
+        \begin{proof}
+            \pf\ Then $x1 = -((-x)1) = -(-x) = x$.
+        \end{proof}
+        \qed
     \end{proof}
 
     \begin{theorem}
@@ -596,7 +617,94 @@
     \end{theorem}
 
     \begin{proof}
-        \pf\ TODO \qed
+        \pf\ See E. Mendelson. \emph{Number Systems and the Foundations of Analysis}. Appendix F. \qed
     \end{proof}
 
+    \begin{theorem}
+        For any positive real $z$, the function that maps $x$ to $xz$ is strictly monotone.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ See E. Mendelson. \emph{Number Systems and the Foundations of Analysis}. Appendix F. \qed
+    \end{proof}
+
+    \section{Complete Ordered Fields}
+
+    \begin{definition}[Complete Ordered Field]
+        An ordered field is \emph{complete} iff it has the least upper bound property.
+    \end{definition}
+
+    \begin{theorem}
+        The reals form a complete ordered field.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ From the results above. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Any two complete ordered fields are isomorphic.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ See A. Gleason. \text{Fundamentals of Abstract Analysis} p. 110. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Define $E : \mathbb{Q} \rightarrow \mathbb{R}$ by $E(q) = \{ p \in \mathbb{Q} : p < q \}$.
+        Then $E$ is one-to-one and
+        \begin{enumerate}
+            \item $E(q+r) = E(q) + E(r)$
+            \item $E(qr) = E(q) E(r)$
+            \item $E(0) = 0$
+            \item $E(1) = 1$
+            \item $q < r$ iff $E(q) < E(r)$
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{For all $q \in \mathbb{Q}$, $E(q)$ is a Dedekind cut.}
+        \begin{proof}
+            \pf\ Easy.
+        \end{proof}
+        \step{2}{$\forall q,r \in \mathbb{Q}. E(q+r) = E(q) + E(r)$}
+        \begin{proof}
+            \step{a}{\pflet{$q, r \in \mathbb{Q}$}}
+            \step{b}{$E(q+r) \subseteq E(q) + E(r)$}
+            \begin{proof}
+                \step{i}{\pflet{$t \in E(q+r)$}}
+                \step{ii}{\pflet{$\epsilon = (r + s - t) / 2$}}
+                \step{iii}{$\epsilon > 0$}
+                \step{iv}{\pflet{$p = r - \epsilon$}}
+                \step{v}{\pflet{$q = s - \epsilon$}}
+                \step{vi}{$p < r$}
+                \step{vii}{$q < s$}
+                \step{viii}{$p + q = t$}
+                \step{ix}{$t \in E(r) + E(s)$}
+            \end{proof}
+            \step{c}{$E(q) + E(r) \subseteq E(q+r)$}
+            \begin{proof}
+                \pf\ If $p < q$ and $s < r$ then $p+s < q+r$.
+            \end{proof}
+        \end{proof}
+        \step{3}{$\forall q,r \in \mathbb{Q}. E(qr) = E(q)E(r)$}
+        \begin{proof}
+            \pf\ TODO
+        \end{proof}
+        \step{4}{$E(0) = 0$}
+        \begin{proof}
+            \pf\ By definition.
+        \end{proof}
+        \step{5}{$E(1) = 1$}
+        \begin{proof}
+            \pf\ By definition.
+        \end{proof}
+        \step{6}{$E$ is strictly monotone.}
+        \begin{proof}
+            \pf\ If $q < r$ then $E(q) \subseteq E(r)$ by transitivity of $<$ on $\mathbb{Q}$,
+            and $E(q) \neq E(r)$ because $q \in E(r)$ and $q \notin E(q)$.
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}
