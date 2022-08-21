@@ -1148,185 +1148,360 @@
         \end{proof}
         \qed
     \end{proof}
-    
-    \section{Arithmetic}
 
-    \begin{definition}[Addition]
-        \emph{Addition} $+$ is the binary operation on $\omega$ such that, for all $m,n \in \omega$,
-        \begin{align*}
-            m + 0 & = m \\
-            m + n^+ & = (m + n)^+
-        \end{align*}
+    \section{Finite Sets}
+
+    \begin{definition}[Finite]
+        A set is \emph{finite} iff it is equinumerous with a natural number. Otherwise it is infinite.
     \end{definition}
 
-    \begin{theorem}[Associative Law for Addition]
-        \[ \forall m,n,p \in \omega. m + (n + p) = (m + n) + p \]
+    \begin{theorem}
+        No natural number is equinumerous with a proper subset of itself.
     \end{theorem}
 
     \begin{proof}
         \pf
-        \[ m + (n + 0) = m + n = (m + n) + 0 \]
-        If $m + (n + p) = (m + n) + p$ then
-        \begin{align*}
-            m + (n + p^+) & = m + (n + p)^+ \\
-            & = (m + (n + p))^+ \\
-            & = ((m + n) + p)^+ \\
-            & = (m + n) + p^+ & \qed
-        \end{align*}
-    \end{proof}
-
-    \begin{theorem}[Commutative Law for Addition]
-        \[ \forall m,n \in \omega. m + n = n + m \]
-    \end{theorem}
-
-    \begin{proof}
-        \pf
-        \step{1}{$\forall n \in \omega. 0 + n = n + 0$}
+        \step{1}{Any injective function $f : 0 \rightarrow 0$ has range $0$.}
         \begin{proof}
-            \step{a}{$0 + 0 = 0 + 0$}
-            \step{b}{For all $n \in \omega$, if $0 + n = n + 0$ then $0 + n^+ = n^+ + 0$}
-            \begin{proof}
-                \pf
-                \begin{align*}
-                    0 + n^+ & = (0 + n)^+ \\
-                    & = n^+ & (\text{induction hypothesis}) \\
-                    & = n^+ + 0
-                \end{align*}
-            \end{proof}
+            \pf\ Since the only such function is $\emptyset$.
         \end{proof}
-        \step{2}{For all $m \in \omega$, if $\forall n. m + n = n + m$ then $\forall n. m^+ + n = n + m^+$}
+        \step{2}{For any natural number $n$, if every injective function $f : n \rightarrow n$
+        has range $n$, then every injective function $f : n^+ \rightarrow n^+$
+        has range $n^+$.}
         \begin{proof}
-            \step{a}{\pflet{$m \in \omega$}}
-            \step{b}{\assume{$\forall n. m + n = n + m$}}
-            \step{c}{$m^+ + 0 = 0 + m^+$}
+            \step{a}{\pflet{$n \in \omega$}}
+            \step{b}{\assume{Every injective function $f : n \rightarrow n$ has range $n$.}}
+            \step{c}{\pflet{$f : n^+ \rightarrow n^+$ be injective.}}
+            \step{d}{Define $g : n \rightarrow n$ by
+            \[ g(k) = \begin{cases}
+                f(k) & \text{if } f(k) \in n \\
+                f(n) & \text{if } f(k) = n
+            \end{cases} \]}
             \begin{proof}
-                \pf\ From \stepref{1}
+                \pf\ If $k \in n$ and $f(k) = n$ then $f(n) \in n$ since $f$ is injective.
             \end{proof}
-            \step{d}{For all $n \in \omega$, if $m^+ + n = n + m^+$ then $m^+ + n^+ = n^+ + m^+$}
+            \step{e}{$g$ is injective.}
             \begin{proof}
-                \pf
-                \begin{align*}
-                    m^+ + n^+ & = (m^+ + n)^+ \\
-                    & = (n + m^+)^+ \\
-                    & = (n + m)^{++} \\
-                    & = (m + n)^{++} & (\text{\stepref{b}})\\
-                    & = (m + n^+)^+ \\
-                    & = (n^+ + m)^+ & (\text{\stepref{b}})\\
-                    & = n^+ + m^+
-                \end{align*}
+                \step{i}{\pflet{$i,j \in n$}}
+                \step{ii}{\assume{$g(i) = g(j)$}}
+                \step{iii}{\case{$f(i) \in n$, $f(j) \in n$}}
+                \begin{proof}
+                    \pf\ Then $f(i) = f(j)$ so $i = j$
+                \end{proof}
+                \step{iv}{\case{$f(i) \in n$, $f(j) \notin n$}}
+                \begin{proof}
+                    \pf\ Then $f(i) = f(n)$ which is impossible as $f$ is injective.
+                \end{proof}
+                \step{v}{\case{$f(i) \notin n$, $f(j) \in n$}}
+                \begin{proof}
+                    \pf\ Then $f(n) = f(j)$ which is impossible as $f$ is injective.
+                \end{proof}
+                \step{vi}{\case{$f(i) \notin n$, $f(j) \notin n$}}
+                \begin{proof}
+                    \pf\ Then $f(i) = f(j) = n$ so $i = j$.
+                \end{proof}
+            \end{proof}
+            \step{f}{$\ran g = n$}
+            \begin{proof}
+                \pf\ By \stepref{b}.
+            \end{proof}
+            \step{g}{$\ran f = n^+$}
+            \begin{proof}
+                \step{i}{$\forall k \in n. k \in \ran f$}
+                \begin{proof}
+                    \pf\ Since $\ran g \subseteq \ran f$.
+                \end{proof}
+                \step{ii}{$n \in \ran f$}
+                \begin{proof}
+                    \step{one}{\case{$f(n) \in n$}}
+                    \begin{proof}
+                        \step{ONE}{\pick\ $k$ such that $g(k) = f(n)$}
+                        \step{TWO}{$f(k) = n$}
+                    \end{proof}
+                    \step{two}{\case{$f(n) = n$}}
+                    \begin{proof}
+                        \pf\ Then $n \in \ran f$.
+                    \end{proof}
+                \end{proof}
             \end{proof}
         \end{proof}
         \qed
+    \end{proof}
+
+    \begin{corollary}
+        No finite set is equinumerous with a proper subset of itself.
+    \end{corollary}
+
+    \begin{corollary}
+        The set $\omega$ is infinite.
+    \end{corollary}
+
+    \begin{proof}
+        \pf\ Since the function that maps $n$ to $n+1$ is a bijection between $\omega$ and the proper
+        subset $\omega - \{ 0 \}$. \qed
+    \end{proof}
+
+    \begin{corollary}
+        Every finite set is equinumerous with a unique natural number.
+    \end{corollary}
+
+    \begin{lemma}
+        Let $n$ be a natural number and $C \subseteq n$. Then there exists $m \underline{\in} n$ such that $C \approx m$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{For all $C \subseteq 0$, there exists $m \underline{\in} 0$ such that $C \approx m$.}
+        \begin{proof}
+            \pf\ In this case $C = \emptyset$ and so $C \approx 0$.
+        \end{proof}
+        \step{2}{Let $n \in \omega$. Assume that, for all $C \subseteq n$, there exists $m \underline{\in} n$
+        such that $C \approx m$. Let $C \subseteq n^+$. Then there exists $m \underline{\in} n^+$
+        such that $C \approx m$.}
+        \begin{proof}
+            \step{a}{\pflet{$n \in \omega$}}
+            \step{b}{\assume{For all $C \subseteq n$, there exists $m \underline{\in} n$ such that
+            $C \approx m$.}}
+            \step{c}{\pflet{$C \subseteq n^+$}}
+            \step{d}{\case{$n \in C$}}
+            \begin{proof}
+                \step{i}{\pick\ $m \underline{\in} n$ such that $C - \{ n \} \approx m$}
+                \step{ii}{$C \approx m^+$}
+            \end{proof}
+            \step{e}{\case{$n \notin C$}}
+            \begin{proof}
+                \pf\ Then $C \subseteq n$ so $C \approx m$ for some $m \underline{\in} n$.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{corollary}
+        Any subset of a finite set is finite.
+    \end{corollary}
+
+    \section{Cardinal Numbers}
+
+    \begin{definition}[Cardinality]
+        TODO
+    \end{definition}
+
+    \begin{theorem}
+        For any sets $A$ and $B$, $|A| = |B|$ if and only if $A \approx B$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ TODO \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any finite set $A$, $|A|$ is the natural number such that $A \approx |A|$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ TODO \qed
+    \end{proof}
+
+    \begin{definition}
+        We write $\aleph_0$ for $|\omega$.
+    \end{definition}
+
+    \section{Cardinal Arithmetic}
+
+    \begin{definition}[Addition]
+        Let $\kappa$ and $\lambda$ be any cardinal numbers. Then $\kappa + \lambda = |K \cup L|$,
+        where $K$ and $L$ are any disjoint sets of cardinality $\kappa$ and $\lambda$ respectively.
+
+        To show this is well-defined, we must prove that, if $K_1 \approx K_2$, $L_1 \approx L_2$,
+        and $K_1 \cap L_1 = K_2 \cap L_2 = \emptyset$, then $K_1 \cup L_1 \approx K_2 \cup L_2$.
+    \end{definition}
+
+    \begin{proof}
+        \pf\ Easy.
+    \end{proof}
+
+    \begin{lemma}
+        For any cardinal number $\kappa$ we have $\kappa + 0 = \kappa$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Since for any set $K$ we have $K \cup \emptyset = K$.
+    \end{proof}
+
+    \begin{lemma}
+        For any natural number $n$ we have $n + \aleph_0 = \aleph_0$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{lemma}
+        \label{lemma:aleph0_plus_aleph0}
+        \[ \aleph_0 + \aleph_0 = \aleph_0 \]
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Define $f : (\omega \times \{ 0 \}) \cup (\omega \times \{1\}) \rightarrow \omega$ by
+        $f(n,0) = 2n$ and $f(n,1) = 2n+1$. Then $f$ is a bijection. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \kappa + \lambda = \lambda + \kappa \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \kappa + (\lambda + \mu) = (\kappa + \lambda) + \mu \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
     \end{proof}
 
     \begin{definition}[Multiplication]
-        \emph{Multiplication} $\cdot$ is the binary operation on $\omega$ such that, for all $m, n \in \omega$,
-        \begin{align*}
-            m0 & = 0 \\
-            m \cdot n^+ & = mn + m
-        \end{align*}
+        Let $\kappa$ and $\lambda$ be any cardinal numbers. Then $\kappa \lambda = |K \times L|$,
+        where $K$ and $L$ are any sets of cardinality $\kappa$ and $\lambda$ respectively.
     \end{definition}
 
-    \begin{theorem}[Distributive Law]
-        \[ \forall m,n,p \in \omega. m(n+p) = mn + mp \]
-    \end{theorem}
+    It is easy to prove this well-defined.
+
+    \begin{lemma}
+        For any cardinal number $\kappa$ we have $\kappa 0 = 0$.
+    \end{lemma}
 
     \begin{proof}
-        \pf
-        \step{1}{$\forall m,n \in \omega. m(n+0) = mn+m0$}
-        \begin{proof}
-            \pf
-            \begin{align*}
-                m(n+0) & = mn \\
-                & = mn+0 \\
-                & = mn+m0
-            \end{align*}
-        \end{proof}
-        \step{2}{For all $p \in \omega$, if $m(n+p) = mn+mp$ then $m(n+p^+) = mn + mp^+$}
-        \begin{proof}
-            \pf
-            \begin{align*}
-                m(n+p^+) & = m(n+p)^+ \\
-                & = m(n+p) + m \\
-                & = (mn + mp) + m \\
-                & = mn + (mp + m) & (\text{Associative Law for Addition}) \\
-                & = mn + mp^+
-            \end{align*}
-        \end{proof}
-        \qed
+        \pf\ For any set $K$ we have $K \times \emptyset = \emptyset$. \qed
     \end{proof}
 
-    \begin{theorem}[Associative Law for Multiplication]
-        \[ \forall m,n,p \in \omega. m(np) = (mn)p \]
-    \end{theorem}
+    \begin{lemma}
+        For any natural number $n$ we have $n \aleph_0 = \aleph_0$.
+    \end{lemma}
 
     \begin{proof}
-        \pf
-        \step{1}{$\forall m,n \in \omega. m(n0) = (mn)0$}
-        \begin{proof}
-            \pf\ Both are equal to 0.
-        \end{proof}
-        \step{2}{For all $m,n,p \in \omega$, if $m(np) = (mn)p$ then $m(np^+) = (mn)p^+$}
-        \begin{proof}
-            \pf
-            \begin{align*}
-                m(np^+) & = m(np + n) \\
-                & = m(np) + mn & (\text{Distributive Law}) \\
-                & = (mn)p + mn \\
-                & = (mn)p^+
-            \end{align*}
-        \end{proof}
-        \qed
+        \pf\ Induction on $n$ using Lemma \ref{lemma:aleph0_plus_aleph0}. \qed
     \end{proof}
 
-    \begin{theorem}[Commutative Law for Multiplication]
-        \[ \forall m,n \in \omega. mn=nm \]
+    \begin{lemma}
+        \[ \aleph_0 \aleph_0 = \aleph_0 \]
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Define $f : \omega \times \omega \rightarrow \omega$ by $f(m,n) = 2^m(2n+1)-1$. Then $f$
+        is a bijection. \qed
+    \end{proof}
+
+    \begin{lemma}
+        \[ \kappa 1 = \kappa \]
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \kappa \lambda = \lambda \kappa \]
     \end{theorem}
 
     \begin{proof}
-        \pf
-        \step{1}{$\forall n \in \omega. 0n = n0$}
-        \begin{proof}
-            \step{a}{$0 \cdot 0 = 0 \cdot 0$}
-            \step{b}{For all $n \in \omega$, if $0n = n0$ then $0n^+ = n^+ 0$}
-            \begin{proof}
-                \pf
-                \begin{align*}
-                    0n^+ & = 0n + 0 \\
-                    & = 0n \\
-                    & = n0 \\
-                    & = 0 \\
-                    & = n^+ 0
-                \end{align*}
-            \end{proof}
-        \end{proof}
-        \step{2}{For all $m \in \omega$, if $\forall n \in \omega.mn=nm$ then $\forall n \in \omega.
-        m^+n = nm^+$}
-        \begin{proof}
-            \step{a}{\pflet{$m \in \omega$}}
-            \step{b}{\assume{$\forall n \in \omega. mn=nm$}}
-            \step{c}{$m^+ 0 = 0 m^+$}
-            \begin{proof}
-                \pf\ By \stepref{1}.
-            \end{proof}
-            \step{d}{For all $n \in \omega$, if $m^+ n = n m^+$ then $m^+ n^+ = n^+ m^+$}
-            \begin{proof}
-                \pf
-                \begin{align*}
-                    m^+ n^+ & = m^+ n + m^+ \\
-                    & = (m^+ n + m)^+ \\
-                    & = (nm^+ + m)^+ \\
-                    & = (nm + n + m)^+ \\
-                    & = (mn + n + m)^+ & (\text{\stepref{b}}) \\
-                    & = (mn + m + n)^+ & (\text{Associative and Commutative Laws for Addition}) \\
-                    & = (mn^+ + n)^+ \\
-                    & = (n^+ m + n)^+ & (\text{\stepref{b}}) \\
-                    & = n^+ m + n^+ \\
-                    & = n^+ m^+
-                \end{align*}
-            \end{proof}
-        \end{proof}
-        \qed
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \kappa (\lambda \mu) = (\kappa \lambda) \mu \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \kappa (\lambda + \mu) = \kappa \lambda + \kappa \mu \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}[Exponentiation]
+        Let $\kappa$ and $\lambda$ be any cardinal numbers. Then $\kappa^\lambda = |K^L|$,
+        where $K$ and $L$ are any sets of cardinality $\kappa$ and $\lambda$ respectively.
+    \end{definition}
+
+    It is easy to prove this well-defined.
+
+    \begin{theorem}
+        For any cardinal $\kappa$, $\kappa^0 = 1$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ For any set $K$, there is only one function $\emptyset \rightarrow K$, namely $\emptyset$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any non-zero cardinal $\kappa$, we have $0^\kappa = 0$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ For any nonempty set $K$, there is no function $K \rightarrow \emptyset$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any set $A$, $|\mathcal{P} A| = 2^{|A|}$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Define the bijection $f : \mathcal{P} A \rightarrow 2^A$ by $f(S)(a) = 1$ if $a \in S$,
+        0 if $a \notin S$. \qed
+    \end{proof}
+
+    \begin{corollary}
+        For any cardinal $\kappa$, we have $\kappa \neq 2^\kappa$.
+    \end{corollary}
+
+    \begin{theorem}
+        \[ \kappa^{\lambda + \mu} = \kappa^\lambda \kappa^\mu \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ (\kappa \lambda)^\mu = \kappa^\mu \lambda^\mu \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ (\kappa^\lambda)^\mu = \kappa^{\lambda \mu} \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+    
+    \section{Arithmetic}
+
+    \begin{lemma}
+        For any natural numbers $m$ and $n$, we have $m + n^+ = (m+n)^+$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Induction on $n$. \qed
+    \end{proof}
+
+    \begin{lemma}
+        For any natural numbers $m$ and $n$ we have $m n^+ = mn + m$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Induction on $n$. \qed
     \end{proof}
 
     \section{Ordering on the Natural Numbers}
@@ -1883,179 +2058,5 @@
         \end{proof}
         \qed
     \end{proof}
-
-    \section{Finite Sets}
-
-    \begin{definition}[Finite]
-        A set is \emph{finite} iff it is equinumerous with a natural number. Otherwise it is infinite.
-    \end{definition}
-
-    \begin{theorem}
-        No natural number is equinumerous with a proper subset of itself.
-    \end{theorem}
-
-    \begin{proof}
-        \pf
-        \step{1}{Any injective function $f : 0 \rightarrow 0$ has range $0$.}
-        \begin{proof}
-            \pf\ Since the only such function is $\emptyset$.
-        \end{proof}
-        \step{2}{For any natural number $n$, if every injective function $f : n \rightarrow n$
-        has range $n$, then every injective function $f : n^+ \rightarrow n^+$
-        has range $n^+$.}
-        \begin{proof}
-            \step{a}{\pflet{$n \in \omega$}}
-            \step{b}{\assume{Every injective function $f : n \rightarrow n$ has range $n$.}}
-            \step{c}{\pflet{$f : n^+ \rightarrow n^+$ be injective.}}
-            \step{d}{Define $g : n \rightarrow n$ by
-            \[ g(k) = \begin{cases}
-                f(k) & \text{if } f(k) \in n \\
-                f(n) & \text{if } f(k) = n
-            \end{cases} \]}
-            \begin{proof}
-                \pf\ If $k \in n$ and $f(k) = n$ then $f(n) \in n$ since $f$ is injective.
-            \end{proof}
-            \step{e}{$g$ is injective.}
-            \begin{proof}
-                \step{i}{\pflet{$i,j \in n$}}
-                \step{ii}{\assume{$g(i) = g(j)$}}
-                \step{iii}{\case{$f(i) \in n$, $f(j) \in n$}}
-                \begin{proof}
-                    \pf\ Then $f(i) = f(j)$ so $i = j$
-                \end{proof}
-                \step{iv}{\case{$f(i) \in n$, $f(j) \notin n$}}
-                \begin{proof}
-                    \pf\ Then $f(i) = f(n)$ which is impossible as $f$ is injective.
-                \end{proof}
-                \step{v}{\case{$f(i) \notin n$, $f(j) \in n$}}
-                \begin{proof}
-                    \pf\ Then $f(n) = f(j)$ which is impossible as $f$ is injective.
-                \end{proof}
-                \step{vi}{\case{$f(i) \notin n$, $f(j) \notin n$}}
-                \begin{proof}
-                    \pf\ Then $f(i) = f(j) = n$ so $i = j$.
-                \end{proof}
-            \end{proof}
-            \step{f}{$\ran g = n$}
-            \begin{proof}
-                \pf\ By \stepref{b}.
-            \end{proof}
-            \step{g}{$\ran f = n^+$}
-            \begin{proof}
-                \step{i}{$\forall k \in n. k \in \ran f$}
-                \begin{proof}
-                    \pf\ Since $\ran g \subseteq \ran f$.
-                \end{proof}
-                \step{ii}{$n \in \ran f$}
-                \begin{proof}
-                    \step{one}{\case{$f(n) \in n$}}
-                    \begin{proof}
-                        \step{ONE}{\pick\ $k$ such that $g(k) = f(n)$}
-                        \step{TWO}{$f(k) = n$}
-                    \end{proof}
-                    \step{two}{\case{$f(n) = n$}}
-                    \begin{proof}
-                        \pf\ Then $n \in \ran f$.
-                    \end{proof}
-                \end{proof}
-            \end{proof}
-        \end{proof}
-        \qed
-    \end{proof}
-
-    \begin{corollary}
-        No finite set is equinumerous with a proper subset of itself.
-    \end{corollary}
-
-    \begin{corollary}
-        The set $\omega$ is infinite.
-    \end{corollary}
-
-    \begin{proof}
-        \pf\ Since the function that maps $n$ to $n+1$ is a bijection between $\omega$ and the proper
-        subset $\omega - \{ 0 \}$. \qed
-    \end{proof}
-
-    \begin{corollary}
-        Every finite set is equinumerous with a unique natural number.
-    \end{corollary}
-
-    \begin{lemma}
-        Let $n$ be a natural number and $C \subseteq n$. Then there exists $m \underline{\in} n$ such that $C \approx m$.
-    \end{lemma}
-
-    \begin{proof}
-        \pf
-        \step{1}{For all $C \subseteq 0$, there exists $m \underline{\in} 0$ such that $C \approx m$.}
-        \begin{proof}
-            \pf\ In this case $C = \emptyset$ and so $C \approx 0$.
-        \end{proof}
-        \step{2}{Let $n \in \omega$. Assume that, for all $C \subseteq n$, there exists $m \underline{\in} n$
-        such that $C \approx m$. Let $C \subseteq n^+$. Then there exists $m \underline{\in} n^+$
-        such that $C \approx m$.}
-        \begin{proof}
-            \step{a}{\pflet{$n \in \omega$}}
-            \step{b}{\assume{For all $C \subseteq n$, there exists $m \underline{\in} n$ such that
-            $C \approx m$.}}
-            \step{c}{\pflet{$C \subseteq n^+$}}
-            \step{d}{\case{$n \in C$}}
-            \begin{proof}
-                \step{i}{\pick\ $m \underline{\in} n$ such that $C - \{ n \} \approx m$}
-                \step{ii}{$C \approx m^+$}
-            \end{proof}
-            \step{e}{\case{$n \notin C$}}
-            \begin{proof}
-                \pf\ Then $C \subseteq n$ so $C \approx m$ for some $m \underline{\in} n$.
-            \end{proof}
-        \end{proof}
-        \qed
-    \end{proof}
-
-    \begin{corollary}
-        Any subset of a finite set is finite.
-    \end{corollary}
-
-    \section{Cardinal Numbers}
-
-    \begin{definition}[Cardinality]
-        TODO
-    \end{definition}
-
-    \begin{theorem}
-        For any sets $A$ and $B$, $|A| = |B|$ if and only if $A \approx B$.
-    \end{theorem}
-
-    \begin{proof}
-        \pf\ TODO \qed
-    \end{proof}
-
-    \begin{theorem}
-        For any finite set $A$, $|A|$ is the natural number such that $A \approx |A|$.
-    \end{theorem}
-
-    \begin{proof}
-        \pf\ TODO \qed
-    \end{proof}
-
-    \begin{definition}
-        We write $\aleph_0$ for $|\omega$.
-    \end{definition}
-
-    \section{Cardinal Arithmetic}
-
-    \begin{definition}[Addition]
-        Let $\kappa$ and $\lambda$ be any cardinal numbers. Then $\kappa + \lambda = |K \cup L|$,
-        where $K$ and $L$ are any disjoint sets of cardinality $\kappa$ and $\lambda$ respectively.
-    \end{definition}
-
-    \begin{definition}[Multiplication]
-        Let $\kappa$ and $\lambda$ be any cardinal numbers. Then $\kappa \lambda = |K \times L|$,
-        where $K$ and $L$ are any sets of cardinality $\kappa$ and $\lambda$ respectively.
-    \end{definition}
-
-    \begin{definition}[Exponentiation]
-        Let $\kappa$ and $\lambda$ be any cardinal numbers. Then $\kappa^\lambda = |K^L|$,
-        where $K$ and $L$ are any sets of cardinality $\kappa$ and $\lambda$ respectively.
-    \end{definition}
 
 \end{document}
