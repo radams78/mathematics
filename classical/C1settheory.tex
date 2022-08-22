@@ -1523,7 +1523,7 @@
     \begin{corollary}
         If $A$ and $B$ are finite sets then $A^B$ is finite.
     \end{corollary}
-    
+
     \section{Ordering on the Natural Numbers}
 
     \begin{lemma}
@@ -2079,4 +2079,86 @@
         \qed
     \end{proof}
 
+    \section{Ordering Cardinal Numbers}
+
+    \begin{definition}[Dominated]
+        A set $A$ is \emph{dominated} by a set $B$, $A \preccurlyeq B$, iff there exists an injection
+        $f : A \rightarrow B$.
+    \end{definition}
+
+    \begin{lemma}
+        Domination is a preorder on the class of sets.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{lemma}
+        If $A \subseteq B$ then $A \preccurlyeq B$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ The inclusion from $A$ to $B$ is an injection. \qed
+    \end{proof}
+
+    \begin{lemma}
+        If $A \preccurlyeq B$, $A \approx A'$ and $B \approx B'$ then $A' \preccurlyeq B'$.
+    \end{lemma}
+    
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}
+        Given cardinal numbers $\kappa$ and $\lambda$, we write $\kappa \leq \lambda$ iff
+        $K \preccurlyeq L$, where $K$ is any set of cardinality $\kappa$ and $L$ is any set of
+        cardinality $\lambda$.
+
+        We write $\kappa < \lambda$ iff $\kappa \leq \lambda$ and $\kappa \neq \lambda$.
+    \end{definition}
+
+    \begin{theorem}[Schr\"{o}der-Bernstein]
+        If $A \preccurlyeq B$ and $B \preccurlyeq A$ then $A \approx B$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$f : A \rightarrow B$ and $g : B \rightarrow A$ be one-to-one.}}
+        \step{2}{Define the sequence of sets $C_n \subseteq A$ by:
+        \begin{align*}
+            C_0 & = A - \ran g \\
+            C_{n+1} & = g(f(C_n))
+        \end{align*}}
+        \step{3}{Define $h : A \rightarrow B$ by
+        \[ h(x) = \begin{cases}
+            f(x) & \text{if } \exists n \in \mathbb{N}. x \in C_n \\
+            \inv{g}(x) & \text{otherwise}
+        \end{cases} \]}
+        \step{4}{$h$ is injective.}
+        \begin{proof}
+            \step{a}{\pflet{$x,y \in A$}}
+            \step{b}{\assume{$h(x) = h(y)$}}
+            \step{c}{\case{$x \in C_m$, $y \in C_n$}}
+            \begin{proof}
+                \pf\ We have $f(x) = f(y)$ so $x = y$
+            \end{proof}
+            \step{d}{\case{$x \in C_m$, $y \notin \bigcup_n C_n$}}
+            \begin{proof}
+                \pf\ This case is impossible because we would have $y = g(f(x))$ and so $y \in C_{m+1}$.
+            \end{proof}
+            \step{e}{\case{$x, y \notin \bigcup_n C_n$}}
+            \begin{proof}
+                \pf\ We have $\inv{g}(x) = \inv{g}(y)$ so $x = y$.
+            \end{proof}
+        \end{proof}
+        \step{5}{$h$ is surjective.}
+        \begin{proof}
+            \step{a}{\pflet{$y \in B$}}
+            \step{b}{\assume{$y \notin f(C_n)$ for all $n$}}
+            \step{c}{$g(y) \notin C_n$ for all $n$}
+            \step{d}{$y = h(g(y))$}
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}
