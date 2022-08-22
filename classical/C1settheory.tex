@@ -2161,4 +2161,36 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \begin{corollary}
+        The relation $\leq$ is a partial order on the class of cardinal numbers.
+    \end{corollary}
+
+    \begin{theorem}
+        Let $\kappa$, $\lambda$ and $\mu$ be cardinal numbers.
+        \begin{enumerate}
+            \item $\kappa \leq \lambda \Rightarrow \kappa + \mu \leq \lambda + \mu$
+            \item $\kappa \leq \lambda \Rightarrow \kappa \mu \leq \lambda \mu$
+            \item $\kappa \leq \lambda \Rightarrow \kappa^\mu \leq \lambda^\mu$
+            \item $\kappa \leq \lambda \Rightarrow \mu^\kappa \leq \mu^\lambda$ if $\kappa$ and $\mu$
+            are not both zero.
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Parts 1--3 are easy. For part 4:
+        
+        Let $|K| = \kappa$, $|L| = \lambda$ and $|M| = \mu$ with $K \subseteq L$.
+
+        If $M = \emptyset$ then $\kappa \neq 0$ so $\mu^\kappa = 0 \leq \mu^\lambda$.
+
+        Otherwise, pick $a \in M$. Define $\Phi : M^K \rightarrow M^L$ by:
+        \[ \Phi(f)(x) = \begin{cases}
+            f(x) & \text{if } x \in K \\
+            a & \text{if } x \notin K
+        \end{cases} \]
+        Then $\Phi$ is an injection. \qed
+    \end{proof}
+
+    
 \end{document}
