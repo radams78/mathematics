@@ -2774,4 +2774,25 @@
     such that $x \preccurlyeq y$. Pick $y \in \mathcal{A}$ such that $\mathcal{P} \bigcup \mathcal{A} \preccurlyeq y$.
     But $y \subseteq \bigcup \mathcal{A}$ so $\mathcal{P} \bigcup \mathcal{A} \preccurlyeq \bigcup \mathcal{A}$,
     contradicting Cantor's Theorem.
+
+    \paragraph{Exercise 16}
+    Define $G : S \rightarrow ^S 2$ by
+    \[ G(x)(y) = \begin{cases}
+        1 & \text{if } x = y \\
+        0 & \text{if } x \neq y
+    \end{cases} \]
+    Then $G$ is injective.
+
+    Now, assume for a contradiction $F : S \rightarrow ^S 2$ is bijective. Define $g : S \rightarrow 2$ by
+    $g(x) = 1 - F(x)(x)$. Then $g(x) \neq F(x)(x)$ for all $x \in S$, so $g \neq F(x)$ for all $x \in S$.
+    Hence $g \notin \ran F$. This contradicts the assumption that $F$ is surjective.
+
+    \paragraph{Exercise 17}
+    We have $1 < 2$ but $\aleph_0 + 1 = \aleph_0 + 2 = \aleph_0$.
+
+    We have $1 < 2$ but $\aleph_0 \cdot 1 = \aleph_0 \cdot 2 = \aleph_0$.
+
+    We have $2 < 3$ but $2^{\aleph_0} = 3^{\aleph_0}$.
+
+    We have $2 < 3$ but $\aleph_0^2 = \aleph_0^3 = \aleph_0$.
 \end{document}
