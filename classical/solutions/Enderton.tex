@@ -2795,4 +2795,26 @@
     We have $2 < 3$ but $2^{\aleph_0} = 3^{\aleph_0}$.
 
     We have $2 < 3$ but $\aleph_0^2 = \aleph_0^3 = \aleph_0$.
+
+    \section{Axiom of Choice}
+    
+    \paragraph{Exercise 18}
+    \begin{proof}
+        \pf
+        \step{1}{If the Axiom of Choice is true then the statement is true.}
+        \begin{proof}
+            \pf\ The statement is a special case of the multiplicative axiom, taking $I = \mathcal{A}$
+            and $H(X) = X$ for each $X \in \mathcal{A}$.
+        \end{proof}
+        \step{2}{If the statement is true then the Axiom of Choice is true.}
+        \begin{proof}
+            \step{a}{\assume{The statement is true.} \prove{Axiom of choice IV}}
+            \step{b}{\pflet{$\mathcal{A}$ be a set such that each member of $\mathcal{A}$ is a nonempty set,
+            and any two distinct members of $\mathcal{A}$ are disjoint.}}
+            \step{c}{\pick\ a function $f$ with domain $\mathcal{A}$ such that $f(X) \in X$ for all $X \in \mathcal{A}$}
+            \step{d}{\pflet{$C = \ran f$}}
+            \step{e}{$\forall B \in \mathcal{A}. C \cap B = \{ f(B) \}$}
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}

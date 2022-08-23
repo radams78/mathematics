@@ -655,6 +655,47 @@
         \qed
     \end{proof}
 
+    \begin{theorem}
+        The following are equivalent.
+        \begin{enumerate}
+            \item The Axiom of Choice.
+            \item Let $\mathcal{A}$ be a set such that (a) every member of $\mathcal{A}$ is a nonempty set,
+            and (b) any two distinct members of $\mathcal{A}$ are disjoint. Then there exists a set $C$
+            such that, for all $B \in \mathcal{A}$, we have $C \cap B$ is a singleton.
+            \item For any set $A$, there exists a function $F : \mathcal{P} A - \{ \emptyset \} \rightarrow
+            A$ such that $F(X) \in X$ for all $X \in \mathcal{P} A - \{ \emptyset \}$.
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{$1 \Rightarrow 2$}
+        \begin{proof}
+        \pf\ Let $\mathcal{A}$ be a set matching the two condtions. By the Multiplicative Axiom, pick a function
+        $f \in \prod_{B \in \mathcal{A}} B$. Let $C = \ran f$. Then $C \cap B = \{f(B)\}$ for all $B \in
+        \mathcal{A}$.
+        \end{proof}
+        \step{2}{$2 \Rightarrow 3$}
+        \begin{proof}
+            \step{a}{\assume{2}}
+            \step{b}{\pflet{$A$ be a set.}}
+            \step{c}{\pflet{$\mathcal{A} = \{ \{B\} \times B : B \in \mathcal{P} A - \{ \emptyset \} \}$}}
+            \step{d}{\pick\ a set $C$ such that $C \cap (\{ B \} \times B)$ is a singleton
+            for all $B \in \mathcal{P} A - \{ \emptyset \}$}
+            \step{e}{\pflet{$F = C \cap \bigcup \mathcal{A}$}}
+            \step{f}{$F : \mathcal{P} A - \{ \emptyset \} \rightarrow A$ is a function and $F(X) \in X$
+            for all $X$}
+        \end{proof}
+        \step{3}{$3 \Rightarrow 1$}
+        \begin{proof}
+            \step{a}{\assume{3}}
+            \step{b}{\pflet{$R$ be a relation}}
+            \step{c}{\pick\ a choice function $G$ for $\ran R$}
+            \step{d}{Define $F : \dom R \rightarrow \ran R$ by $F(x) = G(R(x))$}
+            \step{e}{$F \subseteq R$}
+        \end{proof}
+        \qed
+    \end{proof}
     \section{Equivalence Relations}
 
     \begin{definition}[Equivalence Relation]
@@ -2192,5 +2233,82 @@
         Then $\Phi$ is an injection. \qed
     \end{proof}
 
+    \begin{theorem}[Zorn's Lemma]
+        The Axiom of Choice is equivalent to this statement:
+
+        Let $\mathcal{A}$ be a set such that, for every chain $\mathcal{B} \subseteq \mathcal{A}$,
+        we have $\bigcup \mathcal{B} \in \mathcal{A}$. Then $\mathcal{A}$ has a maximal element.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{If the Axiom of Choice then Zorn's Lemma.}
+        \begin{proof}
+            \pf\ TODO
+        \end{proof}
+        \step{2}{If Zorn's Lemma then the Axiom of Choice.}
+        \begin{proof}
+            \step{a}{\assume{Zorn's Lemma}}
+            \step{b}{\pflet{$R$ be a relation.}}
+            \step{c}{\pflet{$\mathcal{A}$ be the set of all functions that are subsets of $R$.}}
+            \step{d}{For any chain $\mathcal{B} \subseteq \mathcal{A}$ we have $\bigcup \mathcal{B} \in
+            \mathcal{A}$}
+            \step{e}{\pick\ $F \in \mathcal{A}$ maximal.}
+            \step{f}{$\dom F = \dom R$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}[Cardinal Comparability]
+        The Axiom of Choice is equivalent to the statement: for any sets $C$ and $D$,
+        either $C \preccurlyeq D$ or $D \preccurlyeq C$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{If Zorn's Lemma then Cardinal Comparability.}
+        \begin{proof}
+            \step{a}{\assume{Zorn's Lemma}}
+            \step{b}{\pflet{$C$ and $D$ be sets.}}
+            \step{c}{\pflet{$\mathcal{A}$ be the set of all injective functions $f$ with
+            $\dom f \subseteq C$ and $\ran f \subseteq D$}}
+            \step{d}{For every chain $\mathcal{B} \subseteq \mathcal{A}$ we have $\bigcup \mathcal{B} \in
+            \mathcal{A}$}
+            \step{e}{\pflet{$f \in \mathcal{A}$ be maximal}}
+            \step{f}{$\dom f = C$ or $\ran f = D$}
+            \step{g}{$f$ is an injective function $C \rightarrow D$ or $\inv{f}$ is an injective function
+            $D \rightarrow C$}
+        \end{proof}
+        \step{2}{If Cardinal Comparability then the Axiom of Choice.}
+        \begin{proof}
+            \pf\ TODO
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}[Choice]
+        For any infinite set $A$, we have $\omega \preccurlyeq A$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$A$ be an infinite set.}}
+        \step{2}{\pick\ a choice function $F$ for $A$}
+        \step{3}{Define $f : \omega \rightarrow A$ by recursion by:
+        $f(n) = F(A - \{ f(0), f(1), \ldots, f(n-1) \})$}
+        \begin{proof}
+            \pf\ $A - \{ f(0), f(1), \ldots, f(n-1) \}$ is nonempty because $A$ is infinite.
+        \end{proof}
+        \step{4}{$f$ is injective.}
+        \qed
+    \end{proof}
+
+    \begin{corollary}[Choice]
+        For any infinite cardinal $\kappa$ we have $\aleph_0 \leq \kappa$.
+    \end{corollary}
+
+    \begin{corollary}[Choice]
+        A set is infinite iff it is equinumerous to a proper subset of itself.
+    \end{corollary}
     
 \end{document}

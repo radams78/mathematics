@@ -308,3 +308,5 @@
 \contentsline {paragraph}{Exercise 15}{55}%
 \contentsline {paragraph}{Exercise 16}{55}%
 \contentsline {paragraph}{Exercise 17}{56}%
+\contentsline {section}{\numberline {6.5}Axiom of Choice}{56}%
+\contentsline {paragraph}{Exercise 18}{56}%
