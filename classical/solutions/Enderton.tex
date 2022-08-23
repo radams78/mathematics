@@ -7,6 +7,7 @@
 \usepackage{amssymb}
 \usepackage{pf2}
 
+\newcommand{\card}{\ensuremath{\operatorname{card}}}
 \newcommand{\dom}{\ensuremath{\operatorname{dom}}}
 \newcommand{\ran}{\ensuremath{\operatorname{ran}}}
 \newcommand{\fld}{\ensuremath{\operatorname{fld}}}
@@ -2814,6 +2815,32 @@
             \step{c}{\pick\ a function $f$ with domain $\mathcal{A}$ such that $f(X) \in X$ for all $X \in \mathcal{A}$}
             \step{d}{\pflet{$C = \ran f$}}
             \step{e}{$\forall B \in \mathcal{A}. C \cap B = \{ f(B) \}$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 19}
+    \begin{proof}
+        \pf
+        \step{1}{For $n \in \omega$, let $P(n)$ be the statement: for every set $I$ with $\card I = n$
+        and function $H$ with domain $I$ such that $H(i)$ is nonempty for each $i \in I$, there exists a
+        function $f$ with domain $I$ such that $\forall i \in I. f(i) \in H(i)$.}
+        \step{2}{$P(0)$ is true}
+        \begin{proof}
+            \pf\ Take $f = \emptyset$
+        \end{proof}
+        \step{3}{$\forall n \in \omega. P(n) \Rightarrow P(n+1)$}
+        \begin{proof}
+            \step{a}{\pflet{$n \in \omega$}}
+            \step{b}{\assume{$P(n)$}}
+            \step{c}{\pflet{$I$ be a set with $\card I = n+1$}}
+            \step{d}{\pflet{$H$ be a function with domain $I$ such that $H(i)$ is nonempty for each $i \in I$}}
+            \step{e}{\pick\ a bijection $g : n + 1 \approx I$}
+            \step{f}{\pick\ a function $h$ with domain $g[\![n]\!]$ such that $\forall i \in g[\![n]\!].
+            h(i) \in H(i)$}
+            \step{g}{\pick\ $a \in H(g(n))$}
+            \step{h}{\pflet{$f = h \cup \{ (g(n), a) \}$}}
+            \step{i}{$f$ is a function with domain $I$ such that $\forall i \in I. f(i) \in H(i)$}
         \end{proof}
         \qed
     \end{proof}
