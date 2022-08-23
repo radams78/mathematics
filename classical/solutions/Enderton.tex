@@ -2844,4 +2844,54 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \paragraph{Exercise 20}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pick\ a choice function $F$ for $A$}
+        \step{2}{\pick\ $a \in A$}
+        \step{3}{Define the function $f : \omega \rightarrow A$ by:
+        \begin{align*}
+            f(0) & = a \\
+            f(n^+) & = F(\inv{R}(f(n)))
+        \end{align*}}
+        \begin{proof}
+            \pf\ We know $\inv{R}(x)$ is nonempty for all $x \in A$ because $\forall x \in A. \exists y \in A. yRx$.
+        \end{proof}
+        \step{4}{$\forall n \in \omega. f(n^+) R f(n)$}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 21}
+
+    \begin{proof}
+        \pf
+        \step{1}{For every chain $\mathcal{B} \subseteq \mathcal{A}$ we have $\bigcup \mathcal{B} \in
+        \mathcal{A}$}
+        \begin{proof}
+            \step{a}{\pflet{$\mathcal{B} \subseteq \mathcal{A}$ be a chain.}}
+            \step{b}{Every finite subset of $\bigcup \mathcal{B}$ is a member of $\mathcal{A}$.}
+            \begin{proof}
+                \step{i}{\pflet{$\{ x_1, \ldots, x_n \} \subseteq \bigcup \mathcal{B}$ be finite.}}
+                \step{ii}{For $1 \leq i \leq n$, \pick\ $B_i \in \mathcal{B}_i$ such that $x_i \in B_i$}
+                \step{iii}{\pick\ $m$ such that $B_1, \ldots, B_n \subseteq B_m$}
+                \begin{proof}
+                    \pf\ Since $\mathcal{B}$ is a chain.
+                \end{proof}
+                \step{iv}{$\{ x_1, \ldots, x_n \}$ is a finite subset of $B_m$.}
+                \step{v}{$\{x_1, \ldots, x_n \} \in \mathcal{A}$}
+                \begin{proof}
+                    \pf\ Since $B_m \in \mathcal{A}$ so every finite subset of $B_m$ is a member of
+                    $\mathcal{A}$.
+                \end{proof}
+            \end{proof}
+            \step{c}{$\bigcup \mathcal{B} \in \mathcal{A}$}
+        \end{proof}
+        \qedstep
+        \begin{proof}
+            \pf\ By Zorn's Lemma.
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}
