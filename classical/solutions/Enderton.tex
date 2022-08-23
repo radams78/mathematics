@@ -2894,4 +2894,30 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \paragraph{Exercise 22}
+    \begin{proof}
+        \pf
+        \step{1}{If the Axiom of Choice is true then the statement is true.}
+        \begin{proof}
+            \step{a}{\assume{The Axiom of Choice}}
+            \step{b}{\pflet{$A$ be a set.}}
+            \step{c}{\pflet{$R = \{ \langle x, y \rangle : y \in A, x \in t \}$}}
+            \step{d}{\pick\ a function $F \subseteq R$ such that $\dom F = \dom R$}
+            \step{e}{$\dom R = \bigcup A$}
+            \step{f}{$\forall x \in \bigcup A. x \in F(x) \in A$}
+        \end{proof}
+        \step{2}{If the statement is true then the Axiom of Choice is true.}
+        \begin{proof}
+            \step{a}{\assume{the statement}}
+            \step{b}{\pflet{$R$ be a relation}}
+            \step{c}{\pflet{$A = \{ \{ \langle 0,x \rangle, \langle 1, y \rangle \} : xRy \}$}}
+            \step{d}{\pick\ a function $F$ with domain $\bigcup A$ such that $\dom F = \bigcup A$
+            and $\forall x \in \bigcup A. x \in F(x) \in A$}
+            \step{3}{\pflet{$H = \{ \langle x, y \rangle \mid x \in \dom R, F(x) = \{ \langle 0, x \rangle,
+            \langle 1,y \rangle \} \}$}}
+            \step{4}{$H$ is a function, $H \subseteq R$, $\dom H = \dom R$}
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}
