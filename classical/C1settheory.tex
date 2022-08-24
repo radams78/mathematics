@@ -2466,4 +2466,37 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \begin{corollary}[Absorption Law of Cardinal Arithmetic (Choice)]
+        Let $\kappa$ and $\lambda$ be cardinal numbers, the larger of which is infinite and the smaller of
+        which is nonzero. Then
+        \[ \kappa + \lambda = \kappa \cdot \lambda = \max(\kappa, \lambda) \enspace . \]
+    \end{corollary}
+
+    \begin{proof}
+        \pf
+        \step{1}{\assume{w.l.o.g. $\kappa \leq \lambda$}}
+        \step{2}{$\kappa + \lambda = \lambda$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                \lambda & \leq \kappa + \lambda \\
+                & \leq \lambda + \lambda \\
+                & = 2 \cdot \lambda \\
+                & \leq \lambda \cdot \lambda \\
+                & = \lambda
+            \end{align*}
+        \end{proof}
+        \step{3}{$\kappa \cdot \lambda = \lambda$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                \lambda & = 1 \cdot \lambda \\
+                & \leq \kappa \cdot \lambda \\
+                & \leq \lambda \cdot \lambda \\
+                & = \lambda
+            \end{align*}
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}
