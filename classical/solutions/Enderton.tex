@@ -3051,4 +3051,24 @@
     For each integer $n \geq 2$, let $B_n = \{ x \in A : x > b / n \}$. Then each $B_n$ is finite ($B_n$ cannot
     have more than $n - 1$ elements because $n$ elements in $B_n$ would have a sum $> b$) and $A =
     \bigcup_n B_n$. So $A$ is a countable union of finite sets, and therefore countable.
+
+    \paragraph{Exercise 30}
+    \begin{proof}
+        \pf
+        \step{1}{\pick\ $a \in A$}
+        \step{2}{Define $f : Sq(A) \rightarrow \omega \times ^\omega A$ by $f(s) = \langle n, g \rangle$,
+        where $n$ is the length pf $s$, and $g(i) = s(i)$ for $i < n$, $g(i) = a$ for $i \geq n$}
+        \step{3}{$f$ is injective.}
+        \step{4}{$Sq(A) \preccurlyeq \omega \times ^\omega A$}
+        \step{5}{$\card Sq(A) \leq (\card A)^{\aleph_0}$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                \card Sq(A) & \leq \aleph_0 \cdot (\card A)^{\aleph_0} & (\text{\stepref{4}})\\
+                & \leq (\card A)^{\aleph_0} \cdot (\card A)^{\aleph_0} & (\text{Cantor's Theorem})\\
+                & = (\card A)^{\aleph_0 + \aleph_0} & (\text{Theorem 6I})\\
+                & = (\card A)^{\aleph_0} & 
+            \end{align*}
+        \end{proof}
+    \end{proof}
 \end{document}
