@@ -2311,9 +2311,69 @@
         A set is infinite iff it is equinumerous to a proper subset of itself.
     \end{corollary}
     
+    \begin{proposition}[Choice]
+        If there exists a surjection $A \rightarrow B$ then $B \preccurlyeq A$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Any surjection $A \rightarrow B$ has a right inverse which is an injection $B \rightarrow A$.
+    \end{proof}
     \section{Countable Sets}
 
     \begin{definition}[Countable]
         A set is \emph{countable} iff it is dominated by $\omega$.
     \end{definition}
+
+    \begin{proposition}
+        Any subset of a countable set is countable.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{proof}
+        The union of two countable sets is countable.
+    \end{proof}
+
+    \begin{proof}
+        \pf\ Because $\aleph_0 + \aleph_0 = \aleph_0$ \qed
+    \end{proof}
+
+    \begin{proposition}
+        The product of two countable sets is countable.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Because $\aleph_0 \aleph_0 = \aleph_0$. \qed
+    \end{proof}
+
+    \begin{proposition}[Choice]
+        For any infinite set $A$, the set $\mathcal{P} A$ is uncountable.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ If $|A| \geq \aleph_0$ then $|\mathcal{P} A| \geq 2^{\aleph_0}$. \qed
+    \end{proof}
+
+    \begin{theorem}[Choice]
+        A countable union of countable sets is countable.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\mathcal{A}$ be a countable set of countable sets.}}
+        \step{2}{\assume{w.l.o.g. $\mathcal{A} \neq \emptyset$ and $\emptyset \notin \mathcal{A}$}}
+        \step{3}{\pick\ a surjection $G : \omega \rightarrow A$}
+        \step{4}{\pick\ a function $F$ with domain $\omega$ such that, for all $m$, $F(m)$ is a surjection
+        $\omega \rightarrow G(m)$}
+        \begin{proof}
+            \pf\ By the Axiom of Choice.
+        \end{proof}
+        \step{5}{Define $f : \omega \times \omega \rightarrow \bigcup A$ by $f(m,n) = F(m)(n)$}
+        \step{6}{$f$ is surjective.}
+        \step{7}{$A \preccurlyeq \omega \times \omega$}
+        \qed
+    \end{proof}
+    
 \end{document}
