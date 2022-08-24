@@ -2920,4 +2920,79 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \paragraph{Exercise 23}
+    \begin{proof}
+        \step{1}{$g[\![0]\!]=h(0)$}
+        \begin{proof}
+            \pf\ Both are equal to $\emptyset$.
+        \end{proof}
+        \step{2}{$\forall n \in \omega.g[\![n]\!] = h(n) \Rightarrow g[\![n^+]\!] = h(n^+)$}
+        \begin{proof}
+            \step{a}{\pflet{$n \in \omega$}}
+            \step{b}{\assume{$g[\![n]\!] = h(n)$}}
+            \step{c}{$g[\![n^+]\!] = h(n^+)$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    h(^+) & = h(n) \cup \{ F(A-h(n)) \} \\
+                    & = g[\![n]\!] \cup \{ g(n) \} \\
+                    & = g[\![n^+]\!]
+                \end{align*}
+            \end{proof}
+        \end{proof}
+    \end{proof}
+
+    \paragraph{Exercise 24}
+    Let $\{ \kappa_i \}_{i \in I}$ be a family of cardinal numbers. For $i \in I$, let $K_i$
+    be a set such that $\card K_i = \kappa_i$.
+
+    We define $\sum_{i \in I} \kappa_i$ to be $\card \{ \langle i, x \rangle : i \in I, x \in K_i \}$
+
+    We define $\prod_{i \in I} \kappa_i$ to be $\card \{ f : f \text{ is a function},
+    \dom f = I, \forall i \in I. f(i) \in K_i \}$.
+
+    \paragraph{Exercise 25}
+    \begin{proof}
+        \pf
+        \step{1}{\assume{for a contradiction $\forall n \in \omega. B \nsubseteq S(n)$}}
+        \step{2}{\pick\ a function $b : \omega \rightarrow B$ such that $\forall n \in \omega. b(n) \notin S(n)$}
+        \begin{proof}
+            \pf\ By the Axiom of Choice.
+        \end{proof}
+        \step{3}{\pflet{$B' = \{ b(n) : n \in \omega \}$}}
+        \step{3}{$B'$ is infinite.}
+        \begin{proof}
+            \step{a}{\assume{for a contradiction $B'$ is finite.}}
+            \step{b}{There exists $N$ such that $\forall n > N. \exists k \leq N. b(n) = b(k)$}
+            \step{c}{\pick\ $M > N$ such that $\forall k \leq N. b(k) \in S(M)$}
+            \begin{proof}
+                \pf\ For $k \leq N$ there exists $n_k$ such that $b(k) \in S(n_k)$. Take $M$ to be the largest of these
+                numbers and $N + 1$.
+            \end{proof}
+            \step{d}{$b(M) \in S(M)$}
+            \begin{proof}
+                \pf\ Since $b(M) = b(k)$ for some $k \leq N$.
+            \end{proof}
+            \qedstep
+            \begin{proof}
+                \pf\ This contradicts \stepref{2}.
+            \end{proof}
+        \end{proof}
+        \step{4}{\pick\ $n$ such that $B' \cap S(n)$ is infinite.}
+        \step{5}{\pick\ $m > n$ such that $b(m) \in B' \cap S(n)$}
+        \begin{proof}
+            \pf\ There must be some $m$ otherwise $B' \cap S(n) \subseteq \{ b(0), b(1), \ldots, b(n) \}$
+            would be finite.
+        \end{proof}
+        \step{6}{$b(m) \in S(m)$}
+        \begin{proof}
+            \pf\ Since $S(n) \subseteq S(m)$.
+        \end{proof}
+        \qedstep
+        \begin{proof}
+            \pf\ This contradicts \stepref{2}.
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}
