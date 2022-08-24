@@ -3028,4 +3028,27 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \paragraph{Exercise 27}
+    \subparagraph{(a)}
+    Pick a function $f : A \rightarrow \mathbb{Q}^2$ such that $f(c) \in c$ for all $c \in A$.
+    Then $f$ is an injection, so $A \preccurlyeq \mathbb{Q}^2$ which is countable.
+    \subparagraph{(b)}
+    No: the set of all circles with center $(0,0)$ is an uncountable set of circles no two of which intersect.
+    \subparagraph{(c)}
+    Yes. Pick a function $f : C \rightarrow \mathbb{Q}^4$ such that $f(x)$ is a pair of points with rational
+    coordinates, one in each circle of $x$, for all $x \in C$. Then $f$ is an injection; it is not possible
+    for two points to be in separate circles of two non-intersecting figure-eights. Hence $C \preccurlyeq
+    \mathbb{Q}^4$.
+
+    \paragraph{Exercise 28}
+    Let $\mathcal{A} = \{ (a, \sqrt{2}) : a < \sqrt{2} \} \cup \{ (\sqrt{2}, b) : b > \sqrt{2} \}$.
+    Then every rational is in some member of $\mathcal{A}$ but $\bigcup \mathcal{A} = \mathbb{R} - \{ \sqrt{2} \}$.
+
+    (Enderton's hint suggests he had a different solution in mind, but I am not sure what it is.)
+
+    \paragraph{Exercise 29}
+    For each integer $n \geq 2$, let $B_n = \{ x \in A : x > b / n \}$. Then each $B_n$ is finite ($B_n$ cannot
+    have more than $n - 1$ elements because $n$ elements in $B_n$ would have a sum $> b$) and $A =
+    \bigcup_n B_n$. So $A$ is a countable union of finite sets, and therefore countable.
 \end{document}

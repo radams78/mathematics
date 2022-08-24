@@ -319,3 +319,9 @@
 \contentsline {paragraph}{Exercise 25}{58}%
 \contentsline {section}{\numberline {6.6}Countable Sets}{58}%
 \contentsline {paragraph}{Exercise 26}{58}%
+\contentsline {paragraph}{Exercise 27}{59}%
+\contentsline {subparagraph}{(a)}{59}%
+\contentsline {subparagraph}{(b)}{59}%
+\contentsline {subparagraph}{(c)}{59}%
+\contentsline {paragraph}{Exercise 28}{59}%
+\contentsline {paragraph}{Exercise 29}{59}%
