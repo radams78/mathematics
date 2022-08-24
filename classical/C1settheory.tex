@@ -2376,4 +2376,94 @@
         \qed
     \end{proof}
     
+    \section{Arithmetic of Infinite Cardinals}
+
+    \begin{lemma}[Choice]
+        For any infinite cardinal $\kappa$ we have $\kappa \cdot \kappa = \kappa$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\kappa$ be an infinite cardinal.}}
+        \step{2}{\pflet{$B$ be a set of cardinality $\kappa$.}}
+        \step{3}{\pflet{$\mathcal{H} = \{ f : f = \emptyset \text{ or for some infinite }
+        A \subseteq B, f \text{ is a bijection between $A \times A$ and $A$} \}$}}
+        \step{4}{For any chain $\mathcal{C} \subseteq \mathcal{H}$, we have $\bigcup \mathcal{C} \in \mathcal{H}$}
+        \begin{proof}
+            \step{a}{\pflet{$\mathcal{C} \subseteq \mathcal{H}$ be a chain.}}
+            \step{b}{\assume{w.l.o.g. $\mathcal{C}$ has a nonempty element.}}
+            \begin{proof}
+                \pf\ Otherwise $\bigcup \mathcal{C} = \emptyset \in \mathcal{H}$.
+            \end{proof}
+            \step{c}{$\bigcup \mathcal{C}$ is an injective function.}
+            \step{d}{\pflet{$A = \ran \bigcup \mathcal{C}$}}
+            \step{e}{$A$ is infinite.}
+            \step{f}{$\bigcup \mathcal{C}$ is a bijection between $A \times A$ and $A$.}
+            \begin{proof}
+                \step{i}{\pflet{$a_1, a_2 \in A$}}
+                \step{ii}{\pick\ $f_1, f_2 \in \mathcal{C}$ such that $a_1 \in \ran f_1$ and $a_2 \in \ran f_2$}
+                \step{iii}{\assume{w.l.o.g. $f_1 \subseteq f_2$}}
+                \step{iv}{$\langle a_1, a_2 \rangle \in \dom f_2$}
+                \step{v}{$\langle a_1, a_2 \rangle \in \dom \bigcup \mathcal{C}$}
+            \end{proof}
+        \end{proof}
+        \step{5}{\pick\ a maximal $f_0 \in \mathcal{H}$}
+        \begin{proof}
+            \pf\ Zorn's Lemma.
+        \end{proof}
+        \step{6}{$f_0 \neq \emptyset$}
+        \begin{proof}
+            \pf\ $B$ has a countable subset $A$, say, and $A \times A \approx A$.
+        \end{proof}
+        \step{7}{\pick\ $A_0 \subseteq B$ infinite such that $f_0$ is a bijection between $A_0 \times A_0$
+        and $A_0$.}
+        \step{8}{\pflet{$\lambda = |A_0|$}}
+        \step{9}{$\lambda$ is infinite}
+        \step{10}{$\lambda = \lambda \cdot \lambda$}
+        \step{11}{$\lambda = \kappa$}
+        \begin{proof}
+            \step{a}{$|B - A_0| < \lambda$}
+            \begin{proof}
+                \step{i}{\assume{for a contradiction $\lambda \leq |B - A_0|$}}
+                \step{ii}{\pick\ $D \subseteq B - A_0$ with $|D| = \lambda$}
+                \step{iii}{$(A_0 \cup D) \times (A_0 \cup D) = (A_0 \times A_0) \cup (A_0 \times D) \cup
+                (D \times A_0) \cup (D \times D)$}
+                \step{iv}{$f_0 : A_0 \times A_0 \approx A_0$}
+                \step{v}{$|(A_0 \times D) \cup
+                (D \times A_0) \cup (D \times D)| = \lambda$}
+                \begin{proof}
+                    \pf
+                    \begin{align*}
+                        |(A_0 \times D) \cup
+                (D \times A_0) \cup (D \times D)| & = \lambda \cdot \lambda + \lambda \cdot \lambda + \lambda \cdot \lambda \\
+                & = \lambda + \lambda + \lambda & (\text{\stepref{10}})\\
+                & = 3 \cdot \lambda \\
+                & \leq \lambda \cdot \lambda \\
+                & = \lambda & (\text{\stepref{10}})
+                    \end{align*}
+                \end{proof}
+                \step{vi}{\pick\ a bijection $g : (A_0 \times D) \cup
+                (D \times A_0) \cup (D \times D) \approx D$}
+                \step{vii}{$f_0 \cup g : (A_0 \cup D) \times (A_0 \cup D) \approx A_0 \cup D$}
+                \qedstep
+                \begin{proof}
+                    \pf\ This contradicts the maximality of $f_0$.
+                \end{proof}
+            \end{proof}
+            \step{b}{$\lambda = \kappa$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    \kappa & = |B| \\
+                    & = |A_0| + |B - A_0| \\
+                    & \leq \lambda + \lambda \\
+                    & = 2 \cdot \lambda \\
+                    & \leq \lambda \cdot \lambda \\
+                    & = \lambda \\
+                    & \leq \kappa
+                \end{align*}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}
