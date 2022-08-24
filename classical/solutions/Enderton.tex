@@ -2995,4 +2995,37 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \section{Countable Sets}
+
+    \paragraph{Exercise 26}
+    \begin{proof}
+        \pf
+        \step{1}{\pick\ a set $K$ of cardinality $\kappa$}
+        \step{2}{For all $X \in \mathcal{A}$, there exists an injective function $X \rightarrow K$}
+        \step{3}{\pick\ a function $F$ with domain $\mathcal{A}$ such that, for all $X \in A$,
+        $F(X)$ is an injective function $X \rightarrow K$}
+        \begin{proof}
+            \pf\ By the Axiom of Choice.
+        \end{proof}
+        \step{4}{\pick\ a function $G$ with domain $\bigcup \mathcal{A}$ such that, for all $x \in \bigcup
+        \mathcal{A}$, we have $x \in G(x) \in \mathcal{A}$}
+        \begin{proof}
+            \pf\ By Exercise 22.
+        \end{proof}
+        \step{4}{Define $f : \bigcup \mathcal{A} \rightarrow \mathcal{A} \times K$ by $f(x) = \langle
+            G(x), F(G(x))(x) \rangle$}
+        \step{5}{$f$ is injective.}
+        \begin{proof}
+            \step{a}{\pflet{$x, y \in \bigcup \mathcal{A}$}}
+            \step{b}{\assume{$f(x) = f(y)$}}
+            \step{c}{$G(x) = G(y)$ and $F(G(x))(x) = F(G(y))(y)$}
+            \step{d}{$F(G(x))(x) = F(G(x))(y)$}
+            \step{e}{$x = y$}
+            \begin{proof}
+                \pf\ Since $F(G(x))$ is injective.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}
