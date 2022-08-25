@@ -845,6 +845,19 @@
         If $<$ is a strict partial order, we write $x \leq y$ for $x < y \vee x = y$.
     \end{definition}
 
+    \begin{theorem}
+        Assume that $<$ is a partial order. Then for any $x$, $y$ and $z$:
+        \begin{enumerate}
+            \item \emph{At most} one of the three alternatives,
+            \[ x < y, x = y, y < x, \]
+            can hold.
+            \item $x \leq y \leq x \Rightarrow x = y$.
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
     \section{Linear Orders}
 
     \begin{definition}[Linear Ordering]
