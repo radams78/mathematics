@@ -1013,6 +1013,18 @@
         \step{4}{$B = \emptyset$}
         \qed
     \end{proof}
+
+    \begin{theorem}[Transfinite Recursion Theorem, Preliminary Form]
+        Assume that $<$ is a well ordering on $A$, and that $G : B^{< A} \rightarrow A$,
+        where $B^{< A} = \{ f \mid \exists t \in A. f : \seg t \rightarrow B\}$. Then there exists a unique
+        function $F : A \rightarrow B$ such that
+        \[ \forall t \in A. F(t) = G(F \restriction \seg t) \enspace . \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ TODO. \qed
+    \end{proof}
+    
     \section{Natural Numbers}
 
     \begin{definition}[Successor]
