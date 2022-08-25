@@ -326,3 +326,6 @@
 \contentsline {paragraph}{Exercise 28}{59}%
 \contentsline {paragraph}{Exercise 29}{59}%
 \contentsline {paragraph}{Exercise 30}{59}%
+\contentsline {section}{\numberline {6.7}Arithmetic of Infinite Cardinals}{60}%
+\contentsline {paragraph}{Exercise 31}{60}%
+\contentsline {paragraph}{Exercise 32}{60}%

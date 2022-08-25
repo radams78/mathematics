@@ -3071,4 +3071,26 @@
             \end{align*}
         \end{proof}
     \end{proof}
+
+    \section{Arithmetic of Infinite Cardinals}
+
+    \paragraph{Exercise 31}
+    If $f$ is a one-to-one correspondence between $A \times A$ and $A$, where $A \subseteq B$,
+    then
+    \[ f \subseteq (A \times A) \times A \subseteq (B \times B) \times B \enspace . \]
+    Also $\emptyset \subseteq (B \times B) \times B$. So we can form $\mathcal{H}$ by applying a Subset
+    Axiom to $\mathcal{P} ((B \times B) \times B)$.
+
+    \paragraph{Exercise 32}
+    The function that maps $x$ to $\{x\}$ is an injection $A \rightarrow \mathcal{F} A$, so we have
+    $A \approx \mathcal{F} A$.
+
+    For the converse, let $F_n = \{ X \in \mathcal{F} A : \card X \leq n \}$ for $n \in \omega$. The function
+    that sends $\langle a_1, \ldots, a_n \rangle$ to $\{ a_1, \ldots, a_n \}$ is a surjection $A^n \rightarrow
+    F_n$, so we have
+    \[ \card F_n \leq (\card A)^n = \card A \]
+    by Lemma 6R. Now, $\mathcal{F} A = \bigcup_n F_n$, so
+    \[ \card \mathcal{F} A \leq \aleph_0 \cdot \card A = \card A \]
+    by the Absorption Law.
+
 \end{document}
