@@ -990,6 +990,29 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \begin{theorem}
+        Assume that $<$ is a linear ordering on $A$. Assume that the only $<$-inductive subset of $A$ is $A$
+        itself. Then $<$ is a well ordering on $A$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\assume{for a contradiction $B \subseteq A$ has no least element.}}
+        \step{2}{$A - B$ is $<$-inductive.}
+        \begin{proof}
+            \step{a}{\pflet{$t \in A$}}
+            \step{b}{\assume{$\seg t \subseteq A - B$}}
+            \step{c}{$t \notin B$}
+            \begin{proof}
+                \pf\ If it were, it would be the least element of $B$.
+            \end{proof}
+            \step{d}{$t \in A - B$}
+        \end{proof}
+        \step{3}{$A - B = A$}
+        \step{4}{$B = \emptyset$}
+        \qed
+    \end{proof}
     \section{Natural Numbers}
 
     \begin{definition}[Successor]
