@@ -3093,4 +3093,76 @@
     \[ \card \mathcal{F} A \leq \aleph_0 \cdot \card A = \card A \]
     by the Absorption Law.
 
+    \paragraph{Exercise 33}
+    The function that maps $a$ to the sequence of length 1 containing $a$ is an injection $A \rightarrow Sq(A)$,
+    so $A \preccurlyeq Sq(A)$.
+
+    For the converse, we have $\card (^n A) = (\card A)^n = \card A$ for any natural number $n$
+    \begin{align*}
+        \card Sq(A) & = \card (^0 A \cup ^1 A \cup ^2 A \cup \cdots) \\
+        & = \aleph_0 \cdot \card A \\
+        & = \card A
+    \end{align*}
+    by the Absorption Law.
+
+    \paragraph{Exercise 34}
+    \begin{align*}
+        2^\lambda & \leq \kappa^\lambda \\
+        & \leq (2^\kappa)^\lambda \\
+        & = 2^{\kappa \cdot \lambda} \\
+        & = 2^\lambda & (\text{Absorption Law})
+    \end{align*}
+
+    \paragraph{Exercise 35}
+    For any infinite set of primes $A$ and natural number $n$, let $f(A,n) = \prod \{ p \in A : p \leq n \}$.
+    Let $P(A) = \{ f(A,n) : n \in \omega \}$. Let $\mathcal{A}$ be the set of all sets of the form $P(A)$.
+
+    The number of infinite sets of primes is $2^{\aleph_0}$ (there are $2^{\aleph_0}$ sets of primes and
+    $\aleph_0$ finite sets of primes by Exercise 32.)
+
+    If $P(A) = P(B)$ then $A = B$. (If $p \in A - B$ then $p \mid f(A,p)$ but $p$ does not divide any
+    member of $P(B)$.) So $P$ is an
+    injection from the set of infinite sets of primes into $\mathcal{A}$. Hence $\card \mathcal{A} =
+    2^{\aleph_0}$.
+
+    We now prove that, if $A \neq B$, then $P(A) \cap P(B)$ is finite. Let $p \in A - B$. For $n \geq p$
+     we have $f(A,n) \notin P(B)$ since $p \mid f(A,n)$ but $p$ does not divide any member of $B$. Hence
+     $A \cap B \subseteq \{ f(A,0), f(A,1), \ldots, f(A,p-1) \}$.
+
+     \paragraph{Exercise 36}
+     \begin{proof}
+        \pf
+        \step{1}{For any set $A$, there exists a permutation of $A$ with no fixed points.}
+        \begin{proof}
+            \step{a}{For every natural number $n$, there exists a permuatation of $n$ with no fixed points.}
+            \begin{proof}
+                \pf\ Map $i$ to $i+1$ if $i+1 < n$, and map $n-1$ to 0.
+            \end{proof}
+            \step{b}{For every infinite set $A$, there exists a permutation of $A$ with no fixed points.}
+            \begin{proof}
+                \step{i}{\pick\ a bijection $f : A \approx A \times 2$}
+                \step{ii}{Define $\pi : A \times 2 \rightarrow A \times 2$ by $\pi(x,0) = (x,1)$ and
+                $\pi(x,1) = (x,0)$}
+                \step{iii}{$\inv{f} \circ \pi \circ f$ is a permutation of $A$ with no fixed point.}
+            \end{proof}
+        \end{proof}
+        \step{2}{$\kappa! \leq 2^\kappa$}
+        \begin{proof}
+            \pf\ Because the set of permutations of $K$ is a subset of $^K K$, where $K$ is a set of
+            cardinality $\kappa$.
+        \end{proof}
+        \step{3}{$2^\kappa \leq \kappa!$}
+        \begin{proof}
+            \step{a}{\pick\ a set $K$ of cardinality $\kappa$}
+            \step{b}{\pflet{$Perm(K)$ be the set of permutations of $K$.}}
+            \step{c}{Define $f : \mathcal{P} K \rightarrow Perm(K)$ as follows. Given $A \subseteq \mathcal{P}
+            K$, pick a permutation $\pi_{K-A}$ of $K-A$ with no fixed point. Then $f(A) = I_A \cup \pi_{K - A}$}
+            \step{d}{$f$ is injective}
+            \begin{proof}
+                \pf\ The function that maps a permutation to its set of fixed points is a left inverse.
+            \end{proof}
+            \step{e}{$2^\kappa \leq \kappa!$}
+        \end{proof}
+        \qed
+     \end{proof}
 \end{document}

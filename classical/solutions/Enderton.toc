@@ -329,3 +329,7 @@
 \contentsline {section}{\numberline {6.7}Arithmetic of Infinite Cardinals}{60}%
 \contentsline {paragraph}{Exercise 31}{60}%
 \contentsline {paragraph}{Exercise 32}{60}%
+\contentsline {paragraph}{Exercise 33}{60}%
+\contentsline {paragraph}{Exercise 34}{61}%
+\contentsline {paragraph}{Exercise 35}{61}%
+\contentsline {paragraph}{Exercise 36}{61}%
