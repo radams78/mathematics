@@ -3179,4 +3179,25 @@
 
      \subparagraph{(b)}
      No we cannot. With the same example, we have $f(\{0\}) < f(\{1,2\})$ but $\{0\} \not\subset \{1,2\}$.
+
+     \paragraph{Exercise 2}
+     We show $\inv{R}$ is transitive. Suppose $x \inv{R} y$ and $y \inv{R} z$. Then $zRy$ and $yRx$, so $zRx$
+     because $R$ is transitive. Hence $x \inv{R} z$.
+
+     We now show $\inv{R}$ is irreflexive. For any $x$, we have $\langle x,x \rangle \notin R$, so
+     $\langle x,x \rangle \notin \inv{R}$.
+
+     \paragraph{Exercise 3}
+     The proof is by induction on $n$.
+
+     The only linear ordering on $\emptyset$ is $\emptyset$, which has 0 pairs.
+
+     Suppose that, whenever $\card S = n$, then every linear ordering on $S$ has $1/2 n (n-1)$ pairs.
+     Let $S$ be a set of cardinality $n+1$. Let $<$ be a linear ordering on $S$.
+
+     Pick an element $a \in S$ and let $T = S - \{a\}$. Then $< \cap (T \times T)$ is a linear ordering on $T$,
+     hence has $1/2 n (n-1)$ pairs. Now, for every $x \in T$, exactly one of $\langle x, a \rangle$
+     and $\langle a,x \rangle$ is in $<$. Hence $<$ has $n$ pairs that are not in $< \cap (T \times T)$.
+     So
+     \[ \card < = 1/2 n (n-1) + n = 1/2 n (n+1) \enspace . \]
 \end{document}
