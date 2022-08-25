@@ -958,6 +958,14 @@
         hence $x \not < y$ and $y \not < x$ since $f$ is strictly monotone, hence $x = y$ by
         trichotomy. \qed
     \end{proof}
+
+    \section{Well Orderings}
+
+    \begin{definition}[Well Ordering]
+        A \emph{well ordering} on a set $A$ is a linear ordering on $A$ such that every nonempty subset of
+        $A$ has a least element.
+    \end{definition}
+
     \section{Natural Numbers}
 
     \begin{definition}[Successor]
@@ -1814,7 +1822,7 @@
     \end{proof}
     
     \begin{theorem}[Well-Ordering of $\omega$]
-        Every nonempty subset of $\omega$ has a least element.
+        The ordering $<$ on $\omega$ is a well-ordering.
     \end{theorem}
     
     \begin{proof}
@@ -1822,9 +1830,40 @@
         by strong induction on $n$. \qed
     \end{proof}
 
-    \begin{corollary}
-        There is no function $f : \omega \rightarrow \omega$ such that $f(n+1) < f(n)$ for every $n$.
-    \end{corollary}
+    \begin{theorem}[Choice]
+        Let $<$ be a linear ordering on $A$. Then $<$ is a well-ordering on $A$ iff there does not exist
+        any function $f : \omega \rightarrow \omega$ such that $f(n+1) < f(n)$ for all $n \in \omega$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{If $<$ is a well-ordering on $A$ then there does not exist any function $f : \omega
+        \rightarrow \omega$ such that $f(n+1) < f(n)$ for all $n \in \omega$.}
+        \begin{proof}
+            \pf\ If there is such a function $f$ then $\ran f$ is a nonempty subset of $A$ with no least
+            element.
+        \end{proof}
+        \step{2}{If there does not exist any function $f : \omega \rightarrow A$ such that $f(n+1)
+        < f(n)$ for all $n \in \omega$ then $<$ is a well-ordering on $A$.}
+        \begin{proof}
+            \step{a}{\pflet{$X \subseteq A$ be a nonempty subset of $A$ with no least element.}
+            \prove{There exists a function $f : \omega \rightarrow A$ such that
+            $f(n+1) < f(n)$ for all $n \in \omega$}}
+            \step{b}{\pick\ $a_0 \in X$}
+            \step{c}{$\forall x \in X. \exists y \in X. y < x$}
+            \step{d}{\pick\ a function $g : X \rightarrow X$ such that $\forall x \in X. g(x) < x$}
+            \begin{proof}
+                \pf\ By the Axiom of Choice.
+            \end{proof}
+            \step{e}{Define $f : \omega \rightarrow A$ recursively by:
+            \begin{align*}
+                f(0) & = a_0 \\
+                f(n^+) & = g(f(n))
+            \end{align*}}
+            \step{f}{$\forall n \in \omega. f(n^+) < f(n)$}
+        \end{proof}
+        \qed
+    \end{proof}
 
     \begin{lemma}
         \label{lemma:subtraction}
