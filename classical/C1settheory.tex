@@ -972,6 +972,24 @@
         $A$ has a least element.
     \end{definition}
 
+    \begin{theorem}[Transfinite Induction Principle]
+        Let $<$ be a well ordering on $A$. Let $B \subseteq A$. Suppose that
+        \[ \forall x \in A (\seg x \subseteq B \Rightarrow x \in B) \enspace . \]
+        Then $B = A$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\assume{for a contradiction $B \neq A$}}
+        \step{2}{\pflet{$t$ be the least element of $A - B$}}
+        \step{3}{$\seg t \subseteq B$}
+        \step{4}{$t \notin B$}
+        \qedstep
+        \begin{proof}
+            \pf\ This is a contradiction.
+        \end{proof}
+        \qed
+    \end{proof}
     \section{Natural Numbers}
 
     \begin{definition}[Successor]
