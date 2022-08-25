@@ -26,6 +26,7 @@
 \newcommand{\fld}{\ensuremath{\operatorname{fld}}}
 \newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
 \newcommand{\ran}{\ensuremath{\operatorname{ran}}}
+\newcommand{\seg}{\ensuremath{\operatorname{seg}}}
 
 \begin{document}
     \maketitle
@@ -906,6 +907,11 @@
         Let $<$ be a partial order on $A$ and $C \subseteq A$. The \emph{greatest lower bound} or 
         \emph{infimum}
         for $C$ is the greatest element in the set of lower bounds for $C$.
+    \end{definition}
+
+    \begin{definition}[Initial Segment]
+        Let $<$ be a partial order on $A$ and $t \in A$. The \emph{initial segment} up to $t$ is
+        \[ \seg t = \{ x \in A : x < t \} \enspace . \]
     \end{definition}
 
     \section{Linear Orders}
