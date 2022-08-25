@@ -333,3 +333,8 @@
 \contentsline {paragraph}{Exercise 34}{61}%
 \contentsline {paragraph}{Exercise 35}{61}%
 \contentsline {paragraph}{Exercise 36}{61}%
+\contentsline {chapter}{\numberline {7}Chapter 7 --- Orderings and Ordinals}{62}%
+\contentsline {section}{\numberline {7.1}Partial Orderings}{62}%
+\contentsline {paragraph}{Exercise 1}{62}%
+\contentsline {subparagraph}{(a)}{62}%
+\contentsline {subparagraph}{(b)}{62}%
