@@ -348,3 +348,6 @@
 \contentsline {subparagraph}{(a)}{64}%
 \contentsline {subparagraph}{(b)}{64}%
 \contentsline {subparagraph}{(c)}{64}%
+\contentsline {section}{\numberline {7.3}Replacement Axioms}{64}%
+\contentsline {paragraph}{Exercise 8}{64}%
+\contentsline {paragraph}{Exercise 9}{65}%
