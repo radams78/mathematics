@@ -3200,4 +3200,66 @@
      and $\langle a,x \rangle$ is in $<$. Hence $<$ has $n$ pairs that are not in $< \cap (T \times T)$.
      So
      \[ \card < = 1/2 n (n-1) + n = 1/2 n (n+1) \enspace . \]
+
+     \section{Well Orderings}
+
+     \paragraph{Exercise 4}
+     \begin{proof}
+        \pf
+        \step{1}{$R$ is transitive.}
+        \begin{proof}
+            \step{a}{\assume{$mRn$ and $nRp$.}}
+            \step{b}{\case{$f(m) < f(n)$}}
+            \begin{proof}
+                \pf\ In this case $f(m) < f(p)$ so $mRp$.
+            \end{proof}
+            \step{c}{\case{$f(m) = f(n)$ and $m < n$.}}
+            \begin{proof}
+                \step{i}{\case{$f(n) < f(p)$}}
+                \begin{proof}
+                    \pf\ In this case $f(m) < f(p)$ so $mRp$.
+                \end{proof}
+                \step{ii}{\case{$f(n) = f(p)$ and $n < p$.}}
+                \begin{proof}
+                    \pf\ In this case $f(m) = f(p)$ and $m < p$ so $mRp$.
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \step{2}{$R$ satisfies trichotomy on $P$.}
+        \begin{proof}
+            \step{a}{\pflet{$m, n \in P$}}
+            \step{b}{Exactly one of $f(m) < f(n)$, $f(n) < f(m)$, $f(n) = f(m)$ holds.}
+            \step{c}{Exactly one of $m < n$, $n < m$, $n = m$ holds.}
+            \step{d}{Exactly one of $f(m) < f(n)$, $(f(m) = f(n) \ \&\ m < n)$,
+            $(f(m) = f(n)\ \&\ m = n)$, $(f(m) = f(n)\ \&\ n < m)$, $f(n) < f(m)$ holds.}
+            \step{e}{Exactly one of $mRn$, $m=n$, $nRm$ holds.}
+        \end{proof}
+        \step{3}{Every nonempty subset of $P$ has an $R$-least element.}
+        \begin{proof}
+            \step{a}{\pflet{$A \subseteq P$ be nonempty.}}
+            \step{b}{\pflet{$k$ be the least element of $f(A)$.}}
+            \step{c}{\pflet{$n$ be the least element of $\inv{f}(k) \cap A$.}}
+            \step{d}{$n$ is the $R$-least element of $A$.}
+        \end{proof}
+        \qed
+     \end{proof}
+
+     $\langle P,R \rangle$ resembles Fig. 45 (d).
+
+     \paragraph{Exercise 5}
+     \begin{proof}
+        \pf
+        \step{0}{\pflet{$x \in A$}}
+        \step{1}{\assume{for a contradiction $f(x) < x$}}
+        \step{2}{Define $g : \omega \rightarrow A$ by $g(0) = x$ and $g(n^+) = f(g(n))$ for all $n \in \omega$}
+        \step{3}{$\forall n \in \omega. g(n^+) < g(n)$}
+        \begin{proof}
+            \pf\ By induction on $n$ using \stepref{1} and the hypothesis.
+        \end{proof}
+        \qedstep
+        \begin{proof}
+            \pf\ This contradicts Theorem 7B.
+        \end{proof}
+        \qed
+     \end{proof}
 \end{document}
