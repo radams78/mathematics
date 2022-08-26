@@ -3262,4 +3262,62 @@
         \end{proof}
         \qed
      \end{proof}
+
+     \paragraph{Exercise 6}
+     \begin{proof}
+        \pf
+        \step{1}{For all $x \in S$ that is not greatest, there exists $y \in S$ and $q \in \mathbb{Q}$
+        such that $x < q < y$ and there is no $z \in S$ such that $x < z < y$}
+        \step{2}{\pick\ a function $f : S \rightarrow \mathbb{Q}$ such that $\forall x \in S. x < f(x)$
+        and, if $x$ is not greatest, then $f(x) < y$ where $y$ is the next element in $S$.}
+        \step{3}{$f$ is injective.}
+        \step{4}{$S \preccurlyeq \mathbb{Q}$}
+        \qed
+     \end{proof}
+
+     \paragraph{Exercise 7}
+     \subparagraph{(a)}
+     We have $F(t) = C \cup \bigcup \bigcup \ran (F \restriction t)$ for all $t \in \omega$. So:
+     \begin{align*}
+        F(0) & = C \cup \bigcup \bigcup \ran \emptyset \\
+        & = C \\
+        F(1) & = C \cup \bigcup \bigcup \ran (F \restriction 0) \\
+        & = C \cup \bigcup \bigcup \{ C \} \\
+        & = C \cup \bigcup C \\
+        F(2) & = C \cup \bigcup \bigcup \{ C, C \cup \bigcup C \} \\
+        & = C \cup \bigcup (C \cup \bigcup C) \\
+        & = C \cup \bigcup C \cup \bigcup \bigcup C
+     \end{align*}
+     We guess:
+     \[ F(n) = C \cup \bigcup C \cup \cdots \cup \overbrace{n}{\bigcup \bigcup \cdots \bigcup} C \]
+     
+     \subparagraph{(b)}
+     \begin{proof}
+        \pf
+        \step{1}{\pflet{$a \in F(n)$}}
+        \step{2}{$a \in \bigcup \ran (F \restriction n^+)$}
+        \step{3}{$a \subseteq \bigcup \bigcup \ran (F \restriction n^+)$}
+        \step{4}{$a \subseteq F(n^+)$}
+        \qed
+     \end{proof}
+
+     \subparagraph{(c)}
+     \begin{proof}
+        \pf
+        \step{1}{$\overline{C}$ is a transitive set.}
+        \begin{proof}
+            \step{a}{\pflet{$x \in y \in \overline{C}$}}
+            \step{b}{\pick\ $n \in \omega$ such that $y \in F(n)$}
+            \step{c}{$x \in F(n^+)$}
+            \begin{proof}
+                \pf\ By (b).
+            \end{proof}
+            \step{d}{$x \in \overline{C}$}
+        \end{proof}
+        \step{2}{$C \subseteq \overline{C}$}
+        \begin{proof}
+            \step{a}{Since $C = F(0)$}
+        \end{proof}
+        \qed
+     \end{proof}
 \end{document}

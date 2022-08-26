@@ -343,3 +343,8 @@
 \contentsline {section}{\numberline {7.2}Well Orderings}{63}%
 \contentsline {paragraph}{Exercise 4}{63}%
 \contentsline {paragraph}{Exercise 5}{63}%
+\contentsline {paragraph}{Exercise 6}{63}%
+\contentsline {paragraph}{Exercise 7}{64}%
+\contentsline {subparagraph}{(a)}{64}%
+\contentsline {subparagraph}{(b)}{64}%
+\contentsline {subparagraph}{(c)}{64}%
