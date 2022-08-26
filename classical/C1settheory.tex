@@ -63,9 +63,33 @@
         The empty class is a set, called the \emph{empty set}.
     \end{axiom}
 
-    \begin{axiom}[Pairing]
-        For any objects $a$ and $b$, the class $\{a,b\}$ is a set, called a \emph{pair set}.
+    \begin{axiom}[Replacement]
+        For any property $P(x,y)$, the following is an axiom:
+
+        Let $A$ be a set. Assume that, for all $x \in A$, there is at most one $y$ such that $P(x,y)$.
+        Then $\{ y : \exists x \in A. P(x,y) \}$ is a set.
     \end{axiom}
+
+    \begin{definition}[Power Set]
+        For any set $A$, the \emph{power set} of $A$, $\mathcal{P} A$, is the class of all subsets of $A$.
+    \end{definition}
+
+    \begin{axiom}[Power Set]
+        For any set $A$, the class $\mathcal{P} A$ is a set.
+    \end{axiom}
+
+    \begin{theorem}[Pairing]
+        For any objects $a$ and $b$, the class $\{a,b\}$ is a set, called a \emph{pair set}.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\      Let $a$ and $b$ be sets. Let $P(x,y)$ be the formula $(x = \emptyset \ \&\ y = a) \text{ or }
+        (x = \mathcal{P} \emptyset \ \&\ y = b)$. Then we have $(\forall x \in \mathcal{P} \mathcal{P}
+        \emptyset) \forall y_1 \forall y_2 (P(x,y_1) \ \&\ P(x,y_2) \Rightarrow y_1 = y_2)$,
+        hence there exists a set $c$ such that
+        \[ \forall y (y \in c \Leftrightarrow (\exists x \in \mathcal{P} \mathcal{P} \emptyset) P(x,y)) \]
+        The members of $c$ are just $a$ and $b$. \qed   
+    \end{proof}
 
     \begin{definition}[Union]
         For any class of sets $\mathbf{A}$, the \emph{union} $\bigcup \mathbf{A}$ is the class
@@ -103,17 +127,19 @@
         \pf\ By repeated application of the Pairing and Union axioms. \qed
     \end{proof}
 
-    \begin{definition}[Power Set]
-        For any set $A$, the \emph{power set} of $A$, $\mathcal{P} A$, is the class of all subsets of $A$.
-    \end{definition}
-
-    \begin{axiom}[Power Set]
-        For any set $A$, the class $\mathcal{P} A$ is a set.
-    \end{axiom}
-
-    \begin{axiom}[Subset, Aussonderung]
+    \begin{theorem}[Subset Axioms, Aussonderung]
         For any class $\mathbf{A}$ and set $B$, if $\mathbf{A} \subseteq B$ then $\mathbf{A}$ is a set.
-    \end{axiom}
+    \end{theorem}
+
+    \begin{proof}
+        \pf\      Let $Q(x,y)$ be the formula $x \in \mathbf{A} \wedge y = x$. Now we reason as follows.
+     
+        Let $c$ be any set. Then we have
+        \[ (\forall x \in B) \forall y_1 \forall y_2 (Q(x,y_1) \ \&\ Q(x,y_2) \Rightarrow y_1 = y_2) \]
+        Then, by a Replacement Axiom, there exists a set $c$ such that
+        \[ \forall y (y \in c \Leftrightarrow (\exists x \in B) Q(x,y)) \enspace . \]
+        This is equivalent to $\forall x (x \in c \Leftrightarrow x \in \mathbf{A})$. \qed
+    \end{proof}
 
     \begin{proposition}
         For any set $A$ and class $\mathbf{B}$, the intersection $A \cap \mathbf{B}$ is a set.
@@ -210,13 +236,6 @@
     \begin{proof}
         \pf\ Easy. \qed
     \end{proof}
-
-    \begin{axiom}[Replacement]
-        For any property $P(x,y)$, the following is an axiom:
-
-        Let $A$ be a set. Assume that, for all $x \in A$, there is at most one $y$ such that $P(x,y)$.
-        Then $\{ y : \exists x \in A. P(x,y) \}$ is a set.
-    \end{axiom}
 
     \section{Ordered Pairs}
 
