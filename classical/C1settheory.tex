@@ -211,6 +211,13 @@
         \pf\ Easy. \qed
     \end{proof}
 
+    \begin{axiom}[Replacement]
+        For any property $P(x,y)$, the following is an axiom:
+
+        Let $A$ be a set. Assume that, for all $x \in A$, there is at most one $y$ such that $P(x,y)$.
+        Then $\{ y : \exists x \in A. P(x,y) \}$ is a set.
+    \end{axiom}
+
     \section{Ordered Pairs}
 
     \begin{definition}[Ordered Pair]
@@ -1023,7 +1030,87 @@
     \end{theorem}
 
     \begin{proof}
-        \pf\ TODO. \qed
+        \pf
+        \step{1}{Given $t \in A$, let us say that a function $v$ is \emph{$P$-constructed up to $t$}
+        iff $\dom v = \{ x \in A : x \leq t \}$ and $\forall x \in \dom v. P(v \restriction \seg x, v(x))$}
+        \step{2}{Let $t_1, t_2 \in A$ with $t_1 \leq t_2$. Let $v_1$ be a function that is $P$-constructed
+        up to $t_1$, and $v_2$ a function that is $P$-constructed up to $t_2$. Then $\forall x \leq t_1.
+        v_1(x) = v_2(x)$}
+        \begin{proof}
+            \step{a}{\pflet{$x \leq t_1$}}
+            \step{b}{\assume{$\forall y < x. v_1(y) = v_2(y)$}}
+            \step{c}{$v_1 \restriction \seg x = v_2 \restriction \seg x$}
+            \step{d}{$P(v_1 \restriction \seg x, v_1(x))$}
+            \step{e}{$P(v_2 \restriction \seg x, v_2(x))$}
+            \step{c}{$v_1(x) = v_2(x)$}
+            \begin{proof}
+                \pf\ Since there is only one $y$ such that $P(v_1 \restriction \seg x, y)$.
+            \end{proof}
+            \qedstep
+            \begin{proof}
+                \pf\ By transfinite induction.
+            \end{proof}
+        \end{proof}
+        \step{3}{\pflet{$\mathcal{H} = \{ v : \exists t \in A. \text{$v$ is $P$-constructed up to $t$} \}$}}
+        \step{4}{$\mathcal{H}$ is a set.}
+        \begin{proof}
+            \pf\ By a Replacement Axiom since, if $v_1$ and $v_2$ are both $P$-constructed up to $t$
+            then $v_1 = v_2$ by \stepref{2}.
+        \end{proof}
+        \step{5}{\pflet{$F = \bigcup \mathcal{H}$}}
+        \step{6}{$F$ is a function}
+        \begin{proof}
+            \step{a}{\assume{$tFx$ and $tFy$}}
+            \step{b}{\pick\ $v_1, v_2 \in \mathcal{H}$ such that $v_1(t) = x$ and $v_2(t) = y$}
+            \step{c}{\pick\ $t_1, t_2 \in A$ such that $v_1$ is $P$-constructed up to $t_1$
+            and $v_2$ is $P$-constructed up to $t_2$}
+            \step{d}{\assume{w.l.o.g. $t_1 \leq t_2$}}
+            \step{e}{$v_1(t) = v_2(t)$}
+            \begin{proof}
+                \pf\ By \stepref{2}
+            \end{proof}
+            \step{f}{$x = y$}
+        \end{proof}
+        \step{7}{$\forall x \in \dom F. P(F \restriction \seg x, F(x))$}
+        \begin{proof}
+            \step{a}{\pflet{$x \in \dom F$}}
+            \step{b}{\pick\ $v \in \mathcal{H}$ such that $x \in \dom v$}
+            \step{c}{$P(v \restriction \seg x, v(x))$}
+            \step{d}{$v \restriction \seg x = F \restriction \seg x$}
+            \begin{proof}
+                \pf\ $\forall y < x. (y, v(y)) \in \bigcup \mathcal{H} = F$
+            \end{proof}
+            \step{e}{$v(x) = F(x)$}
+            \begin{proof}
+                \pf\ $(x, v(x)) \in \bigcup \mathcal{H} = F$
+            \end{proof}
+        \end{proof}
+        \step{8}{$\dom F = A$}
+        \begin{proof}
+            \step{a}{\pflet{$x \in A$}}
+            \step{b}{\assume{$\forall y < x. y \in \dom F$}}
+            \step{c}{\pflet{$z$ be the object such that $P(F \restriction \seg x, z)$}}
+            \step{d}{$F \restriction \seg x \cup \{ (x, z) \}$ is $P$-constructed up to $x$}
+            \step{e}{$x \in \dom F$}
+            \qedstep
+            \begin{proof}
+                \pf\ By transfinite induction, this proves $\forall x \in A. x \in \dom F$.
+            \end{proof}
+        \end{proof}
+        \step{9}{$F$ is unique.}
+        \begin{proof}
+            \step{a}{\pflet{$G$ be a function with domain $A$ such that $\forall x \in A. P(G \restriction
+            \seg x, G(x))$} \prove{$\forall x \in A. F(x) = G(x)$}}
+            \step{b}{\pflet{$x \in A$}}
+            \step{c}{\assume{$\forall y < x. F(y) = G(y)$}}
+            \step{d}{$F \restriction \seg x = G \restriction \seg x$}
+            \step{e}{$F(x) = G(x)$}
+            \qedstep
+            \begin{proof}
+                \pf\ This completes the proof by transfinite induction.
+            \end{proof}
+        \end{proof}        
+        \qed
     \end{proof}
     
     \section{Natural Numbers}
