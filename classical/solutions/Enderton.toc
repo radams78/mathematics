@@ -357,3 +357,8 @@
 \contentsline {subparagraph}{(b)}{65}%
 \contentsline {paragraph}{Exercise 11}{65}%
 \contentsline {subparagraph}{(a)}{66}%
+\contentsline {subparagraph}{(b)}{66}%
+\contentsline {section}{\numberline {7.5}Isomorphisms}{67}%
+\contentsline {paragraph}{Exercise 12}{67}%
+\contentsline {subparagraph}{(a)}{67}%
+\contentsline {subparagraph}{(b)}{67}%

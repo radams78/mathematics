@@ -3441,4 +3441,26 @@
         E(-2) & = \omega^+ \\
         \ran E & = \omega \cup \{ \omega, \omega^+, \omega^{++}, \ldots \}
      \end{align*}
+
+     \section{Isomorphisms}
+
+     \paragraph{Exercise 12}
+     \subparagraph{(a)}
+     \begin{proof}
+        \pf
+        \step{1}{$<_A$ is irreflexive.}
+        \begin{proof}
+            \pf\ For any $x \in A$ we have $f(x) \nless_B f(x)$ so $x \nless_A x$.
+        \end{proof}
+        \step{2}{$<_A$ is transitive.}
+        \begin{proof}
+            \pf\ If $x <_A y$ and $y <_A z$ then $f(x) <_B f(y) <_B f(z)$ hence $f(x) <_B f(z)$ and so
+            $x <_A z$.
+        \end{proof}
+    \end{proof}
+
+    \subparagraph{(b)}
+    For any $x, y \in A$ we have that exactly one of $f(x) <_B f(y)$, $f(x) = f(y)$, $f(y) <_B f(x)$ holds.
+    Hence exactly one of $x <_A y$, $x = y$, $y <_A x$ holds. (Using the fact that $x = y$ iff $f(x) = f(y)$
+    since $f$ is one-to-one.)
 \end{document}

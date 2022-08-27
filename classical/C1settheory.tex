@@ -940,6 +940,19 @@
         \[ \seg t = \{ x \in A : x < t \} \enspace . \]
     \end{definition}
 
+    \begin{definition}[Isomorphism]
+        Let $A$ and $B$ be posets. An \emph{isomorphism} between $A$ and $B$ is a bijection $f$ between $A$
+        and $B$ such that, for all $x, y \in A$, we have $x < y$ if and only if $f(x) < f(y)$.
+    \end{definition}
+
+    \begin{proposition}
+        Isomorphism is an equivalence relation on the class of posets.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
     \section{Linear Orders}
 
     \begin{definition}[Linear Ordering]
@@ -1194,6 +1207,15 @@
             \pf\ From definition of $E$.
         \end{proof}
     \end{proof}
+
+    \begin{corollary}
+        For any well-ordered set $(A, <)$, if $\alpha$ is its epsilon-image, then
+        $(A, <)$ is isomorphic to $(\alpha, \in)$.
+    \end{corollary}
+
+    \begin{corollary}
+        The epsilon-image of any well-ordered set is well ordered by $\in$.
+    \end{corollary}
     
     \section{Natural Numbers}
 
