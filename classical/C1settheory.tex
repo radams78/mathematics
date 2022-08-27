@@ -1131,6 +1131,69 @@
         \end{proof}        
         \qed
     \end{proof}
+
+    \section{Epsilon-Images}
+
+    \begin{lemma}
+        Let $<$ be a well ordering on $A$. Let $E$ be the function on $A$ defined by transfinite recursion
+        thus:
+        \[ E(t) = \{ E(x) : x < t \} \qquad (t \in A) \enspace . \]
+        Let $\alpha = \ran E$. Then:
+        \begin{enumerate}
+            \item $\forall t \in A. E(t) \notin E(t)$
+            \item $E$ is injective.
+            \item $\forall s,t \in A. (s < t \Leftrightarrow E(s) \in E(t))$
+            \item $\alpha$ is a transitive set.
+        \end{enumerate}
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{$\forall t \in A. E(t) \notin E(t)$}
+        \begin{proof}
+            \step{a}{\pflet{$t \in A$}}
+            \step{b}{\assume{$\forall s < t. E(s) \notin E(s)$}}
+            \step{c}{\assume{for a contradiction $E(t) \in E(t)$}}
+            \step{d}{\pick\ $x < t$ such that $E(t) = E(x)$}
+            \step{e}{$E(x) \in E(x)$}
+            \qedstep
+            \begin{proof}
+                \pf\ This is a contradiction. The result follows by transfinite induction.
+            \end{proof}
+        \end{proof}
+        \step{2}{$E$ is injective.}
+        \begin{proof}
+            \step{a}{\assume{for a contradiction $E(x) = E(y)$ where $x \neq y$}}
+            \step{b}{\assume{w.l.o.g. $x < y$}}
+            \step{c}{$E(x) \in E(y)$}
+            \qedstep
+            \begin{proof}
+                \pf\ This contradicts \stepref{1}.
+            \end{proof}
+        \end{proof}
+        \step{3}{$\forall s,t \in A (s < t \Leftrightarrow E(s) \in E(t))$}
+        \begin{proof}
+            \step{a}{\pflet{$s,t \in A$}}
+            \step{b}{If $s < t$ then $E(s) \in E(t)$}
+            \begin{proof}
+                \pf\ Immediate from definition of $E$.
+            \end{proof}
+            \step{c}{If $E(s) \in E(t)$ then $s < t$}
+            \begin{proof}
+                \step{i}{\assume{$E(s) \in E(t)$}}
+                \step{ii}{\pick\ $x < t$ such that $E(s) = E(x)$}
+                \step{iii}{$s = x$}
+                \begin{proof}
+                    \pf\ \stepref{2}.
+                \end{proof}
+                \step{iv}{$s < t$}
+            \end{proof}
+        \end{proof}
+        \step{4}{$\alpha$ is a transitive set.}
+        \begin{proof}
+            \pf\ From definition of $E$.
+        \end{proof}
+    \end{proof}
     
     \section{Natural Numbers}
 

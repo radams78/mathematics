@@ -351,3 +351,6 @@
 \contentsline {section}{\numberline {7.3}Replacement Axioms}{64}%
 \contentsline {paragraph}{Exercise 8}{64}%
 \contentsline {paragraph}{Exercise 9}{65}%
+\contentsline {section}{\numberline {7.4}Epsilon-Images}{65}%
+\contentsline {paragraph}{Exercise 10}{65}%
+\contentsline {subparagraph}{(a)}{65}%

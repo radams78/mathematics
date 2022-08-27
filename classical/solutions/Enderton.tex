@@ -3343,4 +3343,26 @@
      hence there exists a set $c$ such that
      \[ \forall y (y \in c \Leftrightarrow (\exists x \in \mathcal{P} \mathcal{P} \emptyset) P(x,y)) \]
      The members of $c$ are just $a$ and $b$.
+
+     \section{Epsilon-Images}
+
+     \paragraph{Exercise 10}
+     \subparagraph{(a)}
+     Let $n$ be a natural number. Let $\alpha$ be its epsilon-image, and $E : n \rightarrow \alpha$ be as in
+     the definition of epsilon-image.
+
+     We prove $\forall x \in n. E(x) = x$ by strong induction on $x$. Let $x \in n$ and assume
+     $\forall y \in x. E(y) = y$. Then
+     \begin{align*}
+        E(x) & = \{ E(y) : y \in x \} \\
+        & = \{ y : y \in x \} \\
+        & = x
+     \end{align*}
+
+     Hence
+     \begin{align*}
+        \alpha & = \{ E(x) : x \in n \} \\
+        & = \{ x : x \in n \} \\
+        & = n
+     \end{align*}
 \end{document}
