@@ -3365,4 +3365,80 @@
         & = \{ x : x \in n \} \\
         & = n
      \end{align*}
+
+     \subparagraph{(b)}
+     Similarly the $\epsilon$-image of $\omega$ is $\omega$.
+
+     \paragraph{Exercise 11}
+     \subparagraph{(a)}
+     Let $R$ be the ordering given in the question. Thus $xRy$ iff ($x$ and $y$ are nonnegative and
+     $x < y$) or ($x$ and $y$ are both negative and $y < x$) or ($x$ is nonnegative and $y$ is negative).
+     \begin{proof}
+        \pf
+        \step{1}{$R$ is transitive}
+        \begin{proof}
+            \step{a}{\assume{$xRy$ and $yRz$}}
+            \step{b}{\case{$x$ and $y$ are nonnegative and $x < y$}}
+            \begin{proof}
+                \step{i}{\case{$z$ is nonnegative and $y < z$}}
+                \begin{proof}
+                    \pf\ In this case $x$ and $z$ are nonnegative and $x < z$.
+                \end{proof}
+                \step{ii}{\case{$z$ is negative}}
+                \begin{proof}
+                    \pf\ In this case $x$ is nonnegative and $z$ is negative.
+                \end{proof}
+            \end{proof}
+            \step{c}{\case{$x$ and $y$ are both negative and $y < x$}}
+            \begin{proof}
+                \pf\ We must have $z$ is negative and $z < y$, hence $z < x$.
+            \end{proof}
+            \step{d}{\case{$x$ is nonnegative and $y$ is negative}}
+            \begin{proof}
+                \pf\ We must have $z$ is negative.
+            \end{proof}
+        \end{proof}
+        \step{2}{$R$ satisfies trichotomy on $\mathbb{Z}$}
+        \begin{proof}
+            \step{a}{\pflet{$x, y \in \mathbb{Z}$}}
+            \step{b}{\case{$x$ and $y$ are nonnegative.}}
+            \begin{proof}
+                \pf\ Exactly one of $x < y$, $x = y$, $y < x$ holds.
+            \end{proof}
+            \step{c}{\case{$x$ is nonnegative and $y$ is negative.}}
+            \begin{proof}
+                \pf\ In this case $x < y$.
+            \end{proof}
+            \step{d}{\case{$x$ is negative and $y$ is nonnegative.}}
+            \begin{proof}
+                \pf\ In this case $y < x$.
+            \end{proof}
+            \step{e}{\case{$x$ and $y$ are negative.}}
+            \begin{proof}
+                \pf\ Exactly one of $x < y$, $x = y$, $y < x$ holds.
+            \end{proof}
+        \end{proof}
+        \step{3}{$R$ is well-founded}
+        \begin{proof}
+            \step{a}{\pflet{$A \subseteq \mathbb{Z}$ be nonempty.}}
+            \step{b}{\case{There exists a nonnegative integer in $A$.}}
+            \begin{proof}
+                \pf\ Let $n$ be the least nonnegative element of $A$. Then $n$ is the $R$-least element of $A$.
+            \end{proof}
+            \step{c}{\case{All elements of $A$ are negative.}}
+            \begin{proof}
+                \pf\ Let $n$ be least such that $-n \in A$. Then $-n$ is the $R$-least element of $A$.
+            \end{proof}
+        \end{proof}
+        \qed
+     \end{proof}
+
+     \subparagraph{(b)}
+     \begin{align*}
+        E(3) & = \{ \emptyset, \{ \emptyset \}, \{ \emptyset, \{ \emptyset \} \} \} \\
+        & = 3 \\
+        E(-1) & = \omega \\
+        E(-2) & = \omega^+ \\
+        \ran E & = \omega \cup \{ \omega, \omega^+, \omega^{++}, \ldots \}
+     \end{align*}
 \end{document}

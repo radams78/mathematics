@@ -354,3 +354,6 @@
 \contentsline {section}{\numberline {7.4}Epsilon-Images}{65}%
 \contentsline {paragraph}{Exercise 10}{65}%
 \contentsline {subparagraph}{(a)}{65}%
+\contentsline {subparagraph}{(b)}{65}%
+\contentsline {paragraph}{Exercise 11}{65}%
+\contentsline {subparagraph}{(a)}{66}%
