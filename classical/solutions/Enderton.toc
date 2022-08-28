@@ -364,3 +364,13 @@
 \contentsline {subparagraph}{(b)}{67}%
 \contentsline {paragraph}{Exercise 13}{67}%
 \contentsline {paragraph}{Exercise 14}{67}%
+\contentsline {section}{\numberline {7.6}Ordinal Numbers}{68}%
+\contentsline {paragraph}{Exercise 15}{68}%
+\contentsline {subparagraph}{(a)}{68}%
+\contentsline {subparagraph}{(b)}{68}%
+\contentsline {paragraph}{Exercise 16}{68}%
+\contentsline {paragraph}{Exercise 17}{69}%
+\contentsline {paragraph}{Exercise 18}{69}%
+\contentsline {paragraph}{Exercise 19}{69}%
+\contentsline {paragraph}{Exercise 20}{69}%
+\contentsline {paragraph}{Exercise 21}{69}%

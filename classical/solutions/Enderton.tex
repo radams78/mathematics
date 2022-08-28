@@ -3539,4 +3539,123 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \section{Ordinal Numbers}
+
+    \paragraph{Exercise 15}
+    \subparagraph{(a)}
+    \begin{proof}
+        \pf
+        \step{1}{\assume{$f : A \rightarrow \seg t$ is an isomorphism}}
+        \step{2}{Define $g : \omega \rightarrow A$ by recursion:
+        \begin{align*}
+            g(0) & = t \\
+            g(n^+) & = f(g(n)) & (n \in \omega)
+        \end{align*}}
+        \step{3}{$\forall n \in \omega. g(n^+) < g(n)$}
+        \begin{proof}
+            \step{a}{$g(0^+) < g(0)$}
+            \begin{proof}
+                \pf\ Since $g(0^+) = f(t) \in \seg t$ so $g(0^+) < t = g(0)$.
+            \end{proof}
+            \step{b}{$\forall n \in \omega. (g(n^+) < g(n) \Rightarrow g(n^{++}) < g(n^+))$}
+            \begin{proof}
+                \step{i}{\pflet{$n \in \omega$}}
+                \step{ii}{\assume{$g(n^+) < g(n)$}}
+                \step{iii}{$f(g(n^+)) < f(g(n))$}
+                \begin{proof}
+                    \pf\ Since $f$ is an isomorphism.
+                \end{proof}
+                \step{iv}{$g(n^{++}) < g(n^+)$}
+            \end{proof}
+        \end{proof}
+        \qedstep
+        \begin{proof}
+            \pf\ This contradicts Theorem 7B.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \subparagraph{(b)}
+    If two of them hold then we have a well-ordered set isomorphic with an initial segment, contradicting
+    part (a):
+
+    If $A \cong B$ and $A \cong \seg b$ then $B \cong \seg b$.
+
+    If $A \cong B$ and $\seg a \cong B$ then $A \cong \seg a$.
+
+    Now assume $A \cong \seg b$ and $\seg a \cong B$. Let $f : A \cong \seg b$ and $g : \seg a \cong B$
+    be isomorphisms. Let $b_0 = f(a)$. Then $f \restriction \seg a : \seg a \cong \seg b_0$ and so
+    $B \cong \seg b_0$.
+
+    \paragraph{Exercise 16}
+    Suppose $\alpha \in \beta$. We first prove that $\beta \notin \alpha^+$.
+
+    If $\beta \in \alpha^+$ then $\beta \in \alpha$ or $\beta = \alpha$. In either case we have $\alpha \in
+    \alpha$, which is impossible.
+
+    So $\beta \notin \alpha^+$. Therefore $\alpha^+ \underline{\in} \beta$, and so $\alpha^+ \in \beta^+$.
+
+    Now, suppose $\alpha \neq \beta$. Then $\alpha \in \beta$ or $\beta \in \alpha$. Hence $\alpha^+ \in
+    \beta^+$ or $\beta^+ \in \alpha^+$, and in either case $\alpha^+ \neq \beta^+$.
+
+    \paragraph{Exercise 17}
+    Suppose for a contradiction $\alpha \in \beta$. Then $A$ is isomorphic to $\seg_B b$ for some $b \in B$.
+    Let $f : A \rightarrow \seg b$ be an isomorphism.
+
+    We have $f \restriction B : B \rightarrow \seg_B b$. Now, define $g : \omega \rightarrow B$ by
+    \begin{align*}
+        g(0) & = b \\
+        g(n^+) & = f(g(n))
+    \end{align*}
+    Then $g(n^+) < g(n)$ for all $n \in \omega$, contradicting Theorem 7B.
+
+    \paragraph{Exercise 18}
+    Suppose first $\bigcup S \in S$. For all $\alpha \in S$ we have $\alpha \subseteq \bigcup S$ and so
+    $\alpha \in \bigcup S$, and so $\bigcup S$ is the greatest element of $S$.
+
+    Suppose now $\bigcup S \notin S$. Suppose for a contradiction $\alpha \in S$ is the greatest element of $S$.
+    We have $\alpha \subseteq \bigcup S$ (because $\alpha \in S$).
+    Also for all $\beta \in S$ we have $\beta \subseteq \alpha$, hence $\bigcup S \subseteq \alpha$.
+    Thus $\bigcup S = \alpha \in S$, which is a contradiction.
+
+    So if $\bigcup S \notin S$ then $S$ has no greatest element. Therefore $S$ cannot be the successor of
+    any ordinal, because $\alpha$ is the greatest element of $\alpha^+$ for any $\alpha$.
+
+    \paragraph{Exercise 19}
+    By Theorem 7B, every linear ordering on a finite set is a well ordering.
+
+    If $<$ and $\prec$ are two linear orderings on the same set $A$, we cannot have that
+    $(A, <)$ is isomorphic to $(\seg a, \prec)$ for any $a \in A$, because then we would have a finite set
+    bijective with a proper subset of itself.
+
+    So by Theorem 7E we must have $\langle A, < \rangle \cong \langle A, \prec \rangle$.
+
+    \paragraph{Exercise 20}
+    Let $R$ be a well ordering on the set $S$.  Assume $S$ is infinite; we will prove $\inv{R}$ is not
+    a well-ordering on $S$.
+
+    Define $g : \omega \rightarrow S$ by: $g(n)$ is the least element of $S - g[\![n]\!]$. For each $n$,
+    we know $S - g[\![n]\!]$ is nonempty because $S$ is infinite.
+
+    Then $g[\![\omega]\!]$ is a nonempty subset of $S$ that has no $\inv{R}$-least element (no $R$-greatest
+    element), so $\inv{R}$ is not a well ordering on $S$.
+
+    \paragraph{Exercise 21}
+    Let $\mathcal{A} = \{ C \in \mathcal{P} A : <^\circ \text{ is a linear ordering on } C \}$.
+
+    We prove that, for every chain $\mathcal{B} \subseteq \mathcal{A}$, we have $\bigcup \mathcal{B} \in
+    \mathcal{A}$.
+
+    Let $\mathcal{B} \subseteq \mathcal{A}$ be a chain. Let $x, y \in \bigcup \mathcal{B}$. Pick $C, D \in
+    \mathcal{B}$ such that $x \in C$ and $y \in D$. Then either $C \subseteq D$ or $D \subseteq C$;
+    assume without loss of generality $C \subseteq D$. We have $x,y \in D$, and so exactly one of $x < y$, $x = y$, $y < x$ holds.
+    Thus, $<^\circ$ linearly orders $\bigcup \mathcal{B}$, i.e. $\bigcup \mathcal{B} \in \mathcal{A}$.
+
+    Hence by Zorn's Lemma $\mathcal{A}$ has a maximal element $C$, say. Now, by hypothesis, $C$ has an upper bound
+    $m$. We prove $m$ is maximal in $A$.
+
+    Let $x \in A$ and suppose $m \leq x$. Then $C \cup \{ m, x \}$ is linearly ordered by $<^\circ$,
+    and so $C = C \cup \{ m,x \}$ by maximality of $C$. Hence $x \in C$ and so $x \leq m$, hence $x = m$. Thus,
+    $m$ is maximal in $A$.
 \end{document}
