@@ -1491,6 +1491,48 @@
         \qed
     \end{proof}
 
+    \begin{theorem}[Hartogs]
+        For any set $A$, there exists an ordinal not dominated by $A$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$A$ be a set.}}
+        \step{2}{\pflet{$\alpha = \{ \beta : \beta \text{ is an ordinal }, \beta \preccurlyeq A \}$.}}
+        \step{3}{\pflet{$W = \{ (B, <) : B \subseteq A, < \text{ is a well ordering on } B \}$}}
+        \step{4}{$\forall \beta \in \alpha. \exists (B, <) \in W. \beta \text{ is the epsilon-image of } (B, <)$}
+        \begin{proof}
+            \step{a}{\pflet{$\beta \in \alpha$}}
+            \step{b}{\pick\ an injection $f : \beta \rightarrow A$}
+            \step{c}{Define $<$ on $f(\beta)$ by: $f(\gamma) < f(\delta)$ iff $\gamma \in \delta$}
+            \step{d}{$<$ well orders $f(\beta)$}
+            \step{e}{$\beta$ is the epsilon-image of $(f(\beta), <)$ with $\inv{f}$ the canonical isomorphism.}
+        \end{proof}
+        \step{5}{$\alpha$ is a set.}
+        \begin{proof}
+            \pf\ By a Replacement Axiom applied to $W$.
+        \end{proof}
+        \step{6}{$\alpha$ is an ordinal.}
+        \begin{proof}
+            \step{a}{$\alpha$ is a transitive set.}
+            \begin{proof}
+                \step{i}{\pflet{$\beta \in \gamma \in \alpha$}}
+                \step{ii}{$\beta \subseteq \gamma \preccurlyeq A$}
+                \step{iii}{$\beta \preccurlyeq A$}
+                \step{iv}{$\beta \in \alpha$}
+            \end{proof}
+            \qedstep
+            \begin{proof}
+                \pf\ By Corollary \ref{corollary:set_of_ordinals}.
+            \end{proof}
+        \end{proof}
+        \step{7}{$\alpha \not\preccurlyeq A$}
+        \begin{proof}
+            \pf\ Because $\alpha \notin \alpha$.
+        \end{proof}
+        \qed
+    \end{proof}
+    
     \section{Natural Numbers}
 
     \begin{definition}[Inductive]
