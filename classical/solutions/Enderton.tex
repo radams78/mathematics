@@ -12,6 +12,7 @@
 \newcommand{\ran}{\ensuremath{\operatorname{ran}}}
 \newcommand{\fld}{\ensuremath{\operatorname{fld}}}
 \newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
+\newcommand{\seg}{\ensuremath{\operatorname{seg}}}
 
 \begin{document}
     \maketitle
@@ -3463,4 +3464,79 @@
     For any $x, y \in A$ we have that exactly one of $f(x) <_B f(y)$, $f(x) = f(y)$, $f(y) <_B f(x)$ holds.
     Hence exactly one of $x <_A y$, $x = y$, $y <_A x$ holds. (Using the fact that $x = y$ iff $f(x) = f(y)$
     since $f$ is one-to-one.)
+
+    \paragraph{Exercise 13}
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\langle A, <_A \rangle$ and $\langle B, <_B \rangle$ be two well-ordered
+        structures.}}
+        \step{2}{\pflet{$f, g : A \rightarrow B$ be isomorphisms.} \prove{$\forall x \in A. f(x) = g(x)$}}
+        \step{3}{\pflet{$x \in A$}}
+        \step{4}{\assume{$\forall y < x. f(y) = g(y)$}}
+        \step{5}{$f(x)$ is the least element in $B - f[\![\seg x]\!]$}
+        \begin{proof}
+            \step{a}{$f(x) \notin f[\![\seg x]\!]$}
+            \begin{proof}
+                \pf\ Since $f$ is one-to-one.
+            \end{proof}
+            \step{b}{$\forall b \in B - f[\![\seg x]\!]. f(x) \leq b$}
+            \begin{proof}
+                \step{i}{\pflet{$b \in B - f[\![\seg x]\!]$}}
+                \step{ii}{\pflet{$a \in A$ be such that $f(a) = b$}}
+                \begin{proof}
+                    \pf\ $f$ is surjective.
+                \end{proof}
+                \step{iii}{$a \notin \seg x$}
+                \step{iv}{$x \leq a$}
+                \begin{proof}
+                    \pf\ By trichotomy
+                \end{proof}
+                \step{v}{$f(x) \leq b$}
+            \end{proof}
+        \end{proof}
+        \step{6}{$g(x)$ is the least element in $B - g[\![\seg x]\!]$}
+        \begin{proof}
+            \pf\ Similar.
+        \end{proof}
+        \step{7}{$f[\![\seg x]\!] = g[\![\seg x]\!]$}
+        \begin{proof}
+            \pf\ By \stepref{4}
+        \end{proof}
+        \step{8}{$f(x) = g(x)$}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 14}
+    \begin{proof}
+        \pf
+        \step{1}{$\forall a,b \in A. a < b \Rightarrow F(a) \subset F(b)$}
+        \begin{proof}
+            \step{a}{\pflet{$a, b \in A$}}
+            \step{b}{\assume{$a < b$}}
+            \step{c}{$F(a) \subseteq F(b)$}
+            \begin{proof}
+                \pf\ If $x \leq a$ then $x \leq b$
+            \end{proof}
+            \step{d}{$F(a) \neq F(b)$}
+            \begin{proof}
+                \pf\ Since $b \in F(b)$ but $b \notin F(a)$
+            \end{proof}
+        \end{proof}
+        \step{2}{$\forall a,b \in A. F(a) \subset F(b) \Rightarrow a < b$}
+        \begin{proof}
+            \pf\ We cannot have $b < a$ or $b = a$ (as then $F(b) \subset F(a)$ or $F(b) = F(a)$
+            by \stepref{1}),
+            so $a < b$ by trichotomy.
+        \end{proof}
+        \step{3}{$F$ is one-to-one}
+        \begin{proof}
+            \pf\ If $F(a) = F(b)$ then we cannot have $a < b$ or $b < a$ by \stepref{1},
+            so $a = b$ by trichotomy.
+        \end{proof}
+        \step{4}{$F$ maps $A$ onto $\ran F$}
+        \begin{proof}
+            \pf\ By definition of $\ran F$.
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}

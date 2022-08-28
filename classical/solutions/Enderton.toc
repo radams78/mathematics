@@ -362,3 +362,5 @@
 \contentsline {paragraph}{Exercise 12}{67}%
 \contentsline {subparagraph}{(a)}{67}%
 \contentsline {subparagraph}{(b)}{67}%
+\contentsline {paragraph}{Exercise 13}{67}%
+\contentsline {paragraph}{Exercise 14}{67}%
