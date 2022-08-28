@@ -1448,12 +1448,46 @@
         \end{proof}
         \qed
     \end{proof}
-    
-    \section{Natural Numbers}
+
+    \begin{corollary}
+        Any transitive set of ordinal numbers is an ordinal number.
+    \end{corollary}
+
+    \begin{corollary}
+        $\emptyset$ is an ordinal number.
+    \end{corollary}
+
+    We write 0 for $\emptyset$ considered as an ordinal number.
 
     \begin{definition}[Successor]
         The \emph{successor} of a set $a$ is the set $a^+ = a \cup \{ a \}$.
     \end{definition}
+
+    \begin{corollary}
+        The successor of an ordinal number is an ordinal number.
+    \end{corollary}
+
+    \begin{corollary}
+        For any set $A$ of ordinal numbers, the set $\bigcup A$ is an ordinal number.
+    \end{corollary}
+
+    \begin{theorem}[Burali-Forti]
+        The class of ordinal numbers is not a set.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\assume{for a contradiction the class $\mathbf{On}$ is a set.}}
+        \step{2}{$\mathbf{On}$ is an ordinal number.}
+        \step{3}{$\mathbf{On} \in \mathbf{On}^+ \in \mathbf{On}$}
+        \qedstep
+        \begin{proof}
+            \pf\ This contradicts the fact that $\mathbf{On}$ is partially ordered by epsilon.
+        \end{proof}
+        \qed
+    \end{proof}
+    
+    \section{Natural Numbers}
 
     \begin{definition}[Inductive]
         A class $\mathbf{A}$ is \emph{inductive} iff $\emptyset \in \mathbf{A}$ and
