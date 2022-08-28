@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1661702884 "/home/robin/fun/maths/classical/solutions/Enderton.tex" "/home/robin/fun/maths/classical/solutions/Enderton.pdf" "Enderton" 1661702886
+["pdflatex"] 1661702884 "/home/robin/fun/maths/classical/solutions/Enderton.tex" "/home/robin/fun/maths/classical/solutions/Enderton.pdf" "Enderton" 1661702996
   "/etc/texmf/web2c/texmf.cnf" 1626265647 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/robin/fun/maths/classical/solutions/Enderton.aux" 1661702886 32954 479e0755eaea61ab6868855d5f2938ed ""
   "/home/robin/fun/maths/classical/solutions/Enderton.tex" 1661702881 150776 e558788123daaf436553a761de5d8807 ""
@@ -75,6 +75,6 @@
   "Enderton.log"
   "Enderton.toc"
   "Enderton.pdf"
-  "Enderton.aux"
   "/home/robin/fun/maths/classical/solutions/Enderton.log"
+  "Enderton.aux"
   "/home/robin/fun/maths/classical/solutions/Enderton.pdf"
