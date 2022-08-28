@@ -1,8 +1,15 @@
 # Fdb version 3
+<<<<<<< HEAD
 ["pdflatex"] 1661689995 "/home/robin/fun/maths/classical/C1settheory.tex" "/home/robin/fun/maths/classical/C1settheory.pdf" "C1settheory" 1661690015
   "/etc/texmf/web2c/texmf.cnf" 1626265647 475 c0e671620eb5563b2130f56340a5fde8 ""
   "/home/robin/fun/maths/classical/C1settheory.aux" 1661689996 3527 6624e65493b07a950695b721fe1e4148 ""
   "/home/robin/fun/maths/classical/C1settheory.tex" 1661689991 111840 e320045f02a69b9244cc9fdf79ddf2eb ""
+=======
+["pdflatex"] 1661689915 "/home/robin/fun/maths/classical/C1settheory.tex" "/home/robin/fun/maths/classical/C1settheory.pdf" "C1settheory" 1661689916
+  "/etc/texmf/web2c/texmf.cnf" 1626265647 475 c0e671620eb5563b2130f56340a5fde8 ""
+  "/home/robin/fun/maths/classical/C1settheory.aux" 1661689916 3477 d2813ed4ae540296a9de7fc1f5bfa0e2 ""
+  "/home/robin/fun/maths/classical/C1settheory.tex" 1661689911 111746 a8d1a6b772277ba5e5b8300a161eac1c ""
+>>>>>>> cd075df51ea5756aa311654051d412be01612186
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/tex/generic/iftex/ifpdf.sty" 1572645307 480 5778104efadad304ced77548ca2184b1 ""
   "/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty" 1573336935 6902 30fdaf7dc5636b8e3afa306210c45cae ""
@@ -103,6 +110,7 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1626264333 4131335 97f357c35ef03853631f523ecab90976 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1626264381 8269926 c6f0aa12f3019b9156b681964aec4572 ""
+<<<<<<< HEAD
   "C1settheory.aux" 1661689996 3527 6624e65493b07a950695b721fe1e4148 "pdflatex"
   "C1settheory.tex" 1661689991 111840 e320045f02a69b9244cc9fdf79ddf2eb ""
   (generated)
@@ -111,3 +119,13 @@
   "C1settheory.pdf"
   "C1settheory.aux"
   "/home/robin/fun/maths/classical/C1settheory.pdf"
+=======
+  "C1settheory.aux" 1661689916 3477 d2813ed4ae540296a9de7fc1f5bfa0e2 "pdflatex"
+  "C1settheory.tex" 1661689911 111746 a8d1a6b772277ba5e5b8300a161eac1c ""
+  (generated)
+  "/home/robin/fun/maths/classical/C1settheory.pdf"
+  "C1settheory.log"
+  "/home/robin/fun/maths/classical/C1settheory.log"
+  "C1settheory.pdf"
+  "C1settheory.aux"
+>>>>>>> cd075df51ea5756aa311654051d412be01612186
