@@ -953,6 +953,14 @@
         \pf\ Easy. \qed
     \end{proof}
 
+    \begin{proposition}
+        Let $(A, <)$ be a poset and $B \subseteq A$. Then $< \cap B^2$ is a partial order on $B$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
     \section{Linear Orders}
 
     \begin{definition}[Linear Ordering]
@@ -1004,6 +1012,14 @@
         trichotomy. \qed
     \end{proof}
 
+    \begin{proposition}
+        Let $(A, <)$ be a linearly ordered set and $B \subseteq A$. Then $< \cap B^2$ is a linear order on $B$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+    
     \section{Well Orderings}
 
     \begin{definition}[Well Ordering]
@@ -1145,9 +1161,52 @@
         \qed
     \end{proof}
 
+    \begin{proposition}
+        Let $(A, <)$ be a well ordered set and $B \subseteq A$. Then $< \cap B^2$ is a well order on $B$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+    
+    \begin{theorem}
+        Let $A$ and $B$ be well-ordered sets. Then one of the following holds:
+        \begin{itemize}
+            \item $A \cong B$
+            \item $\exists b \in B. A \cong \seg b$
+            \item $\exists a \in A. \seg a \cong B$
+        \end{itemize}
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pick{$e$ that is not a member of $A$ or $B$}}
+        \step{2}{Define $F : A \rightarrow B \cup \{ e \}$ by:
+        \[ F(t) = \begin{cases}
+            \text{the least element of $B - F(\seg t)$} & \text{if } B - F(\seg t) \neq \emptyset \\
+            e & \text{if } B - F(\seg t) = \emptyset
+        \end{cases} \]}
+        \step{3}{\case{$e \in \ran F$}}
+        \begin{proof}
+            \step{a}{\pflet{$a \in A$ be least such that $B - F(\seg a) = \emptyset$}}
+            \step{b}{$F \restriction \seg a : \seg a \cong B$}
+        \end{proof}
+        \step{4}{\case{$\ran F = B$}}
+        \begin{proof}
+            \pf\ In this case $F : A \cong B$.
+        \end{proof}
+        \step{5}{\case{$\ran F \subset B$}}
+        \begin{proof}
+            \step{a}{\pflet{$b \in B$ be least such that $b \notin \ran F$}}
+            \step{b}{$F : A \cong \seg b$}
+        \end{proof}
+        \qed
+    \end{proof}
+
     \section{Epsilon-Images}
 
     \begin{lemma}
+        \label{lemma:epsilon_image}
         Let $<$ be a well ordering on $A$. Let $E$ be the function on $A$ defined by transfinite recursion
         thus:
         \[ E(t) = \{ E(x) : x < t \} \qquad (t \in A) \enspace . \]
@@ -1209,14 +1268,102 @@
     \end{proof}
 
     \begin{corollary}
+        \label{corollary:isomorphic_to_epsilon_image}
         For any well-ordered set $(A, <)$, if $\alpha$ is its epsilon-image, then
         $(A, <)$ is isomorphic to $(\alpha, \in)$.
     \end{corollary}
 
     \begin{corollary}
+        \label{corollary:epsilon_image_well_ordered}
         The epsilon-image of any well-ordered set is well ordered by $\in$.
     \end{corollary}
-    
+
+    \begin{theorem}
+        Two well-ordered sets are isomorphic iff they have the same $\epsilon$-image.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$A$ and $B$ be well-ordered sets.}}
+        \step{2}{If $A$ and $B$ have the same $\epsilon$-image then they are isomorphic.}
+        \begin{proof}
+            \pf\ From Corollary \ref{corollary:isomorphic_to_epsilon_image}.
+        \end{proof}
+        \step{3}{If $A \cong B$ then $A$ and $B$ have the same epsilon-image.}
+        \begin{proof}
+            \step{a}{\pflet{$f : A \cong B$}}
+            \step{b}{\pflet{$E : A \cong \alpha$ and $F : B \cong \beta$ be the canonical isomorphisms
+            between $A$ and $B$ and their epsilon-images.}}
+            \step{c}{$\forall x \in A. E(x) = F(f(x))$}
+            \begin{proof}
+                \step{i}{\pflet{$x \in A$}}
+                \step{ii}{\assume{$\forall y < x. E(y) = F(f(y))$}}
+                \step{iii}{$E(x) = F(f(x))$}
+                \begin{proof}
+                    \pf
+                    \begin{align*}
+                        E(x) & = \{ E(y) : y < x \} \\
+                        & = \{ F(f(y)) : y < x \} \\
+                        & = \{ F(z) : z < f(x) \} \\
+                        & = F(f(x))
+                    \end{align*}
+                \end{proof}
+            \end{proof}
+            \step{d}{$\alpha = \beta$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \section{Ordinal Numbers}
+
+    \begin{definition}[Ordinal Number]
+        The \emph{ordinal number} of a well-ordered set is its epsilon-image.
+    \end{definition}
+
+    \begin{definition}[Well-ordered by Epsilon]
+        A set $A$ is \emph{well-ordered by epsilon} iff $\{ (x,y) : x, y \in A, x \in y \}$ is a well
+        ordering on $A$.
+    \end{definition}
+
+    \begin{theorem}
+        A set is an ordinal number if and only if it is a transitive set that is well-ordered by epsilon.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{Every ordinal number is a transitive set.}
+        \begin{proof}
+            \pf\ Lemma \ref{lemma:epsilon_image}.
+        \end{proof}
+        \step{2}{Every ordinal number is well-ordered by epsilon.}
+        \begin{proof}
+            \pf\ Corollary \ref{corollary:epsilon_image_well_ordered}.
+        \end{proof}
+        \step{3}{Every transitive set that is well-ordered by epsilon is an ordinal number.}
+        \begin{proof}
+            \step{a}{\pflet{$\alpha$ be a transitive set well-ordered by epsilon.}}
+            \step{b}{\pflet{$\beta$ be the epsilon-image of $(\alpha, \in)$ with 
+            $E : \alpha \cong \beta$ the canonical isomorphism.}}
+            \step{c}{$\forall x \in \alpha. E(x) = x$}
+            \begin{proof}
+                \step{i}{\pflet{$x \in \alpha$}}
+                \step{ii}{\assume{$\forall y < x. E(y) = y$}}
+                \step{iii}{$E(x) = x$}
+                \begin{proof}
+                    \pf
+                    \begin{align*}
+                        E(x) & = \{ E(y) : y \in \alpha, y \in x \} \\
+                        & = \{ E(y) : y \in x \} & (\text{$\alpha$ is a transitive set}) \\
+                        & = \{ y : y \in x \} & (\text{\stepref{ii}}) \\
+                        & = x
+                    \end{align*}
+                \end{proof}
+            \end{proof}
+            \step{d}{$\alpha = \beta$}
+        \end{proof}
+        \qed
+    \end{proof}
+
     \section{Natural Numbers}
 
     \begin{definition}[Successor]
