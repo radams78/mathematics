@@ -1170,6 +1170,7 @@
     \end{proof}
     
     \begin{theorem}
+        \label{theorem:well_ordered_trichotomy}
         Let $A$ and $B$ be well-ordered sets. Then one of the following holds:
         \begin{itemize}
             \item $A \cong B$
@@ -1326,6 +1327,7 @@
     \end{definition}
 
     \begin{theorem}
+        \label{theorem:ordinals}
         A set is an ordinal number if and only if it is a transitive set that is well-ordered by epsilon.
     \end{theorem}
 
@@ -1364,6 +1366,89 @@
         \qed
     \end{proof}
 
+    \begin{theorem}
+        Every member of an ordinal number is an ordinal number.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\alpha$ be an ordinal number.}}
+        \step{2}{\pflet{$\beta \in \alpha$}}
+        \step{3}{$\beta$ is a transitive set.}
+        \begin{proof}
+            \step{i}{\pflet{$x \in y \in \beta$}}
+            \step{ii}{$y \in \alpha$}
+            \begin{proof}
+                \pf\ Since $\alpha$ is a transitive set.
+            \end{proof}
+            \step{iii}{$x \in \alpha$}
+            \begin{proof}
+                \pf\ Since $\alpha$ is a transitive set.
+            \end{proof}
+            \step{iv}{$x \in \beta$}
+            \begin{proof}
+                \pf\ Since $\alpha$ is a partially ordered by epsilon.
+            \end{proof}
+        \end{proof}
+        \step{4}{$\beta$ is well-ordered by epsilon.}
+        \begin{proof}
+            \pf\ Since $\{ (x,y) : x,y \in \beta, x \in y \}$ is the restriction of
+            $\{ (x,y) : x,y \in \alpha, x \in y \}$ to $\beta$.
+        \end{proof}
+        \step{5}{$\beta$ is an ordinal number.}
+        \begin{proof}
+            \pf\ Theorem \ref{theorem:ordinals}.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{proposition}
+        The class of ordinals is well-ordered by epsilon.
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{For any ordinals $\alpha$, $\beta$, $\gamma$, if $\alpha \in \beta \in \gamma$ then
+        $\alpha \in \gamma$.}
+        \begin{proof}
+            \pf\ Since $\gamma$ is a transitive set (Lemma \ref{lemma:epsilon_image}).
+        \end{proof}
+        \step{2}{For any ordinal $\alpha$ we have $\alpha \notin \alpha$.}
+        \begin{proof}
+            \pf\ Since $\alpha$ is well-ordered by epsilon.
+        \end{proof}
+        \step{3}{For any ordinals $\alpha$, $\beta$, exactly one of $\alpha \in \beta$,
+        $\beta \in \alpha$, $\alpha = \beta$ holds.}
+        \begin{proof}
+            \step{a}{\pflet{$\alpha$, $\beta$ be ordinals.}}
+            \step{b}{Either $\alpha \cong \beta$ or $\exists \gamma \in \beta. \alpha \cong \gamma$
+            or $\exists \gamma \in \alpha. \gamma \cong \alpha$}
+            \begin{proof}
+                \pf\ Theorem \ref{theorem:well_ordered_trichotomy}.
+            \end{proof}
+            \step{c}{Either $\alpha = \beta$ or $\exists \gamma \in \beta. \alpha = \gamma$
+            or $\exists \gamma \in \alpha. \gamma = \alpha$}
+            \begin{proof}
+                \pf\ Since any ordinal is its own epsilon-image, and isomorphic well-orderings have equal
+                epsilon-images.
+            \end{proof}
+        \end{proof}
+        \step{4}{Any nonempty set of ordinals has a least element.}
+        \begin{proof}
+            \step{a}{\pflet{$A$ be a nonempy set of ordinals.}}
+            \step{b}{\pick\ $\alpha \in A$}
+            \step{c}{\case{$A \cap \alpha = \emptyset$}}
+            \begin{proof}
+                \pf\ In this case, $\alpha$ is least in $A$.
+            \end{proof}
+            \step{d}{\case{$A \cap \alpha \neq \emptyset$}}
+            \begin{proof}
+                \pf\ In this case, the least element of $A \cap \alpha$ is the least element in $A$.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+    
     \section{Natural Numbers}
 
     \begin{definition}[Successor]
