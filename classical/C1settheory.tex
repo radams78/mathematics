@@ -1532,6 +1532,21 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \begin{theorem}[Well-Ordering Theorem (Choice)]
+        For any set $A$, there exists a well ordering on $A$.
+    \end{theorem}
+    
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$A$ be a set.}}
+        \step{2}{\pick\ an ordinal $\alpha$ not dominated by $A$}
+        \step{3}{$A \preccurlyeq \alpha$}
+        \step{4}{\pick\ an injection $f : A \rightarrow \alpha$}
+        \step{5}{Define $<$ on $A$ by: $x < y$ iff $f(x) \in f(y)$}
+        \step{6}{$<$ is a well ordering on $A$.}
+        \qed
+    \end{proof}
     
     \section{Natural Numbers}
 
