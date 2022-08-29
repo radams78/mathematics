@@ -1533,6 +1533,89 @@
         \qed
     \end{proof}
 
+    \begin{theorem}[Zorn's Lemma]
+        The following statements are equivalent:
+        \begin{enumerate}
+            \item The Axiom of Choice
+            \item[Well-Ordering Theorem]
+            For any set $A$, there exists a well ordering on $A$.
+            \item[Zorn's Lemma] 
+            Let $\mathcal{A}$ be a set such that, for every chain $\mathcal{B} \subseteq \mathcal{A}$,
+            we have $\bigcup \mathcal{B} \in \mathcal{A}$. Then $\mathcal{A}$ has a maximal element.
+            \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{If the Axiom of Choice is true then the Well-Ordering Theorem is true.}
+        \begin{proof}
+            \step{a}{\assume{The Axiom of Choice}}
+            \step{b}{\pflet{$A$ be any set.}}
+            \step{c}{\pick\ an ordinal $\alpha$ not dominated by $A$.}
+            \step{d}{\pick\ an object $e$ such that $e \notin A$.}
+            \step{e}{\pick\ a choice function $G : \mathcal{P} A - \{ \emptyset \} \rightarrow A$ for $A$.}
+            \step{e}{Define the function $F : \alpha \rightarrow A \cup \{ e \}$ by transfinite recursion thus:
+            \[ F(\gamma) = \begin{cases}
+                G(A - \{ F(\delta) : \delta < \gamma \}) & \text{if } A - \{ F(\delta) : \delta < \gamma \} \neq \emptyset \\
+                e & \text{if } A - \{ F(\delta) : \delta < \gamma \} = \emptyset
+            \end{cases} \]}
+            \step{h}{\pflet{$\delta$ be least such that $F(\delta) = e$}}
+            \begin{proof}
+                \pf\ There is such a $\delta$, otherwise $F$ would be a bijection between $\alpha$ and $A$.
+            \end{proof}
+            \step{i}{$F \restriction \delta$ is a bijection between $\delta$ and $A$}
+            \step{j}{Define $<$ on $A$ by: $F(\gamma) < F(\beta)$ iff $\gamma \in \beta$ for $\gamma, \beta \in \delta$}
+            \step{k}{$<$ is a well ordering on $A$.}
+        \end{proof}
+        \step{1}{If the Well-Ordering Theorem is true then Zorn's Lemma is true.}
+        \begin{proof}
+            \step{a}{\assume{The Well-Ordering Theorem}}
+            \step{b}{\pflet{$\mathcal{A}$ be a set that is closed under unions of chains.}}
+            \step{c}{\pick\ a well ordering $<$ on $\mathcal{A}$}
+            \step{d}{Define the function $F : \mathcal{A} \rightarrow 2$ by transfinite recursion thus:
+            \[ F(A) = \begin{cases}
+                1 & \text{if } \forall B < A. F(B) = 1 \Rightarrow B \subseteq A \\
+                0 & \text{otherwise}
+            \end{cases} \]}
+            \step{e}{\pflet{$\mathcal{C} = \{ A \in \mathcal{A} : F(A) = 1 \}$}}
+            \step{f}{$\mathcal{C}$ is a chain.}
+            \begin{proof}
+                \step{i}{\pflet{$A, B \in \mathcal{C}$}}
+                \step{ii}{\assume{w.l.o.g. $A < B$}}
+                \step{iii}{$F(A) = 1$}
+                \step{iv}{$F(B) = 1$}
+                \step{v}{$A \subseteq B$}
+            \end{proof}
+            \step{g}{$\bigcup \mathcal{C} \in \mathcal{A}$}
+            \begin{proof}
+                \pf\ By \stepref{b}.
+            \end{proof}
+            \step{h}{$\bigcup \mathcal{C}$ is maximal in $\mathcal{A}$}
+            \begin{proof}
+                \step{i}{\assume{$\bigcup \mathcal{C} \subseteq D \in \mathcal{A}$}}
+                \step{ii}{$\forall B < D. F(B) = 1 \Rightarrow B \subseteq D$}
+                \begin{proof}
+                    \pf\ If $F(B) = 1$ then $B \in \mathcal{C}$ so $B \subseteq \bigcup \mathcal{C} \subseteq D$.
+                \end{proof}
+                \step{iii}{$F(D) = 1$}
+                \step{iv}{$D \in \mathcal{C}$}
+                \step{v}{$D = \bigcup \mathcal{C}$}
+            \end{proof}
+        \end{proof}
+        \step{2}{If Zorn's Lemma is true then the Axiom of Choice is true.}
+        \begin{proof}
+            \step{a}{\assume{Zorn's Lemma}}
+            \step{b}{\pflet{$R$ be a relation.}}
+            \step{c}{\pflet{$\mathcal{A}$ be the set of all functions that are subsets of $R$.}}
+            \step{d}{For any chain $\mathcal{B} \subseteq \mathcal{A}$ we have $\bigcup \mathcal{B} \in
+            \mathcal{A}$}
+            \step{e}{\pick\ $F \in \mathcal{A}$ maximal.}
+            \step{f}{$\dom F = \dom R$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+
     \begin{theorem}[Well-Ordering Theorem (Choice)]
         For any set $A$, there exists a well ordering on $A$.
     \end{theorem}
@@ -1994,7 +2077,7 @@
     \end{theorem}
 
     \begin{proof}
-        \pf\ TODO \qed
+        \pf\ Easy. \qed
     \end{proof}
 
     \begin{theorem}
@@ -2002,7 +2085,7 @@
     \end{theorem}
 
     \begin{proof}
-        \pf\ TODO \qed
+        \pf\ Immediate from definitions. \qed
     \end{proof}
 
     \begin{definition}
@@ -2926,32 +3009,6 @@
         Then $\Phi$ is an injection. \qed
     \end{proof}
 
-    \begin{theorem}[Zorn's Lemma]
-        The Axiom of Choice is equivalent to this statement:
-
-        Let $\mathcal{A}$ be a set such that, for every chain $\mathcal{B} \subseteq \mathcal{A}$,
-        we have $\bigcup \mathcal{B} \in \mathcal{A}$. Then $\mathcal{A}$ has a maximal element.
-    \end{theorem}
-
-    \begin{proof}
-        \pf
-        \step{1}{If the Axiom of Choice then Zorn's Lemma.}
-        \begin{proof}
-            \pf\ TODO
-        \end{proof}
-        \step{2}{If Zorn's Lemma then the Axiom of Choice.}
-        \begin{proof}
-            \step{a}{\assume{Zorn's Lemma}}
-            \step{b}{\pflet{$R$ be a relation.}}
-            \step{c}{\pflet{$\mathcal{A}$ be the set of all functions that are subsets of $R$.}}
-            \step{d}{For any chain $\mathcal{B} \subseteq \mathcal{A}$ we have $\bigcup \mathcal{B} \in
-            \mathcal{A}$}
-            \step{e}{\pick\ $F \in \mathcal{A}$ maximal.}
-            \step{f}{$\dom F = \dom R$}
-        \end{proof}
-        \qed
-    \end{proof}
-
     \begin{theorem}[Cardinal Comparability]
         The Axiom of Choice is equivalent to the statement: for any sets $C$ and $D$,
         either $C \preccurlyeq D$ or $D \preccurlyeq C$.
@@ -2972,9 +3029,15 @@
             \step{g}{$f$ is an injective function $C \rightarrow D$ or $\inv{f}$ is an injective function
             $D \rightarrow C$}
         \end{proof}
-        \step{2}{If Cardinal Comparability then the Axiom of Choice.}
+        \step{2}{If Cardinal Comparability then the Well-Ordering Theorem.}
         \begin{proof}
-            \pf\ TODO
+            \step{a}{\assume{Cardinal Comparability}}
+            \step{b}{\pflet{$A$ be any set}}
+            \step{c}{\pick\ an ordinal $\alpha$ not dominated by $A$}
+            \step{d}{$A \preccurlyeq \alpha$}
+            \step{e}{\pick\ an injective function $f : A \rightarrow \alpha$}
+            \step{f}{Define $<$ on $A$ by: $x < y$ iff $f(x) \in f(y)$}
+            \step{g}{$<$ is a well ordering on $A$.}
         \end{proof}
         \qed
     \end{proof}
