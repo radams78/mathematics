@@ -374,3 +374,5 @@
 \contentsline {paragraph}{Exercise 19}{69}%
 \contentsline {paragraph}{Exercise 20}{69}%
 \contentsline {paragraph}{Exercise 21}{69}%
+\contentsline {section}{\numberline {7.7}Debts Paid}{70}%
+\contentsline {paragraph}{Exercise 22}{70}%

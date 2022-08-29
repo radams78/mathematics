@@ -3658,4 +3658,81 @@
     Let $x \in A$ and suppose $m \leq x$. Then $C \cup \{ m, x \}$ is linearly ordered by $<^\circ$,
     and so $C = C \cup \{ m,x \}$ by maximality of $C$. Hence $x \in C$ and so $x \leq m$, hence $x = m$. Thus,
     $m$ is maximal in $A$.
+
+    \section{Debts Paid}
+
+    \paragraph{Exercise 22}
+    Let $A$ be any set. Let $\mathcal{A}$ be the set of all pairs $\langle B, R \rangle$ where $B \subseteq A$
+    and $R$ is a well ordering on $B$, and define $<$ on $\mathcal{A}$ by:
+    $\langle B, R \rangle < \langle C, S \rangle$ iff $B$ is an initial segment of $C$ and $R = S \cap B^2$.
+
+    It is easy to see that $<$ is a partial ordering on $\mathcal{A}$
+
+    We prove that, if $\mathcal{C} \subseteq \mathcal{A}$ and $<$ is a linear ordering on $\mathcal{C}$,
+    then $\mathcal{C}$ has an upper bound in $\mathcal{A}$. Let $B = \bigcup \{ C : \exists S. \langle C, S \rangle \in \mathcal{C} \}$
+    and $R = \bigcup \{ S : \exists C. \langle C, S \rangle \in \mathcal{C} \}$. We prove that $R$ well orders $B$.
+    It is then easy to see that $\langle B, R \rangle$ is an upper bound for $\mathcal{C}$ is $\mathcal{A}$.
+
+    \begin{proof}
+        \pf
+        \step{1}{$R$ is transitive.}
+        \begin{proof}
+            \step{a}{\assume{$xRy$ and $yRz$}}
+            \step{b}{\pick\ $\langle C, S \rangle, \langle D,T \rangle \in \mathcal{C}$ such that $xSy$ and $yTz$}
+            \step{c}{$\langle C,S \rangle \leq \langle D,T \rangle$ or $\langle D,T \rangle \leq \langle C,S \rangle$}
+            \step{d}{\assume{w.l.o.g. $\langle C, S \rangle \leq \langle D,T \rangle$}}
+            \step{e}{$xTy$ and $yTz$}
+            \step{f}{$xTz$}
+            \step{g}{$xRz$}
+        \end{proof}
+        \step{2}{$R$ is irreflexive.}
+        \begin{proof}
+            \step{a}{\assume{for a contradiction $xRx$}}
+            \step{b}{\pick\ $\langle C,S \rangle \in \mathcal{C}$ such that $xSx$}
+            \step{c}{This is a contradiction.}
+        \end{proof}
+        \step{3}{$R$ satisfies trichotomy.}
+        \begin{proof}
+            \step{a}{\pflet{$x,y \in B$}}
+            \step{b}{\pick\ $\langle C,S \rangle, \langle D,T \rangle \in \mathcal{C}$ such that $x \in C$ and $y \in D$}
+            \step{c}{\assume{w.l.o.g. $\langle C,S \rangle \leq \langle D,T \rangle$}}
+            \step{d}{$x, y \in D$}
+            \step{e}{$xTy$ or $yTx$}
+            \step{f}{$xRy$ or $yRx$}
+        \end{proof}
+        \step{4}{Every non-empty subset of $B$ has an $R$-least element.}
+        \begin{proof}
+            \step{a}{\pflet{$C \subseteq B$ be nonempty}}
+            \step{b}{\pick\ $c \in C$}
+            \step{c}{\pick\ $\langle D, T \rangle \in \mathcal{C}$ such that $c \in D$}
+            \step{d}{\pflet{$x$ be the $T$-least element of $C \cap D$} \prove{$x$ is $R$-least in $C$}}
+            \step{e}{\pflet{$y \in C$}}
+            \step{f}{\pick\ $\langle E,U \rangle \in \mathcal{C}$ such that $y \in E$}
+            \step{g}{$\langle D, T \rangle \leq \langle E,U \rangle$ or $\langle E,U \rangle \leq \langle D,T \rangle$}
+            \step{h}{\case{$\langle D,T \rangle \leq \langle E,U \rangle$}}
+            \begin{proof}
+                \step{i}{$xUy$ or $x=y$}
+                \begin{proof}
+                    \pf
+                    \step{i}{\assume{for a contradiction $yUx$}}
+                    \step{ii}{$y \in D$ and $yTx$}
+                    \begin{proof}
+                        \pf\ Since $D$ is an initial segment of $E$ and $T = U \cap D^2$
+                    \end{proof}
+                    \qedstep
+                    \begin{proof}
+                        \pf\ This contradicts the $T$-minimality of $x$.
+                    \end{proof}
+                \end{proof}
+            \end{proof}
+            \step{i}{\case{$\langle E,U \rangle \leq \langle D,T \rangle$}}
+            \begin{proof}
+                \pf\ $xTy$ or $x=y$, so $xRy$ or $x=y$.
+            \end{proof}
+        \end{proof}
+    \end{proof}
+
+    Hence by Exercise 21 there is a maximal element $\langle B, R \rangle$ in $\mathcal{A}$.
+    We must have $B = A$; for if $a \in A - B$ then $\langle B \cup \{ a \}, R \cup \{ \langle x, a \rangle : x \in B \} \rangle$
+    would be a larger element. Hence $R$ is a well ordering on $A$.
 \end{document}
