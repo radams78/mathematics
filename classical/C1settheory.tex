@@ -238,6 +238,10 @@
         \pf\ Easy. \qed
     \end{proof}
 
+    \begin{axiom}[Regularity]
+        For every nonempty set $A$, there exists $m \in A$ such that $m \cap A = \emptyset$.
+    \end{axiom}
+
     \section{Ordered Pairs}
 
     \begin{definition}[Ordered Pair]
@@ -3348,6 +3352,7 @@
     \end{proof}
 
     \begin{theorem}
+        \label{theorem:grounded_sup}
         If every member of $A$ is grounded then $A$ is grounded and
         \[ \rank A = \sup_{a \in A} (\rank a)^+ \enspace . \]
     \end{theorem}
@@ -3372,6 +3377,34 @@
             \step{f}{$\forall a \in A. (\rank a)^+ \leq \beta$}
             \step{g}{$\alpha \leq \beta$}
         \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        Every set is grounded.
+    \end{theorem}
+    
+    \begin{proof}
+        \pf
+            \step{b}{\assume{for a contradiction $c$ is not grounded.}}
+            \step{c}{\pflet{$B$ be the transitive closure of $\{c\}$.}}
+            \step{d}{\pflet{$A = \{ x \in B : x \text{ is not grounded} \}$}}
+            \step{e}{\pick\ $m \in A$ such that $m \cap A = \emptyset$}
+            \begin{proof}
+                \pf\ By the Axiom of Regularity.
+            \end{proof}
+            \step{f}{Every member of $m$ is grounded.}
+            \begin{proof}
+                \pf\ Every member of $m$ is in $B$ by transitivity but not in $A$.
+            \end{proof}
+            \step{g}{$m$ is grounded.}
+            \begin{proof}
+                \pf\ Theorem \ref{theorem:grounded_sup}.
+            \end{proof}
+            \qedstep
+            \begin{proof}
+                \pf\ This contradicts the fact that $m \in A$.
+            \end{proof}
         \qed
     \end{proof}
 \end{document}
