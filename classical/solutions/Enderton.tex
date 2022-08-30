@@ -3826,4 +3826,22 @@
     \beta$ and so $\rank X \in \alpha$.
 
     Conversely, if $\rank X \in \alpha$ then $X \in V_{(\rank X)^+} \subseteq V_\alpha$.
+
+    \paragraph{Exercise 29}
+    Direct proofs:
+
+    For any set $a$, there exists $m \in \{ a \}$ such that $m \cap \{ a \} = \emptyset$. This $m$ must be
+    the set $a$, so $a \cap \{ a \} = \emptyset$, meaning $a \notin a$.
+
+    For any sets $a$ and $b$, there exists $m \in \{ a,b \}$ such that $m \cap \{ a,b \} = \emptyset$. Now,
+    $m$ is either $a$ or $b$. If $m = a$ then $a \cap \{ a,b \} = \emptyset$ so $b \notin a$. And if $m = b$
+    then $b \cap \{ a,b \} = \emptyset$ so $a \notin b$.
+
+    Consequences of part (c):
+
+    Assume $a \in a$. Define $f : \omega \rightarrow \{ a \}$ by $f(n) = a$ for all $n \in \omega$.
+    Then $f(n^+) \in f(n)$ for all $n$, contradicting (c).
+
+    Assume now $a \in b$ and $b \in a$. Define $f : \omega \rightarrow \{ a, b \}$ by $f(n) = a$ if $n$ is
+    even, $f(n) = b$ if $n$ is odd. Then $f(n^+) \in f(n)$ for all $n$, contradicting (c).
 \end{document}
