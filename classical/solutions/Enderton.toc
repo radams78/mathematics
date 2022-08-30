@@ -394,3 +394,4 @@
 \contentsline {subparagraph}{(c)}{73}%
 \contentsline {paragraph}{Exercise 32}{73}%
 \contentsline {paragraph}{Exercise 33}{74}%
+\contentsline {paragraph}{Exercise 34}{74}%

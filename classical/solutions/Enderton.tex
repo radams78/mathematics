@@ -3896,4 +3896,39 @@
     Axiom, there exists $m \in D - B$ such that $m \cap (D - B) = \emptyset$. Now, for all $x \in m$,
     we have $x \in D$ (since $D$ is a transitive set) and $x \notin D - B$, so we must have $x \in X$;
     that is, $m \subseteq B$. But then $m \in B$, which is a contradiction.
+
+    \paragraph{Exercise 34}
+    \begin{proof}
+        \pf
+        \step{1}{\assume{$\{ x, \{ x,y \} \} = \{ u, \{ u, v \} \}$}}
+        \step{2}{$x = u$ or $x = \{ u,v \}$}
+        \step{3}{$u = x$ or $u = \{ x,y \}$}
+        \step{4}{$x \neq \{ u, v \}$}
+        \begin{proof}
+            \step{a}{\assume{for a contradiction $x = \{ u,v \}$}}
+            \step{b}{$u = x$ or $u = \{ x,y\}$}
+            \step{c}{\case{$u = x$}}
+            \begin{proof}
+                \pf\ In this case $x = u \in \{ u,v \} = x$ contradicting Theorem 7X(a).
+            \end{proof}
+            \step{d}{\case{$u = \{x,y\}$}}
+            \begin{proof}
+                \pf\ In this case $u \in x$ and $x \in u$ contradicting Theorem 7X(b).
+            \end{proof}
+        \end{proof}
+        \step{5}{$x = u$}
+        \step{6}{$\{ x,y \} = \{ u,v \}$}
+        \begin{proof}
+            \pf\ We cannot have $\{x,y\} = u$ because then we would have $x \in x$ contradicting Theorem 7X(a).
+        \end{proof}
+        \step{7}{$y = u$ or $y = v$}
+        \step{8}{$v = x$ or $v = y$}
+        \step{9}{If $y = u$ and $v = x$ then $y = v$}
+        \step{10}{$y = v$}
+        \begin{proof}
+            \pf\ Checking all the cases in \stepref{7} and \stepref{8}.
+        \end{proof}
+        \qed
+    \end{proof}
+    
 \end{document}
