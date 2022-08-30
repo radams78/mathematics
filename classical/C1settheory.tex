@@ -242,6 +242,22 @@
         For every nonempty set $A$, there exists $m \in A$ such that $m \cap A = \emptyset$.
     \end{axiom}
 
+    \begin{theorem}
+        No set is a member of itself.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ If $A \in A$ then there is no $m \in \{A\}$ such that $m \cap \{A\} = \emptyset$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        There are no sets $a$ and $b$ with $a \in b$ and $b \in a$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ If there were, then there would be no $m \in \{ a,b \}$ such that  $m \cap \{ a,b \} = \emptyset$. \qed
+    \end{proof}
+
     \section{Ordered Pairs}
 
     \begin{definition}[Ordered Pair]
@@ -1939,6 +1955,15 @@
         \qed
     \end{proof}
 
+    \begin{theorem}
+        There is no function $f$ with domain $\omega$ such that $\cdots \in f(2) \in f(1) \in f(0)$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ If there were then there would be no $m \in \ran f$ such that $m \cap \ran f = \emptyset$,
+        contradicting the Axiom of Regularity. \qed
+    \end{proof}
+    
     \section{Finite Sets}
 
     \begin{definition}[Finite]
