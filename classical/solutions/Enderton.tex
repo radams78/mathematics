@@ -13,6 +13,7 @@
 \newcommand{\fld}{\ensuremath{\operatorname{fld}}}
 \newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
 \newcommand{\seg}{\ensuremath{\operatorname{seg}}}
+\newcommand{\rank}{\ensuremath{\operatorname{rank}}}
 
 \begin{document}
     \maketitle
@@ -3756,4 +3757,22 @@
     Suppose there exists an ordinal $\alpha$ such that $\neg \phi(\alpha)$. Let $\alpha_0$ be the least
     such ordinal. Then we have $\forall x \in \alpha_0. \phi(x)$ but $\neg \phi(\alpha_0)$. This
     contradicts the hypothesis.
+
+    \section{Rank}
+
+    \paragraph{Exercise 26}
+    The proof is by transfinite induction on $\alpha$. Suppose that $\alpha$ is an ordinal and, for all
+    $\beta \in \alpha$, we have $\beta$ is grounded and $\rank \beta = \beta$. Then by Theorem 7V(b)
+    we have that $\alpha$ is grounded and
+    \begin{align*}
+        \rank \alpha & = \bigcup \{ (\rank \beta)^+ \mid \beta \in \alpha \} \\
+        & = \bigcup \{ \beta^+ \mid \beta \in \alpha \} & (\text{induction hypothesis})
+    \end{align*}
+    So we must show that $\bigcup \{ \beta^+ \mid \beta \in \alpha \} = \alpha$.
+
+    If $\beta \in \alpha$ then $\beta^+ \underline{\in} \alpha$ so $\beta^+ \subseteq \alpha$. This shows that
+    $\bigcup \{ \beta^+ \mid \beta \in \alpha \} \subseteq \alpha$.
+
+    If $\beta \in \alpha$ then $\beta \in \beta^+$ so $\beta \in \bigcup \{ \beta^+ \mid \beta \in \alpha \}$.
+    This shows that $\alpha \subseteq \bigcup \{ \beta^+ \mid \beta \in \alpha \}$
 \end{document}
