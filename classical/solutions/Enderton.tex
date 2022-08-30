@@ -3844,4 +3844,56 @@
 
     Assume now $a \in b$ and $b \in a$. Define $f : \omega \rightarrow \{ a, b \}$ by $f(n) = a$ if $n$ is
     even, $f(n) = b$ if $n$ is odd. Then $f(n^+) \in f(n)$ for all $n$, contradicting (c).
+
+    \paragraph{Exercise 30}
+    \begin{align*}
+        \rank \{ a,b \} & = (\rank a)^+ \cup (\rank b)^+ & (\text{Theorem 7V(b)}) \\
+        & = \max((\rank a)^+, (\rank b)^+) \\
+        & = \max(\rank a, \rank b)^+
+    \end{align*}
+
+    We have
+    \begin{align*}
+        a & \subseteq V_{\rank a} \\
+        \therefore \mathcal{P} a & \subseteq \mathcal{P} V_{\rank a} \\
+        & = V_{(\rank a)^+} \\
+        \therefore \rank \mathcal{P} a & \underline{\in} (\rank a)^+ \\
+        a & \in \mathcal{P} a \\
+        \therefore \rank a & \in \rank \mathcal{P} a \\
+        \therefore \rank \mathcal{P} a & = (\rank a)^+
+    \end{align*}
+
+    Now, for all $x \in \bigcup a$, there exists $y$ such that $x \in y \in a$. Hence
+    \[ \rank x \in \rank y \in \rank a \enspace . \]
+    \[ \therefore (\rank x)^+ \in \rank a \enspace . \]
+    So $\rank a$ is an upper bound for $\{ (\rank x)^+ : x \in \bigcup a \}$, and so
+    \[ \rank \bigcup a \underline{\in} \rank a \enspace . \]
+
+    \paragraph{Exercise 31}
+    \subparagraph{(a)}
+    If $A \approx B$ and nothing of rank less than $\rank B$ is equinumerous to $B$, then
+    $\rank B \underline{\in} \rank A$, and so $B \in V_{(\rank A)^+}$. So we can construct the
+    set $\operatorname{kard} A$ by applying a Subset Axiom to $V_{(\rank A)^+}$.
+
+    \subparagraph{(b)}
+    There exists a set of rank $\rank A$ that is equinumerous with $A$ (namely $A$!). Let $\mu$
+    be the least ordinal $\leq \rank A$ such that there exists a set of rank $\mu$ that is equinumerous with $A$.
+    Pick a set $B$ of rank $\mu$ such that $B \approx A$. Then $B \in \operatorname{kard} A$.
+
+    \subparagraph{(c)}
+    Suppose $\operatorname{kard} A = \operatorname{kard} B$. Pick $C \in \operatorname{kard} A$. Then
+    $C \approx A$ and $C \approx B$, so $A \approx B$.
+
+    Conversely, suppose $A \approx B$. Then we have ($A \approx C$ and nothing of rank less than $\rank C$
+    is equinumerous with $C$) iff ($B \approx C$ and nothing of rank less than $\rank C$ is equinumerous with
+    $C$), i.e. $\operatorname{kard} A = \operatorname{kard} B$.
+
+    \paragraph{Exercise 32}
+    Similar to Exercise 31.
+
+    \paragraph{Exercise 33}
+    Suppose for a contradiction $D$ is not a subset of $B$. Then $D - B$ is nonempty. So by the Regularity
+    Axiom, there exists $m \in D - B$ such that $m \cap (D - B) = \emptyset$. Now, for all $x \in m$,
+    we have $x \in D$ (since $D$ is a transitive set) and $x \notin D - B$, so we must have $x \in X$;
+    that is, $m \subseteq B$. But then $m \in B$, which is a contradiction.
 \end{document}
