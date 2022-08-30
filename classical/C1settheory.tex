@@ -27,6 +27,7 @@
 \newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
 \newcommand{\ran}{\ensuremath{\operatorname{ran}}}
 \newcommand{\seg}{\ensuremath{\operatorname{seg}}}
+\newcommand{\rank}{\ensuremath{\operatorname{rank}}}
 
 \begin{document}
     \maketitle
@@ -3255,6 +3256,121 @@
                 & \leq \lambda \cdot \lambda \\
                 & = \lambda
             \end{align*}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \section{Rank}
+
+    \begin{definition}
+        Define the set $V_\alpha$ for every ordinal $\alpha$ by transfinite recursion thus:
+        \[ V_\alpha = \bigcup \{ \mathcal{P} V_\beta : \beta \in \alpha \} \enspace . \]
+    \end{definition}
+
+    \begin{lemma}
+        For any ordinal $\alpha$, $V_\alpha$ is a transitive set.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\alpha$ be an ordinal.}}
+        \step{2}{\pflet{$x \in y \in V_\alpha$}}
+        \step{3}{\pick\ $\beta \in \alpha$ such that $y \in \mathcal{P} V_\beta$}
+        \step{4}{$x \in V_\beta$}
+        \step{5}{\pick\ $\gamma \in \beta$ such that $x \in \mathcal{P} V_\gamma$}
+        \step{6}{$\gamma \in \alpha$ and $x \in \mathcal{P} V_\gamma$}
+        \step{7}{$x \in V_\alpha$}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        \label{theorem:V_cumulative}
+        For ordinals $\beta \in \alpha$ we have $V_\beta \subseteq V_\alpha$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \begin{align*}
+            V_\beta & = \bigcup_{\gamma \in \beta} \mathcal{P} V_\gamma \\
+            & \subseteq \bigcup_{\gamma \in \alpha} \mathcal{P} V_\gamma \\
+            & = V_\alpha & \qed
+        \end{align*}
+    \end{proof}
+
+    \begin{theorem}
+        \[ V_0 = \emptyset \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Immediate from definitions. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any ordinal $\alpha$, $V_{\alpha^+} = \mathcal{P} V_\alpha$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \begin{align*}
+            V_{\alpha^+} & = \bigcup_{\beta \leq \alpha} \mathcal{P} V_\beta \\
+            & = \mathcal{P} V_\beta
+        \end{align*}
+        by Theorem \ref{theorem:V_cumulative}.
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        For $\lambda$ a limit ordinal, $V_\lambda = \bigcup_{\beta < \lambda} V_\beta$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \begin{align*}
+            V_\lambda & = \bigcup_{\beta < \lambda} \mathcal{P} V_\beta \\
+            & = \bigcup_{\beta < \lambda} V_{\beta^+} \\
+            & = \bigcup_{\beta < \lambda} V_\beta
+        \end{align*}
+        since $\beta < \lambda$ iff $\beta^+ < \lambda$. \qed
+    \end{proof}
+
+    \begin{definition}[Grounded, Rank]
+        A set $A$ is \emph{grounded} iff $\exists \alpha. A \subseteq V_\alpha$. The \emph{rank}
+        of a grounded set $A$, $\rank A$, is then the least ordinal $\alpha$ such that $A \subseteq V_\alpha$.
+    \end{definition}
+
+    \begin{theorem}
+        If $A$ is grounded and $a \in A$ then $a$ is grounded and $\rank a < \rank A$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ We have $a \in A \subseteq V_{\rank A}$. So $a \in \mathcal{P} V_\alpha$ for some
+        $\alpha < \rank A$, i.e. $a \subseteq V_\alpha$ for some $\alpha < \rank A$, as required.
+    \end{proof}
+
+    \begin{theorem}
+        If every member of $A$ is grounded then $A$ is grounded and
+        \[ \rank A = \sup_{a \in A} (\rank a)^+ \enspace . \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\alpha = \sup_{a \in A} (\rank a)^+$}}
+        \step{2}{$A \subseteq V_\alpha$}
+        \begin{proof}
+            \step{a}{\pflet{$a \in A$}}
+            \step{b}{$a \subseteq V_{\rank a}$}
+            \step{c}{$a \in V_{(\rank a)^+}$}
+            \step{d}{$a \in V_\alpha$}
+        \end{proof}
+        \step{3}{If $A \subseteq V_\beta$ then $\alpha \leq \beta$}
+        \begin{proof}
+            \step{a}{\assume{$A \subseteq V_\beta$}}
+            \step{b}{$\forall a \in A. a \in V_\beta$}
+            \step{c}{$\forall a \in A. \exists \gamma < \beta. a \subseteq V_\gamma$ }
+            \step{d}{$\forall a \in A. \exists \gamma < \beta. \rank a \leq \gamma$}
+            \step{e}{$\forall a \in A. \rank a < \beta$}
+            \step{f}{$\forall a \in A. (\rank a)^+ \leq \beta$}
+            \step{g}{$\alpha \leq \beta$}
         \end{proof}
         \qed
     \end{proof}
