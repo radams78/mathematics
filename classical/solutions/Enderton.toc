@@ -384,3 +384,5 @@
 \contentsline {paragraph}{Exercise 25}{71}%
 \contentsline {section}{\numberline {7.8}Rank}{71}%
 \contentsline {paragraph}{Exercise 26}{71}%
+\contentsline {paragraph}{Exercise 27}{71}%
+\contentsline {paragraph}{Exercise 28}{72}%
