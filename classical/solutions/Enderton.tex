@@ -3940,4 +3940,62 @@
     V_{\rank S}$. Thus, $\rank (TC\ S) \leq \rank S$.
 
     We also have $S \subseteq TC\ S$ so $\rank S \leq \rank (TC\ S)$. Thus, $\rank (TC\ S) = \rank S$.
+
+    \paragraph{Exercise 37}
+    If $\alpha$ is an ordinal then it is a transitive set and, for any distinct $x, y \in \alpha$, we have
+    $x \in y$ or $y \in x$ (Theorem 7M).
+
+    Conversely, let $\alpha$ be a transitive set such that, for any distinct $x, y \in \alpha$, we have
+    $x \in y$ or $y \in x$. We will prove that $\alpha$ is well ordered by epsilon. It will follow by
+    Theorem 7L that $\alpha$ is an ordinal.
+    \begin{proof}
+        \pf
+        \step{1}{$\epsilon_\alpha$ is transitive.}
+        \begin{proof}
+            \step{a}{\pflet{$x,y,z \in \alpha$ with $x \in y$ and $y \in z$}}
+            \step{b}{$x \neq z$}
+            \begin{proof}
+                \pf\ Otherwise we would have $x \in y \in x$ contradicting the Axiom of Regularity.
+            \end{proof}
+            \step{c}{$x \in z$ or $z \in x$}
+            \step{d}{$z \notin x$}
+            \begin{proof}
+                \pf\ By the Axiom of Regularity we cannot have $x \in y \in z \in x$.s
+            \end{proof}
+            \step{e}{$x \in z$}
+        \end{proof}
+        \step{2}{$\epsilon_\alpha$ is irreflexive.}
+        \begin{proof}
+            \pf\ By the Axiom of Regularity.
+        \end{proof}
+        \step{3}{For any $x,y \in \alpha$ we have $x \in y$ or $x = y$ or $y \in x$.}
+        \begin{proof}
+            \pf\ By assumption.
+        \end{proof}
+        \step{4}{Any nonempty subset of $\alpha$ has an $\epsilon_\alpha$-least element.}
+        \begin{proof}
+            \step{a}{\pflet{$A \subseteq \alpha$ be nonempty.}}
+            \step{b}{\pick\ $m \in A$ such that $m \cap A = \emptyset$}
+            \step{c}{For all $x \in A$ we have $m \underline{\in} x$}
+            \begin{proof}
+                \pf\ Since $x \notin m$.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 38}
+    Let $\lambda$ be a limit ordinal. We have $\bigcup \lambda \subseteq \lambda$ because $\lambda$ is a
+    transitive set. Conversely, for all $\alpha \in \lambda$ we have $\alpha \in \alpha^+ \in \lambda$
+    so $\alpha \in \bigcup \lambda$.
+
+    \paragraph{Exercise 39}
+    An ordinal number is a transitive set of ordinals, hence a transitive set of transitive sets.
+
+    Conversely, let $\alpha$ be a transitive set of transitive sets. We prove that $\alpha$ is a set of
+    ordinals. The result will follow by Corollary 7N (a).
+
+    So suppose for a contradiction that not every element in $\alpha$ is an ordinal. Let $A = \{ x \in
+    \alpha : x \text{ is not an ordinal} \}$. Then $A$ is nonempty. Pick $m \in A$ such that $m \cap A
+    = \emptyset$. Then $m$ is a transitive set of ordinals, hence an ordinal. This is a contradiction.
 \end{document}
