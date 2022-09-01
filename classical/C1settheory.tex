@@ -1667,7 +1667,7 @@
         \pf\ Define $\mathbf{G} = \{ (\alpha, y) : \exists f : \alpha^+ \rightarrow \mathbf{V}.
         \forall \beta \in \alpha^+. f(\beta) = \mathbf{F}(f \restriction \beta) \}$. \qed
     \end{proof}
-    
+
     \section{Natural Numbers}
 
     \begin{definition}[Inductive]
@@ -2314,6 +2314,47 @@
         \pf\ Easy. \qed
     \end{proof}
 
+    \section{Alephs}
+
+    \begin{definition}
+        Define the cardinal number $\aleph_\alpha$ for every ordinal $\alpha$ by transfinite recursion thus:
+        $\aleph_\alpha$ is the least infinite cardinal different from $\aleph_\beta$ for every $\beta < \alpha$.
+    \end{definition}
+
+    \begin{theorem}
+        If $\alpha < \beta$ then $\aleph_\alpha < \aleph_\beta$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ By minimality of $\aleph_\alpha$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Every infinite cardinal is of the form $\aleph_\alpha$ for some $\alpha$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\kappa$ be an infinite cardinal}}
+        \step{2}{\assume{for every infinite cardinal $\lambda < \kappa$, there exists $\alpha$ such that $\lambda =
+        \aleph_\alpha$}}
+        \step{3}{\pflet{$\alpha = \{ \beta : \aleph_\beta < \kappa \}$}}
+        \step{4}{$\alpha$ is a set.}
+        \begin{proof}
+            \pf\ The mapping $\beta \mapsto \aleph_\beta$ is an injection $\alpha \rightarrow \kappa$.
+        \end{proof}
+        \step{5}{$\alpha$ is a transitive set.}
+        \step{6}{$\alpha$ is an ordinal.}
+        \step{7}{$\aleph_\alpha$ is the least infinite cardinal different from $\aleph_\beta$ for all $\beta$
+        such that $\aleph_\beta < \kappa$.}
+        \step{8}{$\aleph_\alpha$ is the least infinite cardinal different from $\lambda$ for every infinite
+        cardinal $\lambda < \kappa$.}
+        \begin{proof}
+            \pf\ By \stepref{2}.
+        \end{proof}
+        \step{9}{$\aleph_\alpha = \kappa$}
+        \qed
+    \end{proof}
     \section{Arithmetic}
 
     \begin{lemma}
