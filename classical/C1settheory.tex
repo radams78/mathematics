@@ -1668,6 +1668,41 @@
         \forall \beta \in \alpha^+. f(\beta) = \mathbf{F}(f \restriction \beta) \}$. \qed
     \end{proof}
 
+    \begin{definition}[Continuous]
+        A function $\mathbf{F} : \mathbf{On} \rightarrow \mathbf{On}$ is \emph{continuous} iff
+        $\mathbf{F}(\lambda) = \bigcup_{\beta \in \lambda} \mathbf{F}(\beta)$ for every limit ordinal
+        $\lambda$.
+    \end{definition}
+
+    \begin{theorem}
+        Let $\mathbf{F} : \mathbf{On} \rightarrow \mathbf{On}$ be continuous. Suppose
+        $\forall \alpha \in \mathbf{On}. \mathbf{F}(\alpha) < \mathbf{F}(\alpha + 1)$.
+        Then $\mathbf{F}$ is strictly monotone.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$P(\beta)$ be the statement: $\forall \alpha < \beta. \mathbf{F}(\alpha) < \mathbf{F}(\beta)$}}
+        \step{2}{$P(0)$}
+        \begin{proof}
+            \pf\ Vacuous.
+        \end{proof}
+        \step{3}{$\forall \beta \in \mathbf{On}. P(\beta) \Rightarrow P(\beta^+)$}
+        \begin{proof}
+            \pf\ For $\alpha < \beta^+$ we have $\mathbf{F}(\alpha) \leq \mathbf{F}(\beta) < \mathbf{F}(\beta^+)$.
+        \end{proof}
+        \step{4}{For every limit ordinal $\lambda$, if $\forall \beta < \lambda. P(\beta)$ then $P(\lambda)$}
+        \begin{proof}
+            \pf\ For $\alpha < \lambda$ we have $\mathbf{F}(\alpha) < \mathbf{F}(\alpha^+) \leq \mathbf{F}(\lambda)$.
+        \end{proof}
+        \qed
+    \end{proof}
+    
+    \begin{definition}[Normal]
+        A function $\mathbf{F} : \mathbf{On} \rightarrow \mathbf{On}$ is \emph{normal} iff it is
+        strictly monotone and continuous.
+    \end{definition}
+
     \section{Natural Numbers}
 
     \begin{definition}[Inductive]
