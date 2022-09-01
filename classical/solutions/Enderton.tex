@@ -3998,4 +3998,44 @@
     So suppose for a contradiction that not every element in $\alpha$ is an ordinal. Let $A = \{ x \in
     \alpha : x \text{ is not an ordinal} \}$. Then $A$ is nonempty. Pick $m \in A$ such that $m \cap A
     = \emptyset$. Then $m$ is a transitive set of ordinals, hence an ordinal. This is a contradiction.
-\end{document}
+    
+    \chapter{Chapter 8 --- Ordinals and Order Types}
+
+    \section{Alephs}
+    \paragraph{Exercise 1}
+    Let $\gamma(f,y)$ be the formula:
+
+    Either
+    \begin{enumerate}
+        \item $f$ is a function with domain 0 and $y = 5$; or
+        \item $f$ is a function whose domain is a successor ordinal $\alpha^+$ and $y = f(\alpha)^+$; or
+        \item $f$ is a function whose domain is a limit ordinal $\lambda$ and $y = \bigcup(\ran f)$; or
+        \item none of the above and $y = \emptyset$.
+    \end{enumerate}
+
+    By transfinite recursion, construct a formula $\phi(u,v)$ such that:
+    \begin{itemize}
+        \item for every ordinal $\alpha$ there exists a unique $y$ such that $\phi(\alpha, y)$;
+        \item whenever $f$ is a function whose domain is an ordinal $\alpha$ and $\phi(\beta, f(\beta))$
+        for all $\beta \in \alpha$, then we have $\phi(\alpha, y)$ iff $\gamma(f,y)$ for all $y$.
+    \end{itemize}
+    For $\alpha$ an ordinal, let $t_\alpha$ be the unique set such that $\phi(\alpha, t_\alpha)$.
+
+    \paragraph{Exercise 2}
+    We prove that $\forall \alpha \in \omega. t_\alpha = 5 + \alpha$ by induction on $\alpha$. We have
+    $t_0 = 5$ and if $t_\alpha = 5 + \alpha$ then $t_{\alpha^+} = (5 + \alpha)^+ = 5 + \alpha^+$.
+
+    We now prove that if $\omega \underline{\in} \alpha$ then $t_\alpha = \alpha$ by transfinite induction
+    on $\alpha$. We have
+    \[    t_\omega = \bigcup_{n \in \omega} (5 + n) = \omega \]
+    If $\omega \underline{\in} \alpha$ and $t_\alpha = \alpha$ then $t_{\alpha^+} = \alpha^+$.
+
+    If $\lambda$ is a limit ordinal and $t_\alpha = \alpha$ for all $\alpha$ with $\omega \underline{\in} \alpha \in \lambda$
+    then
+    \begin{align*}
+        t_\lambda & = \bigcup_{\alpha \in \lambda} t_\alpha \\
+        & = \bigcup_{\omega \underline{\in} \alpha \in \lambda} t_\alpha \\
+        & = \bigcup_{\omega \underline{\in} \alpha \in \lambda} \alpha \\
+        & = \lambda
+    \end{align*}
+    \end{document}
