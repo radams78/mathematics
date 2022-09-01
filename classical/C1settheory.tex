@@ -1697,12 +1697,48 @@
         \end{proof}
         \qed
     \end{proof}
-    
+
     \begin{definition}[Normal]
         A function $\mathbf{F} : \mathbf{On} \rightarrow \mathbf{On}$ is \emph{normal} iff it is
         strictly monotone and continuous.
     \end{definition}
 
+    \begin{theorem}
+        Let $\mathbf{F} : \mathbf{On} \rightarrow \mathbf{On}$ be normal. Let $t_0 \leq \beta$.
+        Then there exists a greatest $\gamma$ such that $\mathbf{F}(\gamma) \leq \beta$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\gamma = \{ \alpha \in \mathbf{On} : \mathbf{F}(\alpha) \leq \beta \}$}}
+            \step{a}{$\gamma$ is an ordinal.}
+            \begin{proof}
+                \step{i}{$\gamma$ is a set.}
+                \begin{proof}
+                    \pf\ We have $\alpha \leq \mathbf{F}(\alpha)$ for all $\alpha$, so $\gamma \subseteq \beta$.
+                \end{proof}
+                \step{ii}{$\gamma$ is a transitive set.}
+                \begin{proof}
+                    \pf\ If $\alpha < \alpha'$ and $\mathbf{F}(\alpha') \leq \beta$ then $\mathbf{F}(\alpha) < \beta$
+                    by monotonicity.
+                \end{proof}
+            \end{proof}
+            \step{b}{$\gamma \neq 0$}
+            \begin{proof}
+                \pf\ By hypothesis.
+            \end{proof}
+        \step{3}{\case{$\gamma$ is a successor ordinal.}}
+        \begin{proof}
+            \pf\ Let $\gamma = \alpha^+$. Then $\alpha$ is greatest such that $\mathbf{F}(\alpha) \leq \beta$.
+        \end{proof}
+        \step{4}{\case{$\gamma$ is a limit ordinal.}}
+        \begin{proof}
+            \pf\ This is impossible since then $\mathbf{F}(\gamma) = \bigcup_{\alpha \in \gamma} \mathbf{F}(\alpha) \leq \beta$
+            and so $\gamma \in \gamma$.
+        \end{proof}
+        \qed
+    \end{proof}
+    
     \section{Natural Numbers}
 
     \begin{definition}[Inductive]
