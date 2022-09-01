@@ -1656,6 +1656,18 @@
         Any set is equinumerous to some ordinal number.
     \end{corollary}
 
+    \begin{theorem}[Transfinite Recursion]
+        Let $\mathbf{F} : \mathbf{V} \rightarrow \mathbf{V}$. Then there exists a function $\mathbf{G}
+        : \mathbf{On} \rightarrow \mathbf{V}$ such that
+        \[ \forall \alpha \in \mathbf{On}. \mathbf{G}(\alpha) = \mathbf{F}(\mathbf{G} \restriction \alpha)
+        \enspace . \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Define $\mathbf{G} = \{ (\alpha, y) : \exists f : \alpha^+ \rightarrow \mathbf{V}.
+        \forall \beta \in \alpha^+. f(\beta) = \mathbf{F}(f \restriction \beta) \}$. \qed
+    \end{proof}
+    
     \section{Natural Numbers}
 
     \begin{definition}[Inductive]
