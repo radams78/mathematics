@@ -404,3 +404,23 @@
 \contentsline {section}{\numberline {8.1}Alephs}{76}%
 \contentsline {paragraph}{Exercise 1}{76}%
 \contentsline {paragraph}{Exercise 2}{76}%
+\contentsline {paragraph}{Exercise 3}{77}%
+\contentsline {paragraph}{Exercise 4}{77}%
+\contentsline {paragraph}{Exercise 5}{77}%
+\contentsline {paragraph}{Exercise 6}{77}%
+\contentsline {paragraph}{Exercise 7}{78}%
+\contentsline {paragraph}{Exercise 8}{78}%
+\contentsline {section}{\numberline {8.2}Isomorphism Types}{78}%
+\contentsline {paragraph}{Exercise 9}{78}%
+\contentsline {paragraph}{Exercise 10}{78}%
+\contentsline {subparagraph}{(a)}{78}%
+\contentsline {subparagraph}{(b)}{79}%
+\contentsline {section}{\numberline {8.3}Arithmetic of Order Types}{79}%
+\contentsline {paragraph}{Exercise 11}{79}%
+\contentsline {paragraph}{Exercise 12}{79}%
+\contentsline {paragraph}{Exercise 13}{79}%
+\contentsline {paragraph}{Exercise 14}{79}%
+\contentsline {paragraph}{Exercise 15}{79}%
+\contentsline {paragraph}{Exercise 16}{80}%
+\contentsline {paragraph}{Exercise 17}{80}%
+\contentsline {paragraph}{Exercise 18}{80}%

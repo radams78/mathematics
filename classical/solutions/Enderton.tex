@@ -14,6 +14,7 @@
 \newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
 \newcommand{\seg}{\ensuremath{\operatorname{seg}}}
 \newcommand{\rank}{\ensuremath{\operatorname{rank}}}
+\newcommand{\kard}{\ensuremath{\operatorname{kard}}}
 
 \begin{document}
     \maketitle
@@ -4038,4 +4039,197 @@
         & = \bigcup_{\omega \underline{\in} \alpha \in \lambda} \alpha \\
         & = \lambda
     \end{align*}
+
+    \paragraph{Exercise 3}
+    If $\beta \in \gamma$ then $t_\beta \in t_\gamma$ by the definition of monotonicity.
+
+    Conversely, suppose $t_\beta \in t_\gamma$. Then $t_\beta \neq t_\gamma$ and $t_\gamma \notin t_\beta$,
+    so $\beta \neq \gamma$ and $\gamma \notin \beta$. Hence $\beta \in \gamma$ by trichotomy.
+
+    Now suppose $t_\beta = t_\gamma$. Then $t_\beta \notin t_\gamma$ and $t_\gamma \notin t_\beta$, hence
+    $\beta \notin \gamma$ and $\gamma \notin \beta$, and therefore $\beta = \gamma$ by trichotomy.
+
+    \paragraph{Exercise 4}
+    We have $t_\lambda \neq 0$ because $t_0 \in t_\lambda$.
+
+    Now, suppose for a contradiction $t_\lambda = \alpha^+$ for some $\alpha$. Then we have $\alpha \in
+    t_\lambda = \bigcup_{\beta \in \lambda} t_\beta$. Hence $\alpha \in t_\beta$ for some $\beta \in \lambda$.
+    Therefore,
+    \begin{align*}
+    \alpha^+ & \underline{\in} t_\beta \\
+    \therefore \alpha^+ & \in t_{\beta^+} \\
+    \therefore \alpha^{++} & \underline{\in} t_{\beta^+} \\
+    \therefore \alpha^{++} & \underline{\in} t_\lambda
+    \end{align*}
+    which is a contradiction.
+
+    \paragraph{Exercise 5}
+    The proof is by transfinite induction on $\beta$. 
+
+    We have $0 \underline{\in} t_0$.
+
+    If $\beta \underline{\in} t_\beta$ then $\beta \in t_{\beta^+}$, hence $\beta^+ \underline{\in} t_{\beta^+}$.
+
+    If $\lambda$ is a limit ordinal and $\forall \beta \in \lambda. \beta \underline{\in} t_\beta$ then
+    \begin{align*}
+        t_\lambda & = \sup_{\beta \in \lambda} t_\beta \\
+        & \underline{\ni} \sup_{\beta \in \lambda} \beta \\
+        & = \lambda
+    \end{align*}
+
+    \paragraph{Exercise 6}
+    The class is closed by Theorem Schema 8E. It is unbounded because, for any ordinal $\alpha$,
+    we have $\alpha \in \alpha^+ \underline{\in} t_{\alpha^+}$ by Exercise 5.
+
+    \paragraph{Exercise 7}
+    Let $\gamma$ be any fixed point of $t$ with $\beta \underline{\in} \gamma$. Then we have $f(0) \underline{\in}
+    \gamma$; and, if $f(n) \underline{\in} \gamma$, then
+    \begin{align*}
+        f(n^+) & = t_{f(n)} \\
+        & \underline{\in} t_\gamma \\
+        & = \gamma
+    \end{align*}
+
+    Hence by induction $f(n) \underline{\in} \gamma$ for all $n$, and so $\lambda \underline{\in} \gamma$. Thus
+    $\lambda$ is the least fixed point of $t$.
+
+    \paragraph{Exercise 8}
+    Monotonicity holds by the analogue of Theorem 8A (see the second Example on page 216).
+
+    For continuity, let $\lambda$ be a limit ordinal. We must prove that $\bigcup_{\beta \in \lambda} t'_\beta$
+    is the least fixed point of $t$ different from $t'_\beta$ for all $\beta \in \lambda$.
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\mu = \bigcup_{\beta \in \lambda} t'_\beta$}}
+        \step{2}{$\mu$ is a fixed point of $t$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                t_\mu & = \bigcup_{\beta \in \lambda} t_{t'_\beta} & (\text{Theorem Schema 8E}) \\
+                & = \bigcup_{\beta \in \lambda} t'_\beta & (t'_\beta \text{ is a fixed point of } t) \\
+                & = \mu
+            \end{align*}
+        \end{proof}
+        \step{3}{$\forall \beta \in \lambda. \mu \neq t'_\beta$}
+        \begin{proof}
+            \pf\ Because $t'_\beta \in t'_{\beta^+} \underline{\in} \mu$.
+        \end{proof}
+        \step{4}{If $\gamma$ is a fixed point of $t$ and $\forall \beta \in \lambda. \gamma \neq t'_\beta$
+        then $\mu \underline{\in} \gamma$}
+        \begin{proof}
+            \pf\ We have $\forall \beta \in \lambda. t'_\beta \in \gamma$ hence $\mu \underline{\in} \gamma$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \section{Isomorphism Types}
+
+    \paragraph{Exercise 9}
+    Pick $a \in A$. For any set $x \notin A$, let $A' = A - \{a\} \cup \{x\}$, and let $R'$ be the relation
+    formed by replacing any pair $\langle a, y \rangle$ with $\langle x,y \rangle$, any pair $\langle
+    y,a \rangle$ with $\langle y,x \rangle$, and $\langle a,a \rangle$ with $\langle x,x \rangle$ if
+    $aRa$. Then $\langle A,R \rangle \cong \langle A',R' \rangle$ and $\rank \langle A',R' \rangle > \rank x$.
+
+    Hence for every ordinal $\alpha$ there is a structure isomorphic to $\langle A,R \rangle$ with
+    rank $> \alpha$. Thus the class of structures isomorphic to $\langle A,R \rangle$ is not a set,
+    because the ranks of its members are unbounded.
+
+    \paragraph{Exercise 10}
+    \subparagraph{(a)}
+    The only set equinumerous with 0 is 0, so $\kard 0 = \{0\}$.
+
+    We have $V_1 = \{ \emptyset \} = \{ 0 \}$ and $V_2 = \{ \emptyset, \{ \emptyset \} \} = \{ 0,1 \}$. So 1
+    is the only set of rank 2 equinumerous with 1, and no set of rank $<2$ is equinumerous with 1.
+    Hence $\kard 1 = \{ 1 \}$.
+
+    We have $V_3 = \{ \emptyset , \{ 0 \}, \{ 1 \}, \{ 0,1 \} \} = \{ 0, 1, \{ 1 \}, 2 \}$. So 2 is the
+    only set of rank 3 equinumerous with 2, and no set of rank $< 3$ is equinumerous with 2. Thus
+    $\kard 2 = \{ 2 \}$.
+
+    \subparagraph{(b)}
+    $\kard 3$ is the set of all sets of rank 4 that are equinumerous with 3, i.e. the set of all subsets
+    of $V_3$ of cardinality 3. So
+    \[ \kard 3 = \{ \{ 0, 1, \{ 1 \} \}, 3, \{ 0, \{ 1 \}, 2 \}, \{ 1, \{ 1 \}, 2 \} \} \enspace . \]
+
+    \section{Arithmetic of Order Types}
+
+    \paragraph{Exercise 11}
+    Pick structures $\langle A, R \rangle$ and $\langle B, S \rangle$ of order type $\rho$ and $\sigma$
+    respectively. Define $R'$ on $A \times \{ 0 \}$ by: $\langle a, 0 \rangle R' \langle a', 0 \rangle$
+    iff $aRa'$. Define $S'$ on $B \times \{ 1 \}$ by: $\langle b, 1 \rangle S' \langle b', 1 \rangle$
+    iff $bSb'$. Then $\langle A \times \{ 0 \}, R' \rangle$ has order type $\rho$, $\langle B \times \{ 1 \},
+    S' \rangle$ has order type $\sigma$, and $(A \times \{ 0 \}) \cap (B \times \{ 1 \}) = \emptyset$.
+
+    \paragraph{Exercise 12}
+    Since we have:
+    
+    $\langle 0, a \rangle <_L \langle 0, a' \rangle$ iff $aRa'$
+    
+    $\langle 1, b \rangle <_L \langle 1, b' \rangle$ iff $bSb'$
+
+    $\langle 0,a \rangle <_L \langle 1,b \rangle$ for all $a \in A$ and $b \in B$
+
+    $\langle 1,b \rangle \nless_L \langle 0,a \rangle$ for all $a \in A$ and $b \in B$
+
+    \paragraph{Exercise 13}
+    If $f$ is an isomorphism between $\langle A,R \rangle$ and $\langle A', R' \rangle$,
+    snd $g$ is an isomorphism between $\langle B,S \rangle$ and $\langle B', S' \rangle$,
+    and $A \cap B = A' \cap B' = \emptyset$, then $f \cup g$ is an isomorphism between
+    $\langle A \cup B, R \oplus S \rangle$ and $\langle A' \cup B', R' \oplus S' \rangle$.
+
+    If $f$ is an isomorphism between $\langle A,R \rangle$ and $\langle A', R' \rangle$,
+    snd $g$ is an isomorphism between $\langle B,S \rangle$ and $\langle B', S' \rangle$,
+    then the function $h : A \times B \rightarrow A' \times B'$ defined by
+    \[ h(\langle a,b \rangle) = \langle f(a), g(b) \rangle \]
+    is an isomorphism between $\langle A \times B, R * S \rangle$ and
+    $\langle A' \times B', R' * S' \rangle$.
+
+    \paragraph{Exercise 14}
+    Let $\langle A,R \rangle$ be a structure of order type $\rho$ and $\langle B,S \rangle$
+    a structure of order type $\sigma$. Then $A \times B \approx \emptyset$ so $A \times B = \emptyset$.
+    Therefore $A = \emptyset$ or $B = \emptyset$, and so $\rho = 0$ or $\sigma = 0$.
+
+    \paragraph{Exercise 15}
+    \begin{align*}
+        (\overline{\omega} + \overline{1}) \cdot \overline{2}
+        & = \overline{\omega} + \overline{1} + \overline{\omega} + \overline{1} \\
+        & = \overline{\omega} + \overline{\omega} + \overline{1} \\
+        & \neq \overline{\omega} + \overline{\omega} + \overline{2} \\
+        & = (\overline{\omega} \cdot \overline{2}) + (\overline{1} \cdot \overline{2})
+    \end{align*}
+
+    \paragraph{Exercise 16}
+    Let $\langle A, R \rangle$ be a structure of order type $\rho$.
+
+    We have $\langle A \cup \emptyset, R \oplus \emptyset \rangle = \langle \emptyset \cup A, \emptyset
+    \oplus R \rangle = \langle A, R \rangle$ so $\rho + \overline{0} = \overline{0} + \rho = \rho$.
+
+    Now, $\langle 1, \emptyset \rangle$ is a structure of order type $\overline{1}$. We have $\langle
+        A \times 1, R * \emptyset \rangle = \langle 1 \times A, \emptyset * R \rangle = \langle A, R
+        \rangle$ so $\rho \cdot \overline{1} = \overline{1} \cdot \rho = \rho$.
+
+    We have $\langle A \times \emptyset, R * \emptyset \rangle = \langle \emptyset \times A, \emptyset * R
+    \rangle = \langle \emptyset, \emptyset \rangle$.
+
+    \paragraph{Exercise 17}
+    Pick an enumeration $A = \{a_0, a_1, \ldots \}$ of $A$. Define $f : A \rightarrow \mathbb{Q}$ by recursion
+    as follows:
+    
+    Let $f(a_0) = 0$.
+
+    Given $f(a_0)$, $f(a_1)$, \ldots, $f(a_n)$, we have the following three possibilities:
+    \begin{itemize}
+        \item $a_{n+1}$ is smaller than all of $a_0$, \ldots, $a_n$. In this case, let $a_k$ be the minimum
+        of $a_0$, \ldots, $a_n$, and set $f(a_{n+1}) = f(a_k) - 1$
+        \item $a_{n+1}$ is larger than all of $a_0$, \ldots, $a_n$. In this case, let $a_k$ be the maximum
+        of $a_0$, \ldots, $a_n$, and set $f(a_{n+1}) = f(a_k) + 1$
+        \item Otherwise, let $a_i$ be the largest element of $a_0$, \ldots, $a_n$ such that $a_i < a_{n+1}$,
+        and $a_j$ the smallest element such that $a_{n+1} < a_j$. Set $f(a_{n+1}) = (f(a_i) + f(a_j)) / 2$.
+    \end{itemize}
+
+    Then we have $a_i < a_j$ iff $f(a_i) < f(a_j)$ for all $i$, $j$. Hence $f$ is an isomorphism between
+    $\langle A, R \rangle$ and $\langle f[\![A]\!], <^\circ \rangle$.
+
+    \paragraph{Exercise 18}
     \end{document}

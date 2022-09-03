@@ -1040,7 +1040,68 @@
     \begin{proof}
         \pf\ Easy. \qed
     \end{proof}
-    
+
+    \begin{definition}
+        Let $A$ and $B$ be disjoint linearly ordered sets. The \emph{concatenation} of $A$ and $B$,
+        $A \oplus B$, is the set $A \cup B$ under the order given by: $x < y$ iff
+        \begin{itemize}
+            \item $x, y \in A$ and $x < y$; or
+            \item $x, y \in B$ and $x < y$; or
+            \item $x \in A$ and $y \in B$.
+        \end{itemize}
+
+        It is easy to check this is a linear ordering.
+    \end{definition}
+
+    \begin{proposition}
+        \[ A \oplus (B \oplus C) = (A \oplus B) \oplus C \]
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{proposition}
+        \[ A \oplus \emptyset = \emptyset \oplus A = A \]
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}
+        Let $A$ and $B$ be linearly ordered sets. The \emph{lexicographic order} on $A \times B$ is
+        defined by: $(a_1,b_1) < (a_2,b_2)$ iff $a_1 < a_2$ or ($a_1 = a_2$ and $b_1 < b_2$).
+    \end{definition}
+
+    \begin{proposition}
+        These two orders on $A \times B \times C$ are equal:
+        \begin{itemize}
+            \item lexicographic order formed from (lexicographic order on $A \times B$) and order on $C$
+            \item lexicographic order formed from order on $A$ and (lexicographic order on $B \times C$)
+        \end{itemize}
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{proposition}
+        \[ A \times 1 = 1 \times A = A \]
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{proposition}
+        $A \times (B \oplus C) = (A \times B) \oplus (A \times C)$
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
     \section{Well Orderings}
 
     \begin{definition}[Well Ordering]
@@ -1737,6 +1798,49 @@
             and so $\gamma \in \gamma$.
         \end{proof}
         \qed
+    \end{proof}
+
+    \begin{theorem}
+        Let $\mathbf{F} : \mathbf{On} \rightarrow \mathbf{On}$ be normal. Let $S$ be a nonempty set of
+        ordinals. Then $\mathbf{F}(\sup S) = \sup \mathbf{F}(S)$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{$\mathbf{F}(\sup S) \geq \sup \mathbf{F}(S)$}
+        \begin{proof}
+            \pf\ By monotonicity.
+        \end{proof}
+        \step{2}{$\mathbf{F}(\sup S) \leq \sup \mathbf{F}(S)$}
+        \begin{proof}
+            \step{a}{\case{$\sup S \in S$}}
+            \begin{proof}
+                \pf\ Immediate.
+            \end{proof}
+            \step{b}{\case{$\sup S \notin S$}}
+            \begin{proof}
+                \step{i}{$\sup S$ is a limit ordinal.}
+                \step{ii}{$\mathbf{F}(\sup S) = \sup \{ \mathbf{F}(\beta) : \beta < \sup S \}$}
+                \step{iii}{$\forall \beta < \sup S. \mathbf{F}(\beta) \leq \sup \mathbf{F}(S)$}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}[Veblen Fixed-Point Theorem (1907)]
+        A normal operation on ordinals has arbitrarily large fixed points.
+
+        That is, let $\mathbf{F} : \mathbf{On} \rightarrow \mathbf{On}$ be normal. For all $\alpha \in
+        \mathbf{On}$, there exists $\beta \geq \alpha$ such that $\mathbf{F}(\beta) = \beta$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Let $\beta = \sup_{n \in \omega} F^n(\alpha)$. Then $\alpha \leq \beta$ using monotonicity,
+        and
+        \begin{align*}
+            F(\beta) & = \sup_{n \in \omega} F^{n+1}(\alpha) \\
+            & = \beta & \qed
+        \end{align*}
     \end{proof}
     
     \section{Natural Numbers}
