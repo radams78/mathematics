@@ -466,6 +466,11 @@
         then $x\mathbf{R}z$.
     \end{definition}
 
+    \begin{definition}[Minimal]
+        Let $R$ be a relation on $D$. An element $m \in D$ is \emph{$R$-minimal} iff there is no
+        $x \in D$ such that $x < m$.
+    \end{definition}
+
     \section{$n$-ary Relations}
 
     \begin{definition}
@@ -885,6 +890,13 @@
         \pf\ The unique such $\overline{F}$ is $\{ ([x],F(x)) : x \in A \}$. \qed
     \end{proof}
 
+    \section{Well-Founded Relations}
+
+    \begin{definition}[Well Founded]
+        A relation $R$ on a set $D$ is \emph{well-founded} iff every nonempty subset of $D$ has an
+        $R$-minimal element.
+    \end{definition}
+    
     \section{Partial Orders}
 
     \begin{definition}[Strict Partial Order]
@@ -906,11 +918,6 @@
     \begin{proof}
         \pf\ Easy. \qed
     \end{proof}
-
-    \begin{definition}[Minimal]
-        Let $<$ be a partial order on $D$. An element $m \in D$ is \emph{minimal} iff there is no
-        $x \in D$ such that $x < m$.
-    \end{definition}
 
     \begin{definition}[Maximal]
         Let $<$ be a partial order on $D$. An element $m \in D$ is \emph{maximal} iff there is no
