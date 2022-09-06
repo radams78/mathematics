@@ -1286,6 +1286,22 @@
         \qed
     \end{proof}
 
+    \begin{theorem}
+        The concatenation of two well-orderings is a well ordering.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        The lexicographic ordering on the product of two well-ordered sets is a well ordering.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
     \section{Epsilon-Images}
 
     \begin{lemma}
@@ -1842,7 +1858,227 @@
             & = \beta & \qed
         \end{align*}
     \end{proof}
+
+    \begin{definition}[Addition]
+        The \emph{sum} of two ordinal numbers is the ordinal number of their concatenation.
+    \end{definition}
+
+    \begin{theorem}
+        Addition is associative.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \alpha + 0 = 0 + \alpha = \alpha \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \alpha + \beta^+ = (\alpha + \beta)^+ \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For $\lambda$ a limit ordinal, $\alpha + \lambda = \sup_{\beta < \lambda} (\alpha + \beta)$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any ordinal $\alpha$, the function that maps $\beta$ to $\alpha + \beta$ is normal.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{corollary}
+        \[ \beta < \gamma \Leftrightarrow \alpha + \beta < \alpha + \gamma \]
+    \end{corollary}
+
+    \begin{corollary}
+        If $\alpha + \beta = \alpha + \gamma$ then $\beta = \gamma$.
+    \end{corollary}
+
+    \begin{theorem}
+        If $\beta \leq \gamma$ then $\beta + \alpha \leq \gamma + \alpha$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Transfinite induction on $\alpha$. \qed
+    \end{proof}
+
+    \begin{theorem}[Subtraction Theorem]
+        If $\alpha \leq \beta$ then there exists a unique ordinal $\gamma$ such that $\alpha + \gamma = \beta$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Let $\gamma$ be greatest such that $\alpha + \gamma \leq \beta$. \qed
+    \end{proof}
+
+    \begin{definition}[Multiplication]
+        The \emph{product} of two ordinal numbers $\alpha$ and $\beta$ is the ordinal number of
+        $\alpha \times \beta$ under the lexicographic ordering.
+    \end{definition}
+
+    \begin{theorem}
+        Multiplication is associative.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \alpha (\beta + \gamma) = \alpha \beta + \alpha \gamma \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \alpha 1 = 1 \alpha = \alpha \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \alpha 0 = 0 \alpha = 0 \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \alpha \beta^+ = \alpha \beta + \alpha \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For $\lambda$ a limit ordinal, $\alpha \lambda = \sup_{\beta < \lambda} (\alpha \beta)$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any ordinal $\alpha > 0$, the function that maps $\beta$ to $\alpha \beta$ is normal.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{corollary}
+        For $\alpha > 0$ we have
+        \[ \beta < \gamma \Leftrightarrow \alpha \beta < \alpha \gamma \]
+    \end{corollary}
     
+    \begin{corollary}
+        For $\alpha > 0$, if $\alpha \beta = \alpha \gamma$ then $\beta = \gamma$.
+    \end{corollary}
+
+    \begin{theorem}
+        If $\beta \leq \gamma$ then $\beta \alpha \leq \gamma \alpha$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Transfinite induction on $\alpha$. \qed
+    \end{proof}
+
+    \begin{theorem}[Division Theorem]
+        Let $\delta \neq 0$. For any $\alpha$, there exist unique ordinals $\beta$, $\gamma$ such that
+        $\alpha = \delta \beta + \gamma$ and $\gamma < \delta$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Let $\beta$ be largest such that $\delta \beta \leq \alpha$, and let $\gamma$ be as given by
+        the Subtraction Theorem. \qed
+    \end{proof}
+
+    \begin{proof}
+        \pf\ Let $\gamma$ be greatest such that $\alpha + \gamma \leq \beta$. \qed
+    \end{proof}
+
+    \begin{definition}[Exponentiation]
+        Define $\alpha^\beta$ by transfinite recursion thus:
+        \begin{align*}
+            \alpha^0 & = 1 \\
+            \alpha^{\beta^+} & = \alpha^\beta \alpha \\
+            \alpha^\lambda & = \sup_{\beta < \lambda} \alpha^\beta
+        \end{align*}
+        for $\lambda$ a limit ordinal.
+    \end{definition}
+
+    \begin{theorem}
+        For $\alpha > 1$, the function that maps $\beta$ to $\alpha^\beta$ is normal.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{corollary}
+        For $\alpha > 1$ we have
+        \[ \beta < \gamma \Leftrightarrow \alpha^\beta < \alpha^\gamma \]
+    \end{corollary}
+    
+    \begin{corollary}
+        For $\alpha > 1$, if $\alpha^\beta = \alpha^\gamma$ then $\beta = \gamma$.
+    \end{corollary}
+
+    \begin{theorem}
+        If $\beta \leq \gamma$ then $\beta ^ \alpha \leq \gamma ^ \alpha$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Transfinite induction on $\alpha$. \qed
+    \end{proof}
+
+    \begin{theorem}[Logarithm Theorem]
+        Let $\alpha \neq 0$ and $\beta > 1$. Then there exist unique ordinals $\gamma$, $\delta$,
+        $\rho$ such that $\alpha = \beta^\gamma \delta + \rho$, $0 < \delta < \beta$ and $\rho < \beta^\gamma$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Let $\gamma$ be greatest such that $\beta^\gamma \leq \alpha$, and then apply the Division Theorem. \qed
+    \end{proof}
+    
+    \begin{theorem}
+        \[ \alpha^{\beta + \gamma} = \alpha^\beta \alpha^\gamma \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Transfinite induction on $\gamma$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \alpha^{\beta \gamma} = (\alpha^\beta)^\gamma \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Transfinite induction on $\gamma$. \qed
+    \end{proof}
+
     \section{Natural Numbers}
 
     \begin{definition}[Inductive]

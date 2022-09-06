@@ -4232,4 +4232,197 @@
     $\langle A, R \rangle$ and $\langle f[\![A]\!], <^\circ \rangle$.
 
     \paragraph{Exercise 18}
-    \end{document}
+    Pick enumerations $\{ a_0, a_1, \ldots \}$ of $A$ and $\{ b_0, b_1, \ldots \}$ of $B$.
+
+    Define isomorphisms $F_n \subseteq A \times B$ by recursion on $n$ in such a way that each $F_n$
+    is an isomorphism between a subset of $A_n$ of $A$ and a subset $B_n$ of $B$ such that:
+    \begin{itemize}
+        \item For all $n$ we have $a_n \in A_{2n}$
+        \item For all $n$ we have $b_n \in B_{2n+1}$
+    \end{itemize}
+    as follows.
+
+    \[ F_0 = \{ \langle a_0, b_0 \} \]
+
+    Given $F_{2n}$, if $b_n \in B_{2n}$ then $F_{2n+1} = F_{2n}$. Otherwise:
+    \begin{itemize}
+        \item if $b_n$ is greater than every element in $B_{2n}$, then let $m$ be least such that $a_m$
+        is larger than every element of $A_{2n}$ (here we use the fact that $A$ has no largest element)
+        and set $F_{2n+1} = F_{2n} \cup \{ \langle a_m, b_n \rangle \}$
+        \item if $b_n$ is smaller than every element in $B_{2n}$, then let $m$ be least such that $a_m$
+        is smaller than every element of $A_{2n}$ (here we use the fact that $A$ has no smallest element)
+        and set $F_{2n+1} = F_{2n} \cup \{ \langle a_m, b_n \rangle \}$
+        \item otherwise let $b$ be the greatest element in $B_{2n}$ such that $b < b_n$,
+        and $b'$ the least element in $B_{2n}$ such that $b_n < b'$. Let $a = \inv{F_{2n}}(b)$
+        and $a' = \inv{F_{2n}}(b')$. Let $m$ be least such that $a < a_m < a'$ (here we use the fact
+        that $A$ is dense). Let $F_{2n+1} = F_{2n} \cup \{ \langle a_m, b_n \rangle \}$
+    \end{itemize}
+    In every case we have that $F_{2n+1}$ is an isomorphism between a subset of $A$ and a subset of $B$
+    that contains $b_n$.
+
+    Similarly, given $F_{2n+1}$, we can define $F_{2n+2}$ to be an isomorphism between a subset of $A$
+    that contains $a_n$ and a subset of $B$.
+
+    Now, let $f = \bigcup_n F_n$. Then $f$ is an isomorphism between $\langle A, R \rangle$
+    and $\langle B, S \rangle$.
+
+    \paragraph{Exercise 19}
+    This holds because the concatenation of $\mathbb{Q}$ with itself, and the lexicographic ordering on
+    $\mathbb{Q}^2$, are dense linear orderings on countable nonempty sets.
+
+    \section{Ordinal Arithmetic}
+
+    \paragraph{Exercise 20}
+    \begin{proof}
+        \pf
+        \step{1}{For every ordinal $\alpha$, there exists an ordinal $\lambda$ that is either a limit ordinal
+        or 0 and a natural number $n$ such that $\alpha = \lambda + n$}
+        \begin{proof}
+            \step{a}{$0 = 0 + 0$}
+            \step{b}{If $\alpha = \lambda + n$ then $\alpha^+ = \lambda + n^+$}
+            \step{c}{For $\lambda$ a limit ordinal we have $\lambda = \lambda + 0$}
+        \end{proof}
+        \step{2}{If $\lambda$, $\mu$ are either limit ordinals or 0, and $m, n \in \omega$, and $\lambda + m
+        = \mu + n$, then $\lambda = \mu$ and $m = n$}
+        \begin{proof}
+            \step{a}{\pflet{$P(m)$ be the property: for all $\lambda$, $\mu$ and $n \in \omega$,
+            if $\lambda$ and $\mu$ are either limit ordinals or 0 and $\lambda + m = \mu + n$,
+            then $\lambda = \mu$ and $m = n$}}
+            \step{b}{$P(0)$}
+            \begin{proof}
+                \step{i}{\assume{$\lambda + 0 = \mu + n$}}
+                \step{ii}{$n = 0$}
+                \begin{proof}
+                    \pf\ Otherwise $\lambda = \mu + n$ would be a successor ordinal.
+                \end{proof}
+                \step{iii}{$\lambda = \mu$}
+            \end{proof}
+            \step{c}{$\forall m \in \omega. P(m) \Rightarrow P(m^+)$}
+            \begin{proof}
+                \step{i}{\pflet{$m \in \omega$}}
+                \step{ii}{\assume{$P(m)$}}
+                \step{iii}{\assume{$\lambda + m^+ = \mu + n$}}
+                \step{iv}{$n \neq 0$}
+                \begin{proof}
+                    \pf\ Otherwise $\mu = \lambda + m^+$ is a successor ordinal.
+                \end{proof}
+                \step{v}{\pick\ $p$ such that $n = p^+$}
+                \step{vi}{$(\lambda + m)^+ = (\mu + p)^+$}
+                \step{vii}{$\lambda + m = \mu + p$}
+                \step{viii}{$\lambda = \mu$ and $m = p$}
+                \begin{proof}
+                    \pf\ By \stepref{ii}
+                \end{proof}
+                \step{ix}{$m^+ = n$}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 21}
+    1 is the least integer in the ordering, followed by all the integers with exactly one prime factor,
+    then all the integers with two prime factors, etc. So the ordinal is $1 + \omega \cdot \omega =
+    \omega^2$.
+
+    \paragraph{Exercise 22}
+    \subparagraph{(a)}
+    If $\beta \underline{\in} \gamma$ then $\beta + 0 = \beta \underline{\in} \gamma = \gamma + 0$.
+
+    If $\beta + \alpha \underline{\in} \gamma + \alpha$ then $\beta + \alpha^+ = (\beta + \alpha)^+
+    \underline{\in} (\gamma + \alpha)^+ = \gamma + \alpha^+$.
+
+    For $\lambda$ a limit ordinal, if $\forall \alpha \in \lambda. \beta + \alpha \underline{\in}
+    \gamma + \alpha$, then we have $\beta + \lambda = \sup_{\alpha \in \lambda} (\beta + \alpha)
+    \underline{\in} \sup_{\alpha \in \lambda} (\gamma + \alpha) = \gamma + \lambda$.
+
+    \subparagraph{(b)}
+    We have $\beta \cdot 0 = 0 = \gamma \cdot 0$.
+
+    If $\beta \underline{\in} \gamma$ and $\beta \cdot \alpha \underline{\in} \gamma \cdot \alpha$
+    then $\beta \cdot \alpha^+ = \beta \cdot \alpha + \beta \underline{\in} \gamma \cdot \alpha + \gamma
+    = \gamma \cdot \alpha^+$ using part (a).
+
+    For $\lambda$ a limit ordinal, if $\forall \alpha \in \lambda. \beta \cdot \alpha \underline{\in}
+    \gamma \cdot \alpha$, then we have $\beta \cdot \lambda = \sup_{\alpha \in \lambda} (\beta \cdot \alpha)
+    \underline{\in} \sup_{\alpha \in \lambda} (\gamma \cdot \alpha) = \gamma \cdot \lambda$.
+
+    \paragraph{Exercise 23}
+    \subparagraph{(a)}
+    \begin{align*}
+        \omega + \omega^2 & = \omega \cdot 1 + \omega \cdot \omega \\
+        & = \omega \cdot (1 + \omega) & (\text{Theorem 8K})\\
+        & = \omega \cdot \omega & (\text{Example on page 228})\\
+        & = \omega^2
+    \end{align*}
+
+    \subparagraph{(b)}
+    Let $\omega^2 \underline{\in} \beta$. Let $\gamma$ be the ordinal such that $\beta = \omega^2 + \gamma$
+    (Subtraction Theorem). Then
+    \begin{align*}
+        \omega + \beta & = \omega + \omega^2 + \gamma \\
+        & = \omega + \gamma \\
+        & = \beta
+    \end{align*}
+
+    \paragraph{Exercise 24}
+    We prove first that $1 + \alpha = \alpha$. Let $\gamma$ be the ordinal such that $\alpha =
+    \omega + \gamma$. Then
+    \begin{align*}
+        1 + \alpha & = 1 + \omega + \gamma \\
+        & = \omega + \gamma & (\text{Example on page 228})\\
+        & = \alpha
+    \end{align*}
+
+    Hence
+    \begin{align*}
+        \alpha + \alpha^2 & = \alpha \cdot (1 + \alpha) \\
+        & = \alpha^2
+    \end{align*}
+
+    Now, let $\delta$ be the ordinal such that $\beta = \alpha^2 + \delta$. Then
+    \begin{align*}
+        \alpha + \beta & = \alpha + \alpha^2 + \delta \\
+        & = \alpha^2 + \delta \\
+        & = \beta
+    \end{align*}
+
+    \paragraph{Exercise 25}
+    Let $\beta = \alpha \cup \{ \alpha + \delta : \delta \in \theta \}$. Then $\beta$ is a transitive set of
+    ordinals, hence an ordinal. We also have $\alpha \underline{\in} \beta$. By the Subtraction Theorem,
+    let $\gamma$ be the ordinal such that
+    \[ \beta = \alpha + \gamma \enspace . \]
+    For any $\delta \in \theta$ we have $\alpha + \delta \in \beta$ hence $\delta \in \gamma$ (Corollary
+    8P). Thus $\theta \underline{\in} \gamma$.
+
+    We have $\alpha + \theta \notin \beta$ (since $\alpha + \theta \notin \alpha$ and $\alpha + \theta
+    \neq \alpha + \delta$ for any $\delta \in \theta$). So $\theta \notin \gamma$ (Corollary 8P).
+
+    Thus $\theta = \gamma$, and so $\beta = \alpha + \theta$.
+
+    \paragraph{Exercise 26}
+    Follows just by repeated application of uniqueness in the Logarithm Theorem.
+
+    \paragraph{Exercise 27}
+    \subparagraph{Theorem 8R}
+    If $\alpha = 0$, then both sides are 1 if $\beta = \gamma = 0$ and 0 otherwise.
+
+    If $\alpha = 1$ then both sides are 1.
+
+    \subparagraph{Theorem 8S}
+    If $\alpha = 0$, and either $\beta = 0$ or $\gamma = 0$, then both sides are 1.
+
+    If $\alpha = 0$ and $\beta$ and $\gamma$ are both non-zero, then both sides are 0.
+
+    If $\alpha = 1$ then both sides are 1.
+
+    \paragraph{Exercise 28}
+    This follows immediately from a Veblen Fixed-Point Theorem.
+
+    \paragraph{Exercise 29}
+    Let $S$ be a nonempty set of epsilon numbers. Then
+    \begin{align*}
+        \omega^{\sup S} & = \sup_{\alpha \in S} \omega^\alpha & (\text{Theorem Schema 8E}) \\
+        & = \sup_{\alpha \in S} \alpha \\
+        & = \sup S  
+    \end{align*}
+\end{document}
