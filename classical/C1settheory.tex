@@ -39,6 +39,10 @@
     Let there be a binary relation called \emph{membership}, $\in$. When $x \in y$ holds, we say $x$ is a
     \emph{member} or \emph{element} of $y$. We write $x \notin y$ iff $x$ is not a member of $y$.
 
+    \begin{definition}[Transitive Set]
+        A set $A$ is a \emph{transitive set} iff every member of a member of $A$ is a member of $A$.
+    \end{definition}
+
     \section{The Axioms}
 
     \begin{axiom}[Extensionality]
@@ -893,10 +897,133 @@
     \section{Well-Founded Relations}
 
     \begin{definition}[Well Founded]
-        A relation $R$ on a set $D$ is \emph{well-founded} iff every nonempty subset of $D$ has an
+        A relation $R$ on a class $D$ is \emph{well-founded} iff every nonempty subset of $D$ has an
         $R$-minimal element.
     \end{definition}
-    
+
+    \begin{theorem}[Transfinite Induction]
+        Let $R$ be a well-founded relation on $A$. Let $B \subseteq A$. Assume that, for all $x \in A$,
+        if $\forall y \in A (yRx \Rightarrow y \in B)$, then $x \in B$. Then $B = A$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ If not, $A - B$ has an $R$-minimal element $a_0$, say. But then we have $\forall y. (y R a_0
+        \Rightarrow y \in B)$ and $a_0 \notin B$, which is a contradiction. \qed
+    \end{proof}
+
+    \begin{theorem}[Transfinite Recursion Theorem Schema]
+        For any property $P(x,y,z)$ the following is a theorem:
+
+        Assume that $<$ is a well-founded relation on $A$. Assume that $\forall x,y \exists ! z P(x,y,z)$.
+        Then there exists a unique function $F$ with domain $A$ such that
+        \[ \forall t \in A. P(F \restriction \seg t, t, F(t)) \enspace . \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{Given $t \in A$, let us say that a function $v$ is \emph{$P$-constructed up to $t$}
+        iff $\dom v = \{ x \in A : x \leq t \}$ and $\forall x \in \dom v. P(v \restriction \seg x, x, v(x))$}
+        \step{2}{Let $t_1, t_2 \in A$ with $t_1 \leq t_2$. Let $v_1$ be a function that is $P$-constructed
+        up to $t_1$, and $v_2$ a function that is $P$-constructed up to $t_2$. Then $\forall x \leq t_1.
+        v_1(x) = v_2(x)$}
+        \begin{proof}
+            \step{a}{\pflet{$x \leq t_1$}}
+            \step{b}{\assume{$\forall y < x. v_1(y) = v_2(y)$}}
+            \step{c}{$v_1 \restriction \seg x = v_2 \restriction \seg x$}
+            \step{d}{$P(v_1 \restriction \seg x, v_1(x))$}
+            \step{e}{$P(v_2 \restriction \seg x, v_2(x))$}
+            \step{c}{$v_1(x) = v_2(x)$}
+            \begin{proof}
+                \pf\ Since there is only one $y$ such that $P(v_1 \restriction \seg x, x, y)$.
+            \end{proof}
+            \qedstep
+            \begin{proof}
+                \pf\ By transfinite induction.
+            \end{proof}
+        \end{proof}
+        \step{3}{\pflet{$\mathcal{H} = \{ v : \exists t \in A. \text{$v$ is $P$-constructed up to $t$} \}$}}
+        \step{4}{$\mathcal{H}$ is a set.}
+        \begin{proof}
+            \pf\ By a Replacement Axiom since, if $v_1$ and $v_2$ are both $P$-constructed up to $t$
+            then $v_1 = v_2$ by \stepref{2}.
+        \end{proof}
+        \step{5}{\pflet{$F = \bigcup \mathcal{H}$}}
+        \step{6}{$F$ is a function}
+        \begin{proof}
+            \step{a}{\assume{$tFx$ and $tFy$}}
+            \step{b}{\pick\ $v_1, v_2 \in \mathcal{H}$ such that $v_1(t) = x$ and $v_2(t) = y$}
+            \step{c}{\pick\ $t_1, t_2 \in A$ such that $v_1$ is $P$-constructed up to $t_1$
+            and $v_2$ is $P$-constructed up to $t_2$}
+            \step{d}{\assume{w.l.o.g. $t_1 \leq t_2$}}
+            \step{e}{$v_1(t) = v_2(t)$}
+            \begin{proof}
+                \pf\ By \stepref{2}
+            \end{proof}
+            \step{f}{$x = y$}
+        \end{proof}
+        \step{7}{$\forall x \in \dom F. P(F \restriction \seg x, x, F(x))$}
+        \begin{proof}
+            \step{a}{\pflet{$x \in \dom F$}}
+            \step{b}{\pick\ $v \in \mathcal{H}$ such that $x \in \dom v$}
+            \step{c}{$P(v \restriction \seg x, x, v(x))$}
+            \step{d}{$v \restriction \seg x = F \restriction \seg x$}
+            \begin{proof}
+                \pf\ $\forall y < x. (y, v(y)) \in \bigcup \mathcal{H} = F$
+            \end{proof}
+            \step{e}{$v(x) = F(x)$}
+            \begin{proof}
+                \pf\ $(x, v(x)) \in \bigcup \mathcal{H} = F$
+            \end{proof}
+        \end{proof}
+        \step{8}{$\dom F = A$}
+        \begin{proof}
+            \step{a}{\pflet{$x \in A$}}
+            \step{b}{\assume{$\forall y < x. y \in \dom F$}}
+            \step{c}{\pflet{$z$ be the object such that $P(F \restriction \seg x, z)$}}
+            \step{d}{$F \restriction \seg x \cup \{ (x, z) \}$ is $P$-constructed up to $x$}
+            \step{e}{$x \in \dom F$}
+            \qedstep
+            \begin{proof}
+                \pf\ By transfinite induction, this proves $\forall x \in A. x \in \dom F$.
+            \end{proof}
+        \end{proof}
+        \step{9}{$F$ is unique.}
+        \begin{proof}
+            \step{a}{\pflet{$G$ be a function with domain $A$ such that $\forall x \in A. P(G \restriction
+            \seg x, x, G(x))$} \prove{$\forall x \in A. F(x) = G(x)$}}
+            \step{b}{\pflet{$x \in A$}}
+            \step{c}{\assume{$\forall y < x. F(y) = G(y)$}}
+            \step{d}{$F \restriction \seg x = G \restriction \seg x$}
+            \step{e}{$F(x) = G(x)$}
+            \qedstep
+            \begin{proof}
+                \pf\ This completes the proof by transfinite induction.
+            \end{proof}
+        \end{proof}        
+        \qed
+    \end{proof}
+
+    \section{Transitive Closure}
+
+    \begin{theorem}
+        \label{theorem:tc}
+        For any relation $R$ on a set $A$, there exists a least transitive relation $R^t$ such that $R
+        \subseteq R^t$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Define $R^t$ to be the intersection of all the transitive relations $Q$ such that $R \subseteq Q$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \label{theorem:tc_well_founded}
+        The transitive closure of a well-founded relation is well-founded.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ The $R$-minimal element of a nonempty set $B$ is also the $R^t$-minimal element. \qed
+    \end{proof}
+
     \section{Partial Orders}
 
     \begin{definition}[Strict Partial Order]
@@ -987,6 +1114,14 @@
 
     \begin{proof}
         \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Let $R$ be a well-founded relation on $A$. The transitive closure of $R$ is a partial order on $A$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ It is well founded, hence irreflexive. \qed
     \end{proof}
 
     \section{Linear Orders}
@@ -1116,25 +1251,6 @@
         $A$ has a least element.
     \end{definition}
 
-    \begin{theorem}[Transfinite Induction Principle]
-        Let $<$ be a well ordering on $A$. Let $B \subseteq A$. Suppose that
-        \[ \forall x \in A (\seg x \subseteq B \Rightarrow x \in B) \enspace . \]
-        Then $B = A$.
-    \end{theorem}
-
-    \begin{proof}
-        \pf
-        \step{1}{\assume{for a contradiction $B \neq A$}}
-        \step{2}{\pflet{$t$ be the least element of $A - B$}}
-        \step{3}{$\seg t \subseteq B$}
-        \step{4}{$t \notin B$}
-        \qedstep
-        \begin{proof}
-            \pf\ This is a contradiction.
-        \end{proof}
-        \qed
-    \end{proof}
-
     \begin{theorem}
         Assume that $<$ is a linear ordering on $A$. Assume that the only $<$-inductive subset of $A$ is $A$
         itself. Then $<$ is a well ordering on $A$.
@@ -1155,98 +1271,6 @@
         \end{proof}
         \step{3}{$A - B = A$}
         \step{4}{$B = \emptyset$}
-        \qed
-    \end{proof}
-
-    \begin{theorem}[Transfinite Recursion Theorem Schema]
-        For any property $P(x,y)$ the following is a theorem:
-
-        Assume that $<$ is a well ordering on $A$. Assume that $\forall x \exists ! y P(x,y)$.
-        Then there exists a unique function $F$ with domain $A$ such that
-        \[ \forall t \in A. P(F \restriction \seg t, F(t)) \enspace . \]
-    \end{theorem}
-
-    \begin{proof}
-        \pf
-        \step{1}{Given $t \in A$, let us say that a function $v$ is \emph{$P$-constructed up to $t$}
-        iff $\dom v = \{ x \in A : x \leq t \}$ and $\forall x \in \dom v. P(v \restriction \seg x, v(x))$}
-        \step{2}{Let $t_1, t_2 \in A$ with $t_1 \leq t_2$. Let $v_1$ be a function that is $P$-constructed
-        up to $t_1$, and $v_2$ a function that is $P$-constructed up to $t_2$. Then $\forall x \leq t_1.
-        v_1(x) = v_2(x)$}
-        \begin{proof}
-            \step{a}{\pflet{$x \leq t_1$}}
-            \step{b}{\assume{$\forall y < x. v_1(y) = v_2(y)$}}
-            \step{c}{$v_1 \restriction \seg x = v_2 \restriction \seg x$}
-            \step{d}{$P(v_1 \restriction \seg x, v_1(x))$}
-            \step{e}{$P(v_2 \restriction \seg x, v_2(x))$}
-            \step{c}{$v_1(x) = v_2(x)$}
-            \begin{proof}
-                \pf\ Since there is only one $y$ such that $P(v_1 \restriction \seg x, y)$.
-            \end{proof}
-            \qedstep
-            \begin{proof}
-                \pf\ By transfinite induction.
-            \end{proof}
-        \end{proof}
-        \step{3}{\pflet{$\mathcal{H} = \{ v : \exists t \in A. \text{$v$ is $P$-constructed up to $t$} \}$}}
-        \step{4}{$\mathcal{H}$ is a set.}
-        \begin{proof}
-            \pf\ By a Replacement Axiom since, if $v_1$ and $v_2$ are both $P$-constructed up to $t$
-            then $v_1 = v_2$ by \stepref{2}.
-        \end{proof}
-        \step{5}{\pflet{$F = \bigcup \mathcal{H}$}}
-        \step{6}{$F$ is a function}
-        \begin{proof}
-            \step{a}{\assume{$tFx$ and $tFy$}}
-            \step{b}{\pick\ $v_1, v_2 \in \mathcal{H}$ such that $v_1(t) = x$ and $v_2(t) = y$}
-            \step{c}{\pick\ $t_1, t_2 \in A$ such that $v_1$ is $P$-constructed up to $t_1$
-            and $v_2$ is $P$-constructed up to $t_2$}
-            \step{d}{\assume{w.l.o.g. $t_1 \leq t_2$}}
-            \step{e}{$v_1(t) = v_2(t)$}
-            \begin{proof}
-                \pf\ By \stepref{2}
-            \end{proof}
-            \step{f}{$x = y$}
-        \end{proof}
-        \step{7}{$\forall x \in \dom F. P(F \restriction \seg x, F(x))$}
-        \begin{proof}
-            \step{a}{\pflet{$x \in \dom F$}}
-            \step{b}{\pick\ $v \in \mathcal{H}$ such that $x \in \dom v$}
-            \step{c}{$P(v \restriction \seg x, v(x))$}
-            \step{d}{$v \restriction \seg x = F \restriction \seg x$}
-            \begin{proof}
-                \pf\ $\forall y < x. (y, v(y)) \in \bigcup \mathcal{H} = F$
-            \end{proof}
-            \step{e}{$v(x) = F(x)$}
-            \begin{proof}
-                \pf\ $(x, v(x)) \in \bigcup \mathcal{H} = F$
-            \end{proof}
-        \end{proof}
-        \step{8}{$\dom F = A$}
-        \begin{proof}
-            \step{a}{\pflet{$x \in A$}}
-            \step{b}{\assume{$\forall y < x. y \in \dom F$}}
-            \step{c}{\pflet{$z$ be the object such that $P(F \restriction \seg x, z)$}}
-            \step{d}{$F \restriction \seg x \cup \{ (x, z) \}$ is $P$-constructed up to $x$}
-            \step{e}{$x \in \dom F$}
-            \qedstep
-            \begin{proof}
-                \pf\ By transfinite induction, this proves $\forall x \in A. x \in \dom F$.
-            \end{proof}
-        \end{proof}
-        \step{9}{$F$ is unique.}
-        \begin{proof}
-            \step{a}{\pflet{$G$ be a function with domain $A$ such that $\forall x \in A. P(G \restriction
-            \seg x, G(x))$} \prove{$\forall x \in A. F(x) = G(x)$}}
-            \step{b}{\pflet{$x \in A$}}
-            \step{c}{\assume{$\forall y < x. F(y) = G(y)$}}
-            \step{d}{$F \restriction \seg x = G \restriction \seg x$}
-            \step{e}{$F(x) = G(x)$}
-            \qedstep
-            \begin{proof}
-                \pf\ This completes the proof by transfinite induction.
-            \end{proof}
-        \end{proof}        
         \qed
     \end{proof}
 
@@ -2141,10 +2165,6 @@
         \end{enumerate}
     \end{definition}
 
-    \begin{definition}[Transitive Set]
-        A set $A$ is a \emph{transitive set} iff every member of a member of $A$ is a member of $A$.
-    \end{definition}
-
     \begin{theorem}
         \label{theorem:union_transitive_successor}
         For any transitive set $a$, $\bigcup (a^+) = a$.
@@ -2393,7 +2413,65 @@
         \pf\ If there were then there would be no $m \in \ran f$ such that $m \cap \ran f = \emptyset$,
         contradicting the Axiom of Regularity. \qed
     \end{proof}
-    
+
+    \begin{theorem}[Choice]
+        Let $R$ be a relation on $A$. Then $R$ is well founded iff there does not exist
+        any function $f : \omega \rightarrow A$ such that $f(n+1) R f(n)$ for all $n \in \omega$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{If $R$ is well founded then there does not exist any function $f : \omega
+        \rightarrow A$ such that $f(n+1) R f(n)$ for all $n \in \omega$.}
+        \begin{proof}
+            \pf\ If there is such a function $f$ then $\ran f$ is a nonempty subset of $A$ with no $R$-minimal
+            element.
+        \end{proof}
+        \step{2}{If there does not exist any function $f : \omega \rightarrow A$ such that $f(n+1)
+        R f(n)$ for all $n \in \omega$ then $R$ is well founded.}
+        \begin{proof}
+            \step{a}{\pflet{$X \subseteq A$ be a nonempty subset of $A$ with no $R$-minimal element.}
+            \prove{There exists a function $f : \omega \rightarrow A$ such that
+            $f(n+1) < f(n)$ for all $n \in \omega$}}
+            \step{b}{\pick\ $a_0 \in X$}
+            \step{c}{$\forall x \in X. \exists y \in X. y R x$}
+            \step{d}{\pick\ a function $g : X \rightarrow X$ such that $\forall x \in X. g(x) R x$}
+            \begin{proof}
+                \pf\ By the Axiom of Choice.
+            \end{proof}
+            \step{e}{Define $f : \omega \rightarrow A$ recursively by:
+            \begin{align*}
+                f(0) & = a_0 \\
+                f(n^+) & = g(f(n))
+            \end{align*}}
+            \step{f}{$\forall n \in \omega. f(n^+) R f(n)$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Alternative proof for Theorem \ref{theorem:tc}}
+
+    Define $f : \omega \rightarrow \mathcal{P} A^2$ by $f(0) = R$ and $f(n^+) = f(n) \circ R$. Define
+    $R^t = \bigcup_{n \in \omega} f(n)$.
+
+    \begin{theorem}
+        For any set $A$, there exists the smallest transitive set $B$ such that $A \subseteq B$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Define $f : \omega \rightarrow \mathbf{V}$ by
+        \begin{align*}
+            f(0) & = A \\
+            f(n^+) & = f(n) \cup \bigcup f(n)
+        \end{align*}
+        Then $\bigcup_n f(n)$ is the smallest transitive set that includes $A$. \qed
+    \end{proof}
+
+    \begin{definition}[Transitive Closure]
+        The \emph{transitive closure} of a set $A$ is the least transitive set that includes $A$.
+    \end{definition}
+
+
     \section{Finite Sets}
 
     \begin{definition}[Finite]
@@ -3008,41 +3086,6 @@
     \begin{proof}
         \pf\ If $A$ is a subset of $\omega$ with no least element, we prove $\forall n \in \omega. n \notin A$
         by strong induction on $n$. \qed
-    \end{proof}
-
-    \begin{theorem}[Choice]
-        Let $<$ be a linear ordering on $A$. Then $<$ is a well-ordering on $A$ iff there does not exist
-        any function $f : \omega \rightarrow \omega$ such that $f(n+1) < f(n)$ for all $n \in \omega$.
-    \end{theorem}
-
-    \begin{proof}
-        \pf
-        \step{1}{If $<$ is a well-ordering on $A$ then there does not exist any function $f : \omega
-        \rightarrow \omega$ such that $f(n+1) < f(n)$ for all $n \in \omega$.}
-        \begin{proof}
-            \pf\ If there is such a function $f$ then $\ran f$ is a nonempty subset of $A$ with no least
-            element.
-        \end{proof}
-        \step{2}{If there does not exist any function $f : \omega \rightarrow A$ such that $f(n+1)
-        < f(n)$ for all $n \in \omega$ then $<$ is a well-ordering on $A$.}
-        \begin{proof}
-            \step{a}{\pflet{$X \subseteq A$ be a nonempty subset of $A$ with no least element.}
-            \prove{There exists a function $f : \omega \rightarrow A$ such that
-            $f(n+1) < f(n)$ for all $n \in \omega$}}
-            \step{b}{\pick\ $a_0 \in X$}
-            \step{c}{$\forall x \in X. \exists y \in X. y < x$}
-            \step{d}{\pick\ a function $g : X \rightarrow X$ such that $\forall x \in X. g(x) < x$}
-            \begin{proof}
-                \pf\ By the Axiom of Choice.
-            \end{proof}
-            \step{e}{Define $f : \omega \rightarrow A$ recursively by:
-            \begin{align*}
-                f(0) & = a_0 \\
-                f(n^+) & = g(f(n))
-            \end{align*}}
-            \step{f}{$\forall n \in \omega. f(n^+) < f(n)$}
-        \end{proof}
-        \qed
     \end{proof}
 
     \begin{lemma}
@@ -3852,6 +3895,7 @@
     \end{definition}
 
     \begin{theorem}
+        \label{theorem:rank_monotone}
         If $A$ is grounded and $a \in A$ then $a$ is grounded and $\rank a < \rank A$.
     \end{theorem}
 
@@ -3916,4 +3960,64 @@
             \end{proof}
         \qed
     \end{proof}
+
+    \begin{theorem}
+        Let $A$ be any set and $A^t$ its transitive closure. Let $M^t$
+        be the transitive closure of the relation $\{ \langle x,y \rangle : x \in y \in A^t \}$.
+        Define $E : A^t \rightarrow \mathbf{V}$
+        by transfinite recursion thus:
+        \[ E(a) = \{ E(x) : x M^t a \} \qquad (a \in A^t) \enspace . \]
+        Then $E(a) = \rank a$ for all $a \in A^t$, and $\ran E = \rank A$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{0}{$M^t$ is well-founded}
+        \begin{proof}
+            \pf\ Theorem \ref{theorem:tc_well_founded}.
+        \end{proof}
+        \step{1}{$\forall a \in A^t. \rank a = \{ \rank x : x M^t a \}$}
+        \begin{proof}
+            \step{a}{$\forall x,a \in A^t. x M^t a \Rightarrow \rank x < \rank a$}
+            \begin{proof}
+                \pf\ Theorem \ref{theorem:rank_monotone}.
+            \end{proof}
+            \step{b}{$\forall x \in A^t. \forall \alpha < \rank a. \exists x M^t a. \alpha = \rank x$}
+            \begin{proof}
+                \step{i}{\pflet{$a \in A^t$}}
+                \step{ii}{\assume{$\forall b M^t a. \forall \alpha < \rank b. \exists x M^t b. \alpha = \rank x$}}
+                \step{iii}{\pflet{$\alpha < \rank a$}}
+                \step{iv}{\pick\ $b \in a$ such that $\alpha \leq \rank b$}
+                \begin{proof}
+                    \pf\ Theorem \ref{theorem:grounded_sup}.
+                \end{proof}
+                \step{v}{\case{$\alpha < \rank b$}}
+                \begin{proof}
+                    \step{one}{\pick\ $x M^t b$ such that $\alpha = \rank x$}
+                    \begin{proof}
+                        \pf\ By \stepref{ii}
+                    \end{proof}
+                    \step{two}{$x M^t a$}
+                \end{proof}
+                \step{vi}{\case{$\alpha = \rank b$}}
+                \begin{proof}
+                    \pf\ We have $b M^t a$ and $\alpha = \rank b$ as required.
+                \end{proof}
+                \qedstep
+                \begin{proof}
+                    \pf\ This concludes the proof by transfinite induction over $M^t$ (\stepref{0}).
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \step{2}{$\forall a \in A^t. E(a) = \rank a$}
+        \begin{proof}
+            \pf\ By transfinite induction on $a$.
+        \end{proof}
+        \step{3}{$\ran E = \rank A$}
+        \begin{proof}
+            \pf\ From \stepref{2} substituting $\{A\}$ for $A$.
+        \end{proof}
+        \qed
+    \end{proof}
+
 \end{document}

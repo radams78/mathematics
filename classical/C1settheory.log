@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.7.14)  6 SEP 2022 13:58
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.7.14)  7 SEP 2022 02:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -229,37 +229,46 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 Package xypdf Info: Line width: 0.39998pt on input line 32.
  [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11] [12] [13] [14] [15]
-WARNING: proof step "c" (<2>6) already defined
-
-Overfull \hbox (6.00345pt too wide) in paragraph at lines 1240--1240
-[]$\OML/cmm/m/it/10 G$ \OT1/cmr/m/n/10 be a func-tion with do-main $\OML/cmm/m/it/10 A$ \OT1/cmr/m/n/10 such that $\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 A:P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 G \U/msa/m/n/10 ^^V [] \OML/cmm/m/it/10 x; G\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ))$ 
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7] [8] [9] [10] [11]
+Overfull \hbox (14.6589pt too wide) in paragraph at lines 915--916
+\OT1/cmr/bx/n/10 Theorem 85 \OT1/cmr/m/n/10 (Trans-fi-nite Re-cur-sion The-o-rem Schema)\OT1/cmr/bx/n/10 . \OT1/cmr/m/it/10 For any prop-erty $\OML/cmm/m/it/10 P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y; z\OT1/cmr/m/n/10 )$
  []
 
-[16] [17] [18] [19] [20] [21]
+
+Overfull \hbox (7.42886pt too wide) in paragraph at lines 917--919
+[]\OT1/cmr/m/it/10 Assume that $\OML/cmm/m/it/10 <$ \OT1/cmr/m/it/10 is a well-founded re-la-tion on $\OML/cmm/m/it/10 A$\OT1/cmr/m/it/10 . As-sume that $\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 x; y\OMS/cmsy/m/n/10 9\OT1/cmr/m/n/10 !\OML/cmm/m/it/10 zP\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y; z\OT1/cmr/m/n/10 )$\OT1/cmr/m/it/10 .
+ []
+
+WARNING: proof step "c" (<2>6) already defined
+[12]
+Overfull \hbox (16.16313pt too wide) in paragraph at lines 993--993
+[]$\OML/cmm/m/it/10 G$ \OT1/cmr/m/n/10 be a func-tion with do-main $\OML/cmm/m/it/10 A$ \OT1/cmr/m/n/10 such that $\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 A:P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 G \U/msa/m/n/10 ^^V [] \OML/cmm/m/it/10 x; x; G\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ))$ 
+ []
+
+[13] [14] [15] [16] [17] [18] [19] [20] [21]
 WARNING: proof step "e" (<2>6) already defined
 WARNING: proof step "1" (<1>2) already defined
 [22] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33] [34] [35] [36] [37] [38] [39]
 WARNING: proof step "d" (<2>5) already defined
 [40] [41] [42] [43] [44] [45]
-Overfull \hbox (64.9784pt too wide) in paragraph at lines 3663--3663
+Overfull \hbox (64.9784pt too wide) in paragraph at lines 3706--3706
 []$\OMS/cmsy/m/n/10 H \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 f \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 f \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 ;[]\OML/cmm/m/it/10 A \OMS/cmsy/m/n/10 ^^R \OML/cmm/m/it/10 B; f[]\OMS/cmsy/m/n/10 g$ 
  []
 
-[46] [47] [48] [49] [50] (/home/robin/fun/maths/classical/C1settheory.aux) ) 
+[46] [47] [48] [49] [50] [51] (/home/robin/fun/maths/classical/C1settheory.aux) ) 
 Here is how much of TeX's memory you used:
- 4658 strings out of 481239
- 57299 string characters out of 5920377
- 344308 words of memory out of 5000000
- 19866 multiletter control sequences out of 15000+600000
+ 4662 strings out of 481239
+ 57363 string characters out of 5920377
+ 346308 words of memory out of 5000000
+ 19870 multiletter control sequences out of 15000+600000
  544889 words of font info for 75 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  30i,13n,31p,3254b,428s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
-Output written on /home/robin/fun/maths/classical/C1settheory.pdf (50 pages, 344331 bytes).
+Output written on /home/robin/fun/maths/classical/C1settheory.pdf (51 pages, 349568 bytes).
 PDF statistics:
- 248 PDF objects out of 1000 (max. 8388607)
- 174 compressed objects within 2 object streams
+ 251 PDF objects out of 1000 (max. 8388607)
+ 176 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 
