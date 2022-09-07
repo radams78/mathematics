@@ -4425,4 +4425,89 @@
         & = \sup_{\alpha \in S} \alpha \\
         & = \sup S  
     \end{align*}
+
+    \section{Well-Founded Relations}
+
+    \paragraph{Exercise 1}
+    We first prove: if $x R^t y$ then there exists $z$ such that $z R y$ and either $x R^t z$ or $x = z$.
+    \begin{proof}
+        \pf
+        \step{1}{$\{ \langle x,y \rangle : \exists z (zRy \ \&\ (x R^t z \text{ or } x = z)) \}$
+        is a transitive relation that includes $R$.}
+        \begin{proof}
+            \step{a}{\pflet{$S = \{ \langle x,y \rangle : \exists z (zRy \ \&\ (x R^t z \text{ or } x = z)) \}$}}
+            \step{b}{$S$ is transitive}
+            \begin{proof}
+                \step{i}{\pflet{$xSy$ and $ySz$}}
+                \step{ii}{\pick\ $a$ and $b$ such that $aRy$, ($xR^ta$ or $x=a$), $bRz$ and ($yR^tb$ or $y=b$)}
+                \step{iii}{$xR^ty$}
+                \step{iv}{$xR^tb$}
+            \end{proof}
+            \step{c}{$R \subseteq S$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$R$ be a well-founded relation.}}
+        \step{2}{\pflet{$A$ be a nonempty set.}}
+        \step{3}{\pick\ an $R$-minimal element $a$ of $A$.}
+        \step{4}{$a$ is $R^t$-minimal}
+        \begin{proof}
+            \pf\ By the lemma, if there exists $x$ such that $x R^t a$ then there exists $x$ such that $x R a$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 2}
+    The relation $R^t$ is always transitive, so it is a partial ordering iff it is irreflexive, i.e. there
+    is no $x$ such that $x R^t x$. This is the same as saying there is no cycle in $R$, i.e. no finite
+    sequence of elements $x_1$, \ldots, $x_n$ such that $x_1 R x_2$, $x_2 R x_3$, \ldots, $x_{n-1} R x_n$
+    and $x_n R x_1$.
+
+    \paragraph{Exercise 3}
+    The proof is by transfinite induction on $y$ over $R$. Assume $\{ x : x R^t z \}$ is finite for all
+    $z$ such that $zRy$. Then
+    \[ \{ x : x R^t y \} = \bigcup \{ \{ z \} \cup \{ x : x R^t z \} : z R y \} \]
+    which is a finite union of finite sets, hence finite.
+
+    \paragraph{Exercise 4}
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$T = S \cup \bigcup \{ TC \ x : x \in S \}$}}
+        \step{2}{$T$ is a transitive set}
+        \begin{proof}
+            \step{a}{\pflet{$x \in y \in T$}}
+            \step{b}{\case{$y \in S$}}
+            \begin{proof}
+                \step{i}{$x \in TC\ y$}
+                \step{ii}{$x \in T$}
+            \end{proof}
+            \step{c}{\case{$y \in TC\ a$ and $a \in S$}}
+            \begin{proof}
+                \step{i}{$x \in TC\ a$}
+                \step{ii}{$x \in T$}
+            \end{proof}
+        \end{proof}
+        \step{3}{$S \subseteq T$}
+        \step{4}{For any transitive set $T'$, if $S \subseteq T'$ then $T \subseteq T'$}
+        \begin{proof}
+            \step{a}{\pflet{$T'$ be a transitive set.}}
+            \step{b}{\assume{$S \subseteq T'$}}
+            \step{c}{\pflet{$x \in T$}}
+            \step{d}{\case{$x \in S$}}
+            \begin{proof}
+                \pf\ Then $x \in T'$ by \stepref{b}
+            \end{proof}
+            \step{e}{\case{$x \in TC\ y$ and $y \in S$}}
+            \begin{proof}
+                \step{i}{$y \in T'$}
+                \step{ii}{$y \subseteq T'$}
+                \step{iii}{$TC\ y \subseteq T'$}
+                \step{iv}{$x \in T'$}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
 \end{document}
