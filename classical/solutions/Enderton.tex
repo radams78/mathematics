@@ -15,6 +15,7 @@
 \newcommand{\seg}{\ensuremath{\operatorname{seg}}}
 \newcommand{\rank}{\ensuremath{\operatorname{rank}}}
 \newcommand{\kard}{\ensuremath{\operatorname{kard}}}
+\newcommand{\cf}{\ensuremath{\operatorname{cf}}}
 
 \begin{document}
     \maketitle
@@ -4662,4 +4663,97 @@
         & = \kappa
     \end{align*}
     So $|V_\kappa| = \kappa$.
+
+    \section{Cofinality}
+
+    \paragraph{Exercise 12}
+    If $\alpha = 0$ then $\alpha$ is the strict supremum of $\emptyset$.
+
+    For any ordinal $\alpha$, we have $\alpha^+$ is the strict supremum of $\{\alpha\}$.
+
+    For $\lambda$ a limit ordinal, let $S$ be a set of smaller ordinals of size $\cf \lambda$ such that
+    $\lambda = \sup S$. Then $\lambda = \operatorname{ssup} S$.
+
+    \paragraph{Exercise 13}
+    Let $\lambda$ be a limit ordinal. Pick a sequence $S$ of ordinals $< \lambda$ whose supremum is $\lambda$.
+    Then
+    \[ \beth_\lambda = \sup_{\alpha \in S} \beth_\alpha \]
+    and so $\cf \beth_lambda \leq \cf \lambda$.
+
+    Conversely, let $A$ be a sequence of ordinals $< \beth_\lambda$ whose supremum is $\beth_\lambda$.
+    Let
+    \[ B = \{ \gamma \in \lambda \mid \exists X \in A. \card X \leq \beth_\gamma \} \enspace . \]
+    Then $\card B \leq \card A$. To complete the proof it suffices to show that $\sup B = \lambda$.
+    Any $\alpha \in A$ has cardinality at most $\beth_{\sup B}$, so $\alpha \in \beth_{\sup B + 1}$.
+    Hence $\beth_\lambda = \sup A \leq \beth_{\sup B + 1}$, and so $\lambda \underline{\in} \sup B + 1$.
+    Since $\lambda$ is a limit ordinal, $\lambda \underline{\in} \sup B$, whence equality holds.
+
+    \paragraph{Exercise 14}
+    The proof is by transfinite induction on $y$ over $R$. Assume that, for all $y' R y$, we have
+    $\card \{ x \mid x R^t y' \} < \kappa$. Then $\card \bigcup_{y' R y} \{ x \mid x R^t y' \} < \kappa$
+    by Theorem 9T. Hence
+    \begin{align*}
+        \card \{ x \mid x R^t y \} & = \card (\{ x \mid x R y \} \cup \bigcup_{y' R y} \{ x \mid x R^t y' \}) \\
+        & < \card \{ x \mid x R y \} + \card \bigcup_{y' R y} \{ x \mid x R^t y' \} \\
+        & < \kappa + \kappa 
+        & = \kappa
+    \end{align*}
+
+    \paragraph{Exercise 15}
+    Let $\kappa$ be an inaccessible cardinal. Then
+    \[ \cf \aleph_\kappa = \cf \kappa = \kappa \]
+    by Theorem 9N. Also,
+    \begin{align*}
+        \kappa & \leq \aleph_\kappa \\
+        & \leq \beth_\kappa \\
+        & = \kappa & (\text{Exercise 11})
+    \end{align*}
+    Hence $\cf \aleph_\kappa = \aleph_\kappa$ as required.
+
+    \paragraph{Exercise 16}
+    Suppose $\lambda$ is weakly inaccessible, so
+    \[ \cf \aleph_\lambda = \lambda = \aleph_\lambda \enspace . \]
+    Then $\lambda$ is a regular cardinal (since $\lambda = \aleph_\lambda$) and $\lambda \neq \aleph_0$
+    (since $\aleph_\omega \neq \aleph_0$).
+
+    Also if the generalized continuum hypothesis holds, then $\lambda = \aleph_\lambda = \beth_\lambda$.
+    So for $\alpha < \lambda$, we have $\alpha < \beth_\lambda$, hence $\alpha < \beth_\beta$ for some
+    $\beta < \lambda$. Therefore $2^\alpha < \beth_{\beta^+} < \beth_\lambda = \lambda$.
+
+    Thus, for all $\alpha < \lambda$, we have $2^\alpha < \lambda$. So $\lambda$ is an inaccessible cardinal.
+
+    \paragraph{Exercise 17}
+    Assume for a contradiction $\card \bigcup_{i \in I} A_i \geq \card \times_{i \in I} B_i$.
+    Pick a surjective function $f : \bigcup_{i \in I} A_i \rightarrow \times_{i \in I} B_i$.
+    For all $i \in I$, the function $g_i : A_i \rightarrow B_i$ defined by $g_i(x) = f(x)(i)$ cannot be
+    surjective. Pick $b_i \in B_i - \ran g_i$ for all $i \in I$. Then $b \in \times_{i \in I} B_i$
+    but $b \neq f(x)$ for any $x \in \bigcup_{i \in I} A_i$.
+
+    \paragraph{Exercise 18}
+    It is not monotone because $\cf \aleph_0 = \aleph_0$ but $\cf (\aleph_0 + 1) = 1$.
+
+    It is not continuous because $\cf \aleph_\omega = \omega$ but $\sup_{\alpha < \aleph_\omega}
+    = \sup \{ \aleph_n : n \in \omega \} = \aleph_\omega$.
+
+    So it is not normal.
+
+    \paragraph{Exercise 19}
+    Let $T = \{ \alpha \in \kappa : x \subseteq V_\alpha \}$. Then $T$ is a set of fewer than $\kappa$
+    ordinals smaller than $\kappa$, hence $\sup T < \kappa$. We have $S \subseteq V_{\sup T + 1}$ so
+    $S \in V_\kappa$.
+
+    \paragraph{Exercise 20}
+    (Following the proof of Theorem 9N.)
+
+    First of all we claim that $\cf t_\lambda \leq \cf \lambda$. We know that $\lambda$ is the supremum of
+    some set $S \subseteq \lambda$ with $\card S = \cf \lambda$. It suffices to show that $t_\lambda =
+    \sup \{ t_\alpha \mid \alpha \in S \}$. But this is Theorem 8E.
+
+    Second, we claim that $\cf \lambda \leq \cf t_\lambda$. Suppose that $t_\lambda$ is the supremum of some
+    set $A$ of smaller ordinals. Let
+    \[ B = \{ \gamma \in \lambda \mid \exists \alpha \in A. \alpha \leq t_\gamma \} \enspace . \]
+    Then $\card B \leq \card A$. To complete the proof it suffices to show that $\sup B = \lambda$. Any
+    $\alpha$ in $A$ has cardinality at most $t_{\sup B}$, so $\alpha \in t_{(\sup B) + 1}$. Hence $t_\lambda
+    = \sup A \leq t_{(\sup B) + 1}$ and so $\lambda \underline{\in} (\sup B) + 1$. Since $\lambda$ is a
+    limit ordinal, $\lambda \underline{\in} \sup B$, whence equality holds.
 \end{document}
