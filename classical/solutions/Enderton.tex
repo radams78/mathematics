@@ -4510,4 +4510,156 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \section{Natural Models}
+    
+    \paragraph{Exercise 5}
+    Suppose $S \in V_\omega$. Pick $n \in \omega$ such that $S \subseteq V_n$. Then $TC\ S \subseteq V_n$
+    (since $V_n$ is transitive). Therefore every member of $TC\ S$ is in $V_n$ and hence finite.
+
+    Conversely, suppose $TC\ S$ is finite. By Theorem 9E, $\rank x$ is finite for all $x \in TC\ S$.
+    Hence $\rank S = \{ \rank x : x \in TC\ S \}$ is finite, and so $S \in V_\omega$.
+
+    \paragraph{Exercise 6}
+    Yes, the replacement axioms are all true in $V_\omega$ by the same argument as the proof of
+    Theorem 9L. By the arguments before Theorem 9F, all the axioms of ZFC are true in $V_\omega$
+    except the Axiom of Infinity.
+
+    \paragraph{Exercise 7}
+    \begin{proof}
+        \pf
+        \step{1}{Define $h : \omega \rightarrow V_\omega$ by recursion thus: $h(n) = \{ h(m) : m \in g(n) \}$.}
+        \step{2}{$h$ is injective.}
+        \begin{proof}
+            \step{a}{\assume{$h(m) = h(n)$}}
+            \step{b}{$g(m) = g(n)$}
+            \begin{proof}
+                \step{i}{$p \in g(m)$ iff $h(p) \in h(m)$ iff $h(p) \in h(n)$ iff $p \in g(n)$}
+            \end{proof}
+            \step{c}{$m = n$}
+        \end{proof}
+        \step{3}{$h$ is surjective.}
+        \begin{proof}
+            \step{a}{We prove by $\epsilon_{V_\omega}$-induction on $A$ that, for all $A \in V_\omega$,
+            there exists $n \in \omega$ such that $h(n) = A$}
+            \step{b}{\pflet{$A \in V_\omega$}}
+            \step{c}{\assume{$\forall x \in A. \exists n \in \omega. h(n) = x$}}
+            \step{d}{\pflet{$m$ be such that $g(m) = \{ n \in \omega : h(n) \in A \}$}}
+            \begin{proof}
+                \pf\ Since $g$ is surjective.
+            \end{proof}
+            \step{e}{$h(m) = A$}
+        \end{proof}
+        \step{4}{If $mEn$ then $h(m) \in h(n)$}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 8}
+    Consider the structure $\langle P, R \rangle$ in Exercise 4 of Chapter 7. Then $\langle P, R \rangle
+    \in V_\omega$ but its ordinal $\omega^2$ is not.
+    
+    \paragraph{Exercise 9}
+    \begin{proof}
+        \pf
+        \step{1}{$V_{\alpha + \lambda} = \bigcup_{\delta < \lambda} V_{\alpha + \delta}$}
+        \begin{proof}
+            \step{a}{\pflet{$x \in V_{\alpha + \lambda}$}}
+            \step{b}{\pick\ $\beta < \alpha + \lambda$ such that $x \in V_\beta$}
+            \step{c}{\case{$\beta < \alpha$}}
+            \begin{proof}
+                \pf\ Then $x \in V_{\alpha + 0}$.
+            \end{proof}
+            \step{d}{\case{$\alpha \leq \beta$}}
+            \begin{proof}
+                \step{i}{\pflet{$\delta$ be the ordinal such that $\beta = \alpha + \delta$}}
+                \step{ii}{$x \in V_{\alpha + \delta}$ and $\delta < \lambda$}
+            \end{proof}
+        \end{proof}
+        \step{2}{$\bigcup_{\delta < \lambda} V_{\alpha + \delta} \subseteq V_{\alpha + \lambda}$}
+        \qed
+    \end{proof}
+
+    \paragraph{Exercise 10}
+    We first prove $S$ is a transitive set. Let $x \in y \in S$. If $y \in \omega$ we have $x \in \omega$
+    hence $x \in S$. Otherwise, let $y \in \mathcal{P}^n \omega$ where $n \geq 1$. Then $y \subseteq
+    \mathcal{P}^{n-1} \omega$ and so $x \in \mathcal{P}^{n-1} \omega$, hence $x \in S$.
+
+    Now:
+    \subparagraph{Axiom of Extensionality}
+    $S$ models this because $S$ is transitive (see p. 250).
+
+    \subparagraph{Empty Set Axiom}
+    $S$ models this because $\emptyset \in S$.
+
+    \subparagraph{Axiom of Pairing}
+    Let $a, b \in S$. Pick $n$ such that $a, b \in \mathcal{P}^n S$. Then $\{ a,b \} \in \mathcal{P}^{n+1} S$
+    hence $\{ a,b \} \in S$.
+
+    \subparagraph{Axiom of Union}
+    Let $A \in S$.
+
+    If $A \in \omega$ or $x \in \mathcal{P} \omega$ then for all $x \in y \in A$ we have $x \in \omega$ since $\omega$ is transitive,
+    hence $\bigcup A \in \mathcal{P} \omega$.
+
+    If $A \in \mathcal{P}^{n+2} \omega$ then for all $x \in y \in A$ we have $x \in \mathcal{P} \omega$,
+    hence $\bigcup A \in \mathcal{P}^{n+1} \omega$.
+
+    Thus in all cases $\bigcup A \in S$.
+
+    \subparagraph{Power Set Axiom}
+    Let $A \in S$. 
+
+    If $A \in \omega$ then $A \subseteq \omega$, and so every subset of $A$ is a subset of $\omega$.
+    Hence $\mathcal{P} A \in \mathcal{P}^2 \omega$.
+
+    If $A \in \mathcal{P}^{n+1} \omega$ then $A \subseteq \mathcal{P}^n \omega$, and so every subset of $A$
+    is a subset of $\mathcal{P}^n \omega$. Hence $\mathcal{P} A \in \mathcal{P}^{n+2} \omega$.
+
+    In all cases $\mathcal{P} A \in S$.
+
+    \subparagraph{Subset Axioms}
+    Let $A \in S$. Let $\phi$ be a formula not containing $B$. Let $B = \{ x \in A \mid \phi^S \}$.
+    Then $B \subseteq A$.
+
+    If $A \in \omega$ then $B \subseteq A \subseteq \omega$ so $B \in \mathcal{P} \omega$.
+
+    If $A \in \mathcal{P}^{n+1} \omega$ then $B \subseteq A \subseteq \mathcal{P}^n \omega$
+    hence $B \in \mathcal{P}^{n+1} \omega$.
+
+    In either case $B \in S$.
+
+    \subparagraph{Axiom of Infinity}
+    Holds because $\omega \in S$.
+
+    \subparagraph{Axiom of Choice}
+    Holds for the same reason as the Subset Axioms.
+
+    \subparagraph{Regualrity Axiom}
+    Let $A \in S$ be nonempty. Let $m \in A$ have minimum rank. Then $m \in S$ because $S$ is transitive
+    and $m \cap A = \emptyset$.
+
+    \paragraph{Exercise 11}
+    Let $\kappa$ be an inaccessible cardinal. We have
+    \begin{align*}
+        \beth_\kappa & = \bigcup_{\alpha \in \kappa} \beth_\alpha \\
+        & \leq \kappa
+    \end{align*}
+    by Lemma 9K (a). And conversely $\kappa \leq \beth_\kappa$ because $\alpha \leq \beth_\alpha$
+    for every ordinal $\alpha$. So $\beth_\kappa = \kappa$.
+
+    Now,
+    \begin{align*}
+        |V_\kappa| & = |\bigcup_{\alpha \in \kappa} V_\alpha| \\
+        & \leq \kappa \cdot \kappa & (\text{Lemma 9K (b)}) \\
+        & = \kappa
+    \end{align*}
+    and
+    \begin{align*}
+        |V_\kappa| & = |\bigcup_{\alpha \in \kappa} V_\alpha| \\
+        & \geq \sup_{\alpha \in \kappa} |V_{\omega + \alpha}| \\
+        & = \sup_{\alpha \in \kappa} \beth_\alpha \\
+        & = \beth_\kappa \\
+        & = \kappa
+    \end{align*}
+    So $|V_\kappa| = \kappa$.
 \end{document}

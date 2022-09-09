@@ -447,3 +447,9 @@
 \contentsline {paragraph}{Exercise 2}{84}%
 \contentsline {paragraph}{Exercise 3}{84}%
 \contentsline {paragraph}{Exercise 4}{84}%
+\contentsline {section}{\numberline {8.6}Natural Models}{85}%
+\contentsline {paragraph}{Exercise 5}{85}%
+\contentsline {paragraph}{Exercise 6}{85}%
+\contentsline {paragraph}{Exercise 7}{85}%
+\contentsline {paragraph}{Exercise 8}{85}%
+\contentsline {paragraph}{Exercise 9}{85}%

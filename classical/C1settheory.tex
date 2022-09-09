@@ -28,6 +28,7 @@
 \newcommand{\ran}{\ensuremath{\operatorname{ran}}}
 \newcommand{\seg}{\ensuremath{\operatorname{seg}}}
 \newcommand{\rank}{\ensuremath{\operatorname{rank}}}
+\newcommand{\cf}{\ensuremath{\operatorname{cf}}}
 
 \begin{document}
     \maketitle
@@ -1848,6 +1849,7 @@
     \end{proof}
 
     \begin{theorem}
+        \label{theorem:normal_sup}
         Let $\mathbf{F} : \mathbf{On} \rightarrow \mathbf{On}$ be normal. Let $S$ be a nonempty set of
         ordinals. Then $\mathbf{F}(\sup S) = \sup \mathbf{F}(S)$.
     \end{theorem}
@@ -4020,4 +4022,422 @@
         \qed
     \end{proof}
 
+    \section{Models of Set Theory}
+
+    \begin{theorem}
+        For any limit ordinal $\lambda > \omega$, we have $V_\lambda$ is a model of Zermelo set theory.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}[Choice]
+        For any ordinal $\alpha$, we have $V_\alpha$ is a model of the Axiom of Choice.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{lemma}[Choice]
+        There exists a well-ordered structure in $V_{\omega 2}$ whose ordinal number is not in $V_{\omega 2}$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Pick an uncountable set $S \in V_{\omega 2}$. Pick a well-ordering $R$ on $S$. Then
+        $\langle S,R \rangle \in V_{\omega 2}$ but its ordinal is not, because every ordinal in
+        $V_{\omega 2}$ is $< \omega 2$ hence countable. \qed
+    \end{proof}
+
+    \begin{corollary}[Choice]
+        The set $V_{\omega 2}$ is not a model of ZFC.
+    \end{corollary}
+
+    \begin{corollary}
+        The Replacement Axioms are not provable from the Zermelo axioms.
+    \end{corollary}
+
+    \section{Cofinality}
+
+    \begin{definition}[Cofinal]
+        Let $\lambda$ be a limit ordinal and $S$ a set of smaller ordinals. Then $S$ is \emph{cofinal} in
+        $\lambda$ iff $\lambda = \sup S$.
+    \end{definition}
+
+    \begin{definition}[Cofinality]
+        The \emph{cofinality} of a limit ordinal $\lambda$, $\cf \lambda$, is the least cardinal $\kappa$
+        such that $\lambda$
+        is the limit of $\kappa$ smaller ordinals.
+
+        We also define $\cf 0 = 0$ and $\cf \alpha^+ = 1$.
+    \end{definition}
+
+    \begin{definition}[Regular Cardinal]
+        A cardinal $\kappa$ is \emph{regular} iff $\cf \kappa = \kappa$; otherwise $\kappa$ is
+        \emph{singular}.
+    \end{definition}
+
+    \begin{theorem}
+        For every ordinal $\alpha$, the cardinal $\aleph_{\alpha + 1}$ is regular.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ If $S$ is a set of fewer than $\aleph_{\alpha + 1}$ smaller ordinals then
+        $\forall \beta \in S. |\beta| \leq \aleph_\alpha$ and so
+        \[ |\bigcup S| \leq |S| \cdot \aleph_\alpha \leq \aleph_\alpha \cdot \aleph_\alpha = \aleph_\alpha
+        \enspace . \qed \]
+    \end{proof}
+
+    \begin{theorem}
+        For every limit ordinal $\lambda$, we have $\cf \aleph_\lambda = \cf \lambda$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\lambda$ be a limit ordinal.}}
+        \step{2}{$\cf \aleph_\lambda \leq \cf \lambda$}
+        \begin{proof}
+            \step{a}{\pick\ a set $S$ with $|S| = \cf \lambda$ and $\bigcup S = \lambda$}
+            \step{b}{$\aleph_\lambda = \sup_{\alpha \in S} \aleph_\alpha$}
+            \begin{proof}
+                \pf\ Theorem \ref{theorem:normal_sup}.
+            \end{proof}
+        \end{proof}
+        \step{3}{$\cf \lambda \leq \cf \aleph_\lambda$}
+        \begin{proof}
+            \step{a}{\pflet{$A$ be a set of smaller ordinals such that $\aleph_\lambda = \sup A$}
+            \prove{$\cf \lambda \leq |A|$}}
+            \step{b}{\pflet{$B = \{ \gamma \in \lambda : \exists \alpha \in A. |\alpha| = \aleph_\gamma \}$}}
+            \step{c}{$|B| \leq |A|$}
+            \step{d}{$\sup B = \lambda$}
+            \begin{proof}
+                \step{i}{$\forall \alpha \in A. \alpha \in \aleph_{\sup B + 1}$}
+                \begin{proof}
+                    \step{one}{\pflet{$\alpha \in A$}}
+                    \step{two}{$|\alpha| \leq \aleph_{\sup B}$}
+                    \step{three}{$\alpha \in \aleph_{\sup B + 1}$}
+                \end{proof}
+                \step{ii}{$\lambda \underline{\in} \sup B + 1$}
+                \begin{proof}
+                    \step{one}{$\aleph_\lambda \leq \aleph_{\sup B + 1}$}
+                \end{proof}
+                \step{iii}{$\lambda = \sup B$}
+                \begin{proof}
+                    \step{one}{$\lambda \leq \sup B$}
+                    \begin{proof}
+                        \pf\ From \stepref{ii} since $\lambda$ is a limit ordinal.
+                    \end{proof}
+                    \step{two}{$\sup B \leq \lambda$}
+                    \begin{proof}
+                        \pf\ From \stepref{b}.
+                    \end{proof}
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Weakly Inaccessible]
+        An ordinal $\lambda$ is \emph{weakly inaccessible} iff $\aleph_\lambda$ is regular.
+    \end{definition}
+
+    \begin{lemma}
+        \label{lemma:increasing_ordinals}
+        Let $f$ be an $\alpha$-sequence of ordinals. Then there exists an increasing $\beta$-sequence
+        $g$ for some $\beta \leq \alpha$ such that $\sup \ran f = \sup \ran g$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$h$ be the sequence defined by transfinite recursion thus: $h_\xi$ is the least
+        $\gamma$ such that $\forall \delta < \xi. f_{h_\delta} < f_\gamma$ if any such $\gamma$ exists;
+        otherwise the sequence halts.}}
+        \step{2}{\pflet{$\beta = \dom h$}}
+        \step{3}{$g_\xi = f_{h_\xi}$ for $\xi < \beta$}
+        \step{4}{$\sup \ran g \leq \sup \ran f$}
+        \begin{proof}
+            \pf\ Since $g$ is a subsequence of $f$.
+        \end{proof}
+        \step{5}{$\sup \ran f \leq \sup \ran g$}
+        \begin{proof}
+            \step{a}{$\forall \xi < \beta. \forall \delta \leq h_\xi. f_\delta \leq g_\xi$}
+            \begin{proof}
+                \step{i}{\pflet{$\xi < \beta$}}
+                \step{ii}{\pflet{$\delta \leq h_\xi$}}
+                \step{iii}{$f_\delta \leq f_{h_\xi}$}
+                \begin{proof}
+                    \step{one}{\assume{$\delta < h_\xi$}}
+                    \step{two}{\pick\ $\alpha < \xi$ such that $f_delta \leq f_{h_\alpha}$}
+                    \step{three}{$f_\delta \leq f_{h_\alpha} \leq f_{h_\xi}$}
+                \end{proof}
+                \step{iv}{$f_{h_\xi} = g_\xi$}
+            \end{proof}
+            \step{b}{$\forall \xi < \beta. f_\xi \leq g_\xi$}
+            \step{c}{\case{$\beta = \alpha$}}
+            \begin{proof}
+                \pf\ Then $\sup \ran f \leq \sup \ran g$ immediately.
+            \end{proof}
+            \step{d}{\case{$\beta < \alpha$}}
+            \begin{proof}
+                \step{i}{There is no $\gamma$ such that $g_\delta < f_\gamma$ for all $\delta < \beta$}
+                \begin{proof}
+                    \pf\ This is the condition for the sequence $h$ to halt.
+                \end{proof}
+                \step{ii}{For all $\gamma$, there exists $\delta$ such that $f_\gamma < g_\delta$}
+                \step{iii}{$\sup \ran f \leq \sup \ran g$}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        Let $\lambda$ be a limit ordinal. Then there exists an increasing $(\cf \lambda)$-sequence of
+        ordinals that converges to $\lambda$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pick\ a set $S$ with $|S| = \cf \lambda$ and $\lambda = \sup S$}
+        \step{2}{\pick\ a bijection $f : \cf \lambda \approx S$}
+        \step{3}{\pick\ an increasing $\beta$-sequence converging to $\lambda$ with $\beta \leq \cf \lambda$}
+        \begin{proof}
+            \pf\ Lemma \ref{lemma:increasing_ordinals}.
+        \end{proof}
+        \step{4}{$\beta = \cf \lambda$}
+        \begin{proof}
+            \pf\ By leastness of $\cf \lambda$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{corollary}
+        For any limit ordinal $\lambda$, we have $\cf \lambda$ is the least ordinal $\alpha$ such that there
+        exists an increasing $\alpha$-sequence of ordinals $< \lambda$ that converges to $\lambda$.
+    \end{corollary}
+
+    \begin{theorem}
+        For any ordinal $\lambda$, we have $\cf \lambda$ is a regular cardinal.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\assume{w.l.o.g. $\lambda$ is a limit ordinal.}}
+        \step{2}{\pick\ an increasing $\cf \lambda$-sequence $f$ of ordinals $< \lambda$ that converges to
+        $\lambda$.}
+        \step{3}{\pflet{$S$ be a set of ordinals $< \cf \lambda$ such that $\cf \lambda = \sup S$.}}
+        \step{4}{$f(S)$ is cofinal in $\lambda$}
+        \begin{proof}
+            \step{a}{\pflet{$\alpha < \lambda$}}
+            \step{b}{\pick\ $\beta < \cf \lambda$ such that $\alpha < f(\beta) < \lambda$}
+            \begin{proof}
+                \pf\ Since $f$ converges to $\lambda$.
+            \end{proof}
+            \step{c}{\pick\ $\gamma \in S$ such that $\beta < \gamma$}
+            \begin{proof}
+                \pf\ Since $\sup S = \cf \lambda$.
+            \end{proof}
+            \step{d}{$\alpha < f(\gamma) \in f(S)$}
+        \end{proof}
+        \step{5}{$\cf \lambda \leq |S|$}
+        \begin{proof}
+            \pf\ We have $\cf \lambda \leq |f(S)| = |S|$
+        \end{proof}
+        \step{6}{$\cf \cf \lambda = \cf \lambda$}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        Let $\lambda$ be an infinite cardinal. Then $\cf \lambda$ is the least cardinal $\kappa$ such that
+        $\lambda$ can be decomposed as the union of $\kappa$ sets each with cardinality $< \lambda$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{$\lambda$ can be decomposed as the union of $\cf \lambda$ sets each with cardinality
+        $< \lambda$}
+        \begin{proof}
+            \pf\ Since $\lambda$ is the union of a set of $\cf \lambda$ smaller ordinals.
+        \end{proof}
+        \step{2}{If $\lambda = \bigcup \mathcal{A}$ where $\forall X \in \mathcal{A}. |X| < \lambda$
+        then $\cf \lambda \leq |\mathcal{A}$.}
+        \begin{proof}
+            \step{a}{\pflet{$\kappa = |\mathcal{A}|$}}
+            \step{b}{\pflet{$\mathcal{A} = \{ A_\xi : \xi < \kappa \}$}}
+            \step{c}{$\lambda = \bigcup_{\xi < \kappa} A_\xi$}
+            \step{d}{$\forall \xi < \kappa. |A_\xi| < \lambda$}
+            \step{e}{\pflet{$\mu = \sup_{\xi < \kappa} |A_\xi|$}}
+            \step{f}{$\lambda \leq \mu \cdot \kappa$}
+            \begin{proof}
+                \pf\ Since $\lambda = |\bigcup_{\xi < \kappa} A_\xi|$
+            \end{proof}
+            \step{g}{\case{$\lambda \leq \kappa$}}
+            \begin{proof}
+                \pf\ Then $\cf \lambda \leq \lambda \leq \kappa$
+            \end{proof}
+            \step{h}{\case{$\kappa < \lambda$}}
+            \begin{proof}
+                \step{i}{$\lambda = \mu$}
+                \begin{proof}
+                    \pf\ Since $\lambda \leq \mu \cdot \kappa \leq \lambda \cdot \lambda = \lambda$
+                \end{proof}
+                \step{ii}{$\lambda$ is the supremum of $\kappa$ smaller ordinals.}
+                \step{iii}{$\cf \lambda \leq \kappa$}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}[K\"{o}nig's Theorem (Choice)]
+        For any infinite cardinal $\kappa$ we have $\kappa < \cf 2^\kappa$
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\assume{for a contradiction $\cf 2^\kappa \leq \kappa$}}
+        \step{2}{\pick\ a set $S$ with $|S| = 2^\kappa$}
+        \step{3}{\pick\ a $\kappa$-sequence of sets $A_\xi$ with $S^\kappa = \bigcup_{\xi < \kappa} A_\xi$
+        and $\forall \xi < \kappa. |A_\xi| < 2^\kappa$}
+        \begin{proof}
+            \pf\ Since $|S^\kappa| = 2^\kappa$
+        \end{proof}
+        \step{4}{$\forall \xi < \kappa. \{ g(\xi) : g \in A_\xi \} \subset S$}
+        \begin{proof}
+            \pf\ Since $|\{ g(\xi) : g \in A_\xi \}| \leq |A_\xi| < 2^\kappa$
+        \end{proof}
+        \step{5}{For all $\xi < \kappa$, \pick\ $s_\xi \in S - \{ g(\xi) : g \in A_\xi \}$}
+        \step{6}{$s \in S^\kappa$}
+        \step{7}{$\forall \xi < \kappa. s \notin A_\xi$}
+        \qedstep
+        \begin{proof}
+            \pf\ This contradicts \stepref{3}.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{corollary}
+        $2^{\aleph_0} \neq \aleph_\omega$
+    \end{corollary}
+
+    \begin{proof}
+        \pf\ Since $\cf \aleph_\omega = \aleph_0$ and $\cf 2^{\aleph_0} > \aleph_0$. \qed
+    \end{proof}
+    \section{Inaccessible Cardinals}
+
+    \begin{definition}[Inaccessible Cardinal]
+        A cardinal $\kappa$ is \emph{inaccessible} iff:
+        \begin{itemize}
+            \item $\kappa > \aleph_0$
+            \item For every cardinal $\lambda < \kappa$ we have $2^\lambda < \kappa$
+            \item $\kappa$ is regular.
+        \end{itemize}
+    \end{definition}
+
+    \begin{lemma}
+        \label{lemma:Ex9}
+        For any ordinal $\alpha$ and limit ordinal $\lambda$,
+        \[ V_{\alpha + \lambda} = \bigcup_{\delta < \lambda} V_{\alpha + \delta} \]
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{$V_{\alpha + \lambda} = \bigcup_{\delta < \lambda} V_{\alpha + \delta}$}
+        \begin{proof}
+            \step{a}{\pflet{$x \in V_{\alpha + \lambda}$}}
+            \step{b}{\pick\ $\beta < \alpha + \lambda$ such that $x \in V_\beta$}
+            \step{c}{\case{$\beta < \alpha$}}
+            \begin{proof}
+                \pf\ Then $x \in V_{\alpha + 0}$.
+            \end{proof}
+            \step{d}{\case{$\alpha \leq \beta$}}
+            \begin{proof}
+                \step{i}{\pflet{$\delta$ be the ordinal such that $\beta = \alpha + \delta$}}
+                \step{ii}{$x \in V_{\alpha + \delta}$ and $\delta < \lambda$}
+            \end{proof}
+        \end{proof}
+        \step{2}{$\bigcup_{\delta < \lambda} V_{\alpha + \delta} \subseteq V_{\alpha + \lambda}$}
+        \qed
+    \end{proof}
+
+    \begin{lemma}
+        For any ordinal $\alpha$ we have $|V_{\omega + \alpha}| = \beth_\alpha$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{$|V_\omega| = \beth_0$}
+        \begin{proof}
+            \pf\ Since $V_\omega$ is the union of an $\omega$-sequence of finite sets of increasing size.
+        \end{proof}
+        \step{2}{For any ordinal $\alpha$, if $|V_{\omega + \alpha}| = \beth_\alpha$
+        then $|V_{\omega + \alpha^+}| = \beth_{\alpha^+}$}
+        \step{3}{For any limit ordinal $\lambda$, if $\forall \alpha < \lambda. |V_{\omega + \alpha}|
+        = \beth_\alpha$ then $|V_{\omega + \lambda}| = \beth_\lambda$}
+        \begin{proof}
+            \step{a}{\pflet{$\lambda$ be a limit ordinal.}}
+            \step{b}{\assume{$\forall \alpha < \lambda. |V_{\omega + \alpha}| = \beth_\alpha$}}
+            \step{c}{$|V_{\omega + \lambda}| \geq \beth_\lambda$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    |V_{\omega + \lambda}| & = |\bigcup_{\delta < \lambda} V_{\omega + \delta}| &
+                    (\text{Lemma \ref{lemma:Ex9}}) \\
+                    & \geq \sup_{\delta < \lambda} |V_{\omega + \delta}| \\
+                    & = \sup_{\delta < \lambda} \beth_\delta \\
+                    & = \beth_\lambda
+                \end{align*}
+            \end{proof}
+            \step{d}{$\beth_\lambda \leq |V_{\omega + \lambda}|$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    |V_{\omega + \lambda}| & = |\bigcup_{\delta < \lambda} V_{\omega + \delta}| \\
+                    & \leq |\lambda| \cdot \beth_\lambda \\
+                    & \leq \beth_\lambda \cdot \beth_\lambda \\
+                    & = \beth_\lambda
+                \end{align*}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{lemma}
+        Let $\kappa$ be an inaccessible cardinal. For any ordinal $\alpha < \kappa$, we have
+        $\beth_\alpha < \kappa$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{0}{$\beth_0 < \kappa$}
+        \begin{proof}
+            \pf\ By definition of inaccessible.
+        \end{proof}
+        \step{1}{If $\beth_\alpha < \kappa$ then $\beth_{\alpha^+} < \kappa$}
+        \begin{proof}
+            \pf\ $\beth_{\alpha^+} = 2^{\beth_\alpha} < \kappa$
+        \end{proof}
+        \step{2}{If $\lambda$ is a limit ordinal, $\lambda < \kappa$ and $\forall \alpha < \lambda. \beth_\alpha < \kappa$
+        then $\beth_\lambda < \kappa$}
+        \begin{proof}
+            \pf\ Since $\beth_\lambda = \sup_{\alpha < \lambda} \beth_\alpha$ is the supremum of fewer than $\kappa$
+            smaller ordinals.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{lemma}
+        Let $\kappa$ be an inaccessible cardinal. For all $A \in V_\kappa$ we have $|A| < \kappa$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Pick $\alpha < \kappa$ such that $A \subseteq V_\alpha$. Then $|A| \leq |V_\alpha| \leq \beth_\alpha < \kappa$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        If $\kappa$ is an inaccessible cardinal then $V_\kappa$ is a model of ZF.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
 \end{document}
