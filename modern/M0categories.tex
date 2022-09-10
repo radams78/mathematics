@@ -1,0 +1,50 @@
+\documentclass{article}
+
+\title{M0 Categories}
+\author{Robin Adams}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\let\proof\relax
+\let\endproof\relax
+\let\qed\relax
+\usepackage{pf2}
+\usepackage[all]{xy}
+
+\newtheorem{axiom}{Axiom}
+\newtheorem{axs}[axiom]{Axiom Schema}
+\newtheorem{lm}[axiom]{Lemma}
+\newtheorem{proposition}[axiom]{Proposition}
+\newtheorem{props}[axiom]{Proposition Schema}
+\newtheorem{thm}[axiom]{Theorem}
+\newtheorem{cor}{Corollary}[axiom]
+\theoremstyle{definition}
+\newtheorem{definition}[axiom]{Definition}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\section{Categories}
+
+\begin{definition}[Category]
+    A \emph{category} consists of:
+    \begin{itemize}
+        \item a collection of \emph{objects}.
+        \item for any objects $A$ and $B$, a collection of \emph{maps} from $A$ to $B$. We write $f : A \rightarrow B$
+        iff $f$ is a map from $A$ to $B$.
+        \item for any object $A$, an \emph{identity map} $1_A : A \rightarrow A$
+        \item for any maps $f : A \rightarrow B$ and $g : B \rightarrow C$, a map $g \circ f : A \rightarrow C$
+    \end{itemize}
+    such that:
+    \begin{description}
+        \item[Identity Laws]
+        For any map $f : A \rightarrow B$, we have $1_B \circ f = f \circ 1_A = f : A \rightarrow B$
+        \item[Associative Law]
+        For any maps $f : A \rightarrow B$, $g : B \rightarrow C$ and $h : C \rightarrow D$, we hav
+        $h \circ (g \circ f) = (h \circ g) \circ f : A \rightarrow D$ 
+    \end{description}
+\end{definition}
+\end{document}
