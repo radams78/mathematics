@@ -22,6 +22,8 @@
 \theoremstyle{definition}
 \newtheorem{definition}[axiom]{Definition}
 
+\newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
+
 \begin{document}
 
 \maketitle
@@ -46,5 +48,169 @@
         For any maps $f : A \rightarrow B$, $g : B \rightarrow C$ and $h : C \rightarrow D$, we hav
         $h \circ (g \circ f) = (h \circ g) \circ f : A \rightarrow D$ 
     \end{description}
+\end{definition}
+
+\begin{definition}
+    A map $f : A \rightarrow B$ is \emph{monic} or a \emph{monomorphism}, $f : A \rightarrowtail B$,
+    iff, for every object $T$ and morphisms $x_1, x_2 : T \rightarrow B$, if $f \circ x_1 = f \circ x_2$
+    then $x_1 = x_2$.
+\end{definition}
+
+\begin{definition}
+    A map $f : A \rightarrow B$ is \emph{epi} or an \emph{epimorphism}, $f : A \twoheadrightarrow B$,
+    iff, for every object $T$ and morphisms $x_1, x_2 : B \rightarrow T$, if $x_1 \circ f = x_2 \circ f$
+    then $x_1 = x_2$.
+\end{definition}
+
+\begin{definition}[Retraction, Section]
+    Let $r : A \rightarrow B$ and $s : B \rightarrow A$. Then $r$ is a \emph{retraction} for $s$, and $s$ is a
+    \emph{section} for $r$, iff $r \circ s = 1_B$.
+\end{definition}
+
+\begin{proposition}
+    If a map $f : A \rightarrow B$ has a section, then for any object $T$ and any map $y : T \rightarrow B$,
+    there exists a map $x : T \rightarrow A$ such that $f \circ x = y$.
+\end{proposition}
+
+\begin{proof}
+    \pf\ If $s : B \rightarrow A$ is a section of $f$, then we take $x = s \circ y$. We have
+    $f \circ x = f \circ s \circ y = 1_B \circ y = y$. \qed
+\end{proof}
+
+\begin{proposition}
+    If a map $f : A \rightarrow B$ has a retraction, then for any object $T$ and any map $g : A \rightarrow T$,
+    there exists a map $t : B \rightarrow T$ such that $t \circ f = g$.
+\end{proposition}
+
+\begin{proof}
+    \pf\ If $r : B \rightarrow A$ is a section for $f$, then we take $t = g \circ r$. We have
+    $t \circ f = g \circ r \circ f = g \circ 1_A = g$. \qed
+\end{proof}
+
+\begin{proposition}
+    Every section is monic.
+\end{proposition}
+
+\begin{proof}
+    \pf\ Let $r : B \rightarrow A$ be a retraction for $f$. Then, if $f \circ x_1 = f \circ x_2$, then
+    \begin{align*}
+        r \circ f \circ x_1 & = r \circ f \circ x_2 \\
+        \therefore 1_A \circ x_1 & = 1_A \circ x_2 \\
+        \therefore x_1 & = x_2 & \qed
+    \end{align*}
+\end{proof}
+
+\begin{proposition}
+    Every retraction is epi.
+\end{proposition}
+
+\begin{proof}
+    \pf\     Let $s : B \rightarrow A$ be a section for $f : A \rightarrow B$. Let $T$ be any set and $t_1, t_2 : T \rightarrow B$.
+    Suppose $t_1 \circ f = t_2 \circ f$. Then
+    \begin{align*}
+        t_1 \circ f \circ s & = t_2 \circ f \circ s \\
+        \therefore t_1 \circ 1_B & = t_2 \circ 1_B \\
+        \therefore t_1 & = t_2
+    \end{align*}
+\end{proof}
+
+\begin{proposition}
+    \label{proposition:retraction_comp}
+    If $r_1 : B \rightarrow A$ is a retraction of $s_1 : A \rightarrow B$ and $r_2 : C \rightarrow B$
+    is a retraction of $s_2 : B \rightarrow C$ then $r_1 \circ r_2$ is a retraction of $s_2 \circ s_1$.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \begin{align*}
+        r_1 \circ r_2 \circ s_2 \circ s_1 & = r_1 \circ 1_B \circ s_1 \\
+        & = r_1 \circ s_1 \\
+        & = 1_A & \qed
+    \end{align*}
+\end{proof}
+
+\begin{thm}
+    \label{thm:inverse_unique}
+    If $r$ is a retraction of $f$ and $s$ is a section of $f$ then $r = s$.
+\end{thm}
+
+\begin{proof}
+    \pf\ Let $f : A \rightarrow B$ and $r, s : B \rightarrow A$. Then
+    \begin{align*}
+        r & = r \circ 1_B \\
+        & = r \circ f \circ s \\
+        & = 1_A \circ s \\
+        & = s & \qed
+    \end{align*}
+\end{proof}
+
+\begin{definition}[Isomorphism]
+    A map $f : A \rightarrow B$ is an \emph{isomorphism} or \emph{invertible}, $f : A \cong B$, iff there
+    exists a map $f^{-1} : B \rightarrow A$, the \emph{inverse} for $f$, such that $f^{-1} \circ f = 1_A$ and
+    $f \circ f^{-1} = 1_B$.
+    
+    Two objects $A$ and $B$ are \emph{isomorphic}, $A \cong B$, iff there exists an isomorphism between them.
+\end{definition}
+
+\begin{thm}
+    The inverse of an isomorphism is unique.
+\end{thm}
+
+\begin{proof}
+    \pf\ From Theorem \ref{thm:inverse_unique}. \qed
+\end{proof}
+
+\begin{thm}
+    For any object $A$, the identity map $1_A : A \cong A$ is an isomorphism with $1_A^{-1} = 1_A$.
+\end{thm}
+
+\begin{proof}
+    \pf\ We have $1_A \circ 1_A = 1_A$ by the Identity Laws. \qed
+\end{proof}
+
+\begin{thm}
+    If $f : A \cong B$ then $\inv{f} : B \cong A$ and $\inv{(\inv{f})} = f$.
+\end{thm}
+
+\begin{proof}
+    \pf\ Since $f \circ \inv{f} = 1_B$ and $\inv{f} \circ f = 1_A$ by the definition of inverse. \qed
+\end{proof}
+
+\begin{thm}
+    If $f : A \cong B$ and $g : B \cong C$ then $g \circ f : A \cong C$ and
+    $\inv{(g \circ f)} = \inv{f} \circ \inv{g}$.
+\end{thm}
+
+\begin{proof}
+    \pf\ From Proposition \ref{proposition:retraction_comp}. \qed
+\end{proof}
+
+\begin{proposition}
+    Every monomorphic retraction is an isomorphism.
+\end{proposition}
+
+\begin{proof}
+    \pf\ Let $f : A \rightarrowtail B$ be a monomorphism with section $s : B \rightarrow A$. Then
+    \begin{align*}
+        f \circ s \circ f & = f \\
+        \therefore s \circ f & = 1_A
+    \end{align*}
+    Thus $s$ is also a retraction for $f$, hence an inverse. \qed
+\end{proof}
+
+\begin{proposition}
+    Every epimorphic section is an isomorphism.
+\end{proposition}
+
+\begin{proof}
+    \pf\ Dual. \qed
+\end{proof}
+
+\begin{definition}[Idempotent]
+    A map $e : A \rightarrow A$ is \emph{idempotent} iff $e \circ e = e$.
+\end{definition}
+
+\begin{definition}[Automorphism]
+    An \emph{automorphism} on an object $A$ is an isomorphism $A \cong A$.
 \end{definition}
 \end{document}

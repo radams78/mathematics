@@ -1,0 +1,44 @@
+\contentsline {part}{I\hspace {1em}Preview}{2}%
+\contentsline {chapter}{\numberline {1}Session 1 --- Galileo and Multiplication of Objects}{3}%
+\contentsline {paragraph}{Exercise 1}{3}%
+\contentsline {paragraph}{Exercise 2}{3}%
+\contentsline {part}{II\hspace {1em}Part I --- The category of sets}{4}%
+\contentsline {chapter}{\numberline {2}Article I --- Sets, maps, composition}{5}%
+\contentsline {paragraph}{Exercise 1}{5}%
+\contentsline {paragraph}{Exercise 2}{5}%
+\contentsline {paragraph}{Exercise 3}{5}%
+\contentsline {paragraph}{Exercise 4}{5}%
+\contentsline {paragraph}{Exercise 5}{5}%
+\contentsline {paragraph}{Exercise 6}{5}%
+\contentsline {paragraph}{Exercise 7}{5}%
+\contentsline {paragraph}{Exercise 8}{5}%
+\contentsline {paragraph}{Exercise 9}{5}%
+\contentsline {chapter}{\numberline {3}Session 3 --- Composing maps and counting maps}{6}%
+\contentsline {paragraph}{Exercise 1}{6}%
+\contentsline {paragraph}{Exercise 2}{6}%
+\contentsline {part}{III\hspace {1em}Part II --- The algebra of composition}{7}%
+\contentsline {chapter}{\numberline {4}Article II --- Isomorphisms}{8}%
+\contentsline {section}{\numberline {4.1}1. Isomorphisms}{8}%
+\contentsline {paragraph}{Exercise 1}{8}%
+\contentsline {subparagraph}{(R)}{8}%
+\contentsline {subparagraph}{(S)}{8}%
+\contentsline {subparagraph}{(T)}{8}%
+\contentsline {paragraph}{Exercise 2}{8}%
+\contentsline {paragraph}{Exercise 3}{8}%
+\contentsline {subparagraph}{(a)}{9}%
+\contentsline {subparagraph}{(b)}{9}%
+\contentsline {subparagraph}{(c)}{9}%
+\contentsline {paragraph}{Exercise 4}{9}%
+\contentsline {subparagraph}{(1)}{9}%
+\contentsline {subparagraph}{(2)}{9}%
+\contentsline {subparagraph}{(3)}{9}%
+\contentsline {subparagraph}{(4)}{9}%
+\contentsline {subparagraph}{(5)}{9}%
+\contentsline {section}{\numberline {4.2}2 --- General division problems: Determination and choice}{9}%
+\contentsline {paragraph}{Exercise 5}{9}%
+\contentsline {paragraph}{Exercise 6}{9}%
+\contentsline {paragraph}{Exercise 7}{10}%
+\contentsline {paragraph}{Exercise 8}{10}%
+\contentsline {paragraph}{Exercise 9}{10}%
+\contentsline {paragraph}{Exercise 10}{10}%
+\contentsline {paragraph}{Exercise 11}{10}%

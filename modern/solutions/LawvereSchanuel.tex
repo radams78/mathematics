@@ -7,6 +7,8 @@
 \usepackage{amssymb}
 \usepackage{pf2}
 
+\newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
+
 \begin{document}
     \maketitle
     \tableofcontents
@@ -34,4 +36,168 @@
 
     \paragraph{Exercise 1}
     Easy.
+
+    \paragraph{Exercise 2}
+    There are 8 maps from $A$ to $B$.
+
+    \paragraph{Exercise 3}
+    There are 27 maps from $A$ to $A$.
+
+    \paragraph{Exercise 4}
+    There are 9 maps from $B$ to $A$.
+
+    \paragraph{Exercise 5}
+    There are 4 maps from $B$ to $B$.
+
+    \paragraph{Exercise 6}
+    There are 10 such maps from $A$ to $A$.
+
+    \paragraph{Exercise 7}
+    There are 3 such maps from $B$ to $B$.
+
+    \paragraph{Exercise 8}
+    There is no such pair of maps.
+
+    \paragraph{Exercise 9}
+    There are 12 such pairs of maps.
+
+    \chapter{Session 3 --- Composing maps and counting maps}
+
+    \paragraph{Exercise 1}
+    (a) and (c) make sense.
+
+    \paragraph{Exercise 2}
+    (a) and (c) still make sense.
+
+    \part{Part II --- The algebra of composition}
+
+    \chapter{Article II --- Isomorphisms}
+
+    \section{1. Isomorphisms}
+
+    \paragraph{Exercise 1}
+    \subparagraph{(R)}
+    We have $1_A \circ 1_A = 1_A$ by the Identity Laws, so $1_A$ is an isomorphism with inverse $1_A$.
+
+    \subparagraph{(S)}
+    We have $g \circ f = 1_A$ and $f \circ g = 1_B$ (this is what it means for $g$ to be an inverse for $f$).
+    This says exactly that $f$ is an inverse for $g$.
+
+    \subparagraph{(T)}
+    Let $\inv{f} : B \rightarrow A$ be an inverse for $f$ and $\inv{k} : C \rightarrow B$ be an inverse for $k$.
+    We prove $\inv{f} \circ \inv{k}$ is an inverse for $k \circ f$. We have
+    \begin{align*}
+        \inv{f} \circ \inv{k} \circ k \circ f & = \inv{f} \circ 1_B \circ f & (\text{definition of inverse}) \\
+        & = \inv{f} \circ f & (\text{Identity Law})\\
+        & = 1_A & (\text{definition of inverse})
+    \end{align*}
+    and $k \circ f \circ \inv{f} \circ \inv{k} = 1_C$ similarly.
+
+    \paragraph{Exercise 2}
+    We have
+    \begin{align*}
+        g & = g \circ 1_B & (\text{Identity Law}) \\
+        & = g \circ f \circ k & (\text{$k$ is an inverse of $f$}) \\
+        & = 1_A \circ k & (\text{$g$ is an inverse of $f$}) \\
+        & = k & (\text{Identity Law})
+    \end{align*}
+
+    \paragraph{Exercise 3}
+    \subparagraph{(a)}
+    Let $f : A \rightarrow B$. Let $h, k : C \rightarrow A$.
+
+    Suppose $f \circ h = f \circ k$. Then
+    \begin{align*}
+        \inv{f} \circ f \circ h & = \inv{f} \circ f \circ k \\
+        \therefore 1_A \circ h & = 1_A \circ k & (\text{Definition of inverse}) \\
+        \therefore h & = k & (\text{Identity Law}) \qed
+    \end{align*}
+
+    \subparagraph{(b)}
+    Let $f : A \rightarrow B$. Let $h, k : B \rightarrow C$.
+
+    Suppose $h \circ f = k \circ f$. Then
+    \begin{align*}
+        h \circ f \circ \inv{f} & = k \circ f \circ \inv{f} \\
+        \therefore h \circ 1_B & = k \circ 1_B & (\text{Definition of inverse}) \\
+        \therefore h & = k & (\text{Identity Law}) \qed
+    \end{align*}
+
+    \subparagraph{(c)}
+    Let $A = \{ 0,1 \}$. Define $f : A \rightarrow A$ by $f(0) = 1$ and $f(1) = 0$. Define $h : A \rightarrow A$
+    by $h(x) = 0$ for all $x$. Define $k : A \rightarrow A$ by $k(x) = 1$ for all $x$.
+
+    $f$ is invertible, and is its own inverse.
+
+    We have $h \circ f = f \circ k = h$.
+
+    We do not have $h = k$.
+
+    \paragraph{Exercise 4}
+    \subparagraph{(1)}
+    This function is invertible with inverse $\inv{f}(x) = (x-7)/3$.
+
+    \subparagraph{(2)}
+    This function is invertible with inverse $\inv{g}(x) = \sqrt{x}$.
+
+    \subparagraph{(3)}
+    This function is not invertible because $h(1) = h(-1) = 1$.
+
+    \subparagraph{(4)}
+    This function is not invertible because $k(1) = k(-1) = 1$.
+
+    \subparagraph{(5)}
+    This function is not invertible because there is no $x$ such that $l(x) = 2$.
+
+    \section{2 --- General division problems: Determination and choice}
+
+    \paragraph{Exercise 5}
+    There are 6 maps $f$ such that $g \circ f = 1_{\{0,1\}}$; we can map 0 to any of $b$, $p$ or $q$,
+    and 1 to either of $r$ or $s$.
+
+    Given any one of these maps $f$, there are 8 maps $g$ such that $g \circ f = 1_{\{0,1\}}$.
+    We must map $f(0)$ to $0$, $f(1)$ to $1$, and the other three elements to any of 0 or 1.
+
+    \paragraph{Exercise 6}
+    If $r : B \rightarrow A$ is a section for $f$, then we take $t = g \circ r$. We have
+    $t \circ f = g \circ r \circ f = g \circ 1_A = g$.
+
+    \paragraph{Exercise 7}
+    Let $s : B \rightarrow A$ be a section for $f$. Let $T$ be any set and $t_1, t_2 : T \rightarrow B$.
+    Suppose $t_1 \circ f = t_2 \circ f$. Then
+    \begin{align*}
+        t_1 \circ f \circ s & = t_2 \circ f \circ s \\
+        \therefore t_1 \circ 1_B & = t_2 \circ 1_B \\
+        \therefore t_1 & = t_2
+    \end{align*}
+
+    \paragraph{Exercise 8}
+    If $s_1 : B \rightarrow A$ is a section for $r_1 : A \rightarrow B$ and $s_2 : C \rightarrow B$
+    is a section for $r_2 : B \rightarrow C$, then $s_1 \circ s_2$ is a section for $r_2 \circ r_1$ since
+    \begin{align*}
+        r_2 \circ r_1 \circ s_1 \circ s_2 & = r_2 \circ 1_B \circ s_2 \\
+        & = r_2 \circ s_2 \\
+        & = 1_C
+    \end{align*}
+
+    \paragraph{Exercise 9}
+    We have
+    \begin{align*}
+        e \circ e & = f \circ r \circ f \circ r \\
+        & = f \circ 1 \circ r & (\text{$r$ is a retraction of $f$}) \\
+        & = f \circ r \\
+        & = e
+    \end{align*}
+
+    \paragraph{Exercise 10}
+    From the proof of Proposition 3, $\inv{f} \circ \inv{g}$ is both a section and a retraction for
+    $g \circ f$.
+
+    \paragraph{Exercise 11}
+    Set $f(Fatima) = coffee$, $f(Omer) = tea$ and $f(Alysia) = cocoa$. Then $f$ is an isomorphism.
+
+    There is no isomorphism $g : A \rightarrow C$. For if $g(Fatima) = true$ then $g(Omer)$ must be $false$,
+    and then it is impossible to choose a value for $g(Alysia)$ without having $g(Alysia) = g(Fatima)$
+    or $g(Alysia) = g(Omer)$. Similarly if $g(Fatima) = false$ then $g(Omer)$ must be $true$, and then
+    again we cannot choose a value for $g(Alysia)$.
 \end{document}
