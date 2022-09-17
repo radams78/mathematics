@@ -200,4 +200,146 @@
     and then it is impossible to choose a value for $g(Alysia)$ without having $g(Alysia) = g(Fatima)$
     or $g(Alysia) = g(Omer)$. Similarly if $g(Fatima) = false$ then $g(Omer)$ must be $true$, and then
     again we cannot choose a value for $g(Alysia)$.
+
+    \chapter{Session 4 --- Division of Maps: Isomorphisms}
+
+    \section{4. A small zoo of isomorphisms in other categories}
+
+    \paragraph{Exercise 1}
+    We have $h(d(x)) = h(2x) = x$ and $d(h(x)) = d(x/2) = x$ for any $x$.
+
+    \paragraph{Exercise 2}
+    $f(odd) = negative$ and $f(even) = positive$
+
+    \paragraph{Exercise 3}
+    \subparagraph{(a)}
+    This is not an isomorphism because $p(0 + 0) = 1$ but $p(0) + p(0) = 2$
+
+    \subparagraph{(b)}
+    This is not an isomorphism because it is not surjective; there is no $x$ such that $sq(x) = -1$.
+
+    \subparagraph{(c)}
+    This is not an isomorphism because it is not injective. We have $sq(1) = sq(-1) = 1$.
+
+    \subparagraph{(d)}
+    This is an isomorphism; it is bijective and $-(x+y) = (-x) + (-y)$.
+
+    \subparagraph{(e)}
+    This is not an isomorphism because $m(1 \times 1) = -1$ but $m(1) \times m(1) = 1$.
+
+    \subparagraph{(f)}
+    This is not a well-defined map because $c(-1) = -1 \notin \mathbb{R}_{>0}$.
+
+    \chapter{Session 5 --- Division of Maps: Sections and Retractions}
+
+    \section{1. Determination Problems}
+
+    \paragraph{Exercise 1}
+    \subparagraph{(a)}
+    Suppose $h = g \circ f$ and $f a_1 = f a_2$. Then $h a_1 = g(f a_1) = g(f a_2) = h a_2$.
+
+    \subparagraph{(b)}
+    No. Take $A = C = \emptyset$ and $B = \{ * \}$. Let $f : A \rightarrow B$ and $h : A \rightarrow C$
+    be the unique such maps. Vacuously, if $f a_1 = f a_2$ then $h a_1 = h a_2$. But there is no map
+    $g : B \rightarrow C$.
+
+    \section{3. Choice Problems}
+
+    \paragraph{Exercise 2}
+    \subparagraph{(a)}
+    Suppose $g \circ f = h$. Let $a \in A$. Let $b = f(a)$. Then $h(a) = g(f(a)) = g(b)$.
+
+    \subparagraph{(b)}
+    This is equivalent to the Axiom of Choice.
+
+    \section{5. Stacking or Sorting}
+
+    \paragraph{Exercise 3}
+    I'm not going to draw all of them, but there are 8 of them.
+
+    \chapter{Session 9 --- Retracts and Idempotents}
+
+    \section{1. Retracts and Comparisons}
+
+    \paragraph{Exercise 1}
+    If $A$ is empty, then the nowhere-defined function is a map $A \rightarrow B$.
+
+    If $B$ has a point, say $b$, then the constant map with value $b$ is a map $A \rightarrow B$.
+
+    \section{2. Idempotents as records of retracts}
+
+    \paragraph{Exercise 3}
+    Suppose $s : A \rightarrow B$, $r : B \rightarrow A$ and $s' : A' \rightarrow B$, $r' : B \rightarrow A'$
+    are splittings of $e : B \rightarrow B$. Let
+    \begin{align*}
+        f & = r' \circ s & : A \rightarrow A' \\
+        \inv{f} & = r \circ s' & : A' \rightarrow A
+    \end{align*}
+    Then we have
+    \begin{align*}
+        f \circ \inv{f} & = r' \circ s \circ r \circ s' \\
+        & = r' \circ e \circ s' \\
+        & = r' \circ s' \circ r' \circ s' \\
+        & = 1 \\
+        \inv{f} \circ f & = r \circ s' \circ r' \circ s \\
+        & = r \circ e \circ s \\
+        & = r \circ s \circ r \circ s \\
+        & = 1
+    \end{align*}
+
+    \chapter{Quiz}
+
+    \paragraph{Question 1}
+    Let $A = \{ * \}$ and $B = \{ 0,1 \}$. Define $f : A \rightarrow B$ by $f(*) = 0$. Then the unique
+    function $r : B \rightarrow A$ is a retraction for $f$ (since $r(f(*)) = *$) but not a section for $f$
+    (since $f(s(1)) = 0$). Therefore there is no section for $f$, since there is only one map $B \rightarrow A$.
+
+    \paragraph{Question 2}
+    \subparagraph{(a)}
+    Yes: if $pqp = p$ then $pqpq = pq$
+    \subparagraph{(b)}
+    Yes: if $pqp = p$ then $qpqp = qp$
+
+    \paragraph{Question 2*}
+    Let $q' = qpq$ Then we have
+    \begin{align*}
+        pq'p & = pqpqp \\
+        & = pqp \\
+        & = p \\
+        q'pq' & = qpqpqpq \\
+        & = qpqpq \\
+        & = qpq \\
+        & = q'
+    \end{align*}
+
+    \paragraph{Question 1*}
+    Take $A = B = \mathbb{N}$ and define $f : A \rightarrow B$ by $f(x) = 2x$. Then $f$ has a retraction
+    $r$ given by
+    \[ r(y) = \begin{cases}
+        y/2 & \text{if $y$ is even} \\
+        0 & \text{if $y$ is odd}
+    \end{cases} \]
+    It has no section since it is not surjective (Article II Proposition 1).
+
+    \chapter{Summary / quiz on pairs of 'opposed' maps}
+
+    \paragraph{Question 1}
+    Given two maps $f$, $g$ with domains and codomains as above, we can always form the composites
+    $g \circ f$ and $f \circ g$. All we can say about $g \circ f$ and $f \circ g$ as maps in themselves is
+    that they are endomaps.
+
+    \paragraph{Question 2}
+    If we know that $g$ is a retraction for $f$, that means $g \circ f$ is actually the identity map $1_A$;
+    then we can prove that $f \circ g$ is not only an endomap, but actually an idempotent. The latter means
+    that the equation $f \circ g \circ f \circ g = f \circ g$ is true.
+
+    \paragraph{Question 3}
+    If we even know that $f$ is an isomorphism \emph{and} that $g \circ f = 1_A$, then $f \circ g$ is not
+    only an idempotent, but is the identity map $1_B$. If, moreover, $s$ is a map for which $f \circ s =
+    1_B$, we can conclude that $s = g$.
+
+    \paragraph{Question 4}
+    Going back to 0, i.e. assuming no equations, but only the domain and codomain statements about $f$ and $g$,
+    the composite $f \circ g \circ f$ could be different from $f$. Likewise $f \circ g \circ f \circ g$
+    could be different from $f \circ g$.
 \end{document}

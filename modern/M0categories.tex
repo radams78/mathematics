@@ -65,6 +65,9 @@
 \begin{definition}[Retraction, Section]
     Let $r : A \rightarrow B$ and $s : B \rightarrow A$. Then $r$ is a \emph{retraction} for $s$, and $s$ is a
     \emph{section} for $r$, iff $r \circ s = 1_B$.
+
+    The object $A$ is a \emph{retract} of $B$ iff there exists a retraction $r : B \rightarrow A$,
+    i.e. there exist maps $s : A \rightarrow B$ and $r : B \rightarrow A$ such that $r \circ s = 1_A$.
 \end{definition}
 
 \begin{proposition}
@@ -115,6 +118,18 @@
 \end{proof}
 
 \begin{proposition}
+    For any object $A$, the identity map $1_A$ is a section and a retraction of itself.
+\end{proposition}
+
+\begin{proof}
+    \pf\ The Unit Laws give $1_A \circ 1_A = 1_A$. \qed
+\end{proof}
+
+\begin{cor}
+    Every object is a retract of itself.
+\end{cor}
+
+\begin{proposition}
     \label{proposition:retraction_comp}
     If $r_1 : B \rightarrow A$ is a retraction of $s_1 : A \rightarrow B$ and $r_2 : C \rightarrow B$
     is a retraction of $s_2 : B \rightarrow C$ then $r_1 \circ r_2$ is a retraction of $s_2 \circ s_1$.
@@ -128,6 +143,10 @@
         & = 1_A & \qed
     \end{align*}
 \end{proof}
+
+\begin{cor}
+    If the object $A$ is a retract of $B$ and $B$ is a retract of $C$ then $A$ is a retract of $C$.
+\end{cor}
 
 \begin{thm}
     \label{thm:inverse_unique}
@@ -208,6 +227,11 @@
 
 \begin{definition}[Idempotent]
     A map $e : A \rightarrow A$ is \emph{idempotent} iff $e \circ e = e$.
+\end{definition}
+
+\begin{definition}[Split Idempotent]
+    Let $e : A \rightarrow A$ be idempotent. A \emph{splitting} of $e$ consists of an object $B$ and maps
+    $s : B \rightarrow A$, $r : A \rightarrow B$ such that $r \circ s = 1_B$ and $s \circ r = e$.
 \end{definition}
 
 \begin{definition}[Automorphism]
