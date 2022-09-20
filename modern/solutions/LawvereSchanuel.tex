@@ -342,4 +342,138 @@
     Going back to 0, i.e. assuming no equations, but only the domain and codomain statements about $f$ and $g$,
     the composite $f \circ g \circ f$ could be different from $f$. Likewise $f \circ g \circ f \circ g$
     could be different from $f \circ g$.
+
+    \chapter{Test 1}
+
+    \paragraph{Question 1}
+    \subparagraph{(a)}
+    Let $f(Mara) = Aurelio$, $f(Aurelio) = Mara$ and $f(Andrea) = Andrea$.
+
+    \subparagraph{(b)}
+    Let $e(Mara) = Aurelio$, $e(Aurelio) = Aurelio$ and $e(Andrea) = Andrea$.
+
+    \subparagraph{(c)}
+    Let $B = \{ 0, 1 \}$. Define $s : B \rightarrow A$ by $s(0) = Aurelio$ and $s(1) = Andrea$.
+    Define $r : A \rightarrow B$ by $r(Mara) = 0$, $r(Aurelio) = 0$ and $r(Andrea) = 1$.
+
+    \paragraph{Question 2}
+    Define $g : \mathbb{R} \rightarrow \mathbb{R}$ by $g(y) = (y+7)/4$.
+    \subparagraph{(a)}
+    $g(f(x)) = g(4x-7) = (4x-7+7)/4 = 4x/4 = x$
+    \subparagraph{(b)}
+    $f(g(x)) = f((x+7)/4) = 4((x+7)/4) - 7 = x+7-7 = x$
+
+    \chapter{Session 10 --- Brouwer's Theorems}
+
+    \section{4. Relation between fixed point and retraction theorems}
+
+    \paragraph{Exercise 1}
+    Suppose for a contradiction there is no point $x$ such that $f(x) = g(x)$. Define $r : D \rightarrow C$
+    as follows: for $x \in D$, $r(x)$ is the point on $C$ that is pointed at by the arrow with tail at
+    $f(x)$ and head at $g(x)$. For $x \in C$, we have $g(j(x)) = j(x)$, so the point that is pointed at by
+    any arrow with head at $g(j(x))$ is $x$. Hence
+    \begin{align*}
+        r(j(x)) & = x
+    \end{align*}
+    and so $r$ is a retraction for $j$, contradicting the retraction theorem.
+
+    \paragraph{Exercise 2}
+    Let $f : A \rightarrow A$ be any endomap. Then $s \circ f \circ r : X \rightarrow X$ is an endomap on $X$.
+    Hence there exists $x : T \rightarrow X$ such that $sfrx = x$. But then we have
+    \begin{align*}
+        rsfrx & = rx \\
+        \therefore frx & = rx
+    \end{align*}
+    and so $r \circ x : T \rightarrow A$ is a fixed point of $f$.
+
+    \paragraph{Exercise 3}
+    Let $A$ be either $E$, $C$ or $S$, and $X$ be $I$, $D$ or $B$ respectively. Assume that every endomap $X \rightarrow X$ has a fixed point. 
+
+    Assume for a contradiction that $X$ is a retract of $A$. By Exercise 2, every endomap
+    on $A$ has a fixed point. This is a contradiction, as the antipodal map on $A$ has no fixed point.
+
+    \section{7. Using maps to formulate guesses}
+
+    \paragraph{Exercise 1}
+    \subparagraph{(a)}
+    We can express 'I start in Buffalo and end in Rochester' as $m \circ j = i \circ j$.
+
+    We can express 'You start and finish anywhere between Buffalo and Rochester' as: there exists $f : I
+    \rightarrow E$ such that $y \circ j = i \circ f$.
+
+    \subparagraph{(b)}
+    There exists $t : 1 \rightarrow I$ such that $mt = yt$.
+
+    \subparagraph{(c)}
+    Let $C$ be the circle, $D$ the disk and $P$ the plane. Let $j : C \rightarrow D$ and $i : D \rightarrow P$
+    be the inclusions.
+
+    For any maps $m, y : D \rightarrow P$ such that:
+    \begin{itemize}
+        \item $mj = ij$
+        \item there exists $f : C \rightarrow D$ such that $yj = if$
+    \end{itemize}
+    then there exists $t : 1 \rightarrow D$ such that $mt = yt$.
+
+    \subparagraph{(d)}
+    I have not been able to find any smooth maps for which it is not true.
+
+    \part{Part III --- Categories of Structured Sets}
+
+    \chapter{Article III --- Examples of Categories}
+
+    \section{1. The category $\mathcal{S}^\circ$ of endomaps of sets}
+
+    \paragraph{Exercise 1}
+    Let $f : (X, \alpha) \rightarrow (Y, \beta)$ and $g : (Y, \beta) \rightarrow (Z, \gamma)$. Then
+    \[ g \circ f \circ \alpha = g \circ \beta \circ f = \gamma \circ g \circ f \]
+    and so $g \circ f : (X, \alpha) \rightarrow (Z, \gamma)$.
+
+    \paragraph{Exercise 2}
+    Suppose $e : A \rightarrow A$ is idempotent and has a retraction $r : A \rightarrow A$. Then
+    \[ 1_A = r \circ e = r \circ e \circ e = 1_A \circ e = e \]
+    so $e = 1_A$. Thus, the identities are the only idempotents that have retractions.
+
+    \paragraph{Exercise 3}
+    Suppose $A$ has an even number of elements, say $\{ a_1, a_2, \ldots, a_{2n} \}$. Define $\theta : A
+    \rightarrow A$ by $\theta(a_{2k+1}) = a_{2k+2}$ and $\theta(a_{2k+2}) = a_{2k+1}$ ($0 \leq k < n$). Then
+    $\theta$ is an involution with no fixed point.
+
+    Conversely, suppose $\theta : A \rightarrow A$ is an involution with no fixed point. Enumerate the elements
+    of $A$ as follows: Pick any element $a_1 \in A$. Let $a_2 = \theta(a_1)$; then $a_1 = \theta(a_2)$.
+
+    Assuming we have picked $a_1$, \ldots, $a_{2m}$ such that $\{ a_1, \ldots, a_{2m} \}$ is closed under
+    $\theta$ and $A \neq \{ a_1, \ldots, a_{2m} \}$, pick $a_{2m+1} \in A - \{ a_1, \ldots, a_{2m} \}$.
+    Then $\theta(a_{2m+1}) \notin \{ a_1, \ldots, a_{2m} \}$ (since $\theta(\theta(a_{2m+1})) = a_{2m+1}$)
+    and $\theta(a_{2m+1}) \neq a_{2m+1}$ (since $\theta$ has no fixed point). So let
+    $a_{2m+2} = \theta(a_{2m+1})$.
+
+    This process must end because $A$ is finite. So $A = \{a_1, \ldots, a_{2n} \}$ for some $n$.
+
+    Suppose now $A$ has an odd number of elements, say $A = \{ a_1, a_2, \ldots, a_{2n+1} \}$. Define $\theta :
+    A \rightarrow A$ by
+    \begin{align*}
+        \theta(a_{2k+1}) & = a_{2k+2} & (0 \leq k < n) \\
+        \theta(a_{2k+2}) & = a_{2k+1} & (0 \leq k < n) \\
+        \theta(a_{2n+1}) & = a_{2n+1}
+    \end{align*}
+    Then $\theta$ is an involution whose only fixed point is $a_{2n+1}$.
+
+    Conversely, suppose $\theta : A \rightarrow A$ is an involution with one fixed point $f$. Then
+    $\theta \restriction (A - \{f\})$ is an involution on $A - \{ f \}$ with no fixed point. So $A - \{f\}$
+    has an even number of elements, and so $A$ has an odd number of elements.
+
+    \paragraph{Exercise 4}
+    The map $\alpha$ is an involution because $-(-x) = x$. It is not idempotent because $-(-1) \neq -1$. Its
+    only fixed point is 0.
+
+    \paragraph{Exercise 5}
+    The map $\alpha$ is not an involution because $||-1|| = 1 \neq -1$. It is idempotent because $||x|| = |x|$.
+    Its fixed points are the non-negative integers.
+
+    \paragraph{Exercise 6}
+    The map $\alpha$ is an automorphism with inverse $\inv{\alpha}(x) = x - 3$.
+
+    \paragraph{Exercise 7}
+    The map $\alpha$ is not an automorphism because there is no integer $x$ with $\alpha(x) = 1$.
 \end{document}

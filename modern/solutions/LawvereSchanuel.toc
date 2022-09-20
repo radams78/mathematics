@@ -1,83 +1,112 @@
-\contentsline {part}{I\hspace {1em}Preview}{2}%
-\contentsline {chapter}{\numberline {1}Session 1 --- Galileo and Multiplication of Objects}{3}%
-\contentsline {paragraph}{Exercise 1}{3}%
-\contentsline {paragraph}{Exercise 2}{3}%
-\contentsline {part}{II\hspace {1em}Part I --- The category of sets}{4}%
-\contentsline {chapter}{\numberline {2}Article I --- Sets, maps, composition}{5}%
-\contentsline {paragraph}{Exercise 1}{5}%
-\contentsline {paragraph}{Exercise 2}{5}%
-\contentsline {paragraph}{Exercise 3}{5}%
-\contentsline {paragraph}{Exercise 4}{5}%
-\contentsline {paragraph}{Exercise 5}{5}%
-\contentsline {paragraph}{Exercise 6}{5}%
-\contentsline {paragraph}{Exercise 7}{5}%
-\contentsline {paragraph}{Exercise 8}{5}%
-\contentsline {paragraph}{Exercise 9}{5}%
-\contentsline {chapter}{\numberline {3}Session 3 --- Composing maps and counting maps}{6}%
+\contentsline {part}{I\hspace {1em}Preview}{3}%
+\contentsline {chapter}{\numberline {1}Session 1 --- Galileo and Multiplication of Objects}{4}%
+\contentsline {paragraph}{Exercise 1}{4}%
+\contentsline {paragraph}{Exercise 2}{4}%
+\contentsline {part}{II\hspace {1em}Part I --- The category of sets}{5}%
+\contentsline {chapter}{\numberline {2}Article I --- Sets, maps, composition}{6}%
 \contentsline {paragraph}{Exercise 1}{6}%
 \contentsline {paragraph}{Exercise 2}{6}%
-\contentsline {part}{III\hspace {1em}Part II --- The algebra of composition}{7}%
-\contentsline {chapter}{\numberline {4}Article II --- Isomorphisms}{8}%
-\contentsline {section}{\numberline {4.1}1. Isomorphisms}{8}%
-\contentsline {paragraph}{Exercise 1}{8}%
-\contentsline {subparagraph}{(R)}{8}%
-\contentsline {subparagraph}{(S)}{8}%
-\contentsline {subparagraph}{(T)}{8}%
-\contentsline {paragraph}{Exercise 2}{8}%
-\contentsline {paragraph}{Exercise 3}{8}%
-\contentsline {subparagraph}{(a)}{9}%
-\contentsline {subparagraph}{(b)}{9}%
-\contentsline {subparagraph}{(c)}{9}%
-\contentsline {paragraph}{Exercise 4}{9}%
-\contentsline {subparagraph}{(1)}{9}%
-\contentsline {subparagraph}{(2)}{9}%
-\contentsline {subparagraph}{(3)}{9}%
-\contentsline {subparagraph}{(4)}{9}%
-\contentsline {subparagraph}{(5)}{9}%
-\contentsline {section}{\numberline {4.2}2 --- General division problems: Determination and choice}{9}%
-\contentsline {paragraph}{Exercise 5}{9}%
-\contentsline {paragraph}{Exercise 6}{9}%
-\contentsline {paragraph}{Exercise 7}{10}%
-\contentsline {paragraph}{Exercise 8}{10}%
-\contentsline {paragraph}{Exercise 9}{10}%
-\contentsline {paragraph}{Exercise 10}{10}%
-\contentsline {paragraph}{Exercise 11}{10}%
-\contentsline {chapter}{\numberline {5}Session 4 --- Division of Maps: Isomorphisms}{11}%
-\contentsline {section}{\numberline {5.1}4. A small zoo of isomorphisms in other categories}{11}%
-\contentsline {paragraph}{Exercise 1}{11}%
-\contentsline {paragraph}{Exercise 2}{11}%
-\contentsline {paragraph}{Exercise 3}{11}%
-\contentsline {subparagraph}{(a)}{11}%
-\contentsline {subparagraph}{(b)}{11}%
-\contentsline {subparagraph}{(c)}{11}%
-\contentsline {subparagraph}{(d)}{11}%
-\contentsline {subparagraph}{(e)}{11}%
-\contentsline {subparagraph}{(f)}{11}%
-\contentsline {chapter}{\numberline {6}Session 5 --- Division of Maps: Sections and Retractions}{12}%
-\contentsline {section}{\numberline {6.1}1. Determination Problems}{12}%
+\contentsline {paragraph}{Exercise 3}{6}%
+\contentsline {paragraph}{Exercise 4}{6}%
+\contentsline {paragraph}{Exercise 5}{6}%
+\contentsline {paragraph}{Exercise 6}{6}%
+\contentsline {paragraph}{Exercise 7}{6}%
+\contentsline {paragraph}{Exercise 8}{6}%
+\contentsline {paragraph}{Exercise 9}{6}%
+\contentsline {chapter}{\numberline {3}Session 3 --- Composing maps and counting maps}{7}%
+\contentsline {paragraph}{Exercise 1}{7}%
+\contentsline {paragraph}{Exercise 2}{7}%
+\contentsline {part}{III\hspace {1em}Part II --- The algebra of composition}{8}%
+\contentsline {chapter}{\numberline {4}Article II --- Isomorphisms}{9}%
+\contentsline {section}{\numberline {4.1}1. Isomorphisms}{9}%
+\contentsline {paragraph}{Exercise 1}{9}%
+\contentsline {subparagraph}{(R)}{9}%
+\contentsline {subparagraph}{(S)}{9}%
+\contentsline {subparagraph}{(T)}{9}%
+\contentsline {paragraph}{Exercise 2}{9}%
+\contentsline {paragraph}{Exercise 3}{9}%
+\contentsline {subparagraph}{(a)}{10}%
+\contentsline {subparagraph}{(b)}{10}%
+\contentsline {subparagraph}{(c)}{10}%
+\contentsline {paragraph}{Exercise 4}{10}%
+\contentsline {subparagraph}{(1)}{10}%
+\contentsline {subparagraph}{(2)}{10}%
+\contentsline {subparagraph}{(3)}{10}%
+\contentsline {subparagraph}{(4)}{10}%
+\contentsline {subparagraph}{(5)}{10}%
+\contentsline {section}{\numberline {4.2}2 --- General division problems: Determination and choice}{10}%
+\contentsline {paragraph}{Exercise 5}{10}%
+\contentsline {paragraph}{Exercise 6}{10}%
+\contentsline {paragraph}{Exercise 7}{11}%
+\contentsline {paragraph}{Exercise 8}{11}%
+\contentsline {paragraph}{Exercise 9}{11}%
+\contentsline {paragraph}{Exercise 10}{11}%
+\contentsline {paragraph}{Exercise 11}{11}%
+\contentsline {chapter}{\numberline {5}Session 4 --- Division of Maps: Isomorphisms}{12}%
+\contentsline {section}{\numberline {5.1}4. A small zoo of isomorphisms in other categories}{12}%
 \contentsline {paragraph}{Exercise 1}{12}%
-\contentsline {subparagraph}{(a)}{12}%
-\contentsline {subparagraph}{(b)}{12}%
-\contentsline {section}{\numberline {6.2}3. Choice Problems}{12}%
 \contentsline {paragraph}{Exercise 2}{12}%
+\contentsline {paragraph}{Exercise 3}{12}%
 \contentsline {subparagraph}{(a)}{12}%
 \contentsline {subparagraph}{(b)}{12}%
-\contentsline {section}{\numberline {6.3}5. Stacking or Sorting}{12}%
-\contentsline {paragraph}{Exercise 3}{12}%
-\contentsline {chapter}{\numberline {7}Session 9 --- Retracts and Idempotents}{13}%
-\contentsline {section}{\numberline {7.1}1. Retracts and Comparisons}{13}%
+\contentsline {subparagraph}{(c)}{12}%
+\contentsline {subparagraph}{(d)}{12}%
+\contentsline {subparagraph}{(e)}{12}%
+\contentsline {subparagraph}{(f)}{12}%
+\contentsline {chapter}{\numberline {6}Session 5 --- Division of Maps: Sections and Retractions}{13}%
+\contentsline {section}{\numberline {6.1}1. Determination Problems}{13}%
 \contentsline {paragraph}{Exercise 1}{13}%
-\contentsline {section}{\numberline {7.2}2. Idempotents as records of retracts}{13}%
+\contentsline {subparagraph}{(a)}{13}%
+\contentsline {subparagraph}{(b)}{13}%
+\contentsline {section}{\numberline {6.2}3. Choice Problems}{13}%
+\contentsline {paragraph}{Exercise 2}{13}%
+\contentsline {subparagraph}{(a)}{13}%
+\contentsline {subparagraph}{(b)}{13}%
+\contentsline {section}{\numberline {6.3}5. Stacking or Sorting}{13}%
 \contentsline {paragraph}{Exercise 3}{13}%
-\contentsline {chapter}{\numberline {8}Quiz}{14}%
-\contentsline {paragraph}{Question 1}{14}%
-\contentsline {paragraph}{Question 2}{14}%
-\contentsline {subparagraph}{(a)}{14}%
-\contentsline {subparagraph}{(b)}{14}%
-\contentsline {paragraph}{Question 2*}{14}%
-\contentsline {paragraph}{Question 1*}{14}%
-\contentsline {chapter}{\numberline {9}Summary / quiz on pairs of 'opposed' maps}{15}%
+\contentsline {chapter}{\numberline {7}Session 9 --- Retracts and Idempotents}{14}%
+\contentsline {section}{\numberline {7.1}1. Retracts and Comparisons}{14}%
+\contentsline {paragraph}{Exercise 1}{14}%
+\contentsline {section}{\numberline {7.2}2. Idempotents as records of retracts}{14}%
+\contentsline {paragraph}{Exercise 3}{14}%
+\contentsline {chapter}{\numberline {8}Quiz}{15}%
 \contentsline {paragraph}{Question 1}{15}%
 \contentsline {paragraph}{Question 2}{15}%
-\contentsline {paragraph}{Question 3}{15}%
-\contentsline {paragraph}{Question 4}{15}%
+\contentsline {subparagraph}{(a)}{15}%
+\contentsline {subparagraph}{(b)}{15}%
+\contentsline {paragraph}{Question 2*}{15}%
+\contentsline {paragraph}{Question 1*}{15}%
+\contentsline {chapter}{\numberline {9}Summary / quiz on pairs of 'opposed' maps}{16}%
+\contentsline {paragraph}{Question 1}{16}%
+\contentsline {paragraph}{Question 2}{16}%
+\contentsline {paragraph}{Question 3}{16}%
+\contentsline {paragraph}{Question 4}{16}%
+\contentsline {chapter}{\numberline {10}Test 1}{17}%
+\contentsline {paragraph}{Question 1}{17}%
+\contentsline {subparagraph}{(a)}{17}%
+\contentsline {subparagraph}{(b)}{17}%
+\contentsline {subparagraph}{(c)}{17}%
+\contentsline {paragraph}{Question 2}{17}%
+\contentsline {subparagraph}{(a)}{17}%
+\contentsline {subparagraph}{(b)}{17}%
+\contentsline {chapter}{\numberline {11}Session 10 --- Brouwer's Theorems}{18}%
+\contentsline {section}{\numberline {11.1}4. Relation between fixed point and retraction theorems}{18}%
+\contentsline {paragraph}{Exercise 1}{18}%
+\contentsline {paragraph}{Exercise 2}{18}%
+\contentsline {paragraph}{Exercise 3}{18}%
+\contentsline {section}{\numberline {11.2}7. Using maps to formulate guesses}{19}%
+\contentsline {paragraph}{Exercise 1}{19}%
+\contentsline {subparagraph}{(a)}{19}%
+\contentsline {subparagraph}{(b)}{19}%
+\contentsline {subparagraph}{(c)}{19}%
+\contentsline {subparagraph}{(d)}{19}%
+\contentsline {part}{IV\hspace {1em}Part III --- Categories of Structured Sets}{20}%
+\contentsline {chapter}{\numberline {12}Article III --- Examples of Categories}{21}%
+\contentsline {section}{\numberline {12.1}1. The category $\mathcal {S}^\circ $ of endomaps of sets}{21}%
+\contentsline {paragraph}{Exercise 1}{21}%
+\contentsline {paragraph}{Exercise 2}{21}%
+\contentsline {paragraph}{Exercise 3}{21}%
+\contentsline {paragraph}{Exercise 4}{22}%
+\contentsline {paragraph}{Exercise 5}{22}%
+\contentsline {paragraph}{Exercise 6}{22}%
+\contentsline {paragraph}{Exercise 7}{22}%
