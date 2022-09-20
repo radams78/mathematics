@@ -116,3 +116,8 @@
 \contentsline {section}{\numberline {12.3}5. Irreflexive graphs}{23}%
 \contentsline {paragraph}{Exercise 10}{23}%
 \contentsline {paragraph}{Exercise 11}{23}%
+\contentsline {section}{\numberline {12.4}6. Endomaps as special graphs}{23}%
+\contentsline {paragraph}{Exericse 12}{23}%
+\contentsline {paragraph}{Exercise 13}{23}%
+\contentsline {section}{\numberline {12.5}7. The simpler category $\mathcal {S}^\downarrow $: Objects are just maps of sets}{23}%
+\contentsline {paragraph}{Exercise 14}{23}%
