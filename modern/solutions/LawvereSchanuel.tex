@@ -429,6 +429,8 @@
     \[ g \circ f \circ \alpha = g \circ \beta \circ f = \gamma \circ g \circ f \]
     and so $g \circ f : (X, \alpha) \rightarrow (Z, \gamma)$.
 
+    \section{4. Categories of endomaps}
+
     \paragraph{Exercise 2}
     Suppose $e : A \rightarrow A$ is idempotent and has a retraction $r : A \rightarrow A$. Then
     \[ 1_A = r \circ e = r \circ e \circ e = 1_A \circ e = e \]
@@ -476,4 +478,40 @@
 
     \paragraph{Exercise 7}
     The map $\alpha$ is not an automorphism because there is no integer $x$ with $\alpha(x) = 1$.
+
+    \paragraph{Exercise 8}
+    If $\alpha$ is idempotent then $\alpha \circ \alpha \circ \alpha = \alpha \circ \alpha = \alpha$.
+
+    If $\alpha$ is an involution then $\alpha \circ \alpha \circ \alpha = 1 \circ \alpha = \alpha$.
+
+    \paragraph{Exercise 9}
+    Label the elements in the diagram 0, 1, 2 from top to bottom. Then
+    \begin{align*}
+        \alpha^3(0) & = \alpha^2(1) = \alpha(2) = 1 \\
+        & = \alpha(0) \\
+        \alpha^3(1) & = \alpha^2(2) = \alpha(1) = 2 \\
+        & = \alpha(1) \\
+        \alpha^3(2) & = \alpha^2(1) = \alpha(2) = 1 \\
+        & = \alpha(2)
+    \end{align*}
+
+    Thus, $\alpha^3 = \alpha$.
+
+    However, $\alpha$ is not idempotent because $\alpha^2(0) = 2 \neq \alpha(0)$. And $\alpha$ is not an involution
+    because $\alpha^2(0) = 2 \neq 0$.
+
+    \section{5. Irreflexive graphs}
+
+    \paragraph{Exercise 10}
+    \[ s(a) = k, s(b) = m, s(c) = k, s(d) = p, s(e) = m \]
+    \[ t(a) = m, t(b) = m, t(c) = m, t(d) = q, t(e) = r \]
+
+    The arrow $b$ has $s(b) = t(b)$. There is no arrow $x$ with $t(x) = k$.
+
+    \paragraph{Exercise 11}
+    We have
+    \[ s'' \circ g \circ f = g \circ s' \circ f = g \circ f \circ s \]
+    \[ t'' \circ g \circ f = g \circ t' \circ f = g \circ f \circ t \]
+    and so $g \circ f : (X,P,s,t) \rightarrow (Z,R,s'',t'')$.
+
 \end{document}

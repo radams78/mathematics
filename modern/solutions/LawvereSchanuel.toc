@@ -104,9 +104,15 @@
 \contentsline {chapter}{\numberline {12}Article III --- Examples of Categories}{21}%
 \contentsline {section}{\numberline {12.1}1. The category $\mathcal {S}^\circ $ of endomaps of sets}{21}%
 \contentsline {paragraph}{Exercise 1}{21}%
+\contentsline {section}{\numberline {12.2}4. Categories of endomaps}{21}%
 \contentsline {paragraph}{Exercise 2}{21}%
 \contentsline {paragraph}{Exercise 3}{21}%
 \contentsline {paragraph}{Exercise 4}{22}%
 \contentsline {paragraph}{Exercise 5}{22}%
 \contentsline {paragraph}{Exercise 6}{22}%
 \contentsline {paragraph}{Exercise 7}{22}%
+\contentsline {paragraph}{Exercise 8}{22}%
+\contentsline {paragraph}{Exercise 9}{22}%
+\contentsline {section}{\numberline {12.3}5. Irreflexive graphs}{23}%
+\contentsline {paragraph}{Exercise 10}{23}%
+\contentsline {paragraph}{Exercise 11}{23}%
