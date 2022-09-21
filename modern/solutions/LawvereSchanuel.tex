@@ -529,4 +529,34 @@
     Let $X = \{ * \}$ and $Y = \{ 0, 1 \}$. Let $\alpha$ be the only map $X \rightarrow X$, and
     $\beta : Y \rightarrow Y$ be the map with $\beta(0) = 1$ and $\beta(1) = 0$. Let $f_A(*) = 0$
     and $f_D(*) = 1$. Then $f_D \circ \alpha = \beta \circ f_A$ but $f_A \neq f_D$.
+
+    \section{8. Reflexive graphs}
+
+    \paragraph{Exercise 15}
+    Let $x_1 = s$ and $x_2 = t$, so $e_i = i x_i$ for each $i$. Then
+    \begin{align*}
+        e_k e_j & = i x_k i x_j \\
+        & = i 1_P x_j \\
+        & = i x_j \\
+        & = e_j
+    \end{align*}
+    In particular, $e_j e_j = e_j$, so each $e_j$ is idempotent.
+
+    \paragraph{Exercise 16}
+    Let $(f_A, f_D) : (X, P, s, t, i) \rightarrow (Y, Q, s', t', j)$. Then
+    \begin{align*}
+        f_D s & = s' f_A \\
+        \therefore f_D & = f_D s i \\
+        & = s' f_A i
+    \end{align*}
+
+    \paragraph{Exercise 17}
+    A map between $(M, F, \phi, \phi', \mu, \mu')$ and $(N, G, \psi, \psi', \nu, \nu')$
+    is a pair of functions $f : M \rightarrow N$ and $g : F \rightarrow G$ such that
+    \begin{align*}
+        \psi f & = f \phi \\
+        \psi' g & = f \phi' \\
+        \nu g & = g \mu \\
+        \nu' f & = g \nu
+    \end{align*}
 \end{document}

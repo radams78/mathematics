@@ -121,3 +121,7 @@
 \contentsline {paragraph}{Exercise 13}{23}%
 \contentsline {section}{\numberline {12.5}7. The simpler category $\mathcal {S}^\downarrow $: Objects are just maps of sets}{23}%
 \contentsline {paragraph}{Exercise 14}{23}%
+\contentsline {section}{\numberline {12.6}8. Reflexive graphs}{23}%
+\contentsline {paragraph}{Exercise 15}{23}%
+\contentsline {paragraph}{Exercise 16}{24}%
+\contentsline {paragraph}{Exercise 17}{24}%
