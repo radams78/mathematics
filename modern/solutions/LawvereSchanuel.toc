@@ -125,3 +125,18 @@
 \contentsline {paragraph}{Exercise 15}{23}%
 \contentsline {paragraph}{Exercise 16}{24}%
 \contentsline {paragraph}{Exercise 17}{24}%
+\contentsline {section}{\numberline {12.7}10. Retractions and Injectivity}{24}%
+\contentsline {paragraph}{Exercise 18}{24}%
+\contentsline {paragraph}{Exercise 19}{24}%
+\contentsline {paragraph}{Exercise 20}{24}%
+\contentsline {paragraph}{Exercise 21}{24}%
+\contentsline {paragraph}{Exercise 22}{24}%
+\contentsline {paragraph}{Exercise 23}{24}%
+\contentsline {paragraph}{Exericse 24}{25}%
+\contentsline {paragraph}{Exercise 25}{25}%
+\contentsline {paragraph}{Exercise 26}{25}%
+\contentsline {subparagraph}{1}{25}%
+\contentsline {subparagraph}{2}{25}%
+\contentsline {subparagraph}{3}{25}%
+\contentsline {paragraph}{Exercise 27}{25}%
+\contentsline {paragraph}{Exercise 28}{25}%

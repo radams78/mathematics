@@ -559,4 +559,76 @@
         \nu g & = g \mu \\
         \nu' f & = g \nu
     \end{align*}
+
+    \section{10. Retractions and Injectivity}
+
+    \paragraph{Exercise 18}
+    Let $a : X \rightarrow Y$ have a retraction $r : Y \rightarrow X$. Let $x_1, x_2 : T \rightarrow X$
+    satisfy $a x_1 = a x_2$. Then
+    \[ x_1 = r a x_1 = r a x_2 = x_2 \enspace . \]
+
+    \paragraph{Exercise 19}
+    We have
+    \begin{align*}
+        \beta a x & = 0 & a \alpha x & = 0 \\
+        \beta a 0 & = 0 & a \alpha 0 & = 0
+    \end{align*}
+    So $\beta a = a \alpha$ as required.
+
+    \paragraph{Exercise 20}
+    Let $x_1, x_2 : (T, \gamma) \rightarrow (X, \alpha)$ satisfy $a x_1 = a x_2$. Then, for any $t \in T$,
+    we have $a x_1 t = a x_2 t$, hence $x_1 t = x_2 t$ (since $a$ is injective as a function). Thus $x_1 = x_2$.
+
+    \paragraph{Exercise 21}
+    The retractions are the maps that send $y$ to $x$, $0$ to $0$, and $\overline{y}$ to either $x$ or $0$.
+
+    \paragraph{Exercise 22}
+    Let $r : Y \rightarrow X$ be either of the retractions of $a$ in $\mathcal{S}$. Then, no matter what
+    $r \overline{y}$ is, we have $\alpha r \overline{y} = 0$. But $r \beta \overline{y} = r y = x$.
+    Thus $r$ is not a map $(Y, \beta) \rightarrow (X, \alpha)$ in $\mathcal{S}^\circ$.
+
+    \paragraph{Exercise 23}
+    The following are maps in $\mathcal{S}^\circ$:
+    \begin{align*}
+        \overline{y} \mapsto x & y \mapsto 0 & 0 \mapsto 0 \\
+        \overline{y} \mapsto 0 & y \mapsto 0 & 0 \mapsto 0
+    \end{align*}
+
+    \paragraph{Exericse 24}
+    Suppose $(r,s) : (Y, \beta) \rightarrow (X, \alpha)$ is a retraction of $(a,a)$ in
+    $\mathcal{S}^\downarrow$. Then $ra = sa = 1_X$ and $\alpha r = s \beta$. Now, whatever $r \overline{y}$ is, we have
+    $\alpha r \overline{y} = 0$. But $s \beta \overline{y} = s y = x$. This is a contradiction.
+
+    \paragraph{Exercise 25}
+    Suppose $f_D s = f_D t$. For $x \in X$, we have
+    \[ s' f_A x = f_D s x = f_D t x = t' f_A x \]
+    and so $f_A x$ is a loop in $Y$.
+
+    \paragraph{Exercise 26}
+    Let $f : \mathbb{Z} \rightarrow \mathbb{Q}$ be the inclusion (i.e. $f(n) = n$ for every integer $n$). Then
+    \subparagraph{1}
+    $f$ is a map in $\mathcal{S}^\circ$ because $5f(n) = f(5n) = 5n$
+    \subparagraph{2}
+    The map $5 \times ()$ is an automorphism with inverse $() / 5$
+    \subparagraph{3}
+    If $f(m) = f(n)$ then immediately $m = n$.
+
+    \paragraph{Exercise 27}
+    Let $f : (X, \alpha) \rightarrow (Y, \beta)$. Let the two elements of $X$ be 0 and 1, where $\alpha 0 =
+    \alpha 1 = 1$. Then
+    \begin{align*}
+        f \alpha 0 & = f \alpha 1 \\
+        \therefore \beta f 0 & = \beta f 1 \\
+        \therefore f 0 & = f 1
+    \end{align*}
+    since $\beta$ is injective. Thus $f$ is not injective.
+
+    \paragraph{Exercise 28}
+    Let $x, y \in X$ and assume $\alpha x = \alpha y$. Then
+    \begin{align*}
+        f \alpha x & = f \alpha y \\
+        \therefore \beta f x & = \beta f y \\
+        \therefore f x & = f y & (\text{$\beta$ is injective}) \\
+        \therefore x & = y & (\text{$f$ is injective})
+    \end{align*}
 \end{document}

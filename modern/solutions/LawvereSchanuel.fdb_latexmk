@@ -1,8 +1,8 @@
 # Fdb version 3
-["pdflatex"] 1663721203 "/home/robin/fun/maths/modern/solutions/LawvereSchanuel.tex" "/home/robin/fun/maths/modern/solutions/LawvereSchanuel.pdf" "LawvereSchanuel" 1663721204
+["pdflatex"] 1663810482 "/home/robin/fun/maths/modern/solutions/LawvereSchanuel.tex" "/home/robin/fun/maths/modern/solutions/LawvereSchanuel.pdf" "LawvereSchanuel" 1663810482
   "/etc/texmf/web2c/texmf.cnf" 1626265647 475 c0e671620eb5563b2130f56340a5fde8 ""
-  "/home/robin/fun/maths/modern/solutions/LawvereSchanuel.aux" 1663721204 12689 51fec21522bafaa3c2b845ae3c6d6e47 ""
-  "/home/robin/fun/maths/modern/solutions/LawvereSchanuel.tex" 1663721190 21264 26715d572efab4aaf983811de6fc5205 ""
+  "/home/robin/fun/maths/modern/solutions/LawvereSchanuel.aux" 1663810482 13979 25454933d06a3dfddadc2022499b830a ""
+  "/home/robin/fun/maths/modern/solutions/LawvereSchanuel.tex" 1663810478 24265 897ba5bf8073435bd93f018906bea719 ""
   "/usr/share/texlive/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty" 1359763108 5949 3f3fd50a8cc94c3d4cbf4fc66cd3df1c ""
   "/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty" 1359763108 13829 94730e64147574077f8ecfea9bb69af4 ""
@@ -63,13 +63,13 @@
   "/usr/share/texmf/web2c/texmf.cnf" 1581979058 38841 ce3692aa899bb693b90b87eaa5d4d84e ""
   "/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map" 1626264333 4131335 97f357c35ef03853631f523ecab90976 ""
   "/var/lib/texmf/web2c/pdftex/pdflatex.fmt" 1626264381 8269926 c6f0aa12f3019b9156b681964aec4572 ""
-  "LawvereSchanuel.aux" 1663721204 12689 51fec21522bafaa3c2b845ae3c6d6e47 "pdflatex"
-  "LawvereSchanuel.tex" 1663721190 21264 26715d572efab4aaf983811de6fc5205 ""
-  "LawvereSchanuel.toc" 1663721204 6556 873add1af5b58186d99fa440f79ea764 "pdflatex"
+  "LawvereSchanuel.aux" 1663810482 13979 25454933d06a3dfddadc2022499b830a "pdflatex"
+  "LawvereSchanuel.tex" 1663810478 24265 897ba5bf8073435bd93f018906bea719 ""
+  "LawvereSchanuel.toc" 1663810482 7231 16a5c12402613481763fa272b01a88e9 "pdflatex"
   (generated)
   "LawvereSchanuel.aux"
+  "LawvereSchanuel.log"
   "/home/robin/fun/maths/modern/solutions/LawvereSchanuel.log"
+  "/home/robin/fun/maths/modern/solutions/LawvereSchanuel.pdf"
   "LawvereSchanuel.toc"
   "LawvereSchanuel.pdf"
-  "LawvereSchanuel.log"
-  "/home/robin/fun/maths/modern/solutions/LawvereSchanuel.pdf"
