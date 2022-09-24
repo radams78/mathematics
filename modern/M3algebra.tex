@@ -1,0 +1,36 @@
+\documentclass{article}
+
+\title{M3 Algebra}
+\author{Robin Adams}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\let\proof\relax
+\let\endproof\relax
+\let\qed\relax
+\usepackage{pf2}
+\usepackage[all]{xy}
+
+\newtheorem{axiom}{Axiom}
+\newtheorem{axs}[axiom]{Axiom Schema}
+\newtheorem{lm}[axiom]{Lemma}
+\newtheorem{proposition}[axiom]{Proposition}
+\newtheorem{props}[axiom]{Proposition Schema}
+\newtheorem{thm}[axiom]{Theorem}
+\newtheorem{cor}{Corollary}[axiom]
+\theoremstyle{definition}
+\newtheorem{definition}[axiom]{Definition}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+\chapter{Monoid Theory}
+
+\begin{definition}[Monoid]
+    A \emph{monoid} is a category with exactly one object.
+\end{definition}
+
+\end{document}

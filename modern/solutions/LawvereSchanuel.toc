@@ -140,3 +140,49 @@
 \contentsline {subparagraph}{3}{25}%
 \contentsline {paragraph}{Exercise 27}{25}%
 \contentsline {paragraph}{Exercise 28}{25}%
+\contentsline {section}{\numberline {12.8}11. Types of structure}{25}%
+\contentsline {paragraph}{Exercise 29}{25}%
+\contentsline {paragraph}{Exercise 30}{26}%
+\contentsline {chapter}{\numberline {13}Session 11. Ascending to categories of richer structures}{27}%
+\contentsline {section}{\numberline {13.1}1. A category of richer structures: Endomaps of sets}{27}%
+\contentsline {paragraph}{Exercise 1}{27}%
+\contentsline {section}{\numberline {13.2}3. The category of graphs}{27}%
+\contentsline {paragraph}{Exercise 2}{27}%
+\contentsline {paragraph}{Exercise 3}{27}%
+\contentsline {paragraph}{Exercise 4}{27}%
+\contentsline {paragraph}{Exercise 5}{28}%
+\contentsline {paragraph}{Exercise 6}{28}%
+\contentsline {paragraph}{Exercise 7}{28}%
+\contentsline {paragraph}{Exercise 8}{28}%
+\contentsline {subparagraph}{(a)}{28}%
+\contentsline {subparagraph}{(b)}{28}%
+\contentsline {chapter}{\numberline {14}Session 12. Categories of diagrams}{29}%
+\contentsline {section}{\numberline {14.1}1. Dynamical systems or automata}{29}%
+\contentsline {paragraph}{Exercise 1}{29}%
+\contentsline {paragraph}{Exercise 2}{29}%
+\contentsline {section}{\numberline {14.2}2. Family Trees}{29}%
+\contentsline {paragraph}{Exercise 3}{29}%
+\contentsline {subparagraph}{(a)}{29}%
+\contentsline {subparagraph}{(b)}{29}%
+\contentsline {subparagraph}{(c)}{30}%
+\contentsline {chapter}{\numberline {15}Session 14. Maps preserve positive properties}{31}%
+\contentsline {paragraph}{Exercise 1}{31}%
+\contentsline {paragraph}{Exercise 2}{31}%
+\contentsline {paragraph}{Exercise 3}{31}%
+\contentsline {paragraph}{Exercise 4}{31}%
+\contentsline {paragraph}{Exercise 5}{31}%
+\contentsline {chapter}{\numberline {16}Session 15. Objectification of properties in dynamical systems}{32}%
+\contentsline {section}{\numberline {16.1}2. Naming the elements that have a given period by maps}{32}%
+\contentsline {paragraph}{Exercise 1}{32}%
+\contentsline {paragraph}{Exercise 2}{32}%
+\contentsline {paragraph}{Exercise 3}{33}%
+\contentsline {paragraph}{Exercise 4}{33}%
+\contentsline {paragraph}{Exercise 5}{33}%
+\contentsline {section}{\numberline {16.2}4. The philosophical role of $N$}{33}%
+\contentsline {paragraph}{Exercise 6}{33}%
+\contentsline {paragraph}{Exercise 7}{33}%
+\contentsline {paragraph}{Exercise 10}{33}%
+\contentsline {paragraph}{Exercise 12}{34}%
+\contentsline {chapter}{\numberline {17}Session 16. Idempotents, involutions, and graphs}{35}%
+\contentsline {section}{\numberline {17.1}2. Solving exercises on maps of graphs}{35}%
+\contentsline {paragraph}{Exercise 1}{35}%

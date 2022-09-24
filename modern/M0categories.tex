@@ -237,4 +237,234 @@
 \begin{definition}[Automorphism]
     An \emph{automorphism} on an object $A$ is an isomorphism $A \cong A$.
 \end{definition}
+
+\section{Terminal Objects}
+
+\begin{definition}[Terminal Object]
+    An object $1$ is \emph{terminal} iff, for every object $X$, there exists exactly one morphism $X \rightarrow 1$.
+\end{definition}
+
+\begin{thm}
+    If $T_1$ and $T_2$ are terminal objects, then the unique map $T_1 \rightarrow T_2$ is iso.
+\end{thm}
+
+\begin{proof}
+    \pf\ Let $f : T_1 \rightarrow T_2$ be the unique such map, and $g : T_2 \rightarrow T_1$ the unique map
+    in the other direction. The $g \circ f = 1_{T_1}$ since there is only one map $T_1 \rightarrow T_1$,
+    and $f \circ g = 1_{T_2}$ since there is only one map $T_2 \rightarrow T_2$. \qed
+\end{proof}
+
+\section{Initial Objects}
+
+\begin{definition}[Initial Object]
+    An object $0$ is \emph{initial} iff, for every object $X$, there exists exactly one morphism 
+    $0 \rightarrow X$.
+\end{definition}
+
+\section{Products}
+
+\begin{definition}[Product]
+    Let $A$ and $B$ be objects. A \emph{product} of $A$ and $B$ consists of an object $A \times B$ and
+    morphisms $\pi_1 : A \times B \rightarrow A$, $\pi_2 : A \times B \rightarrow B$, the \emph{projections},
+    such that, for any object $X$ and morphisms $f : X \rightarrow A$ and $g : X \rightarrow B$, there exists
+    exactly one map $\langle f, g \rangle : X \rightarrow A \times B$ such that
+    $\pi_1 \circ \langle f,g \rangle = f$ and $\pi_2 \circ \langle f, g \rangle = g$.
+\end{definition}
+
+\begin{thm}[Lawvere Diagonal Theorem]
+    Let $\mathcal{C}$ be a category with finite products.
+
+    Let $Y$ and $T$ be objects and $f : T \times T \rightarrow Y$. Suppose that, for every $g : T \rightarrow Y$,
+    there exists a point $\overline{g} : 1 \rightarrow T$ such that $f \circ \langle 1_T, \overline{g} \circ ! \rangle = g$.
+    Then, for every $\alpha : Y \rightarrow Y$, there exists $y : 1 \rightarrow Y$ such that $\alpha y = y$.
+\end{thm}
+
+\begin{proof}
+    \pf
+    \step{1}{\pflet{$\alpha : Y \rightarrow Y$}}
+    \step{2}{\pflet{$g = \alpha \circ f \circ \langle 1_T, 1_T \rangle$}}
+    \step{3}{\pick\ $t_0 : 1 \rightarrow T$ such that $f \circ \langle 1_T, t_0 \circ ! \rangle = \alpha \circ f
+    \circ \langle 1_T, 1_T \rangle$}
+    \step{4}{\pflet{$y = f \circ \langle t_0, t_0 \rangle$}}
+    \step{5}{$\alpha y = y$}
+    \begin{proof}
+        \pf
+        \begin{align*}
+            \alpha y & = \alpha f \langle t_0, t_0 \rangle \\
+            & = \alpha f \langle 1_T, 1_T \rangle t_0 \\
+            & = f \langle 1_T, t ! \rangle t_0 \\
+            & = f \langle t_0, t_0 \rangle \\
+            & = y
+        \end{align*}
+    \end{proof}
+    \qed
+\end{proof}
+
+\section{Sums}
+
+\begin{definition}[Sum]
+    Let $A$ and $B$ be objects. A \emph{sum} of $A$ and $B$ consists of an object $A + B$ and
+    morphisms $\kappa_1 : A \rightarrow A + B$, $\kappa_2 : B \rightarrow A + B$, the \emph{injections},
+    such that, for any object $X$ and morphisms $f : A \rightarrow X$ and $g : B \rightarrow X$, there exists
+    exactly one map $[ f, g ] : A + B \rightarrow X$ such that
+    $[f,g] \circ \kappa_1 = f$ and $[f,g] \circ \kappa_2 = g$.
+\end{definition}
+
+\section{Distributive Categories}
+
+\begin{definition}[Distributive Category]
+    Let $\mathcal{C}$ be a category with binary products and binary coproducts. Then $\mathcal{C}$ is
+    \emph{distributive} iff, for any objects $A$, $B$, $C$, the map
+    \[ [1_A \times \kappa_1, 1_A \times \kappa_2] : (A \times B) + (A \times C) \rightarrow A \times (B + C) \]
+    is an isomorphism.
+\end{definition}
+
+\section{Equalizers}
+
+\begin{definition}[Equalizer]
+    Let $f, g : A \rightarrow B$. An \emph{equalizer} of $f$ and $g$ consists of an object $E$ and a morphism
+    $e : E \rightarrow A$ such that $f \circ e = g \circ e$ and, for any object $X$ and morphism $x : X
+    \rightarrow A$ such that $fx = gx$, there exists a unique $\overline{x} : X \rightarrow E$ such that
+    $x = e \overline{x}$.
+\end{definition}
+
+\section{Map Objects}
+
+\begin{definition}[Map Objects]
+    Let $\mathcal{C}$ be a category with binary products.
+
+    Let $A$ and $B$ be objects. A \emph{map object} from $A$ to $B$ consists of an object $B^A$ and a morphism
+    $e : B^A \times A \rightarrow B$ such that, for any object $X$ and morphism $f : X \times A \rightarrow B$,
+    there exists a unique morphism $\lambda f : X \rightarrow B^A$ such that $e \circ (\lambda f \times 1_A)
+    = f$.
+\end{definition}
+
+\begin{proposition}
+    Let $\mathcal{C}$ be a category with binary products and coproducts. Let $T$ be an object such that,
+    for every object $A$, the map object $A^T$ exists. Then binary products with $T$ distribute over binary
+    coproducts.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{\pflet{$A, B \in \mathcal{C}$}}
+    \step{2}{\pflet{$c = [\kappa_1 \times 1_T, \kappa_2 \times 1_T]: 
+        (A \times T) + (B \times T) \rightarrow (A + B) \times T$}}
+    \step{4}{$\lambda \kappa_1 : A \rightarrow ((A \times T) + (B \times T))^T$,
+    $\lambda \kappa_2 : B \rightarrow ((A \times T) + (B \times T))^T$,
+    and they are unique such that $e \circ (\lambda \kappa_1 \times 1_T) = \kappa_1$
+    and $e \circ (\lambda \kappa_2 \times 1_T) = \kappa_2$}
+    \step{5}{$[\lambda \kappa_1, \lambda \kappa_2] : A + B \rightarrow ((A \times T) + (B \times T))^T$
+    is unique such that $e \circ ([\lambda \kappa_1, \lambda \kappa_2] \kappa_1 \times 1_T) = \kappa_1$
+    and $e \circ ([\lambda \kappa_1, \lambda \kappa_2] \kappa_2 \times 1_T) = \kappa_2$}
+    \step{7}{\pflet{$\inv{c} = e \circ ([\lambda \kappa_1, \lambda \kappa_2] \times 1_T)
+    : (A + B) \times T \rightarrow (A \times T) + (B \times T)$}}
+    \step{8}{$c \inv{c} = 1_{(A + B) \times T}$}
+    \begin{proof}
+        \step{a}{$\pi_1 c \inv{c} = \pi_1 : (A + B) \times T \rightarrow A + B$}
+        \begin{proof}
+            \step{i}{$\lambda(\pi_1 c \inv{c}) = \lambda \pi_1 : A + B \rightarrow (A + B)^T$}
+            \begin{proof}
+                \step{one}{$\lambda (\pi_1 c \inv{c}) \kappa_1 = (\lambda \pi_1) \kappa_1 : A \rightarrow (A + B)^T$}
+                \begin{proof}
+                    \step{I}{$e \circ (\lambda (\pi_1 c \inv{c}) \kappa_1 \times 1_T) =
+                    e \circ ((\lambda \pi_1) \kappa_1 \times 1_T) : A \times T \rightarrow A + B$}
+                    \begin{proof}
+                        \pf
+                        \begin{align*}
+                            e \circ (\lambda (\pi_1 c \inv{c}) \kappa_1 \times 1_T)
+                            & = (e \circ (\lambda (\pi_1 c \inv{c}) \times 1_T)(\kappa_1 \times 1_T) \\
+                            & = \pi_1 c \inv{c} (\kappa_1 \times 1_T) \\
+                            & = \pi_1 c \kappa_1 & (\text{\stepref{5}}) \\
+                            & = \pi_1 (\kappa_1 \times 1_T) \\
+                            & = \kappa_1 \pi_1 \\
+                            & = \pi_1 (\kappa_1 \times 1_T) \\
+                            & = e (\lambda \pi_1 \times 1_T) (\kappa_1 \times 1_T) \\
+                            & = e ((\lambda \pi_1) \kappa_1 \times 1_T))
+                        \end{align*}
+                    \end{proof}
+                \end{proof}
+                \step{two}{$\lambda (\pi_1 c \inv{c}) \kappa_2 = (\lambda \pi_1) \kappa_2 : B \rightarrow (A + B)^T$}
+                \begin{proof}
+                    \pf\ Similar.
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \step{b}{$\pi_2 c \inv{c} = \pi_2$}
+        \begin{proof}
+            \pf\ Similar
+        \end{proof}
+    \end{proof}
+    \step{9}{$\inv{c} c = 1_{(A \times T) + (B \times T)}$}
+    \begin{proof}
+        \pf\ $\inv{c} c = [\kappa_1, \kappa_2] = 1$
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{definition}[Cartesian closed category]
+    A \emph{Cartesian closed category} is a category with finite products and map objects.
+\end{definition}
+
+\begin{thm}[Cantor's Diagonal Argument]
+    Let $\mathcal{C}$ be a Cartesian closed category. Let $T, Y \in \mathcal{C}$ and $f : T \rightarrow Y^T$.
+    Suppose that, for every map $g : T \rightarrow Y$, there exists $x : 1 \rightarrow T$ such that
+    $\lambda g = fx$. Then every endomorphism on $Y$ has a fixed point.
+\end{thm}
+
+\begin{proof}
+    \pf
+    \step{1}{\pflet{$\alpha : Y \rightarrow Y$}}
+    \step{2}{\pflet{$g = \alpha \circ e \circ \langle f, 1_T \rangle : T \rightarrow Y$}}
+    \step{3}{\pick\ $x : 1 \rightarrow T$ such that $\lambda (g \pi_2) = fx$}
+    \step{4}{\pflet{$y = e \circ \langle fx, x \rangle : 1 \rightarrow Y$}}
+    \step{5}{$\alpha y = y$}
+    \begin{proof}
+        \pf
+        \begin{align*}
+            \alpha y & = \alpha e \langle f, 1_T \rangle x \\
+            & = gx \\
+            & = g \pi_2 \langle 1_1, x \rangle \\
+            & = e (\lambda(g \pi_1) \times 1) \langle 1_1, x \rangle \\
+            & = e (fx \times 1) \langle 1_1, x \rangle \\
+            & = e \langle fx, x \rangle \\
+            & = y
+        \end{align*}
+    \end{proof}
+    \qed
+\end{proof}
+
+\section{Pullbacks}
+
+\begin{definition}[Pullback]
+    The diagram below is a \emph{pullback} iff $fp = gq$ and, for any object $X$ and morphisms $x : X \rightarrow B$
+    and $y : X \rightarrow C$ such that $fx = gy$, there exists a unique morphism $m : X \rightarrow A$ such that $pm = x$
+    and $qm = y$.
+    \[ \xymatrix{
+        A \ar[r]^p \ar[d]_q & B \ar[d]^{f} \\
+        C \ar[r]_g & D
+    } \]
+\end{definition}
+
+\section{Subobject Classifier}
+
+\begin{definition}[Subobject Classifier]
+    Let $\mathcal{C}$ be a category with a terminal object 1.
+    A \emph{subobject classifier} consists of an object $\Omega$ and morphism $\top : 1 \rightarrow \Omega$
+    such that, for every monomorphism $m : A \rightarrowtail B$, there exists a unique morphism
+    $\chi_m : B \rightarrow \Omega$, the \emph{characterisetic morphism} of $m$, such that the following
+    diagram is a pullback
+    \[ \xymatrix{
+        A \ar[r]^{!} \ar[d]_{m} & 1 \ar[d]^{\top} \\
+        B \ar[r]_{\chi_m} & \Omega
+    } \]
+\end{definition}
+
+\section{Toposes}
+
+\begin{definition}[Topos]
+    A \emph{topos} is a Cartesian closed category $\mathcal{C}$ with finite coproducts and a subobject
+    classifier such that, for every object $X$, the slice category $\mathcal{C} / X$ has finite products.
+\end{definition}
+
 \end{document}

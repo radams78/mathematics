@@ -631,4 +631,246 @@
         \therefore f x & = f y & (\text{$\beta$ is injective}) \\
         \therefore x & = y & (\text{$f$ is injective})
     \end{align*}
+
+    \section{11. Types of structure}
+
+    \paragraph{Exercise 29}
+    Let $f : X \rightarrow Y$ in $\mathcal{X}$. Let $\overline{X}$ and $\overline{Y}$ be the
+    $\mathcal{A}$-structures determined by $X$ and $Y$ as described in the paragraph before the exercise.
+    Define $\overline{f} : \overline{X} \rightarrow \overline{Y}$ as follows. For each object $A \in
+    \mathcal{A}$, we define
+    \[ \overline{f}_A : \{ \text{maps} A \rightarrow X \} \rightarrow \{ \text{maps} A \rightarrow Y \} \]
+    by
+    \[ \overline{f}_A(g) = f \circ g \enspace . \]
+    Now given a map $\alpha : A \rightarrow B$ in $\mathcal{A}$, we must prove
+    $\overline{Y}_{\alpha^*} \circ \overline{f}_B =
+    \overline{f}_A \circ \overline{X}_{\alpha^*}$. Well, given a map $g : B \rightarrow X$, we have
+    \[ \overline{Y}_{\alpha^*}(\overline{f}_B(g)) = \overline{f}_A(\overline{X}_{\alpha^*}(g)) = f \circ g \circ \alpha \]
+
+    \paragraph{Exercise 30}
+    For every dot $a : 1 \rightarrow X$, let $e_a : S \rightarrow X$ be the map $a \circ ! : S \rightarrow 1
+    \rightarrow X$ (the constant map $a$ on $S$). Then $e_a$ is an edge in the graph of $X$-fields
+    and $e_a \circ s = e_a \circ t = a$, i.e. $a$ is both the source and target of $e_a$.
+
+    If $f : X \rightarrow Y$ in $\mathcal{C}$ then the induced map sends $e_a$ to
+    \[ f \circ e_a = f \circ a \circ ! = e_{fa} \]
+    as required.
+
+    \chapter{Session 11. Ascending to categories of richer structures}
+
+    \section{1. A category of richer structures: Endomaps of sets}
+
+    \paragraph{Exercise 1}
+    There are four: we can map all three elements to the one loop, or map them to the three elements that are
+    in a cycle of 3 in the second set in three different ways.
+
+    \section{3. The category of graphs}
+
+    \paragraph{Exercise 2}
+    There are three:
+    \begin{align*}
+        f(a) & = p & f(b) & = r & f(c) & = q \\
+        g(a) & = q & g(b) & = p & g(c) & = r \\
+        h(a) & = r & h(b) & = p & h(c) & = q
+    \end{align*}
+
+    \paragraph{Exercise 3}
+    Suppose for a contradiction $f : (X, \alpha) \rightarrow (Y, \beta)$. Let $x \in X$ be one of the
+    elements such that $\alpha^3(x) = x$. Then $\beta^3(f(x)) = f(x)$, but there is no such element in $Y$.
+
+    \paragraph{Exercise 4}
+    For $y \in B$, we have
+    \begin{align*}
+        f(\alpha(\inv{f}(y))) & = \beta(f(\inv{f}(y))) \\
+        & = \beta(y) \\
+        \therefore \alpha(\inv{f}(y)) & = \inv{f}(\beta(y))
+    \end{align*}
+
+    \paragraph{Exercise 5}
+    They are not isomorphic. In $(\mathbb{Z}, \beta)$, the elements 0, 1 and 2 are three elements such that
+    none of them can be obtained by repeatedly applying $\beta$ to one of the others (they are in separate
+    orbits). There are not three such elements in $(\mathbb{Z}, \alpha)$.
+
+    \paragraph{Exercise 6}
+    (a) and (d) are isomorphic; (b) and (e) are isomorphic, (c) and (f) are isomorphic.
+
+    \paragraph{Exercise 7}
+    Yes, they are isomorphic. Map the top element in the left graph to the bottom element in the right graph;
+    the left element in the left graph to the left element in the right graph;
+    the centre element in the left graph to the right element in the right graph;
+    the right element in the left graph to the centre element in the right graph;
+    the bottom element in the left graph to the top element in the right graph.
+
+    \paragraph{Exercise 8}
+    \subparagraph{(a)}
+    Any path from $b$ to $e$ would be mapped by $f$ to a path from 0 to 1, but there is no such path.
+    \subparagraph{(b)}
+    Define $f : G \rightarrow J$ as follows. For any dot $a$ in $G$, if there is a path from $b$ to $a$
+    then $f(a) = 0$; otherwise $f(a) = 1$. Map any edge $e$ from $a$ to $a'$ in $G$ to the unique edge
+    from $f(a)$ to $f(a')$ in $J$. (There must be such an edge; otherwise $f(a) = 0$ and $f(a') = 1$,
+    but then there is a path from $b$ to $a$ hence a path from $b$ to $a'$.)
+
+    We have $f(b) = 0$ and $f(e) = 1$.
+
+    \chapter{Session 12. Categories of diagrams}
+
+    \section{1. Dynamical systems or automata}
+
+    \paragraph{Exercise 1}
+    We have $f(x') = f(\alpha^3(x)) = \beta^3(f(x)) = \beta^3(y) = y'$.
+
+    \paragraph{Exercise 2}
+    $y$ immediately enters a cycle of 3, and $z$ enters a cycle of 1 after 3 time units.
+
+    The diagram of the light bulb has a chain of 8 different states followed by a cycle of 1.
+
+    \section{2. Family Trees}
+
+    \paragraph{Exercise 3}
+    \subparagraph{(a)}
+    For any $x \in P$, we have $gender(m(x)) = female$ and $m(gender(x)) = female$ (because $m(y) = female$
+    for both $y \in G$). Likewise $gender(f(x)) = male$ and $f(gender(x)) = male$.
+
+    \subparagraph{(b)}
+    For any $x \in P$, we have $clan(m(x)) = clan(x)$ and $m(clan(x)) = m(x)$ (because $m(y) = y$ for both
+    $y \in G$). Likewise $clan(f(x))$ is the clan that is not $clan(m(x))$, i.e. the clan that is not $clan(x)$,
+    and $f(clan(x))$ is the clan that is not $clan(x)$.
+
+    \subparagraph{(c)}
+    \begin{align*}
+        f(he-wolf) & = he-bear \\
+        f(he-bear) & = he-wolf \\
+        f(she-wolf) & = he-bear \\
+        f(she-bear) & = he-wolf \\
+        m(he-wolf) & = she-wolf \\
+        m(he-bear) & = she-bear \\
+        m(she-wolf) & = she-wolf \\
+        m(she-bear) & = she-bear
+    \end{align*}
+
+    \chapter{Session 14. Maps preserve positive properties}
+
+    \paragraph{Exercise 1}
+    \[ \beta(y_1) = \beta(f(x_1)) = f(\alpha(x_1)) = f(\alpha(x_2)) = \beta(f(x_2)) = \beta(y_2) \]
+
+    \paragraph{Exercise 2}
+    \[ y_2 = f(x_2) = f(\alpha^5(x_1)) = \beta^5(f(x_1)) = \beta^5(y_1) \]
+
+    \paragraph{Exercise 3}
+    \[ \beta(y) = \beta(f(x)) = f(\alpha(x)) = f(x) = y \]
+
+    \paragraph{Exercise 4}
+    Take $X = \{ 0,1 \}$ with $\alpha(0) = \alpha(1) = 1$ and $Y = \{ * \}$ with $\beta(*) = *$.
+    Let $f$ be the only function $X \rightarrow Y$. Then 0 is not a fixed point of $\alpha$
+    but $f(0) = *$ is a fixed point of $\beta$.
+
+    \paragraph{Exercise 5}
+    If $\alpha^4(x) = x$ then
+    \[ y = f(x) = f(\alpha^4(x)) = \beta^4(f(x)) = \beta^4(y) \enspace . \]
+
+    Now, let $X = \{ 0, 1, 2, 3 \}$ with $\alpha(0) = 1$, $\alpha(1) = 2$, $\alpha(2) = 3$ and $\alpha(3) = 0$.
+    Let $Y = \{ 0,1 \}$ with $\beta(0) = 1$ and $\beta(1) = 0$. Define $f : X \rightarrow Y$ by $f(0) = 0$,
+    $f(1) = 1$, $f(2) = 0$ and $f(3) = 1$. Let $x = 0$ and $y = f(x) = 0$. Then $\alpha^4(x) = x$ but
+    $\alpha^2(x) = 2 \neq x$, $\beta^2(y) = y$ but $\beta(y) = 1 \neq y$.
+
+    \chapter{Session 15. Objectification of properties in dynamical systems}
+    \section{2. Naming the elements that have a given period by maps}
+
+    \paragraph{Exercise 1}
+    Let $x$ be an element in $(X, \alpha)$ of period 5 and 7. Then $\alpha^5(x) = x$ and
+    \begin{align*}
+        \alpha^7(x) & = x \\
+        \therefore \alpha^2(\alpha^5(x)) & = x \\
+        \therefore \alpha^2(x) & = x \\
+        \alpha^5(x) & = x \\
+        \therefore \alpha^3(\alpha^2(x)) & = x \\
+        \therefore \alpha^3(x) & = x \\
+        \therefore \alpha(\alpha^2(x)) & = x \\
+        \therefore \alpha(x) & = x
+    \end{align*}
+
+    \paragraph{Exercise 2}
+    There are four such maps. For each $x \in C_4$, there is the map $f$ that sends $n$ to $\alpha^n(x)$,
+    where $\alpha$ is the endomap on $C_4$.
+
+    \paragraph{Exercise 3}
+    Given a map $f : N \rightarrow Y$ in $\mathcal{S}^\circ$, we have
+    \begin{align*}
+        iteration(evaluation at 0(f))(n) & = iteration(f(0))(n) \\
+        & = \beta^{n}(f(0)) \\
+        & = f(\sigma^n(0)) \\
+        & = f(n) & (\text{for all $n$})\\
+        \therefore iteration(evaluation at 0(f)) & = f
+    \end{align*}
+    Given $y \in Y$, we have
+    \begin{align*}
+        evaluation at 0(iteration(y)) & = iteration(y)(0) \\
+        & = \beta^0(y) \\
+        & = y
+    \end{align*}
+
+    \paragraph{Exercise 4}
+    This holds because $\alpha \circ \alpha = \alpha \circ \alpha$.
+
+    \paragraph{Exercise 5}
+    If $evaluation at 0(f) = y$ i.e. $f(0) = y$ then
+    \[ evaluation at 0(f \circ \sigma) = f(\sigma(0)) = \beta(f(0)) = \beta(y) \]
+
+    \section{4. The philosophical role of $N$}
+
+    \paragraph{Exercise 6}
+    For any person $x$, we have $g(m(x)) = female = m(g(x))$ since $m(y) = female$ for both $y \in B$.
+
+    \paragraph{Exercise 7}
+    If we choose $\overline{a} = w$, then there are two choices for $\overline{b}$ (namely $x$ and $z$),
+    one choice for $\overline{c}$ (namely $y$), and two choices for $\overline{d}$ (namely $l$ and $m$),
+    hence 4 choices in total.
+
+    If we choose $\overline{a} = x$, then there is one choice for $\overline{b}$ (namely $y$), one choice for
+    $\overline{c}$ (namely $w$), and two choices for $\overline{d}$ (namely $l$ and $m$),
+    hence 2 choices in total.
+
+    If we choose $\overline{a} = y$, then there is one choice for $\overline{b}$ (namely $w$), two choices for
+    $\overline{c}$ (namely $x$ and $z$), and two choices for $\overline{d}$ (namely $l$ and $m$),
+    hence 4 choices in total.
+
+    If we choose $\overline{a} = z$, then there is one choice for $\overline{b}$ (namely $y$), one choice for
+    $\overline{c}$ (namely $w$), and two choices for $\overline{d}$ (namely $l$ and $m$),
+    hence 2 choices in total.
+
+    In total, there are 14 maps from $(X, \alpha)$ to $(Y, \beta)$.
+
+    \paragraph{Exercise 10}
+    List of labels: $a$, $b$, $c$
+
+    Rules:
+    \begin{align*}
+        \alpha a & = \alpha b \\
+        \alpha^2 a & = \alpha^2 c
+    \end{align*}
+
+    \paragraph{Exercise 12}
+    Let $f : \mathbb{N} \rightarrow \mathbb{N} \times S$ be the unique map such that $f(0) = (0, s_0)$
+    and $f(n+1) = \rho(f(n))$. Let $u = \pi_2 \circ f : \mathbb{N} \rightarrow S$. Prove by induction on $n$
+    that $f(n) = (n, u(n))$ for all $n$, hence $u(n+1) = r(n, u(n))$ for all $n$.
+
+    If $v : \mathbb{N} \rightarrow S$ satisfies the same condition, prove $u(n) = v(n)$ for all $n$ by
+    induction on $n$.
+
+    \chapter{Session 16. Idempotents, involutions, and graphs}
+
+    \section{2. Solving exercises on maps of graphs}
+
+    \paragraph{Exercise 1}
+    They are isomorphic. Let $\mathcal{D}$ be the category defined in Article III Exercise 17.
+
+    Define the functor $F : \mathcal{D} \rightarrow \mathcal{C} / G$ as follows. $F(M, F, \phi, \phi', \mu, \mu')
+    = f : (M \cup F, \phi \cup \phi', \mu \cup \mu') \rightarrow G$ where $f(x) = male$ if $x \in M$ and $f(x)
+    = female$ if $x \in F$.
+
+    Given $(g, h) : (M, F, \phi, \phi', \mu, \mu') \rightarrow (N, G, \psi, \psi', \nu, \nu')$, let
+    $F(g,h) = g \cup h : M \cup F \rightarrow N \cup G$.
+
+    Then $F$ is an isomorphism.
+
 \end{document}
