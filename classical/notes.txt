@@ -1,3 +1,20 @@
-These days of new math - 1977
-Example where they assume a country is its set of citizens?
-Russell's paradox was independently discovered by Zermelo.
+G. Cantor. Contributions to the Founding of the Theory of Transfinite Numbers
+P. Cohen. Set Theory and the Continuum Hypothesis
+F. Drake. Set Theory, An Introduction to Large Cardinals
+A. Fraenkel, Y. Bar-Hillel, A. Levy. Foundations of Set Theory
+T. Jech. The Axiom of Choice
+K. Kuratowski, A. Mostowski. Set Theory
+W. Sierpinski. Cardinal and Ordinal Numbers
+J. van Heijenoort. From Frege to Godel
+S. Barker. Philosophy of Mathematics
+P. Benacerraf. What Numbers Could Not Be. Philos. Rev. 74, 47-74
+R. Dedekind. Essays on the Theory of Numbers
+E. Mendelson. Introduction to Mathematical Logic
+C. Parsons. Frege's Theory of Numbers
+G. Peano. Sui concetto di numero. Riv. mat. Turin 1, 87-102, 256-267
+H. Wang. The axiomatization of arithmetic. J. Symbolic Logic 22, 145-158
+E. Mendelson. Introduction to Mathematical Logic
+J. B. Rosser. Logic for the Mathematician
+E. Specker. The axiom of choice in Quine's "New Foundations for Mathematical Logic". Proc. Nat. Acad. Sci. USA 39, 972-975
+W. Hatcher. The Foundations of Mathematics
+

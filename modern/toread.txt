@@ -1,0 +1,14 @@
+J. Bell. A Primer of Infinitesimal Analysis
+M. la Palme Reyes, G. E. Reyes, H. Zolfaghari. Generic Figures and their Glueings
+R. Lavendhomme. Basic Concepts of Synthetic Differential Geometry
+F. W. Lawvere, R. Rosebrugh. Sets for Mathematics
+S. Mac Lane. Categories for the Working Mathematician
+S. Mac Lane, I. Moerdijk. Sheaves in Geometry and Logic
+P. Johnstone. Sketches of an Elephant: A Topos Compendium
+A. Kock. Synthetic Differential Geometry
+S. Eilenberg, S. Mac Lane. General Theory of Natural Equivalences. Transactions of the AMS, 58, 1945, 231-294
+A. Grothendieck, Sur quelques points d’algèbre homologique, Tohoku Math. Journal 9, 1957, 119-221
+D. Kan, Adjoint Functors, Transactions of the AMS, 87, 1958, 294-329
+F.W. Lawvere, Functorial Semantics of Algebraic Theories, Proceedings of the National Academy of Sciences USA, 50, 1963, 869-872
+F.W. Lawvere, Adjointness in Foundations, Dialéctica 23, 1969, 281-296
+

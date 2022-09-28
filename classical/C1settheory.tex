@@ -12,7 +12,7 @@
 \usepackage{pf2}
 \usepackage[all]{xy}
 
-\newtheorem{axiom}{Axiom}
+\newtheorem{axiom}{Axiom}[section]
 \newtheorem{axs}[axiom]{Axiom Schema}
 \newtheorem{lemma}[axiom]{Lemma}
 \newtheorem{proposition}[axiom]{Proposition}
@@ -33,17 +33,81 @@
 \begin{document}
     \maketitle
 
+    \section{Classes}
+
+    We speak informally of \emph{classes}. A class is determined by a unary predicate. We write 
+    $\{ x : P(x) \}$ or $\{ x \mid P(x) \}$ for the class determined by the predicate $P(x)$.
+
+    We define what it means for an object $a$ to be an \emph{element} or \emph{member} of the class $\mathbf{A}$, $a \in \mathbf{A}$,
+    by: $a \in \{ x : P(x) \}$ means $P(a)$. In this case we also write $\mathbf{A} \ni a$, and say
+    $\mathbf{A}$ \emph{contains} $a$.
+
+    We write $\{ x \in \mathbf{A} : P(x) \}$ for $\{ x : x \in \mathbf{A} \wedge P(x) \}$,
+    and $\{ t[x_1, \ldots, x_n] : P[x_1, \ldots, x_n] \}$ for $\{ y : \exists x_1 \cdots \exists x_n
+    (y = t[x_1, \ldots, x_n] \wedge P[x_1, \ldots, x_n]) \}$.
+
+    \begin{definition}[Equality of Classes]
+        Two classes $\mathbf{A}$ and $\mathbf{B}$ are \emph{equal}, $\mathbf{A} = \mathbf{B}$,
+        iff they have exactly the same members.
+    \end{definition}
+
+    \begin{definition}[Subclass]
+        A class $\mathbf{A}$ is a \emph{subclass} of a class $\mathbf{B}$,
+        $\mathbf{A} \subseteq \mathbf{B}$, iff every member of $\mathbf{A}$
+        is a member of $\mathbf{B}$. In this case we also write $\mathbf{B} \supseteq \mathbf{A}$,
+        and say $\mathbf{B}$ \emph{includes} $\mathbf{A}$ or $\mathbf{B}$ is a \emph{superclass} of
+        $\mathbf{A}$.
+
+        We say $\mathbf{A}$ is a \emph{proper} subclass of the class $\mathbf{B}$,
+        $\mathbf{A} \subset \mathbf{B}$, iff $\mathbf{A} \subseteq \mathbf{B}$ and $\mathbf{A} \neq
+        \mathbf{B}$. In this case we also write $\mathbf{B} \supset \mathbf{A}$, and say $\mathbf{B}$
+        \emph{properly} includes $\mathbf{A}$ or $\mathbf{B}$ is a \emph{proper} superclass of $\mathbf{A}$.
+    \end{definition}
+
+    \begin{definition}[Empty Class]
+        The \emph{empty class}, $\emptyset$, is $\{ x : \bot \}$.
+    \end{definition}
+
+    \begin{definition}[Universal Class]
+        The \emph{universal class} $\mathbf{V}$ is the class $\{ x : \top \}$.
+    \end{definition}
+
+    \begin{definition}
+        For any objects $a_1$, \ldots, $a_n$, we write $\{ a_1, \ldots, a_n \}$ for the class
+        $\{ x : x = a_1 \vee \cdots \vee x = a_n \}$.
+
+        A class of the form $\{a\}$ is called a \emph{singleton}.
+
+        A class of the form $\{a,b\}$ is called a \emph{pair class}.
+    \end{definition}
+
+    \begin{definition}[Union]
+        The \emph{union} of classes $\mathbf{A}$ and $\mathbf{B}$, 
+        $\mathbf{A} \cup \mathbf{B}$, is the set whose elements are exactly the things
+        that are members of $\mathbf{A}$ or members of $\mathbf{B}$.
+    \end{definition}
+
+    \begin{definition}[Intersection]
+        The \emph{intersection} of classes $\mathbf{A}$ and $\mathbf{B}$, 
+        $\mathbf{A} \cap \mathbf{B}$, is the set whose elements are exactly the
+        things that are members of both $\mathbf{A}$ and $\mathbf{B}$.
+    \end{definition}
+
+    \begin{definition}[Disjoint]
+        Two classes $\mathbf{A}$ and $\mathbf{B}$ are \emph{disjoint} iff they have no common members.
+    \end{definition}
+
+    \begin{definition}[Relative Complement]
+        Given classes $\mathbf{A}$ and $\mathbf{B}$, the \emph{relative complement}
+        $\mathbf{A} - \mathbf{B}$ is $\{ x \in \mathbf{A} : x \notin \mathbf{B} \}$.
+    \end{definition}
+
     \section{Primitive Notions}
 
     Let there be \emph{sets}.
 
-    Let there be a binary relation called \emph{membership}, $\in$. When $x \in y$ holds, we say $x$ is a
-    \emph{member} or \emph{element} of $y$. We write $x \notin y$ iff $x$ is not a member of $y$.
-
-    \begin{definition}[Transitive Set]
-        A set $A$ is a \emph{transitive set} iff every member of a member of $A$ is a member of $A$.
-    \end{definition}
-
+    Let there be a binary relation called \emph{membership}, $\in$. 
+    
     \section{The Axioms}
 
     \begin{axiom}[Extensionality]
@@ -54,20 +118,11 @@
     the symbols $\in$ and $=$ is consistent.
 
     \begin{definition}
-    We say that a class $\mathbf{A}$ \emph{is a set} iff there exists a set $A$ such that $A = \mathbf{A}$.
-    That is, the class $\{ x : P(x) \}$ is a set iff
-    \[ \exists A. \forall x (x \in A \leftrightarrow P(x)) \enspace . \]
-    Otherwise, $\mathbf{A}$ is a \emph{proper class}.
+        We say that a class $\mathbf{A}$ \emph{is a set} iff there exists a set $A$ such that $A = \mathbf{A}$.
+        That is, the class $\{ x : P(x) \}$ is a set iff
+        \[ \exists A. \forall x (x \in A \leftrightarrow P(x)) \enspace . \]
+        Otherwise, $\mathbf{A}$ is a \emph{proper class}.
     \end{definition}
-
-    \begin{definition}[Subset]
-        If $A$ is a set and $\mathbf{B}$ is a class, we say $A$ is a \emph{subset} of $\mathbf{B}$
-        iff $A \subseteq \mathbf{B}$.
-    \end{definition}
-
-    \begin{axiom}[Empty Set]
-        The empty class is a set, called the \emph{empty set}.
-    \end{axiom}
 
     \begin{axiom}[Replacement]
         For any property $P(x,y)$, the following is an axiom:
@@ -84,19 +139,6 @@
         For any set $A$, the class $\mathcal{P} A$ is a set.
     \end{axiom}
 
-    \begin{theorem}[Pairing]
-        For any objects $a$ and $b$, the class $\{a,b\}$ is a set, called a \emph{pair set}.
-    \end{theorem}
-
-    \begin{proof}
-        \pf\      Let $a$ and $b$ be sets. Let $P(x,y)$ be the formula $(x = \emptyset \ \&\ y = a) \text{ or }
-        (x = \mathcal{P} \emptyset \ \&\ y = b)$. Then we have $(\forall x \in \mathcal{P} \mathcal{P}
-        \emptyset) \forall y_1 \forall y_2 (P(x,y_1) \ \&\ P(x,y_2) \Rightarrow y_1 = y_2)$,
-        hence there exists a set $c$ such that
-        \[ \forall y (y \in c \Leftrightarrow (\exists x \in \mathcal{P} \mathcal{P} \emptyset) P(x,y)) \]
-        The members of $c$ are just $a$ and $b$. \qed   
-    \end{proof}
-
     \begin{definition}[Union]
         For any class of sets $\mathbf{A}$, the \emph{union} $\bigcup \mathbf{A}$ is the class
         $\{ x : \exists A \in \mathbf{A}. x \in A \}$.
@@ -105,17 +147,106 @@
         : P[x_1, \ldots, x_n] \}$.
     \end{definition}
 
-    \begin{proposition}
-        If $\mathbf{A} \subseteq \mathbf{B}$ then $\bigcup \mathbf{A} \subseteq \bigcup \mathbf{B}$.
-    \end{proposition}
-
-    \begin{proof}
-        \pf\ Easy. \qed
-    \end{proof}
-
     \begin{axiom}[Union]
         For any set $A$, the union $\bigcup A$ is a set.
     \end{axiom}
+
+    \begin{axiom}[Regularity]
+        For every nonempty set $A$, there exists $m \in A$ such that $m \cap A = \emptyset$.
+    \end{axiom}
+
+    \begin{axiom}[Infinity]
+        There exists a nonempty set $A$ such that $\forall x \in A. \exists y \in A. x \subset y$.
+    \end{axiom}
+
+    \section{Definitions}
+    
+    \begin{definition}[Transitive Set]
+        A set $A$ is a \emph{transitive set} iff every member of a member of $A$ is a member of $A$.
+    \end{definition}
+
+    \begin{definition}[Subset]
+        If $A$ is a set and $\mathbf{B}$ is a class, we say $A$ is a \emph{subset} of $\mathbf{B}$
+        iff $A \subseteq \mathbf{B}$. If in addition $B$ is a set, we say $B$ is a \emph{superset} of $A$.
+
+        If $A$ is a set and $\mathbf{B}$ is a class, we say $A$ is a \emph{proper} subset of $\mathbf{B}$
+        iff $A \subset \mathbf{B}$. If in addition $B$ is a set, we say $B$ is a \emph{proper} superset of
+        $A$.
+    \end{definition}
+
+    \section{Constructions of Sets}
+
+    \begin{theorem}
+        \label{theorem:subset_axiom}
+        For any class $\mathbf{A}$ and set $B$, if $\mathbf{A} \subseteq B$ then $\mathbf{A}$ is a set.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$B$ be a set.}}
+        \step{2}{$(\forall x \in B) \forall y_1, y_2 ((x \in \mathbf{A} \wedge y_1 = x) \wedge
+        (x \in \mathbf{A} \wedge y_2 = x) \Rightarrow y_1 = y_2)$}
+        \step{3}{$\{ y : \exists x (x \in \mathbf{A} \wedge y = x) \}$ is a set.}
+        \begin{proof}
+            \pf\ By a Replacement Axiom.
+        \end{proof}
+        \step{4}{$\mathbf{A}$ is a set.}
+        \qed
+    \end{proof}
+
+    \begin{theorem}[Empty Set]
+        The empty class is a set, called the \emph{empty set}.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pick\ a set $a$}
+        \begin{proof}
+            \pf\ By the Axiom of Infinity.
+        \end{proof}
+        \step{2}{$\emptyset \subseteq a$}
+        \step{3}{$\emptyset$ is a set.}
+        \begin{proof}
+            \pf\ Theorem \ref{theorem:subset_axiom}.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}[Pairing]
+        For any setss $a$ and $b$, the class $\{a,b\}$ is a set, called a \emph{pair set}.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        Let $P(x,y)$ be the formula $(x = \emptyset \wedge y = a) \vee (x = \mathcal{P} \emptyset \wedge
+        y = b)$. Then we reason:
+        \step{1}{\pflet{$a$ and $b$ be sets.}}
+        \step{2}{$(\forall x \in \mathcal{P} \mathcal{P} \emptyset) \forall y_1 \forall y_2 
+        (P(x,y_1) \wedge P(x,y_2) \Rightarrow y_1 = y_2)$}
+        \begin{proof}
+            \step{a}{$\emptyset \neq \mathcal{P} \emptyset$}
+            \begin{proof}
+                \pf\ Since $\emptyset \in \mathcal{P} \emptyset$ and $\emptyset \notin \emptyset$.
+            \end{proof}
+        \end{proof}
+        \step{3}{\pflet{$A = \{ y : \exists x \in \mathcal{P} \mathcal{P} \emptyset. P(x,y) \}$}}
+        \begin{proof}
+            \pf\ This is a set by a Replacement Axiom.
+        \end{proof}
+        \step{4}{$A = \{ a,b \}$}
+        \begin{proof}
+            \step{a}{$a \in A$}
+            \begin{proof}
+                \pf\ Since $\emptyset \in \mathcal{P} \mathcal{P} \emptyset$.
+            \end{proof}
+            \step{b}{$b \in A$}
+            \begin{proof}
+                \pf\ Since $\mathcal{P} \emptyset \in \mathcal{P} \mathcal{P} \emptyset$.
+            \end{proof}
+            \step{c}{$\forall x \in A (x = a \vee x = b)$}
+        \end{proof}
+        \qed
+    \end{proof}
 
     \begin{proposition}
         For any sets $A$ and $B$, the class $A \cup B$ is a set.
@@ -133,26 +264,12 @@
         \pf\ By repeated application of the Pairing and Union axioms. \qed
     \end{proof}
 
-    \begin{theorem}[Subset Axioms, Aussonderung]
-        For any class $\mathbf{A}$ and set $B$, if $\mathbf{A} \subseteq B$ then $\mathbf{A}$ is a set.
-    \end{theorem}
-
-    \begin{proof}
-        \pf\      Let $Q(x,y)$ be the formula $x \in \mathbf{A} \wedge y = x$. Now we reason as follows.
-     
-        Let $c$ be any set. Then we have
-        \[ (\forall x \in B) \forall y_1 \forall y_2 (Q(x,y_1) \ \&\ Q(x,y_2) \Rightarrow y_1 = y_2) \]
-        Then, by a Replacement Axiom, there exists a set $c$ such that
-        \[ \forall y (y \in c \Leftrightarrow (\exists x \in B) Q(x,y)) \enspace . \]
-        This is equivalent to $\forall x (x \in c \Leftrightarrow x \in \mathbf{A})$. \qed
-    \end{proof}
-
     \begin{proposition}
         For any set $A$ and class $\mathbf{B}$, the intersection $A \cap \mathbf{B}$ is a set.
     \end{proposition}
 
     \begin{proof}
-        \pf\ By the Subset Axiom since it is a subclass of $A$. \qed
+        \pf\ By Theorem \ref{theorem:subset_axiom} since it is a subclass of $A$. \qed
     \end{proof}
 
     \begin{proposition}
@@ -160,27 +277,7 @@
     \end{proposition}
 
     \begin{proof}
-        \pf\ By the Subset Axiom since it is a subclass of $A$. \qed
-    \end{proof}
-
-    \begin{theorem}
-        The universal class $\mathbf{V}$ is a proper class.
-    \end{theorem}
-
-    \begin{proof}
-        \pf
-        \step{1}{\assume{$\mathbf{V}$ is a set.}}
-        \step{2}{\pflet{$R = \{ x : x \notin x \}$}}
-        \step{3}{$R$ is a set.}
-        \begin{proof}
-            \pf\ By the Subset Axiom.
-        \end{proof}
-        \step{4}{$R \in R$ if and only if $R \notin R$}
-        \qedstep
-        \begin{proof}
-            \pf\ This is a contradiction.
-        \end{proof}
-        \qed
+        \pf\ By Theorem \ref{theorem:subset_axiom} since it is a subclass of $A$. \qed
     \end{proof}
     
     \begin{definition}[Intersection]
@@ -196,56 +293,31 @@
     \end{proposition}
 
     \begin{proof}
-        \pf\ Pick $A \in \mathbf{A}$. Then $\bigcap \mathbf{A} \subseteq A$. \qed
+        \pf\ Pick $A \in \mathbf{A}$. Then $\bigcap \mathbf{A} \subseteq A$ and the result follows by
+        Theorem \ref{theorem:subset_axiom}. \qed
     \end{proof}
     
-    \begin{proposition}
-        If $\mathbf{A} \subseteq \mathbf{B}$ then $\bigcap \mathbf{B} \subseteq \bigcap \mathbf{A}$.
-    \end{proposition}
+    \section{Basic Properties}
+
+    \begin{theorem}
+        The universal class $\mathbf{V}$ is a proper class.
+    \end{theorem}
 
     \begin{proof}
-        \pf\ Easy. \qed
+        \pf
+        \step{1}{\assume{$\mathbf{V}$ is a set.}}
+        \step{2}{\pflet{$R = \{ x : x \notin x \}$}}
+        \step{3}{$R$ is a set.}
+        \begin{proof}
+            \pf\ By Theorem \ref{theorem:subset_axiom}.
+        \end{proof}
+        \step{4}{$R \in R$ if and only if $R \notin R$}
+        \qedstep
+        \begin{proof}
+            \pf\ This is a contradiction.
+        \end{proof}
+        \qed
     \end{proof}
-
-    \begin{proposition}
-        For any set $A$ and class of sets $\mathbf{B}$, we have
-        \[ A \cup \bigcap \mathbf{B} = \bigcap \{ A \cup X \mid X \in \mathbf{B} \} \]
-    \end{proposition}
-
-    \begin{proof}
-        \pf\ Easy. \qed
-    \end{proof}
-
-    \begin{proposition}
-        For any set $A$ and class of sets $\mathbf{B}$, we have
-        \[ A \cap \bigcup \mathbf{B} = \bigcup \{ A \cap X \mid X \in \mathbf{B} \} \]
-    \end{proposition}
-
-    \begin{proof}
-        \pf\ Easy. \qed
-    \end{proof}
-
-    \begin{proposition}
-        For any set $C$ and class of sets $\mathbf{A}$, we have
-        \[ C - \bigcup \mathbf{A} = \bigcap \{ C - X \mid X \in \mathbf{A} \} \enspace . \]
-    \end{proposition}
-
-    \begin{proof}
-        \pf\ Easy. \qed
-    \end{proof}
-
-    \begin{proposition}
-        For any set $C$ and class of sets $\mathbf{A}$, we have
-        \[ C - \bigcap \mathbf{A} = \bigcup \{ C - X \mid X \in \mathbf{A} \} \enspace . \]
-    \end{proposition}
-
-    \begin{proof}
-        \pf\ Easy. \qed
-    \end{proof}
-
-    \begin{axiom}[Regularity]
-        For every nonempty set $A$, there exists $m \in A$ such that $m \cap A = \emptyset$.
-    \end{axiom}
 
     \begin{theorem}
         No set is a member of itself.
@@ -324,7 +396,7 @@
     \end{corollary}
 
     \begin{proof}
-        \pf\ By the Subset Axiom applied to $\mathcal{PP}(A \cup B)$. \qed
+        \pf\ By Theorem \ref{theorem:subset_axiom} applied to $\mathcal{PP}(A \cup B)$. \qed
     \end{proof}
 
     \begin{lemma}
@@ -360,7 +432,7 @@
     \end{proposition}
 
     \begin{proof}
-        \pf\ Apply the Subset Axiom to $\bigcup \bigcup R$. \qed
+        \pf\ Apply Theorem \ref{theorem:subset_axiom} to $\bigcup \bigcup R$. \qed
     \end{proof}
     
     \begin{definition}[Single-Rooted]
@@ -373,36 +445,10 @@
         \mid (x,y) \in \mathbf{F} \}$.
     \end{definition}
 
-    \begin{theorem}
-        For any class $\mathbf{F}$, we have $\dom \mathbf{F}^{-1} = \ran \mathbf{F}$
-        and $\ran \mathbf{F}^{-1} = \dom \mathbf{F}$.
-    \end{theorem}
-
-    \begin{proof}
-        \pf\ Easy. \qed
-    \end{proof}
-
-    \begin{theorem}
-        For a relation $\mathbf{F}$, $(\mathbf{F}^{-1})^{-1} = \mathbf{F}$.
-    \end{theorem}
-
-    \begin{proof}
-        \pf\ Easy. \qed
-    \end{proof}
-
     \begin{definition}[Composition]
         The \emph{composition} of classes $\mathbf{F}$ and $\mathbf{G}$ is the class
         $\mathbf{G} \circ \mathbf{F} = \{ (x,z) \mid \exists y. (x,y) \in \mathbf{F} \wedge (y,z) \in \mathbf{G} \}$.
     \end{definition}
-
-    \begin{theorem}
-        For any classes $\mathbf{F}$ and $\mathbf{G}$, $\inv{(\mathbf{F} \circ \mathbf{G})} =
-        \inv{\mathbf{G}} \circ \inv{\mathbf{F}}$.
-    \end{theorem}
-
-    \begin{proof}
-        \pf\ Easy. \qed
-    \end{proof}
 
     \begin{definition}[Restriction]
         The \emph{restriction} of the class $\mathbf{F}$ to the class $\mathbf{A}$ is the class
@@ -414,56 +460,27 @@
         $\mathbf{F}(\mathbf{A}) = \{ y : \exists x \in \mathbf{A}. (x,y) \in \mathbf{F} \}$.
     \end{definition}
     
-    \begin{theorem}
-        \[ \mathbf{F}(\mathbf{A} \cup \mathbf{B}) = \mathbf{F}(\mathbf{A}) \cup \mathbf{F}(\mathbf{B}) \]
-    \end{theorem}
-
-    \begin{proof}
-        \pf\ Easy. \qed
-    \end{proof}
-
-    \begin{theorem}
-        \[ \mathbf{F}(\bigcup \mathbf{A}) = \bigcup \{ \mathbf{F}(X) : X \in \mathbf{A} \} \]
-    \end{theorem}
-
-    \begin{proof}
-        \pf\ Easy. \qed
-    \end{proof}
-    
-    \begin{theorem}
-        \[ \mathbf{F}(\mathbf{A} \cap \mathbf{B}) \subseteq \mathbf{F}(\mathbf{A}) \cap \mathbf{F}(\mathbf{B}) \]
-        Equality holds if $\mathbf{F}$ is single-rooted.
-    \end{theorem}
-
-    \begin{proof}
-        \pf\ Easy. \qed
-    \end{proof}
-
-    \begin{theorem}
-        \[ \mathbf{F}(\bigcap \mathbf{A}) \subseteq \bigcap \{ \mathbf{F}(X) : X \in \mathbf{A} \} \]
-        Equality holds if $\mathbf{F}$ is single-rooted.
-    \end{theorem}
-
-    \begin{proof}
-        \pf\ Easy. \qed
-    \end{proof}
-
-    \begin{theorem}
-        \[ \mathbf{F}(\mathbf{A}) - \mathbf{F}(\mathbf{B}) \subseteq \mathbf{F}(\mathbf{A} - \mathbf{B}) \]
-        Equality holds if $\mathbf{F}$ is single-rooted.
-    \end{theorem}
-
-    \begin{proof}
-        \pf\ Easy. \qed
-    \end{proof}
-
     \begin{definition}[Reflexive]
         A binary relation $\mathbf{R}$ on $\mathbf{A}$ is \emph{reflexive} on $\mathbf{A}$ if and only if
         $\forall x \in \mathbf{A}. x\mathbf{R}x$.
     \end{definition}
 
+    \begin{definition}[Ireflexive]
+        A binary relation $\mathbf{R}$ on $\mathbf{A}$ is \emph{irreflexive} on $\mathbf{A}$ if and only if
+        $\forall x \in \mathbf{A}. \neg x\mathbf{R}x$.
+    \end{definition}
+
     \begin{definition}[Symmetric]
         A binary relation $\mathbf{R}$ is \emph{symmetric} iff, whenever $x\mathbf{R}y$, then $y\mathbf{R}x$.
+    \end{definition}
+
+    \begin{definition}[Asymmetric]
+        A binary relation $\mathbf{R}$ is \emph{asymmetric} iff, whenever $x\mathbf{R}y$, then $\neg y\mathbf{R}x$.
+    \end{definition}
+
+    \begin{definition}[Antisymmetric]
+        A binary relation $\mathbf{R}$ is \emph{antisymmetric} iff, whenever $x\mathbf{R}y$ and
+        $y \mathbf{R} x$, then $x = y$.
     \end{definition}
 
     \begin{definition}[Transitive]
@@ -509,29 +526,8 @@
     \end{definition}
 
     \begin{theorem}
-        For a class $\mathbf{F}$, $\inv{\mathbf{F}}$ is a function if and only if $\mathbf{F}$ is single-rooted.
-    \end{theorem}
-
-    \begin{proof}
-        \pf\ Easy. \qed
-    \end{proof}
-
-    \begin{theorem}
-        A relation $\mathbf{F}$ is a function if and only if $\inv{\mathbf{F}}$ is single-rooted.
-    \end{theorem}
-
-    \begin{proof}
-        \pf\ Easy. \qed
-    \end{proof}
-
-    \begin{theorem}
-        For any function $\mathbf{G}$ and classes $\mathbf{A}$ and $\mathbf{B}$,
-        \begin{align*}
-            \inv{\mathbf{G}}(\bigcup \mathbf{A}) & = \bigcup \{ \inv{\mathbf{G}}(X) : X \in \mathbf{A} \} \\
-            \inv{\mathbf{G}}(\bigcap \mathbf{A}) & = \bigcap \{ \inv{\mathbf{G}}(X) : X \in \mathbf{A} \} &
-            (\text{if } \mathbf{A} \neq \emptyset) \\
-            \inv{\mathbf{G}}(\mathbf{A} - \mathbf{B}) & = \inv{\mathbf{G}}(\mathbf{A}) - \inv{\mathbf{G}}(\mathbf{B})
-        \end{align*}
+        Let $\mathbf{F}, \mathbf{G} : \mathbf{A} \rightarrow \mathbf{B}$. If $\forall x \in \mathbf{A}.
+        \mathbf{F}(x) = \mathbf{G}(x)$ then $\mathbf{F} = \mathbf{G}$.
     \end{theorem}
 
     \begin{proof}
@@ -611,12 +607,18 @@
 
     \section{The Axiom of Choice}
 
-    \begin{axiom}[Choice]
+    \begin{definition}[Axiom of Choice]
+        The \emph{Axiom of Choice} is the statement:
+
         For any relation $R$ there exists a function $H \subseteq R$ with $\dom H = \dom R$.
-    \end{axiom}
+    \end{definition}
 
     \begin{theorem}
-        Let $F : A \rightarrow B$. Then $F$ has a right inverse if and only if $F$ maps $A$ onto $B$.
+        \begin{enumerate}
+            \item For any function $F : A \rightarrow B$, if $F$ has a right inverse then $F$ maps $A$ onto $B$.
+            \item The Axiom of Choice is equivalent to the statement: for any sets $A$ and $B$
+            and every fuction $F$ that maps $A$ onto $B$, $F$ has a right inverse.
+        \end{enumerate}
     \end{theorem}
 
     \begin{proof}
@@ -626,8 +628,9 @@
             \pf\ If $H : B \rightarrow A$ is a right inverse, then for any $y$ in $B$, we have
             $y = F(H(y))$.
         \end{proof}
-        \step{2}{If $F$ maps $A$ onto $B$ then $F$ has a right inverse.}
+        \step{2}{If the Axiom of Choice is true and $F$ maps $A$ onto $B$ then $F$ has a right inverse.}
         \begin{proof}
+            \step{o}{\assume{The Axiom of Choice}}
             \step{a}{\assume{$F$ maps $A$ onto $B$.}}
             \step{b}{\pick\ a function $H$ with $H \subseteq \inv{F}$ and $\dom H = \dom \inv{F}$}
             \begin{proof}
@@ -644,6 +647,19 @@
                 \step{iii}{$F(H(y)) = y$}
             \end{proof}
         \end{proof}
+        \step{3}{If, for any sets $A$ and $B$, any function $F$ from $A$ onto $B$ has a right inverse, then
+        the Axiom of Choice is true.}
+        \begin{proof}
+            \step{a}{\assume{For any sets $A$ and $B$, any function $F$ from $A$ onto $B$ has a right inverse.}}
+            \step{b}{\pflet{$R$ be any relation.}}
+            \step{c}{\pflet{$F : R \rightarrow \dom R$ be the function $F(x,y) = x$}}
+            \step{d}{$F$ maps $R$ onto $\dom R$}
+            \step{e}{\pick\ a right inverse $G : \dom R \rightarrow R$ to $F$.}
+            \step{f}{\pflet{$H = \{ (x,y) : (x,(x,y)) \in G \}$}}
+            \step{g}{$H$ is a function}
+            \step{h}{$H \subseteq R$}
+            \step{i}{$\dom H = \dom R$}
+        \end{proof}
         \qed
     \end{proof}
 
@@ -654,6 +670,14 @@
         $A \rightarrow \mathbf{B}$.
     \end{definition}
 
+    \begin{theorem}
+        If $A$ and $B$ are sets then $B^A$ is a set.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Since it is a subset of $\mathcal{P}(A \times B)$. \qed
+    \end{proof}
+
     \section{Dependent Products}
 
     \begin{definition}
@@ -661,7 +685,7 @@
         \[ \prod_{i \in I} H_i = \{ f : \text{$f$ is a function}, \dom f = I, \forall i \in I. f(i) \in H_i \} \enspace . \]
     \end{definition}
 
-    \begin{theorem}
+    \begin{theorem}[Multiplicative Axiom]
         The Axiom of Choice is equivalent to the statement: For any set $I$ and any function $H$ with domain
         $I$, if $H(i) \neq \emptyset$ for all $i \in I$, then $\prod_{i \in I} H(i) \neq \emptyset$
     \end{theorem}
@@ -1663,13 +1687,13 @@
         \qed
     \end{proof}
 
-    \begin{theorem}[Zorn's Lemma]
+    \begin{theorem}
         The following statements are equivalent:
         \begin{enumerate}
             \item The Axiom of Choice
-            \item[Well-Ordering Theorem]
+            \item \textbf{Well-Ordering Theorem}
             For any set $A$, there exists a well ordering on $A$.
-            \item[Zorn's Lemma] 
+            \item \textbf{Zorn's Lemma}
             Let $\mathcal{A}$ be a set such that, for every chain $\mathcal{B} \subseteq \mathcal{A}$,
             we have $\bigcup \mathcal{B} \in \mathcal{A}$. Then $\mathcal{A}$ has a maximal element.
             \end{enumerate}
@@ -1742,22 +1766,6 @@
             \step{e}{\pick\ $F \in \mathcal{A}$ maximal.}
             \step{f}{$\dom F = \dom R$}
         \end{proof}
-        \qed
-    \end{proof}
-
-
-    \begin{theorem}[Well-Ordering Theorem (Choice)]
-        For any set $A$, there exists a well ordering on $A$.
-    \end{theorem}
-    
-    \begin{proof}
-        \pf
-        \step{1}{\pflet{$A$ be a set.}}
-        \step{2}{\pick\ an ordinal $\alpha$ not dominated by $A$}
-        \step{3}{$A \preccurlyeq \alpha$}
-        \step{4}{\pick\ an injection $f : A \rightarrow \alpha$}
-        \step{5}{Define $<$ on $A$ by: $x < y$ iff $f(x) \in f(y)$}
-        \step{6}{$<$ is a well ordering on $A$.}
         \qed
     \end{proof}
 
@@ -2114,14 +2122,60 @@
 
     \section{Natural Numbers}
 
+    \begin{definition}[Peano System]
+        A \emph{Peano system} is a triple $\langle N, S, 0 \rangle$ consisting of a set $N$,
+        a function $S : N \rightarrow N$ and an element $0 \in N$ such that:
+        \begin{enumerate}
+            \item $0 \notin \ran S$
+            \item $S$ is one-to-one
+            \item Any subset $A \subseteq N$ that contains $0$ and is closed under $S$ equals $N$.
+        \end{enumerate}
+        We call 0 \emph{zero} and $S(x)$ the \emph{successor} of $x$.
+    \end{definition}
+
+    \begin{theorem}
+        In any Peano system, every element is either 0 or a successor.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ The set of elements that are either 0 or a successor contains 0 and is closed under successor. \qed
+    \end{proof}
+
+    \begin{theorem}[Iteration Theorem]
+        Let $(N,S,0)$ be any Peano system. Let $W$ be a set, $c \in W$ and $g : W \rightarrow W$. Then there
+        exists a unique function $F : N \rightarrow W$ such that $F(0) = c$ and $\forall x \in N. F(S(x)) = g(F(x))$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{$S$ is a well-founded relation.}
+        \begin{proof}
+            \step{a}{\pflet{$A \subseteq N$}}
+            \step{b}{\assume{$A$ has no $S$-minimal element} \prove{$A = \emptyset$}}
+            \step{c}{$0 \in N - A$}
+            \begin{proof}
+                \pf\ Otherwise 0 would be an $S$-minimal element of $A$.
+            \end{proof}
+            \step{d}{$\forall x \in N - A. S(x) \in N - A$}
+            \begin{proof}
+                \pf\ Otherwise $S(x)$ would be an $S$-minimal element of $A$.
+            \end{proof}
+            \step{e}{$N - A = N$}
+            \begin{proof}
+                \pf\ By induction.
+            \end{proof}
+        \end{proof}
+        \qedstep
+        \begin{proof}
+            \pf\ By Transfinite Recursion.
+        \end{proof}
+        \qed
+    \end{proof}
+
     \begin{definition}[Inductive]
         A class $\mathbf{A}$ is \emph{inductive} iff $\emptyset \in \mathbf{A}$ and
         $\forall a \in \mathbf{A}. a^+ \in \mathbf{A}$.
     \end{definition}
-
-    \begin{axiom}[Infinity]
-        There exists an inductive set.
-    \end{axiom}
 
     \begin{definition}[Natural Number]
         A \emph{natural number} is a set that belongs to every inductive set.
@@ -2156,16 +2210,6 @@
     \begin{proof}
         \pf\ Easy proof by induction. \qed
     \end{proof}
-
-    \begin{definition}[Peano System]
-        A \emph{Peano system} is a triple $\langle N, S, e \rangle$ consisting of a set $N$,
-        a function $S : N \rightarrow N$ and an element $e \in N$ such that:
-        \begin{enumerate}
-            \item $e \notin \ran S$
-            \item $S$ is one-to-one
-            \item Any subset $A \subseteq N$ that contains $e$ and is closed under $S$ equals $N$.
-        \end{enumerate}
-    \end{definition}
 
     \begin{theorem}
         \label{theorem:union_transitive_successor}
@@ -2248,112 +2292,6 @@
         \qed
     \end{proof}
 
-    \begin{theorem}[Recursion Theorem on $\omega$]
-        Let $A$ be a set, $a \in A$ and $F : A \rightarrow A$. Then there exists a unique function
-        $h : \omega \rightarrow A$ such that
-        \[ h(0) = a \enspace , \]
-        and for every $n$ in $\omega$,
-        \[ h(n^+) = F(h(n)) \enspace . \]
-    \end{theorem}
-
-    \begin{proof}
-        \pf
-        \step{1}{Let us call a function $v$ \emph{acceptable} iff $\dom v \subseteq \omega$,
-        $\ran v \subseteq A$ and:
-        \begin{enumerate}
-            \item If $0 \in \dom v$ then $v(0) = a$
-            \item For all $n \in \omega$, if $n^+ \in \dom v$ then $n \in \dom v$ and $v(n^+) = F(v(n))$.
-        \end{enumerate}}
-        \step{2}{\pflet{$\mathcal{K}$ be the set of acceptable functions.}}
-        \step{3}{\pflet{$h = \bigcup \mathcal{K}$}}
-        \step{4}{$h$ is a function.}
-        \begin{proof}
-            \step{a}{\pflet{$S = \{ n \in \omega : \text{for at most one } y, (n,y) \in h \}$}}
-            \step{b}{$S$ is inductive.}
-            \begin{proof}
-                \step{i}{$0 \in S$}
-                \begin{proof}
-                    \step{one}{\pflet{$\langle 0, y_1 \rangle, \langle 0, y_2 \rangle \in h$}}
-                    \step{two}{\pick\ acceptable $v_1$ and $v_2$ such that $v_1(0) = y_1$ and $v_2(0) = y_2$}
-                    \step{three}{$y_1 = a$}
-                    \step{four}{$y_2 = a$}
-                    \step{five}{$y_1 = y_2$}
-                \end{proof}
-                \step{ii}{$\forall k \in S. k^+ \in S$}
-                \begin{proof}
-                    \step{one}{\pflet{$k \in S$}}
-                    \step{two}{\pflet{$(k^+,y_1),(k^+,y_2) \in h$}}
-                    \step{three}{\pick\ acceptable $v_1$, $v_2$ such that $v_1(k^+)=y_1$ and $v_2(k^+)=y_2$}
-                    \step{four}{$y_1 = F(v_1(k))$}
-                    \step{five}{$f_2 = F(v_2(k))$}
-                    \step{six}{$v_1(k) = v_2(k)$}
-                    \begin{proof}
-                        \step{A}{$(k,v_1(k)), (k,v_2(k)) \in h$}
-                        \qedstep
-                        \begin{proof}
-                            \pf\ By \stepref{one}
-                        \end{proof}
-                    \end{proof}
-                    \step{seven}{$y_1 = y_2$}
-                \end{proof}
-            \end{proof}
-            \step{c}{$S = \omega$}
-        \end{proof}
-        \step{5}{$h$ is acceptable.}
-        \begin{proof}
-            \step{a}{If $0 \in \dom h$ then $h(0)= a$}
-            \begin{proof}
-                \step{i}{\assume{$0 \in \dom h$}}
-                \step{ii}{\pick\ $v$ acceptable with $v(0) = h(0)$}
-                \step{iii}{$v(0) = a$}
-                \step{iv}{$h(0) = a$}
-            \end{proof}
-            \step{b}{For all $n \in \omega$, if $n^+ \in \dom h$ then $n \in \dom h$ and $h(n^+) = F(h(n))$}
-            \begin{proof}
-                \step{i}{\pflet{$n \in \omega$ with $n^+ \in \dom h$}}
-                \step{ii}{\pick\ $v$ acceptable with $v(n^+) = h(n^+)$}
-                \step{iii}{$n \in \dom v$}
-                \step{iv}{$v(n) = h(n)$}
-                \step{v}{$h(n^+) = F(h(n))$}
-                \begin{proof}
-                    \pf
-                    \begin{align*}
-                        h(n^+) & = v(n^+) \\
-                        & = F(v(n)) \\
-                        & = F(h(n))
-                    \end{align*}
-                \end{proof}
-            \end{proof}
-        \end{proof}
-        \step{6}{$\dom h = \omega$}
-        \begin{proof}
-            \step{a}{$0 \in \dom h$}
-            \begin{proof}
-                \pf\ Since $\{ (0,a) \}$ is an acceptable function.
-            \end{proof}
-            \step{b}{$\forall n \in \dom h. n^+ \in \dom h$}
-            \begin{proof}
-                \step{i}{\pflet{$n \in \dom h$}}
-                \step{ii}{\pick\ an acceptable $v$ such that $n \in \dom v$}
-                \step{iii}{\assume{w.l.o.g. $n^+ \notin \dom v$}}
-                \step{iv}{$v \cup \{ (n^+, F(v(n))) \}$ is acceptable.}
-            \end{proof}
-        \end{proof}
-        \step{7}{For any acceptable function $h' : \omega \rightarrow A$ we have $h' = h$}
-        \begin{proof}
-            \step{a}{\pflet{$h' : \omega \rightarrow A$ be acceptable.}}
-            \step{b}{$h'(0) = h(0)$}
-            \begin{proof}
-                \pf\ $h'(0) = h(0) = a$
-            \end{proof}
-            \step{c}{$\forall n \in \omega. h'(n) = h(n) \Rightarrow h'(n^+) = h(n^+)$}
-            \begin{proof}
-                \pf\ We have $h'(n^+) = F(h'(n)) = F(h(n)) = h(n^+)$.
-            \end{proof}
-        \end{proof}
-        \qed
-    \end{proof}
-
     \begin{theorem}
         Let $(N,S,e)$ be a Peano system. Then $(\omega, \sigma, 0)$ is isomorphic to $(N,S,e)$, i.e. there is
         a function $h$ mapping $\omega$ one-to-one onto $N$ in a way that preserves the successor operation
@@ -2405,15 +2343,6 @@
             \pf\ An easy induction on $x$.
         \end{proof}
         \qed
-    \end{proof}
-
-    \begin{theorem}
-        There is no function $f$ with domain $\omega$ such that $\cdots \in f(2) \in f(1) \in f(0)$.
-    \end{theorem}
-
-    \begin{proof}
-        \pf\ If there were then there would be no $m \in \ran f$ such that $m \cap \ran f = \emptyset$,
-        contradicting the Axiom of Regularity. \qed
     \end{proof}
 
     \begin{theorem}[Choice]
@@ -2473,6 +2402,13 @@
         The \emph{transitive closure} of a set $A$ is the least transitive set that includes $A$.
     \end{definition}
 
+    \begin{theorem}
+        Addition on natural numbers is commutative.
+    \end{theorem}
+
+    \begin{theorem}
+        Multiplication on natural numbers is commutative.
+    \end{theorem}
 
     \section{Finite Sets}
 

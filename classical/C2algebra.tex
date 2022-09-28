@@ -94,20 +94,62 @@
 
     \section{Ring Theory}
 
-    \begin{definition}[Commutative Ring]
-        A \emph{commutative ring} is a quintuple $(R, +, \cdot, 0, 1)$ consisting of a set $R$,
-        binary operations $+$ and $\cdot$ on $R$, and elements $0,1 \in R$ such that:
+    \begin{definition}[Rng]
+        A \emph{rng} is a quintuple $(R, +, \cdot, 0)$ consisting of a set $R$,
+        binary operations $+$ and $\cdot$ on $R$, and element $0 \in R$ such that:
         \begin{enumerate}
             \item $(R, +, 0)$ is an Abelian group.
-            \item The operation $\cdot$ is commutative, associative, and distributive over $+$.
-            \item $\forall x \in R. x1 = x$
-            \item $0 \neq 1$
+            \item The operation $\cdot$ is associative, and distributive over $+$.
         \end{enumerate}
     \end{definition}
 
-    \begin{definition}[Integral Domain]
-        An \emph{integral domain} is a ring such that, whenever $xy = 0$, then $x = 0$ or $y = 0$.
+    \begin{proposition}
+        In any rng we have $x0 = 0$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ $x0 = x(0+0) = x0+x0$ and also $x0 = x0+0$. The result follows by the cancellation law. \qed
+    \end{proof}
+
+    \begin{proposition}
+        In any rng we have $-(xy) = (-x)y = x(-y)$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ The result $-(xy) = (-x)y$ holds because
+        \[ xy + (-x)y = (x+(-x))y = 0y = 0 \enspace . \]
+        We prove $-(xy) = x(-y)$ similarly. \qed
+    \end{proof}
+
+    \begin{corollary}
+        In any rng, $(-x)(-y) = xy$.
+    \end{corollary}
+
+    \begin{definition}[Ring]
+        A \emph{ring} consists of a rng $R$ and an element $1 \in R$, the \emph{unit element},
+        such that $\forall x \in R. x1 = 1x = x$.
     \end{definition}
+
+    \begin{proposition}
+        In a ring $R$, if $0 = 1$ then $R$ has only one element.
+    \end{proposition}
+
+    \begin{definition}[Commutative Rng]
+        A rng $R$ is \emph{commutative} iff $\forall x,y \in R. xy = yx$.
+    \end{definition}
+
+    \begin{definition}[Zero Divisor]
+        A \emph{zero divisor} in a rng is an element $x$ such that $x \neq 0$ but there exists $y \neq 0$ such
+        that $xy = 0$.
+    \end{definition}
+
+    \begin{definition}[Integral Domain]
+        An \emph{integral domain} is a commutative ring with no zero divisors.
+    \end{definition}
+
+    \begin{proposition}
+        The trivial ring is an integral domain.
+    \end{proposition}
 
     \begin{lemma}
         The integers form an integral domain.
@@ -117,6 +159,291 @@
         \pf\ Easy. \qed
     \end{proof}
 
+    \begin{proposition}
+        Let $R$ be a commutative ring. Then $R$ is an integral domain if and only if, whenever $xy = xz$
+        and $x \neq 0$, then $y = z$.
+    \end{proposition}
+
+    \section{Ordered Integral Domains}
+
+    \begin{definition}[Ordered Integral Domain]
+        An \emph{ordered integral domain} is an integral domain $D$ with a linear order $<$ such that:
+        \begin{itemize}
+            \item Whenever $x < y$ then $x + z < y + z$.
+            \item Whenever $x < y$ and $0 < z$ then $xz < yz$.
+        \end{itemize}
+    \end{definition}
+
+    \begin{proposition}
+        In an ordered integral domain, if $x < y$ and $z < 0$ then $yz < xz$.
+    \end{proposition}
+
+    \begin{proposition}
+        $x < y$ iff $-y < -x$.
+    \end{proposition}
+
+    \begin{definition}[Positive]
+        In an integral domain, we say an element $a$ is \emph{positive} iff $0 < a$ and \emph{negative}
+        iff $a < 0$.
+    \end{definition}
+
+    \begin{proposition}
+        $x < y$ iff $y - x$ is positive.
+    \end{proposition}
+
+    \begin{proposition}
+        $x < y$ iff $x - y$ is negative.
+    \end{proposition}
+
+    \begin{proposition}
+        $x$ is positive iff $-x$ is negative.
+    \end{proposition}
+
+    \begin{proposition}
+        $x$ is negative iff $-x$ is positive.
+    \end{proposition}
+
+    \begin{proposition}
+        The sum of two positive elements is positive.
+    \end{proposition}
+
+    \begin{proposition}
+        The product of two positive elements is positive.
+    \end{proposition}
+
+    \begin{proposition}
+        The product of two negative elements is positive.
+    \end{proposition}
+
+    \begin{proposition}
+        The product of a positive and a negative element is negative.
+    \end{proposition}
+
+    \begin{proposition}
+        If $x \neq 0$ then $x^2$ is positive.
+    \end{proposition}
+
+    \begin{proposition}
+        $x^2$ is always non-negative.
+    \end{proposition}
+
+    \begin{proposition}
+        $0 < 1$
+    \end{proposition}
+
+    \begin{proposition}
+        $-1 < 0$
+    \end{proposition}
+
+    \begin{theorem}
+        Let $R$ be an integral domain and $P \subseteq R$ be a set such that:
+        \begin{itemize}
+            \item $0 \notin P$
+            \item For all $x \in R$ we have $x \in P$ or $x = 0$ or $-x \in P$
+            \item For all $x,y \in P$ we have $x+y \in P$
+            \item For all $x,y \in P$ we have $xy \in P$
+        \end{itemize}
+        Define $<$ on $R$ by $x < y$ iff $y - x \in P$. Then $R$ is an ordered integral domain under $<$
+        with $P$ the set of positive elements.
+    \end{theorem}
+
+    \begin{definition}[Absolute Value]
+        In any ordered integral domain, define
+        \[ |x| = \begin{cases}
+            x & \text{if $0 \leq x$} \\
+            -x & \text{if $x < 0$}
+        \end{cases} \]
+    \end{definition}
+
+    \begin{proposition}
+        $|x|$ is always non-negative.
+    \end{proposition}
+
+    \begin{proposition}
+        $|x| = 0$ iff $x = 0$
+    \end{proposition}
+
+    \begin{proposition}
+        $|-x| = |x|$
+    \end{proposition}
+
+    \begin{proposition}
+        $|x-y| = |y-x|$
+    \end{proposition}
+
+    \begin{proposition}
+        $|xy| = |x||y|$
+    \end{proposition}
+
+    \begin{proposition}
+        $-|x| \leq x \leq |x|$
+    \end{proposition}
+
+    \begin{proposition}
+        $|x| < u$ iff $-u < x < u$
+    \end{proposition}
+
+    \begin{proposition}
+        $|x| \leq u$ iff $-u \leq x \leq u$
+    \end{proposition}
+
+    \begin{proposition}[Triangle Inequality]
+        $|x + y| \leq |x| + |y|$
+    \end{proposition}
+
+    \begin{proposition}
+        $||x| - |y|| \leq |x-y|$
+    \end{proposition}
+
+    \section{Greatest Common Divisor}
+
+    \begin{theorem}[Division Theorem]
+        Let $a$ and $b$ be integers, $a > 1$. Then there exist unique integers $q$ and $r$ such that
+        $b = qa + r$ and $0 \leq r < a$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ For existence, prove the case $b \geq 0$ by induction on $b$. The case $b < 0$ follows.
+
+        For uniqueness, if $qa + r = q'a + r'$ then $a | r - r'$ and $-a < r - r' < a$, hence $r - r' = 0$.
+        So $r = r'$ and $q = q'$. \qed
+    \end{proof}
+
+    \begin{definition}[Divisibility]
+        We say $a$ \emph{divides} $b$, $a \mid b$, iff there exists $c$ such that $b = ac$.
+    \end{definition}
+
+    \begin{proposition}
+        For every integer $a$ we have $a \mid 0$.
+    \end{proposition}
+
+    \begin{proposition}
+        For every integer $a$ we have $1 \mid a$.
+    \end{proposition}
+
+    \begin{proposition}
+        For every integer $a$ we have $a \mid a$.
+    \end{proposition}
+
+    \begin{proposition}
+        If $a \mid b$ and $b \mid c$ then $a \mid c$.
+    \end{proposition}
+
+    \begin{proposition}
+        If $a \mid c$ and $c \neq 0$ the $|a| \leq |c|$.
+    \end{proposition}
+
+    \begin{proposition}
+        If $0 \mid a$ then $a = 0$.
+    \end{proposition}
+
+    \begin{proposition}
+        If $a \mid b$ and $b \mid a$ then $a = b$ or $a = -b$.
+    \end{proposition}
+
+    \begin{proposition}
+        $a \mid ab$
+    \end{proposition}
+
+    \begin{proposition}
+        If $a \mid b$ and $a \mid c$ then $a \mid b + c$.
+    \end{proposition}
+
+    \begin{proposition}
+        If $a \mid b$ and $a \mid c$ then $a \mid b - c$.
+    \end{proposition}
+    
+    \begin{proposition}
+        If $a \mid 1$ then $a = 1$ or $a = -1$.
+    \end{proposition}
+
+    \begin{definition}[Greatest Common Divisor]
+        The integer $d$ is the \emph{greatest common divisor} of $a$ and $b$ iff $d$ is non-negative,
+        $d \mid a$, $d \mid b$,
+        and whenever $x \mid a$ and $x \mid b$ then $d \mid x$.
+    \end{definition}
+
+    \begin{proposition}
+        Two integers have at most one gcd.
+    \end{proposition}
+
+    \begin{theorem}
+        Let $a$ and $b$ be integers that are not both 0. Then there exist integers $x$ and $y$ such that
+        $xa + yb$ is the greatest common divisor of $a$ and $b$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Take the least positive member of $\{ xa + yb : x,y \in \mathbb{Z} \}$. \qed
+    \end{proof}
+
+    \begin{definition}[Relatively Prime]
+        Two integers $a$ and $b$ are \emph{relatively prime} iff their gcd is 1.
+    \end{definition}
+
+    \begin{definition}[Prime]
+        An integer $p$ is \emph{prime} iff $p > 1$ and the only divisors of $p$ are 1 and $p$.
+        
+        An integer $a$ is \emph{composite} iff $a > 1$ and $a$ is not prime.
+    \end{definition}
+
+    \begin{proposition}
+        Every integer greater than 1 is divisible by a prime.
+    \end{proposition}
+
+    \begin{theorem}
+        There are infinitely many primes.
+    \end{theorem}
+
+    \begin{proposition}
+        If $p$ is prime and $p \mid ab$ then $p \mid a$ or $p \mid b$.
+    \end{proposition}
+
+    \begin{theorem}[Fundamental Theorem of Arithmetic]
+        Every integer $> 1$ is the product of a unique multiset of primes.
+    \end{theorem}
+
+    \section{Integers Modulo $n$}
+
+    \begin{definition}[Congruence]
+        Two integers $a$ and $b$ are \emph{congruent} modulo $n$, $a \equiv b \mod n$, iff $n \mid a - b$.
+    \end{definition}
+
+    \begin{proposition}
+        Congruence modulo $n$ is an equivalence relation.
+    \end{proposition}
+
+    \begin{proposition}
+        If $a \equiv b \mod n$ and $c \equiv d \mod n$ then $a + c \equiv b + d \mod n$.
+    \end{proposition}
+
+    \begin{proposition}
+        If $a \equiv b \mod n$ then $-a \equiv -b \mod n$.
+    \end{proposition}
+
+    \begin{proposition}
+        If $a \equiv b \mod n$ and $c \equiv d \mod n$ then $ac \equiv bd \mod n$.
+    \end{proposition}
+
+    \begin{definition}
+        The equivalence classes with respect to congruence modulo $n$ are called \emph{residue classes modulo $n$}.
+    \end{definition}
+
+    \begin{definition}
+        The set of \emph{integers modulo $n$}, $\mathbb{Z}_n$, is the quotient of $\mathbb{Z}$ by 
+        congruence modulo $n$.
+    \end{definition}
+
+    \begin{proposition}
+        If $n > 0$ then $|\mathbb{Z}_n| = n$.
+    \end{proposition}
+
+    \begin{proposition}
+        $\mathbb{Z}_n$ is a commutative ring.
+    \end{proposition}
+
+    \begin{proposition}
+        $\mathbb{Z}_n$ is an integral domain if and only if $n$ is prime.
+    \end{proposition}
     \section{Field Theory}
 
     \begin{definition}[Field]
