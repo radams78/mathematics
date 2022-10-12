@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass{report}
 
 \title{C1 Set Theory}
 \author{Robin Adams}
@@ -18,6 +18,7 @@
 \newtheorem{proposition}[axiom]{Proposition}
 \newtheorem{props}[axiom]{Proposition Schema}
 \newtheorem{theorem}[axiom]{Theorem}
+\newtheorem{thms}[axiom]{Theorem Schema}
 \newtheorem{corollary}{Corollary}[axiom]
 \theoremstyle{definition}
 \newtheorem{definition}[axiom]{Definition}
@@ -32,6 +33,8 @@
 
 \begin{document}
     \maketitle
+
+    \chapter{The Foundations}
 
     \section{Classes}
 
@@ -64,6 +67,10 @@
         \emph{properly} includes $\mathbf{A}$ or $\mathbf{B}$ is a \emph{proper} superclass of $\mathbf{A}$.
     \end{definition}
 
+    \begin{definition}[Disjoint]
+        Two classes $\mathbf{A}$ and $\mathbf{B}$ are \emph{disjoint} iff they have no common members.
+    \end{definition}
+
     \begin{definition}[Empty Class]
         The \emph{empty class}, $\emptyset$, is $\{ x : \bot \}$.
     \end{definition}
@@ -83,23 +90,17 @@
 
     \begin{definition}[Union]
         The \emph{union} of classes $\mathbf{A}$ and $\mathbf{B}$, 
-        $\mathbf{A} \cup \mathbf{B}$, is the set whose elements are exactly the things
-        that are members of $\mathbf{A}$ or members of $\mathbf{B}$.
+        $\mathbf{A} \cup \mathbf{B}$, is the class $\{ x : x \in \mathbf{A} \vee x \in \mathbf{B} \}$.
     \end{definition}
 
     \begin{definition}[Intersection]
         The \emph{intersection} of classes $\mathbf{A}$ and $\mathbf{B}$, 
-        $\mathbf{A} \cap \mathbf{B}$, is the set whose elements are exactly the
-        things that are members of both $\mathbf{A}$ and $\mathbf{B}$.
-    \end{definition}
-
-    \begin{definition}[Disjoint]
-        Two classes $\mathbf{A}$ and $\mathbf{B}$ are \emph{disjoint} iff they have no common members.
+        $\mathbf{A} \cap \mathbf{B}$, is the class $\{ x : x \in \mathbf{A} \wedge x \in \mathbf{B} \}$.
     \end{definition}
 
     \begin{definition}[Relative Complement]
         Given classes $\mathbf{A}$ and $\mathbf{B}$, the \emph{relative complement}
-        $\mathbf{A} - \mathbf{B}$ is $\{ x \in \mathbf{A} : x \notin \mathbf{B} \}$.
+        $\mathbf{A} - \mathbf{B}$ is the class $\{ x \in \mathbf{A} : x \notin \mathbf{B} \}$.
     \end{definition}
 
     \section{Primitive Notions}
@@ -335,22 +336,35 @@
         \pf\ If there were, then there would be no $m \in \{ a,b \}$ such that  $m \cap \{ a,b \} = \emptyset$. \qed
     \end{proof}
 
-    \section{Ordered Pairs}
+    \section{The Axiom of Choice}
 
-    \begin{definition}[Ordered Pair]
-        For any objects $a$ and $b$, the \emph{ordered pair} $(a,b)$ is $\{ \{ a \}, \{a, b \} \}$.
-        We call $a$ its \emph{first coordinate} and $b$ its \emph{second coordinate}.
+    \begin{definition}[Axiom of Choice]
+        The \emph{Axiom of Choice} is the statement:
+
+        Let $\mathcal{A}$ be a set such that (a) every member of $\mathcal{A}$ is a nonempty set,
+        and (b) any two distinct members of $\mathcal{A}$ are disjoint. Then there exists a set $C$
+        such that, for all $B \in \mathcal{A}$, we have $C \cap B$ is a singleton.
     \end{definition}
 
+    \chapter{Relations and Functions}
+
+    \section{Ordered Pairs}
+
     \begin{theorem}
-        For any objects $(a,b)$, we have $(a,b) = (c,d)$ if and only if $a = c$ and $b = d$.
+        There exists a predicate $\mathbf{Pair}(x,y,z)$ such that the following is a theorem:
+        \begin{enumerate}
+            \item $\forall x,y \exists ! z. \mathbf{Pair}(x,y,z)$
+            \item $\forall x,y,z,w,p. (\mathbf{Pair}(x,y,p) \wedge \mathbf{Pair}(z,w,p) \Rightarrow x = z \wedge y = w)$
+        \end{enumerate}
     \end{theorem}
 
     \begin{proof}
+        Let $\mathbf{Pair}(x,y,z)$ be the predicate $z = \{ \{ x \}, \{ x , y \} \}$.
         \pf
-        \step{1}{If $(a,b) = (c,d)$ then $a = c$ and $b = d$}
+        \step{1}{$\forall x,y \exists ! z. \mathbf{Pair}(x,y,z)$ }
+        \step{2}{$\forall a,b,c,d,p. (\mathbf{Pair}(a,b,p) \wedge \mathbf{Pair}(c,d,p) \Rightarrow x = z \wedge y = w)$}
         \begin{proof}
-            \step{a}{\assume{$(a,b) = (c,d)$}}
+            \step{a}{\assume{$\{ \{ a \}, \{ a,b \} \} = \{ \{ c \}, \{ c, d \} \}$}}
             \step{b}{$a = c$}
             \begin{proof}
                 \pf\ Since $\{a\} = \bigcap (a,b) = \bigcap (c,d) = \{c\}$.
@@ -371,40 +385,34 @@
                 \pf\ We have $a = c$ and $b = d$ as required.
             \end{proof}
         \end{proof}
-        \step{2}{If $a = c$ and $b = d$ then $(a,b) = (c,d)$}
-        \begin{proof}
-            \pf\ Trivial.
-        \end{proof}
         \qed
     \end{proof}
+
+    Pick a predicate $\mathbf{Pair}(x,y,z)$ such that the following is a theorem:
+    \begin{enumerate}
+        \item $\forall x,y \exists ! z. \mathbf{Pair}(x,y,z)$
+        \item $\forall x,y,z,w,p. (\mathbf{Pair}(x,y,p) \wedge \mathbf{Pair}(z,w,p) \Rightarrow x = z \wedge y = w)$
+    \end{enumerate}
+
+    \begin{definition}[Ordered Pair]
+        For any objects $a$ and $b$, the \emph{ordered pair} $(a,b)$ is the object such
+        that $\mathbf{Pair}(a,b,(a,b))$.
+        We call $a$ its \emph{first coordinate} and $b$ its \emph{second coordinate}.
+    \end{definition}
 
     \begin{definition}[Cartesian Product]
         The \emph{Cartesian product} of classes $\mathbf{A}$ and $\mathbf{B}$ is the class
         \[ \mathbf{A} \times \mathbf{B} = \{ (x,y) : x \in \mathbf{A}, y \in \mathbf{B} \} \enspace . \]
     \end{definition}
 
-    \begin{lemma}
-        For any objects $x$ and $y$ and set $C$, if $x \in C$ and $y \in C$ then $(x,y) \in \mathcal{PP} C$.
-    \end{lemma}
-
-    \begin{proof}
-        \pf\ Easy. \qed
-    \end{proof}
-
-    \begin{corollary}
+    \begin{theorem}
         For any sets $A$ and $B$, the Cartesian product $A \times B$ is a set.
-    \end{corollary}
+    \end{theorem}
 
     \begin{proof}
-        \pf\ By Theorem \ref{theorem:subset_axiom} applied to $\mathcal{PP}(A \cup B)$. \qed
-    \end{proof}
-
-    \begin{lemma}
-        If $(x,y) \in \mathbf{A}$ then $x, y \in \bigcup \bigcup \mathbf{A}$.
-    \end{lemma}
-
-    \begin{proof}
-        \pf\ Easy. \qed
+        \pf\ By an Axiom of Replacement, for all $a \in A$, the class $B_a = \{ (a,b) : b \in B \}$ is a
+        set. Hence by an Axiom of Replacement, $\{ B_a : a \in A \}$ is a set. Now $A \times B =
+        \bigcup \{ B_a : a \in A \}$.
     \end{proof}
 
     \section{Relations}
@@ -432,7 +440,7 @@
     \end{proposition}
 
     \begin{proof}
-        \pf\ Apply Theorem \ref{theorem:subset_axiom} to $\bigcup \bigcup R$. \qed
+        \pf\ Apply an Axiom of Replacement for $\dom R$ and $\ran R$. \qed
     \end{proof}
     
     \begin{definition}[Single-Rooted]
@@ -490,8 +498,24 @@
 
     \begin{definition}[Minimal]
         Let $R$ be a relation on $D$. An element $m \in D$ is \emph{$R$-minimal} iff there is no
-        $x \in D$ such that $x < m$.
+        $x \in D$ such that $x R m$.
     \end{definition}
+
+    \begin{definition}[Maximal]
+        Let $R$ be a relation on $D$. An element $m \in D$ is \emph{$R$-maximal} iff there is no
+        $x \in D$ such that $mRx$.
+    \end{definition}
+
+    \begin{definition}[Least]
+        Let $R$ be a relation on $D$. An element $m \in D$ is \emph{least}, \emph{smallest} or the
+        \emph{minimum} iff $\forall x \in D. (m R x \vee m = x)$.
+    \end{definition}
+
+    \begin{definition}[Greatest]
+        Let $R$ be a relation on $D$. An element $m \in D$ is \emph{greatest}, \emph{largest} or the
+        \emph{maximum} iff $\forall x \in D (xRm \vee x = m)$.
+    \end{definition}
+
 
     \section{$n$-ary Relations}
 
@@ -605,7 +629,100 @@
         A \emph{binary operation} on a set $A$ is a function from $A \times A$ into $A$.
     \end{definition}
 
+    \section{Dependent Products}
+
+    \begin{definition}
+        Let $I$ be a set and $H_i$ a set for all $i \in I$. Define
+        \[ \prod_{i \in I} H_i = \{ f : \text{$f$ is a function}, \dom f = I, \forall i \in I. f(i) \in H_i \} \enspace . \]
+    \end{definition}
+
     \section{The Axiom of Choice}
+
+    \begin{definition}[Choice Function]
+        Let $A$ be a set. A \emph{choice function} for $A$ is a function $F : \mathcal{P} A - \{ \emptyset \}
+        \rightarrow A$ such that $\forall X \in \mathcal{P} A - \{ \emptyset \}. F(X) \in X$.
+    \end{definition}
+
+    \begin{theorem}
+        The following are equivalent.
+        \begin{enumerate}
+            \item 
+            For any relation $R$ there exists a function $H \subseteq R$ with $\dom H = \dom R$.
+            \item (\textbf{Multiplicative Axiom}) For any set $I$ and any function $H$ with domain
+            $I$, if $H(i) \neq \emptyset$ for all $i \in I$, then $\prod_{i \in I} H(i) \neq \emptyset$
+            \item The Axiom of Choice.
+            \item Every set has a choice function.
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{0}{$1 \Rightarrow 2$}
+        \begin{proof}
+            \step{a}{\assume{The Axiom of Choice.}}
+            \step{b}{\pflet{$I$ be a set.}}
+            \step{c}{\pflet{$H$ be a function with domain $I$.}}
+            \step{d}{\assume{$H(i) \neq \emptyset$ for all $i \in I$.}}
+            \step{e}{\pflet{$R = \{ (i,x) : i \in I, x \in H(i) \}$}}
+            \step{f}{\pick\ a function $F \subseteq R$ with $\dom F = \dom R$ \prove{$F \in \prod_{i \in I} H(i)$}}
+            \begin{proof}
+                \pf\ By the Axiom of Choice.
+            \end{proof}
+            \step{g}{$\dom H = I$}
+            \begin{proof}
+                \pf\ We have $\dom R = I$ since for all $i \in I$ there exists $x$ such that $x \in H(i)$.
+            \end{proof}
+            \step{h}{$\forall i \in I. F(i) \in H(i)$}
+            \begin{proof}
+                \pf\ Since $iRF(i)$.
+            \end{proof}
+        \end{proof}
+        \step{1}{$2 \Rightarrow 3$}
+        \begin{proof}
+        \pf\ Let $\mathcal{A}$ be a set matching the two condtions. By the Multiplicative Axiom, pick a function
+        $f \in \prod_{B \in \mathcal{A}} B$. Let $C = \ran f$. Then $C \cap B = \{f(B)\}$ for all $B \in
+        \mathcal{A}$.
+        \end{proof}
+        \step{2}{$3 \Rightarrow 4$}
+        \begin{proof}
+            \step{a}{\assume{2}}
+            \step{b}{\pflet{$A$ be a set.}}
+            \step{c}{\pflet{$\mathcal{A} = \{ \{B\} \times B : B \in \mathcal{P} A - \{ \emptyset \} \}$}}
+            \step{d}{\pick\ a set $C$ such that $C \cap (\{ B \} \times B)$ is a singleton
+            for all $B \in \mathcal{P} A - \{ \emptyset \}$}
+            \step{e}{\pflet{$F = C \cap \bigcup \mathcal{A}$}}
+            \step{f}{$F : \mathcal{P} A - \{ \emptyset \} \rightarrow A$ is a function and $F(X) \in X$
+            for all $X$}
+        \end{proof}
+        \step{3}{$4 \Rightarrow 2$}
+        \begin{proof}
+            \step{a}{\assume{3}}
+            \step{b}{\pflet{$R$ be a relation}}
+            \step{c}{\pick\ a choice function $G$ for $\ran R$}
+            \step{d}{Define $F : \dom R \rightarrow \ran R$ by $F(x) = G(R(x))$}
+            \step{e}{$F \subseteq R$}
+        \end{proof}
+        \step{4}{$2 \Rightarrow 1$}
+        \begin{proof}
+            \step{a}{\assume{For any set $I$ and any function $H$ with domain
+            $I$, if $H(i) \neq \emptyset$ for all $i \in I$, then $\prod_{i \in I} H(i) \neq \emptyset$}}
+            \step{b}{\pflet{$R$ be a relation}}
+            \step{c}{\pflet{$I = \dom R$}}
+            \step{d}{Define the function $H$ with domain $I$ by: for $i \in I$, $H(i) = \{ y : iRy \}$}
+            \step{e}{$H(i) \neq \emptyset$ for all $i \in I$}
+            \step{f}{\pick\ $F \in \prod_{i \in I} H(i)$}
+            \begin{proof}
+                \pf\ By \stepref{a}
+            \end{proof}
+            \step{g}{$F$ is a function}
+            \step{h}{$F \subseteq R$}
+            \begin{proof}
+                \pf\ For all $i \in I$ we have $F(i) \in H(i)$ and so $iRF(i)$.
+            \end{proof}
+            \step{i}{$\dom F = \dom R$}
+        \end{proof}
+        \qed
+    \end{proof}
 
     \begin{definition}[Axiom of Choice]
         The \emph{Axiom of Choice} is the statement:
@@ -678,106 +795,7 @@
         \pf\ Since it is a subset of $\mathcal{P}(A \times B)$. \qed
     \end{proof}
 
-    \section{Dependent Products}
 
-    \begin{definition}
-        Let $I$ be a set and $H_i$ a set for all $i \in I$. Define
-        \[ \prod_{i \in I} H_i = \{ f : \text{$f$ is a function}, \dom f = I, \forall i \in I. f(i) \in H_i \} \enspace . \]
-    \end{definition}
-
-    \begin{theorem}[Multiplicative Axiom]
-        The Axiom of Choice is equivalent to the statement: For any set $I$ and any function $H$ with domain
-        $I$, if $H(i) \neq \emptyset$ for all $i \in I$, then $\prod_{i \in I} H(i) \neq \emptyset$
-    \end{theorem}
-
-    \begin{proof}
-        \pf
-        \step{1}{If the Axiom of Choice is true then, for any set $I$ and any function $H$ with domain
-        $I$, if $H(i) \neq \emptyset$ for all $i \in I$, then $\prod_{i \in I} H(i) \neq \emptyset$.}
-        \begin{proof}
-            \step{a}{\assume{The Axiom of Choice.}}
-            \step{b}{\pflet{$I$ be a set.}}
-            \step{c}{\pflet{$H$ be a function with domain $I$.}}
-            \step{d}{\assume{$H(i) \neq \emptyset$ for all $i \in I$.}}
-            \step{e}{\pflet{$R = \{ (i,x) : i \in I, x \in H(i) \}$}}
-            \step{f}{\pick\ a function $F \subseteq R$ with $\dom F = \dom R$ \prove{$F \in \prod_{i \in I} H(i)$}}
-            \begin{proof}
-                \pf\ By the Axiom of Choice.
-            \end{proof}
-            \step{g}{$\dom H = I$}
-            \begin{proof}
-                \pf\ We have $\dom R = I$ since for all $i \in I$ there exists $x$ such that $x \in H(i)$.
-            \end{proof}
-            \step{h}{$\forall i \in I. F(i) \in H(i)$}
-            \begin{proof}
-                \pf\ Since $iRF(i)$.
-            \end{proof}
-        \end{proof}
-        \step{2}{If, for any set $I$ and any function $H$ with domain
-        $I$, if $H(i) \neq \emptyset$ for all $i \in I$, then $\prod_{i \in I} H(i) \neq \emptyset$,
-        then the Axiom of Choice is true.}
-        \begin{proof}
-            \step{a}{\assume{For any set $I$ and any function $H$ with domain
-            $I$, if $H(i) \neq \emptyset$ for all $i \in I$, then $\prod_{i \in I} H(i) \neq \emptyset$}}
-            \step{b}{\pflet{$R$ be a relation}}
-            \step{c}{\pflet{$I = \dom R$}}
-            \step{d}{Define the function $H$ with domain $I$ by: for $i \in I$, $H(i) = \{ y : iRy \}$}
-            \step{e}{$H(i) \neq \emptyset$ for all $i \in I$}
-            \step{f}{\pick\ $F \in \prod_{i \in I} H(i)$}
-            \begin{proof}
-                \pf\ By \stepref{a}
-            \end{proof}
-            \step{g}{$F$ is a function}
-            \step{h}{$F \subseteq R$}
-            \begin{proof}
-                \pf\ For all $i \in I$ we have $F(i) \in H(i)$ and so $iRF(i)$.
-            \end{proof}
-            \step{i}{$\dom F = \dom R$}
-        \end{proof}
-        \qed
-    \end{proof}
-
-    \begin{theorem}
-        The following are equivalent.
-        \begin{enumerate}
-            \item The Axiom of Choice.
-            \item Let $\mathcal{A}$ be a set such that (a) every member of $\mathcal{A}$ is a nonempty set,
-            and (b) any two distinct members of $\mathcal{A}$ are disjoint. Then there exists a set $C$
-            such that, for all $B \in \mathcal{A}$, we have $C \cap B$ is a singleton.
-            \item For any set $A$, there exists a function $F : \mathcal{P} A - \{ \emptyset \} \rightarrow
-            A$ such that $F(X) \in X$ for all $X \in \mathcal{P} A - \{ \emptyset \}$.
-        \end{enumerate}
-    \end{theorem}
-
-    \begin{proof}
-        \pf
-        \step{1}{$1 \Rightarrow 2$}
-        \begin{proof}
-        \pf\ Let $\mathcal{A}$ be a set matching the two condtions. By the Multiplicative Axiom, pick a function
-        $f \in \prod_{B \in \mathcal{A}} B$. Let $C = \ran f$. Then $C \cap B = \{f(B)\}$ for all $B \in
-        \mathcal{A}$.
-        \end{proof}
-        \step{2}{$2 \Rightarrow 3$}
-        \begin{proof}
-            \step{a}{\assume{2}}
-            \step{b}{\pflet{$A$ be a set.}}
-            \step{c}{\pflet{$\mathcal{A} = \{ \{B\} \times B : B \in \mathcal{P} A - \{ \emptyset \} \}$}}
-            \step{d}{\pick\ a set $C$ such that $C \cap (\{ B \} \times B)$ is a singleton
-            for all $B \in \mathcal{P} A - \{ \emptyset \}$}
-            \step{e}{\pflet{$F = C \cap \bigcup \mathcal{A}$}}
-            \step{f}{$F : \mathcal{P} A - \{ \emptyset \} \rightarrow A$ is a function and $F(X) \in X$
-            for all $X$}
-        \end{proof}
-        \step{3}{$3 \Rightarrow 1$}
-        \begin{proof}
-            \step{a}{\assume{3}}
-            \step{b}{\pflet{$R$ be a relation}}
-            \step{c}{\pick\ a choice function $G$ for $\ran R$}
-            \step{d}{Define $F : \dom R \rightarrow \ran R$ by $F(x) = G(R(x))$}
-            \step{e}{$F \subseteq R$}
-        \end{proof}
-        \qed
-    \end{proof}
     \section{Equivalence Relations}
 
     \begin{definition}[Equivalence Relation]
@@ -864,41 +882,155 @@
     \end{definition}
 
     \begin{theorem}
-        Let $R$ be an equivalence relation on the set $A$. Then the set of all equivalence classes is a
-        partition of $A$.
+        Let $A$ be a set.
+
+        For any equivalence relation $R$ on the set $A$, the set of all equivalence classes is a
+        partition of $A$. 
+        
+        Conversely, for any partition $P$, there exists a unique equivalence relation $\sim$ on $A$ such
+        that $P$ is the set of all equivalence classes with respect to $\sim$, given by $x \sim y$
+        iff $\exists X \in P (x \in X \wedge y \in X)$.
     \end{theorem}
 
     \begin{proof}
         \pf
-        \step{1}{Every equivalence class is nonempty.}
+        \step{1}{For every equivalence relation $R$ on $A$, the set of equivalence classes forms a partition
+        of $A$.}
         \begin{proof}
-            \pf\ For any $x \in A$ we have $x \in [x]_R$.
-        \end{proof}
-        \step{2}{Any two distinct equivalence classes are disjoint.}
-        \begin{proof}
-            \step{a}{\pflet{$x, y \in A$}}
-            \step{b}{\assume{$z \in [x]_R \cap [y]_R$} \prove{$[x]_R = [y]_R$}}
-            \step{c}{$xRy$}
+            \step{0}{\pflet{$R$ be an equivalence relation on $A$.}}
+            \step{1}{Every equivalence class is nonempty.}
             \begin{proof}
-                \step{i}{$xRz$}
-                \step{ii}{$yRz$}
-                \step{iii}{$zRy$}
+                \pf\ For any $x \in A$ we have $x \in [x]_R$.
+            \end{proof}
+            \step{2}{Any two distinct equivalence classes are disjoint.}
+            \begin{proof}
+                \step{a}{\pflet{$x, y \in A$}}
+                \step{b}{\assume{$z \in [x]_R \cap [y]_R$} \prove{$[x]_R = [y]_R$}}
+                \step{c}{$xRy$}
                 \begin{proof}
-                    \pf\ By \stepref{ii} and symmetry.
+                    \step{i}{$xRz$}
+                    \step{ii}{$yRz$}
+                    \step{iii}{$zRy$}
+                    \begin{proof}
+                        \pf\ By \stepref{ii} and symmetry.
+                    \end{proof}
+                    \step{iv}{$xRy$}
+                    \begin{proof}
+                        \pf\ By \stepref{i}, \stepref{iii} and transitivity.
+                    \end{proof}
                 \end{proof}
-                \step{iv}{$xRy$}
+                \step{d}{$[x]_R = [y]_R$}
                 \begin{proof}
-                    \pf\ By \stepref{i}, \stepref{iii} and transitivity.
+                    \pf\ By Lemma 3N.
                 \end{proof}
             \end{proof}
-            \step{d}{$[x]_R = [y]_R$}
+            \step{3}{$A$ is the union of all the equivalence classes.}
             \begin{proof}
-                \pf\ By Lemma 3N.
+                \pf\ For any $x \in A$ we have $x \in [x]_R$.
             \end{proof}
         \end{proof}
-        \step{3}{$A$ is the union of all the equivalence classes.}
+        \step{2}{For any partition $P$, there exists a unique equivalence relation $\sim$ on $A$ such
+        that $P$ is the set of all equivalence classes with respect to $\sim$, given by $x \sim y$
+        iff $\exists X \in P (x \in X \wedge y \in X)$.}
         \begin{proof}
-            \pf\ For any $x \in A$ we have $x \in [x]_R$.
+            \step{a}{\pflet{$P$ be a partition of $A$.}}
+            \step{b}{\pflet{$\sim = \{ (x,y) \in A^2 : \exists X \in P (x \in X \wedge y \in X) \}$}}
+            \step{c}{$\sim$ is an equivalence relation on $A$.}
+            \begin{proof}
+                \step{i}{$\sim$ is reflexive.}
+                \begin{proof}
+                    \step{one}{\pflet{$x \in A$}}
+                    \step{two}{There exists $X \in P$ such that $x \in X$}
+                    \begin{proof}
+                        \pf\ Since $P = \bigcup A$
+                    \end{proof}
+                    \step{three}{$x \sim x$}
+                    \begin{proof}
+                        \pf\ Since $\exists X \in P (x \in X \wedge x \in X)$.
+                    \end{proof}
+                \end{proof}
+                \step{ii}{$\sim$ is symmetric.}
+                \begin{proof}
+                    \pf\ From the definition of $\sim$.
+                \end{proof}
+                \step{iii}{$\sim$ is transitive.}
+                \begin{proof}
+                    \step{one}{\pflet{$x,y,z \in A$}}
+                    \step{two}{\assume{$x \sim y$ and $y \sim z$}}
+                    \step{three}{\pick\ $X, Y \in P$ such that $x \in X$, $y \in X$, $y \in Y$ and $z \in Y$}
+                    \step{four}{$X = Y$}
+                    \begin{proof}
+                        \pf\ Since the elements of $P$ are pairwise disjoint.
+                    \end{proof}
+                    \step{five}{$x \in X$ and $z \in X$}
+                    \step{six}{$x \sim z$}
+                \end{proof}
+            \end{proof}
+            \step{d}{$P$ is the set of $\sim$-equivalence classes.}
+            \begin{proof}
+                \step{o}{$\forall X \in P. \forall x \in X. X = [x]_\sim$}
+                \begin{proof}
+                    \step{one}{\pflet{$X \in P$}}
+                    \step{two}{\pflet{$x \in X$}}
+                    \step{three}{$X \subseteq [x]_\sim$}
+                    \begin{proof}
+                        \step{A}{\pflet{$y \in X$}}
+                        \step{B}{$x \sim y$}
+                        \step{C}{$y \in [x]_\sim$}
+                    \end{proof}
+                    \step{four}{$[x]_\sim \subseteq X$}
+                    \begin{proof}
+                        \step{A}{\pflet{$y \in [x]_\sim$}}
+                        \step{B}{\pick\ $Y \in P$ such that $x \in Y$ and $y \in Y$}
+                        \step{C}{$X = Y$}
+                        \begin{proof}
+                            \pf\ Since $x \in X$, $x \in Y$ and the elements of $P$ are pairwise disjoint.
+                        \end{proof}
+                        \step{D}{$y \in X$}
+                    \end{proof}
+                \end{proof}
+                \step{i}{$\forall X \in P. \exists x \in A. X = [x]_\sim$}
+                \begin{proof}
+                    \step{one}{\pflet{$X \in P$}}
+                    \step{two}{\pick\ $x \in X$}
+                    \begin{proof}
+                        \pf\ Since the elements of $P$ are nonempty.
+                    \end{proof}
+                    \step{three}{$X = [x]_\sim$}
+                    \begin{proof}
+                        \pf\ From \stepref{o}
+                    \end{proof}
+                \end{proof}
+                \step{ii}{$\forall x \in A. [x]_\sim \in P$}
+                \begin{proof}
+                    \step{one}{\pflet{$x \in A$}}
+                    \step{two}{\pick\ $X \in P$ such that $x \in X$}
+                    \step{three}{$X = [x]_\sim$}
+                    \begin{proof}
+                        \pf\ From \stepref{o}
+                    \end{proof}
+                \end{proof}
+            \end{proof}
+            \step{e}{For any equivalence relation $R$ on $A$, if $P$ is the set of $R$-equivalence classes,
+            then $R = \sim$.}
+            \begin{proof}
+                \step{i}{\pflet{$R$ be an equivalence relation on $A$}}
+                \step{ii}{\assume{$P$ is the set of $R$-equivalence classes.}}
+                \step{iii}{$R \subseteq \sim$}
+                \begin{proof}
+                    \step{a}{\pflet{$xRy$}}
+                    \step{b}{$[x]_R \in X$ and $x,y \in [x]_R$}
+                    \step{c}{$x \sim y$}
+                \end{proof}
+                \step{iv}{$\sim \subseteq R$}
+                \begin{proof}
+                    \step{a}{\pflet{$x \sim y$}}
+                    \step{b}{\pick\ $X \in P$ such that $x \in X$ and $y \in X$}
+                    \step{c}{\pick\ $z \in A$ such that $X = [z]_R$}
+                    \step{d}{$zRx$ and $zRy$}
+                    \step{e}{$xRy$}
+                \end{proof}
+            \end{proof}
         \end{proof}
         \qed
     \end{proof}
@@ -1049,6 +1181,8 @@
         \pf\ The $R$-minimal element of a nonempty set $B$ is also the $R^t$-minimal element. \qed
     \end{proof}
 
+    \chapter{Order Theory}
+
     \section{Partial Orders}
 
     \begin{definition}[Strict Partial Order]
@@ -1070,21 +1204,6 @@
     \begin{proof}
         \pf\ Easy. \qed
     \end{proof}
-
-    \begin{definition}[Maximal]
-        Let $<$ be a partial order on $D$. An element $m \in D$ is \emph{maximal} iff there is no
-        $x \in D$ such that $m < x$.
-    \end{definition}
-
-    \begin{definition}[Least]
-        Let $<$ be a partial order on $D$. An element $m \in D$ is \emph{least}, \emph{smallest} or the
-        \emph{minimum} iff $\forall x \in D. m \leq x$.
-    \end{definition}
-
-    \begin{definition}[Greatest]
-        Let $<$ be a partial order on $D$. An element $m \in D$ is \emph{greatest}, \emph{largest} or the
-        \emph{maximum} iff $\forall x \in D. x \leq m$.
-    \end{definition}
 
     \begin{proposition}
         If $R$ is a partial ordering on $D$ then so is $\inv{R}$.
@@ -1358,121 +1477,169 @@
         \pf\ Easy. \qed
     \end{proof}
 
-    \section{Epsilon-Images}
-
-    \begin{lemma}
-        \label{lemma:epsilon_image}
-        Let $<$ be a well ordering on $A$. Let $E$ be the function on $A$ defined by transfinite recursion
-        thus:
-        \[ E(t) = \{ E(x) : x < t \} \qquad (t \in A) \enspace . \]
-        Let $\alpha = \ran E$. Then:
-        \begin{enumerate}
-            \item $\forall t \in A. E(t) \notin E(t)$
-            \item $E$ is injective.
-            \item $\forall s,t \in A. (s < t \Leftrightarrow E(s) \in E(t))$
-            \item $\alpha$ is a transitive set.
-        \end{enumerate}
-    \end{lemma}
-
-    \begin{proof}
-        \pf
-        \step{1}{$\forall t \in A. E(t) \notin E(t)$}
-        \begin{proof}
-            \step{a}{\pflet{$t \in A$}}
-            \step{b}{\assume{$\forall s < t. E(s) \notin E(s)$}}
-            \step{c}{\assume{for a contradiction $E(t) \in E(t)$}}
-            \step{d}{\pick\ $x < t$ such that $E(t) = E(x)$}
-            \step{e}{$E(x) \in E(x)$}
-            \qedstep
-            \begin{proof}
-                \pf\ This is a contradiction. The result follows by transfinite induction.
-            \end{proof}
-        \end{proof}
-        \step{2}{$E$ is injective.}
-        \begin{proof}
-            \step{a}{\assume{for a contradiction $E(x) = E(y)$ where $x \neq y$}}
-            \step{b}{\assume{w.l.o.g. $x < y$}}
-            \step{c}{$E(x) \in E(y)$}
-            \qedstep
-            \begin{proof}
-                \pf\ This contradicts \stepref{1}.
-            \end{proof}
-        \end{proof}
-        \step{3}{$\forall s,t \in A (s < t \Leftrightarrow E(s) \in E(t))$}
-        \begin{proof}
-            \step{a}{\pflet{$s,t \in A$}}
-            \step{b}{If $s < t$ then $E(s) \in E(t)$}
-            \begin{proof}
-                \pf\ Immediate from definition of $E$.
-            \end{proof}
-            \step{c}{If $E(s) \in E(t)$ then $s < t$}
-            \begin{proof}
-                \step{i}{\assume{$E(s) \in E(t)$}}
-                \step{ii}{\pick\ $x < t$ such that $E(s) = E(x)$}
-                \step{iii}{$s = x$}
-                \begin{proof}
-                    \pf\ \stepref{2}.
-                \end{proof}
-                \step{iv}{$s < t$}
-            \end{proof}
-        \end{proof}
-        \step{4}{$\alpha$ is a transitive set.}
-        \begin{proof}
-            \pf\ From definition of $E$.
-        \end{proof}
-    \end{proof}
-
-    \begin{corollary}
-        \label{corollary:isomorphic_to_epsilon_image}
-        For any well-ordered set $(A, <)$, if $\alpha$ is its epsilon-image, then
-        $(A, <)$ is isomorphic to $(\alpha, \in)$.
-    \end{corollary}
-
-    \begin{corollary}
-        \label{corollary:epsilon_image_well_ordered}
-        The epsilon-image of any well-ordered set is well ordered by $\in$.
-    \end{corollary}
+    \chapter{Ordinal Numbers}
 
     \begin{theorem}
-        Two well-ordered sets are isomorphic iff they have the same $\epsilon$-image.
+        There exists a function $\mathbf{Ord}$ from the class of all well-ordered sets to $\mathbf{V}$
+        such that $\mathbf{Ord}(A) = \mathbf{Ord}(B)$ if and only if $A \cong B$.
     \end{theorem}
 
     \begin{proof}
+        Let $\mathbf{Ord}(x,y)$ be the proposition: $x$ is a well-ordered set $(A,R)$ and there exists a
+        surjective function $E : A \twoheadrightarrow y$ such that, for all $t \in A$, we have 
+        $E(t) = \{ E(s) : s \in A, s R t \}$.
+        We reason as follows:
+
         \pf
-        \step{1}{\pflet{$A$ and $B$ be well-ordered sets.}}
-        \step{2}{If $A$ and $B$ have the same $\epsilon$-image then they are isomorphic.}
+        \step{1}{$\mathbf{Ord}$ is a function}
         \begin{proof}
-            \pf\ From Corollary \ref{corollary:isomorphic_to_epsilon_image}.
-        \end{proof}
-        \step{3}{If $A \cong B$ then $A$ and $B$ have the same epsilon-image.}
-        \begin{proof}
-            \step{a}{\pflet{$f : A \cong B$}}
-            \step{b}{\pflet{$E : A \cong \alpha$ and $F : B \cong \beta$ be the canonical isomorphisms
-            between $A$ and $B$ and their epsilon-images.}}
-            \step{c}{$\forall x \in A. E(x) = F(f(x))$}
+            \step{a}{\assume{$\mathbf{Ord}((A,R),\alpha)$ and $\mathbf{Ord}((A,R),\beta)$}}
+            \step{b}{\pick\ surjective functions $E_1 : A \twoheadrightarrow \alpha$ and $E_2 : A
+            \twoheadrightarrow \beta$ such that, for all $t \in A$, we have $E_1(t) = \{ E_1(s) : s R t \}$
+            and $E_2(t) = \{ E_2(s) : s R t \}$}
+            \step{c}{$E_1 = E_2$}
             \begin{proof}
-                \step{i}{\pflet{$x \in A$}}
-                \step{ii}{\assume{$\forall y < x. E(y) = F(f(y))$}}
-                \step{iii}{$E(x) = F(f(x))$}
+                \pf\ Prove $E_1(t) = E_2(t)$ by $R$-induction on $t$.
+            \end{proof}
+            \step{d}{$\alpha = \beta$}
+            \begin{proof}
+                \pf\ We have $\alpha = \ran E_1 = \ran E_2 = \beta$.
+            \end{proof}
+        \end{proof}
+        \step{2}{$\dom \mathbf{Ord}$ is the class of all well-ordered sets}
+        \begin{proof}
+            \step{a}{If $\mathbf{Ord}(x,y)$ then $x$ is a well-ordered set.}
+            \begin{proof}
+                \pf\ Immediate.
+            \end{proof}
+            \step{b}{For any well-ordered set $(A,R)$, there exists $\alpha$ such that $\mathbf{Ord}((A,R),\alpha)$}
+            \begin{proof}
+                \step{i}{\pflet{$(A,R)$ be a well-ordered set.}}
+                \step{ii}{Define the function $E : A \rightarrow \mathbf{V}$ by transfinite recursion by: $E(t) =
+                \{ E(s) : s R t \}$}
+                \step{iii}{\pflet{$\alpha = \ran E$}}
+                \step{iv}{$\mathbf{Ord}((A,R),\alpha)$}
+            \end{proof}
+        \end{proof}
+        \step{3}{Given well-ordered sets $A$ and $B$, we have $\mathbf{Ord}(A) = \mathbf{Ord}(B)$ if and only
+        if $A \cong B$.}
+        \begin{proof}
+            \step{a}{\pflet{$(A,R)$ and $(B,S)$ be well-ordered sets.}}
+            \step{b}{If $\mathbf{Ord}(A,R) = \mathbf{Ord}(B,S)$ then $(A,R) \cong (B,S)$}
+            \begin{proof}
+                \step{i}{\assume{$\mathbf{Ord}(A,R) = \mathbf{Ord}(B,S) = \alpha$, say}}
+                \step{ii}{\pick\ surjective function $E : (A,R) \twoheadrightarrow \alpha$ and 
+                $E' : (B,S) \twoheadrightarrow \alpha$ such that $\forall t \in A. E(t) = \{ E(s) : s R t \}$
+                and $\forall t \in B. E'(t) = \{ E'(s) : s S t \}$}
+                \step{iii}{$E'$ is a bijection}
+                \begin{proof}
+                    \pf\ If $sSt$ then $E'(s) \in E'(t)$ hence $E'(s) \neq E'(t)$.
+                \end{proof}
+                \step{iv}{Define $F : A \rightarrow B$ by $F = \inv{E'} \circ E$}
+                \step{v}{For $s,t \in A$ we have $sRt$ iff $F(s)SF(t)$}
                 \begin{proof}
                     \pf
                     \begin{align*}
-                        E(x) & = \{ E(y) : y < x \} \\
-                        & = \{ F(f(y)) : y < x \} \\
-                        & = \{ F(z) : z < f(x) \} \\
-                        & = F(f(x))
+                        sRt & \Leftrightarrow E(s) \in E(t) \\
+                        & \Leftrightarrow \inv{E'}(E(s)) S \inv{E'}(E(t))
                     \end{align*}
                 \end{proof}
             \end{proof}
-            \step{d}{$\alpha = \beta$}
+            \step{c}{If $A \cong B$ then $\mathbf{Ord}(A) = \mathbf{Ord}(B)$}
+            \begin{proof}
+                \step{i}{\pflet{$F : (A,R) \cong (B,S)$}}
+                \step{ii}{\pflet{$\alpha = \mathbf{Ord}(A,R)$}}
+                \step{iii}{\pflet{$\beta = \mathbf{Ord}(B,S)$}}
+                \step{iv}{\pick\ a surjective function $E : A \rightarrow \alpha$ such that
+                $\forall t \in A. E(t) = \{ E(s) : s R t \}$}
+                \step{v}{\pick\ a surjective function $E' : B \rightarrow \beta$ such that $\forall t \in B.
+                E'(t) = \{ E'(s) : s S t \}$}
+                \step{vi}{$\forall t \in A. E(t) = E'(F(t))$}
+                \begin{proof}
+                    \pf\ By $R$-induction on $t$.
+                \end{proof}
+                \step{vii}{$\alpha = \beta$}
+                \begin{proof}
+                    \pf\ $\alpha = \ran E = \ran E' = \beta$
+                \end{proof}
+            \end{proof}
         \end{proof}
         \qed
     \end{proof}
 
-    \section{Ordinal Numbers}
+    \begin{thms}
+        Given any predicates $\mathbf{Ord}(x,y)$ and $\mathbf{Ord}'(x,z)$, there exists a predicate
+        $\mathbf{F}(y,z)$ such that the following is a theorem.
+        
+        Assume $\mathbf{Ord}$ and $\mathbf{Ord}'$ are functions from the class of all well-ordered sets to
+        $\mathbf{V}$ such that, for all well-ordered sets $A$ and $B$, $\mathbf{Ord}(A) = \mathbf{Ord}(B)$
+        if and only if $\mathbf{Ord}'(A) = \mathbf{Ord}'(B)$ if and only if $A \cong B$. Then $\mathbf{F}$ is
+        a bijection between $\ran \mathbf{Ord}$
+        and $\ran \mathbf{Ord}'$ such that $\mathbf{F} \circ \mathbf{Ord} = \mathbf{Ord}'$.
+    \end{thms}
+
+    \begin{proof}
+        Take $\mathbf{F}(y,z)$ to be the predicate: There exists $x$ such that $\mathbf{Ord}(x,y)$ and
+        $\mathbf{Ord}'(x,z)$.
+
+        \pf
+        \step{1}{$\mathbf{F}$ is a bijection between $\ran \mathbf{Ord}$ and $\mathbf{Ord}'$}
+        \begin{proof}
+            \step{a}{$\mathbf{F}$ is a function.}
+            \begin{proof}
+                \step{i}{\assume{$\mathbf{F}(y,z)$ and $\mathbf{F}(y,z')$}}
+                \step{ii}{\pick\ $x$ such that $\mathbf{Ord}(x) = y$ and $\mathbf{Ord}'(x) = z$}
+                \step{iii}{\pick\ $x'$ such that $\mathbf{Ord}(x') = y$ and $\mathbf{Ord}'(x') = z'$}
+                \step{iv}{$x \cong x'$}
+                \step{v}{$z = z'$}
+            \end{proof}
+            \step{b}{$\dom \mathbf{F} = \ran \mathbf{Ord}$}
+            \begin{proof}
+                \step{i}{$\dom \mathbf{F} \subseteq \ran \mathbf{Ord}$}
+                \begin{proof}
+                    \pf\ Immediate.
+                \end{proof}
+                \step{ii}{$\ran \mathbf{Ord} \subseteq \dom \mathbf{F}$}
+                \begin{proof}
+                    \step{one}{\pflet{$y \in \ran \mathbf{Ord}$}}
+                    \step{two}{\pick\ $x$ such that $\mathbf{Ord}(x) = y$}
+                    \step{three}{$\mathbf{F}(y) = \mathbf{Ord}'(x)$}
+                \end{proof}
+            \end{proof}
+            \step{c}{$\ran \mathbf{F} = \ran \mathbf{Ord}'$}
+            \begin{proof}
+                \step{i}{$\ran \mathbf{F} \subseteq \ran \mathbf{Ord}'$}
+                \begin{proof}
+                    \pf\ Immediate.
+                \end{proof}
+                \step{ii}{$\ran \mathbf{Ord}' \subseteq \ran \mathbf{F}$}
+                \begin{proof}
+                    \step{one}{\pflet{$z \in \ran \mathbf{Ord}'$}}
+                    \step{two}{\pick\ $x$ such that $\mathbf{Ord}'(x) = z$}
+                    \step{three}{$\mathbf{F}(\mathbf{Ord}(x)) = z$}
+                \end{proof}
+            \end{proof}
+            \step{d}{$\mathbf{F}$ is one-to-one.}
+            \begin{proof}
+                \step{i}{\assume{$\mathbf{F}(y) = \mathbf{F}(y')$}}
+                \step{ii}{\pick\ $x$ and $x'$ such that $\mathbf{Ord}(x) = y$, $\mathbf{Ord}(x') = y'$,
+                and $\mathbf{Ord}'(x) = \mathbf{Ord}'(x') = \mathbf{F}(y)$}
+                \step{iii}{$x \cong x'$}
+                \step{iv}{$y = y'$}
+            \end{proof}
+        \end{proof}
+        \step{2}{$\mathbf{F} \circ \mathbf{Ord} = \mathbf{Ord}'$}
+        \begin{proof}
+            \pf\ Immediate.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    Pick a function $\mathbf{Ord}$ such that $\dom \mathbf{Ord}$ is the class of all well-ordered sets,
+    and $\mathbf{Ord}(A) = \mathbf{Ord}(B)$ iff $A \cong B$. 
 
     \begin{definition}[Ordinal Number]
-        The \emph{ordinal number} of a well-ordered set is its epsilon-image.
+        The class $\mathbf{On}$ of \emph{ordinal numbers} is $\ran \mathbf{Ord}$.
     \end{definition}
 
     \begin{definition}[Well-ordered by Epsilon]
@@ -2120,6 +2287,8 @@
         \pf\ Transfinite induction on $\gamma$. \qed
     \end{proof}
 
+    \chapter{Natural Numbers}
+
     \section{Natural Numbers}
 
     \begin{definition}[Peano System]
@@ -2541,6 +2710,8 @@
         Any subset of a finite set is finite.
     \end{corollary}
 
+    \chapter{Cardinal Numbers}
+
     \section{Cardinal Numbers}
 
     \begin{definition}[Cardinality (Choice)]
@@ -2802,6 +2973,7 @@
         \step{9}{$\aleph_\alpha = \kappa$}
         \qed
     \end{proof}
+
     \section{Arithmetic}
 
     \begin{lemma}
@@ -3082,6 +3254,8 @@
         \end{proof}
     \end{proof}
 
+    \chapter{Integers}
+
     \section{The Integers}
 
     \begin{theorem}
@@ -3360,6 +3534,18 @@
     \begin{proof}
         \pf\ Routine calculations. \qed
     \end{proof}
+
+    \begin{lemma}
+        \label{lemma:integers_Archimedean}
+        For any positive integer $a$ and integer $b$, there exists a natural number $k$ such that
+        $b < ak$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Take $k = |b| + 1$. \qed
+    \end{proof}
+
+    \chapter{Cardinal Numbers}
 
     \section{Equinumerosity}
 

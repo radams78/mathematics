@@ -12,7 +12,7 @@
 \usepackage{pf2}
 \usepackage[all]{xy}
 
-\newtheorem{axiom}{Axiom}
+\newtheorem{axiom}{Axiom}[section]
 \newtheorem{axs}[axiom]{Axiom Schema}
 \newtheorem{lemma}[axiom]{Lemma}
 \newtheorem{proposition}[axiom]{Proposition}
@@ -21,6 +21,9 @@
 \newtheorem{corollary}{Corollary}[axiom]
 \theoremstyle{definition}
 \newtheorem{definition}[axiom]{Definition}
+\newtheorem{example}[axiom]{Example}
+
+\newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
 
 \begin{document}
     \maketitle
@@ -92,6 +95,17 @@
         \pf\ Easy. \qed
     \end{proof}
 
+    \begin{lemma}
+        \label{lemma:rationals_Archimedean}
+        For any positive rational $p$ and rational $r$, there exists a natural number $k$ such that
+        $r < pk$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Let $p = a/b$ and $r = c/d$ where $a$, $b$ and $d$ are positive. 
+        Pick an integer $k$ such that $bc < adk$. Then $r < pk$. \qed
+    \end{proof}
+
     \section{Ring Theory}
 
     \begin{definition}[Rng]
@@ -108,7 +122,8 @@
     \end{proposition}
 
     \begin{proof}
-        \pf\ $x0 = x(0+0) = x0+x0$ and also $x0 = x0+0$. The result follows by the cancellation law. \qed
+        \pf\ $x0 = x(0+0) = x0+x0$ and also $x0 = x0+0$.
+        The result follows by the cancellation law. \qed
     \end{proof}
 
     \begin{proposition}
@@ -134,6 +149,10 @@
         In a ring $R$, if $0 = 1$ then $R$ has only one element.
     \end{proposition}
 
+    \begin{definition}
+        Let $n$ be an integer. In any ring, we write just $n$ for $n1$.
+    \end{definition}
+
     \begin{definition}[Commutative Rng]
         A rng $R$ is \emph{commutative} iff $\forall x,y \in R. xy = yx$.
     \end{definition}
@@ -147,22 +166,152 @@
         An \emph{integral domain} is a commutative ring with no zero divisors.
     \end{definition}
 
-    \begin{proposition}
-        The trivial ring is an integral domain.
-    \end{proposition}
-
-    \begin{lemma}
-        The integers form an integral domain.
-    \end{lemma}
-
-    \begin{proof}
-        \pf\ Easy. \qed
-    \end{proof}
+    \begin{example}
+        \begin{enumerate}
+            \item The trivial ring is an integral domain.
+            \item The integers form an integral domain.
+            \item The rationals form an integral domain.
+        \end{enumerate}
+    \end{example}
 
     \begin{proposition}
+        \label{proposition:cancellation}
         Let $R$ be a commutative ring. Then $R$ is an integral domain if and only if, whenever $xy = xz$
         and $x \neq 0$, then $y = z$.
     \end{proposition}
+
+    \begin{definition}[Boolean Ring]
+        A \emph{Boolean rng} is a rng $R$ such that $\forall x \in R. x^2 = x$
+    \end{definition}
+
+    \begin{example}
+        $\mathbb{Z}_2$ is a Boolean rng.
+    \end{example}
+
+    \begin{proposition}
+        In any Boolean rng we have $x + x = 0$ for all $x$
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ We have $x = x^2 = (-x)^2 = -x$. \qed
+    \end{proof}
+
+    \begin{proposition}
+        Every Boolean rng is commutative.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ We have
+        \begin{align*}
+            (x+y)^2 & = x+y \\
+            & = x^2 + y^2 \\
+            \therefore x^2 + xy + yx + y^2 & = x^2 + y^2 \\
+            \therefore xy + yx & = 0 \\
+            \therefore xy & = -(yx) \\
+            & = yx & \qed
+        \end{align*}
+    \end{proof}
+
+    \begin{definition}[Characteristic]
+        The \emph{characteristic} of an integral domain is the least positive integer $n$ such that $n = 0$,
+        or 0 if there is no such $n$.
+    \end{definition}
+
+    \begin{example}
+        \begin{enumerate}
+            \item The characteristic of $\mathbb{Z}$ is 0.
+            \item The characteristic of $\mathbb{Z}_n$ is $n$.
+        \end{enumerate}
+    \end{example}
+
+    \begin{proposition}
+        The characteristic of an integral domain is either 0, 1 or a prime.
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$D$ be any integral domain of characteristic $n > 1$.}}
+        \step{3}{\assume{for a contradiction $n = ab$ with $a,b > 1$}}
+        \step{4}{$ab = 0$ in $D$}
+        \step{5}{$a = 0$ or $b = 0$ in $D$}
+        \qedstep
+        \begin{proof}
+            \pf\ This contradicts the minimality of $n$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        An integral domain $D$ has characteristic 0 iff $\{ n1 : n \in \mathbb{N} \}$ is infinite.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{If $D$ has characteristic $p > 0$ then $\{ n1 : n \in \mathbb{N} \}$ is finite.}
+        \begin{proof}
+            \step{a}{\assume{the characteristic of $D$ is $p > 0$} \prove{For all $n \in \mathbb{N}$
+            there exists $k < p$ such that $n1 = k1$ in $D$}}
+            \step{b}{\pflet{$n \in \mathbb{N}$}}
+            \step{c}{\pflet{$q$, $r$ be the integers such that $n = qp + r$ with $0 \leq r < p$}}
+            \step{d}{$n1 = r1$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    n1 & = q(p1) + r1 \\
+                    & = q0 + r1 \\
+                    & = r1
+                \end{align*}
+            \end{proof}
+        \end{proof}
+        \step{2}{If $\{ n1 : n \in \mathbb{N} \}$ is finite then $D$ has non-zero characteristic.}
+        \begin{proof}
+            \step{a}{\assume{$\{ n1 : n \in \mathbb{N} \}$ is finite.}}
+            \step{b}{\pick\ a positive integer $p$ such that $p1 = k1$ for some non-negative $k < p$}
+            \step{c}{$(p-k)1 = 0$ and $p-k > 0$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any integral domain $D$, the set $\{ n1 : n \in \mathbb{Z} \}$ is a subdomain.
+    \end{proposition}
+
+    \begin{proposition}
+        For any integral domain $D$ of characteristic 0, the mapping that sends $n$ to $n1$ is an
+        embedding of $\mathbb{Z}$ in $D$.
+    \end{proposition}
+
+    \begin{corollary}
+        The integers are the unique integral domain $D$ up to isomorphism with characteristic 0 such that
+        $D$ has no proper subdomains.
+    \end{corollary}
+
+    \section{Polynomials}
+
+    \begin{definition}[Polynomial]
+        Let $D$ be an integral domain. The set $D[x]$ of \emph{polynomials} over $D$ is the set of sequences
+        in $D$ that are eventually zero. We write the sequence $(a_n)$ as 
+        $a_0 + a_1 x + \cdots +
+        a_m x^m$ if $a_n = 0$ for all $n > m$. The element $a_i$ is called the $i$th \emph{coefficient}, or the \emph{coefficient} of
+        $x^i$.
+    \end{definition}
+
+    \begin{definition}[Degree]
+        The \emph{degree} of a non-zero polynomial $p$ is the largest integer $n$ such that the coefficient of
+        $x^n$ is non-zero. This coefficient is the \emph{leading coefficient} of $p$.
+    \end{definition}
+
+    \begin{definition}[Addition]
+        Addition of polynomials is defined by: $(a_n) + (b_n) = (a_n + b_n)$.
+    \end{definition}
+
+    \begin{definition}[Multiplication]
+        Multiplication of polynomials is defined by: $(\sum_n a_n x^n) (\sum_n b_n x^n) = \sum_n (\sum_{m=0}^n a_m b_{n-m}) x^n$.
+    \end{definition}
+
+    \begin{theorem}
+        Under these operations, $D[x]$ is an integral domain.
+    \end{theorem}
 
     \section{Ordered Integral Domains}
 
@@ -180,6 +329,11 @@
 
     \begin{proposition}
         $x < y$ iff $-y < -x$.
+    \end{proposition}
+
+    \begin{proposition}
+        Any subdomain of an ordered integral domain is an ordered integral domain under the restriction of
+        $<$.
     \end{proposition}
 
     \begin{definition}[Positive]
@@ -295,7 +449,127 @@
         $||x| - |y|| \leq |x-y|$
     \end{proposition}
 
-    \section{Greatest Common Divisor}
+    \begin{proposition}
+        Any ordered integral domain has characteristic 0.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ For any positive integer $n$ we have $0 < n$ and so $n \neq 0$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Let $D$ be an ordered integral domain. Then the following are equivalent.
+        \begin{enumerate}
+            \item $D \cong \mathbb{Z}$
+            \item The set of positive elements of $D$ is $\{ n1 : n \in \mathbb{Z}^+ \}$
+            \item The set of positive elements of $D$ is well-ordered by $<$.
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{theorem}
+        Let $D$ be an ordered integral domain. Then $D[x]$ is an ordered integral domain under:
+        $p(x) < q(x)$ iff $q(x) - p(x)$ is positive, where a polynomial is positive iff its leading
+        coefficient is positive.
+    \end{theorem}
+    
+    \begin{definition}[Monic Polynomial]
+        A polynomial is \emph{monic} iff its leading coefficient is 1.
+    \end{definition}
+
+    \begin{theorem}
+        Let $D$ be an integral domain. Let $f, g \in D[x]$ with $f$ a monic polynomial of degree $\geq 1$.
+        Then there exist unique polynomials $q, r \in D[x]$ such that $g = fq + r$ and either $r = 0$
+        or $\deg r < \deg f$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$f \in D[x]$ be a monic polynomial of degree $k \geq 1$}}
+        \step{2}{$0$ and $0$ are the unique polynomials such that $0 = f0 + 0$}
+        \step{3}{For any $n \in \mathbb{N}$ and polynomial $g$ of degree $n$, there exist polynomials
+        $q, r \in D[x]$ such that $g = fq + r$ and either $r = 0$ or $\deg r < \deg f$}
+        \begin{proof}
+            \step{a}{For any ppolynomial $g$ of degree $< k$, there exist polynomials
+            $q, r \in D[x]$ such that $g = fq + r$ and either $r = 0$ or $\deg r < \deg f$}
+            \begin{proof}
+                \pf\ Take $q = 0$ and $r = g$.
+            \end{proof}
+            \step{b}{Let $n \in \mathbb{N}$ with $k \leq n$. Assume for any polynomial $g$ of degree $\leq n$,
+            there exist polynomials
+            $q, r \in D[x]$ such that $g = fq + r$ and either $r = 0$ or $\deg r < \deg f$.
+            Then for any polynomial $g$ of degree $n+1$, there exist polynomials
+            $q, r \in D[x]$ such that $g = fq + r$ and either $r = 0$ or $\deg r < \deg f$}
+            \begin{proof}
+                \step{i}{\pflet{$n \in \mathbb{N}$}}
+                \step{ii}{\assume{For any polynomial $g$ of degree $n$, there exist polynomials
+                $q, r \in D[x]$ such that $g = fq + r$ and either $r = 0$ or $\deg r < \deg f$.}}
+                \step{iii}{\pflet{$g$ be a polynomial of degree $n+1$}}
+                \step{iv}{\pflet{$a_{n+1}$ be the leading coefficient of $g$}}
+                \step{iv}{\pflet{$h(x) = g(x) - a_{n+1} x^{n+1-k} f(x)$}}
+                \step{v}{Either $h = 0$ or $\deg h \leq n$}
+                \step{vi}{\pick\ polynomials $q$, $r$ with $h = fq + r$ and either $r = 0$ or $\deg r < k$}
+                \step{vii}{$g(x) = f(x) (q(x) + a_{n+1} x^{n+1-k}) + r(x)$}
+            \end{proof}
+        \end{proof}
+        \step{4}{If $fq + r = fq' + r'$; either $r = 0$ or $\deg r < \deg f$; and either $r'= 0$
+        or $\deg r' < \deg f$; then $q = q'$ and $r = r'$}
+        \begin{proof}
+            \step{a}{$f(q - q') = r' - r$ and $r' - r$ is either 0 or has degree $< \deg f$}
+            \step{b}{$q - q' = 0$}
+            \step{c}{$r = r'$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Polynomial Function]
+        Given $f(x) \in D[x]$ and $a \in D$, define $f(a) \in D$ in the obvious way.
+    \end{definition}
+
+    \begin{definition}[Root]
+        A \emph{root} of a polynomial $p(x) \in D[x]$ is an element $a \in D$ such that $p(a) = 0$.
+    \end{definition}
+
+    \begin{theorem}
+        Let $p(x) \in D[x]$ and $a \in D$. Then $p(a) = 0$ iff there exists $q(x) \in D[x]$ such that
+        $p(x) = q(x) (x - a)$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{If $p(x) = q(x)(x-a)$ then $p(a) = 0$}
+        \step{2}{If $p(a) = 0$ then there exists $q$ such that $p(x) = q(x)(x-a)$}
+        \begin{proof}
+            \step{a}{\assume{$p(a) = 0$}}
+            \step{b}{\pflet{$q$ and $r$ be the polynomials such that $p(x) = q(x)(x-a) + r(x)$ where $r = 0$
+            or $\deg r < 1$}}
+            \step{c}{\pflet{$r(x) = c$, a constant}}
+            \step{d}{$c = 0$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    p(a) & = 0 \\
+                    \therefore q(a)(a-a) + c & = 0 \\
+                    \therefore c & = 0
+                \end{align*}
+            \end{proof}
+            \step{e}{$p(x) = q(x)(x-a)$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{corollary}
+        A polynomial of degree $n$ has at most $n$ distinct roots.
+    \end{corollary}
+
+    \begin{corollary}
+        Let $D$ be an infinite integral domain and $f, g \in D[x]$. Then $f = g$ iff $f$ and $g$ determine
+        the same function $D \rightarrow D$.
+    \end{corollary}
+
+    \begin{proof}
+        \pf\ If $f$ and $g$ determine the same function then $f - g$ has infinitely many roots, hence
+        $f - g = 0$. \qed
+    \end{proof}
 
     \begin{theorem}[Division Theorem]
         Let $a$ and $b$ be integers, $a > 1$. Then there exist unique integers $q$ and $r$ such that
@@ -447,11 +721,12 @@
     \section{Field Theory}
 
     \begin{definition}[Field]
-        A \emph{field} is an integral domain such that every non-zero element has a multiplicative inverse.
+        A \emph{field} is a non-trivial integral domain such that every non-zero element has a multiplicative
+        inverse.
     \end{definition}
 
     \begin{definition}[Field of Fractions]
-        Let $R$ be an integral domain. The \emph{field of fractions} of $R$ is $(R \times (R - \{ 0 \})) / \sim$,
+        Let $R$ be a non-trivial integral domain. The \emph{field of fractions} or \emph{quotient field} of $R$ is $(R \times (R - \{ 0 \})) / \sim$,
         where $(a,b) \sim (c,d)$ iff $ad = bc$, under the following operations:
         \begin{align*}
             [(a,b)] + [(c,d)] & = [(ad+bc,bd)] \\
@@ -460,18 +735,309 @@
             1 & = [(1,1)]
         \end{align*}
 
-        It is routine to check that $\sim$ is an equivalence relation and the operations are well-defined
-        and form a field. The additive inverse of $[(a,b)]$ is $[(-a,b)]$, and the multiplicative inverse
-        of $[(a,b)]$ is $[(b,a)]$.
+        We prove that the relation $\sim$ is an equivalence relation, the operations are well-defined, and this
+        structure is a field.
     \end{definition}
+
+    \begin{proof}
+        \pf
+        \step{1}{$\sim$ is an equivalence relation.}
+        \begin{proof}
+            \step{a}{$\sim$ is reflexive on $R^2$.}
+            \begin{proof}
+                \step{i}{\pflet{$a,b \in R$ with $b \neq 0$}}
+                \step{ii}{$ab = ab$}
+                \step{iii}{$(a,b) \sim (a,b)$}
+            \end{proof}
+            \step{b}{$\sim$ is symmetric.}
+            \begin{proof}
+                \step{i}{\pflet{$a,b,c,d \in R$ with $b \neq 0$ and $d \neq 0$}}
+                \step{ii}{\assume{$(a,b) \sim (c,d)$}}
+                \step{iii}{$ad = bc$}
+                \step{iv}{$cb = da$}
+                \begin{proof}
+                    \pf\ Since $R$ is commutative.
+                \end{proof}
+                \step{v}{$(c,d) \sim (a,b)$}
+            \end{proof}
+            \step{c}{$\sim$ is transitive.}
+            \begin{proof}
+                \step{i}{\pflet{$a,b,c,d,e,f \in R$ with $b \neq 0$, $d \neq 0$ and $f \neq 0$}}
+                \step{ii}{\assume{$(a,b) \sim (c,d) \sim (e,f)$}}
+                \step{iii}{$ad = bc$}
+                \step{iv}{$cf = de$}
+                \step{v}{$adf = bcf$}
+                \step{vi}{$bcf = bde$}
+                \step{vii}{$adf = bde$}
+                \step{viii}{$af = be$}
+                \begin{proof}
+                    \pf\ Proposition \ref{proposition:cancellation}.
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \step{2}{Addition is well-defined.}
+        \begin{proof}
+            \step{o}{If $b \neq 0$ and $d \neq 0$ then $bd \neq 0$}
+            \begin{proof}
+                \pf\ Since $R$ has no zero-divisors.
+            \end{proof}
+            \step{a}{\assume{$(a,b) \sim (a',b')$ and $(c,d) \sim (c',d')$}}
+            \step{b}{$ab' = a'b$}
+            \step{c}{$cd' = c'd$}
+            \step{d}{$(ad+bc)b'd' = (a'd'+b'c')bd$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    (ad+bc)b'd' & = ab'dd' + bb'cd' \\
+                    & = a'bdd' + bb'cd' \\
+                    & = (a'd'+b'c')bd
+                \end{align*}
+            \end{proof}
+            \step{e}{$(ad+bc,bd) \sim (a'd'+b'c',b'd')$}
+        \end{proof}
+        \step{3}{Multiplication is well-defined.}
+        \begin{proof}
+            \step{o}{If $b \neq 0$ and $d \neq 0$ then $bd \neq 0$}
+            \step{a}{\assume{$(a,b) \sim (a',b')$ and $(c,d) \sim (c',d')$}}
+            \step{b}{$ab'=a'b$}
+            \step{c}{$cd'=c'd$}
+            \step{d}{$ab'cd' = a'bc'd$}
+            \step{e}{$(ac,bd) \sim (a'c',b'd')$}
+        \end{proof}
+        \step{4}{The axioms of a field are satisfied.}
+        \begin{proof}
+            \step{a}{Addition is commutative.}
+            \begin{proof}
+                \pf\ $[(a,b)] + [(c,d)] = [(c,d)] + [(a,b)] = [(ad+bc,bd)]$
+            \end{proof}
+            \step{b}{Addition is associative.}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    [(a,b)] + ([(c,d)] + [(e,f)])
+                    & = [(a,b)] + [(cf+de,df)] \\
+                    & = [(adf + bcf + bde, bdf)] \\
+                    & = [(ad + bc,bd)] + [(e,f)] \\
+                    & = ([(a,b)] + [(c,d)]) + [(e,f)]
+                \end{align*}
+            \end{proof}
+            \step{c}{$x + 0 = x$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    [(a,b)] + [(0,1)]
+                    & = [(a1+b0,b1)] \\
+                    & = [(a,b)]
+                \end{align*}
+            \end{proof}
+            \step{d}{For all $x$, there exists $y$ such that $x + y = 0$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    [(a,b)] + [(-a,b)]
+                    & = [(ab-ab,b^2)] \\
+                    & = [(0,b^2)] \\
+                    & = [(0,1)]
+                \end{align*}
+                since $(0,b^2) \sim (0,1)$.
+            \end{proof}
+            \step{e}{Multiplication is commutative.}
+            \begin{proof}
+                \pf\ $[(a,b)][(c,d)] = [(c,d)][(a,b)] = [(ac,bd)]$
+            \end{proof}
+            \step{f}{Multiplication is associative.}
+            \begin{proof}
+                \pf\ $[(a,b)]([(c,d)][(e,f)]) = ([(a,b)][(c,d)])[(e,f)] = [(ace,bdf)]$
+            \end{proof}
+            \step{g}{$x1 = x$}
+            \begin{proof}
+                \pf\ $[(a,b)][(1,1)] = [(a1,b1)] = [(a,b)]$
+            \end{proof}
+            \step{h}{For all $x \neq 0$, there exists $y$ such that $xy = 1$}
+            \begin{proof}
+                \step{i}{\pflet{$a,b \in R$ with $b \neq 0$ and $(a,b) \nsim (0,1)$}}
+                \step{ii}{$a \neq 0$}
+                \step{iii}{$[(a,b)][(b,a)] = [(1,1)]$}
+                \begin{proof}
+                    \pf\ Since $(ab,ab) \sim (1,1)$
+                \end{proof}
+            \end{proof}
+            \step{i}{Multiplication is distributive over addition.}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    [(a,b)]([(c,d)] + [(e,f)])
+                    & = [(a,b)][(cf+de,df)] \\
+                    & = [(acf+ade,bdf)] \\
+                    & = [(abcf+abde,b^2df)] \\
+                    & = [(ac,bd)] + [(ae,bf)] \\
+                    & = [(a,b)][(c,d)] + [(a,b)][(e,f)]
+                \end{align*}
+            \end{proof}
+            \step{j}{$0 \neq 1$}
+            \begin{proof}
+                \pf\ Since $(0,1) \nsim (1,1)$
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
 
     \begin{definition}[Rational Numbers]
         The field of \emph{rational numbers} $\mathbb{Q}$ is the field of fractions of the integers.
     \end{definition}
 
+    \begin{theorem}
+        Every finite integral domain with at least two elements is a field.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Let $D$ be a non-trivial finite integral domain. Let $x \in D$. The map that sends $y$
+        to $xy$ is an injective map $D \rightarrow D$, hence a bijection by the Pigeonhole Principle.
+        Therefore there exists $y$ such that $xy = 1$. \qed
+    \end{proof}
+
+    \begin{corollary}
+        For any integer $n > 1$, we have $\mathbb{Z}_n$ is a field if and only if $n$ is prime.
+    \end{corollary}
     %TODO: The reals form a field.
 
     %TODO: The complex numbers form a field.
+
+    \begin{theorem}
+        Let $a_0$, $a_1$, \ldots, $a_{k-1}$ be integers.
+        If $x$ is a rational number such that $x^k + a_{k-1} x^{k-1} + \cdots + a_0 = 0$
+        then $x$ is an integer.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pick\ integers $p$, $q$ such that $x = p / q$ with $\gcd(p,q) = 1$}
+        \step{2}{$p^k + a_{k-1} q p^{k-1} + \cdots + a_0 q^k = 0$}
+        \step{3}{$q = 1$}
+        \begin{proof}
+            \step{a}{\assume{for a contradiction $q$ has a prime factor $r$}}
+            \step{b}{$r \mid a_{k-1} q p^{k-1} + \cdots + a_0 q^k$}
+            \step{c}{$r \mid p^k$}
+            \step{d}{$r \mid p$}
+            \qedstep
+            \begin{proof}
+                \pf\ This contradicts the fact that $\gcd(p,q) = 1$.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{corollary}
+        There is no rational number $q$ such that $q^2 = 2$.
+    \end{corollary}
+    
+    \subsection{Subfields}
+
+    \begin{definition}[Subfield]
+        Let $(E, +_E, \cdot_E)$ and $(F, +_F, \cdot_F)$ be fields. Then $E$ is a \emph{subfield} of $F$
+        if and only if $E \subseteq F$, $+_E = +_F \restriction E^2$ and $\cdot_E = \cdot_F \restriction E^2$.
+    \end{definition}
+
+    \begin{proposition}
+        Let $(F, +_F, \cdot_F)$ be a field and $E \subseteq F$. If $E$ contains a non-zero element and
+        is closed under subtraction and division (i.e. whenever $x,y \in E$ and $y \neq 0$ then $x/y \in E$),
+        then $(E, +_F \restriction E^2, \cdot_F \restriction E^2)$ is a subfield of $F$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{$1 \in E$}
+        \begin{proof}
+            \step{a}{\pick\ $a \in E$ with $a \neq 0$}
+            \step{b}{$a/a \in E$}
+        \end{proof}
+        \step{2}{$0 \in E$}
+        \begin{proof}
+            \pf\ Since $0 = 1 - 1$
+        \end{proof}
+        \step{3}{$\forall x \in E. -x \in E$}
+        \begin{proof}
+            \pf\ Since $-x = 0 - x$
+        \end{proof}
+        \step{4}{$E$ is closed under addition.}
+        \begin{proof}
+            \pf\ For $x,y \in E$, we have $x+y = x - (-y) \in E$.
+        \end{proof}
+        \step{5}{$\forall x \in E - \{0\}. \inv{x} \in E$}
+        \begin{proof}
+            \pf\ Since $\inv{x} = 1 / x$.
+        \end{proof}
+        \step{6}{$E$ is closed under multiplication.}
+        \begin{proof}
+            \pf\ For $x,y \in E$, if $y = 0$ then $xy = 0 \in E$. Otherwise $xy = x / \inv{y} \in E$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Prime Field]
+        A field is \emph{prime} iff it contains no proper subfield.
+    \end{definition}
+
+    \begin{definition}[Integers and Rational Numbers of a Field]
+        In any field $F$, the \emph{integers} of $F$ are the elements of the form $n1$ for $n \in \mathbb{Z}$.
+
+        The \emph{rational numbers} of $F$ are the elements of the form $m/n$ where $m$ and $n$ are integers
+        of $F$ with $n \neq 0$.
+    \end{definition}
+
+    \begin{proposition}
+        For any field $F$, the rational numbers of $F$ form a subfield of $F$ which is minimal (i.e. a subfield
+        of every other subfield of $F$).
+    \end{proposition}
+
+    \begin{proposition}
+        If $F$ has characteristic 0 then the rationals of $F$ are isomorphic to $\mathbb{Q}$.
+    \end{proposition}
+
+    \begin{corollary}
+        In any ordered field $F$, the rationals of $F$ are isomorphic to $\mathbb{Q}$.
+    \end{corollary}
+
+    \begin{theorem}
+        The prime fields are $\mathbb{Z}_p$ for $p$ prime and $\mathbb{Q}$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{Every $\mathbb{Z}_p$ is prime.}
+        \begin{proof}
+            \pf\ If $F$ is a subfield of $\mathbb{Z}_p$ then $F$ contains every integer and so is $\mathbb{Z}_p$.
+        \end{proof}
+        \step{2}{$\mathbb{Q}$ is a prime field.}
+        \begin{proof}
+            \pf\ If $F$ is a subfield of $\mathbb{Q}$ then $F$ contains every integer, hence contains $m/n$ for
+            $m$ and $n$ integers with $n \neq 0$, and so is $\mathbb{Q}$.
+        \end{proof}
+        \step{3}{For $p$ prime, if $F$ is a prime field of characteristic $p$ then $F \cong \mathbb{Z}_p$.}
+        \begin{proof}
+            \step{a}{If $F$ is any field of characteristic $p$ then $\mathbb{Z}_p$ is a subfield of $F$.}
+            \begin{proof}
+                \step{i}{Define $\phi : \mathbb{Z}_p \rightarrow F$ by $\phi(k) = k1$}
+                \step{ii}{$\phi$ is injective.}
+                \begin{proof}
+                    \pf\ Since $k1 \neq l1$ for $0 \leq k,l < p$.
+                \end{proof}
+                \step{iii}{$\phi$ preserves addition.}
+                \begin{proof}
+                    \pf\ If $k + l \cong m (\mod p)$ then $k1 + l1 = m1$ in $F$.
+                \end{proof}
+                \step{iv}{$\phi$ preserves multiplication.}
+                \begin{proof}
+                    \pf\ If $kl \cong m (\mod p)$ then $(k1)(l1) = m1$ in $F$.
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \step{4}{If $F$ is a prime field of characteristic 0 then $F \cong \mathbb{Q}$.}
+        \begin{proof}
+            \step{a}{If $F$ is any field of characteristic 0 then $\mathbb{Q}$ is a subfield of $F$.}
+        \end{proof}
+        \qed
+    \end{proof}
 
     \section{Rational Numbers}
 
@@ -543,14 +1109,184 @@
     \section{Ordered Fields}
 
     \begin{definition}[Ordered Field]
-        An \emph{ordered field} is a sextuple $(D, +, \cdot, \cdot, 0, 1, <)$ such that $(D, +, \cdot, 0, 1)$
-        is a field, $<$ is a linear ordering on $D$, and:
-        \begin{align*}
-            & \forall x,y,z. x < y \Leftrightarrow x + z < y + z \\
-            & \forall x,y,z. 0 < z \Rightarrow (x < y \Leftrightarrow xz < yz)
-        \end{align*}
+        An \emph{ordered field} is an ordered integral domain $(D, +, \cdot, 0, 1, <)$ such that $(D, +, \cdot, 0, 1)$
+        is a field.
     \end{definition}
 
+    \begin{theorem}
+        The quotient field $F$ of an ordered integral domain $D$ is an ordered field under: $[(a,b)]$ is positive iff $ab > 0$ in $D$.
+        The canonical imbedding $D \hookrightarrow F$ is strictly monotone.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$D$ be an ordered integral domain and $F$ its quotient field.}}
+        \step{2}{Define a fraction $[(a,b)]$ to be positive iff $ab > 0$}
+        \begin{proof}
+            \step{a}{\pflet{$a,b,c,d \in D$ with $b \neq 0 \neq d$}}
+            \step{b}{\assume{$(a,b) \sim (c,d)$ and $ab > 0$} \prove{$cd > 0$}}
+            \step{c}{$ad = bc$}
+            \step{d}{\case{$d > 0$}}
+            \begin{proof}
+                \step{i}{$abd > 0$}
+                \step{ii}{$b^2c > 0$}
+                \step{iii}{$c > 0$}
+                \step{iv}{$cd > 0$}
+            \end{proof}
+            \step{e}{\case{$d < 0$}}
+            \begin{proof}
+                \step{i}{$abd < 0$}
+                \step{ii}{$b^2 c < 0$}
+                \step{iii}{$c < 0$}
+                \step{iv}{$cd > 0$}
+            \end{proof}
+        \end{proof}
+        \step{3}{$0$ is not positive.}
+        \begin{proof}
+            \pf\ Since $0 \times 1 \ngtr 0$.
+        \end{proof}
+        \step{4}{For any $x \in F$, either $x$ is positive or $x = 0$ or $-x$ is positive.}
+        \begin{proof}
+            \step{a}{\pflet{$x = [(a,b)]$}}
+            \step{b}{Either $ab > 0$ or $ab = 0$ or $ab < 0$}
+            \step{c}{If $ab < 0$ then $-x$ is positive.}
+            \begin{proof}
+                \pf\ Since $-x = [(-a,b)]$ and $-ab > 0$.
+            \end{proof}
+        \end{proof}
+        \step{5}{If $x$ and $y$ are positive then $x+y$ is positive.}
+        \begin{proof}
+            \step{a}{\pflet{$x = [(a,b)]$ and $y = [(c,d)]$}}
+            \step{b}{\assume{$ab > 0$ and $cd > 0$}}
+            \step{c}{$x + y = [(ad+bc,bd)]$}
+            \step{d}{$(ad+bc)bd > 0$}
+        \end{proof}
+        \step{6}{If $x$ and $y$ are positive then $xy$ is positive.}
+        \begin{proof}
+            \step{a}{\pflet{$x = [(a,b)]$ and $y = [(c,d)]$}}
+            \step{b}{\assume{$ab > 0$ and $cd > 0$}}
+            \step{c}{$xy = [(ac,bd)]$}
+            \step{d}{$acbd > 0$}
+        \end{proof}
+        \step{7}{For $a, b \in D$, if $a < b$ then $[(a,1)] < [(b,1)]$}
+        \begin{proof}
+            \pf\ We have $[(a-b,1)]$ is positive because $a-b > 0$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{corollary}
+        The rationals are an ordered field under $p/q < r/s$ iff $ps < rq$ for $q, s$ positive.
+    \end{corollary}
+
+    \begin{theorem}
+        The relation $p/q < r/s$ iff $ps < qr$ for $q,s$ positive is the only relation that makes $\mathbb{Q}$ into an ordered field.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ If $\mathbb{Q}$ is an ordered field under $<$ then, for $q$, $s$ positive:
+        \begin{align*}
+            p/q < r/s & \Leftrightarrow ps < qr  \\
+            & \Leftrightarrow 
+        \end{align*}
+    \end{proof}
+
+    \begin{proposition}
+        In any ordered field, if $x \neq 0$, then $x > 0$ iff $\inv{x} > 0$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{If $x > 0$ then $\inv{x} > 0$}
+        \begin{proof}
+            \pf\ If $\inv{x} \leq 0$ then $x \inv{x} = 1 \leq 0$.
+        \end{proof}
+        \step{2}{If $\inv{x} > 0$ then $x > 0$}
+        \begin{proof}
+            \pf\ From \stepref{1} since $\inv{(\inv{x})} = x$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{corollary}
+        In any ordered field, if $x \neq 0$, then $x < 0$ iff $\inv{x} < 0$.
+    \end{corollary}
+
+    \begin{proposition}
+        In any ordered field, if $y > 0$ and $v > 0$ then $x/y < u/v$ iff $xv = yu$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Multiplying by $yv$ or by $\inv{y}\inv{v}$. \qed
+    \end{proof}
+
+    \begin{proposition}
+        In any ordered field, if $y \neq 0$ then $|x/y| = |x|/|y|$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Since $|x/y||y| = |x|$. \qed
+    \end{proof}
+
+    \begin{corollary}
+        In any ordered field, if $y \neq 0$ then $|\inv{y}| = 1 / |y|$.
+    \end{corollary}
+
+    \begin{proposition}[Density]
+        In any ordered field, if $x < y$ then $x < (x+y)/2 < y$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ If $x < y$ then $2x < x+y$ so $x < (x+y)/2$, and $x + y < 2y$ so $(x+y)/2 < y$. \qed
+    \end{proof}
+
+    \begin{proposition}[Cauchy-Schwarz Inequality]
+        Let $F$ be an ordered field. Let $a_1, \ldots, a_n, b_1, \ldots, b_n \in F$. Then
+        \[ (a_1 b_1 + \cdots + a_n b_n)^2 \leq (a_1^2 + \cdots + a_n^2)(b_1^2 + \cdots + b_n^2) \enspace . \]
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{$\sum_{i=1}^n \sum_{j=1}^n (a_i b_j - a_j b_i)^2 = 2 \sum_{i=1}^n a_i^2 \sum_{j=1}^n b_j^2
+        - 2 \left( \sum_{i=1}^n a_i b_i \right)^2$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                \sum_{i=1}^n \sum_{j=1}^n (a_i b_j - a_j b_i)^2
+                & = \sum_{i=1}^n \sum_{j=1}^n a_i^2 b_j^2 - 2 \sum_{i_1}^n \sum_{j=1}^n
+                a_i b_j a_j b_i + \sum_{i=1}^n \sum_{j=1}^n a_j^2 b_i^2 \\
+                & = 2 \sum_{i=1}^n a_i^2 \sum_{j=1}^n b_j^2 - 2 \left( \sum_{i=1}^n a_i b_i \right)^2
+            \end{align*}
+        \end{proof}
+        \qedstep
+        \begin{proof}
+            \pf\ Since a sum of squares must be $\geq 0$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Cut]
+        Let $F$ be an ordered field. A \emph{cut} in $F$ is a pair $(A,B)$ of subsets of $F$ such that:
+        \begin{enumerate}
+            \item $A$ and $B$ are nonempty.
+            \item $A \cup B = F$
+            \item $\forall x \in A. \forall y \in B. x < y$
+        \end{enumerate}
+    \end{definition}
+
+    \begin{definition}[Gap]
+        Let $F$ be an ordered field. A \emph{gap} in $F$ is a cut $(A,B)$ in $F$ such that $A$ has no
+        maximum element and $B$ has no minimum element.
+    \end{definition}
+
+    \begin{definition}[Cut Determined by an Element]
+        Let $F$ be an ordered field and $c \in F$. The cuts \emph{determined} by $c$ are
+        $(\{ x \in F : x \leq c \}, \{ x \in F : x > c \})$ and $(\{ x \in F : x \leq c \}, \{ x \in F : x > c \})$.
+    \end{definition}
+
+    \begin{definition}[Complete Ordered Field]
+        A \emph{complete ordered field} is an ordered field with no gaps.
+    \end{definition}
     \section{The Real Numbers}
 
     \begin{definition}[Dedekind Cut]
@@ -564,6 +1300,35 @@
         Let $\mathbb{R}$ be the set of all real numbers.
     \end{definition}
 
+    \begin{definition}
+        For any rational number $u$, let $u_\mathbb{R} = \{ x \in \mathbb{Q} : x < u \}$.
+    \end{definition}
+
+    \begin{proposition}
+        $\forall u \in \mathbb{Q}. u_\mathbb{R} \in \mathbb{R}$
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$u \in \mathbb{Q}$}}
+        \step{2}{$u_\mathbb{R} \neq \emptyset$}
+        \begin{proof}
+            \pf\ Since $u-1 \in u_\mathbb{R}$.
+        \end{proof}
+        \step{3}{$u_\mathbb{R} \neq \mathbb{Q}$}
+        \begin{proof}
+            \pf\ Since $u \notin u_\mathbb{R}$.
+        \end{proof}
+        \step{4}{$u_\mathbb{R}$ is closed downwards.}
+        \begin{proof}
+            \pf\ If $x < y < u$ then $x < u$.
+        \end{proof}
+        \step{5}{$u_\mathbb{R}$ has no largest member.}
+        \begin{proof}
+            \pf\ If $x \in u_\mathbb{R}$ then $x < (x+u)/2 \in u_\mathbb{R}$.
+        \end{proof}
+        \qed
+    \end{proof}
     \begin{definition}
         Given real numbers $x$ and $y$, we write $x < y$ iff $x \subset y$.
     \end{definition}
@@ -642,14 +1407,8 @@
         \pf\ Easy. \qed
     \end{proof}
 
-    \begin{definition}[Zero]
-        The real number zero is $0 = \{ q \in \mathbb{Q} : q < 0 \}$.
-
-        It is easy to check this is a Dedekind cut.
-    \end{definition}
-
     \begin{theorem}
-        For every real $x$ we have $x + 0 = x$.
+        For every real $x$ we have $x + 0_\mathbb{R} = x$.
     \end{theorem}
 
     \begin{proof}
@@ -705,50 +1464,20 @@
     \end{proof}
 
     \begin{lemma}
-        \label{lemma:integers_Archimedean}
-        For any positive integer $a$ and integer $b$, there exists a natural number $k$ such that
-        $b < ak$.
-    \end{lemma}
-
-    \begin{proof}
-        \pf\ Take $k = |b| + 1$. \qed
-    \end{proof}
-
-    \begin{lemma}
-        \label{lemma:rationals_Archimedean}
-        For any positive rational $p$ and rational $r$, there exists a natural number $k$ such that
-        $r < pk$.
-    \end{lemma}
-
-    \begin{proof}
-        \pf\ Let $p = a/b$ and $r = c/d$ where $a$, $b$ and $d$ are positive. By Lemma \ref{lemma:integers_Archimedean},
-        pick $k$ such that $bc < adk$. Then $r < pk$. \qed
-    \end{proof}
-
-    \begin{lemma}
         \label{lemma:reals_pre_negation}
-        Let $p$ be a positive real number. For any real $x$, there exists $q \in x$
-        such that $p + q \notin x$.
+        Let $\epsilon$ be a positive real number. For any real $x$, there exists $q \in x$
+        such that $q + \epsilon$ is an upper bound for $x$ but not the least upper bound for $x$.
     \end{lemma}
 
     \begin{proof}
         \pf
-        \step{1}{\pick\ rationals $r_1 \in x$ and $r_2 \notin x$}
-        \step{2}{There exists a natural number $k$ such that $kp > r_2 - r_1$}
+        \step{1}{\pick\ a rational $a_1 \in x$ such that if $x$ has a least upper bound $s$ then $a_1 > s - \epsilon$.}
+        \step{3}{\pflet{$k$ be least such that $a_1 + k \epsilon$ is an upper bound for $x$}}
         \begin{proof}
             \pf\ By Lemma \ref{lemma:rationals_Archimedean}.
         \end{proof}
-        \step{3}{\pflet{$k$ be least such that $r_1 + kp \notin x$}}
-        \step{4}{$k \neq 0$}
-        \begin{proof}
-            \pf\ Since $r_1 \in x$.
-        \end{proof}
-        \step{5}{\pflet{$q = r_1 + (k-1)p$}}
-        \step{6}{$q \in x$}
-        \begin{proof}
-            \pf\ By minimality of $k$.
-        \end{proof}
-        \step{7}{$q + p \notin x$}
+        \step{4}{$a_1 + k \epsilon$ is an upper bound for $x$ that is not the least upper bound for $x$}
+        \step{5}{$a_1 + (k-1) \epsilon \in x$}
         \qed
     \end{proof}
 
@@ -881,11 +1610,169 @@
     \end{proof}
 
     \begin{theorem}
-        Multiplication is distributive over addition.
+        \[ \forall x,y,z \in \mathbb{R}. x(y+z) = xy + xz \]
     \end{theorem}
 
     \begin{proof}
-        \pf\ See E. Mendelson. \emph{Number Systems and the Foundations of Analysis}. Appendix F. \qed
+        \pf
+        \step{1}{\pflet{$x,y,z \in \mathbb{R}$}}
+        \step{2}{\case{$x,y,z > 0$}}
+        \begin{proof}
+            \step{a}{$xy > 0$}
+            \step{b}{$xz > 0$}
+            \step{c}{$y + z > 0$}
+            \step{d}{$x(y+z) > 0$}
+            \step{e}{$xy + xz > 0$}
+            \step{f}{$x(y+z) \subseteq xy + xz$}
+            \begin{proof}
+                \step{i}{\pflet{$q \in x(y+z)$}}
+                \step{ii}{\assume{w.l.o.g. $0 < q$}}
+                \begin{proof}
+                    \pf\ Otherwise $q \in xy$ and $0 \in xz$ so $q \in xy + xz$
+                \end{proof}
+                \step{iii}{\pick\ $a \in x$, $b \in y$ and $c \in z$ such that $0 < a$, $0 < b+c$ and $q = a(b+c)$}
+                \step{iv}{$ab \in xy$}
+                \begin{proof}
+                    \step{one}{\case{$b \leq 0$}}
+                    \begin{proof}
+                        \pf\ Then $ab \leq 0$ so $ab \in xy$
+                    \end{proof}
+                    \step{two}{\case{$b > 0$}}
+                    \begin{proof}
+                        \pf\ Then $ab \in xy$ by definition.
+                    \end{proof}
+                \end{proof}
+                \step{v}{$ac \in xz$}
+                \begin{proof}
+                    \pf\ Similar.
+                \end{proof}
+                \step{vi}{$q \in xy + xz$}
+            \end{proof}
+            \step{g}{$xy + xz \subseteq x(y+z)$}
+            \begin{proof}
+                \step{zero}{\pflet{$q \in xy + xz$}}
+                \step{one}{\case{$\exists a,a_1 \in x. \exists b \in y. \exists c \in z. (a,b,c,a_1 > 0
+                \wedge q = ab + a_1 c)$}}
+                \begin{proof}
+                    \step{A}{\pflet{$a_2 = \max(a,a_1)$}}
+                    \step{B}{$q \leq a_2(b+c)$}
+                    \step{C}{$q \in x(y+z)$}
+                \end{proof}
+                \step{two}{\case{$\exists a \in x. \exists b \in y. \exists u \leq 0. q = ab + u$}}
+                \begin{proof}
+                    \step{A}{$ab + u \leq ab$}
+                    \step{B}{$ab + u \in xy$}
+                    \step{C}{\case{$ab + u \leq 0$}}
+                    \begin{proof}
+                        \pf\ $ab + u \in x(y+z)$
+                    \end{proof}
+                    \step{D}{\case{$ab + u > 0$}}
+                    \begin{proof}
+                        \step{ONE}{\pick\ $a' \in x$, $b' \in y$ such that $0 < a'$, $0 < b'$ and
+                        $ab + u = a'b'$}
+                        \step{TWO}{$b' \in y + z$}
+                        \step{THREE}{$a'b' \in x(y+z)$}
+                    \end{proof}
+                \end{proof}
+                \step{three}{\case{$\exists u \leq 0. \exists a \in x. \exists c \in z. q = u + ac$}}
+                \begin{proof}
+                    \pf\ Similar.
+                \end{proof}
+                \step{four}{\case{$\exists u,u' \leq 0. q = u + u'$}}
+                \begin{proof}
+                    \step{A}{$u + u' \leq 0$}
+                    \step{B}{$u + u' \in x(y+z)$}
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \step{3}{\case{$x = 0$ or $y = 0$ or $z = 0$}}
+        \begin{proof}
+            \pf\ Then $x(y+z) = xy + xz = 0$
+        \end{proof}
+        \step{4}{\case{$x < 0$ and $y > 0$ and $z > 0$}}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                x(y+z) & = -((-x)(y+z)) \\
+                & = -((-x)y + (-x)z) & (\text{\stepref{2}})\\
+                & = -(-(xy) + -(xz)) \\
+                & = xy + xz
+            \end{align*}
+        \end{proof}
+        \step{5}{\case{$x > 0$ and $y < 0$ and $z > 0$}}
+        \begin{proof}
+            \step{a}{$z = -y$}
+            \begin{proof}
+                \step{i}{$x(y+z)=0$}
+                \step{ii}{$xy+xz=0$}
+            \end{proof}
+            \step{b}{$z > -y$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    xy + xz & = xy + (x(-y + y + z)) \\
+                    & = -(x(-y)) + x(-y) + x(y+z) & (\text{\stepref{2}})\\
+                    & = x(y+z)
+                \end{align*}
+            \end{proof}
+            \step{c}{$z < -y$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    xy + xz & = -(x(-y)) + xz \\
+                    & = -(x(z-y-z)) + xz \\
+                    & = -(xz + x(-y-z)) + xz & (\text{\stepref{2}})\\
+                    & = -xz - x(-y-z) + xz \\
+                    & = -x(-y-z) \\
+                    & = x(y+z)
+                \end{align*}
+            \end{proof}
+        \end{proof}
+        \step{6}{\case{$x > 0$ and $y < 0$ and $z < 0$}}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                x(y+z) & = -(x(-y-z)) \\
+                & = -(x(-y))-(x(-z)) & (\text{\stepref{2}}) \\
+                & = xy + xz
+            \end{align*}
+        \end{proof}
+        \step{7}{\case{$x < 0$ and $y < 0$ and $z > 0$}}
+        \begin{proof}
+            \step{a}{\case{$y = -z$}}
+            \begin{proof}
+                \pf\ Then $x(y+z) = xy+xz = 0$.
+            \end{proof}
+            \step{b}{\case{$y > -z$}}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    x(y+z) & = -((-x)(y+z)) \\
+                    & = -((-x)y)- ((-x)z) & (\text{\stepref{5}}) \\
+                    & = --((-x)(-y)) + xz \\
+                    & = xy + xz
+                \end{align*}
+            \end{proof}
+            \step{c}{\case{$y < -z$}}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    x(y+z) & = (-x)(-y-z) \\
+                    & = (-x)(-y)+(-x)(-z) & (\text{\stepref{5}}) \\
+                    & = xy + xz
+                \end{align*}
+            \end{proof}
+        \end{proof}
+        \step{8}{\case{$x < 0$ and $y < 0$ and $z < 0$}}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                x(y+z) & = (-x)(-y-z) \\
+                & = (-x)(-y) + (-x)(-z) & (\text{\stepref{2}}) \\
+                & = xy + xz
+            \end{align*}
+        \end{proof}
+        \qed
     \end{proof}
 
     \begin{definition}
@@ -944,7 +1831,82 @@
     \end{theorem}
 
     \begin{proof}
-        \pf\ See E. Mendelson. \emph{Number Systems and the Foundations of Analysis}. Appendix F. \qed
+        \pf
+        \step{1}{\case{$x > 0$}}
+        \begin{proof}
+            \step{a}{\pflet{$y = \{ q \in \mathbb{Q} : q \leq 0 \} \cup \{ 1/q : q \text{ is an upper bound
+            of $x$ but not the least upper bound of $x$} \}$}}
+            \step{b}{$y \in \mathbb{R}$}
+            \begin{proof}
+                \step{i}{$y \neq \emptyset$}
+                \begin{proof}
+                    \pf\ Since $-1 \in y$.
+                \end{proof}
+                \step{ii}{$y \neq \mathbb{Q}$}
+                \begin{proof}
+                    \pf\ Pick a positive integer $q \in x$. Then $1/q \notin y$.
+                \end{proof}
+                \step{iii}{$y$ is closed downwards.}
+                \begin{proof}
+                    \pf\ Easy.
+                \end{proof}
+                \step{iv}{$y$ has no largest member.}
+                \begin{proof}
+                    \step{one}{\pflet{$q \in y$} \prove{There exists $r \in y$ such that $q < r$}}
+                    \step{two}{\case{$q \leq 0$}}
+                    \begin{proof}
+                        \step{A}{\pick\ a rational $r$ that is an upper bound of $x$ but not the least upper bound of $x$}
+                        \step{B}{$q < 1/r \in y$}
+                    \end{proof}
+                    \step{three}{\case{$q > 0$}}
+                    \begin{proof}
+                        \step{A}{$1/q$ is an upper bound of $x$ but not the least upper bound of $x$}
+                        \step{B}{\pick\ $r < 1/q$ such that $r$ is an upper bound of $x$ but not the least upper bound of $x$}
+                        \step{C}{$q < 1/r \in y$}
+                    \end{proof}
+                \end{proof}
+            \end{proof}
+            \step{c}{$0 < y$}
+            \begin{proof}
+                \pf\ Easy
+            \end{proof}
+            \step{d}{$xy = 1$}
+            \begin{proof}
+                \step{i}{$xy \subseteq 1$}
+                \begin{proof}
+                    \step{one}{\pflet{$q \in xy$}}
+                    \step{two}{\assume{w.l.o.g. $q > 0$}}
+                    \step{three}{\pick\ $r \in x$ and $s \in y$ such that $r > 0$, $s > 0$ and $q = rs$}
+                    \step{four}{$1/s$ is an upper bound of $x$}
+                    \step{five}{$r < 1/s$}
+                    \step{six}{$rs < 1$}
+                \end{proof}
+                \step{ii}{$1 \subseteq xy$}
+                \begin{proof}
+                    \step{one}{\pflet{$q$ be a rational with $0 < q < 1$}}
+                    \step{two}{\pick\ $r \in x$ with $0 < r$}
+                    \step{three}{$(1-q)r > 0$}
+                    \step{four}{\pick\ $a \in x$ such that $a > 0$ and $a + (1-q)r$ is an upper bound for $x$ but not
+                    the least upper bound for $x$}
+                    \step{five}{\pflet{$w = a + (1-q)r$}}
+                    \step{six}{$w-a = (1-q)r < (1-q)w$}
+                    \step{seven}{$qw < a$}
+                    \step{eight}{$w < a / q$}
+                    \step{nine}{$a/q$ is an upper bound of $x$ and not the least upper bound of $x$.}
+                    \step{ten}{$q/a \in y$}
+                    \step{ten}{$q = a(q/a) \in xy$}
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \step{2}{\case{$x < 0$}}
+        \begin{proof}
+            \step{a}{\pick\ $y$ such that $(-x)y = 1$}
+            \begin{proof}
+                \pf\ By \stepref{1}.
+            \end{proof}
+            \step{b}{$x(-y) = 1$}
+        \end{proof}
+        \qed
     \end{proof}
 
     \begin{theorem}
@@ -952,7 +1914,15 @@
     \end{theorem}
 
     \begin{proof}
-        \pf\ See E. Mendelson. \emph{Number Systems and the Foundations of Analysis}. Appendix F. \qed
+        \pf
+        \step{1}{\pflet{$0 < z$ and $x < y$}}
+        \step{2}{$y-x > 0$}
+        \step{3}{$z(y-x) > 0$}
+        \begin{proof}
+            \pf\ Definition of multiplication.
+        \end{proof}
+        \step{4}{$zx < zy$}
+        \qed
     \end{proof}
 
     \section{Complete Ordered Fields}

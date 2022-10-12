@@ -1,3 +1,6 @@
+* H. Enderton. Elements of Set Theory
+* E. Mendelson. Number Systems and the Foundations of Analysis
+A. Gleason. Fundamentals of Abstract Analysis
 G. Cantor. Contributions to the Founding of the Theory of Transfinite Numbers
 P. Cohen. Set Theory and the Continuum Hypothesis
 F. Drake. Set Theory, An Introduction to Large Cardinals
@@ -17,4 +20,15 @@ E. Mendelson. Introduction to Mathematical Logic
 J. B. Rosser. Logic for the Mathematician
 E. Specker. The axiom of choice in Quine's "New Foundations for Mathematical Logic". Proc. Nat. Acad. Sci. USA 39, 972-975
 W. Hatcher. The Foundations of Mathematics
-
+S. Maclane, G. Birkhoff. Algebra
+A. A. Fraenkel. Abstract Set Theory
+J. Rubin. Set Theory for the Mathematician
+B. L. van der Wareden. Modern Algebra
+S. Borofsky. Elementary Theory of Equations
+J. Manheim. The Genesis of Point Set Topology
+L. Auslander. What Are Numbers?
+A. H. Lightstone. Symbolic Logic and the Real Number System
+R. Baer. Dichte, Archimedizität und Starrheit geordneter Körper. Math. Ann. 188, 165-205
+D. Scott. On completing ordered fields, Applications of Model Theory, Proc. Int. Symp. Califonia Inst. Technol. (1967) pp. 274-278
+E. Landau. Foundations of Analysis.
+J. Halfstrom. Introduction to Analysis and Abstract Algebra.
