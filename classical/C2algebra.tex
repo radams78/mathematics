@@ -984,6 +984,7 @@
     \end{proposition}
 
     \begin{corollary}
+        \label{cor:embed_rationals}
         In any ordered field $F$, the rationals of $F$ are isomorphic to $\mathbb{Q}$.
     \end{corollary}
 
@@ -1482,6 +1483,12 @@
         there exists a positive integer $n$ such that $1/n < z$.
     \end{corollary}
 
+    \begin{corollary}
+        \label{cor:under_one_over_n}
+        Let $F$ be an Archimedean ordered field and $x \in F$. If $x < 1/n$ for all $n \in \mathbb{Z}^+$
+        then $x \leq 0$.
+    \end{corollary}
+
     \begin{theorem}
         Let $F$ be an Archimedean ordered field. Let $x \in F$. Then there exists a unique integer $n$
         such that $n \leq x < n + 1$.
@@ -1575,6 +1582,7 @@
     \end{proof}
 
     \begin{lemma}
+        \label{lm:sup_of_rationals}
         Let $F$ be an Archimedean ordered field. Let $x \in F$. Then $x$ is the supremum of
         $A = \{ q \in F : q \text{ is rational}, q < x \}$.
     \end{lemma}
@@ -1598,7 +1606,7 @@
         \end{proof}
         \qed
     \end{proof}
-    
+
     \section{The Real Numbers}
 
     \begin{definition}[Dedekind Cut]
@@ -2256,7 +2264,216 @@
     \end{theorem}
 
     \begin{proof}
-        \pf\ See A. Gleason. \text{Fundamentals of Abstract Analysis} p. 110. \qed
+        \pf
+        \step{1}{\pflet{$K$ and $F$ be complete ordered fields.}}
+        \step{2}{\pflet{$\Phi : \mathbb{Q} \rightarrow K$ and $\Theta : \mathbb{Q} \rightarrow F$
+        be the embeddings of $\mathbb{Q}$ in $K$ and $F$ respectively.}}
+        \begin{proof}
+            \pf\ Corollary \ref{cor:embed_rationals}.
+        \end{proof}
+        \step{2a}{For $z \in K$, \pflet{$Q(z) = \{ q \in \mathbb{Q} : \Phi(q) z < \}$}}
+        \step{2}{\pflet{$W : K \rightarrow F$ be the function: $W(z) = \sup \{ \Theta(q) : q \in
+        Q(z) \}$}}
+        \begin{proof}
+            \step{a}{For all $z \in K$, the set $\{ \Theta(q) : q \in
+            Q(z) \}$ is bounded above.}
+            \begin{proof}
+                \step{i}{\pflet{$z \in K$}}
+                \step{ii}{\pick\ a rational $r$ with $z \leq \Phi(r)$.}
+                \step{iii}{$\Theta(r)$ is an upper bound for $\{ \Theta(q) : q \in Q(z) \}$.}
+            \end{proof}
+        \end{proof}
+        \step{3}{$W$ is strictly monotone.}
+        \begin{proof}
+            \step{a}{\pflet{$x, y \in K$ with $x < y$}}
+            \step{b}{\pick\ rationals $q$, $r$ such that $x < \Phi(q) < \Phi(r) < y$}
+            \step{c}{$W(x) \leq \Theta(q)$}
+            \begin{proof}
+                \step{i}{$\Theta(q)$ is an upper bound for $\{ \Theta(s) : s \in Q(x) \}$}
+                \begin{proof}
+                    \step{one}{\pflet{$s \in Q(x)$} \prove{$\Theta(s) \leq \Theta(q)$}}
+                    \step{two}{$\Phi(s) < \Phi(q)$}
+                    \step{three}{$s < q$}
+                    \step{four}{$\Theta(s) < \Theta(q)$}
+                \end{proof}
+            \end{proof}
+            \step{d}{$\Theta(q) < \Theta(r)$}
+            \begin{proof}
+                \pf\ Since $\Phi(q) < \Phi(r)$ and $\Phi$ and $\Theta$ are embeddings.
+            \end{proof}
+            \step{e}{$\Theta(r) \leq W(y)$}
+            \begin{proof}
+                \pf\ By definition of $W(y)$ since $\Phi(r) < y$.
+            \end{proof}
+        \end{proof}
+        \step{4}{$W \circ \Phi = \Theta$}
+        \begin{proof}
+            \pf\ Since $\Theta(q)$ is the supremum of $\{ \Theta(r) : r < q \}
+            = \{ \Theta(r) : \Phi(r) < \Phi(q) \}$ by Lemma \ref{lm:sup_of_rationals}.
+        \end{proof}
+        \step{5}{$W$ is surjective.}
+        \begin{proof}
+            \step{a}{\pflet{$y \in F$}}
+            \step{aa}{\pflet{$Q'(y) = \{ q \in \mathbb{Q} : \Theta(q) < y \}$}}
+            \step{b}{\pflet{$x = \sup \{ \Phi(q) : q \in Q'(y) \}$} \prove{$W(x) = y$}}
+            \begin{proof}
+                \pf\ The set is bounded above similarly to \stepref{2}.
+            \end{proof}
+            \step{c}{$y$ is an upper bound for $\{ \Theta(q) : q \in Q(x) \}$}
+            \begin{proof}
+                \step{i}{\pflet{$q \in Q(x)$}}
+                \step{ii}{$\Phi(q) < x$}
+                \step{iii}{\pick\ $r \in Q'(y)$ such that $\Phi(q) < \Phi(r)$}
+                \step{iv}{$\Theta(q) < \Theta(r) < y$}
+            \end{proof}
+            \step{d}{For any upper bound $u$ for $\{ \Theta(q) : q \in Q(x) \}$
+            we have $y \leq u$}
+            \begin{proof}
+                \step{i}{\pflet{$u$ be an upper bound for $\{ \Theta(q) : q \in Q(x) \}$}}
+                \step{ii}{\assume{for a contradiction $u < y$}}
+                \step{iii}{\pick\ rationals $q$, $r$  with $u < \Theta(q) < \Theta(r) < y$}
+                \step{iv}{$r \in Q'(y)$}
+                \step{v}{$\Phi(r) \leq x$}
+                \step{vi}{$\Phi(q) < x$}
+                \step{vii}{$q \in Q(x)$}
+                \step{viii}{$\Theta(q) \leq u$}
+                \qedstep
+                \begin{proof}
+                    \pf\ This contradicts \stepref{iii}.
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \step{6}{For all $x, y \in K$ we have $W(x + y) = W(x) + W(y)$}
+        \begin{proof}
+            \step{a}{\pflet{$x, y \in K$}}
+            \step{b}{For all $u \in Q(x+y)$, there exist $r_1 \in Q(x)$ and $r_2 \in Q(y)$ such that
+            $u = r_1 + r_2$}
+            \begin{proof}
+                \step{i}{\pflet{$u \in Q(x+y)$}}
+                \step{ii}{$\Theta(u) - y < x$}
+                \step{iii}{\pick\ a rational $r_1$ such that $\Theta(u) - y < \Theta(r_1) < x$}
+                \step{iv}{\pflet{$r_2 = u - r_1$}}
+                \step{v}{$\Theta(r_2) < y$}
+                \step{vi}{$u = r_1 + r_2$}
+            \end{proof}
+            \step{c}{$W(x+y) \leq W(x) + W(y)$}
+            \begin{proof}
+                \step{i}{$W(x) + W(y)$ is an upper bound for $Q(x+y)$}
+                \begin{proof}
+                    \step{one}{\pflet{$q \in Q(x+y)$}}
+                    \step{two}{\pick\ $r_1 \in Q(x)$ and $r_2 \in Q(y)$ such that $q = r_1 + r_2$}
+                    \step{three}{$r_1 \leq W(x)$}
+                    \step{four}{$r_2 \leq W(y)$}
+                    \step{five}{$q \leq W(x) + W(y)$}
+                \end{proof}
+            \end{proof}
+            \step{d}{$W(x) + W(y) \leq W(x+y)$}
+            \begin{proof}
+                \step{i}{$\forall n \in \mathbb{Z}^+. W(x) + W(y) - W(x+y) \leq 1/n$}
+                \begin{proof}
+                    \step{one}{\pflet{$n \in \mathbb{Z}^+$}}
+                    \step{two}{\pick\ $s_1 \in Q(x)$ such that $W(x) - 1/2n < s_1$}
+                    \step{three}{\pick\ $s_2 \in Q(y)$ such that $W(y) - 1/2n < s_2$}
+                    \step{four}{$W(x) + W(y) < W(x+y) + 1/n$}
+                    \begin{proof}
+                        \pf
+                        \begin{align*}
+                            W(x) + W(y) & < (s_1 + 1/2n) + (s_2 + 1/2n) \\
+                            & = s_1 + s_2 + 1/n \\
+                            & \leq W(x+y) + 1/n
+                        \end{align*}
+                    \end{proof}
+                \end{proof}
+                \step{ii}{$W(x) + W(y) - W(x+y) \leq 0$}
+                \begin{proof}
+                    \pf\ Corollary \ref{cor:under_one_over_n}.
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \step{6a}{For all $x \in K$ we have $W(-x) = -W(x)$}
+        \begin{proof}
+            \pf\ Since $W(x) + W(-x) = W(0) = 0$.
+        \end{proof}
+        \step{7}{For all $x, y \in K$ we have $W(xy) = W(x)W(y)$}
+        \begin{proof}
+            \step{a}{\pflet{$x, y \in K$}}
+            \step{b}{\case{$x = 0$ or $y = 0$}}
+            \begin{proof}
+                \pf\ Then $W(xy) = W(x) W(y) = 0$
+            \end{proof}
+            \step{c}{\case{$x > 0$ and $y > 0$}}
+            \begin{proof}
+                \step{i}{For all $u \in \mathbb{Q}$, if $0 < u < xy$ then there exist rationals
+                $r_1$, $r_2$ such that $0 < r_1 < x$, $0 < r_2 < y$ and $u = r_1 r_2$}
+                \begin{proof}
+                    \step{one}{\pflet{$u \in \mathbb{Q}$ with $0 < u < xy$}}
+                    \step{two}{$u / y < x$}
+                    \step{three}{\pick\ a rational $r_1$ with $u/y < r_1 < x$}
+                    \step{four}{\pflet{$r_2 = u / r_1$}}
+                    \step{five}{$r_2 < y$}
+                \end{proof}
+                \step{ii}{$W(xy) \leq W(x) W(y)$}
+                \begin{proof}
+                    \step{one}{\pflet{$q$ be a rational with $q < xy$} \prove{$q < W(x) W(y)$}}
+                    \step{two}{\pick\ rationals $r_1$, $r_2$ with $0 < r_1 < x$, $0 < r_2 < y$
+                    and $q = r_1 r_2$}
+                    \step{three}{$r_1 \leq W(x)$}
+                    \step{four}{$r_2 \leq W(y)$}
+                    \step{five}{$q \leq W(x) W(y)$}
+                \end{proof}
+                \step{iii}{$W(x)W(y) \leq W(xy)$}
+                \begin{proof}
+                    \step{one}{\pick\ $k \in \mathbb{Z}^+$ such that $W(x) + W(y) < k$}
+                    \step{two}{For all $n \in \mathbb{Z}^+$ we have $W(x)W(y) < W(xy) + 1/n$}
+                    \begin{proof}
+                        \step{A}{\pflet{$n \in \mathbb{Z}^+$}}
+                        \step{B}{\pick\ $m \in \mathbb{Z}^+$ with $m > 2kn$ and $m > 1/W(x)$ and $m > 1/W(y)$}
+                        \step{C}{\pick\ a rational $s_1$ with $s_1 < x$ and $W(x) - 1/m < s_1$}
+                        \step{D}{\pick\ a rational $s_2$ with $s_2 < y$ and $W(y) - 1/m < s_2$}
+                        \step{E}{$W(x)W(y) < W(xy) + 1/n$}
+                        \begin{proof}
+                            \pf
+                            \begin{align*}
+                                W(x) W(y) & < (s_1 + 1/m) (s_2 + 1/m) \\
+                                & = s_1 s_2 + \frac{s_1 + s_2}{m} + 1/m^2 \\
+                                & \leq W(xy) + \frac{W(x) + W(y)}{m} + 1/m^2 \\
+                                & \leq W(xy) + k/m + 1/m^2 \\
+                                & < W(xy) + 1/2n + 1/2n
+                            \end{align*}
+                        \end{proof}
+                    \end{proof}
+                    \step{three}{$W(x)W(y) \leq W(xy)$}
+                    \begin{proof}
+                        \pf\ Corollary \ref{cor:under_one_over_n}
+                    \end{proof}
+                \end{proof}
+            \end{proof}
+            \step{d}{\case{$x > 0$ and $y < 0$}}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    W(xy) & = W(-(x(-y))) \\
+                    & = -W(x(-y)) & (\text{\stepref{5a}}) \\
+                    & = -W(x)W(-y) & (\text{\stepref{c}}) \\
+                    & = W(x)W(y) & (\text{\stepref{5a}})
+                \end{align*}
+            \end{proof}
+            \step{e}{\case{$x < 0$ and $y > 0$}}
+            \begin{proof}
+                \pf\ Similar.
+            \end{proof}
+            \step{f}{\case{$x < 0$ and $y < 0$}}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    W(xy) & = W((-x)(-y)) \\
+                    & = W(-x) W(-y) & (\text{\stepref{c}}) \\
+                    & = (-W(x)) (-W(y)) & (\text{\stepref{5a}})\\
+                    & = W(x) W(y)
+                \end{align*}
+            \end{proof}
+        \end{proof}
+        \qed
     \end{proof}
 
     \begin{theorem}

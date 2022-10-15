@@ -128,6 +128,8 @@ INPUT /usr/share/texmf/fonts/tfm/public/amsfonts/symbols/msbm10.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/cm/cmbx12.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/cm/cmti7.tfm
 INPUT /usr/share/texmf/fonts/tfm/public/cm/cmti7.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/cm/cmbx7.tfm
+INPUT /usr/share/texmf/fonts/tfm/public/cm/cmbx5.tfm
 INPUT /home/robin/fun/maths/classical/C2algebra.aux
 INPUT /usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc
 INPUT /usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx10.pfb
