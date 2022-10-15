@@ -1,0 +1,340 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019/Debian) (preloaded format=pdflatex 2021.7.14)  15 OCT 2022 08:28
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**/home/robin/fun/maths/classical/C1settheory.tex
+(/home/robin/fun/maths/classical/C1settheory.tex
+LaTeX2e <2020-02-02> patch level 2
+L3 programming layer <2020-02-14> (/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2019/12/20 v1.4l Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2019/12/20 v1.4l Standard LaTeX file (size option)
+)
+\c@part=\count167
+\c@chapter=\count168
+\c@section=\count169
+\c@subsection=\count170
+\c@subsubsection=\count171
+\c@paragraph=\count172
+\c@subparagraph=\count173
+\c@figure=\count174
+\c@table=\count175
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen134
+) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2020/01/20 v2.17e AMS math features
+\@mathmargin=\skip49
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01 AMS text
+ (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks14
+\ex@=\dimen135
+)) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d Bold Symbols
+\pmbraise@=\dimen136
+) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2016/03/08 v2.02 operator names
+)
+\inf@bad=\count176
+LaTeX Info: Redefining \frac on input line 227.
+\uproot@=\count177
+\leftroot@=\count178
+LaTeX Info: Redefining \overline on input line 389.
+\classnum@=\count179
+\DOTSCASE@=\count180
+LaTeX Info: Redefining \ldots on input line 486.
+LaTeX Info: Redefining \dots on input line 489.
+LaTeX Info: Redefining \cdots on input line 610.
+\Mathstrutbox@=\box45
+\strutbox@=\box46
+\big@size=\dimen137
+LaTeX Font Info:    Redeclaring font encoding OML on input line 733.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 734.
+\macc@depth=\count181
+\c@MaxMatrixCols=\count182
+\dotsspace@=\muskip16
+\c@parentequation=\count183
+\dspbrk@lvl=\count184
+\tag@help=\toks15
+\row@=\count185
+\column@=\count186
+\maxfields@=\count187
+\andhelp@=\toks16
+\eqnshift@=\dimen138
+\alignsep@=\dimen139
+\tagshift@=\dimen140
+\tagwidth@=\dimen141
+\totwidth@=\dimen142
+\lineht@=\dimen143
+\@envbody=\toks17
+\multlinegap=\skip50
+\multlinetaggap=\skip51
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2859.
+LaTeX Info: Redefining \] on input line 2860.
+) (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+)) (/usr/share/texlive/texmf-dist/tex/latex/amscls/amsthm.sty
+Package: amsthm 2017/10/31 v2.20.4
+\thm@style=\toks19
+\thm@bodyfont=\toks20
+\thm@headfont=\toks21
+\thm@notefont=\toks22
+\thm@headpunct=\toks23
+\thm@preskip=\skip52
+\thm@postskip=\skip53
+\thm@headsep=\skip54
+\dth@everypar=\toks24
+) (/usr/share/texmf/tex/latex/pf2/pf2.sty
+\pfindent=\skip55
+\c@@vectorctr=\count188
+\@veclen=\skip56
+\pfbox=\box47
+\c@pfhidelevel=\count189
+\pfshortNumberLevel=\count190
+\c@pf@sidenumberdepth=\count191
+\pf@sidenumberoutdent=\skip57
+\pfLevelCount=\count192
+\pfStepCount=\count193
+\pf@outdent=\skip58
+\@temppflen=\skip59
+\@proveindent=\skip60
+\c@pf@conjCounter=\count194
+\c@pfenum=\count195
+\c@pfenumdepth=\count196
+\pfenumindent=\skip61
+\c@pfenumi=\count197
+\c@pfenumii=\count198
+\c@pfenumiii=\count199
+) (/usr/share/texlive/texmf-dist/tex/generic/xypic/xy.sty (/usr/share/texlive/texmf-dist/tex/generic/xypic/xy.tex Bootstrap'ing: catcodes, docmode, (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyrecat.tex) (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyidioms.tex)
+
+ Xy-pic version 3.8.9 <2013/10/06>
+ Copyright (c) 1991-2013 by Kristoffer H. Rose <krisrose@tug.org> and others
+ Xy-pic is free software: see the User's Guide for details.
+
+Loading kernel: messages; fonts; allocations: state,
+\X@c=\dimen144
+\Y@c=\dimen145
+\U@c=\dimen146
+\D@c=\dimen147
+\L@c=\dimen148
+\R@c=\dimen149
+\Edge@c=\toks25
+\X@p=\dimen150
+\Y@p=\dimen151
+\U@p=\dimen152
+\D@p=\dimen153
+\L@p=\dimen154
+\R@p=\dimen155
+\Edge@p=\toks26
+\X@origin=\dimen156
+\Y@origin=\dimen157
+\X@xbase=\dimen158
+\Y@xbase=\dimen159
+\X@ybase=\dimen160
+\Y@ybase=\dimen161
+\X@min=\dimen162
+\Y@min=\dimen163
+\X@max=\dimen164
+\Y@max=\dimen165
+\lastobjectbox@=\box48
+\zerodotbox@=\box49
+\almostz@=\dimen166
+ direction,
+\d@X=\dimen167
+\d@Y=\dimen168
+\K@=\count266
+\KK@=\count267
+\Direction=\count268
+\K@dXdY=\dimen169
+\K@dYdX=\dimen170
+\xyread@=\read2
+\xywrite@=\write3
+\csp@=\count269
+\quotPTK@=\dimen171
+ utility macros; pictures: \xy, positions,
+\swaptoks@@=\toks27
+\connectobjectbox@@=\box50
+ objects,
+\styletoks@=\toks28
+ decorations; kernel objects: directionals, circles, text; options; algorithms: directions, edges, connections;  Xy-pic loaded) (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifpdf.sty
+Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
+ (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2019/11/07 v1.0c TeX engine tests
+))
+Package: xy 2013/10/06 Xy-pic version 3.8.9
+ (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyall.tex  Xy-pic option: All features v.3.8 (/usr/share/texlive/texmf-dist/tex/generic/xypic/xycurve.tex  Xy-pic option: Curve and Spline extension v.3.12 curve,
+\crv@cnt@=\count270
+\crvpts@=\toks29
+\splinebox@=\box51
+\splineval@=\dimen172
+\splinedepth@=\dimen173
+\splinetol@=\dimen174
+\splinelength@=\dimen175
+ circles,
+\L@=\dimen176
+ loaded) (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyframe.tex  Xy-pic option: Frame and Bracket extension v.3.14 loaded) (/usr/share/texlive/texmf-dist/tex/generic/xypic/xycmtip.tex  Xy-pic option: Computer Modern tip extension v.3.7 (/usr/share/texlive/texmf-dist/tex/generic/xypic/xytips.tex  Xy-pic option: More Tips extension v.3.11 loaded) loaded) (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyline.tex  Xy-pic option: Line styles extension v.3.10
+\xylinethick@=\dimen177
+ loaded) (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyrotate.tex  Xy-pic option: Rotate and Scale extension v.3.8 loaded) (/usr/share/texlive/texmf-dist/tex/generic/xypic/xycolor.tex  Xy-pic option: Colour extension v.3.11 loaded) (/usr/share/texlive/texmf-dist/tex/generic/xypic/xymatrix.tex  Xy-pic option: Matrix feature v.3.14
+\Row=\count271
+\Col=\count272
+\queue@=\toks30
+\queue@@=\toks31
+\qcount@=\count273
+\qcount@@=\count274
+\matrixsize@=\count275
+ loaded) (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyarrow.tex  Xy-pic option: Arrow and Path feature v.3.9 path, \ar, loaded) (/usr/share/texlive/texmf-dist/tex/generic/xypic/xygraph.tex  Xy-pic option: Graph feature v.3.11 loaded) loaded) (/usr/share/texlive/texmf-dist/tex/generic/xypic/xypdf.tex  Xy-pic option: PDF driver v.1.7 Xy-pic pdf driver: `color' extension support (/usr/share/texlive/texmf-dist/tex/generic/xypic/xypdf-co.tex loaded) Xy-pic pdf driver: `curve' extension support (/usr/share/texlive/texmf-dist/tex/generic/xypic/xypdf-cu.tex loaded) Xy-pic pdf driver: `frame' extension support (/usr/share/texlive/texmf-dist/tex/generic/xypic/xypdf-fr.tex loaded) Xy-pic pdf driver: `line' extension support (/usr/share/texlive/texmf-dist/tex/generic/xypic/xypdf-li.tex loaded) Xy-pic pdf driver: `rotate' extension support (/usr/share/texlive/texmf-dist/tex/generic/xypic/xypdf-ro.tex loaded) loaded))
+\c@axiom=\count276
+\c@corollary=\count277
+ (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdfmode.def
+File: l3backend-pdfmode.def 2020-02-03 L3 backend support: PDF mode
+\l__kernel_color_stack_int=\count278
+\l__pdf_internal_box=\box52
+) (/home/robin/fun/maths/classical/C1settheory.aux)
+\openout1 = `C1settheory.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 34.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 34.
+ (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+)
+Package xypdf Info: Line width: 0.39998pt on input line 34.
+ [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Chapter 1.
+[1
+
+] [2] [3] [4]
+Chapter 2.
+[5
+
+]
+Overfull \hbox (4.95482pt too wide) in paragraph at lines 421--422
+\OT1/cmr/bx/n/10 Definition 2.2.2 \OT1/cmr/m/n/10 (Do-main)\OT1/cmr/bx/n/10 . \OT1/cmr/m/n/10 The \OT1/cmr/m/it/10 do-main \OT1/cmr/m/n/10 of a class $\OT1/cmr/bx/n/10 R$ \OT1/cmr/m/n/10 is $[] \OT1/cmr/bx/n/10 R \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 x \OT1/cmr/m/n/10 : \OMS/cmsy/m/n/10 9\OML/cmm/m/it/10 y:\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y\OT1/cmr/m/n/10 ) \OMS/cmsy/m/n/10 2
+ []
+
+[6] [7] [8] [9] [10] [11]
+WARNING: proof step "1" (<2>2) already defined
+[12]
+WARNING: proof step "a" (<4>1) already defined
+WARNING: proof step "b" (<4>2) already defined
+WARNING: proof step "c" (<4>3) already defined
+WARNING: proof step "a" (<4>1) already defined
+WARNING: proof step "b" (<4>2) already defined
+WARNING: proof step "c" (<4>3) already defined
+WARNING: proof step "d" (<4>4) already defined
+WARNING: proof step "e" (<4>5) already defined
+[13]
+Overfull \hbox (7.42886pt too wide) in paragraph at lines 1044--1046
+[]\OT1/cmr/m/it/10 Assume that $\OML/cmm/m/it/10 <$ \OT1/cmr/m/it/10 is a well-founded re-la-tion on $\OML/cmm/m/it/10 A$\OT1/cmr/m/it/10 . As-sume that $\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 x; y\OMS/cmsy/m/n/10 9\OT1/cmr/m/n/10 !\OML/cmm/m/it/10 zP\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x; y; z\OT1/cmr/m/n/10 )$\OT1/cmr/m/it/10 .
+ []
+
+WARNING: proof step "c" (<2>6) already defined
+[14]
+Overfull \hbox (16.16313pt too wide) in paragraph at lines 1120--1120
+[]$\OML/cmm/m/it/10 G$ \OT1/cmr/m/n/10 be a func-tion with do-main $\OML/cmm/m/it/10 A$ \OT1/cmr/m/n/10 such that $\OMS/cmsy/m/n/10 8\OML/cmm/m/it/10 x \OMS/cmsy/m/n/10 2 \OML/cmm/m/it/10 A:P\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 G \U/msa/m/n/10 ^^V [] \OML/cmm/m/it/10 x; x; G\OT1/cmr/m/n/10 (\OML/cmm/m/it/10 x\OT1/cmr/m/n/10 ))$ 
+ []
+
+[15] [16]
+Chapter 3.
+[17
+
+] [18] [19] [20] [21]
+Chapter 4.
+[22
+
+] [23]
+Overfull \hbox (8.45192pt too wide) in paragraph at lines 1612--1613
+\OT1/cmr/bx/n/10 Definition 4.0.3 \OT1/cmr/m/n/10 (Or-di-nal Num-ber)\OT1/cmr/bx/n/10 . \OT1/cmr/m/n/10 The class $[]$ of \OT1/cmr/m/it/10 or-di-nal num-bers \OT1/cmr/m/n/10 is $[] []$. 
+ []
+
+
+LaTeX Warning: Reference `lemma:epsilon_image' on page 24 undefined on input line 1633.
+
+
+LaTeX Warning: Reference `corollary:epsilon_image_well_ordered' on page 24 undefined on input line 1637.
+
+[24]
+
+LaTeX Warning: Reference `lemma:epsilon_image' on page 25 undefined on input line 1709.
+
+[25]
+
+LaTeX Warning: Reference `lemma:epsilon_image' on page 26 undefined on input line 1784.
+
+[26]
+WARNING: proof step "e" (<2>6) already defined
+WARNING: proof step "1" (<1>2) already defined
+[27] [28] [29] [30] [31]
+Chapter 5.
+[32
+
+] [33] [34] [35] [36] [37]
+Chapter 6.
+[38
+
+] [39] [40] [41] [42] [43] [44]
+Chapter 7.
+WARNING: proof step "d" (<2>5) already defined
+[45
+
+] [46] [47] [48]
+Chapter 8.
+[49
+
+] [50] [51]
+Overfull \hbox (64.9784pt too wide) in paragraph at lines 3804--3804
+[]$\OMS/cmsy/m/n/10 H \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 f\OML/cmm/m/it/10 f \OT1/cmr/m/n/10 : \OML/cmm/m/it/10 f \OT1/cmr/m/n/10 = \OMS/cmsy/m/n/10 ;[]\OML/cmm/m/it/10 A \OMS/cmsy/m/n/10 ^^R \OML/cmm/m/it/10 B; f[]\OMS/cmsy/m/n/10 g$ 
+ []
+
+[52] [53] [54] [55] [56] [57] [58] [59] [60] [61] [62] (/home/robin/fun/maths/classical/C1settheory.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 4696 strings out of 481239
+ 57726 string characters out of 5920377
+ 344716 words of memory out of 5000000
+ 19903 multiletter control sequences out of 15000+600000
+ 546161 words of font info for 79 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 30i,13n,31p,3254b,461s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}</usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/share/texmf/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1000.pfb>
+Output written on /home/robin/fun/maths/classical/C1settheory.pdf (63 pages, 391987 bytes).
+PDF statistics:
+ 298 PDF objects out of 1000 (max. 8388607)
+ 208 compressed objects within 3 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+

@@ -125,6 +125,15 @@
         Otherwise, $\mathbf{A}$ is a \emph{proper class}.
     \end{definition}
 
+    \begin{definition}[Subset]
+        If $A$ is a set and $\mathbf{B}$ is a class, we say $A$ is a \emph{subset} of $\mathbf{B}$
+        iff $A \subseteq \mathbf{B}$. If in addition $B$ is a set, we say $B$ is a \emph{superset} of $A$.
+
+        If $A$ is a set and $\mathbf{B}$ is a class, we say $A$ is a \emph{proper} subset of $\mathbf{B}$
+        iff $A \subset \mathbf{B}$. If in addition $B$ is a set, we say $B$ is a \emph{proper} superset of
+        $A$.
+    \end{definition}
+
     \begin{axiom}[Replacement]
         For any property $P(x,y)$, the following is an axiom:
 
@@ -159,21 +168,6 @@
     \begin{axiom}[Infinity]
         There exists a nonempty set $A$ such that $\forall x \in A. \exists y \in A. x \subset y$.
     \end{axiom}
-
-    \section{Definitions}
-    
-    \begin{definition}[Transitive Set]
-        A set $A$ is a \emph{transitive set} iff every member of a member of $A$ is a member of $A$.
-    \end{definition}
-
-    \begin{definition}[Subset]
-        If $A$ is a set and $\mathbf{B}$ is a class, we say $A$ is a \emph{subset} of $\mathbf{B}$
-        iff $A \subseteq \mathbf{B}$. If in addition $B$ is a set, we say $B$ is a \emph{superset} of $A$.
-
-        If $A$ is a set and $\mathbf{B}$ is a class, we say $A$ is a \emph{proper} subset of $\mathbf{B}$
-        iff $A \subset \mathbf{B}$. If in addition $B$ is a set, we say $B$ is a \emph{proper} superset of
-        $A$.
-    \end{definition}
 
     \section{Constructions of Sets}
 
@@ -629,6 +623,15 @@
         A \emph{binary operation} on a set $A$ is a function from $A \times A$ into $A$.
     \end{definition}
 
+    \begin{theorem}
+        For any function $F : A \rightarrow B$, if $F$ has a right inverse then $F$ maps $A$ onto $B$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ If $H : B \rightarrow A$ is a right inverse, then for any $y$ in $B$, we have
+        $y = F(H(y))$. \qed
+    \end{proof}
+
     \section{Dependent Products}
 
     \begin{definition}
@@ -646,27 +649,46 @@
     \begin{theorem}
         The following are equivalent.
         \begin{enumerate}
+            \item The Axiom of Choice.
+            \item Every set has a choice function.
             \item 
             For any relation $R$ there exists a function $H \subseteq R$ with $\dom H = \dom R$.
             \item (\textbf{Multiplicative Axiom}) For any set $I$ and any function $H$ with domain
             $I$, if $H(i) \neq \emptyset$ for all $i \in I$, then $\prod_{i \in I} H(i) \neq \emptyset$
-            \item The Axiom of Choice.
-            \item Every set has a choice function.
         \end{enumerate}
     \end{theorem}
 
     \begin{proof}
         \pf
-        \step{0}{$1 \Rightarrow 2$}
+        \step{2}{$1 \Rightarrow 2$}
         \begin{proof}
-            \step{a}{\assume{The Axiom of Choice.}}
+            \step{a}{\assume{the Axiom of Choice}}
+            \step{b}{\pflet{$A$ be a set.}}
+            \step{c}{\pflet{$\mathcal{A} = \{ \{B\} \times B : B \in \mathcal{P} A - \{ \emptyset \} \}$}}
+            \step{d}{\pick\ a set $C$ such that $C \cap (\{ B \} \times B)$ is a singleton
+            for all $B \in \mathcal{P} A - \{ \emptyset \}$}
+            \step{e}{\pflet{$F = C \cap \bigcup \mathcal{A}$}}
+            \step{f}{$F : \mathcal{P} A - \{ \emptyset \} \rightarrow A$ is a function and $F(X) \in X$
+            for all $X$}
+        \end{proof}
+        \step{3}{$2 \Rightarrow 3$}
+        \begin{proof}
+            \step{a}{\assume{3}}
+            \step{b}{\pflet{$R$ be a relation}}
+            \step{c}{\pick\ a choice function $G$ for $\ran R$}
+            \step{d}{Define $F : \dom R \rightarrow \ran R$ by $F(x) = G(R(x))$}
+            \step{e}{$F \subseteq R$}
+        \end{proof}
+        \step{0}{$3 \Rightarrow 4$}
+        \begin{proof}
+            \step{a}{\assume{2}}
             \step{b}{\pflet{$I$ be a set.}}
             \step{c}{\pflet{$H$ be a function with domain $I$.}}
             \step{d}{\assume{$H(i) \neq \emptyset$ for all $i \in I$.}}
             \step{e}{\pflet{$R = \{ (i,x) : i \in I, x \in H(i) \}$}}
             \step{f}{\pick\ a function $F \subseteq R$ with $\dom F = \dom R$ \prove{$F \in \prod_{i \in I} H(i)$}}
             \begin{proof}
-                \pf\ By the Axiom of Choice.
+                \pf\ By \stepref{a}.
             \end{proof}
             \step{g}{$\dom H = I$}
             \begin{proof}
@@ -677,74 +699,22 @@
                 \pf\ Since $iRF(i)$.
             \end{proof}
         \end{proof}
-        \step{1}{$2 \Rightarrow 3$}
+        \step{1}{$4 \Rightarrow 1$}
         \begin{proof}
         \pf\ Let $\mathcal{A}$ be a set matching the two condtions. By the Multiplicative Axiom, pick a function
         $f \in \prod_{B \in \mathcal{A}} B$. Let $C = \ran f$. Then $C \cap B = \{f(B)\}$ for all $B \in
         \mathcal{A}$.
         \end{proof}
-        \step{2}{$3 \Rightarrow 4$}
-        \begin{proof}
-            \step{a}{\assume{2}}
-            \step{b}{\pflet{$A$ be a set.}}
-            \step{c}{\pflet{$\mathcal{A} = \{ \{B\} \times B : B \in \mathcal{P} A - \{ \emptyset \} \}$}}
-            \step{d}{\pick\ a set $C$ such that $C \cap (\{ B \} \times B)$ is a singleton
-            for all $B \in \mathcal{P} A - \{ \emptyset \}$}
-            \step{e}{\pflet{$F = C \cap \bigcup \mathcal{A}$}}
-            \step{f}{$F : \mathcal{P} A - \{ \emptyset \} \rightarrow A$ is a function and $F(X) \in X$
-            for all $X$}
-        \end{proof}
-        \step{3}{$4 \Rightarrow 2$}
-        \begin{proof}
-            \step{a}{\assume{3}}
-            \step{b}{\pflet{$R$ be a relation}}
-            \step{c}{\pick\ a choice function $G$ for $\ran R$}
-            \step{d}{Define $F : \dom R \rightarrow \ran R$ by $F(x) = G(R(x))$}
-            \step{e}{$F \subseteq R$}
-        \end{proof}
-        \step{4}{$2 \Rightarrow 1$}
-        \begin{proof}
-            \step{a}{\assume{For any set $I$ and any function $H$ with domain
-            $I$, if $H(i) \neq \emptyset$ for all $i \in I$, then $\prod_{i \in I} H(i) \neq \emptyset$}}
-            \step{b}{\pflet{$R$ be a relation}}
-            \step{c}{\pflet{$I = \dom R$}}
-            \step{d}{Define the function $H$ with domain $I$ by: for $i \in I$, $H(i) = \{ y : iRy \}$}
-            \step{e}{$H(i) \neq \emptyset$ for all $i \in I$}
-            \step{f}{\pick\ $F \in \prod_{i \in I} H(i)$}
-            \begin{proof}
-                \pf\ By \stepref{a}
-            \end{proof}
-            \step{g}{$F$ is a function}
-            \step{h}{$F \subseteq R$}
-            \begin{proof}
-                \pf\ For all $i \in I$ we have $F(i) \in H(i)$ and so $iRF(i)$.
-            \end{proof}
-            \step{i}{$\dom F = \dom R$}
-        \end{proof}
         \qed
     \end{proof}
 
-    \begin{definition}[Axiom of Choice]
-        The \emph{Axiom of Choice} is the statement:
-
-        For any relation $R$ there exists a function $H \subseteq R$ with $\dom H = \dom R$.
-    \end{definition}
-
     \begin{theorem}
-        \begin{enumerate}
-            \item For any function $F : A \rightarrow B$, if $F$ has a right inverse then $F$ maps $A$ onto $B$.
-            \item The Axiom of Choice is equivalent to the statement: for any sets $A$ and $B$
+        The Axiom of Choice is equivalent to the statement: for any sets $A$ and $B$
             and every fuction $F$ that maps $A$ onto $B$, $F$ has a right inverse.
-        \end{enumerate}
     \end{theorem}
 
     \begin{proof}
         \pf
-        \step{1}{If $F$ has a right inverse then $F$ maps $A$ onto $B$.}
-        \begin{proof}
-            \pf\ If $H : B \rightarrow A$ is a right inverse, then for any $y$ in $B$, we have
-            $y = F(H(y))$.
-        \end{proof}
         \step{2}{If the Axiom of Choice is true and $F$ maps $A$ onto $B$ then $F$ has a right inverse.}
         \begin{proof}
             \step{o}{\assume{The Axiom of Choice}}
@@ -1645,6 +1615,10 @@
     \begin{definition}[Well-ordered by Epsilon]
         A set $A$ is \emph{well-ordered by epsilon} iff $\{ (x,y) : x, y \in A, x \in y \}$ is a well
         ordering on $A$.
+    \end{definition}
+
+    \begin{definition}[Transitive Set]
+        A set $A$ is a \emph{transitive set} iff every member of a member of $A$ is a member of $A$.
     \end{definition}
 
     \begin{theorem}

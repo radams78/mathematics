@@ -95,17 +95,6 @@
         \pf\ Easy. \qed
     \end{proof}
 
-    \begin{lemma}
-        \label{lemma:rationals_Archimedean}
-        For any positive rational $p$ and rational $r$, there exists a natural number $k$ such that
-        $r < pk$.
-    \end{lemma}
-
-    \begin{proof}
-        \pf\ Let $p = a/b$ and $r = c/d$ where $a$, $b$ and $d$ are positive. 
-        Pick an integer $k$ such that $bc < adk$. Then $r < pk$. \qed
-    \end{proof}
-
     \section{Ring Theory}
 
     \begin{definition}[Rng]
@@ -1279,6 +1268,44 @@
         maximum element and $B$ has no minimum element.
     \end{definition}
 
+    \begin{proposition}
+        \label{prop:gap_supremum}
+        Let $(A,B)$ be a cut in an ordered field $F$. Then $(A,B)$ is a gap if and only if $A$ has no
+        supremum.
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{If $A$ has a supremum then $(A,B)$ is not a gap.}
+        \begin{proof}
+            \step{a}{\pflet{$s$ be the supremum of $A$}}
+            \step{b}{\case{$s \in A$}}
+            \begin{proof}
+                \pf\ In this case $s$ is the maximum element of $A$.
+            \end{proof}
+            \step{c}{\case{$s \in B$}}
+            \begin{proof}
+                \pf\ In this case $s$ is the minimum element of $B$.
+            \end{proof}
+        \end{proof}
+        \step{2}{If $(A,B)$ is not a gap then $A$ has a supremum.}
+        \begin{proof}
+            \pf\ If $A$ has a maximum element then it is a supremum of $A$, and if $B$ has a minimum element
+            then it is a supremum of $A$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{proposition}
+        \label{prop:gap_infimum}
+        Let $(A,B)$ be a cut in an ordered field $F$. Then $(A,B)$ is a gap if and only if $B$ has no
+        infimum.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Dual. \qed
+    \end{proof}
+
     \begin{definition}[Cut Determined by an Element]
         Let $F$ be an ordered field and $c \in F$. The cuts \emph{determined} by $c$ are
         $(\{ x \in F : x \leq c \}, \{ x \in F : x > c \})$ and $(\{ x \in F : x \leq c \}, \{ x \in F : x > c \})$.
@@ -1287,6 +1314,291 @@
     \begin{definition}[Complete Ordered Field]
         A \emph{complete ordered field} is an ordered field with no gaps.
     \end{definition}
+
+    \begin{theorem}
+        Let $F$ be an ordered field. The following are equivalent.
+        \begin{enumerate}
+            \item $F$ is complete.
+            \item Every nonempty subset of $F$ bounded above has a supremum.
+            \item Every nonempty subset of $F$ bounded below has an infimum.
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{$1 \Rightarrow 2$}
+        \begin{proof}
+            \step{a}{\assume{$F$ is complete}}
+            \step{b}{\pflet{$A$ be a nonempty subset of $F$ bounded above.}}
+            \step{c}{\pflet{$A_1 = \{ x \in F : \exists y \in A. x \leq y \}$}}
+            \step{d}{\pflet{$B = F - A_1$}}
+            \step{e}{$(A_1,B)$ is a cut.}
+            \begin{proof}
+                \step{a}{$A_1 \neq \emptyset$}
+                \begin{proof}
+                    \step{i}{\pick\ $a \in A$}
+                    \begin{proof}
+                        \pf\ $A$ is nonempty (\stepref{b}).
+                    \end{proof}
+                    \step{ii}{$a - 1 \in A_1$}
+                \end{proof}
+                \step{b}{$B \neq \emptyset$}
+                \begin{proof}
+                    \step{i}{\pick\ an upper bound $u$ for $A$}
+                    \begin{proof}
+                        \pf\ $A$ is bounded above (\stepref{b}).
+                    \end{proof}
+                    \step{ii}{$u + 1 \in B$}
+                \end{proof}
+                \step{c}{$A_1 \cup B = F$}
+                \begin{proof}
+                    \pf\ By \stepref{d}.
+                \end{proof}
+                \step{d}{$\forall x \in A_1. \forall y \in B. x < y$}
+                \begin{proof}
+                    \pf\ If $x \in A_1$ and $y \leq x$ then $y \in A_1$.
+                \end{proof}
+            \end{proof}
+            \step{f}{$(A_1,B)$ is not a gap.}
+            \begin{proof}
+                \pf\ By \stepref{a}.
+            \end{proof}
+            \step{g}{\case{$A_1$ has a maximum element.}}
+            \begin{proof}
+                \step{i}{\pflet{$s$ be the maximum of $A_1$.}}
+                \step{ii}{$s \in A$}
+                \begin{proof}
+                    \step{one}{\pick\ $x \in A$ such that $s \leq x$}
+                    \step{two}{$x \in A_1$}
+                    \step{three}{$x \leq s$}
+                    \begin{proof}
+                        \pf\ By the maximality of $s$.
+                    \end{proof}
+                    \step{four}{$x = s$}
+                \end{proof}
+                \step{ii}{$s$ is an upper bound for $A$.}
+                \begin{proof}
+                    \pf\ Since $A \subseteq A_1$.
+                \end{proof}
+                \step{iii}{$s$ is the maximum element of $A$.}
+                \step{iv}{$s$ is the supremum of $A$.}
+            \end{proof}
+            \step{h}{\case{$B$ has a minimum element.}}
+            \begin{proof}
+                \step{i}{\pflet{$s$ be the minimum element in $B$.}}
+                \step{ii}{$s$ is an upper bound for $A$}
+                \begin{proof}
+                    \pf\ For all $x \in A$ we have $x \in A_1$ and so $x < s$.
+                \end{proof}
+                \step{iii}{For any upper bound $u$ for $A$ we have $s \leq u$}
+                \begin{proof}
+                    \step{one}{\pflet{$u$ be an upper bound for $A$.}}
+                    \step{two}{$u \notin A_1$}
+                    \begin{proof}
+                        \step{O}{\assume{for a contradiction $u \in A_1$}}
+                        \step{A}{$u < s$}
+                        \step{B}{\pick\ $y$ such that $u < y < s$}
+                        \step{C}{\case{$y \in A_1$}}
+                        \begin{proof}
+                            \step{ONE}{\pick\ $x \in A$ such that $y \leq x$}
+                            \step{TWO}{$u < x$}
+                            \qedstep
+                            \begin{proof}
+                                \pf\ This contradicts \stepref{one}.
+                            \end{proof}
+                        \end{proof}
+                        \step{D}{\case{$y \in B$}}
+                        \begin{proof}
+                            \pf\ This contradicts \stepref{i}.
+                        \end{proof}
+                    \end{proof}
+                    \step{three}{$u \in B$}
+                    \step{four}{$s \leq u$}
+                    \begin{proof}
+                        \pf\ By minimality of $s$.
+                    \end{proof}
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \step{2}{$2 \Rightarrow 1$}
+        \begin{proof}
+            \pf\ By Proposition \ref{prop:gap_supremum}
+        \end{proof}
+        \step{3}{$1 \Rightarrow 3$}
+        \begin{proof}
+            \pf\ Similar to \stepref{1}.
+        \end{proof}
+        \step{4}{$3 \Rightarrow 1$}
+        \begin{proof}
+            \pf\ By Proposition \ref{prop:gap_infimum}.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Archimedean]
+        An ordered field $F$ is \emph{Archimedean} if and only if, for all positive $x,y \in F$, there exists
+        $n \in \mathbb{Z}^+$ such that $nx > y$.
+    \end{definition}
+
+    \begin{lemma}
+        \label{lemma:rationals_Archimedean}
+        The rational numbers are Archimedean.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Let $p = a/b$ and $r = c/d$ where $a$, $b$ and $d$ are positive. 
+        Let $n = bc+1$. Then $bc < adn$ so $r < pn$. \qed
+    \end{proof}
+
+    \begin{example}
+        The quotient field of $\mathbb{Z}[x]$ is not Archimedean, since $n1 < x$ for all $n \in \mathbb{Z}^+$.
+    \end{example}
+
+    \begin{theorem}
+        Let $F$ be an ordered field. Then $F$ is Archimedean if and only if the set of integers in $F$ is not
+        bounded above.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{If $F$ is Archimedean then the set of integers in $F$ is not bounded above.}
+        \begin{proof}
+            \step{a}{\assume{$F$ is Archimedean.}}
+            \step{b}{For every integer $y$ in $F$, there exists an integer $n$ such that $n1 > y$.}
+            \step{c}{The integers in $F$ have no upper bound.}
+        \end{proof}
+        \step{2}{If the set of integers in $F$ is not bounded above then $F$ is Archimedean.}
+        \begin{proof}
+            \step{a}{\assume{The set of integers in $F$ is not bounded above.}}
+            \step{b}{\pflet{$x, y \in F$ be positive.}}
+            \step{c}{\pick\ an integer $n$ such that $n1 > y / x$}
+            \step{d}{$nx > y$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{corollary}
+        Let $F$ be an ordered field. Then $F$ is Archimedean if and only if, for every positive $z \in F$,
+        there exists a positive integer $n$ such that $1/n < z$.
+    \end{corollary}
+
+    \begin{theorem}
+        Let $F$ be an Archimedean ordered field. Let $x \in F$. Then there exists a unique integer $n$
+        such that $n \leq x < n + 1$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{There exists an integer $n$ such that $n \leq x < n + 1$}
+        \begin{proof}
+            \step{2}{\pick\ a positive integer $j$ such that $-x < j$.}
+            \begin{proof}
+                \pf\ By the Archimedean property applied to $-x$.
+            \end{proof}
+            \step{4}{\pflet{$h$ be the least positive integer such that $x + j < h$.}}
+            \begin{proof}
+                \pf\ By the Archimedean property applied to $x + j$.
+            \end{proof}
+            \step{5}{\pflet{$n = h - j - 1$}}
+            \step{6}{$x < n + 1$}
+            \step{7}{$x \geq n$}        
+            \begin{proof}
+                \pf\ Since $h - 1 \leq x + j$ by the minimality of $h$ and the fact that $0 < x + j$.
+            \end{proof}
+        \end{proof}
+        \step{2}{If $m$ and $n$ are integers with $m \leq x < m + 1$ and $n \leq x < n + 1$ then $m = n$}
+        \begin{proof}
+            \step{a}{$m < n + 1$}
+            \step{b}{$m \leq n$}
+            \step{c}{$n < m + 1$}
+            \step{d}{$n \leq m$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Floor]
+        In any Archimedean ordered field, the \emph{floor} of $x$, $\llcorner x \lrcorner$, is the integer
+        such that $\llcorner x \lrcorner \leq x < \llcorner x \lrcorner + 1$.
+    \end{definition}
+
+    \begin{theorem}
+        Every complete ordered field is Archimedean.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$F$ be a complete ordered field.}}
+        \step{2}{\assume{for a contradiction the integers of $F$ are bounded above.}}
+        \step{3}{\pflet{$u$ be the supremum of the integers of $F$}}
+        \step{4}{$u < \llcorner u \lrcorner + 1$}
+        \step{5}{$\llcorner u \lrcorner + 1 \leq u$}
+        \begin{proof}
+            \pf\ Since $u$ is an upper bound for the integers of $F$.
+        \end{proof}
+        \qedstep
+        \begin{proof}
+            \pf\ This is a contradiction.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Dense]
+        Let $F$ be an ordered field and $A \subseteq F$. Then $A$ is \emph{dense} in $F$ if and only if,
+        for all $x, y \in F$ with $x < y$, there exists $z \in A$ with $x < z < y$.
+    \end{definition}
+
+    \begin{theorem}
+        \label{theorem:rationals_dense}
+        Let $F$ be an ordered field. Then $F$ is Archimedean if and only if the rational numbers are dense
+        in $F$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{If $F$ is Archimedean then the rationals are dense in $F$.}
+        \begin{proof}
+            \step{1}{\pflet{$F$ be an Archimedean ordered field.}}
+            \step{2}{\pflet{$x, y \in F$ with $x < y$.}}
+            \step{3}{\pflet{$n$ be the least positive integer such that $1 / n < y - x$.}}
+            \step{4}{\pflet{$k = \llcorner n x + 1 \lrcorner$}}
+            \step{5}{$nx < k \leq nx + 1$}
+            \step{6}{$x < k / n < y$}
+        \end{proof}
+        \step{2}{If the rationals are dense in $F$ then $F$ is Archimedean.}
+        \begin{proof}
+            \step{a}{\assume{The rationals are dense in $F$.}}
+            \step{b}{\pflet{$x \in F$} \prove{There exists an integer $n$ such that $x < n$}}
+            \step{c}{\assume{w.l.o.g. $x > 0$}}
+            \step{d}{\pick\ }
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{lemma}
+        Let $F$ be an Archimedean ordered field. Let $x \in F$. Then $x$ is the supremum of
+        $A = \{ q \in F : q \text{ is rational}, q < x \}$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{$x$ is an upper bound for $A$.}
+        \step{2}{For any upper bound $u$ for $A$ we have $x \leq u$}
+        \begin{proof}
+            \step{a}{\pflet{$u$ be an upper bound for $A$.}}
+            \step{b}{\assume{for a contradiction $u < x$.}}
+            \step{c}{\pick\ a rational $q$ with $u < q < x$.}
+            \begin{proof}
+                \pf\ Theorem \ref{theorem:rationals_dense}.
+            \end{proof}
+            \step{d}{$q \in A$ and $u < q$}
+            \qedstep
+            \begin{proof}
+                \pf\ This contradicts \stepref{a}.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+    
     \section{The Real Numbers}
 
     \begin{definition}[Dedekind Cut]
