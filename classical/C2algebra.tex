@@ -2260,7 +2260,8 @@
     \end{proof}
 
     \begin{theorem}
-        Any two complete ordered fields are isomorphic.
+        If $K$ is an Archimedean ordered field and $F$ is a complete ordered field then there is a unique
+        embedding $K \rightarrow F$.
     \end{theorem}
 
     \begin{proof}
@@ -2310,38 +2311,6 @@
         \begin{proof}
             \pf\ Since $\Theta(q)$ is the supremum of $\{ \Theta(r) : r < q \}
             = \{ \Theta(r) : \Phi(r) < \Phi(q) \}$ by Lemma \ref{lm:sup_of_rationals}.
-        \end{proof}
-        \step{5}{$W$ is surjective.}
-        \begin{proof}
-            \step{a}{\pflet{$y \in F$}}
-            \step{aa}{\pflet{$Q'(y) = \{ q \in \mathbb{Q} : \Theta(q) < y \}$}}
-            \step{b}{\pflet{$x = \sup \{ \Phi(q) : q \in Q'(y) \}$} \prove{$W(x) = y$}}
-            \begin{proof}
-                \pf\ The set is bounded above similarly to \stepref{2}.
-            \end{proof}
-            \step{c}{$y$ is an upper bound for $\{ \Theta(q) : q \in Q(x) \}$}
-            \begin{proof}
-                \step{i}{\pflet{$q \in Q(x)$}}
-                \step{ii}{$\Phi(q) < x$}
-                \step{iii}{\pick\ $r \in Q'(y)$ such that $\Phi(q) < \Phi(r)$}
-                \step{iv}{$\Theta(q) < \Theta(r) < y$}
-            \end{proof}
-            \step{d}{For any upper bound $u$ for $\{ \Theta(q) : q \in Q(x) \}$
-            we have $y \leq u$}
-            \begin{proof}
-                \step{i}{\pflet{$u$ be an upper bound for $\{ \Theta(q) : q \in Q(x) \}$}}
-                \step{ii}{\assume{for a contradiction $u < y$}}
-                \step{iii}{\pick\ rationals $q$, $r$  with $u < \Theta(q) < \Theta(r) < y$}
-                \step{iv}{$r \in Q'(y)$}
-                \step{v}{$\Phi(r) \leq x$}
-                \step{vi}{$\Phi(q) < x$}
-                \step{vii}{$q \in Q(x)$}
-                \step{viii}{$\Theta(q) \leq u$}
-                \qedstep
-                \begin{proof}
-                    \pf\ This contradicts \stepref{iii}.
-                \end{proof}
-            \end{proof}
         \end{proof}
         \step{6}{For all $x, y \in K$ we have $W(x + y) = W(x) + W(y)$}
         \begin{proof}
@@ -2472,6 +2441,49 @@
                     & = W(x) W(y)
                 \end{align*}
             \end{proof}
+        \end{proof}
+        \step{X}{$W$ is unique.}
+        \begin{proof}
+            \step{a}{\pflet{$W' : K \rightarrow F$ be any embedding.}}
+            \step{b}{For all $x \in K$, we have $W'(x) = \sup_F \{ q \in \mathbb{Q} : q \leq x \}$}
+            \begin{proof}
+                \step{i}{\pflet{$x \in K$}}
+                \step{ii}{For $q \in \mathbb{Q}$, if $q \leq x$ then $q \leq W'(x)$}
+                \begin{proof}
+                    \pf\ Since $W'$ is monotone.
+                \end{proof}
+                \step{iii}{If $u$ is any upper bound in $F$ for $\{ q \in \mathbb{Q} : q \leq x \}$
+                then $W'(x) \leq u$}
+                \begin{proof}
+                    \step{one}{\assume{for a contradiction $u < W'(x)$}}
+                    \step{two}{\pick\ a rational $q$ with $u < q < W'(x)$}
+                    \step{three}{$q <_K x$}
+                    \step{four}{$q \leq u$}
+                    \qedstep
+                    \begin{proof}
+                        \pf\ This contradicts \stepref{two}.
+                    \end{proof}
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{corollary}
+        Any two complete ordered fields are isomorphic, and the isomorphism is unique.
+    \end{corollary}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$F$ and $K$ be complete ordered fields.}}
+        \step{2}{\pflet{$f : F \rightarrow K$ and $g : K \rightarrow F$ be the embeddings.}}
+        \step{3}{$g \circ f = \id{F}$}
+        \begin{proof}
+            \pf\ Each is the unique embedding of $F$ in $F$.
+        \end{proof}
+        \step{4}{$f \circ g = \id{K}$}
+        \begin{proof}
+            \pf\ Each is the unique embedding of $K$ in $K$.
         \end{proof}
         \qed
     \end{proof}
