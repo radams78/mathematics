@@ -1,0 +1,454 @@
+\documentclass{article}
+
+\title{C4 Analysis}
+\author{Robin Adams}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\let\proof\relax
+\let\endproof\relax
+\let\qed\relax
+\usepackage{pf2}
+\usepackage[all]{xy}
+
+\newtheorem{axiom}{Axiom}[section]
+\newtheorem{axs}[axiom]{Axiom Schema}
+\newtheorem{lemma}[axiom]{Lemma}
+\newtheorem{proposition}[axiom]{Proposition}
+\newtheorem{props}[axiom]{Proposition Schema}
+\newtheorem{theorem}[axiom]{Theorem}
+\newtheorem{corollary}{Corollary}[axiom]
+\theoremstyle{definition}
+\newtheorem{definition}[axiom]{Definition}
+\newtheorem{example}[axiom]{Example}
+
+\newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
+\newcommand{\id}[1]{\ensuremath{\mathrm{id}_{#1}}}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}[Limit of a Function]
+    Let $A \subseteq \mathbb{R}$ and $f : A \rightarrow \mathbb{R}$. Let $a$ be an accumulation point of $A$ and $b \in \mathbb{R}$.
+    Then we say $b$ is the \emph{limit} of $f$ at $a$, and write $f(x) \rightarrow b$ as $x \rightarrow a$ or $\lim_{x \rightarrow a} f(x) = b$, iff for every $\epsilon > 0$,
+    there exists $\delta > 0$ such that, for all $x \in A - \{ a \}$, if $|x-a| < \delta$ then $|f(x)-b| < \epsilon$.
+\end{definition}
+
+\begin{proposition}
+    Let $A \subseteq \mathbb{R}$ and $f : A \rightarrow \mathbb{R}$. Let $a$ be an accumulation point of $A$ and $b, c \in \mathbb{R}$.
+    If $f(x) \rightarrow b$ as $x \rightarrow a$ and $f(x) \rightarrow c$ as $x \rightarrow a$ then $b = c$.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{$\forall \epsilon > 0. |b-c| < \epsilon$}
+    \begin{proof}
+        \step{a}{\pflet{$\epsilon > 0$}}
+        \step{b}{\pick\ $\delta > 0$ such that $\forall x \in A - \{a\}. |x-a| < \delta \Rightarrow |f(x)-b| < \epsilon/2 \wedge |f(x)-c| <
+        \epsilon/2$}
+        \step{c}{\pick\ $x \in (A - \{a\}) \cap (a - \delta, a + \delta)$}
+        \step{d}{$|f(x)-b| < \epsilon / 2$}
+        \step{e}{$|f(x)-c| < \epsilon / 2$}
+        \step{f}{$|b-c| < \epsilon$}
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{proposition}[Choice]
+    Let $A \subseteq \mathbb{R}$ and $f : A \rightarrow \mathbb{R}$. Let $a$ be an accumulation point of $A$. Let $b \in \mathbb{R}$.
+    Then $f(x) \rightarrow b$ as $x \rightarrow a$ if and only if, for any sequence $(x_n)$ in $A - \{a\}$, if $x_n \rightarrow a$ as $n
+    \rightarrow \infty$ then $f(x_n) \rightarrow b$ as $n \rightarrow \infty$.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{If $f(x) \rightarrow b$ as $x \rightarrow a$ then, for any sequence $(x_n)$ is $A-\{a\}$, if $x_n \rightarrow a$ as $n \rightarrow
+    \infty$ then $f(x_n) \rightarrow b$ as $n \rightarrow \infty$.}
+    \begin{proof}
+        \step{a}{\assume{$f(x) \rightarrow b$ as $x \rightarrow a$}}
+        \step{b}{\pflet{$(x_n)$ be a sequence in $A-\{a\}$}}
+        \step{c}{\assume{$x_n \rightarrow a$ as $n \rightarrow \infty$}}
+        \step{d}{\pflet{$\epsilon > 0$}}
+        \step{e}{\pick\ $\delta > 0$ such that, for all $x \in A - \{a\}$, if $|x-a| < \delta$, then $|f(x)-b|<\epsilon$}
+        \step{f}{\pick\ $N$ such that $\forall n \geq N. |x-a| < \delta$}
+        \step{g}{$\forall n \geq N. |f(x)-b|<\epsilon$}
+    \end{proof}
+    \step{2}{If, for any sequence $(x_n)$ is $A-\{a\}$, if $x_n \rightarrow a$ as $n \rightarrow
+    \infty$ then $f(x_n) \rightarrow b$ as $n \rightarrow \infty$, then $f(x) \rightarrow b$ as $x \rightarrow a$.}
+    \begin{proof}
+        \step{a}{\assume{$f(x) \not\rightarrow b$ as $x \rightarrow a$}}
+        \step{b}{\pick\ $\epsilon > 0$ such that, for all $\delta > 0$, there exists $x \in A - \{a\}$ such that $|x - a| < \delta$
+        and $|f(x) - b| \geq \epsilon$}
+        \step{c}{For all $n \in \mathbb{Z}^+$, \pick\ $x_n \in A - \{a\}$ such that $|x_n - a| < 1/n$ and $|f(x_n) - b| \geq \epsilon$}
+        \step{d}{$x_n \rightarrow a$ as $n \rightarrow \infty$}
+        \step{e}{$f(x_n) \not\rightarrow b$ as $n \rightarrow \infty$}
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{proposition}
+    \label{proposition:addition_limit}
+    Let $A, B \subseteq \mathbb{R}$. Let $f : A \rightarrow \mathbb{R}$ and $g : B \rightarrow \mathbb{R}$. Let $a$ be an accumulation
+    point of $A \cap B$. Let $b, c \in \mathbb{R}$. Assume $f(x) \rightarrow b$ as $x \rightarrow a$ and $g(x) \rightarrow c$
+    as $x \rightarrow a$. Then $f(x) + g(x) \rightarrow b + c$ as $x \rightarrow a$.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{\pflet{$\epsilon > 0$}}
+    \step{2}{\pick\ $\delta > 0$ such that, for all $x \in A - \{a\}$, if $|x-a| < \delta$ then $|f(x) - b| < \epsilon / 2$, and
+    for all $x \in B - \{a\}$, if $|x-a| < \delta$ then $|g(x)-c| < \epsilon / 2$}
+    \step{3}{\pflet{$x \in (A \cap B) - \{a\}$}}
+    \step{4}{\assume{$|x-a| < \delta$}}
+    \step{5}{$|(f(x) + g(x)) - (b+c)| < \epsilon$}
+    \qed
+\end{proof}
+
+\begin{proposition}
+    \label{proposition:multiplication_limit}
+    Let $A, B \subseteq \mathbb{R}$. Let $f : A \rightarrow \mathbb{R}$ and $g : B \rightarrow \mathbb{R}$. Let $a$ be an accumulation
+    point of $A \cap B$. Let $b, c \in \mathbb{R}$. Assume $f(x) \rightarrow b$ as $x \rightarrow a$ and $g(x) \rightarrow c$
+    as $x \rightarrow a$. Then $f(x) g(x) \rightarrow b c$ as $x \rightarrow a$.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{\pflet{$\epsilon > 0$}}
+    \step{2}{\pflet{$d = \epsilon / 2 |b|$ if $b \neq 0$, or $d = 1$ if $b = 0$}}
+    \step{3}{\pick\ $\delta > 0$ such that, for all $x \in A - \{a\}$, if $|x-a| < \delta$ then $|f(x) - b| < \epsilon / 2(d + |c|)$, and
+    for all $x \in B - \{a\}$, if $|x-a| < \delta$ then $|g(x)-c| < d$}
+    \step{3}{\pflet{$x \in (A \cap B) - \{a\}$}}
+    \step{4}{\assume{$|x-a| < \delta$}}
+    \step{5}{$|f(x)g(x) - bc| < \epsilon$}
+    \begin{proof}
+        \pf
+        \begin{align*}
+            |f(x)g(x) - bc| & \leq |f(x) - b||g(x)| + |b||g(x)-c| \\
+            & \epsilon/2 + \epsilon / 2 \\
+            & = \epsilon
+        \end{align*}
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{proposition}
+    \label{proposition:positive_neighbourhood}
+    Let $A \subseteq \mathbb{R}$ and $f : A \rightarrow \mathbb{R}$. Let $a$ be an accumulation point of $A$ and $b > 0$
+    Suppose $\lim_{x \rightarrow a} f(x) = b$. Then there exists $\delta$ such that, for all $x \in A - \{a\}$, if $|x-a| < \delta$ then
+    $f(x) > b/2$.
+\end{proposition}
+
+\begin{proof}
+    \pf\ Take $\epsilon = b / 2$ in the definition of limit. \qed
+\end{proof}
+
+\begin{proposition}
+    \label{proposition:inverse_limit}
+    Let $A \subseteq \mathbb{R}$ and $f : A \rightarrow \mathbb{R}$. Let $a$ be an accumulation point of $A$. Let $b \in \mathbb{R} - \{0\}$.
+    Suppose $f(x) \rightarrow b$ as $x \rightarrow a$. Then $a$ is an accumulation point of $\{ x \in A : f(x) \neq 0 \}$
+    and $1 / f(x) \rightarrow 1/b$ as $x \rightarrow a$.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{$a$ is an accumulation point of $\{ x \in A : f(x) \neq 0 \}$.}
+    \begin{proof}
+        \step{a}{\pflet{$\delta > 0$}}
+        \step{b}{\assume{w.l.o.g. $\forall x \in A - \{a\}. |x-a| < \delta \Rightarrow f(x) \neq 0$}}
+        \step{c}{\pick\ $x \in (a-\delta,a+\delta) \cap (A - \{a\})$}
+        \step{d}{$x \in (a-\delta,a+\delta) \cap (\{ x \in A : f(x) \neq 0 \} - \{a\})$}
+    \end{proof}
+    \step{2}{For all $\epsilon > 0$, there exists $\delta > 0$ such that, for all $x \in A - \{a\}$, if $f(x) \neq 0$
+    and $|x-a| < \delta$ then $|1/f(x) - 1/b| < \epsilon$}
+    \begin{proof}
+        \step{a}{\pflet{$\epsilon > 0$}}
+        \step{b}{\pick\ $\delta > 0$ such that $\forall x \in A - \{a\}. |x - a| < \delta \Rightarrow |f(x) - b| < \epsilon |b|^2 / 2$
+        and $\forall  \in A - \{a\}. |x-a| < \delta \Rightarrow |f(x)| > |b|/2$}
+        \begin{proof}
+            \pf\ Proposition \ref{proposition:positive_neighbourhood}.
+        \end{proof}
+        \step{c}{\pflet{$x \in A - \{a\}$ satisfy $f(x) \neq 0$ and $|x-a| < \delta$}}
+        \step{d}{$|1/f(x) - 1/b| < \epsilon$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                |1/f(x) - 1/b| & = |f(x) - b|/|f(x)||b| \\
+                & < \epsilon & (\text{\stepref{b}})
+            \end{align*}
+        \end{proof}
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{definition}[Continuity at a Point]
+    Let $A \subseteq \mathbb{R}$. Let $a \in A$ be an accumulation point of $A$. Then $f$ is \emph{continuous} at $a$ if and only if
+    $f(x) \rightarrow f(a)$ as $x \rightarrow a$.
+
+    $f$ is \emph{continuous} if and only if every point of $A$ is an accumulation point of $A$ and $f$ is continuous at every point of
+    $A$.
+\end{definition}
+
+\begin{proposition}
+    Let $A, B \subseteq \mathbb{R}$. Let $f : A \rightarrow \mathbb{R}$ and $g : B \rightarrow \mathbb{R}$. Let $a \in A \cap B$
+    be an accumulation point of $A \cap B$. Assume $f$ and $g$ are continuous at $a$. Then $f + g$ and $fg$ are continuous at $a$.
+\end{proposition}
+
+\begin{proof}
+    \pf\ Propositions \ref{proposition:addition_limit} and \ref{proposition:multiplication_limit}. \qed
+\end{proof}
+
+\begin{corollary}
+    Every polynomial is continuous on $\mathbb{R}$.
+\end{corollary}
+
+\begin{proposition}
+    Let $A \subseteq \mathbb{R}$. Let $f : A \rightarrow \mathbb{R}$. Let $a \in A$
+    be an accumulation point of $A$. Assume $f$ is continuous at $a$ and $f(a) \neq 0$. Then $1/f$ is continuous at $a$.
+\end{proposition}
+
+\begin{proof}
+    \pf\ Proposition \ref{proposition:inverse_limit}. \qed
+\end{proof}
+
+\begin{proposition}
+    Let $A, B \subseteq \mathbb{R}$. Let $f : A \rightarrow \mathbb{R}$ and $g : B \rightarrow \mathbb{R}$. Let $a \in A$
+    be an accumulation point of $A$. Assume $f(a) \in B$ and $f(a)$ is an accumulation point of $B$. If $f$ is continuous at $a$
+    and $g$ is continuous at $f(a)$ then $g \circ f$ is continuous at $a$.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{\pflet{$\epsilon > 0$}}
+    \step{2}{\pick\ $\delta_1 > 0$ such that, for all $y \in B - \{f(a)\}$, if $|y - f(a)| < \delta_1$ then $|g(y) - g(f(a))| < \epsilon$}
+    \step{3}{\pick\ $\delta_2 > 0$ such that, for all $x \in A - \{a\}$, if $|x - a| < \delta_2$ then $|f(x) - f(a)| < \delta_1$}
+    \step{4}{For all $x \in A - \{a\}$, if $|x-a| < \delta_2$ then $|g(f(x)) - g(f(a))| < \epsilon$}
+    \qed
+\end{proof}
+
+\begin{definition}[Relatively Open]
+    Let $A \subseteq \mathbb{R}$ and $B \subseteq A$. Then $B$ is \emph{relatively open} in $A$ iff there exists an open set
+    $V \subseteq \mathbb{R}$ such that $B = A \cap V$.
+\end{definition}
+
+\begin{lemma}
+    \label{lemma:relatively_open}
+    Let $B \subseteq A \subseteq \mathbb{R}$. Then $B$ is relatively open in $A$ iff, for all $x \in B$, there exists an open interval $I$
+    containing $x$ such that $I \cap A \subseteq B$.
+\end{lemma}
+
+\begin{proof}
+    \pf
+    \step{1}{If $B$ is relatively open in $A$ then, for all $x \in B$, there exists an open interval $I$ containing $x$ such that $I \cap
+    A \subseteq B$}
+    \begin{proof}
+        \step{a}{\assume{$B$ is relatively open in $A$.}}
+        \step{b}{\pick\ an open set $V$ such that $B = A \cap V$}
+        \step{b}{\pflet{$x \in B$}}
+        \step{c}{\pick\ an open interval $I$ such that $x \in I \subseteq V$}
+        \step{d}{$I \cap A \subseteq B$}
+    \end{proof}
+    \step{2}{If, for all $x \in B$, there exists an open interval $I$ containing $x$ such that $I \cap A \subseteq B$, then $B$ is
+    relatively open in $A$.}
+    \begin{proof}
+        \step{a}{\assume{For all $x \in B$, there exists an open interval $I$ containing $x$ such that $I \cap A \subseteq B$}}
+        \step{b}{\pflet{$V$ be the union of all the open intervals $I$ such that $I \cap A \subseteq B$}}
+        \step{c}{$B = A \cap V$}
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{theorem}
+    \label{theorem:continuous}
+    Let $A \subseteq \mathbb{R}$ be a set such that every point in $A$ is an accumulation point of $A$.
+    Let $f : A \rightarrow \mathbb{R}$. Then $f$ is continuous if and only if, for every open set $W$, we have $\inv{f}(W)$
+    relatively open in $A$.
+\end{theorem}
+
+\begin{proof}
+    \pf
+    \step{1}{If $f$ is continuous then, for every open set $W$, we have $\inv{f}(W)$ is relatively open in $A$.}
+    \begin{proof}
+        \step{a}{\assume{$f$ is continuous.}}
+        \step{b}{\pflet{$W$ be an open set.}}
+        \step{c}{For all $x \in \inv{f}(W)$, there exists an open interval containing $I$ such that $I \cap A \subseteq \inv{f}(W)$}
+        \begin{proof}
+            \step{i}{\pflet{$x \in \inv{f}(W)$}}
+            \step{ii}{\pick\ $\epsilon > 0$ such that $(f(x) - \epsilon, f(x) + \epsilon) \subseteq W$}
+            \step{iii}{\pick\ $\delta > 0$ such that, for all $y \in A - \{x\}$, if $|y-x| < \delta$ then $|f(y)-f(x)| < \epsilon$}
+            \step{iv}{\pflet{$I = (x - \delta, x + \delta)$} \prove{$I \cap A \subseteq \inv{f}(W)$}}
+            \step{v}{\pflet{$y \in I \cap A$}}
+            \step{vi}{$f(y) \in (f(x) - \epsilon, f(x) + \epsilon)$}
+            \step{vii}{$f(y) \in W$}
+        \end{proof}
+        \step{d}{$\inv{f}(W)$ is relatively open in $A$.}
+        \begin{proof}
+            \pf\ Lemma \ref{lemma:relatively_open}.
+        \end{proof}
+    \end{proof}
+    \step{2}{If, for every open set $W$, we have $\inv{f}(W)$ is relatively open in $A$, then $f$ is continuous.}
+    \begin{proof}
+        \step{a}{\assume{For every open set $W$, we have $\inv{f}(W)$ is relatively open in $A$.}}
+        \step{b}{\pflet{$x \in A$}}
+        \step{c}{\pflet{$\epsilon > 0$}}
+        \step{d}{$\inv{f}((f(x)-\epsilon,f(x)+\epsilon))$ is relatively open in $A$.}
+        \step{e}{\pick\ $\delta > 0$ such that $(x - \delta, x + \delta) \cap A \subseteq \inv{f}((f(x)-\epsilon,f(x)+\epsilon))$}
+        \begin{proof}
+            \pf\ Lemma \ref{lemma:relatively_open}.
+        \end{proof}
+        \step{f}{For all $y \in A - \{x\}$, if $|y-x| < \delta$ then $|f(y)-f(x)| < \epsilon$}
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{proposition}
+    Let $C \subseteq \mathbb{R}$ be compact and be such that every element of $C$ is an accumulation point of $C$.
+    Let $f : C \rightarrow \mathbb{R}$ be continuous. Then $f(C)$ is compact.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{\pflet{$\mathcal{A}$ be an open covering of $f(C)$.}}
+    \step{2}{$\{ W \in \mathcal{P} \mathbb{R} : W \text{ is open}, \exists A \in \mathcal{A}. \inv{f}(A) = W \cap C \}$ is an open covering
+    of $C$.}
+    \begin{proof}
+        \pf\ Theorem \ref{theorem:continuous}.
+    \end{proof}
+    \step{3}{\pick\ a finite subcover $\{ W_1, \ldots, W_n \}$ of $C$.}
+    \step{33}{For $i = 1, \ldots, n$, \pick\ $A_i \in \mathcal{A}$ such that $\inv{f}(A_i) = W_i \cap C$}
+    \step{4}{$\{ A_1, \ldots, A_n \}$ covers $f(C)$.}
+    \qed
+\end{proof}
+
+\begin{corollary}
+    Let $C \subseteq \mathbb{R}$ be compact and be such that every element of $C$ is an accumulation point of $C$.
+    Let $f : C \rightarrow \mathbb{R}$ be continuous. Then $f(C)$ has a maximum and a minimum value.
+\end{corollary}
+
+\begin{lemma}
+    \label{lemma:connected}
+    Let $A \subseteq \mathbb{R}$. Then $A$ is connected if and only if there do not exist nonempty disjoint sets $B$, $C$ relatively open in $A$
+    such that $A = B \cup C$.
+\end{lemma}
+
+\begin{proof}
+    \pf
+    \step{1}{If $A = B \cup C$ where $B$ and $C$ are nonempty, disjoint and relatively open in $A$, then $A$ is disconnected.}
+    \begin{proof}
+        \step{a}{\assume{$A = B \cup C$ where $B$ and $C$ are nonempty, disjoint and relatively open in $A$.}}
+        \step{b}{\pick\ open sets $B_1$ and $C_1$ such that $B = B_1 \cap A$ and $C = C_1 \cap A$}
+        \step{c}{$B$ contains no accumulation point of $C$.}
+        \begin{proof}
+            \step{i}{\assume{for a contradiction $b \in B$ and $b$ is an accumulation point of $C$}}
+            \step{ii}{$b$ is an accumulation point of $\mathbb{R} - B_1$}
+            \step{iii}{$b \in \mathbb{R} - B_1$}
+            \begin{proof}
+                \pf\ Since $\mathbb{R} - B_1$ is closed.
+            \end{proof}
+            \qedstep
+            \begin{proof}
+                \pf\ This contradicts the fact that $b \in B$.
+            \end{proof}
+        \end{proof}
+        \step{d}{$C$ contains no accumulation point of $B$.}
+        \begin{proof}
+            \pf\ Similar.
+        \end{proof}
+    \end{proof}
+    \step{2}{If $A$ is disconnected then there exist nonempty, disjoint sets $B$ and $C$ relatively open in $A$ such that $A = B \cup C$.}
+    \begin{proof}
+        \step{a}{\assume{$A$ is disconnected}}
+        \step{b}{\pick\ disjoint nonempty sets $B$ and $C$ such that $A = B \cup C$ and neither of $B$ and $C$ contains an accumulation
+        point of the other.}
+        \step{c}{$B$ is relatively open in $A$}
+        \begin{proof}
+            \pf\ $B = A \cap (\mathbb{R} - \overline{C})$
+        \end{proof}
+        \step{d}{$C$ is relatively open in $A$}
+        \begin{proof}
+            \pf\ Similar.
+        \end{proof}
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{theorem}
+    Let $C \subseteq \mathbb{R}$ be connected and such that every element of $C$ is an accumulation point of $C$. Let $f : C \rightarrow
+    \mathbb{R}$ be continuous. Then $f(C)$ is connected.
+\end{theorem}
+
+\begin{proof}
+    \pf
+    \step{1}{\assume{for a contradiction $f(C) = B \cup D$ where $B$ and $D$ are nonempty, disjoint and relatively open in $f(C)$}}
+    \begin{proof}
+        \pf\ Lemma \ref{lemma:connected}.
+    \end{proof}
+    \step{2}{\pick\ open sets $B'$, $D'$ such that $B = f(C) \cap B'$ and $D = f(C) \cap D'$}
+    \step{3}{$C = \inv{f}(B') \cup \inv{f}(D')$}
+    \step{4}{$\inv{f}(B')$ and $\inv{f}(D')$ are relatively open in $C$}
+    \begin{proof}
+        \pf\ Theorem \ref{theorem:continuous}
+    \end{proof}
+    \step{5}{$\inv{f}(B')$ and $\inv{f}(D')$ are nonempty and disjoint}
+    \qedstep
+    \begin{proof}
+        \pf\ This contradicts the fact that $C$ is connected by Lemma \ref{lemma:connected}.
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{corollary}
+    The continuous image of a closed interval is a closed interval.
+\end{corollary}
+
+\begin{corollary}[Intermediate Value Theorem]
+    Let $f : [a,b] \rightarrow \mathbb{R}$ be continuous. Let $c$ be between $f(a)$ and $f(b)$. Then there exists $x \in [a,b]$
+    such that $f(x) = c$.
+\end{corollary}
+
+\begin{proposition}
+    Let $f : [a,b] \rightarrow \mathbb{R}$ be continuous and injective. Then $\inv{f}$ is continuous.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{\pflet{$y \in f([a,b])$}}
+    \step{2}{\pflet{$\epsilon > 0$}}
+    \step{3}{\pflet{$x$ be the point such that $f(x) = y$}}
+    \step{4}{$f([x-\epsilon/2,x+\epsilon/2] \cap [a,b])$ is a closed interval.}
+    \step{44}{\pick\ $\delta > 0$ such that $(y-\delta, y+\delta) \subseteq f([x-\epsilon/2,x+\epsilon/2] \cap [a,b])$}
+    \step{5}{\pflet{$z \in f([a,b]) - \{y\}$ be such that $|y-z| < \delta$}}
+    \step{6}{$|\inv{f}(z) - x| < \epsilon$}
+    \qed
+\end{proof}
+
+\begin{definition}[Uniformly Continuous]
+    Let $A \subseteq \mathbb{R}$ be such that every point of $A$ is an accumulation point of $A$.
+    Let $f : A \rightarrow \mathbb{R}$. Then $f$ is \emph{uniformly continuous} iff, for every $\epsilon > 0$,
+    there exists $\delta > 0$ such that, for all $x,y \in A$, if $|x-y| < \delta$ then $|f(x)-f(y)| < \epsilon$.
+\end{definition}
+
+\begin{theorem}
+    Let $A \subseteq \mathbb{R}$ be compact and such that every point of $A$ is an accumulation point of $A$.
+    Let $f : A \rightarrow \mathbb{R}$. If $f$ is continuous then $f$ is uniformly continuous.
+\end{theorem}
+
+\begin{proof}
+    \pf
+    \step{1}{\pflet{$\epsilon > 0$}}
+    \step{2}{\pflet{$\mathcal{B}$ be the set of all sets of the form $\{ (z-\delta,z+\delta) :
+    z \in A, \delta > 0, \forall u \in A. |z-u| < 2\delta \Rightarrow |f(z)-f(u)|<\epsilon/2 \}$}}
+    \step{3}{$\mathcal{B}$ covers $A$.}
+    \step{4}{\pick\ a finite subcover $\{ (z_1-\delta_1,z_1+\delta_1), \ldots, (z_n-\delta_n,z_n+\delta_n) \}$}
+    \step{5}{\pflet{$\delta = \min(\delta_1, \ldots, \delta_n)$}}
+    \step{6}{\pflet{$x, y \in A$ with $|x-y| < \delta$}}
+    \step{7}{\pick\ $i$ such that $x \in (z_i-\delta_i, z_i+\delta_i)$}
+    \step{8}{$|f(x)-f(z_i)|<\epsilon/2$}
+    \step{9}{$|y-z_i|<2\delta_i$}
+    \step{10}{$|f(y)-f(z_i)|<\epsilon/2$}
+    \step{11}{$|f(y)-f(x)|<\epsilon$}
+    \qed
+\end{proof}
+
+\end{document}

@@ -13,7 +13,7 @@
 \usepackage[all]{xy}
 
 \newtheorem{axiom}{Axiom}[section]
-\newtheorem{axs}[axiom]{Axiom Schema}
+\newtheorem{axioms}[axiom]{Axiom Schema}
 \newtheorem{lemma}[axiom]{Lemma}
 \newtheorem{proposition}[axiom]{Proposition}
 \newtheorem{props}[axiom]{Proposition Schema}
@@ -109,7 +109,7 @@
 
     Let there be a binary relation called \emph{membership}, $\in$. 
     
-    \section{The Axioms}
+    \section{The Axiom of Extensionality}
 
     \begin{axiom}[Extensionality]
         If two sets have exactly the same members, then they are equal.
@@ -127,27 +127,22 @@
 
     \begin{definition}[Subset]
         If $A$ is a set and $\mathbf{B}$ is a class, we say $A$ is a \emph{subset} of $\mathbf{B}$
-        iff $A \subseteq \mathbf{B}$. If in addition $B$ is a set, we say $B$ is a \emph{superset} of $A$.
+        iff $A \subseteq \mathbf{B}$.
 
-        If $A$ is a set and $\mathbf{B}$ is a class, we say $A$ is a \emph{proper} subset of $\mathbf{B}$
-        iff $A \subset \mathbf{B}$. If in addition $B$ is a set, we say $B$ is a \emph{proper} superset of
-        $A$.
+        If $A$ is a set and $\mathbf{B}$ is a class, we say $A$ is a \emph{superset} of $\mathbf{B}$
+        iff $A \supseteq \mathbf{B}$.
+
+        If $A$ is a set and $\mathbf{B}$ is a class, we say $A$ is a \emph{proper subset} of $\mathbf{B}$
+        iff $A \subset \mathbf{B}$. 
+        
+        If $A$ is a set and $\mathbf{B}$ is a class, we say $A$ is a \emph{proper superset} of $\mathbf{B}$
+        iff $A \supset \mathbf{B}$.
     \end{definition}
 
-    \begin{axiom}[Replacement]
-        For any property $P(x,y)$, the following is an axiom:
-
-        Let $A$ be a set. Assume that, for all $x \in A$, there is at most one $y$ such that $P(x,y)$.
-        Then $\{ y : \exists x \in A. P(x,y) \}$ is a set.
-    \end{axiom}
-
-    \begin{definition}[Power Set]
-        For any set $A$, the \emph{power set} of $A$, $\mathcal{P} A$, is the class of all subsets of $A$.
+    \begin{definition}[Power Class]
+        For any class $\mathbf{A}$, the \emph{power class} of $\mathbf{A}$, $\mathcal{P} \mathbf{A}$, is the class of all subsets of 
+        $\mathbf{A}$.
     \end{definition}
-
-    \begin{axiom}[Power Set]
-        For any set $A$, the class $\mathcal{P} A$ is a set.
-    \end{axiom}
 
     \begin{definition}[Union]
         For any class of sets $\mathbf{A}$, the \emph{union} $\bigcup \mathbf{A}$ is the class
@@ -155,6 +150,23 @@
 
         We write $\bigcup_{P[x_1, \ldots, x_n]} t[x_1, \ldots, x_n]$ for $\bigcup \{ t[x_1, \ldots, x_n]
         : P[x_1, \ldots, x_n] \}$.
+    \end{definition}
+
+    \section{The Zermelo-Fraenkel Axioms}
+
+    \begin{axioms}[Replacement]
+        For any property $P(x,y)$, the following is an axiom:
+
+        Let $A$ be a set. Assume that, for all $x \in A$, there is at most one $y$ such that $P(x,y)$.
+        Then $\{ y : \exists x \in A. P(x,y) \}$ is a set.
+    \end{axioms}
+
+    \begin{axiom}[Power Set]
+        For any set $A$, the power class $\mathcal{P} A$ is a set.
+    \end{axiom}
+
+    \begin{definition}[Power Set]
+        For any set $A$, we call $\mathcal{P} A$ the \emph{power set} of $A$.
     \end{definition}
 
     \begin{axiom}[Union]
@@ -1238,6 +1250,69 @@
         \pf\ It is well founded, hence irreflexive. \qed
     \end{proof}
 
+    \begin{definition}
+        Let $P$ and $Q$ be partial orders and $f : P \rightarrow Q$. Then $f$ is \emph{increasing}
+        iff, whenever $x \leq y$, then $f(x) \leq f(y)$.
+    \end{definition}
+
+    \begin{definition}
+        Let $P$ and $Q$ be partial orders and $f : P \rightarrow Q$. Then $f$ is \emph{strictly increasing}
+        iff, whenever $x < y$, then $f(x) < f(y)$.
+    \end{definition}
+
+    \begin{definition}
+        Let $P$ and $Q$ be partial orders and $f : P \rightarrow Q$. Then $f$ is \emph{decreasing}
+        iff, whenever $x \leq y$, then $f(x) \geq f(y)$.
+    \end{definition}
+    
+    \begin{definition}
+        Let $P$ and $Q$ be partial orders and $f : P \rightarrow Q$. Then $f$ is \emph{strictly decreasing}
+        iff, whenever $x < y$, then $f(x) > f(y)$.
+    \end{definition}
+
+    \begin{definition}
+        Let $P$ and $Q$ be partial orders and $f : P \rightarrow Q$. Then $f$ is \emph{monotone}
+        iff it is either increasing or decreasing.
+    \end{definition}
+
+    \begin{definition}[Open Interval]
+        Let $P$ be a poset and $a, b \in P$ with $a < b$. The \emph{open interval} $(a,b)$
+        is the set $\{ x \in P : a < x < b \}$.
+
+        The \emph{open interval} $(a, +\infty)$ is the set $\{ x \in P : a < x \}$.
+
+        The \emph{open interval} $(-\infty, a)$ is the set $\{ x \in P : x < a \}$.
+    \end{definition}
+
+    \begin{definition}[Closed Interval]
+        Let $P$ be a poset and $a, b \in P$ with $a < b$. The \emph{open interval} $[a,b]$
+        is the set $\{ x \in P : a \leq x \leq b \}$.
+
+        The \emph{closed interval} $[a, +\infty)$ is the set $\{ x \in P : a \leq x \}$.
+
+        The \emph{closed interval} $(-\infty, a]$ is the set $\{ x \in P : x \leq a \}$.
+    \end{definition}
+
+    \begin{definition}[Half-Open Interval]
+        Let $P$ be a poset and $a, b \in P$ with $a < b$. The \emph{half-open intervals} $[a,b)$
+        and $(a,b]$ are defined by
+        \begin{align*}
+            [a,b) & = \{ x \in P : a \leq x < b \} \\
+            (a,b] & = \{ x \in O : a < x \leq b \}
+        \end{align*}
+    \end{definition}
+
+    \begin{definition}[Interval]
+        Let $P$ be a poset. The \emph{intervals} in $P$ are the sets of the following forms:
+        \begin{itemize}
+            \item $\emptyset$
+            \item a singleton
+            \item $P$
+            \item the open intervals
+            \item the closed intervals
+            \item the half-open intervals
+        \end{itemize}
+    \end{definition}
     \section{Linear Orders}
 
     \begin{definition}[Linear Ordering]
@@ -2553,6 +2628,20 @@
         Multiplication on natural numbers is commutative.
     \end{theorem}
 
+    \begin{definition}[Sequence]
+        A \emph{sequence} in a set $A$ is a function $\mathbb{N} \rightarrow A$.    
+    \end{definition}
+
+    \begin{definition}[Subsequence]
+        Let $(a_n)$ be a sequence in a set $A$. A \emph{subsequence} of $(a_n)$ is a sequence of the form
+        $(a_{n_r})$ where $(n_r)$ is a strictly increasing sequence in $\mathbb{N}$.
+    \end{definition}
+
+    \begin{definition}[Nested Sequence]
+        Let $P$ be a partial order and $([a_n,b_n])$ a sequence of closed intervals in $P$. The sequence is
+        \emph{nested} iff $\forall n. a_n \leq a_{n+1}$ and $\forall n. b_{n+1} \leq b_n$.
+    \end{definition}
+    
     \section{Finite Sets}
 
     \begin{definition}[Finite]

@@ -1,0 +1,543 @@
+\documentclass{article}
+
+\title{C3 Topology}
+\author{Robin Adams}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\let\proof\relax
+\let\endproof\relax
+\let\qed\relax
+\usepackage{pf2}
+\usepackage[all]{xy}
+
+\newtheorem{axiom}{Axiom}[section]
+\newtheorem{axs}[axiom]{Axiom Schema}
+\newtheorem{lemma}[axiom]{Lemma}
+\newtheorem{proposition}[axiom]{Proposition}
+\newtheorem{props}[axiom]{Proposition Schema}
+\newtheorem{theorem}[axiom]{Theorem}
+\newtheorem{corollary}{Corollary}[axiom]
+\theoremstyle{definition}
+\newtheorem{definition}[axiom]{Definition}
+\newtheorem{example}[axiom]{Example}
+
+\newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
+\newcommand{\id}[1]{\ensuremath{\mathrm{id}_{#1}}}
+
+\begin{document}
+
+
+\begin{definition}[Open Set]
+    Let $F$ be an ordered field. Let $A \subseteq F$. Then $A$ is \emph{open} iff every element of $A$ belongs to an open interval that is
+    included in $A$.
+\end{definition}
+
+\begin{proposition}
+    The union of a set of open sets is open.
+\end{proposition}
+
+\begin{proposition}
+    The intersection of two open sets is open.
+\end{proposition}
+
+\begin{definition}[Accumulation Point]
+    Let $F$ be an ordered field. Let $A \subseteq F$. Let $l \in F$. Then $l$ is an \emph{accumulation point} of $A$ if and only if
+    every open interval containing $l$ intersects $A - \{ l \}$.
+\end{definition}
+
+\begin{proposition}
+    If $l$ is an accumulation point of $A$ then every open interval containing $l$ contains infinitely many points of $A$.
+\end{proposition}
+
+\begin{corollary}
+    A finite set has no accumulation points.
+\end{corollary}
+
+\begin{definition}[Closed Set]
+    Let $F$ be an ordered field and $A \subseteq F$. Then $A$ is \emph{closed} iff it contains all its accumulation points.
+\end{definition}
+
+\begin{proposition}
+    A set $A$ is open iff $F - A$ is closed.
+\end{proposition}
+
+\begin{proposition}
+    A set $A$ is closed iff $F - A$ is open.
+\end{proposition}
+
+\begin{corollary}
+    The intersection of a nonempty set of closed sets is closed.
+\end{corollary}
+
+\begin{corollary}
+    The union of two closed sets is closed.
+\end{corollary}
+
+\begin{definition}[Closure]
+    Let $F$ be an ordered field and $A \subseteq F$. Then the \emph{closure} of $A$ is
+    \[ \overline{A} = A \cup \{ l \in F : \text{$l$ is an accumulation point of $A$} \} \enspace . \]
+\end{definition}
+
+\begin{proposition}
+    A set $A$ is closed iff $A = \overline{A}$.
+\end{proposition}
+
+\begin{proposition}
+    For any set $A$, we have $\overline{A} = \{ x \in F : \text{every open interval containing $x$ intersects $A$} \}$.
+\end{proposition}
+
+\begin{proposition}
+    For any set $A$, we have $\overline{A}$ is closed.
+\end{proposition}
+
+\begin{proposition}
+    If $A \subseteq B$ then $\overline{A} \subseteq \overline{B}$.
+\end{proposition}
+
+\begin{proposition}
+    \[ \overline{A \cup B} = \overline{A} \cup \overline{B} \]
+\end{proposition}
+
+\begin{proposition}
+    For any set $A$, if $s$ is the supremum of $A$ then $s \in \overline{A}$.
+\end{proposition}
+
+\begin{definition}[Open Covering]
+    Let $F$ be an ordered field. Let $A \subseteq F$ and $\mathcal{B}$ be a set of open sets. Then $\mathcal{B}$ is an
+    \emph{open covering} of $A$, or \emph{covers} $A$, iff $A \subseteq \bigcup \mathcal{B}$.
+\end{definition}
+
+\begin{definition}[Compact]
+    Let $F$ be an ordered field and $A \subseteq F$. Then $A$ is \emph{compact} iff every open covering of $A$ has a finite subcovering.
+\end{definition}
+
+\begin{theorem}
+    \label{theorem:complete_ordered_field}
+    Let $F$ be an ordered field. Then the following are equivalent.
+    \begin{enumerate}
+        \item $F$ is isomorphic to $\mathbb{R}$
+        \item Every closed interval in $F$ is compact.
+        \item Every bounded infinite set in $F$ has an accumulation point.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \pf
+    \step{1}{$1 \Rightarrow 2$}
+    \begin{proof}
+        \step{a}{\pflet{$[c_0,d_0]$ be a closed interval in $\mathbb{R}$.}}
+        \step{b}{\pflet{$\mathcal{B}$ be an open covering of $[c_0,d_0]$.}}
+        \step{c}{\assume{for a contradiction no finite subset of $\mathcal{B}$ covers $[c_0,d_0]$.}}
+        \step{d}{\pflet{$([c_n,d_n])$ be the nested sequence of closed intervals defined by: $[c_{n+1},d_{n+1}] = [c_n,(c_n+d_n)/2]$
+        if this interval is not covered by any finite subset of $\mathcal{B}$, otherwise $[(c_n+d_n)/2,d_n]$.}}
+        \step{e}{For all $n$, $[c_n,d_n]$ is not covered by any finite subset of $\mathcal{B}$.}
+        \step{f}{$\forall n. d_n - c_n = (d_0 - c_0)/2^n$}
+        \step{g}{$d_n - c_n \rightarrow 0$ as $n \rightarrow \infty$}
+        \step{h}{\pflet{$\bigcap_n [c_n,d_n] = \{z\}$}}
+        \step{i}{\pick\ $B \in \mathcal{B}$ such that $z \in B$}
+        \step{j}{\pick\ $\epsilon > 0$ such that $(z - \epsilon, z + \epsilon) \subseteq B$}
+        \step{k}{\pick\ $N$ such that $d_N - c_N < \epsilon$}
+        \step{l}{$\{B\}$ covers $[c_N, d_N]$}
+        \qedstep
+        \begin{proof}
+            \pf\ This contradicts \stepref{e}.
+        \end{proof}
+    \end{proof}
+    \step{2}{$2 \Rightarrow 3$}
+    \begin{proof}
+        \step{a}{\assume{2}}
+        \step{b}{\pflet{$A \subseteq F$ be bounded and infinite.}}
+        \step{c}{\pick\ $c,d \in F$ such that $A \subseteq [c,d]$}
+        \step{d}{\assume{for a contradiction $A$ has no accumulation point.}}
+        \step{e}{\pflet{$\mathcal{B}$ be the set of open intervals $I$ such that $I$ intersects $[c,d]$ and $I \cap A$ has at most one element.}}
+        \step{f}{$\mathcal{B}$ is an open covering of $[c,d]$.}
+        \begin{proof}
+            \pf\ From \stepref{d}.
+        \end{proof}
+        \step{g}{\pick\ a finite subcovering $\{ B_1, \ldots, B_n \}$ of $[c,d]$.}
+        \step{h}{$A$ is finite.}
+        \qedstep
+        \begin{proof}
+            \pf\ This contradicts \stepref{b}.
+        \end{proof}
+    \end{proof}
+    \step{3}{$3 \Rightarrow 1$}
+    \begin{proof}
+        \step{a}{\assume{3}}
+        \step{b}{$F$ is Archimedean.}
+        \begin{proof}
+            \step{i}{\assume{for a contradiction $\mathbb{Z}$ is bounded in $F$.}}
+            \step{ii}{\pick\ an accumulation point $z$ of $\mathbb{Z}$.}
+            \step{iii}{\pick\ $n \in (z-1/2,z+1/2) \cap (\mathbb{Z} - \{z\})$}
+            \step{iv}{\pflet{$c = |n - z|$}}
+            \step{v}{\pick\ $k \in (z-c,z+c) \cap (\mathbb{Z} - \{ z \})$}
+            \step{vi}{$k \neq n$}
+            \step{vii}{$(z-c,z+c) \subseteq (z-1/2,z+1/2)$}
+            \step{viii}{$k \in (z-1/2,z+1/2)$}
+            \step{ix}{$|k-n| < 1$}
+            \qedstep
+            \begin{proof}
+                \pf\ This contradicts the fact that $k$ and $n$ are distinct integers.
+            \end{proof}
+        \end{proof}
+        \step{c}{$F$ is Cauchy complete.}
+        \begin{proof}
+            \step{i}{\pflet{$(x_n)$ be a Cauchy sequence in $F$.}}
+            \step{ii}{$(x_n)$ is bounded.}
+            \step{iii}{\pflet{$A = \{ x_n : n \in \mathbb{N} \}$}}
+            \step{iv}{\case{$A$ is finite.}}
+            \begin{proof}
+                \step{one}{There is a subsequence of $(x_n)$ that is constant.}
+                \step{two}{$(x_n)$ converges.}
+                \begin{proof}
+                    \pf\ Proposition \ref{proposition:Cauchy_subsequence_converges}.
+                \end{proof}
+            \end{proof}
+            \step{v}{\case{$A$ is infinite.}}
+            \begin{proof}
+                \step{one}{\pick\ an accumulation point $z$ of $A$. \prove{$x_n \rightarrow z$ as $n \rightarrow \infty$}}
+                \step{two}{\pflet{$\epsilon > 0$}}
+                \step{three}{\pick\ $N$ such that $\forall m,n \geq N. |x_m - x_n| < \epsilon / 2$}
+                \step{four}{\pflet{$c$ be the least positive element among $\epsilon / 2$, $|z - x_0|$, $|z - x_1|$, \ldots, $|z - x_{N-1}|$}}
+                \step{five}{\pick\ $w \in (z-c,z+c) \cap (A - \{z\})$}
+                \step{six}{\pick\ $n$ such that $w = a_n$}
+                \step{seven}{$n \geq N$}
+                \step{eight}{$\forall m \geq N. |x_m - z| < \epsilon$}
+                \begin{proof}
+                    \pf
+                    \begin{align*}
+                        |x_m - z| & \leq |x_m - w| + |w - z| \\
+                        & < \epsilon / 2 + c \\
+                        & \leq \epsilon
+                    \end{align*}
+                \end{proof}
+            \end{proof}
+        \end{proof}
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{proposition}[Choice]
+    Let $F$ be an ordered field. Then $F \cong \mathbb{R}$ if and only if every bounded sequence in $F$ has a convergent subsequence.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{Every bounded sequence in $\mathbb{R}$ has a convergent subsequence.}
+    \begin{proof}
+        \step{a}{\pflet{$(a_n)$ be a bounded sequence in $\mathbb{R}$.}}
+        \step{b}{\pflet{$A = \{ a_n : n \in \mathbb{N} \}$}}
+        \step{c}{\case{$A$ is finite.}}
+        \begin{proof}
+            \pf\ In this case, $(a_n)$ has a subsequence that is constant, hence convergent.
+        \end{proof}
+        \step{d}{\case{$A$ is infinite.}}
+        \begin{proof}
+            \step{i}{\pick\ an accumulation point $l$ for $A$.}
+            \step{ii}{For each $n$, \pick\ $r_n > r_{n-1}$ such that $a_{r_n} \in (l - 1/n, l + 1/n)$}
+            \begin{proof}
+                \pf\ This is possible because $(l - 1/n, l + 1/n) \cap A$ is infinite.
+            \end{proof}
+            \step{iii}{$a_{r_n} \rightarrow l$ as $n \rightarrow \infty$}
+        \end{proof}
+    \end{proof}
+    \step{2}{For any ordered field $F$, if every bounded sequence in $F$ has a convergent subsequence, then $F \cong \mathbb{R}$.}
+    \begin{proof}
+        \step{a}{\assume{Every bounded sequence in $F$ has a convergent subsequence.} \prove{Every bounded infinite set in $F$
+        has an accumulation point.}}
+        \step{b}{\pflet{$A$ be a bounded infinite set in $F$.}}
+        \step{c}{\pick\ an infinite sequence $(a_n)$ in $A$, all distinct.}
+        \step{d}{\pick\ a convergent subsequence $(a_{n_r})$ with limit $l$. \prove{$l$ is an accumulation point for $A$}}
+        \step{e}{\pflet{$\epsilon > 0$} \prove{$(l - \epsilon, l + \epsilon)$ intersects $A$ in a point other than $l$}}
+        \step{f}{\pick\ $R$ such that $\forall r \geq R. a_{n_r} \in (l - \epsilon, l + \epsilon)$}
+        \step{g}{Either $a_{n_R}$ or $a_{n_{R+1}}$ is in $(l - \epsilon, l + \epsilon) \cap (A - \{l\})$}
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{proposition}
+    Let $(a_n)$ be a bounded sequence in $\mathbb{R}$. Assume that any two convergent subsequences of $(a_n)$ have the same limit $l$.
+    Then $a_n \rightarrow l$ as $n \rightarrow \infty$.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{\assume{for a contradiction $a_n$ does not converge to $l$.}}
+    \step{2}{\pick\ $\epsilon > 0$ such that, for all $N$, there exists $n \geq N$ such that $|a_n - l| > \epsilon$}
+    \step{3}{\pick\ an increasing sequence $(n_r)$ such that $|a_{n_r} - l| > \epsilon$}
+    \step{4}{\pick\ a convergent subsequence $s$ of $(a_{n_r})$}
+    \step{5}{$s$ converges to $l$}
+    \qedstep
+    \begin{proof}
+        \pf\ This contradicts \stepref{3}.
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{proposition}
+    Let $F$ be an ordered field. Then $F \cong \mathbb{R}$ if and only if the compact subsets of $F$ are exactly the closed bounded subsets
+    of $F$.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{Every compact subset of $\mathbb{R}$ is closed.}
+    \begin{proof}
+        \step{a}{\pflet{$A \subseteq \mathbb{R}$ be compact.} \prove{$F - A$ is open.}}
+        \step{b}{\pflet{$z \in F - A$}}
+        \step{c}{For $n \in \mathbb{Z}^+$, \pflet{$I_n = \{ w \in F : |w - z| > 1/n \}$}}
+        \step{d}{\pflet{$\mathcal{B} = \{ I_n : n \in \mathbb{Z}^+ \}$}}
+        \step{e}{$\mathcal{B}$ is an open covering of $A$}
+        \step{f}{\pick\ a finite subcovering $\{ I_{n_1}, \ldots, I_{n_k} \}$}
+        \step{g}{\pflet{$m = \max(n_1, \ldots, n_k)$}}
+        \step{h}{$\forall w \in A. |w-z|>1/m$}
+        \step{i}{$(z-1/m,z+1/m) \subseteq F - A$}
+    \end{proof}
+    \step{2}{Every compact subset of $\mathbb{R}$ is bounded.}
+    \begin{proof}
+        \step{a}{\pflet{$A \subseteq \mathbb{R}$ be compact.}}
+        \step{b}{$\{ (-n,n) : n \in \mathbb{Z}^+ \}$ is an open covering of $A$}
+        \step{c}{\pick\ a finite subcovering $\{ (-n_1,n_1), \ldots, (-n_k,n_k) \}$}
+        \step{d}{\pflet{$m = \max(n_1, \ldots, n_k)$}}
+        \step{e}{$A \subseteq (-m,m)$}
+    \end{proof}
+    \step{3}{Every closed bounded subset of $\mathbb{R}$ is compact.}
+    \begin{proof}
+        \step{a}{\pflet{$A \subseteq \mathbb{R}$ be closed and bounded.}}
+        \step{b}{\pflet{$\mathcal{B}$ be an open covering of $A$.}}
+        \step{c}{\pick\ $c, d \in \mathbb{R}$ such that $A \subseteq [c,d]$}
+        \step{d}{$\mathcal{B} \cup \{ F - A \}$ is an open covering of $[c,d]$}
+        \step{e}{\pick\ a finite subcovering $\mathcal{B}_1 \cup \{ F - A \}$}
+        \step{f}{$\mathcal{B}_1$ is a finite subset of $\mathcal{B}$ that covers $A$.}
+    \end{proof}
+    \step{4}{If the compact subsets of $F$ are exactly the closed bounded subsets then $F \cong \mathbb{R}$.}
+    \begin{proof}
+        \pf\ By Theorem \ref{theorem:complete_ordered_field} since the closed intervals in $F$ are compact.
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{proposition}
+    In any ordered field, any nested sequence of nonempty compact sets has nonempty intersection.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{\pflet{$F$ be an ordered field.}}
+    \step{2}{\pflet{$(B_n)$ be a nested sequence of nonempty compact sets.}}
+    \step{3}{\assume{$\bigcap_n B_n = \emptyset$}}
+    \step{4}{$\{ F - B_n : n \geq 2 \}$ is an open covering of $B_1$.}
+    \step{5}{\pick\ a finite subcovering $\{ F - B_{n_1}, \ldots, F - B_{n_k} \}$}
+    \step{6}{\pflet{$m = \max(n_1, \ldots, n_k)$}}
+    \step{7}{$B_{m+1} = \emptyset$}
+    \qedstep
+    \begin{proof}
+        \pf\ This contradicts \stepref{2}.
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{definition}[Connected]
+    Let $F$ be an ordered field and $A \subseteq F$. Then $A$ is \emph{connected} iff, whenever $A = B \cup C$ with $B$ and $C$ nonempty
+    and disjoint, then either $B$ contains an accumulation point of $C$ or $C$ contains an accumulation point of $B$.
+\end{definition}
+
+\begin{proposition}
+    Let $F$ be an ordered field. Then $F \cong \mathbb{R}$ if and only if every closed interval in $F$ is connected.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{Every closed interval in $\mathbb{R}$ is connected.}
+    \begin{proof}
+        \step{a}{\pflet{$[u,v] = B \cup C$ where $B$ and $C$ are nonempty and disjoint.}}
+        \step{b}{\assume{for a contradiction $B$ contains no accumulation point of $C$ and $C$ contains no accumulation point of $B$.}}
+        \step{c}{\assume{w.l.o.g. $u \in B$}}
+        \step{d}{$u$ is not an accumulation point of $C$.}
+        \step{e}{\pick\ an open interval $(w,z)$ containing $u$ that is disjoint from $C$ such that $z \leq v$.}
+        \step{f}{$[u,z) \subseteq B$}
+        \step{g}{\pflet{$W = \{ y \in [u,v] : [u,y) \subseteq B \}$}}
+        \step{h}{$W \neq \emptyset$}
+        \step{i}{$W$ is bounded above by $v$.}
+        \step{j}{\pflet{$d = \sup W$}}
+        \step{k}{$d \in [u,v]$}
+        \step{l}{$[u,d) \subseteq B$}
+        \step{m}{$d \notin B$}
+        \step{n}{$d \in C$}
+        \step{o}{$d$ is not an accumulation point of $B$}
+        \step{p}{\pick\ an open interval $(w_2,v_2)$ containing $d$ and disjoint from $B$}
+        \step{q}{$(w_2,v_2)$ intersects $[u,d)$}
+        \qedstep
+    \end{proof}
+    \step{2}{If every closed interval in $F$ is connected then $F \cong \mathbb{R}$.}
+    \begin{proof}
+        \step{a}{\assume{Every closed interval in $F$ is connected.}}
+        \step{b}{\pflet{$(A_1, A_2)$ be a cut in $F$.}}
+        \step{c}{\pick\ $u \in A_1$ and $v \in A_2$.}
+        \step{d}{\assume{w.l.o.g. $u$ is not the maximum of $A_1$ and $v$ is not the minimum of $A_2$.}}
+        \step{e}{\pflet{$B = A_1 \cap [u,v]$}}
+        \step{f}{\pflet{$C = A_2 \cap [u,v]$}}
+        \step{g}{$[u,v] = B \cup C$}
+        \step{h}{$B \neq \emptyset$}
+        \step{i}{$C \neq \emptyset$}
+        \step{j}{$B \cap C = \emptyset$}
+        \step{k}{\assume{w.l.o.g. $B$ contains an accumulation point of $C$.}}
+        \step{l}{\pick\ $z \in B$ that is an accumulation point of $C$.}
+        \step{m}{$z$ is the maximum of $A_1$}
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{corollary}
+    Let $F$ be an ordered field. Then the following are equivalent:
+    \begin{enumerate}
+        \item $F \cong \mathbb{R}$
+        \item Every interval in $F$ is connected.
+        \item The connected subsets of $F$ are exactly the intervals.
+    \end{enumerate}
+\end{corollary}
+
+\begin{proposition}
+    \label{proposition:connected_union}
+    Let $F$ be an ordered field.
+    Let $\mathcal{A}$ be a set of connected subsets of $F$ such that any two elements of $\mathcal{A}$ intersect. Then
+    $\bigcup \mathcal{A}$ is connected.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{\assume{for a contradiction $\bigcup \mathcal{A} = B \cup C$ where $B$ and $C$ are nonempty, disjoint, and neither contains
+    an accumulation point of the other.}}
+    \step{2}{\pick\ $b \in B$ and $c \in C$}
+    \step{3}{\pick\ $A_1, A_2 \in \mathcal{A}$ such that $b \in A_1$ and $c \in A_2$.}
+    \step{4}{\pick\ $w \in A_1 \cap A_2$}
+    \step{5}{\assume{w.l.o.g. $w \in B$}}
+    \step{6}{\pflet{$B_1 = B \cap A_2$}}
+    \step{7}{\pflet{$C_1 = C \cap A_2$}}
+    \step{8}{$A_2 = B_1 \cup C_1$}
+    \step{9}{$B_1 \neq \emptyset$}
+    \begin{proof}
+        \pf\ Since $w \in B_1$.
+    \end{proof}
+    \step{10}{$C_1 \neq \emptyset$}
+    \begin{proof}
+        \pf\ Since $c \in C_1$.
+    \end{proof}
+    \step{11}{$B_1 \cap C_1 = \emptyset$}
+    \step{12}{Neither of $B_1$ and $C_1$ contains an accumulation point of the other.}
+    \qedstep
+    \begin{proof}
+        \pf\ This contradicts the fact that $A_2$ is connected.
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{proposition}
+    The closure of a connected set is connected.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{\pflet{$F$ be an ordered field.}}
+    \step{2}{\pflet{$A \subseteq F$ be connected.}}
+    \step{3}{\pflet{$\overline{A} = B \cup C$ where $B$ and $C$ are nonempty and disjoint.}}
+    \step{4}{\pflet{$B_1 = A \cap B$}}
+    \step{5}{\pflet{$C_1 = A \cap C$}}
+    \step{6}{$A = B_1 \cup C_1$ and $B_1$ and $C_1$ are disjoint.}
+    \step{7}{\case{$B_1$ and $C_1$ are both nonempty.}}
+    \begin{proof}
+        \step{a}{\assume{w.l.o.g. $B_1$ contains an accumulation point of $C_1$}}
+        \step{b}{\pick\ $z \in B_1$ that is an accumulation point of $C_1$}
+        \step{c}{$z \in B$ and $z$ is an accumulation point of $C$}
+    \end{proof}
+    \step{8}{\case{$B_1 = \emptyset$}}
+    \begin{proof}
+        \step{a}{\pick\ $z \in B$}
+        \step{b}{$z \in \overline{A} - A$}
+        \step{c}{$z$ is an accumulation point of $A$.}
+        \step{d}{$z$ is an accumulation point of $C$.}
+    \end{proof}
+    \step{9}{\case{$C_1 = \emptyset$}}
+    \begin{proof}
+        \pf\ Similar.
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{definition}[Connected Component]
+    A \emph{connected component} of an ordered field is a maximal connected subset.
+\end{definition}
+
+\begin{proposition}
+    Two distinct connected components of an ordered field are disjoint.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{\pflet{$F$ be an ordered field.}}
+    \step{2}{\pflet{$A$ and $B$ be connected components of $F$.}}
+    \step{3}{\assume{$A \cap B \neq \emptyset$}}
+    \step{4}{$A \cup B$ is connected.}
+    \begin{proof}
+        \pf\ Proposition \ref{proposition:connected_union}.
+    \end{proof}
+    \step{5}{$A = A \cup B = B$}
+    \qed
+\end{proof}
+
+\begin{proposition}
+    An ordered field is the union of its connected components.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{\pflet{$F$ be an ordered field.}}
+    \step{2}{\pflet{$x \in F$}}
+    \step{3}{\pflet{$\mathcal{A}$ be the set of connected subsets of $F$ that contain $x$}}
+    \step{4}{$\bigcup \mathcal{A}$ is connected}
+    \step{5}{$\bigcup \mathcal{A}$ is a connected component.}
+    \step{6}{$x \in \bigcup \mathcal{A}$}
+    \qed
+\end{proof}
+
+\begin{proposition}
+    Connected components are closed.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{\pflet{$F$ be an ordered field.}}
+    \step{2}{\pflet{$C \subseteq F$ be a connected component.}}
+    \step{3}{$\overline{C}$ is connected.}
+    \step{4}{$C = \overline{C}$}
+    \step{5}{$C$ is closed.}
+    \qed
+\end{proof}
+
+\begin{proposition}
+    Let $A$ be an open subset of $\mathbb{R}$. Every connected component of $A$ is open.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{\pflet{$C \subseteq A$ be a connected component of $A$.}}
+    \step{2}{\pflet{$z \in C$}}
+    \step{3}{\pick\ an open interval $I$ such that $z \in I \subseteq A$.}
+    \step{4}{$I$ is connected.}
+    \step{5}{$C \cup I$ is connected.}
+    \step{6}{$C = C \cup I$}
+    \step{6}{$z \in I \subseteq C$}
+    \qed
+\end{proof}
+
+\begin{corollary}
+    Let $A$ be an open subset of $\mathbb{R}$. Then the connected components of $A$ are open intervals.
+\end{corollary}
+
+\begin{corollary}
+    Every open subset of $\mathbb{R}$ is a union of disjoint open intervals.
+\end{corollary}
+
+\end{document}

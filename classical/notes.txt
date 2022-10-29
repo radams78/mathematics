@@ -1,4 +1,5 @@
 * H. Enderton. Elements of Set Theory
+
 * E. Mendelson. Number Systems and the Foundations of Analysis
 A. Gleason. Fundamentals of Abstract Analysis
 G. Cantor. Contributions to the Founding of the Theory of Transfinite Numbers
@@ -9,6 +10,7 @@ T. Jech. The Axiom of Choice
 K. Kuratowski, A. Mostowski. Set Theory
 W. Sierpinski. Cardinal and Ordinal Numbers
 J. van Heijenoort. From Frege to Godel
+
 S. Barker. Philosophy of Mathematics
 P. Benacerraf. What Numbers Could Not Be. Philos. Rev. 74, 47-74
 R. Dedekind. Essays on the Theory of Numbers
@@ -32,3 +34,10 @@ R. Baer. Dichte, Archimedizität und Starrheit geordneter Körper. Math. Ann. 18
 D. Scott. On completing ordered fields, Applications of Model Theory, Proc. Int. Symp. Califonia Inst. Technol. (1967) pp. 274-278
 E. Landau. Foundations of Analysis.
 J. Halfstrom. Introduction to Analysis and Abstract Algebra.
+Yu. E. Borovskii. The independence of the Archimedean axiom. Uspehi Mat. Nauk 11 (1956) pp. 161-167
+G. Cantor. Über die Ausdehnung eines Satzes aus der Theorie der trigonometrischen Reihen, Math. Ann. 5 (1872) pp. 123-132
+E. Heine. Die Elemente der Functionenlehre, J. Reine Angew. Math. 74 (1872) pp. 172-188
+R. Sikorski. On an algebraic ordered field. C. R. Soc. Sci. Lett. Varsovie Cl. III 41 (1948) pp. 69-96
+K. Hauschild. Cauchyfolgen höheren Typus in angeordneten Körpren, Z. Math. Logik Grundlagen Math. 13 (1967), pp. 55-66
+J. Olmsted. The Real Number System
+K. Anderson, D. Hall. Sets. Sequences and Mappings

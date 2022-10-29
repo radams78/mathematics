@@ -1,3 +1,5 @@
+* F. W. Lawvere, S. Schanuel. Conceptual Mathematics
+
 J. Bell. A Primer of Infinitesimal Analysis
 M. la Palme Reyes, G. E. Reyes, H. Zolfaghari. Generic Figures and their Glueings
 R. Lavendhomme. Basic Concepts of Synthetic Differential Geometry

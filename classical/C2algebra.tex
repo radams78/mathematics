@@ -24,6 +24,7 @@
 \newtheorem{example}[axiom]{Example}
 
 \newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
+\newcommand{\id}[1]{\ensuremath{\mathrm{id}_{#1}}}
 
 \begin{document}
     \maketitle
@@ -1607,6 +1608,264 @@
         \qed
     \end{proof}
 
+    \begin{definition}[Bounded]
+        Let $F$ be an ordered field and $X$ a set. A function $f : X \rightarrow F$ is \emph{bounded} if and
+        only if there exists $b \in F$ such that $\forall x \in X. |f(x)| < b$.
+    \end{definition}
+
+    \section{Convergence}
+
+    \begin{definition}[Limit]
+        Let $F$ be an ordered field. Let $(a_n)_n$ be a sequence in $F$ and $b \in F$. Then we say $b$ is the
+        \emph{limit} of $(a_n)$ or $(a_n)$ \emph{converges} to $b$, and write $a_n \rightarrow b$ as
+        $n \rightarrow \infty$ or 
+        $b = \lim_{n \rightarrow \infty} a_n$, if and only if,
+        for every positive $\epsilon \in F$, there exists $N \in \mathbb{N}$ such that
+        $\forall n \geq N, |a_n - b| < \epsilon$.
+    \end{definition}
+
+    \begin{proposition}
+        In any ordered field, a sequence has at most one limit.
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$F$ be an ordered field.}}
+        \step{2}{\pflet{$b$ and $c$ be limits of the sequence $(a_n)$.}}
+        \step{3}{\assume{$b \neq c$}}
+        \step{4}{\pflet{$\epsilon = |b-c|/2$}}
+        \step{5}{$\epsilon > 0$}
+        \step{6}{\pick\ $M \in \mathbb{N}$ such that $\forall n \geq M. |a_n - b| < \epsilon$}
+        \step{7}{\pick\ $N \in \mathbb{N}$ such that $\forall n \geq N. |a_n - c| < \epsilon$}
+        \step{8}{$|b - c| < 2 \epsilon$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                |b-c| & \leq |a_{\max(M,N)} - b| + |a_{\max(M,N)} - c| \\
+                & < \epsilon + \epsilon
+            \end{align*}
+        \end{proof}
+        \qedstep
+        \begin{proof}
+            \pf\ This contradicts \stepref{4}.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{proposition}
+        In an ordered field $F$, $1/n \rightarrow 0$ as $n \rightarrow \infty$ if and only if $F$ is
+        Archimedean.
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{If $1/n \rightarrow 0$ as $n \rightarrow \infty$ then $F$ is Archimedean.}
+        \begin{proof}
+            \step{a}{\assume{$1/n \rightarrow 0$ as $n \rightarrow \infty$}}
+            \step{b}{\assume{for a contradiction $u$ is an upper limit for the set of integers in $F$.}}
+            \step{c}{\pick\ $N \in \mathbb{N}$ such that $\forall n \geq N. |1/n| < 1/u$}
+            \step{d}{$n > u$}
+            \qedstep
+            \begin{proof}
+                \pf\ This contradicts \stepref{b}.
+            \end{proof}
+        \end{proof}
+        \step{2}{If $F$ is Archimedean then $1/n \rightarrow 0$ as $n \rightarrow \infty$.}
+        \begin{proof}
+            \step{a}{\assume{$F$ is Archimedean}}
+            \step{b}{\pflet{$\epsilon > 0$}}
+            \step{c}{\pick\ $N \in \mathbb{Z}^+$ such that $N > 1 / \epsilon$}
+            \step{d}{$\forall n \geq N. |1/n| < \epsilon$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        If $a_n \rightarrow l$ and $b_n \rightarrow m$ then $a_n + b_n \rightarrow m$ as $n \rightarrow
+        \infty$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\epsilon > 0$}}
+        \step{2}{\pick\ $N \in \mathbb{N}$ such that $\forall n \geq N. |a_n - l| < \epsilon / 2$
+        and $\forall n \geq N. |b_n - m| < \epsilon / 2$}
+        \step{3}{$\forall n \geq N. |(a_n + b_n) - (l + m)| < \epsilon$}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        If $a_n \rightarrow l$ and $b_n \rightarrow m$ then $a_n b_n \rightarrow lm$ as $n \rightarrow \infty$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\epsilon > 0$}}
+        \step{2}{\pick\ $N$ such that, for all $n \geq N$, we have:
+        \begin{itemize}
+            \item $|a_n - l| < 1$
+            \item if $m \neq 0$ then $|a_n - l| < \epsilon / 3|m|$
+            \item $|b_n - m| < \epsilon / 3$
+            \item if $l \neq 0$ then $|b_n - m| < \epsilon / 3|l|$
+        \end{itemize}
+        }
+        \step{3}{\pflet{$n \geq N$}}
+        \step{4}{$|a_n b_n - lm| < \epsilon$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                |a_n b_n - lm| & = |(a_n - l) (b_n - m) + l(b_n - m) + m(a_n - l)| \\
+                & \leq |a_n - l| |b_n - m| + |l| |b_n - m| + |m| |a_n - l| \\
+                & < \epsilon / 3 + \epsilon / 3 + \epsilon / 3 \\
+                & = \epsilon
+            \end{align*}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        If $a_n \rightarrow l$ as $n \rightarrow \infty$, and we have $\forall n. a_n \neq 0$ and $l \neq 0$,
+        then $1/a_n \rightarrow 1/l$ as $n \rightarrow \infty$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\epsilon > 0$}}
+        \step{2}{\pick\ $N$ such that, for all $n \geq N$, we have $|a_n - l| < |l|^2 \epsilon / 2$
+        and $|a_n - l| < |l| / 2$}
+        \step{3}{\pflet{$n \geq N$}}
+        \step{4}{$|a_n| \geq |l|/2$}
+        \step{5}{$|1/a_n - 1/l| < \epsilon$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                |1/a_n - 1/l| & = |a_n - l| / |a_n||l| \\
+                & < \frac{|l|^2 \epsilon / 2}{|l|^2 / 2} \\
+                & = \epsilon
+            \end{align*}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{proposition}
+        Let $F$ be an ordered field. Let $(a_n)$ be a sequence in $F$ and $(a_{n_r})$ a subsequence of
+        $(a_n)$. Let $l \in F$. If $a_n \rightarrow l$ as $n \rightarrow \infty$ then $a_{n_r} \rightarrow
+        l$ as $r \rightarrow \infty$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\epsilon > 0$}}
+        \step{2}{\pick\ $N$ such that $\forall n \geq N. |a_n - l| < \epsilon$}
+        \step{3}{\pick\ $R$ such that $n_R \geq N$}
+        \step{4}{$\forall r \geq R. |a_{n_r} - l| < \epsilon$}
+        \qed
+    \end{proof}
+    
+    \begin{definition}[Cauchy Sequence]
+        Let $F$ be an ordered field. A sequence $(a_n)$ in $F$ is \emph{Cauchy} if and only if, for every
+        $\epsilon > 0$, there exists $N$ such that $\forall m,n \geq N. |a_m - a_n| < \epsilon$.
+    \end{definition}
+
+    \begin{proposition}
+        Every convergent sequence is Cauchy.
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$a_n \rightarrow l$ as $n \rightarrow \infty$}}
+        \step{2}{\pflet{$\epsilon > 0$}}
+        \step{3}{\pick\ $N$ such that $\forall n \geq N. |a_n - l| < \epsilon / 2$}
+        \step{4}{$\forall m,n \geq N. |a_m - a_n| < \epsilon$}
+        \qed
+    \end{proof}
+
+    \begin{proposition}
+        \label{prop:Cauchy_bounded}
+        Every Cauchy sequence is bounded.
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$(a_n)$ be a Cauchy sequence.}}
+        \step{2}{\pick\ $N$ such that $\forall m,n \geq N. |a_m - a_n| < 1$}
+        \step{3}{$\forall n. |a_n| < \max(|a_1| + 1, \ldots, |a_{N-1}| + 1, |a_N| + 1)$}
+        \qed
+    \end{proof}
+
+    \begin{corollary}
+        Every convergent sequence is bounded.
+    \end{corollary}
+    
+    \begin{proposition}
+        If $(a_n)$ and $(b_n)$ are Cauchy sequences then so is $(a_n + b_n)$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\epsilon > 0$}}
+        \step{2}{\pick\ $N$ such that, for all $m, n \geq N$, we have $|a_m - a_n| < \epsilon/2$
+        and $|b_m - b_n| < \epsilon / 2$}
+        \step{3}{For all $m, n \geq N$ we have $|(a_m + b_m) - (a_n + b_n)| < \epsilon$}
+        \qed
+    \end{proof}
+
+    \begin{proposition}
+        If $(a_n)$ and $(b_n)$ are Cauchy sequences then so is $(a_n b_n)$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\epsilon > 0$}}
+        \step{2}{\pick\ $u, v \in F$ such that, for all $n$, $|a_n| < u$ and $|b_n| < v$}
+        \begin{proof}
+            \pf\ Proposition \ref{prop:Cauchy_bounded}.
+        \end{proof}
+        \step{3}{\pick\ $N$ such that, for all $m, n \geq N$, we have $|a_m - a_n| < \epsilon / 2 v$
+        and $|b_m - b_n| < \epsilon / 2u$}
+        \step{4}{\pflet{$m, n \geq N$}}
+        \step{5}{$|a_m b_m - a_n b_n| < \epsilon$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                |a_m b_m - a_n b_n| & \leq |a_m| |b_m - b_n| + |a_m - a_n| |b_n| \\
+                & < \epsilon / 2 + \epsilon / 2 \\
+                & = \epsilon
+            \end{align*}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{proposition}
+        A subsequence of a Cauchy sequence is Cauchy.
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$(a_n)$ be a Cauchy sequence.}}
+        \step{2}{\pflet{$(a_{n_r})$ be a subsequence of $(a_n)$.}}
+        \step{3}{\pflet{$\epsilon > 0$}}
+        \step{4}{\pick\ $N$ such that $\forall m,n \geq N. |a_m - a_n| < \epsilon$}
+        \step{5}{\pick\ $R$ such that $n_R \geq N$}
+        \step{6}{$\forall r,s \geq R. |a_{n_r} - a_{n_s}| < \epsilon$}
+        \qed
+    \end{proof}
+
+    \begin{proposition}
+        \label{proposition:Cauchy_subsequence_converges}
+        Let $F$ be an ordered field. Let $(a_n)$ be a Cauchy sequence in $F$. Let $(a_{n_r})$ be a
+        subsequence of $(a_n)$. Let $l \in F$. If $a_{n_r} \rightarrow l$ as $r \rightarrow \infty$
+        then $a_n \rightarrow l$ as $n \rightarrow \infty$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\epsilon > 0$}}
+        \step{2}{\pick\ $R$ such that $\forall r \geq R. |a_{n_r} - l| < \epsilon / 2$}
+        \step{3}{\pick\ $N \geq n_R$ such that $\forall m,n \geq N. |a_m - a_n| < \epsilon / 2$}
+        \step{4}{$\forall n \geq N. |a_n - l| < \epsilon$}
+        \qed
+    \end{proof}
     \section{The Real Numbers}
 
     \begin{definition}[Dedekind Cut]
@@ -2558,4 +2817,353 @@
         \step{3}{$\forall n \in \omega. f(n) \neq z$}
         \qed
     \end{proof}
+
+    \begin{lemma}
+        \label{lm:Cauchy_complete}
+        In an ordered field $F$, if every nested sequence of closed intervals has a nonempty intersection,
+        then $F$ is Cauchy complete.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{a}{\assume{Every nested sequence of closed intervals has a nonempty intersection.}}
+        \step{b}{\pflet{$(x_n)$ be a Cauchy sequence in $F$.}}
+        \step{c}{\assume{w.l.o.g. $x_n \neq x_{n+1}$ for all $n$.}}
+        \step{d}{For all $n$, \pflet{$\epsilon_n = |x_{n+1} - s_n|$}}
+        \step{e}{$\epsilon_n \rightarrow 0$ as $n \rightarrow \infty$}
+        \step{f}{\pick\ sequences $(a_n)$ and $(b_n)$ in $F$ and a strictly increasing sequence of natural numbers
+        $(k_n)$ such that $([a_n,b_n])$ is a nested sequence
+        of closed intervals and $\forall j. \forall k \geq k_j. a_j < x_k < b_j$}
+        \begin{proof}
+            \step{i}{\assume{We have picked $[a_1, b_1] \supseteq \cdots \supseteq [a_N,b_N]$
+            and $k_1$, \ldots, $k_N$ that satisfty these conditions.}}
+            \step{ii}{\pick\ $k_{N+1} > k_N$ such that $\forall m,n \geq k_{N+1}. |x_m - x_n| <
+            \epsilon_{N+1}/2$}
+            \step{iii}{\pflet{$a_{N+1} = \max(a_N, x_{k_{N+1}} - \epsilon_{N+1}/2)$}}
+            \step{iv}{\pflet{$b_{N+1} = \min(b_N, x_{k_{N+1}} + \epsilon_{N+1}/2)$}}
+            \step{v}{$\forall n \geq k_{N+1}. a_{N+1} < x_n < b_{N+1}$}
+        \end{proof}
+        \step{g}{\pick\ $c \in \bigcap_n [a_n,b_n]$}
+        \begin{proof}
+            \pf\ By \stepref{a}
+        \end{proof}
+        \step{h}{$x_n \rightarrow c$ as $n \rightarrow \infty$}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Formal Laurent Series]
+        Let $F$ be an ordered field. A \emph{formal Laurent series} is a family $(a_n)_{n \in \mathbb{Z}}$ of
+        elements of $F$ such that $\exists N. \forall n < N. a_n = 0$. We write the series as
+        $\sum_{n=-\infty}^\infty a_n x^n$.
+
+        We make the set $L$ of formal Laurent series into an ordered field by defining:
+        \begin{align*}
+            \sum_{n=\infty}^\infty a_n x^n + \sum_{n=\infty}^\infty b_n x^n
+            & = \sum_{n=\infty}^\infty (a_n + b_n) x^n \\
+            \left(\sum_{n=\infty}^\infty a_n x^n \right) \left( \sum_{n=\infty}^\infty b_n x^n \right)
+            & = \sum_{n=\infty}^\infty \sum_{i + j = n} a_i b_j x^n
+        \end{align*}
+        We define $\sum_{n=-\infty}^\infty a_n x^n$ is positive iff $a_N$ is positive, where $N$ is the least integer such that
+        $a_N \neq 0$.
+    \end{definition}
+
+    \begin{proposition}
+        For any ordered field $F$, the field of formal Laurent series is not Archimedean.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ The series $x$ is larger than every integer. \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any ordered field $F$, the field of formal Laurent series is Cauchy complete.
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$L$ be the field of formal Laurent series.}}
+        \step{2}{\pflet{$(f_m)$ be a Cauchy sequence in $L$.}}
+        \step{3}{For every integer $n$, \pick\ $a_n \in F$ such that there exists $M$ such that, for all $m \geq M$, the coefficient of
+        $x^n$ in $f_m$ is $a_n$.}
+        \begin{proof}
+            \step{a}{\pflet{$n$ be an integer.}}
+            \step{b}{\pick\ $M$ such that, for all $i,j \geq M$, we have $|f_i - f_j| < x^{n+1}$}
+            \step{c}{\pflet{$a_n$ be the coefficient of $x^n$ in $f_M$} \prove{For all $m \geq M$, the coefficient of $x^n$ in $f_m$
+            is $a_n$}}
+            \step{d}{\pflet{$m \geq M$}}
+            \step{e}{$|f_m - f_M| < x^{n+1}$}
+            \step{f}{For all $k \leq n$, the coefficient of $x^k$ is $|f_m - f_M|$ is 0.}
+            \step{g}{The coefficient of $x^n$ is $f_m$ is $a_n$.}
+        \end{proof}
+        \step{4}{$\sum_n a_n x^n \in L$}
+        \begin{proof}
+            \step{a}{\pick\ $M$ such that, for all $i, j \geq M$, we have $|f_i - f_j| < 1$}
+            \step{b}{\pick\ $N$ such that, for all $n \leq N$, the coefficient of $x^n$ in $f_M$ is 0.}
+            \step{c}{For all $m \geq M$ and $n \leq N$, the coefficient of $x^n$ in $f_m$ is 0.}
+            \step{d}{For all $n \leq N$, we have $a_n = 0$}
+        \end{proof}
+        \step{5}{$f_m \rightarrow \sum_n a_n x^n$ as $m \rightarrow \infty$}
+        \begin{proof}
+            \step{a}{\pflet{$\epsilon > 0$}}
+            \step{b}{\pflet{$N$ be least such that the coefficient of $x^N$ in $\epsilon$ is nonzero}}
+            \step{c}{\pick\ $M$ such that, for all $m \geq M$ and $n \leq N$, the coefficient of $x^n$ in $f_m$ is $a_n$}
+            \step{d}{\pflet{$m \geq M$}}
+            \step{e}{$|f_m - \sum_n a_n x^n| \leq x^{N+1}$}
+            \step{f}{$|f_m - \sum_n a_n x^n| < \epsilon$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{proposition}
+        Let $F$ be an ordered field. In the field of formal Laurent series, not every sequence of closed intervals has a nonempty
+        intersection.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ The sequence of intervals $([n, 1/nx])$ has empty intersection. \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any ordered field $F$, the field of rational functions is not Cauchy complete.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ The sequence $(x/n)$ is Cauchy but does not converge. \qed
+    \end{proof}
+
+    \begin{theorem}[Choice]
+        \label{theorem:complete_ordered_field}
+        Let $F$ be an ordered field. The following are equivalent.
+        \begin{enumerate}
+            \item $F$ is complete.
+            \item Every bounded increasing sequence in $F$ converges to its supremum, and every bounded decreasing sequence in $F$
+            converges to its infimum.
+            \item Every bounded monotonic sequence in $F$ converges.
+            \item $F$ is Archimedean and every nested sequence of closed intervals has a nonempty intersection.
+            \item $F$ is Archimedean and Cauchy complete.
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{$1 \Rightarrow 2$}
+        \begin{proof}
+            \step{a}{\assume{$F$ is complete.}}
+            \step{b}{Every bounded increasing sequence in $F$ converges to its supremum.}
+            \begin{proof}
+                \step{i}{\pflet{$(a_n)$ be a bounded increasing sequence.}}
+                \step{ii}{\pflet{$s$ be the supremum.}}
+                \step{iii}{\pflet{$\epsilon > 0$}}
+                \step{iv}{\pick\ $N$ such that $a_N > s - \epsilon$}
+                \step{v}{$\forall n \geq N. |a_n - s| < \epsilon$}
+            \end{proof}
+            \step{c}{Every bounded decreasing sequence in $F$ converges to its infimum.}
+            \begin{proof}
+                \step{i}{\pflet{$(a_n)$ be a bounded decreasing sequence with infimum $l$.}}
+                \step{ii}{$(-a_n)$ is a bounded increasing sequence with supremum $-l$.}
+                \step{iii}{$-a_n \rightarrow -l$ as $n \rightarrow \infty$.}
+                \step{iv}{$a_n \rightarrow l$ as $n \rightarrow \infty$.}
+            \end{proof}
+        \end{proof}
+        \step{2}{$2 \Rightarrow 3$}
+        \begin{proof}
+            \pf\ Trivial.
+        \end{proof}
+        \step{3}{$3 \Rightarrow 4$}
+        \begin{proof}
+            \step{a}{\assume{3}}
+            \step{b}{$F$ is Archimedean.}
+            \begin{proof}
+                \step{i}{\assume{for a contradiction the set of integers in $F$ is bounded.}}
+                \step{ii}{$(n)$ is a bounded increasing sequence in $F$.}
+                \step{iii}{\pflet{$n \rightarrow l$ as $n \rightarrow \infty$.}}
+                \step{iv}{\pick\ $N$ such that $\forall n \geq N. |n-l| < 1$}
+                \step{v}{$N > l - 1$}
+                \step{vi}{$N + 2 > l + 1$}
+                \qedstep
+                \begin{proof}
+                    \pf\ This contradicts \stepref{iv}.
+                \end{proof}
+            \end{proof}
+            \step{c}{Every nested sequence of closed intervals has a nonempty intersection.}
+            \begin{proof}
+                \step{i}{\pflet{$([a_n, b_n])$ be a nested sequence of closed intervals.}}
+                \step{ii}{$(a_n)$ is a bounded increasing sequence.}
+                \step{iii}{\pflet{$a_n \rightarrow c$ as $n \rightarrow \infty$}}
+                \step{iv}{$c \in [a_n, b_n]$ for all $n$}
+            \end{proof}
+        \end{proof}
+        \step{3}{$4 \Rightarrow 5$}
+        \begin{proof}
+            \pf\ Lemma \ref{lm:Cauchy_complete}.
+        \end{proof}
+        \step{4}{$5 \Rightarrow 1$}
+        \begin{proof}
+            \step{a}{\assume{5}}
+            \step{b}{\pflet{$A \subseteq F$ be nonempty and bounded above.}}
+            \step{c}{\pflet{$B = \{ x \in F : \exists y \in A. x \leq y \}$}}
+            \step{d}{$A$ and $B$ have the same upper bounds.}
+            \step{e}{$B$ is closed downwards.}
+            \step{f}{\pick\ $z \in B$}
+            \step{g}{For any positive integer $n$, \pflet{$k_n$ be the least positive integer such that
+            $z + k_n / n$ is an upper bound of $B$}}
+            \begin{proof}
+                \step{i}{\pflet{$n$ be a positive integer.}}
+                \step{ii}{\pick\ an upper bound $u$ of $B$.}
+                \step{iii}{\pick\ an integer $k > n(u-z)$.}
+                \begin{proof}
+                    \pf\ Since $F$ is Archimedean (\stepref{a}).
+                \end{proof}
+                \step{iv}{$z + k/n > u$}
+                \step{v}{$z + k/n$ is an upper bound of $B$.}
+            \end{proof}
+            \step{h}{For any positive integer $n$, \pflet{$x_n = z + (k_n - 1)/n$ and $u_n = x_n + 1/n$}}
+            \step{I}{For all $n$, $u_n$ is an upper bound of $B$.}
+            \step{j}{For all $n$, $x_n \in B$}
+            \step{k}{For all $n$, $x_n$ is not an upper bound of $B$.}
+            \step{l}{For all $m$ and $n$, $x_m < u_n$.}
+            \step{m}{For all $m$ and $n$, $x_m - x_n < 1/n$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    x_m - x_n & < u_n - x_n & (\text{\stepref{l}}) \\
+                    & = x_n + 1/n - x_n \\
+                    & = 1/n
+                \end{align*}
+            \end{proof}
+            \step{n}{$(x_n)$ is Cauchy.}
+            \step{o}{\pflet{$x_n \rightarrow c$ as $n \rightarrow \infty$}}
+            \step{p}{$c$ is an upper bound of $B$.}
+            \begin{proof}
+                \step{i}{\assume{for a contradiction $c$ is not an upper bound of $B$.}}
+                \step{ii}{\pick\ $b \in B$ with $c < b$.}
+                \step{iii}{\pick\ $N$ such that $1/N < (b-c)/2$ and $\forall n \geq N. |x_n - c| < (b-c)/2$}
+                \step{iv}{$x_N < (c-b)/2$}
+                \step{v}{$u_N < b$}
+                \qedstep
+                \begin{proof}
+                    \pf\ This contradicts \stepref{I}.
+                \end{proof}
+            \end{proof}
+            \step{q}{$c$ is the least upper bound of $B$.}
+            \begin{proof}
+                \step{i}{\pflet{$v$ be any upper bound of $B$.}}
+                \step{ii}{\assume{for a contradiction $v < c$.}}
+                \step{iii}{\pick\ $N$ such that $\forall n \geq N. |c - x_n| < c - v$}
+                \step{iv}{$v < x_n$}
+                \qedstep
+                \begin{proof}
+                    \pf\ This contradicts \stepref{j} and \stepref{i}.
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{proposition}
+        There exists a non-Archimedean ordered field in which every nested sequence of closed intervals has non-empty intersection. Further,
+        this field can be chosen so that it has cardinality $2^{\aleph_0}$.
+    \end{proposition}
+
+    \begin{proof}
+        Proof from R. O. Davies, Solution to advanced problem 5112, Amer. Math. Monthly 72 (1965) 85–87, available at http://dx.doi.org.proxy.lib.chalmers.se/10.2307/2313022.
+        \pf
+        \step{1}{For any chain $\mathcal{C}$ of ordered field, $\bigcup \mathcal{C}$ can be made into an ordered field in a unique way
+        such that every element of $\mathcal{C}$ is a sub-ordered field of $\bigcup \mathcal{C}$}
+        \step{2}{For any ordered field $F$ and any strictly increasing sequence $(a_n)$ in $F$, there exists an extension $F'$ of $F$
+        and an element $x \in F'$ such that $\forall n. a_n < x$ and, for every upper bound $b$ for $(a_n)$ in $F$, we have $x < b$.}
+        \begin{proof}
+            \pf\ Take $F'$ to be the field of rational functions with coefficients in $F$ ordered by: $f(x)$ is positive iff
+            there exists $N$ such that, for all $n \geq N$, $f(a_n)$ is positive.
+        \end{proof}
+        \step{3}{For any ordered field $F$, there exists an extension $F^*$ such that, for every increasing sequence $(a_n)$ in $F$,
+        there exists an element $x \in F^*$ such that $\forall n. a_n < x$ and, for every upper bound $b$ for $(a_n)$ in $F$,
+        we have $x < b$}
+        \begin{proof}
+            \pf\ From \stepref{1} and \stepref{2}.
+        \end{proof}
+        \step{4}{Define an ordered field $F_\alpha$ for $\alpha$ an ordinal by transfinite recursion thus:
+        \begin{align*}
+            F_0 & = \mathbb{Q} \\
+            F_{\alpha + 1} & = F_\alpha^* \\
+            F_\lambda & = \bigcup_{\alpha < \lambda} F_\alpha & (\text{$\lambda$ a limit ordinal})
+        \end{align*}}
+        \step{5}{For all $\alpha > 0$, $F_\alpha$ is non-Archimedean.}
+        \step{6}{Any nested sequence of closed intervals in $F_{\omega_1}$ has nonempty intersection.}
+        \begin{proof}
+            \step{a}{\pflet{$([a_n, b_n])$ be a nested sequence of closed intervals in $F_{\omega_1}$}}
+            \step{b}{\pflet{$\gamma$ be the least ordinal such that $\forall n. a_n, b_n \in F_\gamma$}}
+            \step{c}{There exists $x \in F_{\gamma + 1}$ such that $\forall n. a_n < x < b_n$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Cauchy Completion]
+        Let $F$ be an ordered field. The \emph{Cauchy completion} of $F$ is the set $C_F$ of Cauchy sequences in $F$ quotiented by:
+        $(a_n) \sim (b_n)$ iff $a_n - b_n \rightarrow 0$ as $n \rightarrow \infty$. We make this into an ordered field by defining:
+        \begin{align*}
+            [(a_n)] + [(b_n)] & = [(a_n + b_n)] \\
+            [(a_n)] [(b_n)] & = [(a_n b_n)]
+        \end{align*}
+        $[(a_n)]$ is positive iff there exists a positive $c \in F$ and $N$ such that $\forall n \geq N. a_n \geq c$.
+    \end{definition}
+
+    \begin{proof}
+        \pf\ To prove this is a field, the only hard part is finding multiplicative inverses. If $[(a_n)] \neq [(0)]$ then pick $\epsilon > 0$ and $N$
+        such that $\forall n \geq N. |a_n| \geq \epsilon_n$ and $\forall m,n \geq N. |a_m - a_n| < \epsilon / 2$. Define $b_n = 1$ if $n < N$,
+        and $b_n = 1/a_n$ if $n \geq N$. Then $(b_n)$ is Cauchy and $[(a_n b_n)] = [(1)]$. \qed
+    \end{proof}
+
+    \begin{proposition}
+        $F$ is embeddable in $C_F$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Map $a$ to the constant sequence $[(a)]$. \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any ordered field $F$, the ordered field $C_F$ is Cauchy complete.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Let $(r_n)$ be a Cauchy sequence in $C_F$. We may assume wlog $r_n \neq r_{n+1}$ for all $n$. For all $n$, let
+        $\epsilon_n = |r_{n+1} - r_n|$. For all $n$, let $r_n = [(x_{nk})_k]$. For all $n$, let $k_n$ be least such that
+        $|r_n - x_{nk_n}| < \epsilon_n$. For all $n$, let $y_n = x_{nk_n}$. Then $(y_n)$ is Cauchy and $r_n \rightarrow [(y_n)_n]$
+        as $n \rightarrow \infty$. \qed
+    \end{proof}
+
+    \begin{proposition}
+        \label{proposition:F_dense}
+        The field $F$ is dense in $C_F$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$[(a_n)], [(b_n)] \in C_F$ with $[(a_n)] < [(b_n)]$}}
+        \step{2}{\pick\ $c \in F$ positive and $N$ such that
+        $\forall n \geq N. b_n - a_n \geq c$ and $\forall m,n \geq N. |a_m - a_n| < c/4$ and $\forall m,n \geq N. |b_m - b_n| < c_4$}
+        \step{3}{\pflet{$d = (a_N + b_N) / 2$}}
+        \step{4}{$[(a_n)] < [(d)] < [(b_n)]$}
+        \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any ordered field $F$, we have $C_F$ is Archimedean if and only if $F$ is Archimedean.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ One direction follows from the fact that $F$ is embeddable in $C_F$. For the converse, if $f$ is an upper bound for
+        $\mathbb{Z}$ in $C_F$, pick $a \in F$ such that $u < a < u + 1$ by Proposition \ref{proposition:F_dense}. Then $a$ is an upper
+        bound for $\mathbb{Z}$ in $F$. \qed
+    \end{proof}
+
+    \begin{corollary}
+        The reals are the Cauchy completion of any Archimedean ordered field.
+    \end{corollary}
+
+    \begin{corollary}
+        Every Archimedean ordered field can be embedded in the reals.
+    \end{corollary}
+
 \end{document}
