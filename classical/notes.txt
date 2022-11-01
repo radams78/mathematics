@@ -9,7 +9,7 @@ A. Fraenkel, Y. Bar-Hillel, A. Levy. Foundations of Set Theory
 T. Jech. The Axiom of Choice
 K. Kuratowski, A. Mostowski. Set Theory
 W. Sierpinski. Cardinal and Ordinal Numbers
-J. van Heijenoort. From Frege to Godel
+J. van Heijenoort. From Frege to Gödel
 
 S. Barker. Philosophy of Mathematics
 P. Benacerraf. What Numbers Could Not Be. Philos. Rev. 74, 47-74
@@ -18,14 +18,13 @@ E. Mendelson. Introduction to Mathematical Logic
 C. Parsons. Frege's Theory of Numbers
 G. Peano. Sui concetto di numero. Riv. mat. Turin 1, 87-102, 256-267
 H. Wang. The axiomatization of arithmetic. J. Symbolic Logic 22, 145-158
-E. Mendelson. Introduction to Mathematical Logic
 J. B. Rosser. Logic for the Mathematician
 E. Specker. The axiom of choice in Quine's "New Foundations for Mathematical Logic". Proc. Nat. Acad. Sci. USA 39, 972-975
 W. Hatcher. The Foundations of Mathematics
 S. Maclane, G. Birkhoff. Algebra
 A. A. Fraenkel. Abstract Set Theory
 J. Rubin. Set Theory for the Mathematician
-B. L. van der Wareden. Modern Algebra
+B. L. van der Waerden. Modern Algebra
 S. Borofsky. Elementary Theory of Equations
 J. Manheim. The Genesis of Point Set Topology
 L. Auslander. What Are Numbers?
@@ -46,3 +45,108 @@ G. H. Hardy, E. Wright. An Introduction to the Theory of Numbers
 W. Sierpinski. Elementary Theory of Numbers
 W. R. Hamilton. Theory of conjugate functions, or algebraic couples; with a preliminary and elementary essay on algebra as the science of
 pure time. Trans. Royal Irish Acad. 17 (1837) 283-422
+L. Ahlfors. Complex Analysis
+M. Heins. Complex Function Theory
+H. B. Fine. College Algebra
+S. Feferman. The Number Systems
+I. Adamson. Introduction to Field Theory
+T. Apostol. Advanced Calculus
+T. Apostol. Calculus
+E. Artin. Theory of Algebraic Numbers
+E. Artin, O. Schreier. Algebraische Konstruktion reeler Körper. Abh. Math. Sem. Univ. Hamburg 5 (1926), 85-99
+G. Bachmann. Introduction to p-adic Numbers and Valuations
+R. Baer. Über nicht-archimedisch geordnete Körper. S.-B. Heidelberger, Akad. Wiss. Math. - Natur. Kl. 8 (1927), 3-13
+E. T. Bell. Men of Mathematics
+E. T. Bell. The Development of Mathematics
+E. Beth. The Foundations of Mathematics
+E. Bishop. Foundations of Constructive Analysis
+R. Boas Jr. A Primer of Real Functions
+W. Bosch, P. Krajkiewicz. A categorical system of axioms for the complex numbers. Math. Mag. 43 (1970), 67-70
+N. Bourbaki. Algèbre
+N. Bourbaki. Eléments d'Histoire des Mathématiques
+C. Boyer. The History of Calculus and its Conceptual Development
+C. Boyer. A History of Mathematics
+R. Breusch. A proof of the irrationality of $\pi$. Amer. Math. Monthly 61 (1954) 631-632
+F. Cajori. A History of Mathematics
+F. Cajori. A History of Mathematical Notation
+W. Chinn, N. Steenrod. First Concepts of Topology
+L. Cohen, G. Ehrlich. The Structure of the Real Number System
+L. Cohen, C. Goffman. A theory of transfinite convergence. Trans. Amer. Math. Soc. 66 (1949) 65-74
+R. Courant, F. John. Introduction to Calculus and Analysis
+R. Courant, H. Robbins. What is Mathematics?
+T. Dantzig. Number, The Language of Science
+A. Devinatz. Advanced Calculus
+J. Dieudonne. Foundations of Modern Analysis
+N. V. Efimov. Higher Geometry
+J. Goldhaber, G. Ehrlich. Algebra
+H. Eves. An Introduction to the History of Mathematics
+G. Frege. Die Grundlagen der Arithmetik
+G. Frege. Grundgesetze der Arithmetik
+L. Fuchs. Partially Ordered Algebraic Systems
+L. Gaal. Classic Galois Theory with Examples
+S. Gaal. Point Set Topology
+B. Gelbaum, J. Olmsted. Counterexamples in Analysis
+S. Gelfand et al. Sequences, Combinations, Limits
+H. Gericke. Geschichte des Zahlbegriffs
+L. Gillman, M. Jerison. Rings of Continuous Functions
+A. Gleyzal. Transfinite numbers. Proc. Nat. Acad. Sci. U.S.A. 23 (1937) 281-287
+K. Gödel. What is Cantor's continuum problem? Amer. Math. Monthly 54 (1947) 515-525
+R. L. Goodstein. A Textbook of Mathematical Analysis
+J. Hafstrom. Introduction to Analysis and Abstract Algebra
+H. Hahn. Über die nichtarchimedischen Grössensysteme, S.-B. Kaiserlichen Akad. Wiss. Vienna 116 (1907) 601-653
+P. Halmos. Naive Set Theory
+N. Hamilton, J. Landin. Set Theory: The Structure of Arithmetic
+G. H. Hardy. A Course of Pure Mathematics
+K. Hauschild. Über die Konstruktion von Erweiterungskörpern zu nicharchimedisch angeordneten Körpern mit Hilfe Hölderschen Schnitte, Wiss. Z. Humboldt-Univ. Berlin Math.-Natur. Reihe 5 (1966)
+S. Hayden, J. Kennison. Zermelo-Fraenkel Set Theory
+L. Henkin, W. Smith, V. Varineau, M. Walsh. Retracing Elementary Mathematics
+N. Herstein. Topics in Algebra
+D. Hilbert. Foundations of Geometry
+E. W. Hobson. Functions of a Real Variable
+E. Huntington. The Continuum and Other Types of Serial Order
+N. Jacobson. Lectures in Abstract Algebra
+S. M. Kaczmarz. Axioms for arithmetic. J. London Math. Soc. 7 (1932) 179-182
+J. Kelley. General Topology
+R. B. Kershner, L. R. Wilcox. The Anatomy of Mathematics
+K. Knopp. Theory and Application of Infinite Series
+W. LeVeque. Topics in Number Theory
+P. Lorenzen. Differential and Integral, A Constructive Introduction to Classical Analysis
+W. A. J. Luxemburg. Non-Standard Analysis
+P. McCarthy. Algebraic Extensions of Fields
+S. Maclane. The universality of formal power series. Bull. Amer. Math. Soc. 45 (1939) 888-890
+E. J. McShane. A Theory of Limits, Studies in Modern Analysis
+M. Machover, J. Hirschfeld. Lectures on Non-Standard Analysis
+E. Mendelson. Introduction to Boolean Algebra and Switching Circuits
+G. Mostow, J. Sampson, J.-P. Meyer. Fundamental Systems of Analysis
+J. D. Monk. Introduction to Set Theory
+R. Moss, G. Roberts. A creeping lemma. Amer. Math. Monthly 75 (1968) 649-652
+B. H. Neumann. On ordered division rings. Trans. Amer. Math. Soc. 66 (1949) 202-252
+I. Niven. Irrational Numbers
+I. Niven. Numbers: Rational and Irrational
+A. Oberschelp. Aufbau des Zahlensystems
+G. Peano. Formulaire des Mathématiques
+H. Pollard. The Theory of Algebraic Numbers
+J. Robertson. A comparison of the Archimedean and completeness properties. Math. Mag. 43 (1970) 92-93
+A. Robinson. Introduction to Model Theory and the Metamathematics of Algebra
+A. Robinson. Non-standard Analysis
+H. Rohrbach. Das Axiomensystem von Erhard Schmidt für die Menge der natürlichen Zahlen, Math. Nachrichten 4 (1950) 315-321
+W. Rudin. Principles of Mathematical Analysis
+B. Russell. The Principles of Mathematics
+B. Russell. Introduction to Mathematical Philosophy
+N. Sanin. Constructive real numbers and function spaces, Amer. Math. Soc. Transl. 21 (1968)
+A. Seidenberg. A new decision method for elementary algebra. Ann. of Math. 60 (1954) 365-374
+M. Spivak. Calculus
+S. Stein. Mathematics: The Man-Made Universe
+A. Stolyar. Introduction to Elementary Mathematical Logic
+D. Struik. A Source Book in Mathematics, 1200-1800
+P. Suppes. Axiomatic Set Theory
+A. Tarski. A Decision Method for Elementary Algebra and Geometry
+A. Tarski. An Introduction to Logic and the Methdology of the Deductive Sciences
+B. L. van der Waerden. Science Awakening
+F. Waismann. Introduction to Mathematical Thinking
+E. Weiss. Algebraic Number Theory
+H. Weyl. Das Kontinuum
+G. Whyburn. Topological Analysis
+R. L. Wilder. The Foundations of Mathematics
+R. L. Wilder. The Evolution of Mathematical Concepts
+L. Zippin. Uses of Infinity

@@ -789,4 +789,29 @@
     $a_0 . a_1 a_2 \cdots a_{n-1} (a_n - 1) 9 9 9 \cdots$ represent the same number.
 \end{lemma}
 
+\begin{definition}
+    A complex number $z$ is the \emph{limit} of the sequence $(a_n)$ of complex
+    numbers iff, for every real $\epsilon > 0$, there exists an integer $N$ such that,
+    for all $n \geq N$, we have $|a_n - z| < \epsilon$.
+\end{definition}
+
+\begin{proposition}
+    A sequence of complex numbers has at most one limit.
+\end{proposition}
+
+\begin{definition}[Cauchy sequence]
+    A sequence of complex numbers $(a_n)$ is a \emph{Cauchy sequence} iff,
+    for every real $\epsilon > 0$, there exists an integer $N$ such that,
+    for all $m,n \geq N$, we have $|a_m - a_n| < \epsilon$.
+\end{definition}
+
+\begin{proposition}
+    For $(a_n)$ and $(b_n)$ sequences of real numbers, we have $(a_n + b_ni)$
+    is Cauchy iff $(a_n)$ and $(b_n)$ are Cauchy.
+\end{proposition}
+
+\begin{proposition}
+    A sequence of complex numbers is Cauchy if and only if it converges.
+\end{proposition}
+
 \end{document}
