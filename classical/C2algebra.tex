@@ -666,6 +666,28 @@
         Every integer $> 1$ is the product of a unique multiset of primes.
     \end{theorem}
 
+    \begin{lemma}
+        \label{lemma:pre_binomial}
+        Let $D$ be an ordered integral domain. Let $\delta \in D$ and $n \in \mathbb{N}$. If $\delta > -1$ then $(1+\delta)^n \geq
+        1 + n \delta$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{$(1+\delta)^0 = 1 + 0 \delta$}
+        \step{2}{If $(1+\delta)^n = 1 + n \delta$ then $(1+\delta)^{n+1} \geq 1 + (n+1)\delta$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                (1+\delta)^{n+1} & = (1+\delta)(1 + \delta)^n \\
+                & \geq (1+\delta)(1 + n \delta) \\
+                & = 1 + (n+1)\delta + n \delta^2 \\
+                & \geq 1 + (n+1)\delta
+            \end{align*}
+        \end{proof}
+        \qed
+    \end{proof}
+
     \section{Integers Modulo $n$}
 
     \begin{definition}[Congruence]
@@ -1029,6 +1051,10 @@
         \end{proof}
         \qed
     \end{proof}
+
+    \begin{definition}[Algebraically Closed]
+        A field is \emph{algebraically closed} iff every non-constant polynomial has a root.
+    \end{definition}
 
     \section{Rational Numbers}
 
@@ -1613,6 +1639,31 @@
         only if there exists $b \in F$ such that $\forall x \in X. |f(x)| < b$.
     \end{definition}
 
+    \begin{lemma}
+        \label{lemma:un_increasing_unbounded}
+        Let $D$ be an ordered integral domain. Let $u \in D$ with $u > 1$. Then $(u^n)$ is a strictly increasing unbounded sequence.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{$\forall n. u^n < u^{n+1}$}
+        \step{2}{For every positive $v \in D$, there exists an integer $n$ such that $u^n > 1 + v$}
+        \begin{proof}
+            \step{a}{\pflet{$\delta = u - 1$}}
+            \step{b}{\pick\ $n$ such that $n \delta > v$}
+            \step{c}{$u^n > 1 + v$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    u^n & = (1 + \delta)^n \\
+                    & \geq 1 + n \delta & (\text{Lemma \ref{lemma:pre_binomial}}) \\
+                    & > 1 + v
+                \end{align*}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
     \section{Convergence}
 
     \begin{definition}[Limit]
@@ -1681,6 +1732,7 @@
     \end{proof}
 
     \begin{theorem}
+        \label{theorem:limit_sum}
         If $a_n \rightarrow l$ and $b_n \rightarrow m$ then $a_n + b_n \rightarrow m$ as $n \rightarrow
         \infty$.
     \end{theorem}
@@ -1866,6 +1918,52 @@
         \step{4}{$\forall n \geq N. |a_n - l| < \epsilon$}
         \qed
     \end{proof}
+
+    \begin{lemma}
+        \label{lemma:rn_limit_zero}
+        In an ordered field $F$, let $r \in F$ with $|r| < 1$.
+        Then $r^n \rightarrow 0$ as $n \rightarrow \infty$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{\assume{w.l.o.g. $r \neq 0$}}
+        \step{2}{\pflet{$u = 1/r$}}
+        \step{3}{$(u^n)$ is a strictly increasing unbounded sequence.}
+        \begin{proof}
+            \pf\ Lemma \ref{lemma:un_increasing_unbounded}.
+        \end{proof}
+        \step{4}{\pflet{$\epsilon > 0$}}
+        \step{5}{\pick\ $N$ such that $u^N > 1 / \epsilon$}
+        \step{6}{$\forall n \geq N. r^n < \epsilon$}
+        \qed
+    \end{proof}
+
+    \begin{lemma}
+        In an ordered field $F$, let $u \in F$ satisfy $|u| > 1$
+        and let $k$ be a positive integer. Then $n^k / u^n \rightarrow 0$
+        as $n \rightarrow \infty$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$p = |u| - 1$}}
+        \step{2}{For $n > 2k+2$ we have $|u|^n > n^{k+1} p^{k+1} / 2^{k+1} (k+1)!$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                |u|^n & = (1+p)^n \\
+                & > \left( \begin{array}{c} n + 1 \\ k \end{array}
+                \right) p^{k+1} \\
+                & = \frac{n (n-1) \cdots (n-k)}{(k+1)!} p^{k+1} \\
+                & > \frac{n^{k+1} p^{k+1}}{2^{k+1} (k+1)!}
+            \end{align*}
+        \end{proof}
+        \step{3}{For $n > 2k$ we have $|n^k / u^n|  < (2^{k+1} (k+1)! / p^{k+1}) 1/n$}
+        \step{4}{$n^k/u^n \rightarrow 0$ as $n \rightarrow \infty$}
+        \qed
+    \end{proof}
+    
     \section{The Real Numbers}
 
     \begin{definition}[Dedekind Cut]
@@ -3166,4 +3264,42 @@
         Every Archimedean ordered field can be embedded in the reals.
     \end{corollary}
 
+    \begin{proposition}
+        The reals are not algebraically closed.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ The polynomial $x^2 + 1$ has no root. \qed
+    \end{proof}
+
+    \section{Complex Numbers}
+
+    \begin{definition}[Complex Numbers]
+        The \emph{complex numbers} $\mathbb{C}$ is the field $\mathbb{R}^2$ under
+        \begin{align*}
+            (a,b) + (c,d) & = (a+c,b+d) \\
+            (a,b) (c,d) & = (ac-bd, ad+bc)
+        \end{align*}
+    \end{definition}
+
+    \begin{proposition}
+        The complex numbers form a field.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ We have $0 = (0,0)$ and $1 = (1,0)$ and $-(a,b) = (-a,-b)$. We have
+        \[ (a,b)^{-1} = (a/(a^2 + b^2),-b/(a^2 + b^2)) \] \qed
+    \end{proof}
+
+    \begin{definition}
+        \[ i = (0,1) \]
+    \end{definition}
+
+    \begin{proposition}
+        \[ i^2 = -1 \]
+    \end{proposition}
+
+    \begin{proposition}
+        The mapping $\lambda x.(x,0)$ is an embedding of $\mathbb{R}$ in $\mathbb{C}$.
+    \end{proposition}
 \end{document}

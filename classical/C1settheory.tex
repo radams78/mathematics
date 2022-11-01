@@ -103,6 +103,14 @@
         $\mathbf{A} - \mathbf{B}$ is the class $\{ x \in \mathbf{A} : x \notin \mathbf{B} \}$.
     \end{definition}
 
+    \begin{definition}[Intersection]
+        For any class of sets $\mathbf{A}$, the \emph{intersection} $\bigcap \mathbf{A}$ is the class
+        $\{ x : \forall A \in \mathbf{A}. x \in A \}$.
+
+        We write $\bigcap_{P[x_1, \ldots, x_n]} t[x_1, \ldots, x_n]$ for $\bigcap \{ t[x_1, \ldots, x_n]
+        : P[x_1, \ldots, x_n] \}$.
+    \end{definition}
+
     \section{Primitive Notions}
 
     Let there be \emph{sets}.
@@ -183,17 +191,17 @@
 
     \section{Constructions of Sets}
 
-    \begin{theorem}
+    \begin{thms}
         \label{theorem:subset_axiom}
         For any class $\mathbf{A}$ and set $B$, if $\mathbf{A} \subseteq B$ then $\mathbf{A}$ is a set.
-    \end{theorem}
+    \end{thms}
 
     \begin{proof}
         \pf
         \step{1}{\pflet{$B$ be a set.}}
         \step{2}{$(\forall x \in B) \forall y_1, y_2 ((x \in \mathbf{A} \wedge y_1 = x) \wedge
         (x \in \mathbf{A} \wedge y_2 = x) \Rightarrow y_1 = y_2)$}
-        \step{3}{$\{ y : \exists x (x \in \mathbf{A} \wedge y = x) \}$ is a set.}
+        \step{3}{$\{ y : \exists x \in B (x \in \mathbf{A} \wedge y = x) \}$ is a set.}
         \begin{proof}
             \pf\ By a Replacement Axiom.
         \end{proof}
@@ -202,25 +210,29 @@
     \end{proof}
 
     \begin{theorem}[Empty Set]
-        The empty class is a set, called the \emph{empty set}.
+        The empty class is a set.
     \end{theorem}
 
     \begin{proof}
         \pf
         \step{1}{\pick\ a set $a$}
         \begin{proof}
-            \pf\ By the Axiom of Infinity.
+            \pf\ By the Axiom of Infinity, a set exists.
         \end{proof}
         \step{2}{$\emptyset \subseteq a$}
         \step{3}{$\emptyset$ is a set.}
         \begin{proof}
-            \pf\ Theorem \ref{theorem:subset_axiom}.
+            \pf\ Theorem Schema \ref{theorem:subset_axiom}.
         \end{proof}
         \qed
     \end{proof}
 
+    \begin{definition}[Empty Set]
+        Henceforth we call $\emptyset$ the \emph{empty set}.
+    \end{definition}
+
     \begin{theorem}[Pairing]
-        For any setss $a$ and $b$, the class $\{a,b\}$ is a set, called a \emph{pair set}.
+        For any sets $a$ and $b$, the class $\{a,b\}$ is a set.
     \end{theorem}
 
     \begin{proof}
@@ -276,7 +288,7 @@
     \end{proposition}
 
     \begin{proof}
-        \pf\ By Theorem \ref{theorem:subset_axiom} since it is a subclass of $A$. \qed
+        \pf\ By Theorem Schema \ref{theorem:subset_axiom} since it is a subclass of $A$. \qed
     \end{proof}
 
     \begin{proposition}
@@ -284,19 +296,11 @@
     \end{proposition}
 
     \begin{proof}
-        \pf\ By Theorem \ref{theorem:subset_axiom} since it is a subclass of $A$. \qed
+        \pf\ By Theorem Schema \ref{theorem:subset_axiom} since it is a subclass of $A$. \qed
     \end{proof}
     
-    \begin{definition}[Intersection]
-        For any class of sets $\mathbf{A}$, the \emph{intersection} $\bigcap \mathbf{A}$ is the class
-        $\{ x : \forall A \in \mathbf{A}. x \in A \}$.
-
-        We write $\bigcap_{P[x_1, \ldots, x_n]} t[x_1, \ldots, x_n]$ for $\bigcap \{ t[x_1, \ldots, x_n]
-        : P[x_1, \ldots, x_n] \}$.
-    \end{definition}
-
     \begin{proposition}
-        For any nonempty class of sets $\mathbf{A}$, the class $\bigcap \mathbf{A}$ is a set.
+        For any nonempty class of sets $\mathbf{A}$, the intersection $\bigcap \mathbf{A}$ is a set.
     \end{proposition}
 
     \begin{proof}

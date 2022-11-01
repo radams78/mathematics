@@ -451,4 +451,342 @@
     \qed
 \end{proof}
 
+\section{Infinite Series}
+
+\begin{definition}[Infinite Series]
+    Let $(a_n)$ be a sequence of real numbers. The \emph{infinite series} $\sum_n a_n$ is the sequence $(\sum_{i=0}^n a_i)$. The term
+    $\sum_{i=0}^n a_i$ is the \emph{$n$th partial sum} of the series. If the series converges, its limit is called the \emph{sum} of the
+    series and denoted $\sum_{i=0}^\infty a_i$.
+\end{definition}
+
+\begin{theorem}[Cauchy Criterion]
+    Let $(a_n)$ be a sequence of real numbers. Then $\sum_{n=1}^\infty a_n$ converges if and only if, for any $\epsilon > 0$,
+    there exists $N$ such that, for all $m \geq n \geq N$, we have $|\sum_{i=m}^n a_i| < \epsilon$.
+\end{theorem}
+
+\begin{proof}
+    \pf\ Since the reals are Cauchy complete. \qed
+\end{proof}
+
+\begin{corollary}
+    If $\sum_{n=1}^\infty a_n$ converges then $a_n \rightarrow 0$ as $n \rightarrow \infty$.
+\end{corollary}
+
+\begin{corollary}[Comparison Test]
+    Let $(a_n)$ be a sequence of non-negative real numbers, and $(b_n)$ a sequence of real numbers. If $\sum_{n=1}^\infty a_n$ converges
+    and $\forall n. |b_n| \leq a_n$ then $\sum_{n=1}^\infty b_n$ converges.
+\end{corollary}
+
+\begin{proof}
+    \pf\ Since $|sum_{i=m}^n b_i| \leq \sum_{i=m}^n a_i$. \qed
+\end{proof}
+
+\begin{proposition}
+    For $k \geq 2$ an integer, the series $\sum_{n=1}^\infty 1/n^k$ converges.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{The series $\sum_{n=1}^\infty 1/n(n+1)$ converges.}
+    \begin{proof}
+        \pf\ The $N$th partial sum is
+        \begin{align*}
+            \sum_{n=1}^N 1/n(n+1) & = \sum_{n=1}^N (1/n - 1/(n+1)) \\
+            & = 1 - 1/(N+1) \\
+            & \rightarrow 1 & \text{as } N \rightarrow \infty
+        \end{align*}
+    \end{proof}
+    \step{2}{The series $\sum_{n=1}^\infty 1/n^2$ converges.}
+    \begin{proof}
+        \pf\ By the Comparison Test, we have $\sum_{n=1}^\infty 1/(n+1)^2$ converges.
+    \end{proof}
+    \step{3}{For $k \geq 2$ an integer, the series $\sum_{n=1}^\infty 1/n^k$ converges.}
+    \begin{proof}
+        \pf\ By the Comparison Test.
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{proposition}
+    If $\sum_{n=1}^\infty a_n$ and $\sum_{n=1}^\infty b_n$ converge then
+    \[ \sum_{n=1}^\infty (a_n + b_n) = \sum_{n=1}^\infty a_n + \sum_{n=1}^\infty b_n \]
+\end{proposition}
+
+\begin{proof}
+    \pf\ Apply Theorem \ref{theorem:limit_sum} to the partial sums. \qed
+\end{proof}
+
+\begin{proposition}
+    If $\sum_{n=1}^\infty a_n$ converges then, for $\lambda \in \mathbb{R}$, we have $\sum_{n=1}^\infty \lambda a_n = \lambda \sum_{n=1}^\infty
+    a_n$.
+\end{proposition}
+
+\begin{proof}
+    \pf\ Easy. \qed
+\end{proof}
+
+\begin{proposition}
+    Let $(a_n)$ and $(b_n)$ be sequences of positive real numbers. Let $c$ be a positive real. Assume $a_n/b_n \rightarrow c$ as
+    $n \rightarrow \infty$. Then $\sum_{n=1}^\infty a_n$ converges if and only if $\sum_{n=1}^\infty b_n$ converges.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{\assume{$\sum_{n=1}^\infty b_n$ converges.}}
+    \step{2}{\pflet{$\epsilon > 0$}}
+    \step{3}{\pick\ $N$ such that, for all $m,n \geq N$, we have $\sum_{i=m}^n b_i < \epsilon / (c + 1)$ and
+    for all $n \geq N$ we have $|a_n/b_n - c| < 1$}
+    \step{4}{\pflet{$m,n \geq N$}}
+    \step{5}{$\sum_{i=m}^n a_i < \epsilon$}
+    \begin{proof}
+        \pf
+        \begin{align*}
+            \sum_{i=m}^n a_i & < \sum_{i=m}^n b_i (c + 1) \\
+            & = (c + 1) \sum_{i=m}^n b_i \\
+            & < \epsilon
+        \end{align*}
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{proposition}[Geometric Series]
+    Let $b, r \in \mathbb{R}$ with $|r| < 1$. Then $\sum_{n=0}^\infty br^n = b/(1-r)$.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{$\sum_{i=0}^n b r^i = b(1-r^{n+1})/(1-r)$}
+    \begin{proof}
+        \pf
+        \begin{align*}
+            (1-r)\sum_{i=0}^n br^i & = \sum_{i=0}^n br^i - \sum_{i=1}^{n+1} br^i \\
+            & = b - br^{n+1}
+        \end{align*}
+    \end{proof}
+    \step{2}{$\sum_{i=0}^\infty b r^i = b/(1-r)$}
+    \begin{proof}
+        \pf\ Lemma \ref{lemma:rn_limit_zero}
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{proposition}
+    Let $b, r \in \mathbb{R}$ with $|r| \geq 1$. Then $\sum_{n=0}^\infty b r^n$ diverges.
+\end{proposition}
+
+\begin{proof}
+    \pf\ Since $br^n$ does not converge to 0. \qed
+\end{proof}
+
+\begin{proposition}[Harmonic Series]
+    $\sum_{n=1}^\infty 1/n$ diverges.
+\end{proposition}
+
+\begin{proof}
+    \pf\ Since $\sum_{i=1}^{2^n} 1/i \geq 1 + n/2$. \qed
+\end{proof}
+
+\begin{definition}[Absolute Convergence]
+    A series $\sum_n a_n$ \emph{converges absolutely} iff $\sum_n |a_n|$ converges.
+\end{definition}
+
+\begin{proposition}
+    An absolutely convergent series converges.
+\end{proposition}
+
+\begin{proof}
+    \pf\ By the Comparison Test. \qed
+\end{proof}
+
+\begin{theorem}[Alternating Series Test]
+    Let $(a_n)$ be a decreasing sequence of nonnegative real numbers that converges to 0. Then $\sum_n (-1)^n a_n$ converges.
+\end{theorem}
+
+\begin{proof}
+    \pf
+    \step{1}{For natural numbers $m \leq n$, \pflet{$R_{mn} = \sum_{i=m}^n (-1)^i a_i$}}
+    \step{2}{For natural numbers $m \leq n$, $(-1)^m R_{mn} \geq 0$}
+    \begin{proof}
+        \pf\ It is $\sum_{0 \leq j, m + 2j + 1 \leq n} (a_{m+2j} - a_{m+2j+1})$ if $n-m$ is even, or
+        $\sum_{0 \leq j, m + 2j + 1 \leq n} (a_{m+2j} - a_{m + 2j + 1}) + a_n$ if $n-m$ is odd.
+    \end{proof}
+    \step{3}{For natural numbers $m \leq n$, $(-1)^m R_{mn} \leq a_m$}
+    \begin{proof}
+        \pf\ It is $a_m + \sum_j (-a_{m + 2j + 1} + a_{m + 2j + 2})$ if $n - m$ is odd, or
+        $a_m + \sum_j(-a_{m+2j+1} + a_{m+2j+2}) - a_n$ if $n-m$ is even.
+    \end{proof}
+    \step{33}{For natural numbers $m \leq n$, $|R_{mn}| \leq a_m$}
+    \step{4}{\pflet{$\epsilon > 0$}}
+    \step{5}{\pick\ $N$ such that $\forall n \geq N. a_n < \epsilon$}
+    \step{6}{For all $m$, $n$, if $N \leq m \leq n$ then $|R_{mn}| < \epsilon$}
+    \qedstep
+    \begin{proof}
+        \pf\ By the Cauchy criterion.
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{definition}[Remainder of a Series]
+    Let $\sum_{n=0}^\infty a_n$ be a series and $N \in \mathbb{N}$. The \emph{remainder} of the series after the $N$th term
+    is the series $\sum_{n=N+1}^\infty a_n$.
+\end{definition}
+
+\begin{proposition}
+    If the series $\sum_{n=0}^\infty a_n$ converges, then
+    \[ \sum_{n=N}^\infty a_n \rightarrow 0 \text{ as } N \rightarrow \infty \]
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{For all $N$, $k$ with $N \leq k$, we have $\sum_{n=0}^k a_n = \sum_{n=0}^{N-1} a_n + \sum_{n=N}^k a_n$}
+    \step{2}{$\sum_{n=0}^\infty a_n = \sum_{n=0}^{N-1} a_n + \sum_{n=N}^\infty a_n$}
+    \begin{proof}
+        \pf\ Taking limits.
+    \end{proof}
+    \step{3}{$\sum_{n=N}^\infty a_n = \sum_{n=0}^\infty a_n - \sum_{n=0}^{N-1} a_n$}
+    \step{4}{$\sum_{n=N}^\infty a_n \rightarrow 0$ as $N \rightarrow \infty$}
+    \begin{proof}
+        \pf
+        \begin{align*}
+            \sum_{n=0}^\infty a_n - \sum_{n=0}^{N-1} a_n & \rightarrow \sum_{n=0}^\infty a_n - \sum_{n=0}^\infty a_n & \text{as } N \rightarrow \infty \\
+            & = 0
+        \end{align*}
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{theorem}[Ratio Test]
+    Let $(a_n)$ be a sequence of non-zero real numbers.
+    \begin{enumerate}
+        \item If $(|a_{n+1}/a_n|)$ converges to a limit $< 1$, then $\sum_{n=0}^\infty a_n$ converges absolutely.
+        \item If $(|a_{n+1}/a_n|)$ converges to a limit $> 1$ or diverges to $+\infty$, then $\sum_{n=0}^\infty a_n$ diverges.
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    \pf
+    \step{1}{If $(|a_{n+1}/a_n|)$ converges to a limit $< 1$, then $\sum_{n=0}^\infty a_n$ converges absolutely.}
+    \begin{proof}
+        \step{a}{\assume{$|a_{n+1}/a_n| \rightarrow b < 1$ as $n \rightarrow \infty$}}
+        \step{b}{\pick\ $N$ such that $\forall n \geq N. ||a_{n+1}/a_n| - b| < (1-b)/2$}
+        \step{c}{\pflet{$c = (1+b)/2$}}
+        \step{d}{$\forall n \geq N. |a_{n+1}/a_n| \leq c$}
+        \step{e}{$\forall n \geq N. |a_{n+1}| < c |a_n|$}
+        \step{f}{$0 < c < 1$}
+        \step{g}{$\forall n \geq N. \sum_{i=N}^n |a_i| \leq |a_N|/(1-c)$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                \sum_{i=N}^n |a_i| & \leq |a_N| \sum_{i=N}^n c^{n-N} \\
+                & \leq |a_N| (1 / (1-c))
+            \end{align*}
+        \end{proof}
+        \step{h}{$\forall n \geq N. \sum_{i=0}^n |a_i| \leq \sum_{i=0}^{N-1} |a_i| + |a_N|/(1-c)$}
+        \step{i}{$\sum_{i=0}^n |a_i|$ converges.}
+    \end{proof}
+    \step{2}{If $|a_{n+1}/a_n|$ converges to a limit $> 1$, then $\sum_{n=0}^\infty a_n$ diverges.}
+    \begin{proof}
+        \step{a}{\assume{$|a_{n+1}/a_n| \rightarrow b > 1$ as $n \rightarrow \infty$}}
+        \step{b}{\pick\ $N$ such that $\forall n \geq N. ||a_{n+1}/a_n|-b| < (b-1)/2$}
+        \step{c}{\pflet{$c = (b+1)/2$}}
+        \step{d}{$\forall n \geq N. |a_{n+1}/a_n| > c$}
+        \step{e}{$c > 1$}
+        \step{f}{$\forall n \geq N. |a_n| \geq |a_N|$}
+        \step{g}{$a_n \not\rightarrow 0$ as $n \rightarrow \infty$}
+    \end{proof}
+    \step{3}{If $|a_{n+1}/a_n|$ diverges to $+ \infty$ then $\sum_{n=0}^\infty a_n$ diverges.}
+    \begin{proof}
+        \step{a}{\assume{$|a_{n+1}/a_n|$ diverges to $+ \infty$}}
+        \step{b}{\pick\ $N$ such that $\forall n \geq N. |a_{n+1}/a_n| > 2$}
+        \step{c}{$\forall n \geq N. |a_n| \geq |a_N|$}
+        \step{g}{$a_n \not\rightarrow 0$ as $n \rightarrow \infty$}
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{proposition}
+    $u^n / n! \rightarrow 0$ as $n \rightarrow \infty$
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{For $n \in \mathbb{N}$, \pflet{$a_n = u^n / n!$}}
+    \step{2}{$|a_{n+1}/a_n| \rightarrow 0$ as $n \rightarrow \infty$}
+    \begin{proof}
+        \pf\ Since $a_{n+1}/a_n = u/(n+1)$
+    \end{proof}
+    \step{3}{$\sum_{n=0}^\infty a_n$ converges absolutely.}
+    \begin{proof}
+        \pf\ By the Ratio Test.
+    \end{proof}
+    \step{4}{$a_n \rightarrow 0$ as $n \rightarrow \infty$}
+    \qed
+\end{proof}
+
+\begin{definition}[Rearrangement]
+    A \emph{rearrangement} of a series $\sum_{n=0}^\infty a_n$ is a series of the form $\sum_{n=0}^\infty a_{\sigma(n)}$ for a
+    permutation $\sigma$ of $\mathbb{N}$.
+\end{definition}
+
+\begin{proposition}
+    Let $\sum_{n=0}^\infty a_{\sigma(n)}$ be a rearrangement of a series  $\sum_{n=0}^\infty a_n$. If  $\sum_{n=0}^\infty a_n$ 
+    converges absolutely, then $\sum_{n=0}^\infty a_{\sigma(n)}$ converges and $\sum_{n=0}^\infty a_{\sigma(n)} = \sum_{n=0}^\infty a_n$.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{For all $\epsilon > 0$, there exists $N$ such that $\forall n \geq N. |\sum_{i=0}^n a_i - \sum_{i=0}^n a_{\sigma(i)}| < \epsilon$}
+    \begin{proof}
+        \step{a}{\pflet{$\epsilon > 0$}}
+        \step{b}{\pick\ $N$ such that $\forall m \geq n \geq N. \sum_{i=n}^m |a_i| < \epsilon/2$}
+        \step{c}{\pflet{$P$ be the least integer such that $0, \ldots, N \in \{ \sigma(0), \ldots, \sigma(P) \}$}}
+        \step{d}{\pflet{$n \geq P$}}
+        \step{e}{$|\sum_{i=0}^n a_i - \sum_{i=0}^n a_{\sigma(i)}|$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                |\sum_{i=0}^n a_i - \sum_{i=0}^n a_{\sigma(i)}|
+                & = |\sum_{i=N+1}^n a_i - \sum_{0 \leq i \leq n, \sigma(i) > N} a_{\sigma(i)}| \\
+                & \leq \sum_{i=N+1}^n |a_i| + \sum_{i=N+1}^{\max(\sigma(0), \ldots, \sigma(n))} |a_i| \\
+                & < \epsilon
+            \end{align*}
+        \end{proof}
+    \end{proof}
+    \step{2}{$(\sum_{i=0}^n a_i)$ and $(\sum_{i=0}^n a_{\sigma(i)})$ converge to the same limit.}
+    \qed
+\end{proof}
+
+\begin{proposition}
+    Let $\sum_n a_n$ be a series that converges but does not converge absolutely. Let $r$ be any real number. Then there exists a
+    rearrangement of $\sum_n a_n$ that converges to $r$.
+\end{proposition}
+
+\begin{proof}
+    \pf\ The series has infinitely many positive terms and infinitely many negative terms. The subseries of positive terms diverges to
+    $+ \infty$ and the subseries of negative terms diverges to $- \infty$. Select positive terms until the sum is $>r$, then
+    negative terms until the sum is $< r$, then positive terms until the sum is $> r$, etc. \qed
+\end{proof}
+
+\begin{definition}[Infinite Decimal]
+    An \emph{infinite decimal} $a_0 . a_1 a_2 \cdots$ consists of an integer $a_0$ and a sequence $(a_1, a_2, \ldots)$ of natural numbers
+    $< 10$.
+\end{definition}
+
+\begin{theorem}
+    Given any infinite decimal $a_0 . a_1 a_2 \cdots$, the series $a_0 + \sum_{n=1}^\infty a_n 10^{-n}$ converges.
+\end{theorem}
+
+\begin{proof}
+    \pf\ By comparison with $\sum_n 10^{-(n-1)}$. \qed
+\end{proof}
+
+\begin{definition}
+    The sum $a_0 + \sum_{n=1}^\infty a_n 10^{-n}$ is the number \emph{represented} by the infinite decimal $a_0 . a_1 a_2 \cdots$.
+\end{definition}
+
+\begin{lemma}
+    Every real number is represented by an infinite decimal, unique except that $a_0 . a_1 a_2 \cdots a_n 0 0 0 \cdots$ and
+    $a_0 . a_1 a_2 \cdots a_{n-1} (a_n - 1) 9 9 9 \cdots$ represent the same number.
+\end{lemma}
+
 \end{document}

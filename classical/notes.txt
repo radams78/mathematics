@@ -41,3 +41,8 @@ R. Sikorski. On an algebraic ordered field. C. R. Soc. Sci. Lett. Varsovie Cl. I
 K. Hauschild. Cauchyfolgen höheren Typus in angeordneten Körpren, Z. Math. Logik Grundlagen Math. 13 (1967), pp. 55-66
 J. Olmsted. The Real Number System
 K. Anderson, D. Hall. Sets. Sequences and Mappings
+A. Beck. M. Bleicher, D. Crowe. Excursions into Mathematics
+G. H. Hardy, E. Wright. An Introduction to the Theory of Numbers
+W. Sierpinski. Elementary Theory of Numbers
+W. R. Hamilton. Theory of conjugate functions, or algebraic couples; with a preliminary and elementary essay on algebra as the science of
+pure time. Trans. Royal Irish Acad. 17 (1837) 283-422
