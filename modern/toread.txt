@@ -1,4 +1,5 @@
 * F. W. Lawvere, S. Schanuel. Conceptual Mathematics
+* C. McLarty. Elementary Categories, Elementary Toposes
 
 J. Bell. A Primer of Infinitesimal Analysis
 M. la Palme Reyes, G. E. Reyes, H. Zolfaghari. Generic Figures and their Glueings
@@ -14,3 +15,12 @@ D. Kan, Adjoint Functors, Transactions of the AMS, 87, 1958, 294-329
 F.W. Lawvere, Functorial Semantics of Algebraic Theories, Proceedings of the National Academy of Sciences USA, 50, 1963, 869-872
 F.W. Lawvere, Adjointness in Foundations, Dialéctica 23, 1969, 281-296
 
+S. Mac Lane. Mathematics: Form and Function
+A. Scedrov. A guide to polymorphic types. In Logic and Computer Science, Lecture Notes in Mathematics 1429 (1988)
+P. Freyd. Abelian Categories
+I. Kant. Critique of Pure Reason
+M. Barr, C. Wells. Toposes, Triples and Theories
+P. T. Johnstone. Topos Theory
+A. Joyal, M. Tierney. An extension of the Galois theory of Grothendieck. Memoirs of the American Mathematical Society 51:309 (1984)
+I. Moerdijk. An elementary proof of the descent theorem for Grothendieck toposes. Journal of Pure and Applied Algebra 37 (1985) 185-91
+C. McLarty. Elementary axioms for canonical points of toposes. Journal of Symbolic Logic 52 (1987) 202-4

@@ -1,0 +1,477 @@
+\documentclass{article}
+
+\title{M5 Categories}
+\author{Robin Adams}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\let\proof\relax
+\let\endproof\relax
+\let\qed\relax
+\usepackage{pf2}
+\usepackage[all]{xy}
+
+\newtheorem{axiom}{Axiom}[section]
+\newtheorem{axs}[axiom]{Axiom Schema}
+\newtheorem{lemma}[axiom]{Lemma}
+\newtheorem{proposition}[axiom]{Proposition}
+\newtheorem{props}[axiom]{Proposition Schema}
+\newtheorem{theorem}[axiom]{Theorem}
+\newtheorem{corollary}{Corollary}[axiom]
+\theoremstyle{definition}
+\newtheorem{definition}[axiom]{Definition}
+\newtheorem{example}[axiom]{Example}
+
+\newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
+\newcommand{\id}[1]{\ensuremath{\mathrm{id}_{#1}}}
+\newcommand{\dom}{\ensuremath{\operatorname{dom}}}
+\newcommand{\cod}{\ensuremath{\operatorname{cod}}}
+
+\begin{document}
+
+\maketitle
+
+\begin{definition}[Category]
+    A \emph{category} $\mathcal{C}$ is a sextuple $(Ar, Ob, \dom, \cod, \id, m)$ such
+    that:
+    \begin{itemize}
+        \item $\dom : Ar \rightarrow Ob$
+        \item $\cod : Ar \rightarrow Ob$
+        \item $\id : Ob \rightarrow Ar$
+        \item $m : \{ (f,g) \in Ar^2 : \dom f = \cod g \} \rightarrow Ar$
+    \end{itemize}
+    such that:
+    \begin{itemize}
+        \item $\forall A \in Ob. \dom (\id A) = A$
+        \item $\forall A \in Ob. \cod (\id A) = A$
+        \item $\forall f,g \in Ar. (\dom f = \cod g \Rightarrow \dom m(f,g) = \dom g)$
+        \item $\forall f,g \in Ar. (\dom f = \cod g \Rightarrow \cod m(f,g) = \cod f)$
+        \item $\forall f \in Ar. m(\id (\cod f), f) = f$
+        \item $\forall f \in Ar. m(f, \id (\dom f)) = f$
+        \item $\forall f,g,h \in Ar. (\dom f = \cod g \wedge \dom g = \cod h
+        \Rightarrow m(f,m(g,h)) = m(m(f,g),h))$
+    \end{itemize}
+    We call $Ar$ the \emph{arrows} of $\mathcal{C}$ and $Ob$ the \emph{objects}.
+    We call $\dom f$ the \emph{domain} of the arrow $f$, and $\cod f$ the
+    \emph{codomain}. We write $f : A \rightarrow B$ for $\dom f = A \wedge \cod f = B$.
+
+    We say arrows $f$ and $g$ are \emph{composable} iff $\dom f = \cod g$, in which
+    case $m(f,g)$ is called their \emph{composite}, written $f \circ g$.
+
+    We call $\id A$ the \emph{identity arrow} on $A$.
+\end{definition}
+
+\begin{definition}[Category of Sets]
+    The \emph{category of sets} $\mathbf{Set}$ is the category with set of objects
+    $\mathbf{V}$ and with $\mathbf{Set}[A,B]$ the set of all functions from $A$ to $B$.
+\end{definition}
+
+\begin{definition}[Preordered Sets as Categories]
+    Identify any preordered set $(P,\leq)$ with the category $P$ with set of objects $P$
+    and a morphism $(a,b) : a \rightarrow b$ iff $a \leq b$.
+\end{definition}
+
+\begin{definition}[Discrete Category]
+    For any set $A$, the \emph{discrete category} $A$ is the preordered set $(A, =)$
+    considered as a category.
+\end{definition}
+
+\begin{definition}[Slice Category]
+    Let $\mathbb{C}$ be a category and $A \in \mathbb{C}$. The \emph{slice category}
+    $\mathbb{C} / A$ is the category with:
+    \begin{itemize}
+        \item objects all pairs $(B,f)$ where $B \in \mathbb{C}$ and $f : B \rightarrow A$
+        in $\mathbb{C}$
+        \item morphisms $(B,f) \rightarrow (C,g)$ all morphisms $h : B \rightarrow C$
+        in $\mathbb{C}$ such that $g \circ h = f$.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}[Slice Category]
+    Let $\mathbb{C}$ be a category and $A \in \mathbb{C}$. The \emph{coslice category}
+    $\mathbb{C} \backslash A$ is the category with:
+    \begin{itemize}
+        \item objects all pairs $(B,f)$ where $B \in \mathbb{C}$ and $f : A \rightarrow B$
+        in $\mathbb{C}$
+        \item morphisms $(B,f) \rightarrow (C,g)$ all morphisms $h : B \rightarrow C$
+        in $\mathbb{C}$ such that $g = h \circ f$.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}[Pointed Sets]
+    The category $\mathbf{Set}_*$ of \emph{pointed sets} is the coslice category
+    $\mathbf{Set} \backslash 1$.
+\end{definition}
+
+\begin{definition}[Subcategory]
+    A category $\mathbb{C}$ is a \emph{subcategory} of $\mathbb{D}$ iff every object
+    of $\mathbb{C}$ is an object of $\mathbb{D}$, and every morphism $A \rightarrow B$
+    in $\mathbb{C}$ is a morphism $A \rightarrow B$ in $\mathbb{D}$.
+
+    It is \emph{full} iff, for all $A, B \in \mathbb{C}$, every morphism $A \rightarrow B$
+    in $\mathbb{D}$ is a morphism $A \rightarrow B$ in $\mathbb{C}$.
+\end{definition}
+
+\begin{proposition}
+    Let $f, g : A \rightarrow B$. Then $f = g$ if and only if, for every object $X$
+    and arrow $x : X \rightarrow A$, we have $f \circ x = g \circ x$.
+\end{proposition}
+
+\begin{proof}
+    \pf\ If the right-hand side holds then $f = f \circ \id{A} = g \circ \id{A} = g$. \qed
+\end{proof}
+
+\begin{definition}[Monic]
+    An arrow $f : A \rightarrow B$ is \emph{monic}, $f : A \rightarrowtail B$, iff,
+    for every object $X$ and morphisms $x, y : X \rightarrow A$, if $f \circ x =
+    f \circ y$ then $x = y$.
+\end{definition}
+
+\begin{definition}[Epic]
+    An arrow $f : A \rightarrow B$ is \emph{epic}, $f : A \twoheadrightarrow B$, iff,
+    for every object $X$ and morphisms $x, y : B \rightarrow X$, if $x \circ f =
+    y \circ f$ then $x = y$.
+\end{definition}
+
+\begin{definition}[Section, Retraction]
+    Let $r : A \rightarrow B$ and $s : B \rightarrow A$. Then $r$ is a \emph{retraction}
+    of $s$, and $s$ is a \emph{section} of $r$, iff $r \circ s = \id{B}$.
+
+    We also call a retraction a \emph{split epi}, and a section a \emph{split monic}.
+\end{definition}
+
+\begin{proposition}
+    \label{proposition:section_monic}
+    Every section is monic.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{\pflet{$s : A \rightarrow B$ be a section of $r : B \rightarrow A$}}
+    \step{2}{\pflet{$X$ be an object and $x, y : X \rightarrow A$}}
+    \step{3}{\assume{$s \circ x = s \circ y$}}
+    \step{4}{$x = y$}
+    \begin{proof}
+        \pf
+        \begin{align*}
+            x & = r \circ s \circ x \\
+            & = r \circ s \circ y \\
+            & = y
+        \end{align*}
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{proposition}
+    \label{proposition:retraction_epic}
+    Every retraction is epic.
+\end{proposition}
+
+\begin{proof}
+    \pf\ Dual.
+\end{proof}
+
+\begin{lemma}
+    \label{lemma:left_inverse_right_inverse}
+    Let $f : A \rightarrow B$, $g : B \rightarrow A$ and $h : B \rightarrow A$
+    be arrows. If $g$ is a retraction of $f$ and $h$ is a section of $f$ then
+    $g = h$.
+\end{lemma}
+
+\begin{proof}
+    \pf
+    \begin{align*}
+        g & = g \circ \id{B} \\
+        & = g \circ f \circ h \\
+        & = \id{A} \circ h \\
+        & = h & \qed
+    \end{align*}
+\end{proof}
+
+\begin{proposition}
+    Let $r : A \rightarrow B$. Then $r$ is a retraction if and only if, for every
+    object $X$ and morphism $y : X \rightarrow B$, there exists $x : X \rightarrow A$
+    such that $r \circ x = y$.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{If $r$ is a retraction then, for every
+    object $X$ and morphism $y : X \rightarrow B$, there exists $x : X \rightarrow A$
+    such that $r \circ x = y$.}
+    \begin{proof}
+        \step{a}{\pflet{$s : B \rightarrow A$ be a section of $r$.}}
+        \step{b}{\pflet{$X$ be an object and $y : X \rightarrow B$}}
+        \step{c}{\pflet{$x = s \circ y$}}
+        \step{d}{$r \circ x = y$}
+    \end{proof}
+    \step{2}{If, for every
+    object $X$ and morphism $y : X \rightarrow B$, there exists $x : X \rightarrow A$
+    such that $r \circ x = y$, then $r$ is a retraction.}
+    \begin{proof}
+        \pf\ Simply take $x = \id{A}$.
+    \end{proof}
+    \qed
+\end{proof}
+
+\begin{definition}[Isomorphism]
+    An arrow $f : A \rightarrow B$ is an \emph{isomorphism}, $f : A \cong B$, iff there exists an arrow
+    $\inv{f} : B \rightarrow A$, its \emph{inverse}, such that $\inv{f}$ is both a
+    section and a retraction of $f$.
+\end{definition}
+
+\begin{proposition}
+    The inverse of an isomorphism is unique.
+\end{proposition}
+
+\begin{proof}
+    \pf\ Lemma \ref{lemma:left_inverse_right_inverse}. \qed
+\end{proof}
+
+\begin{proposition}
+    Every isomorphism is monic.
+\end{proposition}
+
+\begin{proof}
+    \pf\ Proposition \ref{proposition:section_monic}. \qed
+\end{proof}
+
+\begin{proposition}
+    Every isomorphism is epic.
+\end{proposition}
+
+\begin{proof}
+    \pf\ Proposition \ref{proposition:retraction_epic}. \qed
+\end{proof}
+
+\begin{proposition}
+    If a morphism is monic and split epi then it is an isomorphism.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{\pflet{$f : A \rightarrow B$ be monic and have section $s : B \rightarrow A$}}
+    \step{2}{$f \circ s \circ f = f$}
+    \step{3}{$s \circ f = \id{A}$}
+    \step{4}{$f$ is iso with inverse $s$.}
+    \qed
+\end{proof}
+
+\begin{proposition}
+    If a morphism is epic and split monic then it is an isomorphism.
+\end{proposition}
+
+\begin{proof}
+    \pf\ Dual. \qed
+\end{proof}
+
+\begin{proposition}
+    For any object $A$, we have $\id{A} : A \cong A$ with $\inv{\id{A}} = \id{A}$.
+\end{proposition}
+
+\begin{proof}
+    \pf\ Since $\id{A} \circ \id{A} = \id{A}$. \qed
+\end{proof}
+
+\begin{proposition}
+    If $f : A \cong B$ then $\inv{f} : B \cong A$ and $\inv{(\inv{f})} = f$.
+\end{proposition}
+
+\begin{proposition}
+    If $f : A \cong B$ and $g : B \cong C$ then $g \circ f : A \cong C$ and
+    $\inv{(g \circ f)} = \inv{f} \circ \inv{g}$.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \begin{align*}
+        \inv{f} \circ \inv{g} \circ g \circ f & = \inv{f} \circ f \\
+        & = \id{A} \\
+        g \circ f \circ \inv{f} \circ \inv{g} & = g \circ \inv{g} \\
+        & = \id{C} & \qed
+    \end{align*}
+\end{proof}
+
+\begin{definition}[Balanced]
+    A category is \emph{balanced} iff every arrow that is both monic and epic is an
+    isomorphism.
+\end{definition}
+
+%TODO Every topos is balanced.
+%TODO The category of categories is not balanced.
+
+\section{Terminal Objects}
+
+\begin{definition}[Terminal]
+    An object $T$ is \emph{terminal} iff, for every object $X$, there exists a
+    unique morphism $X \rightarrow T$.
+\end{definition}
+
+\begin{example}
+    In $\mathbf{Set}$, $1$ is terminal.
+\end{example}
+
+\begin{example}
+    $* \in 1$ is terminal in $\mathbf{Set}_*$.
+\end{example}
+
+\begin{proposition}
+    \label{proposition:terminal_unique}
+    Any two terminal objects are isomorphic, and the isomorphism between them is unique.
+\end{proposition}
+
+\begin{proof}
+    \pf
+    \step{1}{\pflet{$S$ and $T$ be terminal objects.}}
+    \step{2}{\pflet{$\phi$ be the unique arrow $S \rightarrow T$}}
+    \step{3}{\pflet{$\inv{\phi}$ be the unique arrow $T \rightarrow S$}}
+    \step{4}{$\phi \circ \inv{\phi} = \id{T}$}
+    \begin{proof}
+        \pf\ Each is the unique arrow $T \rightarrow T$.
+    \end{proof}
+    \step{5}{$\inv{\phi} \circ \phi = \id{S}$}
+    \begin{proof}
+        \pf\ Each is the unique arrow $S \rightarrow S$.
+    \end{proof}
+    \qed
+\end{proof}
+
+\section{Initial Objects}
+
+\begin{definition}[Initial]
+    An object $I$ is \emph{initial} iff, for every object $X$, there exists a
+    unique morphism $I \rightarrow X$.
+\end{definition}
+
+\begin{example}
+    In a preorder, an initial object is the same as a least element.
+\end{example}
+
+\begin{example}
+    The only initial object in $\mathbf{Set}$ is $\emptyset$.
+\end{example}
+
+\begin{example}
+    $* \in 1$ is initial in $\mathbf{Set}_*$.
+\end{example}
+
+\begin{proposition}
+    Any two initial objects are isomorphic, and the isomorphism between them is unique.
+\end{proposition}
+
+\begin{proof}
+    \pf\ Dual to Proposition \ref{proposition:terminal_unique}. \qed
+\end{proof}
+
+\section{Zero Objects}
+
+\begin{definition}[Zero Object]
+    A \emph{zero object} is an object that is both initial and terminal.
+\end{definition}
+
+\begin{example}
+    $* \in 1$ is the zero object in $\mathbf{Set}_*$.
+\end{example}
+%TODO Isomorphism of categories
+
+\begin{proposition}
+    Let $(P, \leq)$ be a preorder and $a \in P$. The slice category $P/a$ is isomorphic
+    to the preorder $(\{ x \in P : x \leq a \}, \leq)$ considered as a category.
+\end{proposition}
+
+\begin{proposition}
+    Let $(P, \leq)$ be a preorder and $a \in P$. The coslice category $P \backslash a$ is isomorphic
+    to the preorder $(\{ x \in P : a \leq x \}, \leq)$ considered as a category.
+\end{proposition}
+
+\section{Opposite Category}
+
+\begin{definition}[Opposite Category]
+    Let $\mathbb{C}$ be any category. The \emph{opposite category} $\mathbb{C}^{\mathrm{op}}$
+    has objects the objects of $\mathbb{C}$ and morphisms $A \rightarrow B$ the morphisms
+    $B \rightarrow A$ in $\mathbb{C}$.
+\end{definition}
+
+\begin{proposition}
+    An initial object in $\mathbb{C}$ 
+\end{proposition}
+\section{Groupoids}
+
+\begin{definition}[Groupoid]
+    A \emph{groupoid} is a category in which every morphism is an isomorphism.
+\end{definition}
+
+\section{Automorphisms}
+
+\begin{definition}[Automorphism]
+    Let $A$ be an object. An \emph{automorphism} on $A$ is an isomorphism $A \cong A$.
+\end{definition}
+
+\section{Quotient Sets}
+
+\begin{proposition}
+    Let $A$ be a set and let $\sim$ be an equivalence relation on $A$. Let $\mathbb{C}$
+    be the subcategory of $\mathbf{Set} \backslash A$ consisting of pairs $(Z, \phi)$
+    such that, for all $x,y \in A$, if $x \sim y$ then $\phi(x) = \phi(y)$.
+
+    Then $(A/\sim, \pi)$ is the initial object in $\mathbb{C}$, where $\pi : A
+    \rightarrow A / \sim$ is the canonical projection.
+\end{proposition}
+
+\begin{proof}
+    \pf\ For any object $\phi : A \rightarrow Z$ in the category, the only morphism
+    $(A/\sim, \pi) \rightarrow (Z, \phi)$ is the function $f : A/\sim \rightarrow Z$
+    such that $f([a]) = \phi(a)$ for all $a \in A$. \qed
+\end{proof}
+
+\section{Products}
+
+\begin{definition}[Product]
+    Let $\mathbb{C}$ be a category and $\{ A_i \}_{i \in I}$ a family of objects in $\mathbb{C}$.
+    A \emph{product} of $\{ A_i \}_{i \in I}$ is a terminal object in the category with:
+    \begin{itemize}
+        \item objects all pairs $(C,\{ f_i \}_{i \in I})$ where $C \in \mathbb{C}$
+        and $f_i : C \rightarrow A_i$ for all $i \in I$;
+        \item morphisms $(C,\{ f_i \}_{i \in I}) \rightarrow (D,\{ g_i \}_{i \in I})$ 
+        all morphisms $x : C \rightarrow D$ such that, for all $i \in I$, we have $g_i \circ x = f_i$.
+    \end{itemize}
+\end{definition}
+
+\begin{example}
+    The Cartesian product $\prod_{i \in I} A_i$ with projections is the product of $\{ A_i \}_{i \in I}$ in $\mathbf{Set}$.
+\end{example}
+
+\begin{example}
+    Products in a preorder are meets.
+\end{example}
+
+\begin{proposition}
+    If $A \times B$ and $B \times A$ exist then they are isomorphic.
+\end{proposition}
+
+\begin{proposition}
+    If $A \times (B \times C)$ and $(A \times B) \times C$ exist then they are isomorphic.
+\end{proposition}
+\section{Coproducts}
+
+\begin{definition}[Coproduct]
+    Let $\mathbb{C}$ be a category and $A, B \in \mathbb{C}$. A \emph{coproduct} of $A$
+    and $B$ is an initial object in the category with:
+    \begin{itemize}
+        \item objects all triples $(C,f,g)$ where $C \in \mathbb{C}$, $f : A \rightarrow
+        C$ and $g : B \rightarrow C$
+        \item morphisms $(C,f,g) \rightarrow (D,h,k)$ all morphisms $x : C \rightarrow D$
+        such that $h = x \circ f$ and $k = x \circ g$
+    \end{itemize}
+\end{definition}
+
+\begin{example}
+    Disjoint unions are coproducts in $\mathbf{Set}$.
+\end{example}
+
+\begin{example}
+    Products in a preorder are joins.
+\end{example}
+
+\end{document}

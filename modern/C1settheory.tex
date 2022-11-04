@@ -1,0 +1,4655 @@
+\documentclass{report}
+
+\title{C1 Set Theory}
+\author{Robin Adams}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\let\proof\relax
+\let\endproof\relax
+\let\qed\relax
+\usepackage{pf2}
+\usepackage[all]{xy}
+
+\newtheorem{axiom}{Axiom}[section]
+\newtheorem{axioms}[axiom]{Axiom Schema}
+\newtheorem{lemma}[axiom]{Lemma}
+\newtheorem{proposition}[axiom]{Proposition}
+\newtheorem{props}[axiom]{Proposition Schema}
+\newtheorem{theorem}[axiom]{Theorem}
+\newtheorem{thms}[axiom]{Theorem Schema}
+\newtheorem{corollary}{Corollary}[axiom]
+\theoremstyle{definition}
+\newtheorem{definition}[axiom]{Definition}
+
+\newcommand{\dom}{\ensuremath{\operatorname{dom}}}
+\newcommand{\fld}{\ensuremath{\operatorname{fld}}}
+\newcommand{\inv}[1]{\ensuremath{{#1}^{-1}}}
+\newcommand{\ran}{\ensuremath{\operatorname{ran}}}
+\newcommand{\seg}{\ensuremath{\operatorname{seg}}}
+\newcommand{\rank}{\ensuremath{\operatorname{rank}}}
+\newcommand{\cf}{\ensuremath{\operatorname{cf}}}
+
+\begin{document}
+    \maketitle
+
+    \chapter{The Foundations}
+
+    \section{Classes}
+
+    We speak informally of \emph{classes}. A class is determined by a unary predicate. We write 
+    $\{ x : P(x) \}$ or $\{ x \mid P(x) \}$ for the class determined by the predicate $P(x)$.
+
+    We define what it means for an object $a$ to be an \emph{element} or \emph{member} of the class $\mathbf{A}$, $a \in \mathbf{A}$,
+    by: $a \in \{ x : P(x) \}$ means $P(a)$. In this case we also write $\mathbf{A} \ni a$, and say
+    $\mathbf{A}$ \emph{contains} $a$.
+
+    We write $\{ x \in \mathbf{A} : P(x) \}$ for $\{ x : x \in \mathbf{A} \wedge P(x) \}$,
+    and $\{ t[x_1, \ldots, x_n] : P[x_1, \ldots, x_n] \}$ for $\{ y : \exists x_1 \cdots \exists x_n
+    (y = t[x_1, \ldots, x_n] \wedge P[x_1, \ldots, x_n]) \}$.
+
+    \begin{definition}[Equality of Classes]
+        Two classes $\mathbf{A}$ and $\mathbf{B}$ are \emph{equal}, $\mathbf{A} = \mathbf{B}$,
+        iff they have exactly the same members.
+    \end{definition}
+
+    \begin{definition}[Subclass]
+        A class $\mathbf{A}$ is a \emph{subclass} of a class $\mathbf{B}$,
+        $\mathbf{A} \subseteq \mathbf{B}$, iff every member of $\mathbf{A}$
+        is a member of $\mathbf{B}$. In this case we also write $\mathbf{B} \supseteq \mathbf{A}$,
+        and say $\mathbf{B}$ \emph{includes} $\mathbf{A}$ or $\mathbf{B}$ is a \emph{superclass} of
+        $\mathbf{A}$.
+
+        We say $\mathbf{A}$ is a \emph{proper} subclass of the class $\mathbf{B}$,
+        $\mathbf{A} \subset \mathbf{B}$, iff $\mathbf{A} \subseteq \mathbf{B}$ and $\mathbf{A} \neq
+        \mathbf{B}$. In this case we also write $\mathbf{B} \supset \mathbf{A}$, and say $\mathbf{B}$
+        \emph{properly} includes $\mathbf{A}$ or $\mathbf{B}$ is a \emph{proper} superclass of $\mathbf{A}$.
+    \end{definition}
+
+    \begin{definition}[Disjoint]
+        Two classes $\mathbf{A}$ and $\mathbf{B}$ are \emph{disjoint} iff they have no common members.
+    \end{definition}
+
+    \begin{definition}[Empty Class]
+        The \emph{empty class}, $\emptyset$, is $\{ x : \bot \}$.
+    \end{definition}
+
+    \begin{definition}[Universal Class]
+        The \emph{universal class} $\mathbf{V}$ is the class $\{ x : \top \}$.
+    \end{definition}
+
+    \begin{definition}
+        For any objects $a_1$, \ldots, $a_n$, we write $\{ a_1, \ldots, a_n \}$ for the class
+        $\{ x : x = a_1 \vee \cdots \vee x = a_n \}$.
+
+        A class of the form $\{a\}$ is called a \emph{singleton}.
+
+        A class of the form $\{a,b\}$ is called a \emph{pair class}.
+    \end{definition}
+
+    \begin{definition}[Union]
+        The \emph{union} of classes $\mathbf{A}$ and $\mathbf{B}$, 
+        $\mathbf{A} \cup \mathbf{B}$, is the class $\{ x : x \in \mathbf{A} \vee x \in \mathbf{B} \}$.
+    \end{definition}
+
+    \begin{definition}[Intersection]
+        The \emph{intersection} of classes $\mathbf{A}$ and $\mathbf{B}$, 
+        $\mathbf{A} \cap \mathbf{B}$, is the class $\{ x : x \in \mathbf{A} \wedge x \in \mathbf{B} \}$.
+    \end{definition}
+
+    \begin{definition}[Relative Complement]
+        Given classes $\mathbf{A}$ and $\mathbf{B}$, the \emph{relative complement}
+        $\mathbf{A} - \mathbf{B}$ is the class $\{ x \in \mathbf{A} : x \notin \mathbf{B} \}$.
+    \end{definition}
+
+    \begin{definition}[Intersection]
+        For any class of sets $\mathbf{A}$, the \emph{intersection} $\bigcap \mathbf{A}$ is the class
+        $\{ x : \forall A \in \mathbf{A}. x \in A \}$.
+
+        We write $\bigcap_{P[x_1, \ldots, x_n]} t[x_1, \ldots, x_n]$ for $\bigcap \{ t[x_1, \ldots, x_n]
+        : P[x_1, \ldots, x_n] \}$.
+    \end{definition}
+
+    \section{Primitive Notions}
+
+    Let there be \emph{sets}.
+
+    Let there be a binary relation called \emph{membership}, $\in$. 
+    
+    \section{The Axiom of Extensionality}
+
+    \begin{axiom}[Extensionality]
+        If two sets have exactly the same members, then they are equal.
+    \end{axiom}
+
+    As a consequence of this axiom, we may identify a set $A$ with the class $\{ x : x \in A \}$. The use of
+    the symbols $\in$ and $=$ is consistent.
+
+    \begin{definition}
+        We say that a class $\mathbf{A}$ \emph{is a set} iff there exists a set $A$ such that $A = \mathbf{A}$.
+        That is, the class $\{ x : P(x) \}$ is a set iff
+        \[ \exists A. \forall x (x \in A \leftrightarrow P(x)) \enspace . \]
+        Otherwise, $\mathbf{A}$ is a \emph{proper class}.
+    \end{definition}
+
+    \begin{definition}[Subset]
+        If $A$ is a set and $\mathbf{B}$ is a class, we say $A$ is a \emph{subset} of $\mathbf{B}$
+        iff $A \subseteq \mathbf{B}$.
+
+        If $A$ is a set and $\mathbf{B}$ is a class, we say $A$ is a \emph{superset} of $\mathbf{B}$
+        iff $A \supseteq \mathbf{B}$.
+
+        If $A$ is a set and $\mathbf{B}$ is a class, we say $A$ is a \emph{proper subset} of $\mathbf{B}$
+        iff $A \subset \mathbf{B}$. 
+        
+        If $A$ is a set and $\mathbf{B}$ is a class, we say $A$ is a \emph{proper superset} of $\mathbf{B}$
+        iff $A \supset \mathbf{B}$.
+    \end{definition}
+
+    \begin{definition}[Power Class]
+        For any class $\mathbf{A}$, the \emph{power class} of $\mathbf{A}$, $\mathcal{P} \mathbf{A}$, is the class of all subsets of 
+        $\mathbf{A}$.
+    \end{definition}
+
+    \begin{definition}[Union]
+        For any class of sets $\mathbf{A}$, the \emph{union} $\bigcup \mathbf{A}$ is the class
+        $\{ x : \exists A \in \mathbf{A}. x \in A \}$.
+
+        We write $\bigcup_{P[x_1, \ldots, x_n]} t[x_1, \ldots, x_n]$ for $\bigcup \{ t[x_1, \ldots, x_n]
+        : P[x_1, \ldots, x_n] \}$.
+    \end{definition}
+
+    \section{The Zermelo-Fraenkel Axioms}
+
+    \begin{axioms}[Replacement]
+        For any property $P(x,y)$, the following is an axiom:
+
+        Let $A$ be a set. Assume that, for all $x \in A$, there is at most one $y$ such that $P(x,y)$.
+        Then $\{ y : \exists x \in A. P(x,y) \}$ is a set.
+    \end{axioms}
+
+    \begin{axiom}[Power Set]
+        For any set $A$, the power class $\mathcal{P} A$ is a set.
+    \end{axiom}
+
+    \begin{definition}[Power Set]
+        For any set $A$, we call $\mathcal{P} A$ the \emph{power set} of $A$.
+    \end{definition}
+
+    \begin{axiom}[Union]
+        For any set $A$, the union $\bigcup A$ is a set.
+    \end{axiom}
+
+    \begin{axiom}[Regularity]
+        For every nonempty set $A$, there exists $m \in A$ such that $m \cap A = \emptyset$.
+    \end{axiom}
+
+    \begin{axiom}[Infinity]
+        There exists a nonempty set $A$ such that $\forall x \in A. \exists y \in A. x \subset y$.
+    \end{axiom}
+
+    \section{Constructions of Sets}
+
+    \begin{thms}
+        \label{theorem:subset_axiom}
+        For any class $\mathbf{A}$ and set $B$, if $\mathbf{A} \subseteq B$ then $\mathbf{A}$ is a set.
+    \end{thms}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$B$ be a set.}}
+        \step{2}{$(\forall x \in B) \forall y_1, y_2 ((x \in \mathbf{A} \wedge y_1 = x) \wedge
+        (x \in \mathbf{A} \wedge y_2 = x) \Rightarrow y_1 = y_2)$}
+        \step{3}{$\{ y : \exists x \in B (x \in \mathbf{A} \wedge y = x) \}$ is a set.}
+        \begin{proof}
+            \pf\ By a Replacement Axiom.
+        \end{proof}
+        \step{4}{$\mathbf{A}$ is a set.}
+        \qed
+    \end{proof}
+
+    \begin{theorem}[Empty Set]
+        The empty class is a set.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pick\ a set $a$}
+        \begin{proof}
+            \pf\ By the Axiom of Infinity, a set exists.
+        \end{proof}
+        \step{2}{$\emptyset \subseteq a$}
+        \step{3}{$\emptyset$ is a set.}
+        \begin{proof}
+            \pf\ Theorem Schema \ref{theorem:subset_axiom}.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Empty Set]
+        Henceforth we call $\emptyset$ the \emph{empty set}.
+    \end{definition}
+
+    \begin{theorem}[Pairing]
+        For any sets $a$ and $b$, the class $\{a,b\}$ is a set.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        Let $P(x,y)$ be the formula $(x = \emptyset \wedge y = a) \vee (x = \mathcal{P} \emptyset \wedge
+        y = b)$. Then we reason:
+        \step{1}{\pflet{$a$ and $b$ be sets.}}
+        \step{2}{$(\forall x \in \mathcal{P} \mathcal{P} \emptyset) \forall y_1 \forall y_2 
+        (P(x,y_1) \wedge P(x,y_2) \Rightarrow y_1 = y_2)$}
+        \begin{proof}
+            \step{a}{$\emptyset \neq \mathcal{P} \emptyset$}
+            \begin{proof}
+                \pf\ Since $\emptyset \in \mathcal{P} \emptyset$ and $\emptyset \notin \emptyset$.
+            \end{proof}
+        \end{proof}
+        \step{3}{\pflet{$A = \{ y : \exists x \in \mathcal{P} \mathcal{P} \emptyset. P(x,y) \}$}}
+        \begin{proof}
+            \pf\ This is a set by a Replacement Axiom.
+        \end{proof}
+        \step{4}{$A = \{ a,b \}$}
+        \begin{proof}
+            \step{a}{$a \in A$}
+            \begin{proof}
+                \pf\ Since $\emptyset \in \mathcal{P} \mathcal{P} \emptyset$.
+            \end{proof}
+            \step{b}{$b \in A$}
+            \begin{proof}
+                \pf\ Since $\mathcal{P} \emptyset \in \mathcal{P} \mathcal{P} \emptyset$.
+            \end{proof}
+            \step{c}{$\forall x \in A (x = a \vee x = b)$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any sets $A$ and $B$, the class $A \cup B$ is a set.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ It is $\bigcup \{ A, B \}$. \qed
+    \end{proof}
+
+    \begin{props}
+        For any objects $a_1$, \ldots, $a_n$, the class $\{ a_1, \ldots, a_n \}$ is a set.
+    \end{props}
+
+    \begin{proof}
+        \pf\ By repeated application of the Pairing and Union axioms. \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any set $A$ and class $\mathbf{B}$, the intersection $A \cap \mathbf{B}$ is a set.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ By Theorem Schema \ref{theorem:subset_axiom} since it is a subclass of $A$. \qed
+    \end{proof}
+
+    \begin{proposition}
+        For any set $A$ and class $\mathbf{B}$, the relative complement $A - \mathbf{B}$ is a set.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ By Theorem Schema \ref{theorem:subset_axiom} since it is a subclass of $A$. \qed
+    \end{proof}
+    
+    \begin{proposition}
+        For any nonempty class of sets $\mathbf{A}$, the intersection $\bigcap \mathbf{A}$ is a set.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Pick $A \in \mathbf{A}$. Then $\bigcap \mathbf{A} \subseteq A$ and the result follows by
+        Theorem \ref{theorem:subset_axiom}. \qed
+    \end{proof}
+    
+    \section{Basic Properties}
+
+    \begin{theorem}
+        The universal class $\mathbf{V}$ is a proper class.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\assume{$\mathbf{V}$ is a set.}}
+        \step{2}{\pflet{$R = \{ x : x \notin x \}$}}
+        \step{3}{$R$ is a set.}
+        \begin{proof}
+            \pf\ By Theorem \ref{theorem:subset_axiom}.
+        \end{proof}
+        \step{4}{$R \in R$ if and only if $R \notin R$}
+        \qedstep
+        \begin{proof}
+            \pf\ This is a contradiction.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        No set is a member of itself.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ If $A \in A$ then there is no $m \in \{A\}$ such that $m \cap \{A\} = \emptyset$,
+        contradicting the Axiom of Foundation. \qed
+    \end{proof}
+
+    \begin{theorem}
+        There are no sets $a$ and $b$ with $a \in b$ and $b \in a$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ If there were, then there would be no $m \in \{ a,b \}$ such that  $m \cap \{ a,b \} = \emptyset$,
+        contradicting the Axiom of Foundation. \qed
+    \end{proof}
+
+    \section{The Axiom of Choice}
+
+    \begin{definition}[Axiom of Choice]
+        The \emph{Axiom of Choice} is the statement:
+
+        Let $\mathcal{A}$ be a set such that (a) every member of $\mathcal{A}$ is a nonempty set,
+        and (b) any two distinct members of $\mathcal{A}$ are disjoint. Then there exists a set $C$
+        such that, for all $B \in \mathcal{A}$, we have $C \cap B$ is a singleton.
+    \end{definition}
+
+    \chapter{Relations and Functions}
+
+    \section{Ordered Pairs}
+
+    \begin{theorem}
+        There exists a predicate $\mathbf{Pair}(x,y,z)$ such that the following is a theorem:
+        \begin{enumerate}
+            \item $\forall x,y \exists ! z. \mathbf{Pair}(x,y,z)$
+            \item $\forall x,y,z,w,p. (\mathbf{Pair}(x,y,p) \wedge \mathbf{Pair}(z,w,p) \Rightarrow x = z \wedge y = w)$
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        Let $\mathbf{Pair}(x,y,z)$ be the predicate $z = \{ \{ x \}, \{ x , y \} \}$.
+        \pf
+        \step{1}{$\forall x,y \exists ! z. \mathbf{Pair}(x,y,z)$ }
+        \step{2}{$\forall a,b,c,d,p. (\mathbf{Pair}(a,b,p) \wedge \mathbf{Pair}(c,d,p) \Rightarrow x = z \wedge y = w)$}
+        \begin{proof}
+            \step{a}{\assume{$\{ \{ a \}, \{ a,b \} \} = \{ \{ c \}, \{ c, d \} \}$}}
+            \step{b}{$a = c$}
+            \begin{proof}
+                \pf\ Since $\{a\} = \bigcap (a,b) = \bigcap (c,d) = \{c\}$.
+            \end{proof}
+            \step{c}{$\{a,b\} = \{c,d\}$}
+            \begin{proof}
+                \pf\ $\{a,b\} = \bigcup (a,b) = \bigcup (c,d) = \{c,d\}$.
+            \end{proof}
+            \step{cc}{$b = c$ or $b = d$}
+            \step{d}{\case{$b = c$}}
+            \begin{proof}
+                \step{i}{$a = b$}
+                \step{ii}{$\{c,d\} = \{a\}$}
+                \step{iii}{$b = d$}
+            \end{proof}
+            \step{e}{\case{$b = d$}}
+            \begin{proof}
+                \pf\ We have $a = c$ and $b = d$ as required.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    Pick a predicate $\mathbf{Pair}(x,y,z)$ such that the following is a theorem:
+    \begin{enumerate}
+        \item $\forall x,y \exists ! z. \mathbf{Pair}(x,y,z)$
+        \item $\forall x,y,z,w,p. (\mathbf{Pair}(x,y,p) \wedge \mathbf{Pair}(z,w,p) \Rightarrow x = z \wedge y = w)$
+    \end{enumerate}
+
+    \begin{definition}[Ordered Pair]
+        For any objects $a$ and $b$, the \emph{ordered pair} $(a,b)$ is the object such
+        that $\mathbf{Pair}(a,b,(a,b))$.
+        We call $a$ its \emph{first coordinate} and $b$ its \emph{second coordinate}.
+    \end{definition}
+
+    \begin{definition}[Cartesian Product]
+        The \emph{Cartesian product} of classes $\mathbf{A}$ and $\mathbf{B}$ is the class
+        \[ \mathbf{A} \times \mathbf{B} = \{ (x,y) : x \in \mathbf{A}, y \in \mathbf{B} \} \enspace . \]
+    \end{definition}
+
+    \begin{theorem}
+        For any sets $A$ and $B$, the Cartesian product $A \times B$ is a set.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ By an Axiom of Replacement, for all $a \in A$, the class $B_a = \{ (a,b) : b \in B \}$ is a
+        set. Hence by an Axiom of Replacement, $\{ B_a : a \in A \}$ is a set. Now $A \times B =
+        \bigcup \{ B_a : a \in A \}$.
+    \end{proof}
+
+    \section{Relations}
+
+    \begin{definition}[Relation]
+        A \emph{relation} is a class of ordered pairs. It is \emph{small} iff it is a set.
+
+        When $\mathbf{R}$ is a relation, we write $x \mathbf{R} y$ for $(x,y) \in \mathbf{R}$.
+    \end{definition}
+
+    \begin{definition}[Domain]
+        The \emph{domain} of a class $\mathbf{R}$ is $\dom \mathbf{R} = \{ x : \exists y. (x,y) \in \mathbf{R} \}$.
+    \end{definition}
+
+    \begin{definition}[Range]
+        The \emph{range} of a class $\mathbf{R}$ is $\ran \mathbf{R} = \{ y : \exists x. (x,y) \in \mathbf{R} \}$.
+    \end{definition}
+
+    \begin{definition}[Field]
+        The \emph{field} of a class $\mathbf{R}$ is $\fld \mathbf{R} = \dom \mathbf{R} \cup \ran \mathbf{R}$.
+    \end{definition}
+
+    \begin{proposition}
+        If $R$ is a set then $\dom R$, $\ran R$ and $\fld R$ are sets.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Apply an Axiom of Replacement for $\dom R$ and $\ran R$. \qed
+    \end{proof}
+    
+    \begin{definition}[Single-Rooted]
+        A class $\mathbf{R}$ is \emph{single-rooted} iff, for all $y \in \ran \mathbf{R}$,
+        there is only one $x$ such that $x \mathbf{R} y$.
+    \end{definition}
+
+    \begin{definition}[Inverse]
+        The \emph{inverse} of a class $\mathbf{F}$ is the class $\mathbf{F}^{-1} = \{ (y,x)
+        \mid (x,y) \in \mathbf{F} \}$.
+    \end{definition}
+
+    \begin{definition}[Composition]
+        The \emph{composition} of classes $\mathbf{F}$ and $\mathbf{G}$ is the class
+        $\mathbf{G} \circ \mathbf{F} = \{ (x,z) \mid \exists y. (x,y) \in \mathbf{F} \wedge (y,z) \in \mathbf{G} \}$.
+    \end{definition}
+
+    \begin{definition}[Restriction]
+        The \emph{restriction} of the class $\mathbf{F}$ to the class $\mathbf{A}$ is the class
+        $\mathbf{F} \restriction \mathbf{A} = \{ (x,y) : x \in A \wedge (x,y) \in \mathbf{F} \}$.
+    \end{definition}
+
+    \begin{definition}[Image]
+        The \emph{image} of the class $\mathbf{A}$ under the class $\mathbf{F}$ is the class
+        $\mathbf{F}(\mathbf{A}) = \{ y : \exists x \in \mathbf{A}. (x,y) \in \mathbf{F} \}$.
+    \end{definition}
+    
+    \begin{definition}[Reflexive]
+        A binary relation $\mathbf{R}$ on $\mathbf{A}$ is \emph{reflexive} on $\mathbf{A}$ if and only if
+        $\forall x \in \mathbf{A}. x\mathbf{R}x$.
+    \end{definition}
+
+    \begin{definition}[Ireflexive]
+        A binary relation $\mathbf{R}$ on $\mathbf{A}$ is \emph{irreflexive} on $\mathbf{A}$ if and only if
+        $\forall x \in \mathbf{A}. \neg x\mathbf{R}x$.
+    \end{definition}
+
+    \begin{definition}[Symmetric]
+        A binary relation $\mathbf{R}$ is \emph{symmetric} iff, whenever $x\mathbf{R}y$, then $y\mathbf{R}x$.
+    \end{definition}
+
+    \begin{definition}[Asymmetric]
+        A binary relation $\mathbf{R}$ is \emph{asymmetric} iff, whenever $x\mathbf{R}y$, then $\neg y\mathbf{R}x$.
+    \end{definition}
+
+    \begin{definition}[Antisymmetric]
+        A binary relation $\mathbf{R}$ is \emph{antisymmetric} iff, whenever $x\mathbf{R}y$ and
+        $y \mathbf{R} x$, then $x = y$.
+    \end{definition}
+
+    \begin{definition}[Transitive]
+        A binary relation $\mathbf{R}$ is \emph{transitive} iff, whenever $x\mathbf{R}y$ and $y\mathbf{R}z$,
+        then $x\mathbf{R}z$.
+    \end{definition}
+
+    \begin{definition}[Minimal]
+        Let $R$ be a relation on $D$. An element $m \in D$ is \emph{$R$-minimal} iff there is no
+        $x \in D$ such that $x R m$.
+    \end{definition}
+
+    \begin{definition}[Maximal]
+        Let $R$ be a relation on $D$. An element $m \in D$ is \emph{$R$-maximal} iff there is no
+        $x \in D$ such that $mRx$.
+    \end{definition}
+
+    \begin{definition}[Least]
+        Let $R$ be a relation on $D$. An element $m \in D$ is \emph{least}, \emph{smallest} or the
+        \emph{minimum} iff $\forall x \in D. (m R x \vee m = x)$.
+    \end{definition}
+
+    \begin{definition}[Greatest]
+        Let $R$ be a relation on $D$. An element $m \in D$ is \emph{greatest}, \emph{largest} or the
+        \emph{maximum} iff $\forall x \in D (xRm \vee x = m)$.
+    \end{definition}
+
+
+    \section{$n$-ary Relations}
+
+    \begin{definition}
+        Given objects $a$, $b$, $c$, define the \emph{ordered triple}
+        $(a,b,c)$ to be $((a,b),c)$.
+
+        Define $(a,b,c,d) = ((a,b,c),d)$, etc.
+
+        Define the \emph{1-tuple} $(a)$ to be $a$.
+    \end{definition}
+
+    \begin{definition}[$n$-ary Relation]
+        Given a class $\mathbf{A}$, an \emph{$n$-ary relation} on $\mathbf{A}$ is a class of ordered
+        $n$-tuples, all of whose components are in $\mathbf{A}$.
+    \end{definition}
+
+    \section{Functions}
+
+    \begin{definition}[Function]
+        A \emph{function} is a relation $\mathbf{F}$ such that, for all $x \in \dom \mathbf{F}$,
+        there is only one $y$ such that $x \mathbf{F} y$. We call this unique $y$ the \emph{value}
+        of $\mathbf{F}$ at $x$ and denote it by $\mathbf{F}(x)$.
+
+        We say $\mathbf{F}$ is a function \emph{from} $\mathbf{A}$ \emph{into} $\mathbf{B}$,
+        or $\mathbf{F}$ \emph{maps} $\mathbf{A}$ into $\mathbf{B}$, and write $\mathbf{F} : \mathbf{A}
+        \rightarrow \mathbf{B}$, iff $\mathbf{F}$ is a function, $\dom \mathbf{F} = \mathbf{A}$,
+        and $\ran \mathbf{F} \subseteq \mathbf{B}$.
+
+        If, in addition, $\ran \mathbf{F} = \mathbf{B}$, we say $\mathbf{F}$ is a function from $\mathbf{A}$
+        \emph{onto} $\mathbf{B}$.
+    \end{definition}
+
+    \begin{theorem}
+        Let $\mathbf{F}, \mathbf{G} : \mathbf{A} \rightarrow \mathbf{B}$. If $\forall x \in \mathbf{A}.
+        \mathbf{F}(x) = \mathbf{G}(x)$ then $\mathbf{F} = \mathbf{G}$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Assume that $\mathbf{F}$ and $\mathbf{G}$ are functions. Then $\mathbf{F} \circ \mathbf{G}$
+        is a function, its domain is $\{ x \in \dom \mathbf{G} : \mathbf{G}(x) \in \dom \mathbf{F} \}$,
+        and for $x$ in its domain,
+        \[ (\mathbf{F} \circ \mathbf{G})(x) = \mathbf{F}(\mathbf{G}(x)) \enspace . \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}[One-to-one]
+        A function $\mathbf{F}$ is \emph{one-to-one} or an \emph{injection} iff it is single-rooted.
+    \end{definition}
+
+    \begin{theorem}
+        Let $\mathbf{F}$ be a one-to-one function. For $x \in \dom \mathbf{F}$, $\inv{\mathbf{F}}(\mathbf{F}(x)) = x$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Let $\mathbf{F}$ be a one-to-one function. For $y \in \ran \mathbf{F}$, $\mathbf{F}(\inv{\mathbf{F}}(y)) = y$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}[Identity Function]
+        For any class $\mathbf{A}$, the \emph{identity} function on $\mathbf{A}$ is $\mathrm{id}_\mathbf{A} =
+        \{ (x,x) \mid x \in \mathbf{A} \}$.
+    \end{definition}
+
+    \begin{theorem}
+        Let $F : A \rightarrow B$. Assume $A \neq \emptyset$. Then $F$ has a left inverse (i.e. there exists
+        $G : B \rightarrow A$ such that $G \circ F = \mathrm{id}_A$) if and only if $F$ is one-to-one.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{If $F$ is one-to-one then $F$ has a left inverse.}
+        \begin{proof}
+            \step{a}{\assume{$F$ is one-to-one.}}
+            \step{b}{$\inv{F} : \ran F \rightarrow A$}
+            \step{c}{\pick\ $a \in A$}
+            \step{d}{Define $G : B \rightarrow A$ by:
+            \[ G(x) = \begin{cases}
+                \inv{F}(x) & \text{if } x \in \ran F \\
+                a & \text{if } x \in B - \ran F
+            \end{cases} \]}
+            \step{f}{$\forall x \in A. G(F(x)) = x$}
+        \end{proof}
+        \step{2}{If $F$ has a left inverse then $F$ is one-to-one.}
+        \begin{proof}
+            \step{a}{\assume{$F$ has a left inverse $G$.}}
+            \step{b}{\pflet{$x, y \in A$ with $F(x) = F(y)$}}
+            \step{c}{$x = y$}
+            \begin{proof}
+                \pf\ $x = G(F(x)) = G(F(y)) = y$.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Binary Operation]
+        A \emph{binary operation} on a set $A$ is a function from $A \times A$ into $A$.
+    \end{definition}
+
+    \begin{theorem}
+        For any function $F : A \rightarrow B$, if $F$ has a right inverse then $F$ maps $A$ onto $B$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ If $H : B \rightarrow A$ is a right inverse, then for any $y$ in $B$, we have
+        $y = F(H(y))$. \qed
+    \end{proof}
+
+    \section{Dependent Products}
+
+    \begin{definition}
+        Let $I$ be a set and $H_i$ a set for all $i \in I$. Define
+        \[ \prod_{i \in I} H_i = \{ f : \text{$f$ is a function}, \dom f = I, \forall i \in I. f(i) \in H_i \} \enspace . \]
+    \end{definition}
+
+    \section{The Axiom of Choice}
+
+    \begin{definition}[Choice Function]
+        Let $A$ be a set. A \emph{choice function} for $A$ is a function $F : \mathcal{P} A - \{ \emptyset \}
+        \rightarrow A$ such that $\forall X \in \mathcal{P} A - \{ \emptyset \}. F(X) \in X$.
+    \end{definition}
+
+    \begin{theorem}
+        The following are equivalent.
+        \begin{enumerate}
+            \item The Axiom of Choice.
+            \item Every set has a choice function.
+            \item 
+            For any relation $R$ there exists a function $H \subseteq R$ with $\dom H = \dom R$.
+            \item (\textbf{Multiplicative Axiom}) For any set $I$ and any function $H$ with domain
+            $I$, if $H(i) \neq \emptyset$ for all $i \in I$, then $\prod_{i \in I} H(i) \neq \emptyset$
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{2}{$1 \Rightarrow 2$}
+        \begin{proof}
+            \step{a}{\assume{the Axiom of Choice}}
+            \step{b}{\pflet{$A$ be a set.}}
+            \step{c}{\pflet{$\mathcal{A} = \{ \{B\} \times B : B \in \mathcal{P} A - \{ \emptyset \} \}$}}
+            \step{d}{\pick\ a set $C$ such that $C \cap (\{ B \} \times B)$ is a singleton
+            for all $B \in \mathcal{P} A - \{ \emptyset \}$}
+            \step{e}{\pflet{$F = C \cap \bigcup \mathcal{A}$}}
+            \step{f}{$F : \mathcal{P} A - \{ \emptyset \} \rightarrow A$ is a function and $F(X) \in X$
+            for all $X$}
+        \end{proof}
+        \step{3}{$2 \Rightarrow 3$}
+        \begin{proof}
+            \step{a}{\assume{3}}
+            \step{b}{\pflet{$R$ be a relation}}
+            \step{c}{\pick\ a choice function $G$ for $\ran R$}
+            \step{d}{Define $F : \dom R \rightarrow \ran R$ by $F(x) = G(R(x))$}
+            \step{e}{$F \subseteq R$}
+        \end{proof}
+        \step{0}{$3 \Rightarrow 4$}
+        \begin{proof}
+            \step{a}{\assume{2}}
+            \step{b}{\pflet{$I$ be a set.}}
+            \step{c}{\pflet{$H$ be a function with domain $I$.}}
+            \step{d}{\assume{$H(i) \neq \emptyset$ for all $i \in I$.}}
+            \step{e}{\pflet{$R = \{ (i,x) : i \in I, x \in H(i) \}$}}
+            \step{f}{\pick\ a function $F \subseteq R$ with $\dom F = \dom R$ \prove{$F \in \prod_{i \in I} H(i)$}}
+            \begin{proof}
+                \pf\ By \stepref{a}.
+            \end{proof}
+            \step{g}{$\dom H = I$}
+            \begin{proof}
+                \pf\ We have $\dom R = I$ since for all $i \in I$ there exists $x$ such that $x \in H(i)$.
+            \end{proof}
+            \step{h}{$\forall i \in I. F(i) \in H(i)$}
+            \begin{proof}
+                \pf\ Since $iRF(i)$.
+            \end{proof}
+        \end{proof}
+        \step{1}{$4 \Rightarrow 1$}
+        \begin{proof}
+        \pf\ Let $\mathcal{A}$ be a set matching the two condtions. By the Multiplicative Axiom, pick a function
+        $f \in \prod_{B \in \mathcal{A}} B$. Let $C = \ran f$. Then $C \cap B = \{f(B)\}$ for all $B \in
+        \mathcal{A}$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        The Axiom of Choice is equivalent to the statement: for any sets $A$ and $B$
+            and every fuction $F$ that maps $A$ onto $B$, $F$ has a right inverse.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{2}{If the Axiom of Choice is true and $F$ maps $A$ onto $B$ then $F$ has a right inverse.}
+        \begin{proof}
+            \step{o}{\assume{The Axiom of Choice}}
+            \step{a}{\assume{$F$ maps $A$ onto $B$.}}
+            \step{b}{\pick\ a function $H$ with $H \subseteq \inv{F}$ and $\dom H = \dom \inv{F}$}
+            \begin{proof}
+                \pf\ By the Axiom of Choice.
+            \end{proof}
+            \step{c}{$\dom H = B$}
+            \begin{proof}
+                \pf\ $\dom H = \dom \inv{F} = \ran F = B$ by \stepref{a}.
+            \end{proof}
+            \step{d}{For all $y \in B$ we have $F(H(y)) = y$}
+            \begin{proof}
+                \step{i}{\pflet{$y \in B$}}
+                \step{ii}{$(y,H(y)) \in \inv{F}$}
+                \step{iii}{$F(H(y)) = y$}
+            \end{proof}
+        \end{proof}
+        \step{3}{If, for any sets $A$ and $B$, any function $F$ from $A$ onto $B$ has a right inverse, then
+        the Axiom of Choice is true.}
+        \begin{proof}
+            \step{a}{\assume{For any sets $A$ and $B$, any function $F$ from $A$ onto $B$ has a right inverse.}}
+            \step{b}{\pflet{$R$ be any relation.}}
+            \step{c}{\pflet{$F : R \rightarrow \dom R$ be the function $F(x,y) = x$}}
+            \step{d}{$F$ maps $R$ onto $\dom R$}
+            \step{e}{\pick\ a right inverse $G : \dom R \rightarrow R$ to $F$.}
+            \step{f}{\pflet{$H = \{ (x,y) : (x,(x,y)) \in G \}$}}
+            \step{g}{$H$ is a function}
+            \step{h}{$H \subseteq R$}
+            \step{i}{$\dom H = \dom R$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \section{Sets of Functions}
+
+    \begin{definition}
+        Let $A$ be a set and $\mathbf{B}$ be a class. Then $\mathbf{B}^A$ is the class of all functions
+        $A \rightarrow \mathbf{B}$.
+    \end{definition}
+
+    \begin{theorem}
+        If $A$ and $B$ are sets then $B^A$ is a set.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Since it is a subset of $\mathcal{P}(A \times B)$. \qed
+    \end{proof}
+
+
+    \section{Equivalence Relations}
+
+    \begin{definition}[Equivalence Relation]
+        An \emph{equivalence relation} on $\mathbf{A}$ is a binary relation on $\mathbf{A}$
+        that is reflexive on $\mathbf{A}$, symmetric and transitive.
+    \end{definition}
+
+    \begin{theorem}
+        If $\mathbf{R}$ is a symmetric and transitive relation then $\mathbf{R}$ is an equivalence relation
+        on $\fld \mathbf{R}$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$x \in \fld \mathbf{R}$}}
+        \step{2}{\pick\ $y$ such that either $x\mathbf{R}y$ or $y\mathbf{R}x$}
+        \step{3}{$x\mathbf{R}y$ and $y\mathbf{R}x$}
+        \begin{proof}
+            \pf\ Since $\mathbf{R}$ is symmetric.
+        \end{proof}
+        \step{4}{$x\mathbf{R}x$}
+        \begin{proof}
+            \pf\ Since $\mathbf{R}$ is transitive.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Equivalence Class]
+        If $\mathbf{R}$ is an equivalence relation and $x \in \fld \mathbf{R}$, the \emph{equivalence class}
+        of $x$ modulo $\mathbf{R}$ is
+        \[ [x]_{\mathbf{R}} = \{ t : x \mathbf{R} t \} \enspace . \]
+    \end{definition}
+
+    \begin{lemma}
+        Assume that $\mathbf{R}$ is an equivalence relation on $\mathbf{A}$ and that $x$ and $y$ belong to
+        $\mathbf{A}$. Then
+        \[ [x]_{\mathbf{R}} = [y]_{\mathbf{R}} \text{ iff } x \mathbf{R} y \enspace . \]
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{If $[x]_{\mathbf{R}} = [y]_{\mathbf{R}}$ then $x\mathbf{R}y$}
+        \begin{proof}
+            \step{a}{\assume{$[x]_{\mathbf{R}} = [y]_{\mathbf{R}}$}}
+            \step{b}{$y \in [y]_{\mathbf{R}}$}
+            \begin{proof}
+                \pf\ Since $\mathbf{R}$ is reflexive on $\mathbf{A}$.
+            \end{proof}
+            \step{c}{$y \in [x]_{\mathbf{R}}$}
+            \step{d}{$x\mathbf{R}y$}
+        \end{proof}
+        \step{2}{If $x\mathbf{R}y$ then $[x]_{\mathbf{R}} = [y]_{\mathbf{R}}$}
+        \begin{proof}
+            \step{a}{\assume{$x \mathbf{R} y$}}
+            \step{b}{$[y]_{\mathbf{R}} \subseteq [x]_{\mathbf{R}}$}
+            \begin{proof}
+                \step{i}{\pflet{$z \in [y]_{\mathbf{R}}$}}
+                \step{ii}{$y\mathbf{R}z$}
+                \step{iii}{$x\mathbf{R}z$}
+                \begin{proof}
+                    \pf\ Since $\mathbf{R}$ is transitive.
+                \end{proof}
+                \step{iv}{$z \in [x]_{\mathbf{R}}$}
+            \end{proof}
+            \step{c}{$y\mathbf{R}x$}
+            \begin{proof}
+                \pf\ Since $\mathbf{R}$ is symmetric.
+            \end{proof}
+            \step{d}{$[x]_{\mathbf{R}} \subseteq [y]_{\mathbf{R}}$}
+            \begin{proof}
+                \pf\ Similar.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Partition]
+        A \emph{partition} of a set $A$ is a set $P \subseteq \mathcal{P} A$ such that:
+        \begin{itemize}
+            \item Every member of $P$ is nonempty.
+            \item Any two distinct members of $P$ are disjoint.
+            \item $A = \bigcup P$
+        \end{itemize}
+    \end{definition}
+
+    \begin{theorem}
+        Let $A$ be a set.
+
+        For any equivalence relation $R$ on the set $A$, the set of all equivalence classes is a
+        partition of $A$. 
+        
+        Conversely, for any partition $P$, there exists a unique equivalence relation $\sim$ on $A$ such
+        that $P$ is the set of all equivalence classes with respect to $\sim$, given by $x \sim y$
+        iff $\exists X \in P (x \in X \wedge y \in X)$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{For every equivalence relation $R$ on $A$, the set of equivalence classes forms a partition
+        of $A$.}
+        \begin{proof}
+            \step{0}{\pflet{$R$ be an equivalence relation on $A$.}}
+            \step{1}{Every equivalence class is nonempty.}
+            \begin{proof}
+                \pf\ For any $x \in A$ we have $x \in [x]_R$.
+            \end{proof}
+            \step{2}{Any two distinct equivalence classes are disjoint.}
+            \begin{proof}
+                \step{a}{\pflet{$x, y \in A$}}
+                \step{b}{\assume{$z \in [x]_R \cap [y]_R$} \prove{$[x]_R = [y]_R$}}
+                \step{c}{$xRy$}
+                \begin{proof}
+                    \step{i}{$xRz$}
+                    \step{ii}{$yRz$}
+                    \step{iii}{$zRy$}
+                    \begin{proof}
+                        \pf\ By \stepref{ii} and symmetry.
+                    \end{proof}
+                    \step{iv}{$xRy$}
+                    \begin{proof}
+                        \pf\ By \stepref{i}, \stepref{iii} and transitivity.
+                    \end{proof}
+                \end{proof}
+                \step{d}{$[x]_R = [y]_R$}
+                \begin{proof}
+                    \pf\ By Lemma 3N.
+                \end{proof}
+            \end{proof}
+            \step{3}{$A$ is the union of all the equivalence classes.}
+            \begin{proof}
+                \pf\ For any $x \in A$ we have $x \in [x]_R$.
+            \end{proof}
+        \end{proof}
+        \step{2}{For any partition $P$, there exists a unique equivalence relation $\sim$ on $A$ such
+        that $P$ is the set of all equivalence classes with respect to $\sim$, given by $x \sim y$
+        iff $\exists X \in P (x \in X \wedge y \in X)$.}
+        \begin{proof}
+            \step{a}{\pflet{$P$ be a partition of $A$.}}
+            \step{b}{\pflet{$\sim = \{ (x,y) \in A^2 : \exists X \in P (x \in X \wedge y \in X) \}$}}
+            \step{c}{$\sim$ is an equivalence relation on $A$.}
+            \begin{proof}
+                \step{i}{$\sim$ is reflexive.}
+                \begin{proof}
+                    \step{one}{\pflet{$x \in A$}}
+                    \step{two}{There exists $X \in P$ such that $x \in X$}
+                    \begin{proof}
+                        \pf\ Since $P = \bigcup A$
+                    \end{proof}
+                    \step{three}{$x \sim x$}
+                    \begin{proof}
+                        \pf\ Since $\exists X \in P (x \in X \wedge x \in X)$.
+                    \end{proof}
+                \end{proof}
+                \step{ii}{$\sim$ is symmetric.}
+                \begin{proof}
+                    \pf\ From the definition of $\sim$.
+                \end{proof}
+                \step{iii}{$\sim$ is transitive.}
+                \begin{proof}
+                    \step{one}{\pflet{$x,y,z \in A$}}
+                    \step{two}{\assume{$x \sim y$ and $y \sim z$}}
+                    \step{three}{\pick\ $X, Y \in P$ such that $x \in X$, $y \in X$, $y \in Y$ and $z \in Y$}
+                    \step{four}{$X = Y$}
+                    \begin{proof}
+                        \pf\ Since the elements of $P$ are pairwise disjoint.
+                    \end{proof}
+                    \step{five}{$x \in X$ and $z \in X$}
+                    \step{six}{$x \sim z$}
+                \end{proof}
+            \end{proof}
+            \step{d}{$P$ is the set of $\sim$-equivalence classes.}
+            \begin{proof}
+                \step{o}{$\forall X \in P. \forall x \in X. X = [x]_\sim$}
+                \begin{proof}
+                    \step{one}{\pflet{$X \in P$}}
+                    \step{two}{\pflet{$x \in X$}}
+                    \step{three}{$X \subseteq [x]_\sim$}
+                    \begin{proof}
+                        \step{A}{\pflet{$y \in X$}}
+                        \step{B}{$x \sim y$}
+                        \step{C}{$y \in [x]_\sim$}
+                    \end{proof}
+                    \step{four}{$[x]_\sim \subseteq X$}
+                    \begin{proof}
+                        \step{A}{\pflet{$y \in [x]_\sim$}}
+                        \step{B}{\pick\ $Y \in P$ such that $x \in Y$ and $y \in Y$}
+                        \step{C}{$X = Y$}
+                        \begin{proof}
+                            \pf\ Since $x \in X$, $x \in Y$ and the elements of $P$ are pairwise disjoint.
+                        \end{proof}
+                        \step{D}{$y \in X$}
+                    \end{proof}
+                \end{proof}
+                \step{i}{$\forall X \in P. \exists x \in A. X = [x]_\sim$}
+                \begin{proof}
+                    \step{one}{\pflet{$X \in P$}}
+                    \step{two}{\pick\ $x \in X$}
+                    \begin{proof}
+                        \pf\ Since the elements of $P$ are nonempty.
+                    \end{proof}
+                    \step{three}{$X = [x]_\sim$}
+                    \begin{proof}
+                        \pf\ From \stepref{o}
+                    \end{proof}
+                \end{proof}
+                \step{ii}{$\forall x \in A. [x]_\sim \in P$}
+                \begin{proof}
+                    \step{one}{\pflet{$x \in A$}}
+                    \step{two}{\pick\ $X \in P$ such that $x \in X$}
+                    \step{three}{$X = [x]_\sim$}
+                    \begin{proof}
+                        \pf\ From \stepref{o}
+                    \end{proof}
+                \end{proof}
+            \end{proof}
+            \step{e}{For any equivalence relation $R$ on $A$, if $P$ is the set of $R$-equivalence classes,
+            then $R = \sim$.}
+            \begin{proof}
+                \step{i}{\pflet{$R$ be an equivalence relation on $A$}}
+                \step{ii}{\assume{$P$ is the set of $R$-equivalence classes.}}
+                \step{iii}{$R \subseteq \sim$}
+                \begin{proof}
+                    \step{a}{\pflet{$xRy$}}
+                    \step{b}{$[x]_R \in X$ and $x,y \in [x]_R$}
+                    \step{c}{$x \sim y$}
+                \end{proof}
+                \step{iv}{$\sim \subseteq R$}
+                \begin{proof}
+                    \step{a}{\pflet{$x \sim y$}}
+                    \step{b}{\pick\ $X \in P$ such that $x \in X$ and $y \in X$}
+                    \step{c}{\pick\ $z \in A$ such that $X = [z]_R$}
+                    \step{d}{$zRx$ and $zRy$}
+                    \step{e}{$xRy$}
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Quotient Set]
+        If $R$ is an equivalence relation on the set $A$, then the \emph{quotient set} $A / R$
+        is the set of all equivalence classes, and the \emph{natural map} or \emph{canonical map}
+        $\phi : A \rightarrow A/R$ is defined by $\phi(x) = [x]_R$.
+    \end{definition}
+
+    \begin{theorem}
+        Assume that $R$ is an equivalence relation on $A$ and that $F : A \rightarrow B$.
+        Assume that $F$ is \emph{compatible} with $R$; that is, whenever $xRy$, then $F(x) = F(y)$.
+        Then there exists a unique $\overline{F} : A / R \rightarrow B$ such that $F = \overline{F} \circ \phi$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ The unique such $\overline{F}$ is $\{ ([x],F(x)) : x \in A \}$. \qed
+    \end{proof}
+
+    \section{Well-Founded Relations}
+
+    \begin{definition}[Well Founded]
+        A relation $R$ on a class $D$ is \emph{well-founded} iff every nonempty subset of $D$ has an
+        $R$-minimal element.
+    \end{definition}
+
+    \begin{theorem}[Transfinite Induction]
+        Let $R$ be a well-founded relation on $A$. Let $B \subseteq A$. Assume that, for all $x \in A$,
+        if $\forall y \in A (yRx \Rightarrow y \in B)$, then $x \in B$. Then $B = A$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ If not, $A - B$ has an $R$-minimal element $a_0$, say. But then we have $\forall y. (y R a_0
+        \Rightarrow y \in B)$ and $a_0 \notin B$, which is a contradiction. \qed
+    \end{proof}
+
+    \begin{theorem}[Transfinite Recursion Theorem Schema]
+        For any property $P(x,y,z)$ the following is a theorem:
+
+        Assume that $<$ is a well-founded relation on $A$. Assume that $\forall x,y \exists ! z P(x,y,z)$.
+        Then there exists a unique function $F$ with domain $A$ such that
+        \[ \forall t \in A. P(F \restriction \seg t, t, F(t)) \enspace . \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{Given $t \in A$, let us say that a function $v$ is \emph{$P$-constructed up to $t$}
+        iff $\dom v = \{ x \in A : x \leq t \}$ and $\forall x \in \dom v. P(v \restriction \seg x, x, v(x))$}
+        \step{2}{Let $t_1, t_2 \in A$ with $t_1 \leq t_2$. Let $v_1$ be a function that is $P$-constructed
+        up to $t_1$, and $v_2$ a function that is $P$-constructed up to $t_2$. Then $\forall x \leq t_1.
+        v_1(x) = v_2(x)$}
+        \begin{proof}
+            \step{a}{\pflet{$x \leq t_1$}}
+            \step{b}{\assume{$\forall y < x. v_1(y) = v_2(y)$}}
+            \step{c}{$v_1 \restriction \seg x = v_2 \restriction \seg x$}
+            \step{d}{$P(v_1 \restriction \seg x, v_1(x))$}
+            \step{e}{$P(v_2 \restriction \seg x, v_2(x))$}
+            \step{c}{$v_1(x) = v_2(x)$}
+            \begin{proof}
+                \pf\ Since there is only one $y$ such that $P(v_1 \restriction \seg x, x, y)$.
+            \end{proof}
+            \qedstep
+            \begin{proof}
+                \pf\ By transfinite induction.
+            \end{proof}
+        \end{proof}
+        \step{3}{\pflet{$\mathcal{H} = \{ v : \exists t \in A. \text{$v$ is $P$-constructed up to $t$} \}$}}
+        \step{4}{$\mathcal{H}$ is a set.}
+        \begin{proof}
+            \pf\ By a Replacement Axiom since, if $v_1$ and $v_2$ are both $P$-constructed up to $t$
+            then $v_1 = v_2$ by \stepref{2}.
+        \end{proof}
+        \step{5}{\pflet{$F = \bigcup \mathcal{H}$}}
+        \step{6}{$F$ is a function}
+        \begin{proof}
+            \step{a}{\assume{$tFx$ and $tFy$}}
+            \step{b}{\pick\ $v_1, v_2 \in \mathcal{H}$ such that $v_1(t) = x$ and $v_2(t) = y$}
+            \step{c}{\pick\ $t_1, t_2 \in A$ such that $v_1$ is $P$-constructed up to $t_1$
+            and $v_2$ is $P$-constructed up to $t_2$}
+            \step{d}{\assume{w.l.o.g. $t_1 \leq t_2$}}
+            \step{e}{$v_1(t) = v_2(t)$}
+            \begin{proof}
+                \pf\ By \stepref{2}
+            \end{proof}
+            \step{f}{$x = y$}
+        \end{proof}
+        \step{7}{$\forall x \in \dom F. P(F \restriction \seg x, x, F(x))$}
+        \begin{proof}
+            \step{a}{\pflet{$x \in \dom F$}}
+            \step{b}{\pick\ $v \in \mathcal{H}$ such that $x \in \dom v$}
+            \step{c}{$P(v \restriction \seg x, x, v(x))$}
+            \step{d}{$v \restriction \seg x = F \restriction \seg x$}
+            \begin{proof}
+                \pf\ $\forall y < x. (y, v(y)) \in \bigcup \mathcal{H} = F$
+            \end{proof}
+            \step{e}{$v(x) = F(x)$}
+            \begin{proof}
+                \pf\ $(x, v(x)) \in \bigcup \mathcal{H} = F$
+            \end{proof}
+        \end{proof}
+        \step{8}{$\dom F = A$}
+        \begin{proof}
+            \step{a}{\pflet{$x \in A$}}
+            \step{b}{\assume{$\forall y < x. y \in \dom F$}}
+            \step{c}{\pflet{$z$ be the object such that $P(F \restriction \seg x, z)$}}
+            \step{d}{$F \restriction \seg x \cup \{ (x, z) \}$ is $P$-constructed up to $x$}
+            \step{e}{$x \in \dom F$}
+            \qedstep
+            \begin{proof}
+                \pf\ By transfinite induction, this proves $\forall x \in A. x \in \dom F$.
+            \end{proof}
+        \end{proof}
+        \step{9}{$F$ is unique.}
+        \begin{proof}
+            \step{a}{\pflet{$G$ be a function with domain $A$ such that $\forall x \in A. P(G \restriction
+            \seg x, x, G(x))$} \prove{$\forall x \in A. F(x) = G(x)$}}
+            \step{b}{\pflet{$x \in A$}}
+            \step{c}{\assume{$\forall y < x. F(y) = G(y)$}}
+            \step{d}{$F \restriction \seg x = G \restriction \seg x$}
+            \step{e}{$F(x) = G(x)$}
+            \qedstep
+            \begin{proof}
+                \pf\ This completes the proof by transfinite induction.
+            \end{proof}
+        \end{proof}        
+        \qed
+    \end{proof}
+
+    \section{Transitive Closure}
+
+    \begin{theorem}
+        \label{theorem:tc}
+        For any relation $R$ on a set $A$, there exists a least transitive relation $R^t$ such that $R
+        \subseteq R^t$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Define $R^t$ to be the intersection of all the transitive relations $Q$ such that $R \subseteq Q$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \label{theorem:tc_well_founded}
+        The transitive closure of a well-founded relation is well-founded.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ The $R$-minimal element of a nonempty set $B$ is also the $R^t$-minimal element. \qed
+    \end{proof}
+
+    \chapter{Order Theory}
+
+    \section{Partial Orders}
+
+    \begin{definition}[Strict Partial Order]
+        A \emph{strict partial order} is an irreflexive, transitive relation.
+
+        If $<$ is a strict partial order, we write $x \leq y$ for $x < y \vee x = y$.
+    \end{definition}
+
+    \begin{theorem}
+        Assume that $<$ is a partial order. Then for any $x$, $y$ and $z$:
+        \begin{enumerate}
+            \item \emph{At most} one of the three alternatives,
+            \[ x < y, x = y, y < x, \]
+            can hold.
+            \item $x \leq y \leq x \Rightarrow x = y$.
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{proposition}
+        If $R$ is a partial ordering on $D$ then so is $\inv{R}$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}[Upper Bound]
+        Let $<$ be a partial order on $A$ and $C \subseteq A$. An \emph{upper bound} for $C$ is an element
+        $b \in A$ such that $\forall x \in C. x \leq b$.
+    \end{definition}
+
+    \begin{definition}[Least Upper Bound]
+        Let $<$ be a partial order on $A$ and $C \subseteq A$. The \emph{least upper bound} or \emph{supremum}
+        for $C$ is the least element in the set of upper bounds for $C$.
+    \end{definition}
+    
+    \begin{definition}[Lower Bound]
+        Let $<$ be a partial order on $A$ and $C \subseteq A$. A \emph{lower bound} for $C$ is an element
+        $b \in A$ such that $\forall x \in C. b \leq x$.
+    \end{definition}
+
+    \begin{definition}[Greatest Lower Bound]
+        Let $<$ be a partial order on $A$ and $C \subseteq A$. The \emph{greatest lower bound} or 
+        \emph{infimum}
+        for $C$ is the greatest element in the set of lower bounds for $C$.
+    \end{definition}
+
+    \begin{definition}[Initial Segment]
+        Let $<$ be a partial order on $A$ and $t \in A$. The \emph{initial segment} up to $t$ is
+        \[ \seg t = \{ x \in A : x < t \} \enspace . \]
+    \end{definition}
+
+    \begin{definition}[Isomorphism]
+        Let $A$ and $B$ be posets. An \emph{isomorphism} between $A$ and $B$ is a bijection $f$ between $A$
+        and $B$ such that, for all $x, y \in A$, we have $x < y$ if and only if $f(x) < f(y)$.
+    \end{definition}
+
+    \begin{proposition}
+        Isomorphism is an equivalence relation on the class of posets.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{proposition}
+        Let $(A, <)$ be a poset and $B \subseteq A$. Then $< \cap B^2$ is a partial order on $B$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Let $R$ be a well-founded relation on $A$. The transitive closure of $R$ is a partial order on $A$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ It is well founded, hence irreflexive. \qed
+    \end{proof}
+
+    \begin{definition}
+        Let $P$ and $Q$ be partial orders and $f : P \rightarrow Q$. Then $f$ is \emph{increasing}
+        iff, whenever $x \leq y$, then $f(x) \leq f(y)$.
+    \end{definition}
+
+    \begin{definition}
+        Let $P$ and $Q$ be partial orders and $f : P \rightarrow Q$. Then $f$ is \emph{strictly increasing}
+        iff, whenever $x < y$, then $f(x) < f(y)$.
+    \end{definition}
+
+    \begin{definition}
+        Let $P$ and $Q$ be partial orders and $f : P \rightarrow Q$. Then $f$ is \emph{decreasing}
+        iff, whenever $x \leq y$, then $f(x) \geq f(y)$.
+    \end{definition}
+    
+    \begin{definition}
+        Let $P$ and $Q$ be partial orders and $f : P \rightarrow Q$. Then $f$ is \emph{strictly decreasing}
+        iff, whenever $x < y$, then $f(x) > f(y)$.
+    \end{definition}
+
+    \begin{definition}
+        Let $P$ and $Q$ be partial orders and $f : P \rightarrow Q$. Then $f$ is \emph{monotone}
+        iff it is either increasing or decreasing.
+    \end{definition}
+
+    \begin{definition}[Open Interval]
+        Let $P$ be a poset and $a, b \in P$ with $a < b$. The \emph{open interval} $(a,b)$
+        is the set $\{ x \in P : a < x < b \}$.
+
+        The \emph{open interval} $(a, +\infty)$ is the set $\{ x \in P : a < x \}$.
+
+        The \emph{open interval} $(-\infty, a)$ is the set $\{ x \in P : x < a \}$.
+    \end{definition}
+
+    \begin{definition}[Closed Interval]
+        Let $P$ be a poset and $a, b \in P$ with $a < b$. The \emph{open interval} $[a,b]$
+        is the set $\{ x \in P : a \leq x \leq b \}$.
+
+        The \emph{closed interval} $[a, +\infty)$ is the set $\{ x \in P : a \leq x \}$.
+
+        The \emph{closed interval} $(-\infty, a]$ is the set $\{ x \in P : x \leq a \}$.
+    \end{definition}
+
+    \begin{definition}[Half-Open Interval]
+        Let $P$ be a poset and $a, b \in P$ with $a < b$. The \emph{half-open intervals} $[a,b)$
+        and $(a,b]$ are defined by
+        \begin{align*}
+            [a,b) & = \{ x \in P : a \leq x < b \} \\
+            (a,b] & = \{ x \in O : a < x \leq b \}
+        \end{align*}
+    \end{definition}
+
+    \begin{definition}[Interval]
+        Let $P$ be a poset. The \emph{intervals} in $P$ are the sets of the following forms:
+        \begin{itemize}
+            \item $\emptyset$
+            \item a singleton
+            \item $P$
+            \item the open intervals
+            \item the closed intervals
+            \item the half-open intervals
+        \end{itemize}
+    \end{definition}
+    \section{Linear Orders}
+
+    \begin{definition}[Linear Ordering]
+        Let $\mathbf{A}$ be a class. A \emph{linear ordering} or \emph{total ordering} on $\mathbf{A}$
+        is a relation $\mathbf{R}$ on $\mathbf{A}$ such that:
+        \begin{itemize}
+            \item $\mathbf{R}$ is transitive.
+            \item $\mathbf{R}$ satisfies \emph{trichotomy} on $\mathbf{A}$; i.e. for any $x, y \in \mathbf{A}$,
+            exactly one of
+            \[ x\mathbf{R}y, x=y, y\mathbf{R}x \]
+            holds.
+        \end{itemize}
+    \end{definition}
+
+    \begin{theorem}
+        Let $\mathbf{R}$ be a linear ordering on $\mathbf{A}$.
+        \begin{enumerate}
+            \item There is no $x$ such that $x \mathbf{R} x$.
+            \item For distinct $x$ and $y$ in $\mathbf{A}$, either $x\mathbf{R}y$ or $y\mathbf{R}x$.
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Immediate from trichotomy. \qed
+    \end{proof}
+
+    \begin{definition}[Strictly Monotone Functions]
+        Let $A$ and $B$ be linearly ordered sets. A function $f : A \rightarrow B$ is \emph{strictly
+        monotone} iff, for all $x, y \in A$, if $x < y$ then $f(x) < f(y)$.
+    \end{definition}
+
+    \begin{theorem}
+        Let $A$ and $B$ be linearly ordered sets and $f : A \rightarrow B$ be strictly monotone.
+        For all $x, y \in A$, if $f(x) < f(y)$ then $x < y$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ We have $f(x) \neq f(y)$ and $f(y) \not < f(x)$ by trichotomy, hence $x \neq y$ and $y \not < x$
+        since $f$ is strictly monotone, hence $x < y$ by trichotomy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Every strictly monotone function is injective.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ If $f(x) = f(y)$, then we have $f(x) \not < f(y)$ and $f(y) \not < f(x)$ by trichotomy,
+        hence $x \not < y$ and $y \not < x$ since $f$ is strictly monotone, hence $x = y$ by
+        trichotomy. \qed
+    \end{proof}
+
+    \begin{proposition}
+        Let $(A, <)$ be a linearly ordered set and $B \subseteq A$. Then $< \cap B^2$ is a linear order on $B$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}
+        Let $A$ and $B$ be disjoint linearly ordered sets. The \emph{concatenation} of $A$ and $B$,
+        $A \oplus B$, is the set $A \cup B$ under the order given by: $x < y$ iff
+        \begin{itemize}
+            \item $x, y \in A$ and $x < y$; or
+            \item $x, y \in B$ and $x < y$; or
+            \item $x \in A$ and $y \in B$.
+        \end{itemize}
+
+        It is easy to check this is a linear ordering.
+    \end{definition}
+
+    \begin{proposition}
+        \[ A \oplus (B \oplus C) = (A \oplus B) \oplus C \]
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{proposition}
+        \[ A \oplus \emptyset = \emptyset \oplus A = A \]
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}
+        Let $A$ and $B$ be linearly ordered sets. The \emph{lexicographic order} on $A \times B$ is
+        defined by: $(a_1,b_1) < (a_2,b_2)$ iff $a_1 < a_2$ or ($a_1 = a_2$ and $b_1 < b_2$).
+    \end{definition}
+
+    \begin{proposition}
+        These two orders on $A \times B \times C$ are equal:
+        \begin{itemize}
+            \item lexicographic order formed from (lexicographic order on $A \times B$) and order on $C$
+            \item lexicographic order formed from order on $A$ and (lexicographic order on $B \times C$)
+        \end{itemize}
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{proposition}
+        \[ A \times 1 = 1 \times A = A \]
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{proposition}
+        $A \times (B \oplus C) = (A \times B) \oplus (A \times C)$
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \section{Well Orderings}
+
+    \begin{definition}[Well Ordering]
+        A \emph{well ordering} on a set $A$ is a linear ordering on $A$ such that every nonempty subset of
+        $A$ has a least element.
+    \end{definition}
+
+    \begin{theorem}
+        Assume that $<$ is a linear ordering on $A$. Assume that the only $<$-inductive subset of $A$ is $A$
+        itself. Then $<$ is a well ordering on $A$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\assume{for a contradiction $B \subseteq A$ has no least element.}}
+        \step{2}{$A - B$ is $<$-inductive.}
+        \begin{proof}
+            \step{a}{\pflet{$t \in A$}}
+            \step{b}{\assume{$\seg t \subseteq A - B$}}
+            \step{c}{$t \notin B$}
+            \begin{proof}
+                \pf\ If it were, it would be the least element of $B$.
+            \end{proof}
+            \step{d}{$t \in A - B$}
+        \end{proof}
+        \step{3}{$A - B = A$}
+        \step{4}{$B = \emptyset$}
+        \qed
+    \end{proof}
+
+    \begin{proposition}
+        Let $(A, <)$ be a well ordered set and $B \subseteq A$. Then $< \cap B^2$ is a well order on $B$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+    
+    \begin{theorem}
+        \label{theorem:well_ordered_trichotomy}
+        Let $A$ and $B$ be well-ordered sets. Then one of the following holds:
+        \begin{itemize}
+            \item $A \cong B$
+            \item $\exists b \in B. A \cong \seg b$
+            \item $\exists a \in A. \seg a \cong B$
+        \end{itemize}
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pick{$e$ that is not a member of $A$ or $B$}}
+        \step{2}{Define $F : A \rightarrow B \cup \{ e \}$ by:
+        \[ F(t) = \begin{cases}
+            \text{the least element of $B - F(\seg t)$} & \text{if } B - F(\seg t) \neq \emptyset \\
+            e & \text{if } B - F(\seg t) = \emptyset
+        \end{cases} \]}
+        \step{3}{\case{$e \in \ran F$}}
+        \begin{proof}
+            \step{a}{\pflet{$a \in A$ be least such that $B - F(\seg a) = \emptyset$}}
+            \step{b}{$F \restriction \seg a : \seg a \cong B$}
+        \end{proof}
+        \step{4}{\case{$\ran F = B$}}
+        \begin{proof}
+            \pf\ In this case $F : A \cong B$.
+        \end{proof}
+        \step{5}{\case{$\ran F \subset B$}}
+        \begin{proof}
+            \step{a}{\pflet{$b \in B$ be least such that $b \notin \ran F$}}
+            \step{b}{$F : A \cong \seg b$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        The concatenation of two well-orderings is a well ordering.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        The lexicographic ordering on the product of two well-ordered sets is a well ordering.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \chapter{Ordinal Numbers}
+
+    \begin{theorem}
+        There exists a function $\mathbf{Ord}$ from the class of all well-ordered sets to $\mathbf{V}$
+        such that $\mathbf{Ord}(A) = \mathbf{Ord}(B)$ if and only if $A \cong B$.
+    \end{theorem}
+
+    \begin{proof}
+        Let $\mathbf{Ord}(x,y)$ be the proposition: $x$ is a well-ordered set $(A,R)$ and there exists a
+        surjective function $E : A \twoheadrightarrow y$ such that, for all $t \in A$, we have 
+        $E(t) = \{ E(s) : s \in A, s R t \}$.
+        We reason as follows:
+
+        \pf
+        \step{1}{$\mathbf{Ord}$ is a function}
+        \begin{proof}
+            \step{a}{\assume{$\mathbf{Ord}((A,R),\alpha)$ and $\mathbf{Ord}((A,R),\beta)$}}
+            \step{b}{\pick\ surjective functions $E_1 : A \twoheadrightarrow \alpha$ and $E_2 : A
+            \twoheadrightarrow \beta$ such that, for all $t \in A$, we have $E_1(t) = \{ E_1(s) : s R t \}$
+            and $E_2(t) = \{ E_2(s) : s R t \}$}
+            \step{c}{$E_1 = E_2$}
+            \begin{proof}
+                \pf\ Prove $E_1(t) = E_2(t)$ by $R$-induction on $t$.
+            \end{proof}
+            \step{d}{$\alpha = \beta$}
+            \begin{proof}
+                \pf\ We have $\alpha = \ran E_1 = \ran E_2 = \beta$.
+            \end{proof}
+        \end{proof}
+        \step{2}{$\dom \mathbf{Ord}$ is the class of all well-ordered sets}
+        \begin{proof}
+            \step{a}{If $\mathbf{Ord}(x,y)$ then $x$ is a well-ordered set.}
+            \begin{proof}
+                \pf\ Immediate.
+            \end{proof}
+            \step{b}{For any well-ordered set $(A,R)$, there exists $\alpha$ such that $\mathbf{Ord}((A,R),\alpha)$}
+            \begin{proof}
+                \step{i}{\pflet{$(A,R)$ be a well-ordered set.}}
+                \step{ii}{Define the function $E : A \rightarrow \mathbf{V}$ by transfinite recursion by: $E(t) =
+                \{ E(s) : s R t \}$}
+                \step{iii}{\pflet{$\alpha = \ran E$}}
+                \step{iv}{$\mathbf{Ord}((A,R),\alpha)$}
+            \end{proof}
+        \end{proof}
+        \step{3}{Given well-ordered sets $A$ and $B$, we have $\mathbf{Ord}(A) = \mathbf{Ord}(B)$ if and only
+        if $A \cong B$.}
+        \begin{proof}
+            \step{a}{\pflet{$(A,R)$ and $(B,S)$ be well-ordered sets.}}
+            \step{b}{If $\mathbf{Ord}(A,R) = \mathbf{Ord}(B,S)$ then $(A,R) \cong (B,S)$}
+            \begin{proof}
+                \step{i}{\assume{$\mathbf{Ord}(A,R) = \mathbf{Ord}(B,S) = \alpha$, say}}
+                \step{ii}{\pick\ surjective function $E : (A,R) \twoheadrightarrow \alpha$ and 
+                $E' : (B,S) \twoheadrightarrow \alpha$ such that $\forall t \in A. E(t) = \{ E(s) : s R t \}$
+                and $\forall t \in B. E'(t) = \{ E'(s) : s S t \}$}
+                \step{iii}{$E'$ is a bijection}
+                \begin{proof}
+                    \pf\ If $sSt$ then $E'(s) \in E'(t)$ hence $E'(s) \neq E'(t)$.
+                \end{proof}
+                \step{iv}{Define $F : A \rightarrow B$ by $F = \inv{E'} \circ E$}
+                \step{v}{For $s,t \in A$ we have $sRt$ iff $F(s)SF(t)$}
+                \begin{proof}
+                    \pf
+                    \begin{align*}
+                        sRt & \Leftrightarrow E(s) \in E(t) \\
+                        & \Leftrightarrow \inv{E'}(E(s)) S \inv{E'}(E(t))
+                    \end{align*}
+                \end{proof}
+            \end{proof}
+            \step{c}{If $A \cong B$ then $\mathbf{Ord}(A) = \mathbf{Ord}(B)$}
+            \begin{proof}
+                \step{i}{\pflet{$F : (A,R) \cong (B,S)$}}
+                \step{ii}{\pflet{$\alpha = \mathbf{Ord}(A,R)$}}
+                \step{iii}{\pflet{$\beta = \mathbf{Ord}(B,S)$}}
+                \step{iv}{\pick\ a surjective function $E : A \rightarrow \alpha$ such that
+                $\forall t \in A. E(t) = \{ E(s) : s R t \}$}
+                \step{v}{\pick\ a surjective function $E' : B \rightarrow \beta$ such that $\forall t \in B.
+                E'(t) = \{ E'(s) : s S t \}$}
+                \step{vi}{$\forall t \in A. E(t) = E'(F(t))$}
+                \begin{proof}
+                    \pf\ By $R$-induction on $t$.
+                \end{proof}
+                \step{vii}{$\alpha = \beta$}
+                \begin{proof}
+                    \pf\ $\alpha = \ran E = \ran E' = \beta$
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{thms}
+        Given any predicates $\mathbf{Ord}(x,y)$ and $\mathbf{Ord}'(x,z)$, there exists a predicate
+        $\mathbf{F}(y,z)$ such that the following is a theorem.
+        
+        Assume $\mathbf{Ord}$ and $\mathbf{Ord}'$ are functions from the class of all well-ordered sets to
+        $\mathbf{V}$ such that, for all well-ordered sets $A$ and $B$, $\mathbf{Ord}(A) = \mathbf{Ord}(B)$
+        if and only if $\mathbf{Ord}'(A) = \mathbf{Ord}'(B)$ if and only if $A \cong B$. Then $\mathbf{F}$ is
+        a bijection between $\ran \mathbf{Ord}$
+        and $\ran \mathbf{Ord}'$ such that $\mathbf{F} \circ \mathbf{Ord} = \mathbf{Ord}'$.
+    \end{thms}
+
+    \begin{proof}
+        Take $\mathbf{F}(y,z)$ to be the predicate: There exists $x$ such that $\mathbf{Ord}(x,y)$ and
+        $\mathbf{Ord}'(x,z)$.
+
+        \pf
+        \step{1}{$\mathbf{F}$ is a bijection between $\ran \mathbf{Ord}$ and $\mathbf{Ord}'$}
+        \begin{proof}
+            \step{a}{$\mathbf{F}$ is a function.}
+            \begin{proof}
+                \step{i}{\assume{$\mathbf{F}(y,z)$ and $\mathbf{F}(y,z')$}}
+                \step{ii}{\pick\ $x$ such that $\mathbf{Ord}(x) = y$ and $\mathbf{Ord}'(x) = z$}
+                \step{iii}{\pick\ $x'$ such that $\mathbf{Ord}(x') = y$ and $\mathbf{Ord}'(x') = z'$}
+                \step{iv}{$x \cong x'$}
+                \step{v}{$z = z'$}
+            \end{proof}
+            \step{b}{$\dom \mathbf{F} = \ran \mathbf{Ord}$}
+            \begin{proof}
+                \step{i}{$\dom \mathbf{F} \subseteq \ran \mathbf{Ord}$}
+                \begin{proof}
+                    \pf\ Immediate.
+                \end{proof}
+                \step{ii}{$\ran \mathbf{Ord} \subseteq \dom \mathbf{F}$}
+                \begin{proof}
+                    \step{one}{\pflet{$y \in \ran \mathbf{Ord}$}}
+                    \step{two}{\pick\ $x$ such that $\mathbf{Ord}(x) = y$}
+                    \step{three}{$\mathbf{F}(y) = \mathbf{Ord}'(x)$}
+                \end{proof}
+            \end{proof}
+            \step{c}{$\ran \mathbf{F} = \ran \mathbf{Ord}'$}
+            \begin{proof}
+                \step{i}{$\ran \mathbf{F} \subseteq \ran \mathbf{Ord}'$}
+                \begin{proof}
+                    \pf\ Immediate.
+                \end{proof}
+                \step{ii}{$\ran \mathbf{Ord}' \subseteq \ran \mathbf{F}$}
+                \begin{proof}
+                    \step{one}{\pflet{$z \in \ran \mathbf{Ord}'$}}
+                    \step{two}{\pick\ $x$ such that $\mathbf{Ord}'(x) = z$}
+                    \step{three}{$\mathbf{F}(\mathbf{Ord}(x)) = z$}
+                \end{proof}
+            \end{proof}
+            \step{d}{$\mathbf{F}$ is one-to-one.}
+            \begin{proof}
+                \step{i}{\assume{$\mathbf{F}(y) = \mathbf{F}(y')$}}
+                \step{ii}{\pick\ $x$ and $x'$ such that $\mathbf{Ord}(x) = y$, $\mathbf{Ord}(x') = y'$,
+                and $\mathbf{Ord}'(x) = \mathbf{Ord}'(x') = \mathbf{F}(y)$}
+                \step{iii}{$x \cong x'$}
+                \step{iv}{$y = y'$}
+            \end{proof}
+        \end{proof}
+        \step{2}{$\mathbf{F} \circ \mathbf{Ord} = \mathbf{Ord}'$}
+        \begin{proof}
+            \pf\ Immediate.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    Pick a function $\mathbf{Ord}$ such that $\dom \mathbf{Ord}$ is the class of all well-ordered sets,
+    and $\mathbf{Ord}(A) = \mathbf{Ord}(B)$ iff $A \cong B$. 
+
+    \begin{definition}[Ordinal Number]
+        The class $\mathbf{On}$ of \emph{ordinal numbers} is $\ran \mathbf{Ord}$.
+    \end{definition}
+
+    \begin{definition}[Well-ordered by Epsilon]
+        A set $A$ is \emph{well-ordered by epsilon} iff $\{ (x,y) : x, y \in A, x \in y \}$ is a well
+        ordering on $A$.
+    \end{definition}
+
+    \begin{definition}[Transitive Set]
+        A set $A$ is a \emph{transitive set} iff every member of a member of $A$ is a member of $A$.
+    \end{definition}
+
+    \begin{theorem}
+        \label{theorem:ordinals}
+        A set is an ordinal number if and only if it is a transitive set that is well-ordered by epsilon.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{Every ordinal number is a transitive set.}
+        \begin{proof}
+            \pf\ Lemma \ref{lemma:epsilon_image}.
+        \end{proof}
+        \step{2}{Every ordinal number is well-ordered by epsilon.}
+        \begin{proof}
+            \pf\ Corollary \ref{corollary:epsilon_image_well_ordered}.
+        \end{proof}
+        \step{3}{Every transitive set that is well-ordered by epsilon is an ordinal number.}
+        \begin{proof}
+            \step{a}{\pflet{$\alpha$ be a transitive set well-ordered by epsilon.}}
+            \step{b}{\pflet{$\beta$ be the epsilon-image of $(\alpha, \in)$ with 
+            $E : \alpha \cong \beta$ the canonical isomorphism.}}
+            \step{c}{$\forall x \in \alpha. E(x) = x$}
+            \begin{proof}
+                \step{i}{\pflet{$x \in \alpha$}}
+                \step{ii}{\assume{$\forall y < x. E(y) = y$}}
+                \step{iii}{$E(x) = x$}
+                \begin{proof}
+                    \pf
+                    \begin{align*}
+                        E(x) & = \{ E(y) : y \in \alpha, y \in x \} \\
+                        & = \{ E(y) : y \in x \} & (\text{$\alpha$ is a transitive set}) \\
+                        & = \{ y : y \in x \} & (\text{\stepref{ii}}) \\
+                        & = x
+                    \end{align*}
+                \end{proof}
+            \end{proof}
+            \step{d}{$\alpha = \beta$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        Every member of an ordinal number is an ordinal number.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\alpha$ be an ordinal number.}}
+        \step{2}{\pflet{$\beta \in \alpha$}}
+        \step{3}{$\beta$ is a transitive set.}
+        \begin{proof}
+            \step{i}{\pflet{$x \in y \in \beta$}}
+            \step{ii}{$y \in \alpha$}
+            \begin{proof}
+                \pf\ Since $\alpha$ is a transitive set.
+            \end{proof}
+            \step{iii}{$x \in \alpha$}
+            \begin{proof}
+                \pf\ Since $\alpha$ is a transitive set.
+            \end{proof}
+            \step{iv}{$x \in \beta$}
+            \begin{proof}
+                \pf\ Since $\alpha$ is a partially ordered by epsilon.
+            \end{proof}
+        \end{proof}
+        \step{4}{$\beta$ is well-ordered by epsilon.}
+        \begin{proof}
+            \pf\ Since $\{ (x,y) : x,y \in \beta, x \in y \}$ is the restriction of
+            $\{ (x,y) : x,y \in \alpha, x \in y \}$ to $\beta$.
+        \end{proof}
+        \step{5}{$\beta$ is an ordinal number.}
+        \begin{proof}
+            \pf\ Theorem \ref{theorem:ordinals}.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{proposition}
+        The class of ordinals is well-ordered by epsilon.
+    \end{proposition}
+
+    \begin{proof}
+        \pf
+        \step{1}{For any ordinals $\alpha$, $\beta$, $\gamma$, if $\alpha \in \beta \in \gamma$ then
+        $\alpha \in \gamma$.}
+        \begin{proof}
+            \pf\ Since $\gamma$ is a transitive set (Lemma \ref{lemma:epsilon_image}).
+        \end{proof}
+        \step{2}{For any ordinal $\alpha$ we have $\alpha \notin \alpha$.}
+        \begin{proof}
+            \pf\ Since $\alpha$ is well-ordered by epsilon.
+        \end{proof}
+        \step{3}{For any ordinals $\alpha$, $\beta$, exactly one of $\alpha \in \beta$,
+        $\beta \in \alpha$, $\alpha = \beta$ holds.}
+        \begin{proof}
+            \step{a}{\pflet{$\alpha$, $\beta$ be ordinals.}}
+            \step{b}{Either $\alpha \cong \beta$ or $\exists \gamma \in \beta. \alpha \cong \gamma$
+            or $\exists \gamma \in \alpha. \gamma \cong \alpha$}
+            \begin{proof}
+                \pf\ Theorem \ref{theorem:well_ordered_trichotomy}.
+            \end{proof}
+            \step{c}{Either $\alpha = \beta$ or $\exists \gamma \in \beta. \alpha = \gamma$
+            or $\exists \gamma \in \alpha. \gamma = \alpha$}
+            \begin{proof}
+                \pf\ Since any ordinal is its own epsilon-image, and isomorphic well-orderings have equal
+                epsilon-images.
+            \end{proof}
+        \end{proof}
+        \step{4}{Any nonempty set of ordinals has a least element.}
+        \begin{proof}
+            \step{a}{\pflet{$A$ be a nonempy set of ordinals.}}
+            \step{b}{\pick\ $\alpha \in A$}
+            \step{c}{\case{$A \cap \alpha = \emptyset$}}
+            \begin{proof}
+                \pf\ In this case, $\alpha$ is least in $A$.
+            \end{proof}
+            \step{d}{\case{$A \cap \alpha \neq \emptyset$}}
+            \begin{proof}
+                \pf\ In this case, the least element of $A \cap \alpha$ is the least element in $A$.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{corollary}
+        \label{corollary:set_of_ordinals}
+        Any transitive set of ordinal numbers is an ordinal number.
+    \end{corollary}
+
+    \begin{corollary}
+        $\emptyset$ is an ordinal number.
+    \end{corollary}
+
+    We write 0 for $\emptyset$ considered as an ordinal number.
+
+    \begin{definition}[Successor]
+        The \emph{successor} of a set $a$ is the set $a^+ = a \cup \{ a \}$.
+    \end{definition}
+
+    \begin{corollary}
+        The successor of an ordinal number is an ordinal number.
+    \end{corollary}
+
+    \begin{corollary}
+        For any set $A$ of ordinal numbers, the set $\bigcup A$ is an ordinal number.
+    \end{corollary}
+
+    \begin{theorem}[Burali-Forti]
+        The class of ordinal numbers is not a set.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\assume{for a contradiction the class $\mathbf{On}$ is a set.}}
+        \step{2}{$\mathbf{On}$ is an ordinal number.}
+        \begin{proof}
+            \pf\ Corollary \ref{corollary:set_of_ordinals}.
+        \end{proof}
+        \step{3}{$\mathbf{On} \in \mathbf{On}$}
+        \qedstep
+        \begin{proof}
+            \pf\ This contradicts Lemma \ref{lemma:epsilon_image}.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}[Hartogs]
+        For any set $A$, there exists an ordinal not dominated by $A$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$A$ be a set.}}
+        \step{2}{\pflet{$\alpha = \{ \beta : \beta \text{ is an ordinal }, \beta \preccurlyeq A \}$.}}
+        \step{3}{\pflet{$W = \{ (B, <) : B \subseteq A, < \text{ is a well ordering on } B \}$}}
+        \step{4}{$\forall \beta \in \alpha. \exists (B, <) \in W. \beta \text{ is the epsilon-image of } (B, <)$}
+        \begin{proof}
+            \step{a}{\pflet{$\beta \in \alpha$}}
+            \step{b}{\pick\ an injection $f : \beta \rightarrow A$}
+            \step{c}{Define $<$ on $f(\beta)$ by: $f(\gamma) < f(\delta)$ iff $\gamma \in \delta$}
+            \step{d}{$<$ well orders $f(\beta)$}
+            \step{e}{$\beta$ is the epsilon-image of $(f(\beta), <)$ with $\inv{f}$ the canonical isomorphism.}
+        \end{proof}
+        \step{5}{$\alpha$ is a set.}
+        \begin{proof}
+            \pf\ By a Replacement Axiom applied to $W$.
+        \end{proof}
+        \step{6}{$\alpha$ is an ordinal.}
+        \begin{proof}
+            \step{a}{$\alpha$ is a transitive set.}
+            \begin{proof}
+                \step{i}{\pflet{$\beta \in \gamma \in \alpha$}}
+                \step{ii}{$\beta \subseteq \gamma \preccurlyeq A$}
+                \step{iii}{$\beta \preccurlyeq A$}
+                \step{iv}{$\beta \in \alpha$}
+            \end{proof}
+            \qedstep
+            \begin{proof}
+                \pf\ By Corollary \ref{corollary:set_of_ordinals}.
+            \end{proof}
+        \end{proof}
+        \step{7}{$\alpha \not\preccurlyeq A$}
+        \begin{proof}
+            \pf\ Because $\alpha \notin \alpha$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        The following statements are equivalent:
+        \begin{enumerate}
+            \item The Axiom of Choice
+            \item \textbf{Well-Ordering Theorem}
+            For any set $A$, there exists a well ordering on $A$.
+            \item \textbf{Zorn's Lemma}
+            Let $\mathcal{A}$ be a set such that, for every chain $\mathcal{B} \subseteq \mathcal{A}$,
+            we have $\bigcup \mathcal{B} \in \mathcal{A}$. Then $\mathcal{A}$ has a maximal element.
+            \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{If the Axiom of Choice is true then the Well-Ordering Theorem is true.}
+        \begin{proof}
+            \step{a}{\assume{The Axiom of Choice}}
+            \step{b}{\pflet{$A$ be any set.}}
+            \step{c}{\pick\ an ordinal $\alpha$ not dominated by $A$.}
+            \step{d}{\pick\ an object $e$ such that $e \notin A$.}
+            \step{e}{\pick\ a choice function $G : \mathcal{P} A - \{ \emptyset \} \rightarrow A$ for $A$.}
+            \step{e}{Define the function $F : \alpha \rightarrow A \cup \{ e \}$ by transfinite recursion thus:
+            \[ F(\gamma) = \begin{cases}
+                G(A - \{ F(\delta) : \delta < \gamma \}) & \text{if } A - \{ F(\delta) : \delta < \gamma \} \neq \emptyset \\
+                e & \text{if } A - \{ F(\delta) : \delta < \gamma \} = \emptyset
+            \end{cases} \]}
+            \step{h}{\pflet{$\delta$ be least such that $F(\delta) = e$}}
+            \begin{proof}
+                \pf\ There is such a $\delta$, otherwise $F$ would be a bijection between $\alpha$ and $A$.
+            \end{proof}
+            \step{i}{$F \restriction \delta$ is a bijection between $\delta$ and $A$}
+            \step{j}{Define $<$ on $A$ by: $F(\gamma) < F(\beta)$ iff $\gamma \in \beta$ for $\gamma, \beta \in \delta$}
+            \step{k}{$<$ is a well ordering on $A$.}
+        \end{proof}
+        \step{1}{If the Well-Ordering Theorem is true then Zorn's Lemma is true.}
+        \begin{proof}
+            \step{a}{\assume{The Well-Ordering Theorem}}
+            \step{b}{\pflet{$\mathcal{A}$ be a set that is closed under unions of chains.}}
+            \step{c}{\pick\ a well ordering $<$ on $\mathcal{A}$}
+            \step{d}{Define the function $F : \mathcal{A} \rightarrow 2$ by transfinite recursion thus:
+            \[ F(A) = \begin{cases}
+                1 & \text{if } \forall B < A. F(B) = 1 \Rightarrow B \subseteq A \\
+                0 & \text{otherwise}
+            \end{cases} \]}
+            \step{e}{\pflet{$\mathcal{C} = \{ A \in \mathcal{A} : F(A) = 1 \}$}}
+            \step{f}{$\mathcal{C}$ is a chain.}
+            \begin{proof}
+                \step{i}{\pflet{$A, B \in \mathcal{C}$}}
+                \step{ii}{\assume{w.l.o.g. $A < B$}}
+                \step{iii}{$F(A) = 1$}
+                \step{iv}{$F(B) = 1$}
+                \step{v}{$A \subseteq B$}
+            \end{proof}
+            \step{g}{$\bigcup \mathcal{C} \in \mathcal{A}$}
+            \begin{proof}
+                \pf\ By \stepref{b}.
+            \end{proof}
+            \step{h}{$\bigcup \mathcal{C}$ is maximal in $\mathcal{A}$}
+            \begin{proof}
+                \step{i}{\assume{$\bigcup \mathcal{C} \subseteq D \in \mathcal{A}$}}
+                \step{ii}{$\forall B < D. F(B) = 1 \Rightarrow B \subseteq D$}
+                \begin{proof}
+                    \pf\ If $F(B) = 1$ then $B \in \mathcal{C}$ so $B \subseteq \bigcup \mathcal{C} \subseteq D$.
+                \end{proof}
+                \step{iii}{$F(D) = 1$}
+                \step{iv}{$D \in \mathcal{C}$}
+                \step{v}{$D = \bigcup \mathcal{C}$}
+            \end{proof}
+        \end{proof}
+        \step{2}{If Zorn's Lemma is true then the Axiom of Choice is true.}
+        \begin{proof}
+            \step{a}{\assume{Zorn's Lemma}}
+            \step{b}{\pflet{$R$ be a relation.}}
+            \step{c}{\pflet{$\mathcal{A}$ be the set of all functions that are subsets of $R$.}}
+            \step{d}{For any chain $\mathcal{B} \subseteq \mathcal{A}$ we have $\bigcup \mathcal{B} \in
+            \mathcal{A}$}
+            \step{e}{\pick\ $F \in \mathcal{A}$ maximal.}
+            \step{f}{$\dom F = \dom R$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{corollary}[Numeration Theorem (Choice)]
+        Any set is equinumerous to some ordinal number.
+    \end{corollary}
+
+    \begin{theorem}[Transfinite Recursion]
+        Let $\mathbf{F} : \mathbf{V} \rightarrow \mathbf{V}$. Then there exists a function $\mathbf{G}
+        : \mathbf{On} \rightarrow \mathbf{V}$ such that
+        \[ \forall \alpha \in \mathbf{On}. \mathbf{G}(\alpha) = \mathbf{F}(\mathbf{G} \restriction \alpha)
+        \enspace . \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Define $\mathbf{G} = \{ (\alpha, y) : \exists f : \alpha^+ \rightarrow \mathbf{V}.
+        \forall \beta \in \alpha^+. f(\beta) = \mathbf{F}(f \restriction \beta) \}$. \qed
+    \end{proof}
+
+    \begin{definition}[Continuous]
+        A function $\mathbf{F} : \mathbf{On} \rightarrow \mathbf{On}$ is \emph{continuous} iff
+        $\mathbf{F}(\lambda) = \bigcup_{\beta \in \lambda} \mathbf{F}(\beta)$ for every limit ordinal
+        $\lambda$.
+    \end{definition}
+
+    \begin{theorem}
+        Let $\mathbf{F} : \mathbf{On} \rightarrow \mathbf{On}$ be continuous. Suppose
+        $\forall \alpha \in \mathbf{On}. \mathbf{F}(\alpha) < \mathbf{F}(\alpha + 1)$.
+        Then $\mathbf{F}$ is strictly monotone.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$P(\beta)$ be the statement: $\forall \alpha < \beta. \mathbf{F}(\alpha) < \mathbf{F}(\beta)$}}
+        \step{2}{$P(0)$}
+        \begin{proof}
+            \pf\ Vacuous.
+        \end{proof}
+        \step{3}{$\forall \beta \in \mathbf{On}. P(\beta) \Rightarrow P(\beta^+)$}
+        \begin{proof}
+            \pf\ For $\alpha < \beta^+$ we have $\mathbf{F}(\alpha) \leq \mathbf{F}(\beta) < \mathbf{F}(\beta^+)$.
+        \end{proof}
+        \step{4}{For every limit ordinal $\lambda$, if $\forall \beta < \lambda. P(\beta)$ then $P(\lambda)$}
+        \begin{proof}
+            \pf\ For $\alpha < \lambda$ we have $\mathbf{F}(\alpha) < \mathbf{F}(\alpha^+) \leq \mathbf{F}(\lambda)$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Normal]
+        A function $\mathbf{F} : \mathbf{On} \rightarrow \mathbf{On}$ is \emph{normal} iff it is
+        strictly monotone and continuous.
+    \end{definition}
+
+    \begin{theorem}
+        Let $\mathbf{F} : \mathbf{On} \rightarrow \mathbf{On}$ be normal. Let $t_0 \leq \beta$.
+        Then there exists a greatest $\gamma$ such that $\mathbf{F}(\gamma) \leq \beta$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\gamma = \{ \alpha \in \mathbf{On} : \mathbf{F}(\alpha) \leq \beta \}$}}
+            \step{a}{$\gamma$ is an ordinal.}
+            \begin{proof}
+                \step{i}{$\gamma$ is a set.}
+                \begin{proof}
+                    \pf\ We have $\alpha \leq \mathbf{F}(\alpha)$ for all $\alpha$, so $\gamma \subseteq \beta$.
+                \end{proof}
+                \step{ii}{$\gamma$ is a transitive set.}
+                \begin{proof}
+                    \pf\ If $\alpha < \alpha'$ and $\mathbf{F}(\alpha') \leq \beta$ then $\mathbf{F}(\alpha) < \beta$
+                    by monotonicity.
+                \end{proof}
+            \end{proof}
+            \step{b}{$\gamma \neq 0$}
+            \begin{proof}
+                \pf\ By hypothesis.
+            \end{proof}
+        \step{3}{\case{$\gamma$ is a successor ordinal.}}
+        \begin{proof}
+            \pf\ Let $\gamma = \alpha^+$. Then $\alpha$ is greatest such that $\mathbf{F}(\alpha) \leq \beta$.
+        \end{proof}
+        \step{4}{\case{$\gamma$ is a limit ordinal.}}
+        \begin{proof}
+            \pf\ This is impossible since then $\mathbf{F}(\gamma) = \bigcup_{\alpha \in \gamma} \mathbf{F}(\alpha) \leq \beta$
+            and so $\gamma \in \gamma$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        \label{theorem:normal_sup}
+        Let $\mathbf{F} : \mathbf{On} \rightarrow \mathbf{On}$ be normal. Let $S$ be a nonempty set of
+        ordinals. Then $\mathbf{F}(\sup S) = \sup \mathbf{F}(S)$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{$\mathbf{F}(\sup S) \geq \sup \mathbf{F}(S)$}
+        \begin{proof}
+            \pf\ By monotonicity.
+        \end{proof}
+        \step{2}{$\mathbf{F}(\sup S) \leq \sup \mathbf{F}(S)$}
+        \begin{proof}
+            \step{a}{\case{$\sup S \in S$}}
+            \begin{proof}
+                \pf\ Immediate.
+            \end{proof}
+            \step{b}{\case{$\sup S \notin S$}}
+            \begin{proof}
+                \step{i}{$\sup S$ is a limit ordinal.}
+                \step{ii}{$\mathbf{F}(\sup S) = \sup \{ \mathbf{F}(\beta) : \beta < \sup S \}$}
+                \step{iii}{$\forall \beta < \sup S. \mathbf{F}(\beta) \leq \sup \mathbf{F}(S)$}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}[Veblen Fixed-Point Theorem (1907)]
+        A normal operation on ordinals has arbitrarily large fixed points.
+
+        That is, let $\mathbf{F} : \mathbf{On} \rightarrow \mathbf{On}$ be normal. For all $\alpha \in
+        \mathbf{On}$, there exists $\beta \geq \alpha$ such that $\mathbf{F}(\beta) = \beta$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Let $\beta = \sup_{n \in \omega} F^n(\alpha)$. Then $\alpha \leq \beta$ using monotonicity,
+        and
+        \begin{align*}
+            F(\beta) & = \sup_{n \in \omega} F^{n+1}(\alpha) \\
+            & = \beta & \qed
+        \end{align*}
+    \end{proof}
+
+    \begin{definition}[Addition]
+        The \emph{sum} of two ordinal numbers is the ordinal number of their concatenation.
+    \end{definition}
+
+    \begin{theorem}
+        Addition is associative.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \alpha + 0 = 0 + \alpha = \alpha \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \alpha + \beta^+ = (\alpha + \beta)^+ \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For $\lambda$ a limit ordinal, $\alpha + \lambda = \sup_{\beta < \lambda} (\alpha + \beta)$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any ordinal $\alpha$, the function that maps $\beta$ to $\alpha + \beta$ is normal.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{corollary}
+        \[ \beta < \gamma \Leftrightarrow \alpha + \beta < \alpha + \gamma \]
+    \end{corollary}
+
+    \begin{corollary}
+        If $\alpha + \beta = \alpha + \gamma$ then $\beta = \gamma$.
+    \end{corollary}
+
+    \begin{theorem}
+        If $\beta \leq \gamma$ then $\beta + \alpha \leq \gamma + \alpha$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Transfinite induction on $\alpha$. \qed
+    \end{proof}
+
+    \begin{theorem}[Subtraction Theorem]
+        If $\alpha \leq \beta$ then there exists a unique ordinal $\gamma$ such that $\alpha + \gamma = \beta$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Let $\gamma$ be greatest such that $\alpha + \gamma \leq \beta$. \qed
+    \end{proof}
+
+    \begin{definition}[Multiplication]
+        The \emph{product} of two ordinal numbers $\alpha$ and $\beta$ is the ordinal number of
+        $\alpha \times \beta$ under the lexicographic ordering.
+    \end{definition}
+
+    \begin{theorem}
+        Multiplication is associative.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \alpha (\beta + \gamma) = \alpha \beta + \alpha \gamma \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \alpha 1 = 1 \alpha = \alpha \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \alpha 0 = 0 \alpha = 0 \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \alpha \beta^+ = \alpha \beta + \alpha \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For $\lambda$ a limit ordinal, $\alpha \lambda = \sup_{\beta < \lambda} (\alpha \beta)$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any ordinal $\alpha > 0$, the function that maps $\beta$ to $\alpha \beta$ is normal.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{corollary}
+        For $\alpha > 0$ we have
+        \[ \beta < \gamma \Leftrightarrow \alpha \beta < \alpha \gamma \]
+    \end{corollary}
+    
+    \begin{corollary}
+        For $\alpha > 0$, if $\alpha \beta = \alpha \gamma$ then $\beta = \gamma$.
+    \end{corollary}
+
+    \begin{theorem}
+        If $\beta \leq \gamma$ then $\beta \alpha \leq \gamma \alpha$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Transfinite induction on $\alpha$. \qed
+    \end{proof}
+
+    \begin{theorem}[Division Theorem]
+        Let $\delta \neq 0$. For any $\alpha$, there exist unique ordinals $\beta$, $\gamma$ such that
+        $\alpha = \delta \beta + \gamma$ and $\gamma < \delta$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Let $\beta$ be largest such that $\delta \beta \leq \alpha$, and let $\gamma$ be as given by
+        the Subtraction Theorem. \qed
+    \end{proof}
+
+    \begin{proof}
+        \pf\ Let $\gamma$ be greatest such that $\alpha + \gamma \leq \beta$. \qed
+    \end{proof}
+
+    \begin{definition}[Exponentiation]
+        Define $\alpha^\beta$ by transfinite recursion thus:
+        \begin{align*}
+            \alpha^0 & = 1 \\
+            \alpha^{\beta^+} & = \alpha^\beta \alpha \\
+            \alpha^\lambda & = \sup_{\beta < \lambda} \alpha^\beta
+        \end{align*}
+        for $\lambda$ a limit ordinal.
+    \end{definition}
+
+    \begin{theorem}
+        For $\alpha > 1$, the function that maps $\beta$ to $\alpha^\beta$ is normal.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{corollary}
+        For $\alpha > 1$ we have
+        \[ \beta < \gamma \Leftrightarrow \alpha^\beta < \alpha^\gamma \]
+    \end{corollary}
+    
+    \begin{corollary}
+        For $\alpha > 1$, if $\alpha^\beta = \alpha^\gamma$ then $\beta = \gamma$.
+    \end{corollary}
+
+    \begin{theorem}
+        If $\beta \leq \gamma$ then $\beta ^ \alpha \leq \gamma ^ \alpha$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Transfinite induction on $\alpha$. \qed
+    \end{proof}
+
+    \begin{theorem}[Logarithm Theorem]
+        Let $\alpha \neq 0$ and $\beta > 1$. Then there exist unique ordinals $\gamma$, $\delta$,
+        $\rho$ such that $\alpha = \beta^\gamma \delta + \rho$, $0 < \delta < \beta$ and $\rho < \beta^\gamma$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Let $\gamma$ be greatest such that $\beta^\gamma \leq \alpha$, and then apply the Division Theorem. \qed
+    \end{proof}
+    
+    \begin{theorem}
+        \[ \alpha^{\beta + \gamma} = \alpha^\beta \alpha^\gamma \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Transfinite induction on $\gamma$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \alpha^{\beta \gamma} = (\alpha^\beta)^\gamma \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Transfinite induction on $\gamma$. \qed
+    \end{proof}
+
+    \chapter{Natural Numbers}
+
+    \section{Natural Numbers}
+
+    \begin{definition}[Peano System]
+        A \emph{Peano system} is a triple $\langle N, S, 0 \rangle$ consisting of a set $N$,
+        a function $S : N \rightarrow N$ and an element $0 \in N$ such that:
+        \begin{enumerate}
+            \item $0 \notin \ran S$
+            \item $S$ is one-to-one
+            \item Any subset $A \subseteq N$ that contains $0$ and is closed under $S$ equals $N$.
+        \end{enumerate}
+        We call 0 \emph{zero} and $S(x)$ the \emph{successor} of $x$.
+    \end{definition}
+
+    \begin{theorem}
+        In any Peano system, every element is either 0 or a successor.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ The set of elements that are either 0 or a successor contains 0 and is closed under successor. \qed
+    \end{proof}
+
+    \begin{theorem}[Iteration Theorem]
+        Let $(N,S,0)$ be any Peano system. Let $W$ be a set, $c \in W$ and $g : W \rightarrow W$. Then there
+        exists a unique function $F : N \rightarrow W$ such that $F(0) = c$ and $\forall x \in N. F(S(x)) = g(F(x))$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{$S$ is a well-founded relation.}
+        \begin{proof}
+            \step{a}{\pflet{$A \subseteq N$}}
+            \step{b}{\assume{$A$ has no $S$-minimal element} \prove{$A = \emptyset$}}
+            \step{c}{$0 \in N - A$}
+            \begin{proof}
+                \pf\ Otherwise 0 would be an $S$-minimal element of $A$.
+            \end{proof}
+            \step{d}{$\forall x \in N - A. S(x) \in N - A$}
+            \begin{proof}
+                \pf\ Otherwise $S(x)$ would be an $S$-minimal element of $A$.
+            \end{proof}
+            \step{e}{$N - A = N$}
+            \begin{proof}
+                \pf\ By induction.
+            \end{proof}
+        \end{proof}
+        \qedstep
+        \begin{proof}
+            \pf\ By Transfinite Recursion.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Inductive]
+        A class $\mathbf{A}$ is \emph{inductive} iff $\emptyset \in \mathbf{A}$ and
+        $\forall a \in \mathbf{A}. a^+ \in \mathbf{A}$.
+    \end{definition}
+
+    \begin{definition}[Natural Number]
+        A \emph{natural number} is a set that belongs to every inductive set.
+
+        We write $\omega$ for the class of all natural numbers.
+    \end{definition}
+
+    \begin{theorem}
+        The class $\omega$ is a set.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Pick an inductive set $I$ (by the Axiom of Infinity), then apply a Subset Axiom to $I$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        The set $\omega$ is inductive, and is a subset of every inductive set.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{corollary}[Proof by Induction]
+        Any inductive subclass of $\omega$ is equal to $\omega$.
+    \end{corollary}
+
+    \begin{theorem}
+        Every natural number except 0 is the successor of some natural number.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy proof by induction. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \label{theorem:union_transitive_successor}
+        For any transitive set $a$, $\bigcup (a^+) = a$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \begin{align*}
+            \bigcup (a^+) & = \bigcup (a \cup \{ a \}) \\
+            & = \bigcup a \cup \bigcup \{a\} \\
+            & = \bigcup a \cup a \\
+            & = a
+        \end{align*}
+        since $\bigcup a \subseteq a$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \label{theorem:natural_number_transitive}
+        Every natural number is a transitive set.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{0 is a transitive set.}
+        \begin{proof}
+            \pf\ Vacuous.
+        \end{proof}
+        \step{2}{For any natural number $n$, if $n$ is a transitive set then $n^+$ is a transitive set.}
+        \begin{proof}
+            \step{a}{\pflet{$n$ be a natural number that is a transitive set.}}
+            \step{b}{$\bigcup (n^+) \subseteq n^+$}
+            \begin{proof}
+                \pf\ Theorem \ref{theorem:union_transitive_successor}.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        $\langle \omega, \sigma, 0 \rangle$ is a Peano system, where $0 = \emptyset$ and 
+        $\sigma = \{ \langle n, n^+ \rangle : n \in \omega \}$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{$0 \notin \ran \sigma$}
+        \begin{proof}
+            \pf\ For any $n \in \omega$ we have $0 \neq n^+$ since $n \in n^+$
+            and $n \notin 0$.
+        \end{proof}
+        \step{2}{$\sigma$ is one-to-one.}
+        \begin{proof}
+            \pf\ If $m^+ = n^+$ then $m = \bigcup (m^+) = \bigcup (n^+) = n$ using Theorems
+            \ref{theorem:union_transitive_successor} and \ref{theorem:natural_number_transitive}.
+        \end{proof}
+        \step{3}{Any subset $A \subseteq \omega$ that contains 0 and is closed under $\sigma$ equals $\omega$.}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        The set $\omega$ is a transitive set.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{For every natural number $n$ we have $\forall m \in n$. $m$ is a natural number.}
+        \begin{proof}
+            \step{a}{$\forall m \in 0$. $m$ is a natural number.}
+            \begin{proof}
+                \pf\ Vacuous.
+            \end{proof}
+            \step{b}{If $n$ is a natural number and $\forall m \in n$. $m$ is a natural number, then
+            $\forall m \in n^+$. $m$ is a natural number.}
+            \begin{proof}
+                \pf\ Since if $m \in n^+$ we have either $m \in n$ or $m = n$, and $m$ is a natural number
+                in either case.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        Let $(N,S,e)$ be a Peano system. Then $(\omega, \sigma, 0)$ is isomorphic to $(N,S,e)$, i.e. there is
+        a function $h$ mapping $\omega$ one-to-one onto $N$ in a way that preserves the successor operation
+        \[ h(\sigma(n)) = S(h(n)) \]
+        and the zero element
+        \[ h(0) = e \enspace . \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{There exists a function $h$ that satisfies those two conditions.}
+        \begin{proof}
+            \pf\ By the Recursion Theorem.
+        \end{proof}
+        \step{2}{For all $m,n \in \omega$, if $m \neq n$ then $h(m) \neq h(n)$}
+        \begin{proof}
+            \step{a}{For all $n \in \omega$, if $n \neq 0$ then $h(n) \neq h(0)$}
+            \begin{proof}
+                \step{i}{\pflet{$n \in \omega$}}
+                \step{ii}{\assume{$n \neq 0$}}
+                \step{iii}{\pick\ $p$ such that $n = p^+$}
+                \step{iv}{$h(n) \neq h(0)$}
+                \begin{proof}
+                    \pf\ $h(n) = S(h(p)) \neq e = h(0)$.
+                \end{proof}
+            \end{proof}
+            \step{b}{For all $m \in \omega$, if $\forall n(m \neq n \Rightarrow h(m) \neq h(n))$
+            then $\forall n(m^+ \neq n \Rightarrow h(m^+) \neq h(n))$}
+            \begin{proof}
+                \step{i}{\pflet{$m \in \omega$}}
+                \step{ii}{\assume{$\forall n(m \neq n \Rightarrow h(m) \neq h(n))$}}
+                \step{iii}{\pflet{$n \in \omega$}}
+                \step{iv}{\assume{$m^+ \neq n$} \prove{$h(m^+) \neq h(n)$}}
+                \step{v}{\case{$n = 0$}}
+                \begin{proof}
+                    \pf\ $h(m^+) = S(h(m)) \neq e = h(n)$
+                \end{proof}
+                \step{vi}{\case{$n = p^+$}}
+                \begin{proof}
+                    \step{one}{$m \neq p$}
+                    \step{two}{$h(m) \neq h(p)$}
+                    \step{three}{$S(h(m)) \neq S(h(p))$}
+                    \step{four}{$h(m^+) \neq h(p^+)$}
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \step{3}{For all $x \in N$, there exists $n \in \omega$ such that $h(n) = x$}
+        \begin{proof}
+            \pf\ An easy induction on $x$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}[Choice]
+        Let $R$ be a relation on $A$. Then $R$ is well founded iff there does not exist
+        any function $f : \omega \rightarrow A$ such that $f(n+1) R f(n)$ for all $n \in \omega$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{If $R$ is well founded then there does not exist any function $f : \omega
+        \rightarrow A$ such that $f(n+1) R f(n)$ for all $n \in \omega$.}
+        \begin{proof}
+            \pf\ If there is such a function $f$ then $\ran f$ is a nonempty subset of $A$ with no $R$-minimal
+            element.
+        \end{proof}
+        \step{2}{If there does not exist any function $f : \omega \rightarrow A$ such that $f(n+1)
+        R f(n)$ for all $n \in \omega$ then $R$ is well founded.}
+        \begin{proof}
+            \step{a}{\pflet{$X \subseteq A$ be a nonempty subset of $A$ with no $R$-minimal element.}
+            \prove{There exists a function $f : \omega \rightarrow A$ such that
+            $f(n+1) < f(n)$ for all $n \in \omega$}}
+            \step{b}{\pick\ $a_0 \in X$}
+            \step{c}{$\forall x \in X. \exists y \in X. y R x$}
+            \step{d}{\pick\ a function $g : X \rightarrow X$ such that $\forall x \in X. g(x) R x$}
+            \begin{proof}
+                \pf\ By the Axiom of Choice.
+            \end{proof}
+            \step{e}{Define $f : \omega \rightarrow A$ recursively by:
+            \begin{align*}
+                f(0) & = a_0 \\
+                f(n^+) & = g(f(n))
+            \end{align*}}
+            \step{f}{$\forall n \in \omega. f(n^+) R f(n)$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \paragraph{Alternative proof for Theorem \ref{theorem:tc}}
+
+    Define $f : \omega \rightarrow \mathcal{P} A^2$ by $f(0) = R$ and $f(n^+) = f(n) \circ R$. Define
+    $R^t = \bigcup_{n \in \omega} f(n)$.
+
+    \begin{theorem}
+        For any set $A$, there exists the smallest transitive set $B$ such that $A \subseteq B$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Define $f : \omega \rightarrow \mathbf{V}$ by
+        \begin{align*}
+            f(0) & = A \\
+            f(n^+) & = f(n) \cup \bigcup f(n)
+        \end{align*}
+        Then $\bigcup_n f(n)$ is the smallest transitive set that includes $A$. \qed
+    \end{proof}
+
+    \begin{definition}[Transitive Closure]
+        The \emph{transitive closure} of a set $A$ is the least transitive set that includes $A$.
+    \end{definition}
+
+    \begin{theorem}
+        Addition on natural numbers is commutative.
+    \end{theorem}
+
+    \begin{theorem}
+        Multiplication on natural numbers is commutative.
+    \end{theorem}
+
+    \begin{definition}[Sequence]
+        A \emph{sequence} in a set $A$ is a function $\mathbb{N} \rightarrow A$.    
+    \end{definition}
+
+    \begin{definition}[Subsequence]
+        Let $(a_n)$ be a sequence in a set $A$. A \emph{subsequence} of $(a_n)$ is a sequence of the form
+        $(a_{n_r})$ where $(n_r)$ is a strictly increasing sequence in $\mathbb{N}$.
+    \end{definition}
+
+    \begin{definition}[Nested Sequence]
+        Let $P$ be a partial order and $([a_n,b_n])$ a sequence of closed intervals in $P$. The sequence is
+        \emph{nested} iff $\forall n. a_n \leq a_{n+1}$ and $\forall n. b_{n+1} \leq b_n$.
+    \end{definition}
+    
+    \section{Finite Sets}
+
+    \begin{definition}[Finite]
+        A set is \emph{finite} iff it is equinumerous with a natural number. Otherwise it is infinite.
+    \end{definition}
+
+    \begin{theorem}
+        No natural number is equinumerous with a proper subset of itself.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{Any injective function $f : 0 \rightarrow 0$ has range $0$.}
+        \begin{proof}
+            \pf\ Since the only such function is $\emptyset$.
+        \end{proof}
+        \step{2}{For any natural number $n$, if every injective function $f : n \rightarrow n$
+        has range $n$, then every injective function $f : n^+ \rightarrow n^+$
+        has range $n^+$.}
+        \begin{proof}
+            \step{a}{\pflet{$n \in \omega$}}
+            \step{b}{\assume{Every injective function $f : n \rightarrow n$ has range $n$.}}
+            \step{c}{\pflet{$f : n^+ \rightarrow n^+$ be injective.}}
+            \step{d}{Define $g : n \rightarrow n$ by
+            \[ g(k) = \begin{cases}
+                f(k) & \text{if } f(k) \in n \\
+                f(n) & \text{if } f(k) = n
+            \end{cases} \]}
+            \begin{proof}
+                \pf\ If $k \in n$ and $f(k) = n$ then $f(n) \in n$ since $f$ is injective.
+            \end{proof}
+            \step{e}{$g$ is injective.}
+            \begin{proof}
+                \step{i}{\pflet{$i,j \in n$}}
+                \step{ii}{\assume{$g(i) = g(j)$}}
+                \step{iii}{\case{$f(i) \in n$, $f(j) \in n$}}
+                \begin{proof}
+                    \pf\ Then $f(i) = f(j)$ so $i = j$
+                \end{proof}
+                \step{iv}{\case{$f(i) \in n$, $f(j) \notin n$}}
+                \begin{proof}
+                    \pf\ Then $f(i) = f(n)$ which is impossible as $f$ is injective.
+                \end{proof}
+                \step{v}{\case{$f(i) \notin n$, $f(j) \in n$}}
+                \begin{proof}
+                    \pf\ Then $f(n) = f(j)$ which is impossible as $f$ is injective.
+                \end{proof}
+                \step{vi}{\case{$f(i) \notin n$, $f(j) \notin n$}}
+                \begin{proof}
+                    \pf\ Then $f(i) = f(j) = n$ so $i = j$.
+                \end{proof}
+            \end{proof}
+            \step{f}{$\ran g = n$}
+            \begin{proof}
+                \pf\ By \stepref{b}.
+            \end{proof}
+            \step{g}{$\ran f = n^+$}
+            \begin{proof}
+                \step{i}{$\forall k \in n. k \in \ran f$}
+                \begin{proof}
+                    \pf\ Since $\ran g \subseteq \ran f$.
+                \end{proof}
+                \step{ii}{$n \in \ran f$}
+                \begin{proof}
+                    \step{one}{\case{$f(n) \in n$}}
+                    \begin{proof}
+                        \step{ONE}{\pick\ $k$ such that $g(k) = f(n)$}
+                        \step{TWO}{$f(k) = n$}
+                    \end{proof}
+                    \step{two}{\case{$f(n) = n$}}
+                    \begin{proof}
+                        \pf\ Then $n \in \ran f$.
+                    \end{proof}
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{corollary}
+        No finite set is equinumerous with a proper subset of itself.
+    \end{corollary}
+
+    \begin{corollary}
+        The set $\omega$ is infinite.
+    \end{corollary}
+
+    \begin{proof}
+        \pf\ Since the function that maps $n$ to $n+1$ is a bijection between $\omega$ and the proper
+        subset $\omega - \{ 0 \}$. \qed
+    \end{proof}
+
+    \begin{corollary}
+        Every finite set is equinumerous with a unique natural number.
+    \end{corollary}
+
+    \begin{lemma}
+        Let $n$ be a natural number and $C \subseteq n$. Then there exists $m \underline{\in} n$ such that $C \approx m$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{For all $C \subseteq 0$, there exists $m \underline{\in} 0$ such that $C \approx m$.}
+        \begin{proof}
+            \pf\ In this case $C = \emptyset$ and so $C \approx 0$.
+        \end{proof}
+        \step{2}{Let $n \in \omega$. Assume that, for all $C \subseteq n$, there exists $m \underline{\in} n$
+        such that $C \approx m$. Let $C \subseteq n^+$. Then there exists $m \underline{\in} n^+$
+        such that $C \approx m$.}
+        \begin{proof}
+            \step{a}{\pflet{$n \in \omega$}}
+            \step{b}{\assume{For all $C \subseteq n$, there exists $m \underline{\in} n$ such that
+            $C \approx m$.}}
+            \step{c}{\pflet{$C \subseteq n^+$}}
+            \step{d}{\case{$n \in C$}}
+            \begin{proof}
+                \step{i}{\pick\ $m \underline{\in} n$ such that $C - \{ n \} \approx m$}
+                \step{ii}{$C \approx m^+$}
+            \end{proof}
+            \step{e}{\case{$n \notin C$}}
+            \begin{proof}
+                \pf\ Then $C \subseteq n$ so $C \approx m$ for some $m \underline{\in} n$.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{corollary}
+        Any subset of a finite set is finite.
+    \end{corollary}
+
+    \chapter{Cardinal Numbers}
+
+    \section{Cardinal Numbers}
+
+    \begin{definition}[Cardinality (Choice)]
+        For any set $A$, define the \emph{cardinal number} of $A$, $|A|$, to be the least ordinal that is
+        equinumerous with $A$.
+    \end{definition}
+
+    \begin{theorem}
+        For any sets $A$ and $B$, $|A| = |B|$ if and only if $A \approx B$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any finite set $A$, $|A|$ is the natural number such that $A \approx |A|$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Immediate from definitions. \qed
+    \end{proof}
+
+    \begin{definition}
+        We write $\aleph_0$ for $|\omega$.
+    \end{definition}
+
+    \section{Cardinal Arithmetic}
+
+    \begin{definition}[Addition]
+        Let $\kappa$ and $\lambda$ be any cardinal numbers. Then $\kappa + \lambda = |K \cup L|$,
+        where $K$ and $L$ are any disjoint sets of cardinality $\kappa$ and $\lambda$ respectively.
+
+        To show this is well-defined, we must prove that, if $K_1 \approx K_2$, $L_1 \approx L_2$,
+        and $K_1 \cap L_1 = K_2 \cap L_2 = \emptyset$, then $K_1 \cup L_1 \approx K_2 \cup L_2$.
+    \end{definition}
+
+    \begin{proof}
+        \pf\ Easy.
+    \end{proof}
+
+    \begin{lemma}
+        For any cardinal number $\kappa$ we have $\kappa + 0 = \kappa$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Since for any set $K$ we have $K \cup \emptyset = K$.
+    \end{proof}
+
+    \begin{lemma}
+        For any natural number $n$ we have $n + \aleph_0 = \aleph_0$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{lemma}
+        \label{lemma:aleph0_plus_aleph0}
+        \[ \aleph_0 + \aleph_0 = \aleph_0 \]
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Define $f : (\omega \times \{ 0 \}) \cup (\omega \times \{1\}) \rightarrow \omega$ by
+        $f(n,0) = 2n$ and $f(n,1) = 2n+1$. Then $f$ is a bijection. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \kappa + \lambda = \lambda + \kappa \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \kappa + (\lambda + \mu) = (\kappa + \lambda) + \mu \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}[Multiplication]
+        Let $\kappa$ and $\lambda$ be any cardinal numbers. Then $\kappa \lambda = |K \times L|$,
+        where $K$ and $L$ are any sets of cardinality $\kappa$ and $\lambda$ respectively.
+    \end{definition}
+
+    It is easy to prove this well-defined.
+
+    \begin{lemma}
+        For any cardinal number $\kappa$ we have $\kappa 0 = 0$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ For any set $K$ we have $K \times \emptyset = \emptyset$. \qed
+    \end{proof}
+
+    \begin{lemma}
+        For any natural number $n$ we have $n \aleph_0 = \aleph_0$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Induction on $n$ using Lemma \ref{lemma:aleph0_plus_aleph0}. \qed
+    \end{proof}
+
+    \begin{lemma}
+        \[ \aleph_0 \aleph_0 = \aleph_0 \]
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Define $f : \omega \times \omega \rightarrow \omega$ by $f(m,n) = 2^m(2n+1)-1$. Then $f$
+        is a bijection. \qed
+    \end{proof}
+
+    \begin{lemma}
+        \[ \kappa 1 = \kappa \]
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \kappa \lambda = \lambda \kappa \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \kappa (\lambda \mu) = (\kappa \lambda) \mu \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ \kappa (\lambda + \mu) = \kappa \lambda + \kappa \mu \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}[Exponentiation]
+        Let $\kappa$ and $\lambda$ be any cardinal numbers. Then $\kappa^\lambda = |K^L|$,
+        where $K$ and $L$ are any sets of cardinality $\kappa$ and $\lambda$ respectively.
+    \end{definition}
+
+    It is easy to prove this well-defined.
+
+    \begin{theorem}
+        For any cardinal $\kappa$, $\kappa^0 = 1$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ For any set $K$, there is only one function $\emptyset \rightarrow K$, namely $\emptyset$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any non-zero cardinal $\kappa$, we have $0^\kappa = 0$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ For any nonempty set $K$, there is no function $K \rightarrow \emptyset$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any set $A$, $|\mathcal{P} A| = 2^{|A|}$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Define the bijection $f : \mathcal{P} A \rightarrow 2^A$ by $f(S)(a) = 1$ if $a \in S$,
+        0 if $a \notin S$. \qed
+    \end{proof}
+
+    \begin{corollary}
+        For any cardinal $\kappa$, we have $\kappa \neq 2^\kappa$.
+    \end{corollary}
+
+    \begin{theorem}
+        \[ \kappa^{\lambda + \mu} = \kappa^\lambda \kappa^\mu \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ (\kappa \lambda)^\mu = \kappa^\mu \lambda^\mu \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \[ (\kappa^\lambda)^\mu = \kappa^{\lambda \mu} \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{lemma}
+        The union of a set of cardinal numbers is a cardinal number.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$A$ be a set of cardinal numbers.}}
+        \step{2}{\pflet{$\alpha \in \bigcup A$}}
+        \step{3}{\pick\ $\kappa \in A$ such that $\alpha \in \kappa$}
+        \step{4}{$\alpha \prec \kappa$}
+        \step{5}{$\alpha \prec \bigcup A$}
+        \qed
+    \end{proof}
+    \section{Alephs}
+
+    \begin{definition}
+        Define the cardinal number $\aleph_\alpha$ for every ordinal $\alpha$ by transfinite recursion thus:
+        $\aleph_\alpha$ is the least infinite cardinal different from $\aleph_\beta$ for every $\beta < \alpha$.
+    \end{definition}
+
+    \begin{theorem}
+        If $\alpha < \beta$ then $\aleph_\alpha < \aleph_\beta$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ By minimality of $\aleph_\alpha$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Every infinite cardinal is of the form $\aleph_\alpha$ for some $\alpha$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\kappa$ be an infinite cardinal}}
+        \step{2}{\assume{for every infinite cardinal $\lambda < \kappa$, there exists $\alpha$ such that $\lambda =
+        \aleph_\alpha$}}
+        \step{3}{\pflet{$\alpha = \{ \beta : \aleph_\beta < \kappa \}$}}
+        \step{4}{$\alpha$ is a set.}
+        \begin{proof}
+            \pf\ The mapping $\beta \mapsto \aleph_\beta$ is an injection $\alpha \rightarrow \kappa$.
+        \end{proof}
+        \step{5}{$\alpha$ is a transitive set.}
+        \step{6}{$\alpha$ is an ordinal.}
+        \step{7}{$\aleph_\alpha$ is the least infinite cardinal different from $\aleph_\beta$ for all $\beta$
+        such that $\aleph_\beta < \kappa$.}
+        \step{8}{$\aleph_\alpha$ is the least infinite cardinal different from $\lambda$ for every infinite
+        cardinal $\lambda < \kappa$.}
+        \begin{proof}
+            \pf\ By \stepref{2}.
+        \end{proof}
+        \step{9}{$\aleph_\alpha = \kappa$}
+        \qed
+    \end{proof}
+
+    \section{Arithmetic}
+
+    \begin{lemma}
+        For any natural numbers $m$ and $n$, we have $m + n^+ = (m+n)^+$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{corollary}
+        The union of two finite sets is finite.
+    \end{corollary}
+
+    \begin{lemma}
+        For any natural numbers $m$ and $n$ we have $m n^+ = mn + m$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{corollary}
+        The Cartesian product of two finite sets is finite.
+    \end{corollary}
+
+    \begin{lemma}
+        For any natural numbers $m$ and $n$ we have $m^{n^+} = m^n m$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{corollary}
+        If $A$ and $B$ are finite sets then $A^B$ is finite.
+    \end{corollary}
+
+    \section{Ordering on the Natural Numbers}
+
+    \begin{lemma}
+        \label{lemma:natural_number_order_successor}
+        For any natural numbers $m$ and $n$, $m \in n$ if and only if $m^+ \in n^+$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{$\forall m,n \in \omega (m \in n \Rightarrow m^+ \in n^+)$}
+        \begin{proof}
+            \step{a}{$\forall m \in \omega (m \in 0 \Rightarrow m^+ \in 0^+)$}
+            \begin{proof}
+                \pf\ Vacuous.
+            \end{proof}
+            \step{b}{For all $n \in \omega$, if $\forall m \in n. m^+ \in n^+$ then
+            $\forall m \in n^+. m^+ \in n^{++}$}
+            \begin{proof}
+                \step{i}{\pflet{$n \in \omega$}}
+                \step{ii}{\assume{$\forall m \in n. m^+ \in n^+$}}
+                \step{iii}{\pflet{$m \in n^+$}}
+                \step{iv}{\case{$m \in n$}}
+                \begin{proof}
+                    \step{one}{$m^+ \in n^+$}
+                    \begin{proof}
+                        \pf\ By \stepref{ii}
+                    \end{proof}
+                    \step{two}{$m^+ \in n^{++}$}
+                \end{proof}
+                \step{v}{\case{$m = n$}}
+                \begin{proof}
+                    \pf\ $m^+ = n^+ \in n^{++}$
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \step{2}{$\forall m,n \in \omega (m^+ \in n^+ \Rightarrow m \in n)$}
+        \begin{proof}
+            \step{a}{\pflet{$m, n \in \omega$}}
+            \step{b}{\assume{$m^+ \in n^+$}}
+            \step{c}{$m \in m^+$}
+            \step{d}{$m^+ \in n$ or $m^+ = n$}
+            \step{e}{$m \in n$}
+            \begin{proof}
+                \pf\ If $m^+ \in n$ this follows because $n$ is transitive (Theorem \ref{theorem:natural_number_transitive}).
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{lemma}
+        \label{lemma:natural_number_irreflexive}
+        For any natural number $n$ we have $n \notin n$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{$0 \notin 0$}
+        \step{2}{For all $n \in \omega$, if $n \notin n$ then $n^+ \notin n^+$}
+        \begin{proof}
+            \step{a}{\pflet{$n \in \omega$}}
+            \step{c}{\assume{$n^+ \in n^+$} \prove{$n \in n$}}
+            \step{d}{$n^+ \in n$ or $n^+ = n$}
+            \step{e}{$n \in n^+$}
+            \step{f}{$n \in n$}
+            \begin{proof}
+                \pf\ If $n^+ \in n$ this follows because $n$ is transitive (Theorem \ref{theorem:natural_number_transitive}).
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}[Trichotomy Law for $\omega$]
+        For any natural numbers $m$ and $n$, exactly one of
+        \[ m \in n, m = n, n \in m \]
+        holds.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{For any $m, n \in \omega$, at most one of $m \in n$, $m = n$, $n \in m$ holds.}
+        \begin{proof}
+            \pf\ If $m \in n$ and $m = n$ then $m \in m$ contradicting Lemma \ref{lemma:natural_number_irreflexive}.
+
+            If $m \in n$ and $n \in m$ then $m \in m$ by Theorem \ref{theorem:natural_number_transitive},
+            contradicting Lemma \ref{lemma:natural_number_irreflexive}.
+        \end{proof}
+        \step{2}{For any $m, n \in \omega$, at least one of $m \in n$, $m = n$, $n \in m$ holds.}
+        \begin{proof}
+            \step{a}{For all $n \in \omega$, either $0 \in n$ or $0 = n$}
+            \begin{proof}
+                \step{i}{$0 = 0$}
+                \step{ii}{For all $n \in \omega$, if $0 \in n$ or $0 = n$ then $0 \in n^+$}
+            \end{proof}
+            \step{b}{For all $m \in \omega$, if $\forall n \in \omega (m \in n \vee m = n \vee n \in m)$
+            then $\forall n \in \omega (m^+ \in n \vee m^+ = n \vee n \in m^+)$}
+            \begin{proof}
+                \step{i}{\pflet{$m \in \omega$}}
+                \step{ii}{\assume{$\forall n \in \omega (m\in n \vee m = n \vee n \in m)$}}
+                \step{iii}{\pflet{$n \in \omega$}}
+                \step{iv}{\case{$m \in n$}}
+                \begin{proof}
+                    \pf\ Then $m \in n^+$
+                \end{proof}
+                \step{v}{\case{$m = n$}}
+                \begin{proof}
+                    \pf\ Then $m \in n^+$
+                \end{proof}
+                \step{vi}{\case{$n \in m$}}
+                \begin{proof}
+                    \pf\ Then $n^+ \in m^+$ by Lemma \ref{lemma:natural_number_order_successor}
+                    so $n^+ \in m$ or $n^+ = m$.
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{corollary}
+        The relation $\in$ is a linear ordering on $\omega$.    
+    \end{corollary}
+
+    \begin{corollary}
+        For any natural numbers $m$ and $n$,
+        \[ m \in n \Leftrightarrow m \subset n \enspace . \]
+    \end{corollary}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$m, n \in \omega$}}
+        \step{2}{If $m \in n$ then $m \subset n$.}
+        \begin{proof}
+            \step{a}{\assume{$m \in n$}}
+            \step{b}{$m \subseteq n$}
+            \begin{proof}
+                \pf\ Theorem \ref{theorem:natural_number_transitive}.
+            \end{proof}
+            \step{c}{$m \neq n$}
+            \begin{proof}
+                \pf\ Lemma \ref{lemma:natural_number_irreflexive}.
+            \end{proof}
+        \end{proof}
+        \step{3}{If $m \subset n$ then $m \in n$.}
+        \begin{proof}
+            \pf\ We have $m \neq n$ and $n \notin m$ by \stepref{2}, hence $m \in n$ by trichotomy.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        \label{theorem:addition_strictly_monotone}
+        For any natural number $p$, the function that maps $n$ to $n + p$ is strictly monotone.
+        For any natural numbers $m$, $n$ and $p$, we have $m \in n$ if and only if $m + p \in n + p$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ We prove that $m \in n \Rightarrow m + p \in n + p$. This is an easy induction on $p$ using
+        Lemma \ref{lemma:natural_number_order_successor}. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any non-zero natural number $p$, the function that maps $n$ to $np$ is strictly monotone.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy induction on $p$ using Theorem \ref{theorem:addition_strictly_monotone}. \qed
+    \end{proof}
+
+    \begin{theorem}[Strong Induction]
+        Let $A$ be a subset of $\omega$ and suppose that, for all $n \in \omega$, we have
+        \[ (\forall m < n. m \in A) \Rightarrow n \in A \enspace . \]
+        Then $A = \omega$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Prove $\forall n \in \omega. \forall m < n. m \in A$ by induction on $n$. \qed
+    \end{proof}
+    
+    \begin{theorem}[Well-Ordering of $\omega$]
+        The ordering $<$ on $\omega$ is a well-ordering.
+    \end{theorem}
+    
+    \begin{proof}
+        \pf\ If $A$ is a subset of $\omega$ with no least element, we prove $\forall n \in \omega. n \notin A$
+        by strong induction on $n$. \qed
+    \end{proof}
+
+    \begin{lemma}
+        \label{lemma:subtraction}
+        For any natural numbers $m$ and $n$, we have $m \in n$ if and only if there exists a natural number
+        $p$ such that $n = m + p^+$.
+    \end{lemma}
+    
+    \begin{proof}
+        \pf
+        \step{1}{For all $m$, $p$, we have $m \in m + p^+$}
+        \begin{proof}
+            \pf\ $m = m + 0 \in m + p^+$
+        \end{proof}
+        \step{2}{For all $m$, $n$, if $m \in n$ then there exists $p$ such that $n = m + p^+$}
+        \begin{proof}
+            \step{a}{For all $m$, if $m \in 0$ then there exists $p$ such that $0 = m + p^+$}
+            \begin{proof}
+                \pf\ Vacuous.
+            \end{proof}
+            \step{b}{For all $n \in \omega$, if $\forall m \in n. \exists p \in \omega. n = m + p^+$
+            then $\forall m \in n^+. \exists p \in \omega. n^+ = m + p^+$}
+            \begin{proof}
+                \step{i}{\pflet{$n \in \omega$}}
+                \step{ii}{\assume{$\forall m \in n. \exists p \in \omega. n = m + p^+$}}
+                \step{iii}{\pflet{$m \in n^+$}}
+                \step{iv}{\case{$m \in n$}}
+                \begin{proof}
+                    \step{one}{\pick\ $p$ such that $n = m + p^+$}
+                    \step{two}{$n^+ = m + p^{++}$}
+                \end{proof}
+                \step{v}{\case{$m = n$}}
+                \begin{proof}
+                    \pf\ $n^+ = m + 0^+$
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{lemma}
+        \label{lemma:pre_integer_ordering}
+        For natural numbers $m$, $n$, $p$ and $q$, if $m \in n$ and $p \in q$
+        then $mp + nq \in mq + np$.
+    \end{lemma}
+
+    \begin{proof}
+        \step{a}{\pick\ natural numbers $a$ and $b$ such that $n = m + a^+$ and $q = p + b^+$}
+        \begin{proof}
+            \pf\ Lemma \ref{lemma:subtraction}.
+        \end{proof}
+        \step{b}{$mp + nq = mq + np + (a^+ + b)^+$}
+        \step{c}{$mp + nq \in mq + np$}
+        \begin{proof}
+            \pf\ Lemma \ref{lemma:subtraction}.
+        \end{proof}
+    \end{proof}
+
+    \chapter{The Universe}
+
+    \begin{definition}[Grothendieck Universe]
+        A \emph{Grothendieck universe} is a transitive set $U$ such that:
+        \begin{itemize}
+            \item $\mathbb{N} \in U$
+            \item for all $x,y \in U$ we have $\{x,y\} \in U$
+            \item for all $x \in U$ we have $\mathcal{P} x \in U$ and
+            $\bigcup x \in U$
+            \item for every $x \in U$, set $y$ and function $f : x \rightarrow y$,
+            if $f$ is a surjection then $y \in U$.
+        \end{itemize}
+    \end{definition}
+
+    \begin{axiom}
+        There exists a Grothendieck universe.
+    \end{axiom}
+
+    Henceforth fix a Grothendieck universe $U$. We call the elements of $U$ \emph{small}
+    sets and the sets that are not elements of $U$ \emph{large} sets.
+    
+    \chapter{Integers}
+
+    \section{The Integers}
+
+    \begin{theorem}
+        The relation $\sim$ is an equivalence relation on $\omega \times \omega$, where $(m,n) \sim (p,q)$ iff
+        $m + q = n + p$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{The relation $\sim$ is reflexive on $\omega^2$}
+        \begin{proof}
+            \pf\ For any $m$, $n$, we have $m + n = m + n$ and so $(m,n) \sim (m,n)$.
+        \end{proof}
+        \step{2}{The relation $\sim$ is symmetric.}
+        \begin{proof}
+            \pf\ If $m + q = n + p$ then $p + n = q + m$.
+        \end{proof}
+        \step{3}{The relation $\sim$ is transitive.}
+        \begin{proof}
+            \step{a}{\assume{$(m,n) \sim (p,q) \sim (r,s)$}}
+            \step{b}{$m + q = n + p$}
+            \step{c}{$p + s = q + r$}
+            \step{d}{$m + p + q + s = n + p + q + r$}
+            \step{d}{$m + s = n + r$}
+            \begin{proof}
+                \pf\ By cancellation of addition in $\omega$.
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}
+        The set $\mathbb{Z}$ of \emph{integers} is the quotient set $(\omega \times \omega) / \sim$.
+    \end{definition}
+
+    \begin{lemma}
+        If $(m,n) \sim (m',n')$ and $(p,q) \sim (p',q')$ then $(m+p,n+q) \sim (m'+p',n'+q')$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Assume $m + n' = m' + n$ and $p + q' = p' + q$. Then $m + p + n' + q' = m' + p' + n + q$. \qed
+    \end{proof}
+
+    \begin{definition}[Addition]
+        Addition $+$ on $\mathbb{Z}$ is the binary operation such that
+        \[ [(m,n)] + [(p,q)] = [(m+p,n+q)] \]
+    \end{definition}
+
+    \begin{theorem}
+        Addition on $\mathbb{Z}$ is commutative.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ From the definition. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Addition on $\mathbb{Z}$ is associtative.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}[Zero]
+        The zero in the integers is $0 = [(0,0)]$.
+    \end{definition}
+
+    \begin{theorem}
+        For any integer $a$ we have $a + 0 = 0$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any integer $a$, there exists an integer $b$ such that $a + b = 0$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ If $a = [(m,n)]$ take $b = [(n,m)]$. \qed
+    \end{proof}
+
+    \begin{lemma}
+        If $(m,n) \sim (m',n')$ and $(p,q) \sim (p',q')$ then $(mp+nq,mq+np) \sim (m'p'+n'q',
+        m'q'+n' p')$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{\assume{$m+n'=m'+n$ and $p+q'=p'+q$}}
+        \step{2}{$mp+n'p=m'p+np$}
+        \step{3}{$m'q+nq=mq+n'q$}
+        \step{4}{$mp+mq'=mp'+mq$}
+        \step{5}{$n'p'+n'q=n'p+n'q'$}
+        \step{6}{$mp+n'p+m'q+nq+mp+mq'+n'p'+n'q=m'p+np+mq+n'q+mp'+mq+n'p+n'q'$}
+        \step{7}{$mp+nq+m'q'+n'p'=mq+np+m'p'+n'q'$}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Multiplication]
+        \emph{Multiplication} $\cdot$ is the binary operation on $\mathbb{Z}$ such that
+        \[ [(m,n)][(p,q)] = [(mp+nq,mq+np)] \]
+    \end{definition}
+
+    \begin{theorem}
+        Multiplication is commutative.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Multiplication is associative.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        Multiplication is distributive over addition.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}
+        The integer one is $1 = [(1,0)]$.
+    \end{definition}
+
+    \begin{theorem}
+        For any integer $a$ we have $a1= a$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}
+        $0 \neq 1$
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{lemma}
+        If $(m,n) \sim (m',n')$ and $(p,q) \sim (p',q')$ then $m + q \in p + n$ iff
+        $m' + q' \in p' + n'$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \begin{align*}
+            m + q \in p + n & \Leftrightarrow m + q + n' + q' \in p + n + n' + q' \\
+            & \Leftrightarrow m' + n + q + q' \in p' + n + n' + q \\
+            & \Leftrightarrow m' + q' \in p' + n' & \qed
+        \end{align*}
+    \end{proof}
+
+    \begin{definition}[Ordering]
+        The ordering $<$ on $\mathbb{Z}$ is defined by: $[(m,n)] < [(p,q)]$ iff $m + q \in n + p$.
+    \end{definition}
+
+    \begin{theorem}
+        The relation $<$ is a linear ordering on $\mathbb{Z}$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{$<$ is transitive.}
+        \begin{proof}
+            \step{a}{\assume{$[(m,n)] < [(p,q)]$ and $[(p,q)] < [(r,s)]$}}
+            \step{b}{$m+q \in n+p$ and $p+s \in q+r$}
+            \step{c}{$m+q+s \in n+p+s$}
+            \step{d}{$n+p+s \in n+q+r$}
+            \step{e}{$m+q+s \in n+q+r$}
+            \step{f}{$m+s \in n+r$}
+        \end{proof}
+        \step{2}{$<$ satisfies trichotomy.}
+        \begin{proof}
+            \pf\ From trichotomy on $\omega$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any integers $a$, $b$ and $c$, we have $a < b$ iff $a + c < b + c$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ An easy consequence of the corresponding property in $\omega$.
+    \end{proof}
+
+    \begin{corollary}
+        If $a + c = b + c$ then $a = b$.
+    \end{corollary}
+
+    \begin{theorem}
+        If $0 < c$, then the function that maps an integer $a$ to $ac$ is strictly monotone.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$a$, $b$ and $c$ be integers.}}
+        \step{2}{\assume{$0 < c$ and $a < b$}}
+        \step{3}{\pflet{$a = [(m,n)]$}}
+        \step{4}{\pflet{$b = [(p,q)]$}}
+        \step{5}{\pflet{$c = [(r,s)]$}}
+        \step{6}{$s \in r$}
+        \step{7}{$m + q \in p + n$}
+        \step{10}{$(m+q)r + (p+n)s \in (m+q)s + (p+n)r$}
+        \begin{proof}
+            \pf\ Lemma \ref{lemma:pre_integer_ordering}.
+        \end{proof}
+        \step{11}{$ac < bc$}
+        \qed
+    \end{proof}
+
+    %TODO Extract lemmas to ring theory
+    \begin{lemma}
+        For integers $a$ and $b$,
+        $a(-b) = -(ab)$
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ This follows from the fact that $ab + a(-b) = a(b + (-b)) = a0 = 0$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For integers $a$, $b$ and $c$, if $a < b$ and $c < 0$ then $ac > bc$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ We have $0 < -c$ so $a(-c) < b(-c)$ hence $-(ac) < -(bc)$ so $bc < ac$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \label{theorem:integers_no_zero_divisors}
+        For any integers $a$ and $b$, if $ab = 0$ then $a = 0$ or $b = 0$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ We prove if $a \neq 0$ and $b \neq 0$ then $ab \neq 0$.
+        
+        If $a > 0$ and $b > 0$ then $ab > 0$. Similarly for the other four cases. \qed
+    \end{proof}
+
+    \begin{theorem}
+        \label{theorem:integers_cancel}
+        If $ac = bc$ and $c \neq 0$ then $a = b$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ We have $(a-b)c = 0$ so $a-b = 0$ hence $a = b$. \qed
+    \end{proof}
+
+    \begin{definition}[Positive]
+        An integer $a$ is \emph{positive} iff $0 < a$.
+    \end{definition}
+
+    \begin{theorem}
+        Define $E : \omega \rightarrow \mathbb{Z}$ by $E(n) = [(n,0)]$. Then $E$ maps $\omega$ one-to-one
+        into $\mathbb{Z}$, and:
+        \begin{enumerate}
+            \item $E(m+n) = E(m) + E(n)$
+            \item $E(mn) = E(m) E(n)$
+            \item $m \in n$ if and only if $E(m) < E(n)$.
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Routine calculations. \qed
+    \end{proof}
+
+    \begin{lemma}
+        \label{lemma:integers_Archimedean}
+        For any positive integer $a$ and integer $b$, there exists a natural number $k$ such that
+        $b < ak$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Take $k = |b| + 1$. \qed
+    \end{proof}
+
+    \chapter{Cardinal Numbers}
+
+    \section{Equinumerosity}
+
+    \begin{definition}[Equinumerous]
+        Two sets $A$ and $B$ are \emph{equinumerous}, $A \approx B$, iff there exists a bijection between
+        them.
+    \end{definition}
+
+    \begin{theorem}
+        Equinumerosity is an equivalence relation on the class of sets.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}[Cantor 1873]
+        No set is equinumerous with its power set.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$g : A \rightarrow \mathcal{P} A$} \prove{$g$ is not surjective.}}
+        \step{2}{\pflet{$B = \{x \in A : x \notin g(x) \}$}}
+        \step{3}{$\forall x \in A. g(x) \neq B$}
+        \begin{proof}
+            \pf\ Because $x \in B$ iff $x \notin g(x)$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \section{Ordering Cardinal Numbers}
+
+    \begin{definition}[Dominated]
+        A set $A$ is \emph{dominated} by a set $B$, $A \preccurlyeq B$, iff there exists an injection
+        $f : A \rightarrow B$.
+    \end{definition}
+
+    \begin{lemma}
+        Domination is a preorder on the class of sets.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{lemma}
+        If $A \subseteq B$ then $A \preccurlyeq B$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ The inclusion from $A$ to $B$ is an injection. \qed
+    \end{proof}
+
+    \begin{lemma}
+        If $A \preccurlyeq B$, $A \approx A'$ and $B \approx B'$ then $A' \preccurlyeq B'$.
+    \end{lemma}
+    
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{definition}
+        Given cardinal numbers $\kappa$ and $\lambda$, we write $\kappa \leq \lambda$ iff
+        $K \preccurlyeq L$, where $K$ is any set of cardinality $\kappa$ and $L$ is any set of
+        cardinality $\lambda$.
+
+        We write $\kappa < \lambda$ iff $\kappa \leq \lambda$ and $\kappa \neq \lambda$.
+    \end{definition}
+
+    \begin{theorem}[Schr\"{o}der-Bernstein]
+        If $A \preccurlyeq B$ and $B \preccurlyeq A$ then $A \approx B$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$f : A \rightarrow B$ and $g : B \rightarrow A$ be one-to-one.}}
+        \step{2}{Define the sequence of sets $C_n \subseteq A$ by:
+        \begin{align*}
+            C_0 & = A - \ran g \\
+            C_{n+1} & = g(f(C_n))
+        \end{align*}}
+        \step{3}{Define $h : A \rightarrow B$ by
+        \[ h(x) = \begin{cases}
+            f(x) & \text{if } \exists n \in \mathbb{N}. x \in C_n \\
+            \inv{g}(x) & \text{otherwise}
+        \end{cases} \]}
+        \step{4}{$h$ is injective.}
+        \begin{proof}
+            \step{a}{\pflet{$x,y \in A$}}
+            \step{b}{\assume{$h(x) = h(y)$}}
+            \step{c}{\case{$x \in C_m$, $y \in C_n$}}
+            \begin{proof}
+                \pf\ We have $f(x) = f(y)$ so $x = y$
+            \end{proof}
+            \step{d}{\case{$x \in C_m$, $y \notin \bigcup_n C_n$}}
+            \begin{proof}
+                \pf\ This case is impossible because we would have $y = g(f(x))$ and so $y \in C_{m+1}$.
+            \end{proof}
+            \step{e}{\case{$x, y \notin \bigcup_n C_n$}}
+            \begin{proof}
+                \pf\ We have $\inv{g}(x) = \inv{g}(y)$ so $x = y$.
+            \end{proof}
+        \end{proof}
+        \step{5}{$h$ is surjective.}
+        \begin{proof}
+            \step{a}{\pflet{$y \in B$}}
+            \step{b}{\assume{$y \notin f(C_n)$ for all $n$}}
+            \step{c}{$g(y) \notin C_n$ for all $n$}
+            \step{d}{$y = h(g(y))$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{corollary}
+        The relation $\leq$ is a partial order on the class of cardinal numbers.
+    \end{corollary}
+
+    \begin{theorem}
+        Let $\kappa$, $\lambda$ and $\mu$ be cardinal numbers.
+        \begin{enumerate}
+            \item $\kappa \leq \lambda \Rightarrow \kappa + \mu \leq \lambda + \mu$
+            \item $\kappa \leq \lambda \Rightarrow \kappa \mu \leq \lambda \mu$
+            \item $\kappa \leq \lambda \Rightarrow \kappa^\mu \leq \lambda^\mu$
+            \item $\kappa \leq \lambda \Rightarrow \mu^\kappa \leq \mu^\lambda$ if $\kappa$ and $\mu$
+            are not both zero.
+        \end{enumerate}
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Parts 1--3 are easy. For part 4:
+        
+        Let $|K| = \kappa$, $|L| = \lambda$ and $|M| = \mu$ with $K \subseteq L$.
+
+        If $M = \emptyset$ then $\kappa \neq 0$ so $\mu^\kappa = 0 \leq \mu^\lambda$.
+
+        Otherwise, pick $a \in M$. Define $\Phi : M^K \rightarrow M^L$ by:
+        \[ \Phi(f)(x) = \begin{cases}
+            f(x) & \text{if } x \in K \\
+            a & \text{if } x \notin K
+        \end{cases} \]
+        Then $\Phi$ is an injection. \qed
+    \end{proof}
+
+    \begin{theorem}[Cardinal Comparability]
+        The Axiom of Choice is equivalent to the statement: for any sets $C$ and $D$,
+        either $C \preccurlyeq D$ or $D \preccurlyeq C$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{If Zorn's Lemma then Cardinal Comparability.}
+        \begin{proof}
+            \step{a}{\assume{Zorn's Lemma}}
+            \step{b}{\pflet{$C$ and $D$ be sets.}}
+            \step{c}{\pflet{$\mathcal{A}$ be the set of all injective functions $f$ with
+            $\dom f \subseteq C$ and $\ran f \subseteq D$}}
+            \step{d}{For every chain $\mathcal{B} \subseteq \mathcal{A}$ we have $\bigcup \mathcal{B} \in
+            \mathcal{A}$}
+            \step{e}{\pflet{$f \in \mathcal{A}$ be maximal}}
+            \step{f}{$\dom f = C$ or $\ran f = D$}
+            \step{g}{$f$ is an injective function $C \rightarrow D$ or $\inv{f}$ is an injective function
+            $D \rightarrow C$}
+        \end{proof}
+        \step{2}{If Cardinal Comparability then the Well-Ordering Theorem.}
+        \begin{proof}
+            \step{a}{\assume{Cardinal Comparability}}
+            \step{b}{\pflet{$A$ be any set}}
+            \step{c}{\pick\ an ordinal $\alpha$ not dominated by $A$}
+            \begin{proof}
+                \pf\ Hartogs' Theorem.
+            \end{proof}
+            \step{d}{$A \preccurlyeq \alpha$}
+            \step{e}{\pick\ an injective function $f : A \rightarrow \alpha$}
+            \step{f}{Define $<$ on $A$ by: $x < y$ iff $f(x) \in f(y)$}
+            \step{g}{$<$ is a well ordering on $A$.}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}[Choice]
+        For any infinite set $A$, we have $\omega \preccurlyeq A$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$A$ be an infinite set.}}
+        \step{2}{\pick\ a choice function $F$ for $A$}
+        \step{3}{Define $f : \omega \rightarrow A$ by recursion by:
+        $f(n) = F(A - \{ f(0), f(1), \ldots, f(n-1) \})$}
+        \begin{proof}
+            \pf\ $A - \{ f(0), f(1), \ldots, f(n-1) \}$ is nonempty because $A$ is infinite.
+        \end{proof}
+        \step{4}{$f$ is injective.}
+        \qed
+    \end{proof}
+
+    \begin{corollary}[Choice]
+        For any infinite cardinal $\kappa$ we have $\aleph_0 \leq \kappa$.
+    \end{corollary}
+
+    \begin{corollary}[Choice]
+        A set is infinite iff it is equinumerous to a proper subset of itself.
+    \end{corollary}
+    
+    \begin{proposition}[Choice]
+        If there exists a surjection $A \rightarrow B$ then $B \preccurlyeq A$.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Any surjection $A \rightarrow B$ has a right inverse which is an injection $B \rightarrow A$.
+    \end{proof}
+    \section{Countable Sets}
+
+    \begin{definition}[Countable]
+        A set is \emph{countable} iff it is dominated by $\omega$.
+    \end{definition}
+
+    \begin{proposition}
+        Any subset of a countable set is countable.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{proof}
+        The union of two countable sets is countable.
+    \end{proof}
+
+    \begin{proof}
+        \pf\ Because $\aleph_0 + \aleph_0 = \aleph_0$ \qed
+    \end{proof}
+
+    \begin{proposition}
+        The product of two countable sets is countable.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ Because $\aleph_0 \aleph_0 = \aleph_0$. \qed
+    \end{proof}
+
+    \begin{proposition}[Choice]
+        For any infinite set $A$, the set $\mathcal{P} A$ is uncountable.
+    \end{proposition}
+
+    \begin{proof}
+        \pf\ If $|A| \geq \aleph_0$ then $|\mathcal{P} A| \geq 2^{\aleph_0}$. \qed
+    \end{proof}
+
+    \begin{theorem}[Choice]
+        A countable union of countable sets is countable.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\mathcal{A}$ be a countable set of countable sets.}}
+        \step{2}{\assume{w.l.o.g. $\mathcal{A} \neq \emptyset$ and $\emptyset \notin \mathcal{A}$}}
+        \step{3}{\pick\ a surjection $G : \omega \rightarrow A$}
+        \step{4}{\pick\ a function $F$ with domain $\omega$ such that, for all $m$, $F(m)$ is a surjection
+        $\omega \rightarrow G(m)$}
+        \begin{proof}
+            \pf\ By the Axiom of Choice.
+        \end{proof}
+        \step{5}{Define $f : \omega \times \omega \rightarrow \bigcup A$ by $f(m,n) = F(m)(n)$}
+        \step{6}{$f$ is surjective.}
+        \step{7}{$A \preccurlyeq \omega \times \omega$}
+        \qed
+    \end{proof}
+    
+    \section{Arithmetic of Infinite Cardinals}
+
+    \begin{lemma}[Choice]
+        For any infinite cardinal $\kappa$ we have $\kappa \cdot \kappa = \kappa$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\kappa$ be an infinite cardinal.}}
+        \step{2}{\pflet{$B$ be a set of cardinality $\kappa$.}}
+        \step{3}{\pflet{$\mathcal{H} = \{ f : f = \emptyset \text{ or for some infinite }
+        A \subseteq B, f \text{ is a bijection between $A \times A$ and $A$} \}$}}
+        \step{4}{For any chain $\mathcal{C} \subseteq \mathcal{H}$, we have $\bigcup \mathcal{C} \in \mathcal{H}$}
+        \begin{proof}
+            \step{a}{\pflet{$\mathcal{C} \subseteq \mathcal{H}$ be a chain.}}
+            \step{b}{\assume{w.l.o.g. $\mathcal{C}$ has a nonempty element.}}
+            \begin{proof}
+                \pf\ Otherwise $\bigcup \mathcal{C} = \emptyset \in \mathcal{H}$.
+            \end{proof}
+            \step{c}{$\bigcup \mathcal{C}$ is an injective function.}
+            \step{d}{\pflet{$A = \ran \bigcup \mathcal{C}$}}
+            \step{e}{$A$ is infinite.}
+            \step{f}{$\bigcup \mathcal{C}$ is a bijection between $A \times A$ and $A$.}
+            \begin{proof}
+                \step{i}{\pflet{$a_1, a_2 \in A$}}
+                \step{ii}{\pick\ $f_1, f_2 \in \mathcal{C}$ such that $a_1 \in \ran f_1$ and $a_2 \in \ran f_2$}
+                \step{iii}{\assume{w.l.o.g. $f_1 \subseteq f_2$}}
+                \step{iv}{$\langle a_1, a_2 \rangle \in \dom f_2$}
+                \step{v}{$\langle a_1, a_2 \rangle \in \dom \bigcup \mathcal{C}$}
+            \end{proof}
+        \end{proof}
+        \step{5}{\pick\ a maximal $f_0 \in \mathcal{H}$}
+        \begin{proof}
+            \pf\ Zorn's Lemma.
+        \end{proof}
+        \step{6}{$f_0 \neq \emptyset$}
+        \begin{proof}
+            \pf\ $B$ has a countable subset $A$, say, and $A \times A \approx A$.
+        \end{proof}
+        \step{7}{\pick\ $A_0 \subseteq B$ infinite such that $f_0$ is a bijection between $A_0 \times A_0$
+        and $A_0$.}
+        \step{8}{\pflet{$\lambda = |A_0|$}}
+        \step{9}{$\lambda$ is infinite}
+        \step{10}{$\lambda = \lambda \cdot \lambda$}
+        \step{11}{$\lambda = \kappa$}
+        \begin{proof}
+            \step{a}{$|B - A_0| < \lambda$}
+            \begin{proof}
+                \step{i}{\assume{for a contradiction $\lambda \leq |B - A_0|$}}
+                \step{ii}{\pick\ $D \subseteq B - A_0$ with $|D| = \lambda$}
+                \step{iii}{$(A_0 \cup D) \times (A_0 \cup D) = (A_0 \times A_0) \cup (A_0 \times D) \cup
+                (D \times A_0) \cup (D \times D)$}
+                \step{iv}{$f_0 : A_0 \times A_0 \approx A_0$}
+                \step{v}{$|(A_0 \times D) \cup
+                (D \times A_0) \cup (D \times D)| = \lambda$}
+                \begin{proof}
+                    \pf
+                    \begin{align*}
+                        |(A_0 \times D) \cup
+                (D \times A_0) \cup (D \times D)| & = \lambda \cdot \lambda + \lambda \cdot \lambda + \lambda \cdot \lambda \\
+                & = \lambda + \lambda + \lambda & (\text{\stepref{10}})\\
+                & = 3 \cdot \lambda \\
+                & \leq \lambda \cdot \lambda \\
+                & = \lambda & (\text{\stepref{10}})
+                    \end{align*}
+                \end{proof}
+                \step{vi}{\pick\ a bijection $g : (A_0 \times D) \cup
+                (D \times A_0) \cup (D \times D) \approx D$}
+                \step{vii}{$f_0 \cup g : (A_0 \cup D) \times (A_0 \cup D) \approx A_0 \cup D$}
+                \qedstep
+                \begin{proof}
+                    \pf\ This contradicts the maximality of $f_0$.
+                \end{proof}
+            \end{proof}
+            \step{b}{$\lambda = \kappa$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    \kappa & = |B| \\
+                    & = |A_0| + |B - A_0| \\
+                    & \leq \lambda + \lambda \\
+                    & = 2 \cdot \lambda \\
+                    & \leq \lambda \cdot \lambda \\
+                    & = \lambda \\
+                    & \leq \kappa
+                \end{align*}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{corollary}[Absorption Law of Cardinal Arithmetic (Choice)]
+        Let $\kappa$ and $\lambda$ be cardinal numbers, the larger of which is infinite and the smaller of
+        which is nonzero. Then
+        \[ \kappa + \lambda = \kappa \cdot \lambda = \max(\kappa, \lambda) \enspace . \]
+    \end{corollary}
+
+    \begin{proof}
+        \pf
+        \step{1}{\assume{w.l.o.g. $\kappa \leq \lambda$}}
+        \step{2}{$\kappa + \lambda = \lambda$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                \lambda & \leq \kappa + \lambda \\
+                & \leq \lambda + \lambda \\
+                & = 2 \cdot \lambda \\
+                & \leq \lambda \cdot \lambda \\
+                & = \lambda
+            \end{align*}
+        \end{proof}
+        \step{3}{$\kappa \cdot \lambda = \lambda$}
+        \begin{proof}
+            \pf
+            \begin{align*}
+                \lambda & = 1 \cdot \lambda \\
+                & \leq \kappa \cdot \lambda \\
+                & \leq \lambda \cdot \lambda \\
+                & = \lambda
+            \end{align*}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \section{Rank}
+
+    \begin{definition}
+        Define the set $V_\alpha$ for every ordinal $\alpha$ by transfinite recursion thus:
+        \[ V_\alpha = \bigcup \{ \mathcal{P} V_\beta : \beta \in \alpha \} \enspace . \]
+    \end{definition}
+
+    \begin{lemma}
+        For any ordinal $\alpha$, $V_\alpha$ is a transitive set.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\alpha$ be an ordinal.}}
+        \step{2}{\pflet{$x \in y \in V_\alpha$}}
+        \step{3}{\pick\ $\beta \in \alpha$ such that $y \in \mathcal{P} V_\beta$}
+        \step{4}{$x \in V_\beta$}
+        \step{5}{\pick\ $\gamma \in \beta$ such that $x \in \mathcal{P} V_\gamma$}
+        \step{6}{$\gamma \in \alpha$ and $x \in \mathcal{P} V_\gamma$}
+        \step{7}{$x \in V_\alpha$}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        \label{theorem:V_cumulative}
+        For ordinals $\beta \in \alpha$ we have $V_\beta \subseteq V_\alpha$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \begin{align*}
+            V_\beta & = \bigcup_{\gamma \in \beta} \mathcal{P} V_\gamma \\
+            & \subseteq \bigcup_{\gamma \in \alpha} \mathcal{P} V_\gamma \\
+            & = V_\alpha & \qed
+        \end{align*}
+    \end{proof}
+
+    \begin{theorem}
+        \[ V_0 = \emptyset \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Immediate from definitions. \qed
+    \end{proof}
+
+    \begin{theorem}
+        For any ordinal $\alpha$, $V_{\alpha^+} = \mathcal{P} V_\alpha$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \begin{align*}
+            V_{\alpha^+} & = \bigcup_{\beta \leq \alpha} \mathcal{P} V_\beta \\
+            & = \mathcal{P} V_\beta
+        \end{align*}
+        by Theorem \ref{theorem:V_cumulative}.
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        For $\lambda$ a limit ordinal, $V_\lambda = \bigcup_{\beta < \lambda} V_\beta$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \begin{align*}
+            V_\lambda & = \bigcup_{\beta < \lambda} \mathcal{P} V_\beta \\
+            & = \bigcup_{\beta < \lambda} V_{\beta^+} \\
+            & = \bigcup_{\beta < \lambda} V_\beta
+        \end{align*}
+        since $\beta < \lambda$ iff $\beta^+ < \lambda$. \qed
+    \end{proof}
+
+    \begin{definition}[Grounded, Rank]
+        A set $A$ is \emph{grounded} iff $\exists \alpha. A \subseteq V_\alpha$. The \emph{rank}
+        of a grounded set $A$, $\rank A$, is then the least ordinal $\alpha$ such that $A \subseteq V_\alpha$.
+    \end{definition}
+
+    \begin{theorem}
+        \label{theorem:rank_monotone}
+        If $A$ is grounded and $a \in A$ then $a$ is grounded and $\rank a < \rank A$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ We have $a \in A \subseteq V_{\rank A}$. So $a \in \mathcal{P} V_\alpha$ for some
+        $\alpha < \rank A$, i.e. $a \subseteq V_\alpha$ for some $\alpha < \rank A$, as required.
+    \end{proof}
+
+    \begin{theorem}
+        \label{theorem:grounded_sup}
+        If every member of $A$ is grounded then $A$ is grounded and
+        \[ \rank A = \sup_{a \in A} (\rank a)^+ \enspace . \]
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\alpha = \sup_{a \in A} (\rank a)^+$}}
+        \step{2}{$A \subseteq V_\alpha$}
+        \begin{proof}
+            \step{a}{\pflet{$a \in A$}}
+            \step{b}{$a \subseteq V_{\rank a}$}
+            \step{c}{$a \in V_{(\rank a)^+}$}
+            \step{d}{$a \in V_\alpha$}
+        \end{proof}
+        \step{3}{If $A \subseteq V_\beta$ then $\alpha \leq \beta$}
+        \begin{proof}
+            \step{a}{\assume{$A \subseteq V_\beta$}}
+            \step{b}{$\forall a \in A. a \in V_\beta$}
+            \step{c}{$\forall a \in A. \exists \gamma < \beta. a \subseteq V_\gamma$ }
+            \step{d}{$\forall a \in A. \exists \gamma < \beta. \rank a \leq \gamma$}
+            \step{e}{$\forall a \in A. \rank a < \beta$}
+            \step{f}{$\forall a \in A. (\rank a)^+ \leq \beta$}
+            \step{g}{$\alpha \leq \beta$}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        Every set is grounded.
+    \end{theorem}
+    
+    \begin{proof}
+        \pf
+            \step{b}{\assume{for a contradiction $c$ is not grounded.}}
+            \step{c}{\pflet{$B$ be the transitive closure of $\{c\}$.}}
+            \step{d}{\pflet{$A = \{ x \in B : x \text{ is not grounded} \}$}}
+            \step{e}{\pick\ $m \in A$ such that $m \cap A = \emptyset$}
+            \begin{proof}
+                \pf\ By the Axiom of Regularity.
+            \end{proof}
+            \step{f}{Every member of $m$ is grounded.}
+            \begin{proof}
+                \pf\ Every member of $m$ is in $B$ by transitivity but not in $A$.
+            \end{proof}
+            \step{g}{$m$ is grounded.}
+            \begin{proof}
+                \pf\ Theorem \ref{theorem:grounded_sup}.
+            \end{proof}
+            \qedstep
+            \begin{proof}
+                \pf\ This contradicts the fact that $m \in A$.
+            \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        Let $A$ be any set and $A^t$ its transitive closure. Let $M^t$
+        be the transitive closure of the relation $\{ \langle x,y \rangle : x \in y \in A^t \}$.
+        Define $E : A^t \rightarrow \mathbf{V}$
+        by transfinite recursion thus:
+        \[ E(a) = \{ E(x) : x M^t a \} \qquad (a \in A^t) \enspace . \]
+        Then $E(a) = \rank a$ for all $a \in A^t$, and $\ran E = \rank A$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{0}{$M^t$ is well-founded}
+        \begin{proof}
+            \pf\ Theorem \ref{theorem:tc_well_founded}.
+        \end{proof}
+        \step{1}{$\forall a \in A^t. \rank a = \{ \rank x : x M^t a \}$}
+        \begin{proof}
+            \step{a}{$\forall x,a \in A^t. x M^t a \Rightarrow \rank x < \rank a$}
+            \begin{proof}
+                \pf\ Theorem \ref{theorem:rank_monotone}.
+            \end{proof}
+            \step{b}{$\forall x \in A^t. \forall \alpha < \rank a. \exists x M^t a. \alpha = \rank x$}
+            \begin{proof}
+                \step{i}{\pflet{$a \in A^t$}}
+                \step{ii}{\assume{$\forall b M^t a. \forall \alpha < \rank b. \exists x M^t b. \alpha = \rank x$}}
+                \step{iii}{\pflet{$\alpha < \rank a$}}
+                \step{iv}{\pick\ $b \in a$ such that $\alpha \leq \rank b$}
+                \begin{proof}
+                    \pf\ Theorem \ref{theorem:grounded_sup}.
+                \end{proof}
+                \step{v}{\case{$\alpha < \rank b$}}
+                \begin{proof}
+                    \step{one}{\pick\ $x M^t b$ such that $\alpha = \rank x$}
+                    \begin{proof}
+                        \pf\ By \stepref{ii}
+                    \end{proof}
+                    \step{two}{$x M^t a$}
+                \end{proof}
+                \step{vi}{\case{$\alpha = \rank b$}}
+                \begin{proof}
+                    \pf\ We have $b M^t a$ and $\alpha = \rank b$ as required.
+                \end{proof}
+                \qedstep
+                \begin{proof}
+                    \pf\ This concludes the proof by transfinite induction over $M^t$ (\stepref{0}).
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \step{2}{$\forall a \in A^t. E(a) = \rank a$}
+        \begin{proof}
+            \pf\ By transfinite induction on $a$.
+        \end{proof}
+        \step{3}{$\ran E = \rank A$}
+        \begin{proof}
+            \pf\ From \stepref{2} substituting $\{A\}$ for $A$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \section{Models of Set Theory}
+
+    \begin{theorem}
+        For any limit ordinal $\lambda > \omega$, we have $V_\lambda$ is a model of Zermelo set theory.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{theorem}[Choice]
+        For any ordinal $\alpha$, we have $V_\alpha$ is a model of the Axiom of Choice.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+
+    \begin{lemma}[Choice]
+        There exists a well-ordered structure in $V_{\omega 2}$ whose ordinal number is not in $V_{\omega 2}$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Pick an uncountable set $S \in V_{\omega 2}$. Pick a well-ordering $R$ on $S$. Then
+        $\langle S,R \rangle \in V_{\omega 2}$ but its ordinal is not, because every ordinal in
+        $V_{\omega 2}$ is $< \omega 2$ hence countable. \qed
+    \end{proof}
+
+    \begin{corollary}[Choice]
+        The set $V_{\omega 2}$ is not a model of ZFC.
+    \end{corollary}
+
+    \begin{corollary}
+        The Replacement Axioms are not provable from the Zermelo axioms.
+    \end{corollary}
+
+    \section{Cofinality}
+
+    \begin{definition}[Cofinal]
+        Let $\lambda$ be a limit ordinal and $S$ a set of smaller ordinals. Then $S$ is \emph{cofinal} in
+        $\lambda$ iff $\lambda = \sup S$.
+    \end{definition}
+
+    \begin{definition}[Cofinality]
+        The \emph{cofinality} of a limit ordinal $\lambda$, $\cf \lambda$, is the least cardinal $\kappa$
+        such that $\lambda$
+        is the limit of $\kappa$ smaller ordinals.
+
+        We also define $\cf 0 = 0$ and $\cf \alpha^+ = 1$.
+    \end{definition}
+
+    \begin{definition}[Regular Cardinal]
+        A cardinal $\kappa$ is \emph{regular} iff $\cf \kappa = \kappa$; otherwise $\kappa$ is
+        \emph{singular}.
+    \end{definition}
+
+    \begin{theorem}
+        For every ordinal $\alpha$, the cardinal $\aleph_{\alpha + 1}$ is regular.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ If $S$ is a set of fewer than $\aleph_{\alpha + 1}$ smaller ordinals then
+        $\forall \beta \in S. |\beta| \leq \aleph_\alpha$ and so
+        \[ |\bigcup S| \leq |S| \cdot \aleph_\alpha \leq \aleph_\alpha \cdot \aleph_\alpha = \aleph_\alpha
+        \enspace . \qed \]
+    \end{proof}
+
+    \begin{theorem}
+        For every limit ordinal $\lambda$, we have $\cf \aleph_\lambda = \cf \lambda$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$\lambda$ be a limit ordinal.}}
+        \step{2}{$\cf \aleph_\lambda \leq \cf \lambda$}
+        \begin{proof}
+            \step{a}{\pick\ a set $S$ with $|S| = \cf \lambda$ and $\bigcup S = \lambda$}
+            \step{b}{$\aleph_\lambda = \sup_{\alpha \in S} \aleph_\alpha$}
+            \begin{proof}
+                \pf\ Theorem \ref{theorem:normal_sup}.
+            \end{proof}
+        \end{proof}
+        \step{3}{$\cf \lambda \leq \cf \aleph_\lambda$}
+        \begin{proof}
+            \step{a}{\pflet{$A$ be a set of smaller ordinals such that $\aleph_\lambda = \sup A$}
+            \prove{$\cf \lambda \leq |A|$}}
+            \step{b}{\pflet{$B = \{ \gamma \in \lambda : \exists \alpha \in A. |\alpha| = \aleph_\gamma \}$}}
+            \step{c}{$|B| \leq |A|$}
+            \step{d}{$\sup B = \lambda$}
+            \begin{proof}
+                \step{i}{$\forall \alpha \in A. \alpha \in \aleph_{\sup B + 1}$}
+                \begin{proof}
+                    \step{one}{\pflet{$\alpha \in A$}}
+                    \step{two}{$|\alpha| \leq \aleph_{\sup B}$}
+                    \step{three}{$\alpha \in \aleph_{\sup B + 1}$}
+                \end{proof}
+                \step{ii}{$\lambda \underline{\in} \sup B + 1$}
+                \begin{proof}
+                    \step{one}{$\aleph_\lambda \leq \aleph_{\sup B + 1}$}
+                \end{proof}
+                \step{iii}{$\lambda = \sup B$}
+                \begin{proof}
+                    \step{one}{$\lambda \leq \sup B$}
+                    \begin{proof}
+                        \pf\ From \stepref{ii} since $\lambda$ is a limit ordinal.
+                    \end{proof}
+                    \step{two}{$\sup B \leq \lambda$}
+                    \begin{proof}
+                        \pf\ From \stepref{b}.
+                    \end{proof}
+                \end{proof}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{definition}[Weakly Inaccessible]
+        An ordinal $\lambda$ is \emph{weakly inaccessible} iff $\aleph_\lambda$ is regular.
+    \end{definition}
+
+    \begin{lemma}
+        \label{lemma:increasing_ordinals}
+        Let $f$ be an $\alpha$-sequence of ordinals. Then there exists an increasing $\beta$-sequence
+        $g$ for some $\beta \leq \alpha$ such that $\sup \ran f = \sup \ran g$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pflet{$h$ be the sequence defined by transfinite recursion thus: $h_\xi$ is the least
+        $\gamma$ such that $\forall \delta < \xi. f_{h_\delta} < f_\gamma$ if any such $\gamma$ exists;
+        otherwise the sequence halts.}}
+        \step{2}{\pflet{$\beta = \dom h$}}
+        \step{3}{$g_\xi = f_{h_\xi}$ for $\xi < \beta$}
+        \step{4}{$\sup \ran g \leq \sup \ran f$}
+        \begin{proof}
+            \pf\ Since $g$ is a subsequence of $f$.
+        \end{proof}
+        \step{5}{$\sup \ran f \leq \sup \ran g$}
+        \begin{proof}
+            \step{a}{$\forall \xi < \beta. \forall \delta \leq h_\xi. f_\delta \leq g_\xi$}
+            \begin{proof}
+                \step{i}{\pflet{$\xi < \beta$}}
+                \step{ii}{\pflet{$\delta \leq h_\xi$}}
+                \step{iii}{$f_\delta \leq f_{h_\xi}$}
+                \begin{proof}
+                    \step{one}{\assume{$\delta < h_\xi$}}
+                    \step{two}{\pick\ $\alpha < \xi$ such that $f_delta \leq f_{h_\alpha}$}
+                    \step{three}{$f_\delta \leq f_{h_\alpha} \leq f_{h_\xi}$}
+                \end{proof}
+                \step{iv}{$f_{h_\xi} = g_\xi$}
+            \end{proof}
+            \step{b}{$\forall \xi < \beta. f_\xi \leq g_\xi$}
+            \step{c}{\case{$\beta = \alpha$}}
+            \begin{proof}
+                \pf\ Then $\sup \ran f \leq \sup \ran g$ immediately.
+            \end{proof}
+            \step{d}{\case{$\beta < \alpha$}}
+            \begin{proof}
+                \step{i}{There is no $\gamma$ such that $g_\delta < f_\gamma$ for all $\delta < \beta$}
+                \begin{proof}
+                    \pf\ This is the condition for the sequence $h$ to halt.
+                \end{proof}
+                \step{ii}{For all $\gamma$, there exists $\delta$ such that $f_\gamma < g_\delta$}
+                \step{iii}{$\sup \ran f \leq \sup \ran g$}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        Let $\lambda$ be a limit ordinal. Then there exists an increasing $(\cf \lambda)$-sequence of
+        ordinals that converges to $\lambda$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\pick\ a set $S$ with $|S| = \cf \lambda$ and $\lambda = \sup S$}
+        \step{2}{\pick\ a bijection $f : \cf \lambda \approx S$}
+        \step{3}{\pick\ an increasing $\beta$-sequence converging to $\lambda$ with $\beta \leq \cf \lambda$}
+        \begin{proof}
+            \pf\ Lemma \ref{lemma:increasing_ordinals}.
+        \end{proof}
+        \step{4}{$\beta = \cf \lambda$}
+        \begin{proof}
+            \pf\ By leastness of $\cf \lambda$.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{corollary}
+        For any limit ordinal $\lambda$, we have $\cf \lambda$ is the least ordinal $\alpha$ such that there
+        exists an increasing $\alpha$-sequence of ordinals $< \lambda$ that converges to $\lambda$.
+    \end{corollary}
+
+    \begin{theorem}
+        For any ordinal $\lambda$, we have $\cf \lambda$ is a regular cardinal.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\assume{w.l.o.g. $\lambda$ is a limit ordinal.}}
+        \step{2}{\pick\ an increasing $\cf \lambda$-sequence $f$ of ordinals $< \lambda$ that converges to
+        $\lambda$.}
+        \step{3}{\pflet{$S$ be a set of ordinals $< \cf \lambda$ such that $\cf \lambda = \sup S$.}}
+        \step{4}{$f(S)$ is cofinal in $\lambda$}
+        \begin{proof}
+            \step{a}{\pflet{$\alpha < \lambda$}}
+            \step{b}{\pick\ $\beta < \cf \lambda$ such that $\alpha < f(\beta) < \lambda$}
+            \begin{proof}
+                \pf\ Since $f$ converges to $\lambda$.
+            \end{proof}
+            \step{c}{\pick\ $\gamma \in S$ such that $\beta < \gamma$}
+            \begin{proof}
+                \pf\ Since $\sup S = \cf \lambda$.
+            \end{proof}
+            \step{d}{$\alpha < f(\gamma) \in f(S)$}
+        \end{proof}
+        \step{5}{$\cf \lambda \leq |S|$}
+        \begin{proof}
+            \pf\ We have $\cf \lambda \leq |f(S)| = |S|$
+        \end{proof}
+        \step{6}{$\cf \cf \lambda = \cf \lambda$}
+        \qed
+    \end{proof}
+
+    \begin{theorem}
+        Let $\lambda$ be an infinite cardinal. Then $\cf \lambda$ is the least cardinal $\kappa$ such that
+        $\lambda$ can be decomposed as the union of $\kappa$ sets each with cardinality $< \lambda$.
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{$\lambda$ can be decomposed as the union of $\cf \lambda$ sets each with cardinality
+        $< \lambda$}
+        \begin{proof}
+            \pf\ Since $\lambda$ is the union of a set of $\cf \lambda$ smaller ordinals.
+        \end{proof}
+        \step{2}{If $\lambda = \bigcup \mathcal{A}$ where $\forall X \in \mathcal{A}. |X| < \lambda$
+        then $\cf \lambda \leq |\mathcal{A}$.}
+        \begin{proof}
+            \step{a}{\pflet{$\kappa = |\mathcal{A}|$}}
+            \step{b}{\pflet{$\mathcal{A} = \{ A_\xi : \xi < \kappa \}$}}
+            \step{c}{$\lambda = \bigcup_{\xi < \kappa} A_\xi$}
+            \step{d}{$\forall \xi < \kappa. |A_\xi| < \lambda$}
+            \step{e}{\pflet{$\mu = \sup_{\xi < \kappa} |A_\xi|$}}
+            \step{f}{$\lambda \leq \mu \cdot \kappa$}
+            \begin{proof}
+                \pf\ Since $\lambda = |\bigcup_{\xi < \kappa} A_\xi|$
+            \end{proof}
+            \step{g}{\case{$\lambda \leq \kappa$}}
+            \begin{proof}
+                \pf\ Then $\cf \lambda \leq \lambda \leq \kappa$
+            \end{proof}
+            \step{h}{\case{$\kappa < \lambda$}}
+            \begin{proof}
+                \step{i}{$\lambda = \mu$}
+                \begin{proof}
+                    \pf\ Since $\lambda \leq \mu \cdot \kappa \leq \lambda \cdot \lambda = \lambda$
+                \end{proof}
+                \step{ii}{$\lambda$ is the supremum of $\kappa$ smaller ordinals.}
+                \step{iii}{$\cf \lambda \leq \kappa$}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{theorem}[K\"{o}nig's Theorem (Choice)]
+        For any infinite cardinal $\kappa$ we have $\kappa < \cf 2^\kappa$
+    \end{theorem}
+
+    \begin{proof}
+        \pf
+        \step{1}{\assume{for a contradiction $\cf 2^\kappa \leq \kappa$}}
+        \step{2}{\pick\ a set $S$ with $|S| = 2^\kappa$}
+        \step{3}{\pick\ a $\kappa$-sequence of sets $A_\xi$ with $S^\kappa = \bigcup_{\xi < \kappa} A_\xi$
+        and $\forall \xi < \kappa. |A_\xi| < 2^\kappa$}
+        \begin{proof}
+            \pf\ Since $|S^\kappa| = 2^\kappa$
+        \end{proof}
+        \step{4}{$\forall \xi < \kappa. \{ g(\xi) : g \in A_\xi \} \subset S$}
+        \begin{proof}
+            \pf\ Since $|\{ g(\xi) : g \in A_\xi \}| \leq |A_\xi| < 2^\kappa$
+        \end{proof}
+        \step{5}{For all $\xi < \kappa$, \pick\ $s_\xi \in S - \{ g(\xi) : g \in A_\xi \}$}
+        \step{6}{$s \in S^\kappa$}
+        \step{7}{$\forall \xi < \kappa. s \notin A_\xi$}
+        \qedstep
+        \begin{proof}
+            \pf\ This contradicts \stepref{3}.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{corollary}
+        $2^{\aleph_0} \neq \aleph_\omega$
+    \end{corollary}
+
+    \begin{proof}
+        \pf\ Since $\cf \aleph_\omega = \aleph_0$ and $\cf 2^{\aleph_0} > \aleph_0$. \qed
+    \end{proof}
+    \section{Inaccessible Cardinals}
+
+    \begin{definition}[Inaccessible Cardinal]
+        A cardinal $\kappa$ is \emph{inaccessible} iff:
+        \begin{itemize}
+            \item $\kappa > \aleph_0$
+            \item For every cardinal $\lambda < \kappa$ we have $2^\lambda < \kappa$
+            \item $\kappa$ is regular.
+        \end{itemize}
+    \end{definition}
+
+    \begin{lemma}
+        \label{lemma:Ex9}
+        For any ordinal $\alpha$ and limit ordinal $\lambda$,
+        \[ V_{\alpha + \lambda} = \bigcup_{\delta < \lambda} V_{\alpha + \delta} \]
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{$V_{\alpha + \lambda} = \bigcup_{\delta < \lambda} V_{\alpha + \delta}$}
+        \begin{proof}
+            \step{a}{\pflet{$x \in V_{\alpha + \lambda}$}}
+            \step{b}{\pick\ $\beta < \alpha + \lambda$ such that $x \in V_\beta$}
+            \step{c}{\case{$\beta < \alpha$}}
+            \begin{proof}
+                \pf\ Then $x \in V_{\alpha + 0}$.
+            \end{proof}
+            \step{d}{\case{$\alpha \leq \beta$}}
+            \begin{proof}
+                \step{i}{\pflet{$\delta$ be the ordinal such that $\beta = \alpha + \delta$}}
+                \step{ii}{$x \in V_{\alpha + \delta}$ and $\delta < \lambda$}
+            \end{proof}
+        \end{proof}
+        \step{2}{$\bigcup_{\delta < \lambda} V_{\alpha + \delta} \subseteq V_{\alpha + \lambda}$}
+        \qed
+    \end{proof}
+
+    \begin{lemma}
+        For any ordinal $\alpha$ we have $|V_{\omega + \alpha}| = \beth_\alpha$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{1}{$|V_\omega| = \beth_0$}
+        \begin{proof}
+            \pf\ Since $V_\omega$ is the union of an $\omega$-sequence of finite sets of increasing size.
+        \end{proof}
+        \step{2}{For any ordinal $\alpha$, if $|V_{\omega + \alpha}| = \beth_\alpha$
+        then $|V_{\omega + \alpha^+}| = \beth_{\alpha^+}$}
+        \step{3}{For any limit ordinal $\lambda$, if $\forall \alpha < \lambda. |V_{\omega + \alpha}|
+        = \beth_\alpha$ then $|V_{\omega + \lambda}| = \beth_\lambda$}
+        \begin{proof}
+            \step{a}{\pflet{$\lambda$ be a limit ordinal.}}
+            \step{b}{\assume{$\forall \alpha < \lambda. |V_{\omega + \alpha}| = \beth_\alpha$}}
+            \step{c}{$|V_{\omega + \lambda}| \geq \beth_\lambda$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    |V_{\omega + \lambda}| & = |\bigcup_{\delta < \lambda} V_{\omega + \delta}| &
+                    (\text{Lemma \ref{lemma:Ex9}}) \\
+                    & \geq \sup_{\delta < \lambda} |V_{\omega + \delta}| \\
+                    & = \sup_{\delta < \lambda} \beth_\delta \\
+                    & = \beth_\lambda
+                \end{align*}
+            \end{proof}
+            \step{d}{$\beth_\lambda \leq |V_{\omega + \lambda}|$}
+            \begin{proof}
+                \pf
+                \begin{align*}
+                    |V_{\omega + \lambda}| & = |\bigcup_{\delta < \lambda} V_{\omega + \delta}| \\
+                    & \leq |\lambda| \cdot \beth_\lambda \\
+                    & \leq \beth_\lambda \cdot \beth_\lambda \\
+                    & = \beth_\lambda
+                \end{align*}
+            \end{proof}
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{lemma}
+        Let $\kappa$ be an inaccessible cardinal. For any ordinal $\alpha < \kappa$, we have
+        $\beth_\alpha < \kappa$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf
+        \step{0}{$\beth_0 < \kappa$}
+        \begin{proof}
+            \pf\ By definition of inaccessible.
+        \end{proof}
+        \step{1}{If $\beth_\alpha < \kappa$ then $\beth_{\alpha^+} < \kappa$}
+        \begin{proof}
+            \pf\ $\beth_{\alpha^+} = 2^{\beth_\alpha} < \kappa$
+        \end{proof}
+        \step{2}{If $\lambda$ is a limit ordinal, $\lambda < \kappa$ and $\forall \alpha < \lambda. \beth_\alpha < \kappa$
+        then $\beth_\lambda < \kappa$}
+        \begin{proof}
+            \pf\ Since $\beth_\lambda = \sup_{\alpha < \lambda} \beth_\alpha$ is the supremum of fewer than $\kappa$
+            smaller ordinals.
+        \end{proof}
+        \qed
+    \end{proof}
+
+    \begin{lemma}
+        Let $\kappa$ be an inaccessible cardinal. For all $A \in V_\kappa$ we have $|A| < \kappa$.
+    \end{lemma}
+
+    \begin{proof}
+        \pf\ Pick $\alpha < \kappa$ such that $A \subseteq V_\alpha$. Then $|A| \leq |V_\alpha| \leq \beth_\alpha < \kappa$. \qed
+    \end{proof}
+
+    \begin{theorem}
+        If $\kappa$ is an inaccessible cardinal then $V_\kappa$ is a model of ZF.
+    \end{theorem}
+
+    \begin{proof}
+        \pf\ Easy. \qed
+    \end{proof}
+\end{document}
